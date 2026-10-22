@@ -451,6 +451,23 @@ document.addEventListener("DOMContentLoaded", () => {
                   <h4 class="font-bold text-sm text-slate-800 dark:text-white mb-1">Thành ngữ & Điển tích xưa</h4>
                   <p class="text-xs text-slate-500 dark:text-slate-400">Hiểu sâu ý nghĩa ngụ ngôn qua câu chuyện lịch sử và ứng dụng giao tiếp.</p>
                 </a>
+
+                <a href="#flashcards" onclick="setTimeout(()=>App.switchFlashcardTab('create'),100)" class="p-5 rounded-2xl bg-gradient-to-br from-red-50 to-amber-50 dark:from-red-950/30 dark:to-amber-950/30 border border-red-200 dark:border-red-900/60 hover:border-red-500 transition shadow-sm group sm:col-span-2">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center group-hover:scale-105 transition shadow-md shadow-red-500/30">
+                        <i data-lucide="layers" class="w-5 h-5"></i>
+                      </div>
+                      <div>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white mb-0.5 flex items-center gap-2">
+                          Xưởng Tự Tạo Flashcard Cá Nhân <span class="text-[10px] px-2 py-0.5 rounded-full bg-red-100 dark:bg-red-950 text-red-600 dark:text-red-400 font-bold uppercase tracking-wider">Mới</span>
+                        </h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Tự tạo bộ từ vựng riêng, phân loại theo bộ thẻ (Decks) và dùng Gemini AI điền pinyin, ví dụ tự động.</p>
+                      </div>
+                    </div>
+                    <i data-lucide="arrow-right" class="w-5 h-5 text-red-600 group-hover:translate-x-1 transition"></i>
+                  </div>
+                </a>
               </div>
             </div>
           </div>
@@ -2211,36 +2228,157 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     /* =====================================================================
-       MODULE 6: PERSONALIZED 3D FLASHCARDS (WITH AI AUTO-FILL)
+       MODULE 6: PERSONALIZED FLASHCARD STUDIO & 3D LEARNER
        ===================================================================== */
+    flashcardTab: "practice", // 'practice', 'create', 'manage'
+    selectedDeck: "all",
+    flashcardFilterStatus: "all",
+    editingCardId: null,
+
     renderFlashcards(container) {
       this.flashcards = window.StorageService.getFlashcards();
-      const current = this.flashcards[this.flashcardIndex] || this.flashcards[0];
+      const decks = window.StorageService.getDecks();
 
       container.innerHTML = `
-        <div class="space-y-6 max-w-4xl mx-auto">
+        <div class="space-y-6 max-w-5xl mx-auto">
+          <!-- Top Header & Tab Navigation -->
           <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-700 pb-4">
             <div>
               <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
                 <i data-lucide="layers" class="w-6 h-6 text-red-600"></i>
-                Flashcard 3D Cá Nhân Hóa
+                Flashcard 3D & Xưởng Tạo Thẻ Cá Nhân
               </h2>
               <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                Giao diện lật thẻ 3D trực quan, hỗ trợ Gemini AI tự động điền Pinyin & Ví dụ ngữ cảnh.
+                Tự tạo bộ thẻ từ vựng riêng biệt, phân loại danh mục, tự động điền bằng Gemini AI và lật thẻ 3D.
               </p>
             </div>
 
-            <button onclick="App.openAddFlashcardModal()" class="px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-md flex items-center gap-1.5 transition">
-              <i data-lucide="plus" class="w-4 h-4"></i> Tạo Thẻ Mới (Hỗ trợ AI)
+            <!-- Sub Tabs -->
+            <div class="flex flex-wrap items-center p-1 bg-slate-100 dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 gap-1 text-xs font-bold">
+              <button
+                id="fcTabPracticeBtn"
+                onclick="App.switchFlashcardTab('practice')"
+                class="px-3.5 py-2 rounded-xl transition ${this.flashcardTab === "practice" ? "bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"} flex items-center gap-1.5"
+              >
+                <i data-lucide="play-circle" class="w-4 h-4"></i> Luyện Thẻ 3D
+              </button>
+              <button
+                id="fcTabCreateBtn"
+                onclick="App.switchFlashcardTab('create')"
+                class="px-3.5 py-2 rounded-xl transition ${this.flashcardTab === "create" ? "bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"} flex items-center gap-1.5"
+              >
+                <i data-lucide="plus-circle" class="w-4 h-4 text-amber-500"></i> Tạo Thẻ Mới (AI)
+              </button>
+              <button
+                id="fcTabManageBtn"
+                onclick="App.switchFlashcardTab('manage')"
+                class="px-3.5 py-2 rounded-xl transition ${this.flashcardTab === "manage" ? "bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"} flex items-center gap-1.5"
+              >
+                <i data-lucide="folder-cog" class="w-4 h-4"></i> Quản Lý Bộ Thẻ (${this.flashcards.length})
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Tab Content -->
+          <div id="flashcardSubViewContainer">
+            <!-- Injected dynamically -->
+          </div>
+        </div>
+      `;
+
+      this.renderCurrentFlashcardTab();
+    },
+
+    switchFlashcardTab(tab) {
+      this.flashcardTab = tab;
+      const tabs = ["practice", "create", "manage"];
+      tabs.forEach((t) => {
+        const btn = document.getElementById(`fcTab${t.charAt(0).toUpperCase() + t.slice(1)}Btn`);
+        if (btn) {
+          if (t === tab) {
+            btn.className = "px-3.5 py-2 rounded-xl transition bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm flex items-center gap-1.5 font-bold";
+          } else {
+            btn.className = "px-3.5 py-2 rounded-xl transition text-slate-600 dark:text-slate-400 hover:text-slate-900 flex items-center gap-1.5 font-bold";
+          }
+        }
+      });
+      this.renderCurrentFlashcardTab();
+    },
+
+    renderCurrentFlashcardTab() {
+      const container = document.getElementById("flashcardSubViewContainer");
+      if (!container) return;
+
+      if (this.flashcardTab === "practice") {
+        this.renderFlashcardPracticeView(container);
+      } else if (this.flashcardTab === "create") {
+        this.renderFlashcardCreateView(container);
+      } else if (this.flashcardTab === "manage") {
+        this.renderFlashcardManageView(container);
+      }
+      this.refreshIcons();
+    },
+
+    // 1. Practice 3D View
+    renderFlashcardPracticeView(container) {
+      this.flashcards = window.StorageService.getFlashcards();
+      const decks = window.StorageService.getDecks();
+
+      // Filter cards
+      let filtered = this.flashcards;
+      if (this.selectedDeck !== "all") {
+        filtered = filtered.filter((c) => (c.deck || "Bộ mặc định") === this.selectedDeck);
+      }
+      if (this.flashcardFilterStatus !== "all") {
+        filtered = filtered.filter((c) => (c.status || "learning") === this.flashcardFilterStatus);
+      }
+
+      if (this.flashcardIndex >= filtered.length) {
+        this.flashcardIndex = 0;
+      }
+      const current = filtered[this.flashcardIndex] || filtered[0];
+
+      container.innerHTML = `
+        <div class="space-y-6">
+          <!-- Filter Toolbar -->
+          <div class="flex flex-wrap items-center justify-between gap-3 bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+            <div class="flex flex-wrap items-center gap-3">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs font-semibold text-slate-400">Bộ thẻ:</span>
+                <select id="fcDeckFilter" onchange="App.selectedDeck = this.value; App.flashcardIndex = 0; App.renderCurrentFlashcardTab();" class="px-3 py-1.5 rounded-xl bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-xs font-bold text-slate-700 dark:text-slate-200">
+                  <option value="all" ${this.selectedDeck === "all" ? "selected" : ""}>Tất cả bộ thẻ (${this.flashcards.length})</option>
+                  ${decks.map((d) => `<option value="${d}" ${this.selectedDeck === d ? "selected" : ""}>${d}</option>`).join("")}
+                </select>
+              </div>
+
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs font-semibold text-slate-400">Trạng thái:</span>
+                <select id="fcStatusFilter" onchange="App.flashcardFilterStatus = this.value; App.flashcardIndex = 0; App.renderCurrentFlashcardTab();" class="px-3 py-1.5 rounded-xl bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-xs font-bold text-slate-700 dark:text-slate-200">
+                  <option value="all" ${this.flashcardFilterStatus === "all" ? "selected" : ""}>Tất cả trạng thái</option>
+                  <option value="forgot" ${this.flashcardFilterStatus === "forgot" ? "selected" : ""}>🔴 Cần ôn gấp (Quên)</option>
+                  <option value="vague" ${this.flashcardFilterStatus === "vague" ? "selected" : ""}>🟡 Nhớ mang máng</option>
+                  <option value="mastered" ${this.flashcardFilterStatus === "mastered" ? "selected" : ""}>🟢 Đã thuộc</option>
+                </select>
+              </div>
+            </div>
+
+            <button onclick="App.switchFlashcardTab('create')" class="px-3.5 py-1.5 rounded-xl bg-red-50 dark:bg-red-950/60 hover:bg-red-100 text-red-600 dark:text-red-400 font-bold text-xs flex items-center gap-1 transition">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i> Thêm từ vào bộ này
             </button>
           </div>
 
-          <!-- Flashcard 3D Viewer Area -->
+          <!-- Flashcard 3D Card Area -->
           <div id="flashcardViewerContainer" class="space-y-6">
-            ${current ? this.renderFlashcardCard(current) : `
-              <div class="text-center py-12 bg-white dark:bg-slate-800 rounded-3xl border p-8">
-                <p class="text-slate-500 text-sm mb-3">Chưa có flashcard nào trong bộ sưu tập.</p>
-                <button onclick="App.openAddFlashcardModal()" class="px-4 py-2 bg-red-600 text-white rounded-xl text-xs font-bold">Thêm Thẻ Đầu Tiên</button>
+            ${current ? this.renderFlashcardCard(current, filtered) : `
+              <div class="text-center py-16 bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 p-8 shadow-sm space-y-3">
+                <div class="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-400 flex items-center justify-center mx-auto text-2xl">
+                  <i data-lucide="inbox" class="w-8 h-8"></i>
+                </div>
+                <h4 class="font-bold text-base text-slate-800 dark:text-white">Không tìm thấy thẻ nào phù hợp</h4>
+                <p class="text-xs text-slate-400 max-w-sm mx-auto">Bạn chưa có từ vựng nào trong bộ lọc này. Hãy bấm tạo thẻ mới để bắt đầu học tập!</p>
+                <button onclick="App.switchFlashcardTab('create')" class="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold shadow-md transition inline-flex items-center gap-1.5">
+                  <i data-lucide="plus-circle" class="w-4 h-4"></i> Tạo Flashcard Mới Ngay
+                </button>
               </div>
             `}
           </div>
@@ -2248,69 +2386,94 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
     },
 
-    renderFlashcardCard(card) {
-      const total = this.flashcards.length;
+    renderFlashcardCard(card, currentList = null) {
+      const list = currentList || this.flashcards;
+      const total = list.length;
       const currentNum = this.flashcardIndex + 1;
 
       return `
         <!-- Counter & Navigation Toolbar -->
         <div class="flex items-center justify-between text-xs text-slate-500 font-semibold px-2">
-          <span>Thẻ ${currentNum} / ${total}</span>
           <div class="flex items-center gap-2">
-            <button onclick="App.prevFlashcard()" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300">
+            <span class="font-bold text-slate-800 dark:text-white">Thẻ ${currentNum} / ${total}</span>
+            <span class="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-[11px] font-medium">
+              ${card.deck || "Bộ mặc định"}
+            </span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="App.prevFlashcard()" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 transition" title="Thẻ trước (Phím mũi tên trái)">
               <i data-lucide="chevron-left" class="w-4 h-4"></i>
             </button>
-            <button onclick="App.nextFlashcard()" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300">
+            <button onclick="App.nextFlashcard()" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 transition" title="Thẻ tiếp (Phím mũi tên phải)">
               <i data-lucide="chevron-right" class="w-4 h-4"></i>
             </button>
           </div>
         </div>
 
         <!-- 3D Perspective Card Wrapper -->
-        <div class="perspective-1000 w-full h-80 md:h-96 cursor-pointer select-none" onclick="App.flipFlashcard()">
+        <div class="perspective-1000 w-full h-84 md:h-96 cursor-pointer select-none" onclick="App.flipFlashcard()">
           <div id="flashcardInner" class="transform-style-3d relative w-full h-full duration-500 transition-transform ${this.isCardFlipped ? "rotate-y-180" : ""}">
             
             <!-- FRONT SIDE -->
             <div class="backface-hidden absolute inset-0 w-full h-full bg-white dark:bg-slate-800 rounded-3xl border-2 border-slate-200 dark:border-slate-700 p-8 shadow-xl flex flex-col justify-between items-center text-center">
               <div class="w-full flex items-center justify-between text-xs text-slate-400">
                 <span class="font-bold px-2.5 py-0.5 rounded-full bg-red-100 dark:bg-red-950 text-red-700 dark:text-red-300">HSK ${card.hsk || 1}</span>
-                <span class="flex items-center gap-1 text-[11px]"><i data-lucide="rotate-cw" class="w-3 h-3"></i> Nhấn để lật</span>
+                <span class="flex items-center gap-1 text-[11px]"><i data-lucide="rotate-cw" class="w-3.5 h-3.5 text-amber-500"></i> Bấm để lật xem nghĩa</span>
               </div>
 
-              <div class="my-auto">
+              <div class="my-auto py-2">
                 <div class="font-hanzi font-bold text-7xl md:text-8xl text-slate-900 dark:text-white tracking-wider mb-2">
                   ${card.hanzi}
                 </div>
-                <p class="text-xs text-slate-400">Mặt trước: Chữ Hán</p>
+                <p class="text-xs text-slate-400">Chữ Hán</p>
               </div>
 
-              <button onclick="event.stopPropagation(); AudioService.speak('${card.hanzi}')" class="p-3 rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-red-50 hover:text-red-600 transition" title="Nghe phát âm">
-                <i data-lucide="volume-2" class="w-5 h-5"></i>
-              </button>
+              <div class="flex items-center gap-2">
+                <button onclick="event.stopPropagation(); AudioService.speak('${card.hanzi}')" class="p-3 rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-red-50 hover:text-red-600 transition shadow-sm" title="Nghe phát âm chữ">
+                  <i data-lucide="volume-2" class="w-5 h-5"></i>
+                </button>
+                <button onclick="event.stopPropagation(); App.openEditFlashcardModal('${card.id}')" class="p-3 rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-amber-50 hover:text-amber-600 transition shadow-sm" title="Chỉnh sửa thẻ này">
+                  <i data-lucide="pencil" class="w-4 h-4"></i>
+                </button>
+              </div>
             </div>
 
             <!-- BACK SIDE -->
-            <div class="backface-hidden rotate-y-180 absolute inset-0 w-full h-full bg-gradient-to-br from-red-50 to-amber-50 dark:from-slate-850 dark:to-slate-800 rounded-3xl border-2 border-red-300 dark:border-red-900/60 p-8 shadow-xl flex flex-col justify-between items-center text-center">
+            <div class="backface-hidden rotate-y-180 absolute inset-0 w-full h-full bg-gradient-to-br from-red-50 via-amber-50 to-orange-50 dark:from-slate-850 dark:to-slate-800 rounded-3xl border-2 border-red-300 dark:border-red-900/60 p-8 shadow-xl flex flex-col justify-between items-center text-center overflow-y-auto">
               <div class="w-full flex items-center justify-between text-xs text-slate-400">
-                <span class="font-bold text-red-600 dark:text-red-400 font-mono text-base">${card.pinyin}</span>
-                <button onclick="event.stopPropagation(); AudioService.speak('${card.hanzi}')" class="p-2 rounded-xl bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:text-red-600">
+                <span class="font-bold text-red-600 dark:text-red-400 font-mono text-lg">${card.pinyin}</span>
+                <button onclick="event.stopPropagation(); AudioService.speak('${card.hanzi}')" class="p-2 rounded-xl bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:text-red-600 shadow-sm">
                   <i data-lucide="volume-2" class="w-4 h-4"></i>
                 </button>
               </div>
 
-              <div class="my-auto space-y-3">
-                <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white">
+              <div class="my-auto space-y-3 py-2 w-full max-w-md">
+                <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white leading-snug">
                   ${card.meaning}
                 </h3>
+                
                 ${card.example ? `
-                  <div class="p-3.5 rounded-2xl bg-white/80 dark:bg-slate-800/80 border border-red-100 dark:border-slate-700 text-xs">
-                    <div class="font-hanzi font-semibold text-slate-800 dark:text-white mb-0.5">${card.example}</div>
-                    <div class="text-slate-500 italic">${card.exampleVi || ""}</div>
+                  <div class="p-3.5 rounded-2xl bg-white/85 dark:bg-slate-800/85 border border-red-100 dark:border-slate-700 text-xs shadow-sm text-left">
+                    <div class="flex items-center justify-between mb-1">
+                      <span class="font-bold text-amber-800 dark:text-amber-400">Ví dụ:</span>
+                      <button onclick="event.stopPropagation(); AudioService.speak('${card.example}')" class="text-red-600 hover:underline flex items-center gap-1 font-semibold text-[11px]">
+                        <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Nghe
+                      </button>
+                    </div>
+                    <div class="font-hanzi font-semibold text-slate-800 dark:text-white mb-0.5 text-sm">${card.example}</div>
+                    <div class="text-slate-500 italic text-[11px]">${card.exampleVi || ""}</div>
+                  </div>
+                ` : ""}
+
+                ${card.notes ? `
+                  <div class="p-2.5 rounded-xl bg-amber-100/70 dark:bg-amber-950/40 text-[11px] text-amber-900 dark:text-amber-300 text-left flex items-start gap-1.5">
+                    <i data-lucide="lightbulb" class="w-3.5 h-3.5 text-amber-600 flex-shrink-0 mt-0.5"></i>
+                    <span><strong>Mẹo nhớ:</strong> ${card.notes}</span>
                   </div>
                 ` : ""}
               </div>
 
-              <span class="text-[11px] text-slate-400">Đánh giá mức độ nhớ bên dưới để tối ưu ôn tập</span>
+              <span class="text-[11px] text-slate-400">Đánh giá mức độ nhớ bên dưới để hệ thống tối ưu ôn tập</span>
             </div>
 
           </div>
@@ -2318,17 +2481,556 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <!-- Rating Buttons (Spaced Repetition Feedback) -->
         <div class="grid grid-cols-3 gap-3 pt-2">
-          <button onclick="App.rateFlashcard('${card.id}', 'forgot')" class="py-3 px-4 rounded-2xl bg-red-100 hover:bg-red-200 dark:bg-red-950/60 dark:hover:bg-red-900/80 text-red-700 dark:text-red-300 font-bold text-xs flex items-center justify-center gap-1.5 transition">
+          <button onclick="App.rateFlashcard('${card.id}', 'forgot')" class="py-3 px-4 rounded-2xl bg-red-100 hover:bg-red-200 dark:bg-red-950/60 dark:hover:bg-red-900/80 text-red-700 dark:text-red-300 font-bold text-xs flex items-center justify-center gap-1.5 transition shadow-sm">
             <i data-lucide="x-circle" class="w-4 h-4 text-red-600"></i> Quên (Vào Hộp Phạt)
           </button>
-          <button onclick="App.rateFlashcard('${card.id}', 'vague')" class="py-3 px-4 rounded-2xl bg-amber-100 hover:bg-amber-200 dark:bg-amber-950/60 dark:hover:bg-amber-900/80 text-amber-700 dark:text-amber-300 font-bold text-xs flex items-center justify-center gap-1.5 transition">
+          <button onclick="App.rateFlashcard('${card.id}', 'vague')" class="py-3 px-4 rounded-2xl bg-amber-100 hover:bg-amber-200 dark:bg-amber-950/60 dark:hover:bg-amber-900/80 text-amber-700 dark:text-amber-300 font-bold text-xs flex items-center justify-center gap-1.5 transition shadow-sm">
             <i data-lucide="help-circle" class="w-4 h-4 text-amber-600"></i> Nhớ mang máng
           </button>
-          <button onclick="App.rateFlashcard('${card.id}', 'mastered')" class="py-3 px-4 rounded-2xl bg-emerald-100 hover:bg-emerald-200 dark:bg-emerald-950/60 dark:hover:bg-emerald-900/80 text-emerald-700 dark:text-emerald-300 font-bold text-xs flex items-center justify-center gap-1.5 transition">
+          <button onclick="App.rateFlashcard('${card.id}', 'mastered')" class="py-3 px-4 rounded-2xl bg-emerald-100 hover:bg-emerald-200 dark:bg-emerald-950/60 dark:hover:bg-emerald-900/80 text-emerald-700 dark:text-emerald-300 font-bold text-xs flex items-center justify-center gap-1.5 transition shadow-sm">
             <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i> Đã thuộc làu làu
           </button>
         </div>
       `;
+    },
+
+    // 2. Flashcard Creator Studio View
+    renderFlashcardCreateView(container) {
+      const decks = window.StorageService.getDecks();
+
+      container.innerHTML = `
+        <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 p-6 md:p-8 shadow-sm space-y-6">
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-4">
+            <div>
+              <h3 class="font-extrabold text-lg text-slate-800 dark:text-white flex items-center gap-2">
+                <i data-lucide="sparkles" class="w-5 h-5 text-amber-500"></i>
+                Xưởng Tự Tạo Flashcard Riêng
+              </h3>
+              <p class="text-xs text-slate-400 mt-0.5">
+                Nhập chữ Hán của bạn, bấm <strong>Điền bằng Gemini AI</strong> để tự động bổ sung Pinyin, cấp độ HSK, câu ví dụ và mẹo nhớ chiết tự.
+              </p>
+            </div>
+          </div>
+
+          <form id="customFlashcardStudioForm" onsubmit="event.preventDefault(); App.submitStudioFlashcard();" class="space-y-4">
+            <!-- Row 1: Hanzi & AI Autofill Button -->
+            <div>
+              <label class="block font-bold text-xs text-slate-700 dark:text-slate-300 mb-1.5">
+                Chữ Hán hoặc Từ Vựng Muốn Học (*) :
+              </label>
+              <div class="flex gap-2">
+                <input
+                  type="text"
+                  id="studioHanziInput"
+                  placeholder="VD: 克服, 坚持, 潜移默化..."
+                  required
+                  class="flex-1 p-3.5 rounded-2xl border-2 border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white text-base font-hanzi font-bold focus:outline-none focus:border-red-500"
+                />
+                <button
+                  type="button"
+                  id="studioAiFillBtn"
+                  onclick="App.handleStudioAiAutoFill()"
+                  class="px-5 py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-xs flex items-center gap-2 shadow-md transition whitespace-nowrap"
+                >
+                  <i data-lucide="sparkles" class="w-4 h-4"></i>
+                  <span>Điền Bằng Gemini AI</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Row 2: Deck & HSK Level -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block font-bold text-xs text-slate-700 dark:text-slate-300 mb-1">
+                  Chọn Bộ Thẻ (Deck) :
+                </label>
+                <div class="flex gap-2">
+                  <select id="studioDeckSelect" class="flex-1 p-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white text-xs font-semibold">
+                    ${decks.map((d) => `<option value="${d}">${d}</option>`).join("")}
+                  </select>
+                  <button type="button" onclick="App.promptCreateNewDeck()" class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-700 dark:text-slate-200 text-xs font-bold" title="Tạo bộ thẻ mới">
+                    + Bộ Mới
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label class="block font-bold text-xs text-slate-700 dark:text-slate-300 mb-1">
+                  Cấp Độ HSK :
+                </label>
+                <select id="studioHskSelect" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white text-xs font-semibold">
+                  <option value="1">HSK 1 (Sơ cấp)</option>
+                  <option value="2">HSK 2 (Sơ cấp)</option>
+                  <option value="3" selected>HSK 3 (Trung cấp sơ)</option>
+                  <option value="4">HSK 4 (Trung cấp)</option>
+                  <option value="5">HSK 5 (Cao cấp)</option>
+                  <option value="6">HSK 6 (Thành thạo)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Row 3: Pinyin & Meaning -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block font-bold text-xs text-slate-700 dark:text-slate-300 mb-1">
+                  Phiên Âm Pinyin (Kèm dấu thanh) :
+                </label>
+                <input
+                  type="text"
+                  id="studioPinyinInput"
+                  placeholder="VD: kè fú"
+                  class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white text-xs font-mono"
+                />
+              </div>
+
+              <div>
+                <label class="block font-bold text-xs text-slate-700 dark:text-slate-300 mb-1">
+                  Nghĩa Tiếng Việt (*) :
+                </label>
+                <input
+                  type="text"
+                  id="studioMeaningInput"
+                  placeholder="VD: Khắc phục, vượt qua khó khăn"
+                  required
+                  class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white text-xs font-semibold"
+                />
+              </div>
+            </div>
+
+            <!-- Row 4: Example Sentence & Translation -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <label class="font-bold text-xs text-slate-700 dark:text-slate-300">
+                    Câu Ví Dụ Chữ Hán :
+                  </label>
+                  <button type="button" onclick="AudioService.speak(document.getElementById('studioExampleInput')?.value || '')" class="text-[11px] text-red-600 hover:underline flex items-center gap-1">
+                    <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Nghe thử
+                  </button>
+                </div>
+                <input
+                  type="text"
+                  id="studioExampleInput"
+                  placeholder="VD: 我们要努力克服一切困难。"
+                  class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white text-xs font-hanzi"
+                />
+              </div>
+
+              <div>
+                <label class="block font-bold text-xs text-slate-700 dark:text-slate-300 mb-1">
+                  Dịch Nghĩa Câu Ví Dụ :
+                </label>
+                <input
+                  type="text"
+                  id="studioExampleViInput"
+                  placeholder="VD: Chúng ta cần nỗ lực khắc phục mọi khó khăn."
+                  class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white text-xs"
+                />
+              </div>
+            </div>
+
+            <!-- Row 5: Notes & Mnemonics (Chiết tự) -->
+            <div>
+              <label class="block font-bold text-xs text-slate-700 dark:text-slate-300 mb-1">
+                Ghi Chú Cá Nhân & Mẹo Nhớ Chiết Tự (Mnemonics) :
+              </label>
+              <input
+                type="text"
+                id="studioNotesInput"
+                placeholder="VD: Chữ 克 (khắc) gồm bộ Thập 十 và Huynh 兄..."
+                class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white text-xs"
+              />
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="pt-4 border-t border-slate-100 dark:border-slate-700 flex flex-wrap items-center justify-between gap-3">
+              <button
+                type="button"
+                onclick="AudioService.speak(document.getElementById('studioHanziInput')?.value || '你好')"
+                class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-700 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-200 flex items-center gap-1.5 transition"
+              >
+                <i data-lucide="volume-2" class="w-4 h-4 text-red-600"></i> Nghe Thử Từ Vựng
+              </button>
+
+              <div class="flex items-center gap-2">
+                <button
+                  type="reset"
+                  class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-700 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition"
+                >
+                  Nhập Lại
+                </button>
+                <button
+                  type="submit"
+                  class="px-6 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-md transition flex items-center gap-2"
+                >
+                  <i data-lucide="save" class="w-4 h-4"></i> Lưu Flashcard Vào Bộ Thẻ
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      `;
+    },
+
+    promptCreateNewDeck() {
+      const name = prompt("Nhập tên bộ thẻ mới của bạn (Ví dụ: Từ vựng Du lịch, Giao tiếp công ty...):");
+      if (name && name.trim()) {
+        window.StorageService.saveDeck(name.trim());
+        this.renderCurrentFlashcardTab();
+        this.showToast(`Đã tạo bộ thẻ "${name.trim()}"!`, "success");
+      }
+    },
+
+    async handleStudioAiAutoFill() {
+      const hanzi = document.getElementById("studioHanziInput")?.value?.trim();
+      const btn = document.getElementById("studioAiFillBtn");
+      if (!hanzi) {
+        this.showToast("Vui lòng nhập chữ Hán trước!", "warning");
+        return;
+      }
+
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Đang phân tích...`;
+        this.refreshIcons();
+      }
+
+      try {
+        const res = await window.GeminiService.autoFillFlashcardAI(hanzi);
+        if (document.getElementById("studioPinyinInput")) document.getElementById("studioPinyinInput").value = res.pinyin || "";
+        if (document.getElementById("studioMeaningInput")) document.getElementById("studioMeaningInput").value = res.meaning || "";
+        if (document.getElementById("studioHskSelect") && res.hsk) document.getElementById("studioHskSelect").value = res.hsk;
+        if (document.getElementById("studioExampleInput")) document.getElementById("studioExampleInput").value = res.exampleZh || "";
+        if (document.getElementById("studioExampleViInput")) document.getElementById("studioExampleViInput").value = res.exampleVi || "";
+        if (document.getElementById("studioNotesInput")) document.getElementById("studioNotesInput").value = res.notes || "";
+
+        // Speak word
+        window.AudioService.speak(hanzi);
+        this.showToast(`Gemini AI đã hoàn tất thông tin cho "${hanzi}"!`, "success");
+      } catch (err) {
+        this.showToast("Lỗi tự động điền AI: " + err.message, "error");
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = `<i data-lucide="sparkles" class="w-4 h-4"></i> Điền Bằng Gemini AI`;
+          this.refreshIcons();
+        }
+      }
+    },
+
+    submitStudioFlashcard() {
+      const hanzi = document.getElementById("studioHanziInput")?.value?.trim();
+      const pinyin = document.getElementById("studioPinyinInput")?.value?.trim();
+      const meaning = document.getElementById("studioMeaningInput")?.value?.trim();
+      const deck = document.getElementById("studioDeckSelect")?.value || "Bộ mặc định";
+      const hsk = parseInt(document.getElementById("studioHskSelect")?.value) || 3;
+      const example = document.getElementById("studioExampleInput")?.value?.trim();
+      const exampleVi = document.getElementById("studioExampleViInput")?.value?.trim();
+      const notes = document.getElementById("studioNotesInput")?.value?.trim();
+
+      if (!hanzi || !meaning) {
+        this.showToast("Vui lòng nhập đầy đủ chữ Hán và nghĩa!", "warning");
+        return;
+      }
+
+      window.StorageService.saveFlashcard({
+        hanzi,
+        pinyin: pinyin || "pīn yīn",
+        meaning,
+        deck,
+        hsk,
+        example,
+        exampleVi,
+        notes,
+        status: "learning"
+      });
+
+      window.StorageService.incrementStat("wordsLearnedToday", 1);
+      this.updateHeaderProgress();
+      this.showToast(`Đã thêm thành công thẻ "${hanzi}" vào "${deck}"!`, "success");
+
+      // Switch to practice or library
+      this.switchFlashcardTab("practice");
+    },
+
+    // 3. Flashcard Manage View (CRUD, Search, Export/Import)
+    renderFlashcardManageView(container) {
+      this.flashcards = window.StorageService.getFlashcards();
+      const decks = window.StorageService.getDecks();
+
+      container.innerHTML = `
+        <div class="space-y-6">
+          <!-- Top Management Action Bar -->
+          <div class="flex flex-wrap items-center justify-between gap-4 bg-white dark:bg-slate-800 p-4 md:p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+            <!-- Search input -->
+            <div class="relative flex-1 min-w-[240px]">
+              <input
+                type="text"
+                id="manageSearchInput"
+                oninput="App.filterManageTable()"
+                placeholder="Tìm kiếm theo chữ Hán, Pinyin hoặc nghĩa..."
+                class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-xs text-slate-800 dark:text-white"
+              />
+              <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3"></i>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex flex-wrap items-center gap-2">
+              <button onclick="App.exportFlashcardsJson()" class="px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-700 dark:text-slate-200 text-xs font-bold flex items-center gap-1.5 transition">
+                <i data-lucide="download" class="w-3.5 h-3.5"></i> Xuất JSON
+              </button>
+              <label class="px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-700 dark:text-slate-200 text-xs font-bold flex items-center gap-1.5 transition cursor-pointer">
+                <i data-lucide="upload" class="w-3.5 h-3.5"></i> Nhập JSON
+                <input type="file" id="fcImportFileInput" accept=".json" onchange="App.handleImportFlashcards(event)" class="hidden" />
+              </label>
+              <button onclick="App.switchFlashcardTab('create')" class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm transition">
+                <i data-lucide="plus" class="w-3.5 h-3.5"></i> Tạo Thẻ Mới
+              </button>
+            </div>
+          </div>
+
+          <!-- Cards Table / Grid -->
+          <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs text-slate-600 dark:text-slate-300">
+                <thead class="bg-slate-50 dark:bg-slate-750 border-b border-slate-200 dark:border-slate-700 text-slate-400 font-bold uppercase text-[10px] tracking-wider">
+                  <tr>
+                    <th class="p-4">Chữ Hán</th>
+                    <th class="p-4">Phiên Âm</th>
+                    <th class="p-4">Nghĩa Tiếng Việt</th>
+                    <th class="p-4">Bộ Thẻ / Cấp Độ</th>
+                    <th class="p-4">Trạng Thái</th>
+                    <th class="p-4 text-right">Thao Tác</th>
+                  </tr>
+                </thead>
+                <tbody id="manageCardsTbody" class="divide-y divide-slate-100 dark:divide-slate-700">
+                  ${this.renderManageCardsRows(this.flashcards)}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      `;
+    },
+
+    renderManageCardsRows(cards) {
+      if (cards.length === 0) {
+        return `
+          <tr>
+            <td colspan="6" class="p-8 text-center text-slate-400 text-xs">
+              Chưa có thẻ nào trong danh sách.
+            </td>
+          </tr>
+        `;
+      }
+
+      return cards
+        .map((card) => {
+          let statusBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300">Đang học</span>`;
+          if (card.status === "forgot") {
+            statusBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300">Cần ôn gấp</span>`;
+          } else if (card.status === "mastered") {
+            statusBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">Đã thuộc</span>`;
+          }
+
+          return `
+          <tr class="hover:bg-slate-50 dark:hover:bg-slate-750 transition">
+            <td class="p-4">
+              <div class="flex items-center gap-2.5">
+                <span class="font-hanzi font-bold text-xl text-slate-900 dark:text-white">${card.hanzi}</span>
+                <button onclick="AudioService.speak('${card.hanzi}')" class="p-1 rounded-lg text-slate-400 hover:text-red-600 transition" title="Nghe phát âm">
+                  <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </td>
+            <td class="p-4 font-mono font-semibold text-red-600 dark:text-red-400">${card.pinyin || ""}</td>
+            <td class="p-4 font-medium text-slate-800 dark:text-slate-200 max-w-xs">${card.meaning || ""}</td>
+            <td class="p-4">
+              <div class="flex items-center gap-1.5 flex-wrap">
+                <span class="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-700 text-[11px] font-medium">${card.deck || "Bộ mặc định"}</span>
+                <span class="px-1.5 py-0.5 rounded font-bold text-[10px] bg-red-50 text-red-600 dark:bg-red-950 dark:text-red-400">HSK ${card.hsk || 1}</span>
+              </div>
+            </td>
+            <td class="p-4">${statusBadge}</td>
+            <td class="p-4 text-right">
+              <div class="flex items-center justify-end gap-1.5">
+                <button onclick="App.openEditFlashcardModal('${card.id}')" class="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:text-amber-600 transition" title="Chỉnh sửa">
+                  <i data-lucide="pencil" class="w-3.5 h-3.5"></i>
+                </button>
+                <button onclick="App.deleteCustomFlashcard('${card.id}')" class="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:text-red-600 transition" title="Xóa thẻ">
+                  <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+        })
+        .join("");
+    },
+
+    filterManageTable() {
+      const q = document.getElementById("manageSearchInput")?.value?.toLowerCase()?.trim() || "";
+      const tbody = document.getElementById("manageCardsTbody");
+      if (!tbody) return;
+
+      const filtered = this.flashcards.filter(
+        (c) =>
+          c.hanzi.toLowerCase().includes(q) ||
+          (c.pinyin && c.pinyin.toLowerCase().includes(q)) ||
+          (c.meaning && c.meaning.toLowerCase().includes(q))
+      );
+      tbody.innerHTML = this.renderManageCardsRows(filtered);
+      this.refreshIcons();
+    },
+
+    deleteCustomFlashcard(id) {
+      if (confirm("Bạn có chắc chắn muốn xóa flashcard này khỏi bộ sưu tập?")) {
+        window.StorageService.deleteFlashcard(id);
+        this.flashcards = window.StorageService.getFlashcards();
+        this.showToast("Đã xóa thẻ thành công!", "info");
+        this.renderCurrentFlashcardTab();
+      }
+    },
+
+    openEditFlashcardModal(id) {
+      const card = this.flashcards.find((c) => c.id === id);
+      if (!card) return;
+
+      const decks = window.StorageService.getDecks();
+
+      const html = `
+        <div class="p-6 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
+            <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+              <i data-lucide="pencil" class="w-5 h-5 text-amber-500"></i>
+              Chỉnh Sửa Flashcard: ${card.hanzi}
+            </h3>
+            <button onclick="App.closeModal()" class="text-slate-400 hover:text-slate-600">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <div class="space-y-3 text-xs">
+            <div>
+              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Chữ Hán (*):</label>
+              <input type="text" id="editFcHanzi" value="${card.hanzi}" class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white font-hanzi font-bold text-sm" />
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Bộ Thẻ:</label>
+                <select id="editFcDeck" class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white font-semibold">
+                  ${decks.map((d) => `<option value="${d}" ${card.deck === d ? "selected" : ""}>${d}</option>`).join("")}
+                </select>
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Cấp độ HSK:</label>
+                <select id="editFcHsk" class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white font-semibold">
+                  ${[1, 2, 3, 4, 5, 6].map((l) => `<option value="${l}" ${card.hsk === l ? "selected" : ""}>HSK ${l}</option>`).join("")}
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Phiên âm Pinyin:</label>
+              <input type="text" id="editFcPinyin" value="${card.pinyin || ""}" class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white font-mono" />
+            </div>
+
+            <div>
+              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Nghĩa tiếng Việt (*):</label>
+              <input type="text" id="editFcMeaning" value="${card.meaning || ""}" class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white font-semibold" />
+            </div>
+
+            <div>
+              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Ví dụ chữ Hán:</label>
+              <input type="text" id="editFcExample" value="${card.example || ""}" class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white font-hanzi" />
+            </div>
+
+            <div>
+              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Dịch nghĩa câu ví dụ:</label>
+              <input type="text" id="editFcExampleVi" value="${card.exampleVi || ""}" class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white" />
+            </div>
+
+            <div>
+              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Mẹo nhớ / Ghi chú:</label>
+              <input type="text" id="editFcNotes" value="${card.notes || ""}" class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white" />
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 dark:border-slate-700 flex justify-end gap-2">
+            <button onclick="App.closeModal()" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold">Hủy</button>
+            <button onclick="App.saveEditedFlashcard('${card.id}')" class="px-5 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-md">
+              Cập Nhật Thẻ
+            </button>
+          </div>
+        </div>
+      `;
+      this.openModal(html);
+    },
+
+    saveEditedFlashcard(id) {
+      const hanzi = document.getElementById("editFcHanzi")?.value?.trim();
+      const pinyin = document.getElementById("editFcPinyin")?.value?.trim();
+      const meaning = document.getElementById("editFcMeaning")?.value?.trim();
+      const deck = document.getElementById("editFcDeck")?.value;
+      const hsk = parseInt(document.getElementById("editFcHsk")?.value) || 3;
+      const example = document.getElementById("editFcExample")?.value?.trim();
+      const exampleVi = document.getElementById("editFcExampleVi")?.value?.trim();
+      const notes = document.getElementById("editFcNotes")?.value?.trim();
+
+      if (!hanzi || !meaning) {
+        this.showToast("Chữ Hán và nghĩa không được để trống!", "warning");
+        return;
+      }
+
+      window.StorageService.saveFlashcard({
+        id,
+        hanzi,
+        pinyin,
+        meaning,
+        deck,
+        hsk,
+        example,
+        exampleVi,
+        notes
+      });
+
+      this.closeModal();
+      this.showToast(`Đã cập nhật flashcard "${hanzi}"!`, "success");
+      this.renderCurrentFlashcardTab();
+    },
+
+    exportFlashcardsJson() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.flashcards, null, 2));
+      const downloadAnchor = document.createElement("a");
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `chinese_flashcards_${new Date().toISOString().split("T")[0]}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      this.showToast("Đã tải xuống tệp dữ liệu bộ thẻ thành công!", "success");
+    },
+
+    handleImportFlashcards(event) {
+      const file = event.target.files?.[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const imported = JSON.parse(e.target.result);
+          if (Array.isArray(imported)) {
+            window.StorageService.importFlashcards(imported);
+            this.showToast(`Đã nhập thành công ${imported.length} thẻ flashcard!`, "success");
+            this.renderCurrentFlashcardTab();
+          } else {
+            this.showToast("Định dạng file JSON không hợp lệ!", "error");
+          }
+        } catch (err) {
+          this.showToast("Lỗi đọc file JSON: " + err.message, "error");
+        }
+      };
+      reader.readAsText(file);
     },
 
     flipFlashcard() {
@@ -2344,18 +3046,14 @@ document.addEventListener("DOMContentLoaded", () => {
       if (this.flashcards.length === 0) return;
       this.isCardFlipped = false;
       this.flashcardIndex = (this.flashcardIndex + 1) % this.flashcards.length;
-      const container = document.getElementById("flashcardViewerContainer");
-      if (container) container.innerHTML = this.renderFlashcardCard(this.flashcards[this.flashcardIndex]);
-      this.refreshIcons();
+      this.renderCurrentFlashcardTab();
     },
 
     prevFlashcard() {
       if (this.flashcards.length === 0) return;
       this.isCardFlipped = false;
       this.flashcardIndex = (this.flashcardIndex - 1 + this.flashcards.length) % this.flashcards.length;
-      const container = document.getElementById("flashcardViewerContainer");
-      if (container) container.innerHTML = this.renderFlashcardCard(this.flashcards[this.flashcardIndex]);
-      this.refreshIcons();
+      this.renderCurrentFlashcardTab();
     },
 
     rateFlashcard(cardId, status) {
@@ -2376,120 +3074,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       this.nextFlashcard();
-    },
-
-    openAddFlashcardModal() {
-      const html = `
-        <div class="p-6 space-y-4">
-          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
-            <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
-              <i data-lucide="layers" class="w-5 h-5 text-red-600"></i>
-              Tạo Thẻ Flashcard Mới
-            </h3>
-            <button onclick="App.closeModal()" class="text-slate-400 hover:text-slate-600">
-              <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
-          </div>
-
-          <div class="space-y-3 text-xs">
-            <div>
-              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Chữ Hán (*):</label>
-              <div class="flex gap-2">
-                <input type="text" id="fcHanziInput" placeholder="VD: 克服" class="flex-1 p-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white text-sm font-hanzi" />
-                <button type="button" id="fcAiFillBtn" onclick="App.handleFlashcardAiAutoFill()" class="px-3 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs flex items-center gap-1 shadow-sm">
-                  <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Điền bằng AI
-                </button>
-              </div>
-            </div>
-
-            <div>
-              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Phiên âm Pinyin:</label>
-              <input type="text" id="fcPinyinInput" placeholder="VD: kè fú" class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white" />
-            </div>
-
-            <div>
-              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Nghĩa tiếng Việt (*):</label>
-              <input type="text" id="fcMeaningInput" placeholder="VD: Khắc phục, vượt qua khó khăn" class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white" />
-            </div>
-
-            <div>
-              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Ví dụ chữ Hán:</label>
-              <input type="text" id="fcExampleInput" placeholder="VD: 我们要克服一切困难。" class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white font-hanzi" />
-            </div>
-
-            <div>
-              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Dịch nghĩa câu ví dụ:</label>
-              <input type="text" id="fcExampleViInput" placeholder="VD: Chúng ta phải khắc phục mọi khó khăn." class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white" />
-            </div>
-          </div>
-
-          <div class="pt-3 border-t border-slate-100 dark:border-slate-700 flex justify-end gap-2">
-            <button onclick="App.closeModal()" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold">Hủy</button>
-            <button onclick="App.handleSaveFlashcard()" class="px-5 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-md">
-              Lưu Flashcard
-            </button>
-          </div>
-        </div>
-      `;
-      this.openModal(html);
-    },
-
-    async handleFlashcardAiAutoFill() {
-      const hanzi = document.getElementById("fcHanziInput")?.value?.trim();
-      const btn = document.getElementById("fcAiFillBtn");
-      if (!hanzi) {
-        this.showToast("Vui lòng nhập chữ Hán trước!", "warning");
-        return;
-      }
-
-      if (btn) {
-        btn.disabled = true;
-        btn.innerHTML = `<i data-lucide="loader-2" class="w-3.5 h-3.5 animate-spin"></i> AI đang điền...`;
-        this.refreshIcons();
-      }
-
-      try {
-        const res = await window.GeminiService.autoFillFlashcardAI(hanzi);
-        if (document.getElementById("fcPinyinInput")) document.getElementById("fcPinyinInput").value = res.pinyin || "";
-        if (document.getElementById("fcMeaningInput")) document.getElementById("fcMeaningInput").value = res.meaning || "";
-        if (document.getElementById("fcExampleInput")) document.getElementById("fcExampleInput").value = res.exampleZh || "";
-        if (document.getElementById("fcExampleViInput")) document.getElementById("fcExampleViInput").value = res.exampleVi || "";
-        this.showToast("AI đã tự động hoàn thiện thông tin thẻ!", "success");
-      } catch (err) {
-        this.showToast("Lỗi tự động điền AI: " + err.message, "error");
-      } finally {
-        if (btn) {
-          btn.disabled = false;
-          btn.innerHTML = `<i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Điền bằng AI`;
-          this.refreshIcons();
-        }
-      }
-    },
-
-    handleSaveFlashcard() {
-      const hanzi = document.getElementById("fcHanziInput")?.value?.trim();
-      const pinyin = document.getElementById("fcPinyinInput")?.value?.trim();
-      const meaning = document.getElementById("fcMeaningInput")?.value?.trim();
-      const example = document.getElementById("fcExampleInput")?.value?.trim();
-      const exampleVi = document.getElementById("fcExampleViInput")?.value?.trim();
-
-      if (!hanzi || !meaning) {
-        this.showToast("Vui lòng nhập chữ Hán và nghĩa tiếng Việt!", "warning");
-        return;
-      }
-
-      window.StorageService.saveFlashcard({
-        hanzi,
-        pinyin: pinyin || "pīn yīn",
-        meaning,
-        example,
-        exampleVi,
-        status: "learning"
-      });
-
-      this.closeModal();
-      this.showToast(`Đã tạo flashcard cho "${hanzi}"!`, "success");
-      this.renderFlashcards(document.getElementById("viewContainer"));
     },
 
     /* =====================================================================
