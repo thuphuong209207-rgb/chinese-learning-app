@@ -117,6 +117,86 @@ window.APP_DATA = {
         vi: "Nhà tôi ở Bắc Kinh, hoan nghênh đến chơi."
       }
     },
+    {
+      id: "v1_08",
+      hanzi: "谢谢",
+      pinyin: "xiè xie",
+      meaning: "Cảm ơn, tạ ơn",
+      hsk: 1,
+      radical: "讠 (Ngôn) & 身 (Thân)",
+      strokes: 12,
+      strokeOrderRules: "Bộ Ngôn bên trái viết trước, chữ Thân ở giữa, chữ Thốn bên phải",
+      collocations: ["非常感谢 (Vô cùng cảm ơn)", "不用谢 (Không cần cảm ơn/Đừng khách sáo)"],
+      example: {
+        zh: "太谢谢你了，帮了我这么大一个忙！",
+        pinyin: "Tài xièxie nǐ le, bāng le wǒ zhème dà yí gè máng!",
+        vi: "Cảm ơn bạn nhiều lắm, đã giúp tôi một việc lớn như vậy!"
+      }
+    },
+    {
+      id: "v1_09",
+      hanzi: "再见",
+      pinyin: "zài jiàn",
+      meaning: "Tạm biệt, hẹn gặp lại",
+      hsk: 1,
+      radical: "冂 (Quynh) & 见 (Kiến)",
+      strokes: 6,
+      strokeOrderRules: "Ngang trên cùng viết trước, bao ngoài trước trong sau",
+      collocations: ["明天见 (Ngày mai gặp lại)", "再见朋友 (Tạm biệt bạn bè)"],
+      example: {
+        zh: "时间不早了，我们明天学校再见吧！",
+        pinyin: "Shíjiān bù zǎo le, wǒmen míngtiān xuéxiào zàijiàn ba!",
+        vi: "Thời gian không còn sớm nữa, ngày mai hẹn gặp lại ở trường nhé!"
+      }
+    },
+    {
+      id: "v1_10",
+      hanzi: "苹果",
+      pinyin: "píng guǒ",
+      meaning: "Quả táo",
+      hsk: 1,
+      radical: "艹 (Thảo) & 木 (Mộc)",
+      strokes: 8,
+      strokeOrderRules: "Bộ Thảo đầu viết trước, phần chữ dưới viết sau",
+      collocations: ["吃苹果 (Ăn táo)", "红苹果 (Táo đỏ)"],
+      example: {
+        zh: "每天吃一个红苹果对身体非常有益。",
+        pinyin: "Měitiān chī yí gè hóng píngguǒ duì shēntǐ fēicháng yǒuyì.",
+        vi: "Mỗi ngày ăn một quả táo đỏ rất có lợi cho sức khỏe."
+      }
+    },
+    {
+      id: "v1_11",
+      hanzi: "医生",
+      pinyin: "yī shēng",
+      meaning: "Bác sĩ, thầy thuốc",
+      hsk: 1,
+      radical: "匚 (Phương) & 生 (Sinh)",
+      strokes: 7,
+      strokeOrderRules: "Nét ngang trên trước, phần bên trong, nét gập đáy sau cùng",
+      collocations: ["看医生 (Đi khám bác sĩ)", "当医生 (Làm bác sĩ)"],
+      example: {
+        zh: "我身体有些不舒服，想去医院看医生。",
+        pinyin: "Wǒ shēntǐ yǒuxiē bù shūfu, xiǎng qù yīyuàn kàn yīshēng.",
+        vi: "Trong người tôi hơi khó chịu, muốn đến bệnh viện khám bác sĩ."
+      }
+    },
+    {
+      id: "v1_12",
+      hanzi: "朋友",
+      pinyin: "péng you",
+      meaning: "Bạn bè, bằng hữu",
+      hsk: 1,
+      radical: "月 (Nguyệt) & 又 (Hựu)",
+      strokes: 8,
+      strokeOrderRules: "Trái trước phải sau: Bộ Nguyệt trái trước, bộ Nguyệt phải sau",
+      collocations: ["好朋友 (Bạn thân)", "老朋友 (Bạn cũ)"],
+      example: {
+        zh: "我们在北京结识了很多热情的中国朋友。",
+        pinyin: "Wǒmen zài běijīng jiéshí le hěn duō rèqíng de zhōngguó péngyou.",
+        vi: "Chúng tôi đã quen biết rất nhiều người bạn Trung Quốc nhiệt tình tại Bắc Kinh."
+      }
+    },
 
     // ==================== HSK 2 (Sơ cấp 2) ====================
     {
@@ -197,6 +277,86 @@ window.APP_DATA = {
         zh: "在学习中，同学们应该互相帮助。",
         pinyin: "Zài xuéxí zhōng, tóngxuémen yīnggāi hùxiāng bāngzhù.",
         vi: "Trong học tập, các bạn học nên giúp đỡ lẫn nhau."
+      }
+    },
+    {
+      id: "v2_06",
+      hanzi: "已经",
+      pinyin: "yǐ jīng",
+      meaning: "Đã, rồi (biểu thị hoàn thành)",
+      hsk: 2,
+      radical: "巳 (Tị) & 纟 (Mịch)",
+      strokes: 3,
+      strokeOrderRules: "Nét gập ngang sổ hất trước, nét phẩy sau",
+      collocations: ["已经好了 (Đã xong rồi)", "已经到了 (Đã đến nơi)"],
+      example: {
+        zh: "我已经完成了今天的汉语学习任务。",
+        pinyin: "Wǒ yǐjīng wánchéng le jīntiān de hànyǔ xuéxí rènwù.",
+        vi: "Tôi đã hoàn thành xong nhiệm vụ học tiếng Hán của ngày hôm nay."
+      }
+    },
+    {
+      id: "v2_07",
+      hanzi: "便宜",
+      pinyin: "pián yi",
+      meaning: "Rẻ, giá cả hợp lý",
+      hsk: 2,
+      radical: "亻 (Nhân đứng) & 宀 (Miên)",
+      strokes: 9,
+      strokeOrderRules: "Bộ Nhân đứng bên trái viết trước",
+      collocations: ["太便宜了 (Rẻ quá)", "便宜一点 (Rẻ hơn một chút)"],
+      example: {
+        zh: "这件衣服不仅质量好，而且价格很便宜。",
+        pinyin: "Zhè jiàn yīfu bùjǐn zhìliàng hǎo, érqiě jiàgé hěn piányi.",
+        vi: "Bộ quần áo này không chỉ chất lượng tốt mà giá cả lại rất rẻ."
+      }
+    },
+    {
+      id: "v2_08",
+      hanzi: "晴天",
+      pinyin: "qíng tiān",
+      meaning: "Trời nắng, trời quang đãng",
+      hsk: 2,
+      radical: "日 (Nhật) & 大 (Đại)",
+      strokes: 12,
+      strokeOrderRules: "Bộ Nhật (mặt trời) bên trái viết trước",
+      collocations: ["明天是晴天 (Ngày mai trời nắng)", "晴朗的天气 (Thời tiết nắng ráo)"],
+      example: {
+        zh: "今天是个大晴天，我们一起去公园散步吧。",
+        pinyin: "Jīntiān shì gè dà qíngtiān, wǒmen yìqǐ qù gōngyuán sànbù ba.",
+        vi: "Hôm nay là một ngày nắng đẹp trời, chúng ta cùng nhau đi công viên dạo bộ nhé."
+      }
+    },
+    {
+      id: "v2_09",
+      hanzi: "唱歌",
+      pinyin: "chàng gē",
+      meaning: "Ca hát, hát",
+      hsk: 2,
+      radical: "口 (Khẩu) & 欠 (Khiếm)",
+      strokes: 11,
+      strokeOrderRules: "Bộ Khẩu (miệng) bên trái chữ Xướng viết trước",
+      collocations: ["喜欢唱歌 (Thích hát)", "唱中文歌 (Hát bài hát tiếng Trung)"],
+      example: {
+        zh: "她不仅普通话说得好，中文歌也唱得非常动听。",
+        pinyin: "Tā bùjǐn pǔtōnghuà shuō de hǎo, zhōngwén gē yě chàng de fēicháng dòngtīng.",
+        vi: "Cô ấy không chỉ nói tiếng phổ thông giỏi mà hát nhạc Trung cũng rất hay."
+      }
+    },
+    {
+      id: "v2_10",
+      hanzi: "穿衣服",
+      pinyin: "chuān yī fu",
+      meaning: "Mặc quần áo",
+      hsk: 2,
+      radical: "穴 (Huyệt) & 衣 (Y)",
+      strokes: 9,
+      strokeOrderRules: "Bộ Huyệt trên đầu viết trước",
+      collocations: ["穿新衣服 (Mặc đồ mới)", "快穿衣服 (Mau mặc áo quần vào)"],
+      example: {
+        zh: "外边天气转凉了，出门记得多穿衣服。",
+        pinyin: "Wàibiān tiānqì zhuǎn liáng le, chūmén jìde duō chuān yīfu.",
+        vi: "Thời tiết ngoài trời trở lạnh rồi, ra ngoài nhớ mặc thêm nhiều áo ấm nhé."
       }
     },
 
@@ -281,6 +441,86 @@ window.APP_DATA = {
         vi: "Xem nhiều phim tiếng Trung có thể nâng cao trình độ nghe hiệu quả."
       }
     },
+    {
+      id: "v3_06",
+      hanzi: "热情",
+      pinyin: "rè qíng",
+      meaning: "Nhiệt tình, niềm nở, hiếu khách",
+      hsk: 3,
+      radical: "灬 (Hỏa) & 忄 (Tâm đứng)",
+      strokes: 10,
+      strokeOrderRules: "Bốn chấm hỏa ở đáy chữ Nhiệt viết sau cùng",
+      collocations: ["热情待客 (Niềm nở đón khách)", "非常热情 (Rất nhiệt tình)"],
+      example: {
+        zh: "中国人非常热情好客，给我们留下了深刻印象。",
+        pinyin: "Zhōngguó rén fēicháng rèqíng hàokè, gěi wǒmen liú xià le shēnkè yìnxiàng.",
+        vi: "Người Trung Quốc rất nhiệt tình và hiếu khách, để lại ấn tượng sâu sắc cho chúng tôi."
+      }
+    },
+    {
+      id: "v3_07",
+      hanzi: "经理",
+      pinyin: "jīng lǐ",
+      meaning: "Giám đốc, người quản lý",
+      hsk: 3,
+      radical: "纟 (Mịch) & 王 (Vương)",
+      strokes: 8,
+      strokeOrderRules: "Bộ Mịch bên trái chữ Kinh viết trước",
+      collocations: ["部门经理 (Giám đốc bộ phận)", "总公司经理 (Tổng giám đốc công ty)"],
+      example: {
+        zh: "张经理正在会议室和外宾洽谈业务。",
+        pinyin: "Zhāng jīnglǐ zhèngzài huìyìshì hé wàibīn qiàtán yèwù.",
+        vi: "Giám đốc Trương đang ở trong phòng họp thảo luận công việc với khách nước ngoài."
+      }
+    },
+    {
+      id: "v3_08",
+      hanzi: "愿意",
+      pinyin: "yuàn yì",
+      meaning: "Bằng lòng, sẵn lòng, nguyện ý",
+      hsk: 3,
+      radical: "心 (Tâm) & 音 (Âm)",
+      strokes: 14,
+      strokeOrderRules: "Bộ Tâm ở đáy chữ Nguyện viết sau",
+      collocations: ["非常愿意 (Rất sẵn lòng)", "愿意帮忙 (Sẵn lòng giúp đỡ)"],
+      example: {
+        zh: "如果需要，我很愿意为你提供力所能及的帮助。",
+        pinyin: "Rúguǒ xūyào, wǒ hěn yuànyì wèi nǐ tígōng lìsuǒnéngjí de bāngzhù.",
+        vi: "Nếu cần thiết, tôi rất sẵn lòng cung cấp sự giúp đỡ trong khả năng của mình."
+      }
+    },
+    {
+      id: "v3_09",
+      hanzi: "简单",
+      pinyin: "jiǎn dān",
+      meaning: "Đơn giản, dễ hiểu",
+      hsk: 3,
+      radical: "竹 (Trúc) & 十 (Thập)",
+      strokes: 11,
+      strokeOrderRules: "Bộ Trúc trên đầu viết trước",
+      collocations: ["简单明了 (Đơn giản rõ ràng)", "生活简单 (Cuộc sống giản dị)"],
+      example: {
+        zh: "这个问题其实很简单，只要用心就能想明白。",
+        pinyin: "Zhège wèntí qíshí hěn jiǎndān, zhǐyào yòngxīn jiù néng xiǎng míngbai.",
+        vi: "Vấn đề này thực ra rất đơn giản, chỉ cần để tâm là có thể hiểu ra."
+      }
+    },
+    {
+      id: "v3_10",
+      hanzi: "聪明",
+      pinyin: "cōng ming",
+      meaning: "Thông minh, lanh lợi",
+      hsk: 3,
+      radical: "耳 (Nhĩ) & 日 (Nhật)",
+      strokes: 14,
+      strokeOrderRules: "Bộ Nhĩ (tai) bên trái viết trước",
+      collocations: ["聪明伶俐 (Thông minh lanh lợi)", "聪明能干 (Thông minh tháo vát)"],
+      example: {
+        zh: "这个小女孩非常聪明，学什么都特别快。",
+        pinyin: "Zhège xiǎo nǚhái fēicháng cōngming, xué shénme dōu tèbié kuài.",
+        vi: "Cô bé này rất thông minh, học cái gì cũng đều đặc biệt nhanh."
+      }
+    },
 
     // ==================== HSK 4 (Trung cấp) ====================
     {
@@ -361,6 +601,86 @@ window.APP_DATA = {
         zh: "经过长期的刻苦练习，他能说一口流利的普通话。",
         pinyin: "Jīngguò chángqī de kèkǔ liànxí, tā néng shuō yì kǒu liúlì de pǔtōnghuà.",
         vi: "Trải qua thời gian dài khổ luyện, anh ấy đã nói được tiếng phổ thông lưu loát."
+      }
+    },
+    {
+      id: "v4_06",
+      hanzi: "无论",
+      pinyin: "wú lùn",
+      meaning: "Bất luận, dù cho, cho dù",
+      hsk: 4,
+      radical: "一 (Nhất) & 讠 (Ngôn)",
+      strokes: 4,
+      strokeOrderRules: "Ngang trên cùng viết trước",
+      collocations: ["无论如何 (Bất luận thế nào/Bằng mọi giá)", "无论多难 (Cho dù khó khăn đến đâu)"],
+      example: {
+        zh: "无论遇到多么大的困难，我们都决不能轻言放弃。",
+        pinyin: "Wúlùn yù dào duōme dà de kùnnán, wǒmen dōu jué bù néng qīng yán fàngqì.",
+        vi: "Bất luận gặp phải khó khăn lớn đến đâu, chúng ta cũng quyết không được dễ dàng từ bỏ."
+      }
+    },
+    {
+      id: "v4_07",
+      hanzi: "关键",
+      pinyin: "guān jiàn",
+      meaning: "Then chốt, mấu chốt, điểm cốt lõi",
+      hsk: 4,
+      radical: "门 (Môn) & 钅 (Kim)",
+      strokes: 6,
+      strokeOrderRules: "Bộ Môn viết ngoài trước trong sau",
+      collocations: ["关键时刻 (Giờ phút then chốt)", "起关键作用 (Đóng vai trò mấu chốt)"],
+      example: {
+        zh: "学好语言的关键在于日常坚持不懈地多听多说。",
+        pinyin: "Xué hǎo yǔyán de guānjiàn zàiyú rìcháng jiānchíbúxiè de duō tīng duō shuō.",
+        vi: "Mấu chốt để học giỏi một ngôn ngữ nằm ở việc kiên trì nghe nhiều nói nhiều mỗi ngày."
+      }
+    },
+    {
+      id: "v4_08",
+      hanzi: "压力",
+      pinyin: "yā lì",
+      meaning: "Áp lực, sự căng thẳng",
+      hsk: 4,
+      radical: "厂 (Hán) & 力 (Lực)",
+      strokes: 6,
+      strokeOrderRules: "Ngang trên cùng của chữ Áp trước, phẩy sau",
+      collocations: ["缓解压力 (Giải tỏa áp lực)", "工作压力 (Áp lực công việc)"],
+      example: {
+        zh: "适度的压力可以成为推动我们不断前进的动力。",
+        pinyin: "Shìdù de yālì kěyǐ chéngwéi tuīdòng wǒmen búduàn qiánjìn de dònglì.",
+        vi: "Áp lực vừa phải có thể trở thành động lực thúc đẩy chúng ta không ngừng tiến về phía trước."
+      }
+    },
+    {
+      id: "v4_09",
+      hanzi: "成功",
+      pinyin: "chéng gōng",
+      meaning: "Thành công, thắng lợi",
+      hsk: 4,
+      radical: "戈 (Qua) & 力 (Lực)",
+      strokes: 6,
+      strokeOrderRules: "Phẩy trước, ngang gập móc, nét móc dài qua sau cùng",
+      collocations: ["取得成功 (Đạt được thành công)", "祝你成功 (Chúc bạn thành công)"],
+      example: {
+        zh: "每一个成功的背后，都凝聚着无数默默付出的汗水。",
+        pinyin: "Měi yí gè chénggōng de bèihòu, dōu níngjù zhe wúshù mòmò fùchū de hànshuǐ.",
+        vi: "Đằng sau mỗi thành công đều kết tinh từ vô số mồ hôi thầm lặng cống hiến."
+      }
+    },
+    {
+      id: "v4_10",
+      hanzi: "态度",
+      pinyin: "tài du",
+      meaning: "Thái độ, cách nhìn nhận",
+      hsk: 4,
+      radical: "心 (Tâm) & 广 (Quảng)",
+      strokes: 8,
+      strokeOrderRules: "Bộ Tâm ở đáy chữ Thái viết sau cùng",
+      collocations: ["工作态度 (Thái độ làm việc)", "积极的态度 (Thái độ tích cực)"],
+      example: {
+        zh: "积极乐观的生活态度能帮助我们战胜一切困难。",
+        pinyin: "Jījí lèguān de shēnghuó tàidù néng bāngzhù wǒmen zhànshèng yíqiè kùnnán.",
+        vi: "Thái độ sống tích cực lạc quan có thể giúp chúng ta chiến thắng mọi gian khó."
       }
     },
 
@@ -445,6 +765,86 @@ window.APP_DATA = {
         vi: "Tác phẩm của họa sĩ này thể hiện sức hút nghệ thuật độc đáo."
       }
     },
+    {
+      id: "v5_06",
+      hanzi: "甚至",
+      pinyin: "shèn zhì",
+      meaning: "Thậm chí, ngay cả",
+      hsk: 5,
+      radical: "甘 (Cam) & 至 (Chí)",
+      strokes: 9,
+      strokeOrderRules: "Bộ Cam bên trái viết trước",
+      collocations: ["甚至连...也 (Thậm chí ngay cả... cũng)", "不仅如此甚至 (Không những vậy thậm chí)"],
+      example: {
+        zh: "他不仅熟悉中国文化，甚至能背诵很多经典古诗。",
+        pinyin: "Tā bùjǐn shúxī zhōngguó wénhuà, shènzhì néng bèisòng hěn duō jīngdiǎn gǔshī.",
+        vi: "Anh ấy không chỉ am hiểu văn hóa Trung Hoa, thậm chí còn có thể ngâm thuộc lòng nhiều bài thơ cổ kinh điển."
+      }
+    },
+    {
+      id: "v5_07",
+      hanzi: "挑战",
+      pinyin: "tiǎo zhàn",
+      meaning: "Thách thức, thử thách",
+      hsk: 5,
+      radical: "扌 (Thủ) & 戈 (Qua)",
+      strokes: 9,
+      strokeOrderRules: "Bộ Thủ (tay) bên trái chữ Khiêu viết trước",
+      collocations: ["迎接挑战 (Đón nhận thử thách)", "充满挑战 (Tràn đầy thách thức)"],
+      example: {
+        zh: "面对未知的困难，我们要敢于迎接各种崭新的挑战。",
+        pinyin: "Miànduì wèizhī de kùnnán, wǒmen yào gǎnyú yíngjiē gè zhǒng zhǎnxīn de tiǎozhàn.",
+        vi: "Đối mặt với những gian khó phía trước, chúng ta phải dám đón nhận muôn vàn thử thách mới mẻ."
+      }
+    },
+    {
+      id: "v5_08",
+      hanzi: "珍惜",
+      pinyin: "zhēn xī",
+      meaning: "Trân trọng, quý trọng, giữ gìn",
+      hsk: 5,
+      radical: "王 (Ngọc) & 忄 (Tâm đứng)",
+      strokes: 10,
+      strokeOrderRules: "Bộ Ngọc bên trái chữ Trân viết trước",
+      collocations: ["珍惜时间 (Trân quý thời gian)", "珍惜友谊 (Trân trọng tình bạn)"],
+      example: {
+        zh: "青春一去不复返，我们应当加倍珍惜宝贵的光阴。",
+        pinyin: "Qīngchūn yí qù bú fù fǎn, wǒmen yīngdāng jiābèi zhēnxī bǎoguì de guāngyīn.",
+        vi: "Thanh xuân một đi không trở lại, chúng ta phải trân trọng gấp bội từng tấc thời gian quý giá."
+      }
+    },
+    {
+      id: "v5_09",
+      hanzi: "启发",
+      pinyin: "qǐ fā",
+      meaning: "Gợi mở, truyền cảm hứng, gợi ý",
+      hsk: 5,
+      radical: "户 (Hộ) & 癶 (Bát)",
+      strokes: 7,
+      strokeOrderRules: "Bộ Hộ bên ngoài chữ Khải viết trước",
+      collocations: ["深受启发 (Nhận được sự gợi mở sâu sắc)", "得到启发 (Được truyền cảm hứng)"],
+      example: {
+        zh: "导师的一番深刻话语给了我们极大的智慧启发。",
+        pinyin: "Dǎoshī de yì fān shēnkè huàyǔ gěi le wǒmen jí dà de zhìhuì qǐfā.",
+        vi: "Lời chia sẻ sâu sắc của người thầy đã đem lại cho chúng tôi nguồn cảm hứng trí tuệ to lớn."
+      }
+    },
+    {
+      id: "v5_10",
+      hanzi: "把握",
+      pinyin: "bǎ wò",
+      meaning: "Nắm bắt (cơ hội), nắm chắc",
+      hsk: 5,
+      radical: "扌 (Thủ) & 扌 (Thủ)",
+      strokes: 7,
+      strokeOrderRules: "Bộ Thủ bên trái chữ Bả viết trước",
+      collocations: ["把握机遇 (Nắm bắt thời cơ)", "很有把握 (Rất nắm chắc)"],
+      example: {
+        zh: "时代在飞速发展，只有敏锐把握机遇的人才能脱颖而出。",
+        pinyin: "Shídài zài fēisù fāzhǎn, zhǐyǒu mǐnruì bǎwò jīyù de rén cáinéng tuōyǐng-érchū.",
+        vi: "Thời đại đang phát triển thần tốc, chỉ người nhạy bén nắm bắt cơ hội mới có thể bứt phá vươn lên."
+      }
+    },
 
     // ==================== HSK 6 (Thành thạo) ====================
     {
@@ -525,6 +925,412 @@ window.APP_DATA = {
         zh: "李白的这首古诗千百年来一直是脍炙人口的名篇佳作。",
         pinyin: "Lǐ bái de zhè shǒu gǔshī qiān bǎi nián lái yìzhí shì kuàizhì-rénkǒu de míngpiān jiāzuò.",
         vi: "Bài thơ cổ này của Lý Bạch suốt hàng nghìn năm qua luôn là áng thơ nức tiếng được người đời tấm tắc ngâm vịnh."
+      }
+    },
+    {
+      id: "v6_06",
+      hanzi: "审时度势",
+      pinyin: "shěn shí duó shì",
+      meaning: "Xem xét thời thế, liệu bề ứng biến, suy xét tình thế",
+      hsk: 6,
+      radical: "宀 (Miên) & 日 (Nhật)",
+      strokes: 9,
+      strokeOrderRules: "Bộ Miên trên cùng viết trước",
+      collocations: ["善于审时度势 (Khéo nhìn nhận thời thế)", "科学决策 (Ra quyết định khoa học)"],
+      example: {
+        zh: "优秀的战略决策者总能审时度势，抓住瞬息万变的市场先机。",
+        pinyin: "Yōuxiù de zhànlüè juécèzhě zǒng néng shěnshí-duóshì, zhuāzhù shùnxī-wànbiàn de shìchǎng xiānjī.",
+        vi: "Nhà hoạch định chiến lược xuất sắc luôn biết nhìn nhận thời thế để nắm bắt thời cơ thị trường biến ảo khôn lường."
+      }
+    },
+    {
+      id: "v6_07",
+      hanzi: "侃侃而谈",
+      pinyin: "kǎn kǎn ér tán",
+      meaning: "Nói năng lưu loát, tự tin đĩnh đạc, hùng hồn",
+      hsk: 6,
+      radical: "亻 (Nhân đứng) & 讠 (Ngôn)",
+      strokes: 8,
+      strokeOrderRules: "Bộ Nhân đứng bên trái chữ Khản viết trước",
+      collocations: ["在台上侃侃而谈 (Tự tin thuyết trình trên bục)", "谈吐自如 (Nói năng thoải mái)"],
+      example: {
+        zh: "他在国际高峰论坛上侃侃而谈，赢得了各国代表的热烈掌声。",
+        pinyin: "Tā zài guójì gāofēng lùntán shàng kǎnkǎn-értán, yíngdé le gè guó dàibiǎo de rèliè zhǎngshēng.",
+        vi: "Anh ấy đĩnh đạc thuyết trình tại diễn đàn thượng đỉnh quốc tế, nhận được tràng pháo tay nhiệt liệt từ đại biểu các nước."
+      }
+    },
+    {
+      id: "v6_08",
+      hanzi: "根深蒂固",
+      pinyin: "gēn shēn dì gù",
+      meaning: "Ăn sâu bén rễ, thâm căn cố đế, khó bề lay chuyển",
+      hsk: 6,
+      radical: "木 (Mộc) & 氵 (Thủy)",
+      strokes: 10,
+      strokeOrderRules: "Bộ Mộc bên trái chữ Căn viết trước",
+      collocations: ["根深蒂固的观念 (Quan niệm thâm căn cố đế)", "传统习俗 (Phong tục truyền thống)"],
+      example: {
+        zh: "有些陈旧落后的观念虽然根深蒂固，但终将被时代淘汰。",
+        pinyin: "Yǒuxiē chénjiù luòhòu de guānniàn suīrán gēnshēn-dìgù, dàn zhōng jiāng bèi shídài táotài.",
+        vi: "Một số quan niệm lạc hậu tuy đã ăn sâu bén rễ, nhưng cuối cùng cũng sẽ bị thời đại đào thải."
+      }
+    },
+    {
+      id: "v6_09",
+      hanzi: "循序渐进",
+      pinyin: "xún xù jiàn jìn",
+      meaning: "Từng bước một tiến lên, theo trình tự mà tiến bước",
+      hsk: 6,
+      radical: "彳 (Xích) & 广 (Quảng)",
+      strokes: 12,
+      strokeOrderRules: "Bộ Xích (bước chân trái) viết trước",
+      collocations: ["循序渐进地学习 (Học tập theo từng bước)", "科学规划 (Quy hoạch khoa học)"],
+      example: {
+        zh: "学习外语切忌急于求成，必须遵循循序渐进的客观规律。",
+        pinyin: "Xuéxí wàiyǔ qièjì jíyúqiúchéng, bìxū zūnxún xúnxù-jiànjìn de kèguān guīlǜ.",
+        vi: "Học ngoại ngữ tối kỵ nóng vội đốt cháy giai đoạn, phải tuân thủ quy luật khách quan tiến bước tuần tự."
+      }
+    },
+    {
+      id: "v6_10",
+      hanzi: "见多识广",
+      pinyin: "jiàn duō shí guǎng",
+      meaning: "Thấy nhiều biết rộng, từng trải lịch thiệp, kiến thức uyên thâm",
+      hsk: 6,
+      radical: "见 (Kiến) & 讠 (Ngôn)",
+      strokes: 4,
+      strokeOrderRules: "Chữ Kiến viết trước: Sổ dọc, ngang gập, phẩy, móc đứng cong",
+      collocations: ["阅历丰富 (Vốn sống phong phú)", "见多识广的长者 (Bậc trưởng bối thấy nhiều biết rộng)"],
+      example: {
+        zh: "他游历过世界上几十个国家，是个见多识广、谈吐幽默的学者。",
+        pinyin: "Tā yóulì guò shìjiè shàng jǐ shí gè guójiā, shì gè jiànduō-shíguǎng, tántù yōumò de xuézhě.",
+        vi: "Ông ấy đã du hành qua hàng chục quốc gia trên thế giới, là một học giả thấy nhiều biết rộng và trò chuyện rất hóm hỉnh."
+      }
+    },
+
+    // ==================== TIẾNG TRUNG THƯƠNG MẠI (商务汉语 - Business Chinese) ====================
+    {
+      id: "vb_01",
+      hanzi: "合同",
+      pinyin: "hé tong",
+      meaning: "Hợp đồng thương mại, khế ước giao thương",
+      hsk: "Thương Mại",
+      category: "business",
+      deck: "business",
+      radical: "人 (Nhân) & 口 (Khẩu)",
+      strokes: 6,
+      strokeOrderRules: "Phẩy trước mác sau, ngang viết tiếp theo, bộ Khẩu đáy viết sau cùng",
+      collocations: ["签订合同 (Ký kết hợp đồng)", "履行合同 (Thực hiện hợp đồng)", "起草合同 (Soạn thảo hợp đồng)"],
+      example: {
+        zh: "双方代表在人民大会堂正式签署了战略合作商业合同。",
+        pinyin: "Shuāngfāng dàibiǎo zài rénmín dàhuìtáng zhèngshì qiānshǔ le zhànlüè hézuò shāngyè hétong.",
+        vi: "Đại diện hai bên đã chính thức ký kết hợp đồng thương mại hợp tác chiến lược tại Đại lễ đường Nhân dân."
+      }
+    },
+    {
+      id: "vb_02",
+      hanzi: "谈判",
+      pinyin: "tán pàn",
+      meaning: "Đàm phán, thương thuyết, thương thảo kinh doanh",
+      hsk: "Thương Mại",
+      category: "business",
+      deck: "business",
+      radical: "讠 (Ngôn) & 刂 (Đao đứng)",
+      strokes: 11,
+      strokeOrderRules: "Bộ Ngôn bên trái chữ Đàm viết trước",
+      collocations: ["商业谈判 (Đàm phán kinh doanh)", "价格谈判 (Thương lượng giá cả)", "陷入僵局 (Rơi vào bế tắc)"],
+      example: {
+        zh: "经过三轮艰苦谈判，双方最终在核心价格条款上达成共识。",
+        pinyin: "Jīngguò sān lún jiānkǔ tánpàn, shuāngfāng zuìzhōng zài héxīn jiàgé tiáokuǎn shàng dáchéng gòngshí.",
+        vi: "Trải qua 3 vòng đàm phán cam go, hai bên cuối cùng đã đạt được đồng thuận về các điều khoản giá cả cốt lõi."
+      }
+    },
+    {
+      id: "vb_03",
+      hanzi: "报价",
+      pinyin: "bào jià",
+      meaning: "Báo giá, bảng báo giá chào hàng (Quotation)",
+      hsk: "Thương Mại",
+      category: "business",
+      deck: "business",
+      radical: "扌 (Thủ) & 亻 (Nhân đứng)",
+      strokes: 7,
+      strokeOrderRules: "Bộ Thủ (tay) bên trái chữ Báo viết trước",
+      collocations: ["正式报价 (Báo giá chính thức)", "接受报价 (Chấp nhận báo giá)", "最终报价 (Báo giá cuối cùng)"],
+      example: {
+        zh: "请贵公司在下周五之前向我们发送该批设备的详细书面报价。",
+        pinyin: "Qǐng guì gōngsī zài xià zhōuwǔ zhīqián xiàng wǒmen fāsòng gāi pī shèbèi de xiángxì shūmiàn bàojià.",
+        vi: "Xin quý công ty gửi cho chúng tôi bảng báo giá chi tiết bằng văn bản của lô thiết bị này trước thứ Sáu tuần sau."
+      }
+    },
+    {
+      id: "vb_04",
+      hanzi: "发票",
+      pinyin: "fā piào",
+      meaning: "Hóa đơn tài chính, hóa đơn đỏ VAT (Invoice)",
+      hsk: "Thương Mại",
+      category: "business",
+      deck: "business",
+      radical: "癶 (Bát) & 示 (Thị)",
+      strokes: 5,
+      strokeOrderRules: "Phẩy trước, ngang phẩy gập, mác dài",
+      collocations: ["开具增值税发票 (Xuất hóa đơn VAT)", "发票抬头 (Tên đơn vị trên hóa đơn)"],
+      example: {
+        zh: "收到款项确认无误后，财务部会立即为您开具正规增值税专用发票。",
+        pinyin: "Shōudào kuǎnxiàng quèrèn wúwù hòu, cáiwùbù huì lìjí wèi nǐ kāijù zhèngguī zēngzhíshuì zhuānyòng fāpiào.",
+        vi: "Sau khi xác nhận nhận tiền chính xác, phòng tài vụ sẽ lập tức xuất hóa đơn đỏ VAT chuyên dụng cho quý khách."
+      }
+    },
+    {
+      id: "vb_05",
+      hanzi: "汇率",
+      pinyin: "huì lǜ",
+      meaning: "Tỷ giá hối đoái tiền tệ (Exchange Rate)",
+      hsk: "Thương Mại",
+      category: "business",
+      deck: "business",
+      radical: "氵 (Thủy) & 玄 (Huyền)",
+      strokes: 13,
+      strokeOrderRules: "Ba chấm thủy bên trái viết trước",
+      collocations: ["汇率波动 (Biến động tỷ giá)", "人民币对美元汇率 (Tỷ giá RMB/USD)", "外汇风险 (Rủi ro ngoại hối)"],
+      example: {
+        zh: "近期国际外汇汇率波动剧烈，对外贸出口企业带来了汇兑损益挑战。",
+        pinyin: "Jìnqī guójì wàihuì huìlǜ bōdòng jùliè, duì wàimào chūkǒu qǐyè dài lái le huìduì sǔnyì tiǎozhàn.",
+        vi: "Gần đây tỷ giá ngoại hối quốc tế biến động dữ dội, đem lại thách thức lỗ lãi tỷ giá cho các doanh nghiệp xuất khẩu ngoại thương."
+      }
+    },
+    {
+      id: "vb_06",
+      hanzi: "违约金",
+      pinyin: "wéi yuē jīn",
+      meaning: "Tiền phạt vi phạm hợp đồng (Liquidated Damages / Penalty)",
+      hsk: "Thương Mại",
+      category: "business",
+      deck: "business",
+      radical: "辶 (Xước) & 纟 (Mịch)",
+      strokes: 7,
+      strokeOrderRules: "Viết thân chữ Vi bên trong trước, bộ Xước bao ngoài sau",
+      collocations: ["支付违约金 (Chi trả tiền phạt vi phạm)", "合同违约责任 (Trách nhiệm vi phạm hợp đồng)"],
+      example: {
+        zh: "如任何一方未能按时交货，需按合同约定支付货款总额百分之五的违约金。",
+        pinyin: "Rú rènhé yì fāng wèinéng ànshí jiāohuò, xū àn hétong yuēdìng zhīfù huòkuǎn zǒng'é bǎifēnzhīwǔ de wéiyuējīn.",
+        vi: "Nếu bất kỳ bên nào không giao hàng đúng hạn, cần chi trả khoản tiền phạt vi phạm hợp đồng bằng 5% tổng giá trị lô hàng."
+      }
+    },
+    {
+      id: "vb_07",
+      hanzi: "信用证",
+      pinyin: "xìn yòng zhèng",
+      meaning: "Thư tín dụng thanh toán quốc tế (Letter of Credit - L/C)",
+      hsk: "Thương Mại",
+      category: "business",
+      deck: "business",
+      radical: "亻 (Nhân) & 讠 (Ngôn)",
+      strokes: 9,
+      strokeOrderRules: "Bộ Nhân đứng bên trái chữ Tín viết trước",
+      collocations: ["不可撤销信用证 (L/C không thể hủy ngang)", "开立信用证 (Mở thư tín dụng L/C)"],
+      example: {
+        zh: "我们要求买方在装运前一个月通过指定国际银行开立不可撤销即期信用证。",
+        pinyin: "Wǒmen yāoqiú mǎifāng zài zhuāngyùn qián yí gè yuè tōngguò zhǐdìng guójì yínháng kāilì bùkěchèxiāo jíqī xìnyòngzhèng.",
+        vi: "Chúng tôi yêu cầu bên mua mở thư tín dụng trả ngay không thể hủy ngang qua ngân hàng quốc tế chỉ định 1 tháng trước khi bốc hàng."
+      }
+    },
+    {
+      id: "vb_08",
+      hanzi: "定金",
+      pinyin: "dìng jīn",
+      meaning: "Tiền đặt cọc, tiền trả trước (Deposit)",
+      hsk: "Thương Mại",
+      category: "business",
+      deck: "business",
+      radical: "宀 (Miên) & 金 (Kim)",
+      strokes: 8,
+      strokeOrderRules: "Bộ Miên trên đỉnh chữ Định viết trước",
+      collocations: ["交付定金 (Giao tiền cọc)", "没收定金 (Tịch thu tiền cọc)", "定金收据 (Biên nhận tiền cọc)"],
+      example: {
+        zh: "买方需在签署订货协议后三个工作日内电汇百分之三十作为生产定金。",
+        pinyin: "Mǎifāng xū zài qiānshǔ dìnghuò xiéyì hòu sān gè gōngzuòrì nèi diànhuì bǎifēnzhīsānshí zuòwéi shēngchǎn dìngjīn.",
+        vi: "Bên mua cần chuyển khoản 30% làm tiền cọc sản xuất trong vòng 3 ngày làm việc sau khi ký thỏa thuận đặt hàng."
+      }
+    },
+    {
+      id: "vb_09",
+      hanzi: "索赔",
+      pinyin: "suǒ péi",
+      meaning: "Khiếu nại bồi thường, đòi bồi thường bảo hiểm (Claim for Damages)",
+      hsk: "Thương Mại",
+      category: "business",
+      deck: "business",
+      radical: "十 (Thập) & 贝 (Bối)",
+      strokes: 10,
+      strokeOrderRules: "Bộ Thập trên đỉnh chữ Tác viết trước",
+      collocations: ["提出索赔 (Đưa ra yêu cầu bồi thường)", "索赔期限 (Thời hạn khiếu nại bồi thường)"],
+      example: {
+        zh: "经第三方公证检验货物存在严重破损，我方正式向保险公司提出索赔。",
+        pinyin: "Jīng dì-sān fāng gōngzhèng jiǎnyàn huòwù cúnzài yánzhòng pòsǔn, wǒfāng zhèngshì xiàng bǎoxiǎn gōngsī tíchū suǒpéi.",
+        vi: "Qua giám định của bên thứ 3 xác nhận hàng hóa hư hỏng nghiêm trọng, bên tôi chính thức yêu cầu công ty bảo hiểm bồi thường."
+      }
+    },
+    {
+      id: "vb_10",
+      hanzi: "利润",
+      pinyin: "lì rùn",
+      meaning: "Lợi nhuận ròng, tiền lãi doanh nghiệp (Profit)",
+      hsk: "Thương Mại",
+      category: "business",
+      deck: "business",
+      radical: "禾 (Hòa) & 氵 (Thủy)",
+      strokes: 7,
+      strokeOrderRules: "Bộ Hòa bên trái chữ Lợi viết trước",
+      collocations: ["净利润 (Lợi nhuận ròng)", "利润率 (Tỷ suất lợi nhuận)", "实现利润 (Đạt mức lợi nhuận)"],
+      example: {
+        zh: "得益于成本优化和技术创新，本季度公司净利润实现了百分之二十五的强劲增长。",
+        pinyin: "Déyì yú chéngběn yōuhuà hé jìshù chuàngxīn, běn jìdù gōngsī jìnglìrùn shíxiàn le bǎifēnzhī'èrshíwǔ de qiángjìng zēngzhǎng.",
+        vi: "Nhờ tối ưu chi phí và đổi mới công nghệ, lợi nhuận ròng của công ty quý này đã tăng trưởng mạnh mẽ 25%."
+      }
+    },
+    {
+      id: "vb_11",
+      hanzi: "关税",
+      pinyin: "guān shuì",
+      meaning: "Thuế hải quan, thuế quan xuất nhập khẩu (Tariff / Customs Duty)",
+      hsk: "Thương Mại",
+      category: "business",
+      deck: "business",
+      radical: "门 (Môn) & 禾 (Hòa)",
+      strokes: 6,
+      strokeOrderRules: "Chấm trước phẩy sau, bộ Môn bao quanh",
+      collocations: ["海关关税 (Thuế quan hải quan)", "关税优惠 (Ưu đãi thuế quan)", "零关税 (Thuế quan 0%)"],
+      example: {
+        zh: "根据自贸协定规定，自明年起两国进出口大部分机械设备将享受零关税待遇。",
+        pinyin: "Gēnjù zìmào xiédìng guīdìng, zì míngnián qǐ liǎng guó jìn-chūkǒu dà bùfen jīxiè shèbèi jiāng xiǎngshòu líng guānshuì dàiyù.",
+        vi: "Theo hiệp định thương mại tự do, từ năm tới phần lớn thiết bị máy móc xuất nhập khẩu giữa hai nước sẽ được hưởng thuế quan 0%."
+      }
+    },
+    {
+      id: "vb_12",
+      hanzi: "供应链",
+      pinyin: "gōng yìng liàn",
+      meaning: "Chuỗi cung ứng hàng hóa sản xuất (Supply Chain)",
+      hsk: "Thương Mại",
+      category: "business",
+      deck: "business",
+      radical: "亻 (Nhân) & 钅 (Kim)",
+      strokes: 8,
+      strokeOrderRules: "Bộ Nhân đứng bên trái chữ Cung viết trước",
+      collocations: ["供应链管理 (Quản trị chuỗi cung ứng SCM)", "全球供应链 (Chuỗi cung ứng toàn cầu)"],
+      example: {
+        zh: "构建韧性强大且高效透明的供应链体系是制造业保持长期竞争力的基石。",
+        pinyin: "Gòujiàn rènxìng qiángdà qiě gāoxiào tòumíng de gōngyìngliàn tǐxì shì zhìzàoyè bǎochí chángqī jìngzhēnglì de jīshí.",
+        vi: "Xây dựng hệ thống chuỗi cung ứng bền bỉ dẻo dai và minh bạch hiệu quả là nền tảng để ngành chế tạo duy trì sức cạnh tranh dài lâu."
+      }
+    },
+    {
+      id: "vb_13",
+      hanzi: "签署",
+      pinyin: "qiān shǔ",
+      meaning: "Ký kết văn kiện, đặt bút ký hợp đồng (Sign / Execute Contract)",
+      hsk: "Thương Mại",
+      category: "business",
+      deck: "business",
+      radical: "竹 (Trúc) & 罒 (Võng)",
+      strokes: 13,
+      strokeOrderRules: "Bộ Trúc trên đầu chữ Thiêm viết trước",
+      collocations: ["签署协议 (Ký kết thỏa thuận)", "正式签署 (Chính thức ký kết)"],
+      example: {
+        zh: "两国商务部长在隆重的仪式上共同签署了双边投资保护备忘录。",
+        pinyin: "Liǎng guó shāngwù bùzhǎng zài lóngzhòng de yíshì shàng gòngtóng qiānshǔ le shuāngbiān tóuzī bǎohù bèiwànglù.",
+        vi: "Bộ trưởng thương mại hai nước đã cùng nhau ký kết biên bản ghi nhớ bảo hộ đầu tư song phương trong buổi lễ long trọng."
+      }
+    },
+    {
+      id: "vb_14",
+      hanzi: "市场份额",
+      pinyin: "shì chǎng fèn 'é",
+      meaning: "Thị phần, tỷ lệ chiếm lĩnh thị trường (Market Share)",
+      hsk: "Thương Mại",
+      category: "business",
+      deck: "business",
+      radical: "巾 (Cân) & 土 (Thổ)",
+      strokes: 5,
+      strokeOrderRules: "Bộ Cân bên dưới chữ Thị viết sau",
+      collocations: ["扩大市场份额 (Mở rộng thị phần)", "市场占有率 (Tỷ lệ chiếm lĩnh thị trường)"],
+      example: {
+        zh: "凭借卓越的性价比与完善的售后服务，我们品牌在东南亚的市场份额稳步上升。",
+        pinyin: "Píngjiè zhuóyuè de xìngjiàbǐ yǔ wánshàn de shòuhòu fúwù, wǒmen pǐnpái zài dōngnányà de shìchǎng fèn'é wěnbù shàngshēng.",
+        vi: "Nhờ tỷ lệ hiệu năng trên giá thành vượt trội và hậu mãi hoàn thiện, thị phần của thương hiệu chúng tôi tại Đông Nam Á liên tục thăng tiến vững chắc."
+      }
+    },
+    {
+      id: "vb_15",
+      hanzi: "投资回报率",
+      pinyin: "tóu zī huí bào lǜ",
+      meaning: "Tỷ suất hoàn vốn đầu tư (ROI - Return on Investment)",
+      hsk: "Thương Mại",
+      category: "business",
+      deck: "business",
+      radical: "扌 (Thủ) & 贝 (Bối)",
+      strokes: 7,
+      strokeOrderRules: "Bộ Thủ bên trái chữ Đầu viết trước",
+      collocations: ["高投资回报率 (Tỷ suất ROI cao)", "评估投资风险 (Đánh giá rủi ro đầu tư)"],
+      example: {
+        zh: "财务分析师测算，该新建智能仓储物流项目的预期投资回报率高达百分之十八。",
+        pinyin: "Cáiwù fēnxīshī cèsuàn, gāi xīnjiàn zhìnéng cāngchǔ wùliú xiàngmù de yùqī tóuzī huíbàolǜ gāodá bǎifēnzhīshíbā.",
+        vi: "Chuyên viên phân tích tài chính tính toán rằng tỷ suất ROI kỳ vọng của dự án kho bãi thông minh xây mới này đạt tới 18%."
+      }
+    },
+    {
+      id: "vb_16",
+      hanzi: "质量保证",
+      pinyin: "zhì liàng bǎo zhèng",
+      meaning: "Đảm bảo chất lượng sản phẩm (Quality Assurance - QA)",
+      hsk: "Thương Mại",
+      category: "business",
+      deck: "business",
+      radical: "贝 (Bối) & 里 (Lý)",
+      strokes: 6,
+      strokeOrderRules: "Bộ Bối bên trái chữ Chất viết trước",
+      collocations: ["质量保证期 (Thời hạn bảo hành chất lượng)", "ISO认证 (Chứng nhận ISO)"],
+      example: {
+        zh: "我们所有出口产品出厂前均通过严格检验，提供长达两年的全方位质量保证。",
+        pinyin: "Wǒmen suǒyǒu chūkǒu chǎnpǐn chūchǎng qián jūn tōngguò yángé jiǎnyàn, tígōng chángdá liǎng nián de quánfāngwèi zhìliàng bǎozhèng.",
+        vi: "Tất cả sản phẩm xuất khẩu của chúng tôi trước khi xuất xưởng đều qua kiểm nghiệm nghiêm ngặt và được bảo hành chất lượng toàn diện 2 năm."
+      }
+    },
+    {
+      id: "vb_17",
+      hanzi: "进出口",
+      pinyin: "jìn chū kǒu",
+      meaning: "Xuất nhập khẩu, mậu dịch đối ngoại (Import & Export)",
+      hsk: "Thương Mại",
+      category: "business",
+      deck: "business",
+      radical: "辶 (Xước) & 凵 (Khảm)",
+      strokes: 7,
+      strokeOrderRules: "Chữ Tỉnh viết trước, bộ Xước bao ngoài chữ Tiến sau cùng",
+      collocations: ["进出口总额 (Tổng kim ngạch xuất nhập khẩu)", "外贸进出口公司 (Công ty XNK ngoại thương)"],
+      example: {
+        zh: "中越双边进出口贸易额今年再创历史新高，经贸合作前景十分广阔。",
+        pinyin: "Zhōng Yuè shuāngbiān jìn-chūkǒu màoyì'é jǐnnián zài chuàng lìshǐ xīngāo, jīngmào hézuò qiánjǐng shífēn guǎngkuò.",
+        vi: "Kim ngạch thương mại xuất nhập khẩu song phương Trung - Việt năm nay tiếp tục lập đỉnh lịch sử mới, triển vọng hợp tác kinh tế mậu dịch vô cùng rộng mở."
+      }
+    },
+    {
+      id: "vb_18",
+      hanzi: "客户维护",
+      pinyin: "kè hù wéi hù",
+      meaning: "Chăm sóc và duy trì quan hệ khách hàng (Client Relationship Management)",
+      hsk: "Thương Mại",
+      category: "business",
+      deck: "business",
+      radical: "宀 (Miên) & 纟 (Mịch)",
+      strokes: 9,
+      strokeOrderRules: "Bộ Miên trên đầu chữ Khách viết trước",
+      collocations: ["大客户维护 (Chăm sóc khách hàng VIP)", "定期回访 (Định kỳ thăm hỏi khách hàng)"],
+      example: {
+        zh: "做好老客户维护与及时售后响应，能够显著降低企业的获客成本并建立良好口碑。",
+        pinyin: "Zuò hǎo lǎo kèhù wéihù yǔ jíshí shòuhòu xiǎngyìng, nénggòu xiǎozhù jiàngdī qǐyè de huòkè chéngběn bìng jiànlì liánghǎo kǒubēi.",
+        vi: "Làm tốt công tác chăm sóc duy trì khách hàng cũ và phản hồi hậu mãi kịp thời có thể giảm thiểu chi phí tìm kiếm khách hàng mới và xây dựng uy tín truyền miệng tuyệt vời."
       }
     }
   ],
