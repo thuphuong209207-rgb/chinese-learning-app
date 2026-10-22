@@ -30,11 +30,25 @@
 - Nút **"Kiểm tra kết nối AI"** ping trực tiếp đến model `gemini-3.8-flash` với cơ chế tự động chuyển model dự phòng thông minh.
 - Tự động chuyển đổi mượt mà: nếu chưa có API Key, ứng dụng vẫn hoạt động với ngân hàng dữ liệu mẫu (Mock Data phong phú). Khi đã nhập Key, toàn bộ tính năng thông minh của AI sẽ được kích hoạt tức thì.
 
-### 2. Từ Điển & Tra Cứu Thông Minh
-- Tra cứu đa năng: Tìm theo **Chữ Hán**, **Pinyin** hoặc **Nghĩa tiếng Việt**.
-- Hiển thị chi tiết: Chữ Hán lớn trong ô điền tự cách, Pinyin chuẩn thanh điệu, Cấp độ HSK, Bộ thủ, Số nét, Từ ghép liên quan và Câu ví dụ thực tế kèm âm thanh phát âm.
-- Cơ chế **AI Fallback**: Nếu từ vựng không có sẵn trong cơ sở dữ liệu mẫu, ứng dụng tự động gọi Gemini API để phân tích chuyên sâu và trả về JSON chuẩn.
-- Nút bấm nhanh cho phép lưu từ vừa tra vào Flashcard cá nhân chỉ với 1 click.
+### 2. Từ Điển & Tra Cứu Thông Minh Tích Hợp AI Toàn Năng (Không Giới Hạn Kho Mẫu)
+- **Hai Chế Độ Tra Cứu Linh Hoạt Trên Thanh Tìm Kiếm:**
+  1. **🔍 Nút "Tra Trong Kho":** Tìm kiếm siêu tốc trong ngân hàng dữ liệu mẫu có sẵn (HSK 1 - 6 & Thương mại), đồng thời xuất hiện **AI Smart Banner** gợi ý phân tích chuyên sâu chiết tự, mẹo nhớ, từ đồng nghĩa/trái nghĩa.
+  2. **✨ Nút "Tra Bằng AI":** Kích hoạt trực tiếp Gemini 2.5 Flash AI để phân tích ngôn ngữ học toàn diện đối với **BẤT KỲ từ, cụm từ, thành ngữ, từ lóng mạng hay thuật ngữ kinh tế - công nghệ** nào của tiếng Trung (không hề bị giới hạn trong kho mẫu).
+- **Phân Tích Ngôn Ngữ Học Chi Tiết Cực Cao:**
+  - Hán tự Giản thể cỡ lớn trong ô điền tự (Tianzige) + Phiên âm Pinyin chuẩn thanh điệu + Chữ Hán Phồn thể tương ứng.
+  - Phân loại từ (Từ loại: Danh từ, Động từ, Tính từ, Quán dụng ngữ...) & Cấp độ HSK tương đương.
+  - Bộ thủ (Radical), Số nét bút thuận, Quy tắc viết chữ.
+  - **Mẹo chiết tự & Ghi nhớ chữ Hán thông minh (Mnemonics)** độc quyền do AI tổng hợp giúp người học nhớ lâu.
+  - Danh sách các tầng nghĩa chi tiết và ngữ cảnh văn hóa.
+  - **Từ đồng nghĩa (近义词)** & **Từ trái nghĩa (反义词)**.
+  - Từ ghép thông dụng (Collocations) kèm Pinyin và ý nghĩa.
+  - Câu ví dụ giao tiếp thực tế điển hình + Ví dụ mở rộng thương mại kèm phát âm Web Speech API.
+- **Hoạt Ảnh Nét Viết Bút Thuận & Tập Viết Tương Tác (HanziWriter):**
+  - Xem hoạt ảnh thứ tự từng nét viết (ngang trước sổ sau, trên trước dưới sau...).
+  - Chế độ tập viết tương tác trực tiếp bằng chuột hoặc màn hình cảm ứng điện thoại.
+- **Lưu Trữ Bộ Nhớ Đệm & Lịch Sử Tra Cứu AI (AI History):**
+  - Tự động lưu các từ đã tra cứu AI vào `localStorage`, cho phép xem lại tức thì mà không cần tiêu tốn lượt gọi API.
+  - Nút bấm nhanh **"⭐ Thêm vào Flashcard cá nhân"** để chuyển thẳng vào bộ thẻ 3D và luyện chơi game phản xạ.
 
 ### 3. Luyện Đề Thi (Giáo Trình Hán Ngữ & HSK) + AI Luyện Phản Xạ Nói
 - **Luyện đề thi trắc nghiệm:**
