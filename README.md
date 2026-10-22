@@ -145,15 +145,15 @@ Hệ thống phân tách rành mạch thành **2 phân hệ chuyên sâu độc 
 - Ô tìm kiếm nhanh thời gian thực theo Hán tự, Pinyin hoặc ý nghĩa.
 - Tính năng AI sáng tạo thành ngữ & tục ngữ theo bất kỳ chủ đề người dùng nhập vào.
 
-### 4. Trò Chơi Phản Xạ Theo Từng Mục Riêng Biệt (HSK 1 - 6, Thương Mại & Flashcard Tự Tạo)
-- **8 Bộ Từ Vựng Chuyên Biệt Được Phân Tách Rõ Ràng:**
-  - `HSK 1` (12 từ cơ bản nhất)
-  - `HSK 2` (10 từ mở rộng)
-  - `HSK 3` (10 từ đàm thoại)
-  - `HSK 4` (10 từ thảo luận)
-  - `HSK 5` (10 từ phân tích cao cấp)
-  - `HSK 6` (10 từ học thuật & thành ngữ cổ)
-  - `💼 Tiếng Trung Thương Mại (Business Chinese)`: 18 từ vựng chuyên ngành đàm phán hợp đồng, thanh toán tín dụng L/C, hóa đơn VAT, tỷ giá hối đoái, chuỗi cung ứng, thuế quan, tiền cọc, ROI, thị phần...
+### 4. Trò Chơi Phản Xạ & Kho Từ Vựng HSK 1 - 6 Chuẩn Hóa (329+ Từ Vựng Kèm Ví Dụ Chi Tiết)
+- **Kho Từ Vựng HSK Đầy Đủ & Chuyên Sâu Tham Khảo Theo Chuẩn Giáo Trình `tiengtrungonline.com` & Hanban:**
+  - `HSK 1`: **150 từ vựng cốt lõi** (Đầy đủ 100% trọn bộ từ vựng chuẩn HSK 1 quốc tế: từ vựng chỉ người, gia đình, đại từ, số đếm, thời gian, phương vị, động từ, hình dung từ thường dùng kèm câu ví dụ giao tiếp).
+  - `HSK 2`: **90 từ vựng mở rộng** (Giao tiếp công sở, mua sắm, hỏi đường, đặt vé, trạng từ chỉ mức độ, liên từ).
+  - `HSK 3`: **30 từ vựng đàm thoại trung cấp** (Thảo luận công việc, biểu đạt cảm xúc, các cặp liên từ ghép).
+  - `HSK 4`: **20 từ vựng phỏng vấn & công việc** (Thương thảo, phỏng vấn tuyển dụng, quản lý thời gian).
+  - `HSK 5`: **15 từ vựng nghị luận & báo chí** (Đọc hiểu báo chí, phân tích thị trường, bình luận xã hội).
+  - `HSK 6`: **12 từ vựng học thuật & thành ngữ văn tự** (Ngôn ngữ học thuật, thành ngữ cổ điển, triết học).
+  - `💼 Tiếng Trung Thương Mại (Business Chinese)`: **12 từ vựng chuyên ngành đàm phán hợp đồng**, thanh toán quốc tế L/C, hóa đơn VAT, thuế quan, tiền cọc, tỷ giá hối đoái, chuỗi cung ứng...
   - `⭐ Flashcard Tự Tạo Của Tôi`: Toàn bộ bộ thẻ do người dùng tự tạo hoặc dùng AI quét trang sách, đồng bộ động thời gian thực.
 - **Trò Chơi Dựa Theo Từ Vựng Của Từng Mục:**
   - Cả 3 chế độ game (*Nối từ siêu tốc 25s*, *Phản xạ trắc nghiệm 5s*, *Nghe âm đoán chữ*) tự động trích xuất câu hỏi và đáp án chính xác từ mục từ vựng được chọn.
