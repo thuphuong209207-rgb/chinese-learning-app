@@ -71,6 +71,12 @@
 - **Xưởng tạo thẻ thông minh (Flashcard Creator Studio):**
   - Nhập Chữ Hán -> Bấm nút **"Điền Bằng Gemini AI"** để tự động hoàn thiện Pinyin chuẩn thanh điệu, Cấp độ HSK, Nghĩa tiếng Việt, Câu ví dụ thực tế và **Mẹo chiết tự ghi nhớ chữ**.
   - Tích hợp nút phát âm nghe thử từ vựng và câu ví dụ ngay trong lúc tạo.
+- **📸 Quét Từ Vựng Trang Sách Bằng AI (Gemini 2.5 Flash Vision OCR):**
+  - Chụp ảnh trực tiếp từ Camera điện thoại / máy tính hoặc tải ảnh trang sách giáo trình tiếng Trung.
+  - Hỗ trợ nút **"Dùng ảnh mẫu trang sách HSK"** để trải nghiệm tính năng tức thì không cần chuẩn bị ảnh.
+  - Hiệu ứng quét tia Laser Scanner trực quan trên hình ảnh trang sách.
+  - Gemini 2.5 Flash tự động nhận diện chữ Hán, bóc tách danh sách các từ vựng cốt lõi, cung cấp Pinyin, nghĩa tiếng Việt, cấp độ HSK, câu ví dụ và mẹo nhớ chiết tự.
+  - Cho phép người dùng duyệt danh sách, chọn lọc từ vựng và bấm **"Thêm Hàng Loạt Vào Bộ Flashcard"** chỉ trong vài giây.
 - **Giao diện thẻ lật 3D không gian 3 chiều mượt mà:**
   - Mặt trước: Chữ Hán to rõ, cấp độ HSK, tên bộ thẻ, nút nghe phát âm.
   - Mặt sau: Pinyin, Nghĩa tiếng Việt, Câu ví dụ, Mẹo chiết tự nhớ chữ.
