@@ -32,7 +32,7 @@ const StorageService = {
     const raw = localStorage.getItem(STORAGE_KEYS.SETTINGS);
     const defaults = {
       apiKey: "",
-      model: "gemini-3.8-flash",
+      model: "gemini-2.0-flash",
       theme: "light",
       speechRate: 0.9,
       speechVoice: ""
@@ -40,10 +40,10 @@ const StorageService = {
     if (!raw) return defaults;
     try {
       const parsed = { ...defaults, ...JSON.parse(raw) };
-      // Auto-migrate deprecated models to gemini-3.8-flash
-      if (parsed.model === "gemini-2.5-flash" || !parsed.model) {
-        parsed.model = "gemini-3.8-flash";
-        const updated = { ...parsed, model: "gemini-3.8-flash" };
+      // Auto-migrate invalid/deprecated models to gemini-2.0-flash for ultra-fast 1-2s response
+      if (parsed.model === "gemini-3.8-flash" || parsed.model === "gemini-2.5-flash" || !parsed.model) {
+        parsed.model = "gemini-2.0-flash";
+        const updated = { ...parsed, model: "gemini-2.0-flash" };
         localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify(updated));
         return updated;
       }
