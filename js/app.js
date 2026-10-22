@@ -1,4 +1,4 @@
-// Main Application Logic for 华语星 (ChinesePro AI)
+﻿// Main Application Logic for 华语星 (ChinesePro AI)
 // Single Page Application Router, State Synchronization, and Interactive Modules
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -22,6 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
     isCardFlipped: false,
     userLevel: window.StorageService.getUserLevel(),
     dictHskFilter: "all",
+    dictSearchDirection: "vi",
+    activeDictTab: "vocab",
+    dictRecentExpanded: false,
+    currentDictWord: null,
+    lastDictQuery: "",
     chengyuCategoryFilter: "all",
     writers: {},
 
@@ -671,171 +676,815 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     /* =====================================================================
-       MODULE 2: DICTIONARY & SMART LOOKUP (WITH HANZI STROKE WRITER & AI)
+       MODULE 2: MODERN SMART DICTIONARY & AI LOOKUP (PLECO / HANPING STYLE)
+       Integrated with:
+       - Language Direction Switch [ cn | vi ]
+       - 4 Quick Action Pills: Camera OCR, Voice Mic, Handwriting, 214 Radicals
+       - 5 Underlined Category Tabs: Tá»« vá»±ng, HÃ¡n tá»±, Ngá»¯ phÃ¡p, Máº«u cÃ¢u, Káº¿t há»£p
+       - Sleek Dark "Tra cá»©u gáº§n Ä‘Ã¢y" Recent Search Card with individual delete [x]
+       - Full HanziWriter Stroke Animation, Quiz & Gemini AI Linguistic Engine
        ===================================================================== */
-    renderDictionary(container) {
-      const aiHistory = window.StorageService ? window.StorageService.getAiLookupHistory() : [];
-      const aiHistoryHtml = aiHistory.length > 0 ? `
-        <div class="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200/80 dark:border-slate-700/80 text-xs space-y-2">
-          <div class="flex items-center justify-between">
-            <span class="font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
-              <i data-lucide="history" class="w-3.5 h-3.5 text-indigo-500"></i> Lịch sử tra cứu AI gần đây:
-            </span>
-            <button onclick="App.clearAiHistory()" class="text-slate-400 hover:text-red-500 text-[11px] transition">
-              Xóa lịch sử
-            </button>
-          </div>
-          <div class="flex items-center gap-2 flex-wrap">
-            ${aiHistory.slice(0, 10).map((item) => `
-              <button onclick="document.getElementById('dictSearchInput').value='${item.hanzi}'; App.handleDictSearch('${item.hanzi}', true);" class="px-2.5 py-1 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-red-400 hover:text-red-600 transition flex items-center gap-1">
-                <span class="font-hanzi font-semibold">${item.hanzi}</span>
-                <span class="text-slate-400 text-[10px]">(${item.pinyin})</span>
-              </button>
-            `).join("")}
-          </div>
-        </div>
-      ` : "";
-
-      container.innerHTML = `
-        <div class="space-y-6 max-w-5xl mx-auto">
-          <!-- Header Banner -->
-          <div class="text-center max-w-2xl mx-auto space-y-1.5">
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 dark:bg-red-950/60 text-red-600 dark:text-red-400 text-xs font-bold">
-              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-              TÍCH HỢP GEMINI 2.5 FLASH AI TOÀN NĂNG
-            </div>
-            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white flex items-center justify-center gap-2">
-              <i data-lucide="book-open" class="w-7 h-7 text-red-600"></i>
-              Từ Điển & Tra Cứu Thông Minh
-            </h2>
-            <p class="text-xs md:text-sm text-slate-500 dark:text-slate-400">
-              Tra cứu bất kỳ chữ Hán, Pinyin, nghĩa tiếng Việt, thành ngữ hoặc từ lóng hiện đại. Hệ thống không bị giới hạn trong kho mẫu mà tự động kết nối Gemini AI để phân tích ngôn ngữ học toàn diện.
-            </p>
-          </div>
-
-          <!-- Smart Search Bar with Dual Action Buttons -->
-          <div class="bg-white dark:bg-slate-800 p-4 md:p-5 rounded-3xl border-2 border-slate-200 dark:border-slate-700 shadow-lg space-y-3">
-            <div class="flex flex-col sm:flex-row items-center gap-2.5">
-              <div class="relative flex-1 w-full flex items-center">
-                <i data-lucide="search" class="w-5 h-5 text-slate-400 absolute left-4"></i>
-                <input
-                  type="text"
-                  id="dictSearchInput"
-                  placeholder="Nhập chữ Hán (内卷, 坚持), Pinyin (xué xí) hoặc nghĩa tiếng Việt (đàm phán, kiên trì)..."
-                  class="w-full px-5 py-3.5 pl-12 pr-4 rounded-2xl bg-slate-50 dark:bg-slate-700/60 border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-red-500 text-sm md:text-base font-medium"
-                />
-              </div>
-
-              <!-- Action Buttons -->
-              <div class="flex items-center gap-2 w-full sm:w-auto">
-                <button
-                  id="dictSearchBtn"
-                  class="flex-1 sm:flex-initial px-4 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-900 dark:bg-slate-700 dark:hover:bg-slate-600 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-1.5 whitespace-nowrap"
-                  title="Tìm trong cơ sở dữ liệu mẫu có sẵn"
-                >
-                  <i data-lucide="database" class="w-4 h-4"></i>
-                  <span>Tra Trong Kho</span>
-                </button>
-                <button
-                  id="dictAiSearchBtn"
-                  class="flex-1 sm:flex-initial px-5 py-3.5 rounded-2xl bg-gradient-to-r from-red-600 via-rose-600 to-amber-600 hover:from-red-700 hover:to-amber-700 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-1.5 whitespace-nowrap"
-                  title="Tra cứu phân tích chuyên sâu bằng Gemini AI đối với bất kỳ từ nào"
-                >
-                  <i data-lucide="sparkles" class="w-4 h-4 text-amber-200"></i>
-                  <span>✨ Tra Bằng AI</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- Suggestion Pills -->
-            <div class="flex items-center gap-2 flex-wrap text-xs pt-1 border-t border-slate-100 dark:border-slate-700/60">
-              <span class="text-slate-400 font-semibold flex items-center gap-1">
-                <i data-lucide="trending-up" class="w-3.5 h-3.5 text-red-500"></i> Từ AI thịnh hành:
-              </span>
-              ${["内卷", "躺平", "商业谈判", "潜移默化", "精益求精", "凡尔赛", "白月光", "显眼包", "降本增效"]
-                .map(
-                  (w) => `
-                <button onclick="document.getElementById('dictSearchInput').value='${w}'; App.handleDictSearch('${w}', true);" class="px-2.5 py-1 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/60 transition font-hanzi text-xs font-medium">
-                  ${w}
-                </button>
-              `
-                )
-                .join("")}
-            </div>
-          </div>
-
-          <!-- Recent AI Lookup History -->
-          ${aiHistoryHtml}
-
-          <!-- HSK Level Filter Pills -->
-          <div class="flex items-center gap-2 flex-wrap">
-            <span class="text-xs font-bold text-slate-400 mr-1 flex items-center gap-1">
-              <i data-lucide="filter" class="w-3.5 h-3.5"></i> Danh mục kho sẵn:
-            </span>
-            <button
-              onclick="App.filterDictByHsk('all')"
-              class="dict-hsk-pill px-3 py-1.5 rounded-xl text-xs font-bold transition ${this.dictHskFilter === "all" ? "bg-red-600 text-white shadow-sm" : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-red-400"}"
-            >
-              Tất cả (${(window.APP_DATA.vocabList || []).length})
-            </button>
-            ${[1, 2, 3, 4, 5, 6]
-              .map((lvl) => {
-                const count = (window.APP_DATA.vocabList || []).filter((w) => w.hsk === lvl).length;
-                const isSelected = this.dictHskFilter === lvl.toString();
-                return `
-                <button
-                  onclick="App.filterDictByHsk('${lvl}')"
-                  class="dict-hsk-pill px-3 py-1.5 rounded-xl text-xs font-bold transition ${isSelected ? "bg-red-600 text-white shadow-sm" : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-red-400"}"
-                >
-                  HSK ${lvl} (${count})
-                </button>
-              `;
-              })
-              .join("")}
-            <button
-              onclick="App.filterDictByHsk('business')"
-              class="dict-hsk-pill px-3 py-1.5 rounded-xl text-xs font-bold transition ${this.dictHskFilter === "business" ? "bg-red-600 text-white shadow-sm" : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-red-400"}"
-            >
-              💼 Thương Mại (${(window.APP_DATA.vocabList || []).filter((w) => w.category === "business" || w.hsk === "Thương Mại").length})
-            </button>
-            <button
-              onclick="App.filterDictByHsk('custom')"
-              class="dict-hsk-pill px-3 py-1.5 rounded-xl text-xs font-bold transition ${this.dictHskFilter === "custom" ? "bg-red-600 text-white shadow-sm" : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-red-400"}"
-            >
-              ⭐ Thẻ tự tạo (${(window.StorageService ? window.StorageService.getFlashcards() : []).length})
-            </button>
-          </div>
-
-          <!-- Search Results Container -->
-          <div id="dictResultContainer" class="space-y-4">
-            ${this.renderDictWordListHtml()}
-          </div>
-        </div>
-      `;
-
-      // Bind search event
+    toggleDictDirection(dir) {
+      this.dictSearchDirection = dir;
       const input = document.getElementById("dictSearchInput");
-      const btnKho = document.getElementById("dictSearchBtn");
-      const btnAi = document.getElementById("dictAiSearchBtn");
-
-      if (btnKho) btnKho.addEventListener("click", () => this.handleDictSearch(input.value, false));
-      if (btnAi) btnAi.addEventListener("click", () => this.handleDictSearch(input.value, true));
       if (input) {
-        input.addEventListener("keydown", (e) => {
-          if (e.key === "Enter") {
-            // If user held Ctrl/Shift or pressed Enter, default to smart lookup
-            this.handleDictSearch(input.value, false);
-          }
-        });
+        input.placeholder = dir === "vi"
+          ? "Nháº­p tiáº¿ng Viá»‡t (vd: há»c táº­p, tÃ¬nh yÃªu, lÃ m viá»‡c...)"
+          : "Nháº­p tiáº¿ng Trung hoáº·c Pinyin (vd: å­¦ä¹ , Ã i, zuÃ², dÇngzhuÃ ng...)";
       }
+      const container = document.getElementById("viewContainer");
+      if (container) this.renderDictionary(container);
+    },
+
+    switchDictTab(tabId) {
+      this.activeDictTab = tabId;
+      const container = document.getElementById("viewContainer");
+      if (container) this.renderDictionary(container);
+    },
+
+    handleDictBack() {
+      this.currentDictWord = null;
+      this.lastDictQuery = "";
+      const container = document.getElementById("viewContainer");
+      if (container) this.renderDictionary(container);
+    },
+
+    toggleRecentHistoryExpand() {
+      this.dictRecentExpanded = !this.dictRecentExpanded;
+      const container = document.getElementById("viewContainer");
+      if (container) this.renderDictionary(container);
+    },
+
+    deleteRecentSearchItem(query) {
+      if (window.StorageService) {
+        window.StorageService.deleteAiLookupItem(query);
+      }
+      const container = document.getElementById("viewContainer");
+      if (container) this.renderDictionary(container);
     },
 
     clearAiHistory() {
       if (window.StorageService) {
         window.StorageService.clearAiLookupHistory();
+        this.showToast("ÄÃ£ xÃ³a toÃ n bá»™ lá»‹ch sá»­ tra cá»©u gáº§n Ä‘Ã¢y", "info");
         const container = document.getElementById("viewContainer");
         if (container) this.renderDictionary(container);
-        this.showToast("Đã xóa lịch sử tra cứu AI", "info");
+      }
+    },
+
+    renderDictionary(container) {
+      const history = window.StorageService ? window.StorageService.getAiLookupHistory() : [];
+      const isExpanded = this.dictRecentExpanded;
+      const displayedHistory = isExpanded ? history : history.slice(0, 3);
+
+      const tabs = [
+        { id: "vocab", label: "Tá»« vá»±ng" },
+        { id: "hanzi", label: "HÃ¡n tá»±" },
+        { id: "grammar", label: "Ngá»¯ phÃ¡p" },
+        { id: "sentence", label: "Máº«u cÃ¢u" },
+        { id: "collocation", label: "Káº¿t há»£p" }
+      ];
+
+      container.innerHTML = `
+        <div class="space-y-5 max-w-4xl mx-auto">
+          <!-- Sleek Dark Container (Designed exactly as modern dictionary UI) -->
+          <div class="bg-[#111622] text-white p-4 md:p-6 rounded-3xl shadow-2xl border border-slate-800 space-y-4">
+            
+            <!-- Row 1: Back + Search Box + Direction Switch [cn | vi] -->
+            <div class="flex items-center gap-2.5">
+              <button
+                onclick="App.handleDictBack()"
+                class="p-2 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition flex items-center justify-center shrink-0"
+                title="Quay láº¡i danh sÃ¡ch / Äáº·t láº¡i"
+              >
+                <i data-lucide="chevron-left" class="w-6 h-6"></i>
+              </button>
+
+              <div class="flex-1 relative flex items-center">
+                <i data-lucide="search" class="w-5 h-5 text-slate-400 absolute left-4 pointer-events-none"></i>
+                <input
+                  type="text"
+                  id="dictSearchInput"
+                  value="${this.lastDictQuery || ""}"
+                  placeholder="${this.dictSearchDirection === "vi" ? "Nháº­p tiáº¿ng Viá»‡t" : "Nháº­p tiáº¿ng Trung / Pinyin"}"
+                  class="w-full bg-[#1b2234] text-white placeholder-slate-400 rounded-2xl pl-12 pr-10 py-3 text-sm md:text-base border border-slate-700/80 focus:outline-none focus:ring-2 focus:ring-blue-500 transition font-medium"
+                  onkeydown="if(event.key==='Enter') App.handleDictSearch(this.value)"
+                />
+                ${this.lastDictQuery ? `
+                  <button
+                    onclick="document.getElementById('dictSearchInput').value=''; App.handleDictBack();"
+                    class="absolute right-3 p-1 text-slate-400 hover:text-white"
+                    title="XÃ³a ná»™i dung"
+                  >
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                  </button>
+                ` : ""}
+              </div>
+
+              <!-- Switch direction pill [cn | vi] -->
+              <div class="flex items-center bg-[#1c2438] p-1 rounded-2xl border border-slate-700/90 shrink-0 select-none">
+                <button
+                  onclick="App.toggleDictDirection('cn')"
+                  class="px-2.5 py-1 rounded-xl text-xs font-bold transition ${this.dictSearchDirection === "cn" ? "bg-[#3862b5] text-white shadow-sm" : "text-slate-400 hover:text-white"}"
+                >
+                  cn
+                </button>
+                <button
+                  onclick="App.toggleDictDirection('vi')"
+                  class="px-2.5 py-1 rounded-xl text-xs font-bold transition ${this.dictSearchDirection === "vi" ? "bg-[#3862b5] text-white shadow-sm" : "text-slate-400 hover:text-white"}"
+                >
+                  vi
+                </button>
+              </div>
+            </div>
+
+            <!-- Row 2: 4 Rounded Quick Action Pills (Camera, Mic, Pencil, Puzzle) -->
+            <div class="grid grid-cols-4 gap-2.5 sm:gap-3.5 pt-1">
+              <button
+                onclick="App.openDictCameraModal()"
+                class="h-12 sm:h-14 rounded-2xl bg-[#2e3e60] hover:bg-[#3b507d] text-white flex items-center justify-center transition shadow-md active:scale-95 group"
+                title="QuÃ©t áº£nh / Nháº­n diá»‡n chá»¯ qua Camera & SÃ¡ch"
+              >
+                <i data-lucide="camera" class="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition"></i>
+              </button>
+
+              <button
+                id="dictVoiceBtn"
+                onclick="App.startDictVoiceSearch()"
+                class="h-12 sm:h-14 rounded-2xl bg-[#2e3e60] hover:bg-[#3b507d] text-white flex items-center justify-center transition shadow-md active:scale-95 group relative"
+                title="Tra cá»©u báº±ng giá»ng nÃ³i Microphone"
+              >
+                <i data-lucide="mic" class="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition"></i>
+              </button>
+
+              <button
+                onclick="App.openDictHandwritingModal()"
+                class="h-12 sm:h-14 rounded-2xl bg-[#2e3e60] hover:bg-[#3b507d] text-white flex items-center justify-center transition shadow-md active:scale-95 group"
+                title="Váº½ tay / BÃºt viáº¿t chá»¯ HÃ¡n"
+              >
+                <i data-lucide="pen-tool" class="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition"></i>
+              </button>
+
+              <button
+                onclick="App.openDictRadicalModal()"
+                class="h-12 sm:h-14 rounded-2xl bg-[#2e3e60] hover:bg-[#3b507d] text-white flex items-center justify-center transition shadow-md active:scale-95 group"
+                title="Chiáº¿t tá»± & Tra theo 214 Bá»™ thá»§"
+              >
+                <i data-lucide="puzzle" class="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition"></i>
+              </button>
+            </div>
+
+            <!-- Row 3: 5 Category Tabs with active underline indicator -->
+            <div class="flex items-center justify-between border-b border-slate-800 pt-3 px-1 text-sm md:text-base font-bold overflow-x-auto no-scrollbar">
+              ${tabs
+                .map(
+                  (t) => `
+                <button
+                  onclick="App.switchDictTab('${t.id}')"
+                  class="pb-2.5 px-3 md:px-4 transition relative whitespace-nowrap ${
+                    this.activeDictTab === t.id
+                      ? "text-white font-extrabold border-b-2 border-white"
+                      : "text-slate-400 hover:text-slate-200"
+                  }"
+                >
+                  ${t.label}
+                </button>
+              `
+                )
+                .join("")}
+            </div>
+
+          </div>
+
+          <!-- Active Content Display -->
+          <div id="dictDynamicContainer" class="space-y-4">
+            ${
+              this.currentDictWord
+                ? this.renderWordResultByTab(this.currentDictWord)
+                : ""
+            }
+
+            <!-- Recent Search History Card (Tra cá»©u gáº§n Ä‘Ã¢y) -->
+            ${this.renderRecentSearchCard(displayedHistory, history.length)}
+
+            <!-- Explorer Content (When no word is actively selected or user browses tabs) -->
+            ${
+              !this.currentDictWord
+                ? this.renderTabExplorer(this.activeDictTab)
+                : ""
+            }
+          </div>
+        </div>
+      `;
+
+      this.refreshIcons();
+    },
+
+    renderRecentSearchCard(displayedList, totalCount) {
+      if (!displayedList || displayedList.length === 0) return "";
+
+      return `
+        <div class="bg-[#121622] text-white rounded-3xl p-4 md:p-5 shadow-xl border border-slate-800/90 space-y-2.5">
+          <div class="flex items-center justify-between px-1">
+            <h3 class="text-sm font-bold text-slate-200 flex items-center gap-2">
+              <span>Tra cá»©u gáº§n Ä‘Ã¢y</span>
+            </h3>
+            <button
+              onclick="App.clearAiHistory()"
+              class="text-[11px] text-slate-400 hover:text-rose-400 transition"
+              title="XÃ³a táº¥t cáº£"
+            >
+              XÃ³a lá»‹ch sá»­
+            </button>
+          </div>
+
+          <div class="space-y-1">
+            ${displayedList
+              .map(
+                (item) => `
+              <div
+                onclick="App.handleDictSearch('${item.hanzi || item.query}')"
+                class="flex items-center justify-between py-2.5 px-3 rounded-2xl hover:bg-[#1a2234] cursor-pointer transition group"
+              >
+                <div class="flex items-center gap-3 min-w-0 pr-2">
+                  <i data-lucide="search" class="w-4 h-4 text-slate-400 group-hover:text-blue-400 transition shrink-0"></i>
+                  <span class="font-hanzi font-semibold text-sm text-slate-200 group-hover:text-white truncate">
+                    ${item.hanzi || item.query}
+                  </span>
+                  ${item.pinyin ? `<span class="text-xs text-slate-400 font-mono">(${item.pinyin})</span>` : ""}
+                  ${item.meaning ? `<span class="text-xs text-slate-400 truncate hidden sm:inline">- ${item.meaning}</span>` : ""}
+                </div>
+
+                <button
+                  onclick="event.stopPropagation(); App.deleteRecentSearchItem('${item.hanzi || item.query}')"
+                  class="p-1 rounded-lg text-slate-500 hover:text-rose-400 hover:bg-slate-700/60 transition shrink-0"
+                  title="XÃ³a má»¥c nÃ y"
+                >
+                  <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+              </div>
+            `
+              )
+              .join("")}
+          </div>
+
+          ${
+            totalCount > 3
+              ? `
+            <div class="text-center pt-1 border-t border-slate-800/80">
+              <button
+                onclick="App.toggleRecentHistoryExpand()"
+                class="text-xs text-slate-400 hover:text-white inline-flex items-center gap-1.5 font-semibold py-1 px-3 rounded-xl hover:bg-slate-800 transition"
+              >
+                <span>${this.dictRecentExpanded ? "Thu gá»n" : "Xem thÃªm"}</span>
+                <i data-lucide="${this.dictRecentExpanded ? "chevron-up" : "chevron-down"}" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          `
+              : ""
+          }
+        </div>
+      `;
+    },
+
+    renderWordResultByTab(word) {
+      const tab = this.activeDictTab || "vocab";
+
+      // Setup HanziWriter if hanzi tab is active or vocab tab has hanzi
+      const hanziChars = Array.from(word.hanzi || "").filter((c) => /[\u4e00-\u9fa5]/.test(c));
+      const writerConfigs = hanziChars.map((char) => ({
+        char,
+        containerId: "hw_" + Math.random().toString(36).substring(2, 9)
+      }));
+
+      setTimeout(() => {
+        writerConfigs.forEach((cfg) => {
+          this.createHanziWriter(cfg.containerId, cfg.char);
+        });
+        this.refreshIcons();
+      }, 100);
+
+      const hasTraditional = word.traditional && word.traditional !== word.hanzi;
+
+      return `
+        <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 p-6 md:p-7 shadow-xl space-y-6">
+          
+          <!-- Result Card Top Info -->
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-700 pb-4">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-xs font-extrabold px-3 py-1 rounded-full bg-red-100 dark:bg-red-950 text-red-600 dark:text-red-300">
+                ${word.hsk ? (typeof word.hsk === "number" ? `HSK ${word.hsk}` : word.hsk) : "HSK"}
+              </span>
+              ${word.wordType ? `<span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">${word.wordType}</span>` : ""}
+              <span class="text-xs text-slate-400 font-medium flex items-center gap-1">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-500"></i>
+                ${word.source === "gemini_ai" ? "Gemini Flash AI PhÃ¢n TÃ­ch" : "Tá»« Ä‘iá»ƒn tiÃªu chuáº©n"}
+              </span>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <button
+                onclick="AudioService.speak('${word.hanzi}')"
+                class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-red-50 hover:text-red-600 transition"
+                title="Nghe phÃ¡t Ã¢m chuáº©n giá»ng phá»• thÃ´ng"
+              >
+                <i data-lucide="volume-2" class="w-5 h-5"></i>
+              </button>
+              <button
+                onclick="App.addCurrentToFlashcard('${word.hanzi}', '${word.pinyin}', '${word.meaning}', '${word.example?.zh || ""}', '${word.example?.vi || ""}')"
+                class="px-3.5 py-2 rounded-xl bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400 hover:bg-red-100 font-bold text-xs flex items-center gap-1.5 transition"
+              >
+                <i data-lucide="plus-circle" class="w-4 h-4"></i> ThÃªm vÃ o Flashcard
+              </button>
+            </div>
+          </div>
+
+          <!-- TAB CONTENT SWITCHER -->
+          ${(() => {
+            switch (tab) {
+              case "hanzi":
+                return `
+                  <!-- TAB 2: HÃN Tá»° & BÃšT THUáº¬N Táº¬P VIáº¾T -->
+                  <div class="space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                      <div>
+                        <h3 class="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+                          <i data-lucide="edit-3" class="w-5 h-5 text-red-600"></i>
+                          Chi Tiáº¿t HÃ¡n Tá»± & BÃºt Thuáº­n
+                        </h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">
+                          Xem thá»© tá»± tá»«ng nÃ©t viáº¿t chuáº©n Hanban vÃ  luyá»‡n táº­p viáº¿t trá»±c tiáº¿p báº±ng chuá»™t hoáº·c mÃ n hÃ¬nh cáº£m á»©ng.
+                        </p>
+                      </div>
+                      <span class="text-xs font-semibold px-3 py-1 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">
+                        ${word.strokes || 8} NÃ©t bÃºt
+                      </span>
+                    </div>
+
+                    <!-- HanziWriter Boxes -->
+                    <div class="flex flex-wrap items-center justify-center gap-6 p-6 rounded-3xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700">
+                      ${writerConfigs
+                        .map(
+                          (cfg) => `
+                        <div class="flex flex-col items-center space-y-3 bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                          <div id="${cfg.containerId}" class="w-[130px] h-[130px] tianzige-box rounded-xl border-2 border-red-200 dark:border-red-900/50 shadow-inner flex items-center justify-center">
+                            <span class="font-hanzi text-5xl font-bold text-slate-300">${cfg.char}</span>
+                          </div>
+                          <span class="font-hanzi font-bold text-lg text-slate-800 dark:text-white">${cfg.char}</span>
+                          <div class="flex items-center gap-1.5">
+                            <button
+                              onclick="App.animateHanzi('${cfg.containerId}')"
+                              class="px-2.5 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white font-bold text-xs flex items-center gap-1 shadow-sm transition"
+                              title="Xem thá»© tá»± váº½ nÃ©t"
+                            >
+                              <i data-lucide="play" class="w-3.5 h-3.5 fill-white"></i>
+                              <span>Váº½ nÃ©t</span>
+                            </button>
+                            <button
+                              onclick="App.quizHanzi('${cfg.containerId}', '${cfg.char}')"
+                              class="px-2.5 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs flex items-center gap-1 shadow-sm transition"
+                              title="Táº­p viáº¿t trá»±c tiáº¿p"
+                            >
+                              <i data-lucide="edit-2" class="w-3.5 h-3.5"></i>
+                              <span>Táº­p viáº¿t</span>
+                            </button>
+                            <button
+                              onclick="App.resetHanzi('${cfg.containerId}')"
+                              class="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-600 dark:text-slate-300 transition"
+                              title="Äáº·t láº¡i nÃ©t"
+                            >
+                              <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                            </button>
+                          </div>
+                        </div>
+                      `
+                        )
+                        .join("")}
+                    </div>
+
+                    <!-- Linguistic Anatomy: Radical, Rules, Mnemonics -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                      <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 space-y-1.5">
+                        <span class="text-slate-400 font-bold uppercase tracking-wider block">Bá»™ thá»§ (Radical):</span>
+                        <div class="font-bold text-slate-800 dark:text-white text-base">${word.radical || "Äang cáº­p nháº­t"}</div>
+                        <p class="text-slate-500 dark:text-slate-400 text-[11px]">
+                          ${word.strokeOrderRules || "Quy táº¯c: Ngang trÆ°á»›c sá»• sau, trÃªn trÆ°á»›c dÆ°á»›i sau, ngoÃ i trÆ°á»›c trong sau."}
+                        </p>
+                      </div>
+
+                      <div class="p-4 rounded-2xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 space-y-1.5">
+                        <span class="text-amber-800 dark:text-amber-300 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                          <i data-lucide="lightbulb" class="w-4 h-4 text-amber-500"></i> Máº¹o Chiáº¿t Tá»± Nhá»› Chá»¯:
+                        </span>
+                        <p class="text-slate-700 dark:text-slate-300 italic leading-relaxed">
+                          ${word.mnemonics || `Ghi nhá»› chá»¯ "${word.hanzi}" qua cÃ¡c bá»™ pháº­n cáº¥u thÃ nh vÃ  liÃªn há»‡ vá»›i Ã½ nghÄ©a "${word.meaning}".`}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                `;
+
+              case "grammar":
+                return `
+                  <!-- TAB 3: NGá»® PHÃP & Tá»ª LOáº I -->
+                  <div class="space-y-5">
+                    <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
+                      <div>
+                        <h3 class="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+                          <i data-lucide="bookmark" class="w-5 h-5 text-indigo-600"></i>
+                          PhÃ¢n TÃ­ch Ngá»¯ PhÃ¡p & Cáº¥u TrÃºc
+                        </h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">
+                          Vá»‹ trÃ­ cá»§a tá»« trong cÃ¢u, tá»« loáº¡i vÃ  quy táº¯c ngá»¯ phÃ¡p Ä‘áº·c thÃ¹ trong giao tiáº¿p vÃ  thi cá»­ HSK.
+                        </p>
+                      </div>
+                      <span class="text-xs font-bold px-3 py-1 rounded-xl bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400">
+                        ${word.wordType || "Tá»« vá»±ng / Cá»¥m tá»«"}
+                      </span>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 space-y-3">
+                      <h4 class="font-bold text-sm text-slate-800 dark:text-white flex items-center gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i>
+                        Quy Táº¯c Sá»­ Dá»¥ng & Vá»‹ TrÃ­ Trong CÃ¢u:
+                      </h4>
+                      <p class="text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                        ${word.grammarNotes || `Tá»« "<b>${word.hanzi}</b>" (${word.pinyin}) Ä‘Ã³ng vai trÃ² lÃ  <b>${word.wordType || "tá»« vá»±ng cá»‘t lÃµi"}</b> trong ngá»¯ phÃ¡p tiáº¿ng Trung. ThÆ°á»ng Ä‘á»©ng lÃ m vá»‹ ngá»¯, bá»• ngá»¯ hoáº·c káº¿t há»£p vá»›i cÃ¡c phÃ³ tá»« chá»‰ má»©c Ä‘á»™ (å¾ˆ, éžå¸¸, å¤ª) vÃ  trá»£ tá»« cáº¥u trÃºc (çš„, å¾—, äº†).`}
+                      </p>
+                    </div>
+
+                    <!-- Common Grammar Structure -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                      <div class="p-4 rounded-2xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900/50">
+                        <span class="font-bold text-blue-800 dark:text-blue-300 block mb-1">Cáº¥u trÃºc kháº³ng Ä‘á»‹nh:</span>
+                        <div class="font-mono text-slate-700 dark:text-slate-300">Chá»§ ngá»¯ + ${word.hanzi} + TÃ¢n ngá»¯ / Bá»• ngá»¯</div>
+                      </div>
+                      <div class="p-4 rounded-2xl bg-rose-50/60 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50">
+                        <span class="font-bold text-rose-800 dark:text-rose-300 block mb-1">Cáº¥u trÃºc phá»§ Ä‘á»‹nh:</span>
+                        <div class="font-mono text-slate-700 dark:text-slate-300">Chá»§ ngá»¯ + ä¸ / æ²¡ + ${word.hanzi}</div>
+                      </div>
+                    </div>
+                  </div>
+                `;
+
+              case "sentence":
+                return `
+                  <!-- TAB 4: MáºªU CÃ‚U & GIAO TIáº¾P THá»°C Táº¾ -->
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
+                      <div>
+                        <h3 class="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+                          <i data-lucide="message-square" class="w-5 h-5 text-amber-500"></i>
+                          Máº«u CÃ¢u VÃ­ Dá»¥ á»¨ng Dá»¥ng
+                        </h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">
+                          CÃ¡c cÃ¢u giao tiáº¿p sinh Ä‘á»™ng cÃ³ chá»©a tá»« "${word.hanzi}", kÃ¨m phiÃªn Ã¢m Pinyin vÃ  giá»ng Ä‘á»c báº£n xá»©.
+                        </p>
+                      </div>
+                    </div>
+
+                    ${word.example ? `
+                      <div class="p-4 md:p-5 rounded-2xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 space-y-2">
+                        <div class="flex items-center justify-between">
+                          <span class="text-xs font-bold text-amber-800 dark:text-amber-300 uppercase tracking-wider">VÃ­ dá»¥ chuáº©n Hanban:</span>
+                          <button onclick="AudioService.speak('${word.example.zh}')" class="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-700 text-red-600 dark:text-red-400 font-bold text-xs flex items-center gap-1.5 shadow-sm hover:bg-red-50 transition">
+                            <i data-lucide="volume-2" class="w-4 h-4"></i> Nghe Ä‘á»c
+                          </button>
+                        </div>
+                        <div class="font-hanzi font-bold text-lg md:text-xl text-slate-900 dark:text-white">
+                          ${word.example.zh}
+                        </div>
+                        <div class="text-xs md:text-sm text-amber-700 dark:text-amber-400 font-mono">
+                          ${word.example.pinyin}
+                        </div>
+                        <div class="text-xs md:text-sm text-slate-600 dark:text-slate-300 italic">
+                          ${word.example.vi}
+                        </div>
+                      </div>
+                    ` : ""}
+
+                    ${(word.additionalExamples || []).map((ex, idx) => `
+                      <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 space-y-1.5">
+                        <div class="flex items-center justify-between">
+                          <span class="text-[11px] font-bold text-slate-500 dark:text-slate-400">VÃ­ dá»¥ má»Ÿ rá»™ng ${idx + 2}:</span>
+                          <button onclick="AudioService.speak('${ex.zh}')" class="text-xs text-red-600 dark:text-red-400 hover:underline flex items-center gap-1 font-semibold">
+                            <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Nghe
+                          </button>
+                        </div>
+                        <div class="font-hanzi font-bold text-base text-slate-800 dark:text-white">${ex.zh}</div>
+                        <div class="text-xs text-amber-600 dark:text-amber-400 font-mono">${ex.pinyin}</div>
+                        <div class="text-xs text-slate-600 dark:text-slate-300 italic">${ex.vi}</div>
+                      </div>
+                    `).join("")}
+                  </div>
+                `;
+
+              case "collocation":
+                return `
+                  <!-- TAB 5: Káº¾T Há»¢P Tá»ª, Äá»’NG NGHÄ¨A & TRÃI NGHÄ¨A -->
+                  <div class="space-y-5">
+                    <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
+                      <div>
+                        <h3 class="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+                          <i data-lucide="link" class="w-5 h-5 text-teal-600"></i>
+                          Tá»« GhÃ©p Káº¿t Há»£p, Äá»“ng NghÄ©a & TrÃ¡i NghÄ©a
+                        </h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">
+                          Báº¥m vÃ o báº¥t ká»³ tá»« nÃ o Ä‘á»ƒ tra cá»©u ngay Ã½ nghÄ©a vÃ  vÃ­ dá»¥ chi tiáº¿t.
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- Collocations -->
+                    <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 space-y-3">
+                      <span class="text-xs uppercase font-bold text-slate-500 dark:text-slate-400 block">
+                        CÃ¡c Cá»¥m Tá»« GhÃ©p Phá»• Biáº¿n (Collocations):
+                      </span>
+                      <div class="flex flex-wrap gap-2.5">
+                        ${(word.collocations || ["çˆ±å¥½", "çˆ±æƒ…", "å¯çˆ±", "çˆ±å¿ƒ"])
+                          .map((c) => `
+                            <button
+                              onclick="App.handleDictSearch('${c}')"
+                              class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-hanzi font-bold text-sm border border-slate-200 dark:border-slate-600 hover:border-red-500 hover:text-red-600 transition shadow-sm"
+                            >
+                              ${c}
+                            </button>
+                          `).join("")}
+                      </div>
+                    </div>
+
+                    <!-- Synonyms & Antonyms -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div class="p-4 rounded-2xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50 space-y-2">
+                        <span class="text-xs font-bold text-emerald-800 dark:text-emerald-300 flex items-center gap-1.5">
+                          <i data-lucide="plus" class="w-4 h-4"></i> Tá»« Äá»“ng NghÄ©a (è¿‘ä¹‰è¯):
+                        </span>
+                        <div class="flex flex-wrap gap-2">
+                          ${(word.synonyms || ["å–œæ¬¢", "ç–¼çˆ±", "çƒ­è¡·"])
+                            .map((s) => `
+                              <button
+                                onclick="App.handleDictSearch('${s}')"
+                                class="px-3 py-1 rounded-lg bg-white dark:bg-slate-800 text-emerald-700 dark:text-emerald-300 font-hanzi font-medium text-xs border border-emerald-200 hover:border-emerald-500 transition shadow-sm"
+                              >
+                                ${s}
+                              </button>
+                            `).join("")}
+                        </div>
+                      </div>
+
+                      <div class="p-4 rounded-2xl bg-rose-50/70 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 space-y-2">
+                        <span class="text-xs font-bold text-rose-800 dark:text-rose-300 flex items-center gap-1.5">
+                          <i data-lucide="minus" class="w-4 h-4"></i> Tá»« TrÃ¡i NghÄ©a (åä¹‰è¯):
+                        </span>
+                        <div class="flex flex-wrap gap-2">
+                          ${(word.antonyms || ["æ¨", "è®¨åŽŒ", "åæ„Ÿ"])
+                            .map((a) => `
+                              <button
+                                onclick="App.handleDictSearch('${a}')"
+                                class="px-3 py-1 rounded-lg bg-white dark:bg-slate-800 text-rose-700 dark:text-rose-300 font-hanzi font-medium text-xs border border-rose-200 hover:border-rose-500 transition shadow-sm"
+                              >
+                                ${a}
+                              </button>
+                            `).join("")}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                `;
+
+              case "vocab":
+              default:
+                return `
+                  <!-- TAB 1: Tá»”NG QUAN Tá»ª Vá»°NG & NGHÄ¨A TIáº¾NG VIá»†T -->
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+                    <!-- Big Hanzi in Tianzige with Ruby Pinyin -->
+                    <div class="flex flex-col items-center justify-center p-6 rounded-3xl tianzige-box border border-red-200 dark:border-red-900/50 shadow-inner bg-red-50/20 dark:bg-red-950/10">
+                      <span class="font-hanzi font-bold text-5xl md:text-6xl text-slate-900 dark:text-white leading-none text-center">
+                        ${word.hanzi}
+                      </span>
+                      <span class="mt-3 text-base md:text-lg font-bold text-red-600 dark:text-red-400 font-mono tracking-wide text-center">
+                        ${word.pinyin}
+                      </span>
+                      ${hasTraditional ? `
+                        <span class="mt-1 text-xs text-slate-400 font-medium font-hanzi">
+                          Phá»“n thá»ƒ: <strong class="text-slate-600 dark:text-slate-300">${word.traditional}</strong>
+                        </span>
+                      ` : ""}
+                    </div>
+
+                    <!-- Meanings, Radical, Strokes -->
+                    <div class="md:col-span-2 space-y-4">
+                      <div>
+                        <span class="text-xs uppercase font-bold text-slate-400">Äá»‹nh nghÄ©a tiáº¿ng Viá»‡t</span>
+                        <h3 class="text-xl md:text-2xl font-bold text-slate-800 dark:text-white mt-0.5 leading-snug">
+                          ${word.meaning}
+                        </h3>
+                      </div>
+
+                      ${word.detailedMeanings && word.detailedMeanings.length > 0 ? `
+                        <div class="space-y-1.5 p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-750/70 border border-slate-100 dark:border-slate-700/60 text-xs">
+                          <span class="font-bold text-slate-700 dark:text-slate-300 block">CÃ¡c táº§ng nghÄ©a chi tiáº¿t:</span>
+                          <ul class="list-disc list-inside space-y-1 text-slate-600 dark:text-slate-400">
+                            ${word.detailedMeanings.map((m) => `<li>${m}</li>`).join("")}
+                          </ul>
+                        </div>
+                      ` : ""}
+
+                      <div class="grid grid-cols-2 gap-3 text-xs">
+                        <div class="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-750/50 border border-slate-100 dark:border-slate-700">
+                          <span class="text-slate-400 block mb-0.5 font-medium">Bá»™ thá»§ (Radical):</span>
+                          <span class="font-bold text-slate-800 dark:text-slate-200 text-sm">${word.radical || "Äang cáº­p nháº­t"}</span>
+                        </div>
+                        <div class="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-750/50 border border-slate-100 dark:border-slate-700">
+                          <span class="text-slate-400 block mb-0.5 font-medium">Sá»‘ nÃ©t (Strokes):</span>
+                          <span class="font-bold text-slate-800 dark:text-slate-200 text-sm">${word.strokes || 8} nÃ©t</span>
+                        </div>
+                      </div>
+
+                      <div class="flex flex-wrap items-center gap-2 pt-1 text-xs">
+                        <button onclick="App.switchDictTab('hanzi')" class="px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold hover:bg-red-50 hover:text-red-600 transition flex items-center gap-1.5">
+                          <i data-lucide="edit-3" class="w-3.5 h-3.5"></i> Táº­p viáº¿t nÃ©t
+                        </button>
+                        <button onclick="App.switchDictTab('sentence')" class="px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold hover:bg-amber-50 hover:text-amber-600 transition flex items-center gap-1.5">
+                          <i data-lucide="message-square" class="w-3.5 h-3.5"></i> Máº«u cÃ¢u vÃ­ dá»¥
+                        </button>
+                        <button onclick="App.switchDictTab('collocation')" class="px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold hover:bg-teal-50 hover:text-teal-600 transition flex items-center gap-1.5">
+                          <i data-lucide="link" class="w-3.5 h-3.5"></i> Tá»« ghÃ©p liÃªn quan
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                `;
+            }
+          })()}
+        </div>
+      `;
+    },
+
+    renderTabExplorer(tab) {
+      switch (tab) {
+        case "hanzi":
+          return `
+            <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm space-y-4">
+              <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
+                <div>
+                  <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                    <i data-lucide="edit-3" class="w-4 h-4 text-red-500"></i>
+                    Báº£ng Chá»¯ HÃ¡n Cá»‘t LÃµi (Luyá»‡n Viáº¿t BÃºt Thuáº­n)
+                  </h3>
+                  <p class="text-xs text-slate-400 mt-0.5">Báº¥m vÃ o báº¥t ká»³ chá»¯ HÃ¡n nÃ o Ä‘á»ƒ xem hoáº¡t áº£nh nÃ©t váº½ vÃ  táº­p viáº¿t tÆ°Æ¡ng tÃ¡c.</p>
+                </div>
+              </div>
+              <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3">
+                ${["çˆ±", "å¥½", "å­¦", "ä¹ ", "ä½œ", "é¡¶", "æ’ž", "äºº", "å¤©", "å¤§", "ä¸­", "å›½"]
+                  .map(
+                    (char) => `
+                  <button
+                    onclick="App.handleDictSearch('${char}')"
+                    class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 hover:border-red-500 hover:scale-105 transition flex flex-col items-center space-y-1 shadow-sm"
+                  >
+                    <span class="font-hanzi font-bold text-3xl text-slate-900 dark:text-white">${char}</span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Táº­p viáº¿t nÃ©t</span>
+                  </button>
+                `
+                  )
+                  .join("")}
+              </div>
+            </div>
+          `;
+
+        case "grammar":
+          return `
+            <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm space-y-4">
+              <div class="border-b border-slate-100 dark:border-slate-700 pb-3">
+                <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                  <i data-lucide="bookmark" class="w-4 h-4 text-indigo-500"></i>
+                  6 Cáº¥u TrÃºc Ngá»¯ PhÃ¡p Tiáº¿ng Trung Cá»‘t LÃµi (HSK 1 - 4)
+                </h3>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 space-y-1">
+                  <span class="font-bold text-indigo-600 dark:text-indigo-400">1. CÃ¢u chá»¯ æŠŠ (BÇŽ):</span>
+                  <p class="font-mono text-slate-800 dark:text-slate-200">Chá»§ ngá»¯ + æŠŠ + TÃ¢n ngá»¯ + Äá»™ng tá»« + ThÃ nh pháº§n khÃ¡c</p>
+                  <p class="text-slate-500 dark:text-slate-400 italic">VD: æˆ‘æŠŠä½œä¸šåšå®Œäº†ã€‚(TÃ´i Ä‘Ã£ lÃ m xong bÃ i táº­p rá»“i.)</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 space-y-1">
+                  <span class="font-bold text-indigo-600 dark:text-indigo-400">2. CÃ¢u so sÃ¡nh æ¯” (BÇ):</span>
+                  <p class="font-mono text-slate-800 dark:text-slate-200">A + æ¯” + B + TÃ­nh tá»« / PhÃ³ tá»«</p>
+                  <p class="text-slate-500 dark:text-slate-400 italic">VD: ä»Šå¤©æ¯”æ˜¨å¤©å†·ã€‚(HÃ´m nay láº¡nh hÆ¡n hÃ´m qua.)</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 space-y-1">
+                  <span class="font-bold text-indigo-600 dark:text-indigo-400">3. Ba trá»£ tá»« çš„, å¾—, åœ°:</span>
+                  <p class="font-mono text-slate-800 dark:text-slate-200">Äá»‹nh ngá»¯ + çš„ + N | V + å¾— + Bá»• ngá»¯ | PhÃ³ tá»« + åœ° + V</p>
+                  <p class="text-slate-500 dark:text-slate-400 italic">VD: æ¼‚äº®çš„è¡£æœ / è·‘å¾—å¿« / é«˜å…´åœ°è¯´</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 space-y-1">
+                  <span class="font-bold text-indigo-600 dark:text-indigo-400">4. CÃ¢u chá»¯ è¢« (BÃ¨i - Bá»‹ Ä‘á»™ng):</span>
+                  <p class="font-mono text-slate-800 dark:text-slate-200">Chá»§ ngá»¯ (bá»‹ tÃ¡c Ä‘á»™ng) + è¢« + TÃ¢n ngá»¯ + Äá»™ng tá»«</p>
+                  <p class="text-slate-500 dark:text-slate-400 italic">VD: è‹¹æžœè¢«ä»–åƒäº†ã€‚(Quáº£ tÃ¡o Ä‘Ã£ bá»‹ anh áº¥y Äƒn rá»“i.)</p>
+                </div>
+              </div>
+            </div>
+          `;
+
+        case "sentence":
+          return `
+            <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm space-y-4">
+              <div class="border-b border-slate-100 dark:border-slate-700 pb-3">
+                <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                  <i data-lucide="message-square" class="w-4 h-4 text-amber-500"></i>
+                  Máº«u CÃ¢u Giao Tiáº¿p ThÃ´ng Dá»¥ng HÃ ng NgÃ y
+                </h3>
+              </div>
+              <div class="space-y-3">
+                ${[
+                  { zh: "ä½ å¥½ï¼å¾ˆé«˜å…´è®¤è¯†ä½ ã€‚", py: "NÇ hÇŽo! HÄ›n gÄoxÃ¬ng rÃ¨nshÃ­ nÇ.", vi: "Xin chÃ o! Ráº¥t vui Ä‘Æ°á»£c lÃ m quen vá»›i báº¡n." },
+                  { zh: "è¯·é—®ï¼Œè¿™ä¸ªå¤šå°‘é’±ï¼Ÿ", py: "QÇngwÃ¨n, zhÃ¨ge duÅshÇŽo qiÃ¡n?", vi: "Xin há»i, cÃ¡i nÃ y bao nhiÃªu tiá»n?" },
+                  { zh: "ä½ å¯ä»¥å¸®æˆ‘ä¸€ä¸ªå¿™å—ï¼Ÿ", py: "NÇ kÄ›yÇ bÄng wÇ’ yÃ­ ge mÃ¡ng ma?", vi: "Báº¡n cÃ³ thá»ƒ giÃºp tÃ´i má»™t viá»‡c Ä‘Æ°á»£c khÃ´ng?" },
+                  { zh: "ä»Šå¤©å¤©æ°”å¾ˆå¥½ï¼Œæˆ‘ä»¬åŽ»æ—…æ¸¸å§ã€‚", py: "JÄ«ntiÄn tiÄnqÃ¬ hÄ›n hÇŽo, wÇ’men qÃ¹ lÇšyÃ³u ba.", vi: "HÃ´m nay thá»i tiáº¿t ráº¥t Ä‘áº¹p, chÃºng ta Ä‘i du lá»‹ch nhÃ©." }
+                ].map((s) => `
+                  <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 flex items-center justify-between gap-3">
+                    <div>
+                      <div class="font-hanzi font-bold text-base text-slate-900 dark:text-white">${s.zh}</div>
+                      <div class="text-xs text-amber-600 dark:text-amber-400 font-mono">${s.py}</div>
+                      <div class="text-xs text-slate-600 dark:text-slate-300 italic">${s.vi}</div>
+                    </div>
+                    <button onclick="AudioService.speak('${s.zh}')" class="p-2.5 rounded-xl bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:text-red-600 shadow-sm transition" title="Nghe cÃ¢u nÃ y">
+                      <i data-lucide="volume-2" class="w-4 h-4"></i>
+                    </button>
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+          `;
+
+        case "collocation":
+          return `
+            <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm space-y-4">
+              <div class="border-b border-slate-100 dark:border-slate-700 pb-3">
+                <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                  <i data-lucide="link" class="w-4 h-4 text-teal-500"></i>
+                  QuÃ¡n Dá»¥ng Ngá»¯ & Cá»¥m Tá»« Cá»‘ Äá»‹nh
+                </h3>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                ${[
+                  { zh: "æé«˜æ°´å¹³", py: "tÃ­gÄo shuÇpÃ­ng", vi: "NÃ¢ng cao trÃ¬nh Ä‘á»™" },
+                  { zh: "è§£å†³é—®é¢˜", py: "jiÄ›juÃ© wÃ¨ntÃ­", vi: "Giáº£i quyáº¿t váº¥n Ä‘á»" },
+                  { zh: "äº¤æµç»éªŒ", py: "jiÄoliÃº jÄ«ngyÃ n", vi: "Giao lÆ°u kinh nghiá»‡m" },
+                  { zh: "ç­¾è®¢åˆåŒ", py: "qiÄndÃ¬ng hÃ©tÃ³ng", vi: "KÃ½ káº¿t há»£p Ä‘á»“ng" },
+                  { zh: "ä¿æŠ¤çŽ¯å¢ƒ", py: "bÇŽohÃ¹ huÃ¡njÃ¬ng", vi: "Báº£o vá»‡ mÃ´i trÆ°á»ng" },
+                  { zh: "æ‰“äº¤é“", py: "dÇŽ jiÄodÃ o", vi: "Tiáº¿p xÃºc, giao thiá»‡p" }
+                ].map((c) => `
+                  <button
+                    onclick="App.handleDictSearch('${c.zh}')"
+                    class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 text-left hover:border-teal-500 hover:scale-[1.02] transition shadow-sm"
+                  >
+                    <div class="font-hanzi font-bold text-base text-slate-900 dark:text-white">${c.zh}</div>
+                    <div class="text-xs text-teal-600 dark:text-teal-400 font-mono">${c.py}</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400">${c.vi}</div>
+                  </button>
+                `).join("")}
+              </div>
+            </div>
+          `;
+
+        case "vocab":
+        default:
+          return `
+            <!-- Filter Pills (All, HSK 1 - 6, Business, Custom) -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
+              <button
+                onclick="App.filterDictByHsk('all')"
+                class="dict-hsk-pill px-3.5 py-1.5 rounded-xl text-xs font-bold transition ${this.dictHskFilter === "all" ? "bg-red-600 text-white shadow-sm" : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-red-400"}"
+              >
+                Táº¥t cáº£ (${(window.APP_DATA.vocabList || []).length})
+              </button>
+              ${[1, 2, 3, 4, 5, 6].map((l) => `
+                <button
+                  onclick="App.filterDictByHsk('${l}')"
+                  class="dict-hsk-pill px-3 py-1.5 rounded-xl text-xs font-bold transition ${this.dictHskFilter === String(l) ? "bg-red-600 text-white shadow-sm" : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-red-400"}"
+                >
+                  HSK ${l} (${(window.APP_DATA.vocabList || []).filter((w) => w.hsk === l).length})
+                </button>
+              `).join("")}
+              <button
+                onclick="App.filterDictByHsk('business')"
+                class="dict-hsk-pill px-3 py-1.5 rounded-xl text-xs font-bold transition ${this.dictHskFilter === "business" ? "bg-red-600 text-white shadow-sm" : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-red-400"}"
+              >
+                ðŸ’¼ ThÆ°Æ¡ng Máº¡i (${(window.APP_DATA.vocabList || []).filter((w) => w.category === "business" || w.hsk === "ThÆ°Æ¡ng Máº¡i" || w.deck === "business").length})
+              </button>
+              <button
+                onclick="App.filterDictByHsk('custom')"
+                class="dict-hsk-pill px-3 py-1.5 rounded-xl text-xs font-bold transition ${this.dictHskFilter === "custom" ? "bg-red-600 text-white shadow-sm" : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-red-400"}"
+              >
+                â­ Tháº» tá»± táº¡o (${(window.StorageService ? window.StorageService.getFlashcards() : []).length})
+              </button>
+            </div>
+
+            <!-- Vocabulary Grid -->
+            ${this.renderDictWordListHtml()}
+          `;
       }
     },
 
@@ -847,12 +1496,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     renderDictWordListHtml() {
       let words = window.APP_DATA.vocabList || [];
-      let label = "toàn bộ HSK 1 - 6 & Chuyên ngành";
+      let label = "toÃ n bá»™ HSK 1 - 6 & ChuyÃªn ngÃ nh";
 
       if (this.dictHskFilter !== "all") {
         if (this.dictHskFilter === "business") {
-          words = words.filter((w) => w.category === "business" || w.hsk === "Thương Mại" || w.deck === "business");
-          label = "Chuyên ngành Tiếng Trung Thương Mại";
+          words = words.filter((w) => w.category === "business" || w.hsk === "ThÆ°Æ¡ng Máº¡i" || w.deck === "business");
+          label = "ChuyÃªn ngÃ nh Tiáº¿ng Trung ThÆ°Æ¡ng Máº¡i";
         } else if (this.dictHskFilter === "custom") {
           const cards = window.StorageService ? window.StorageService.getFlashcards() : [];
           words = cards.map((c) => ({
@@ -860,16 +1509,16 @@ document.addEventListener("DOMContentLoaded", () => {
             hanzi: c.hanzi,
             pinyin: c.pinyin,
             meaning: c.meaning,
-            hsk: c.hsk || "Tự tạo",
-            radical: "Thẻ cá nhân",
+            hsk: c.hsk || "Tá»± táº¡o",
+            radical: "Tháº» cÃ¡ nhÃ¢n",
             strokes: 8,
             example: { zh: c.example || c.hanzi, pinyin: "", vi: c.exampleVi || c.meaning }
           }));
-          label = "Flashcard người dùng tự tạo";
+          label = "Flashcard ngÆ°á»i dÃ¹ng tá»± táº¡o";
         } else {
           const lvlNum = parseInt(this.dictHskFilter);
           words = words.filter((w) => w.hsk === lvlNum);
-          label = `cấp độ HSK ${this.dictHskFilter}`;
+          label = `cáº¥p Ä‘á»™ HSK ${this.dictHskFilter}`;
         }
       }
 
@@ -878,9 +1527,9 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="flex items-center justify-between mb-4 border-b border-slate-100 dark:border-slate-700 pb-3">
             <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
               <i data-lucide="layers" class="w-4 h-4 text-red-500"></i>
-              Danh sách từ vựng ${label} (${words.length} từ)
+              Danh sÃ¡ch tá»« vá»±ng ${label} (${words.length} tá»«)
             </h3>
-            <span class="text-xs text-slate-400">Bấm vào từ để xem cách viết nét & chi tiết</span>
+            <span class="text-xs text-slate-400">Báº¥m vÃ o tá»« Ä‘á»ƒ xem cÃ¡ch viáº¿t nÃ©t & chi tiáº¿t</span>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             ${words.map((item) => this.renderSmallWordCard(item)).join("")}
@@ -903,12 +1552,12 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
               <p class="text-xs font-medium text-slate-700 dark:text-slate-200 line-clamp-1 mt-0.5">${word.meaning}</p>
               <span class="text-[10px] text-slate-400 flex items-center gap-1 mt-0.5">
-                <i data-lucide="edit-3" class="w-3 h-3 text-emerald-500"></i> Có hoạt ảnh vẽ nét (${word.strokes || 8} nét)
+                <i data-lucide="edit-3" class="w-3 h-3 text-emerald-500"></i> CÃ³ hoáº¡t áº£nh váº½ nÃ©t (${word.strokes || 8} nÃ©t)
               </span>
             </div>
           </div>
           <div class="flex items-center gap-2">
-            <button onclick="event.stopPropagation(); AudioService.speak('${word.hanzi}')" class="p-2 rounded-xl bg-white dark:bg-slate-700 text-slate-500 hover:text-red-600 transition shadow-sm" title="Nghe phát âm">
+            <button onclick="event.stopPropagation(); AudioService.speak('${word.hanzi}')" class="p-2 rounded-xl bg-white dark:bg-slate-700 text-slate-500 hover:text-red-600 transition shadow-sm" title="Nghe phÃ¡t Ã¢m">
               <i data-lucide="volume-2" class="w-4 h-4"></i>
             </button>
             <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:text-red-600 group-hover:translate-x-1 transition"></i>
@@ -919,337 +1568,430 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async handleDictSearch(query, forceAi = false) {
       if (!query || !query.trim()) {
-        this.showToast("Vui lòng nhập từ hoặc câu cần tra cứu!", "warning");
+        this.showToast("Vui lÃ²ng nháº­p tá»« hoáº·c cÃ¢u cáº§n tra cá»©u!", "warning");
         return;
       }
       query = query.trim();
+      this.lastDictQuery = query;
       const qLower = query.toLowerCase();
-      const resultContainer = document.getElementById("dictResultContainer");
-      if (!resultContainer) return;
 
-      // 1. Direct AI Lookup mode
-      if (forceAi) {
-        return this.executeAiDictLookup(query, resultContainer);
+      // 1. Search in local database first if not forced AI
+      let localMatch = null;
+      if (!forceAi) {
+        localMatch = (window.APP_DATA.vocabList || []).find(
+          (w) =>
+            (w.hanzi && w.hanzi.toLowerCase() === qLower) ||
+            (w.pinyin && w.pinyin.toLowerCase() === qLower) ||
+            (w.meaning && w.meaning.toLowerCase().includes(qLower))
+        );
       }
 
-      // 2. Search in local mock database
-      const found = (window.APP_DATA.vocabList || []).filter(
-        (w) =>
-          (w.hanzi && w.hanzi.includes(query)) ||
-          (w.pinyin && w.pinyin.toLowerCase().includes(qLower)) ||
-          (w.meaning && w.meaning.toLowerCase().includes(qLower))
-      );
-
-      if (found.length > 0) {
-        const aiPromptBanner = `
-          <div class="p-4 rounded-2xl bg-gradient-to-r from-red-500/10 via-amber-500/10 to-transparent border border-red-500/30 flex flex-wrap items-center justify-between gap-3 shadow-sm mb-4">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-amber-600 text-white flex items-center justify-center shadow-md">
-                <i data-lucide="sparkles" class="w-5 h-5 text-amber-200"></i>
-              </div>
-              <div>
-                <h4 class="font-bold text-slate-800 dark:text-white text-xs">
-                  Tìm thấy ${found.length} từ trong kho sẵn. Bạn muốn phân tích sâu hơn bằng AI?
-                </h4>
-                <p class="text-[11px] text-slate-500 dark:text-slate-400">
-                  Gemini 2.5 Flash sẽ mở rộng chiết tự chữ Hán, mẹo nhớ, từ đồng nghĩa/trái nghĩa và ví dụ thương mại thực tế.
-                </p>
-              </div>
-            </div>
-            <button onclick="App.handleDictSearch('${query}', true)" class="px-4 py-2 rounded-xl bg-gradient-to-r from-red-600 to-amber-600 hover:from-red-700 hover:to-amber-700 text-white font-bold text-xs shadow-md flex items-center gap-1.5 transition">
-              <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
-              <span>Phân tích chuyên sâu từ "${query}" bằng AI</span>
-            </button>
-          </div>
-        `;
-        resultContainer.innerHTML = aiPromptBanner + found.map((w) => this.renderDetailedWordCard(w, "Kho dữ liệu sẵn có", false)).join("");
-        this.refreshIcons();
+      if (localMatch && !forceAi) {
+        this.currentDictWord = localMatch;
+        if (window.StorageService) {
+          window.StorageService.saveAiLookupItem({
+            hanzi: localMatch.hanzi,
+            pinyin: localMatch.pinyin,
+            meaning: localMatch.meaning,
+            query: query,
+            hsk: localMatch.hsk,
+            radical: localMatch.radical,
+            strokes: localMatch.strokes
+          });
+        }
+        const container = document.getElementById("viewContainer");
+        if (container) this.renderDictionary(container);
+        window.scrollTo({ top: 0, behavior: "smooth" });
         return;
       }
 
-      // 3. Fallback to Gemini AI Lookup if not found in local database
-      return this.executeAiDictLookup(query, resultContainer, true);
+      // 2. Fallback or direct AI lookup
+      await this.executeAiDictLookup(query, !forceAi);
     },
 
-    async executeAiDictLookup(query, resultContainer, isFallback = false) {
-      resultContainer.innerHTML = `
-        <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-lg text-center max-w-xl mx-auto space-y-3">
+    async executeAiDictLookup(query, isFallback = false) {
+      this.openModal(`
+        <div class="p-7 text-center space-y-4">
           <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-500 to-amber-500 text-white flex items-center justify-center mx-auto shadow-md animate-pulse">
             <i data-lucide="sparkles" class="w-7 h-7 text-amber-100"></i>
           </div>
           <h4 class="font-extrabold text-base text-slate-900 dark:text-white">
-            ${isFallback ? `Từ "${query}" chưa có trong kho mẫu sẵn.` : `Đang kích hoạt Gemini AI phân tích từ "${query}"...`}
+            Äang kÃ­ch hoáº¡t Gemini AI phÃ¢n tÃ­ch tá»« "${query}"...
           </h4>
-          <p class="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto leading-relaxed">
-            Hệ thống đang kết nối AI để bóc tách Hán tự, Pinyin chuẩn, bộ thủ, quy tắc bút thuận, mẹo chiết tự, từ ghép và ví dụ giao tiếp ngữ cảnh...
+          <p class="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto leading-relaxed">
+            Há»‡ thá»‘ng Ä‘ang káº¿t ná»‘i AI Ä‘á»ƒ bÃ³c tÃ¡ch HÃ¡n tá»±, Pinyin chuáº©n thanh Ä‘iá»‡u, bá»™ thá»§, quy táº¯c bÃºt thuáº­n, chiáº¿t tá»±, tá»« loáº¡i, máº«u cÃ¢u vÃ  tá»« ghÃ©p...
           </p>
           <div class="flex items-center justify-center gap-2 pt-2 text-xs font-semibold text-red-600 dark:text-red-400">
             <i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i>
-            <span>Đang tra cứu từ điển mở rộng...</span>
+            <span>Äang phÃ¢n tÃ­ch ngÃ´n ngá»¯ há»c...</span>
           </div>
+        </div>
+      `);
+      this.refreshIcons();
+
+      try {
+        const aiResult = await window.GeminiService.lookupWordAI(query);
+        this.closeModal();
+        this.currentDictWord = aiResult;
+        if (window.StorageService) {
+          window.StorageService.saveAiLookupItem({
+            ...aiResult,
+            query: query
+          });
+        }
+        const container = document.getElementById("viewContainer");
+        if (container) this.renderDictionary(container);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } catch (err) {
+        this.closeModal();
+        this.showToast(`Lá»—i tra cá»©u AI: ${err.message}`, "error");
+      }
+    },
+
+    /* Quick Action 1: Camera & Book OCR Modal */
+    openDictCameraModal() {
+      this.openModal(`
+        <div class="p-6 md:p-8 space-y-5">
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
+            <div class="flex items-center gap-2.5">
+              <div class="w-10 h-10 rounded-2xl bg-red-100 dark:bg-red-950 text-red-600 flex items-center justify-center font-bold">
+                <i data-lucide="camera" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="font-extrabold text-base text-slate-900 dark:text-white">Tra Cá»©u Qua Camera & áº¢nh Chá»¥p</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Táº£i áº£nh hoáº·c chá»¥p trang sÃ¡ch tiáº¿ng Trung Ä‘á»ƒ AI quÃ©t chá»¯ HÃ¡n.</p>
+              </div>
+            </div>
+            <button onclick="App.closeModal()" class="p-2 rounded-xl text-slate-400 hover:text-slate-600">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <div class="space-y-4">
+            <div id="dictScanDropzone" class="border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-3xl p-6 text-center hover:border-red-500 transition cursor-pointer bg-slate-50 dark:bg-slate-750">
+              <input type="file" id="dictCameraFileInput" accept="image/*" class="hidden" />
+              <i data-lucide="image-plus" class="w-10 h-10 text-slate-400 mx-auto mb-2"></i>
+              <p class="text-xs font-bold text-slate-700 dark:text-slate-300">Báº¥m Ä‘á»ƒ chá»n áº£nh tá»« mÃ¡y hoáº·c chá»¥p áº£nh</p>
+              <p class="text-[11px] text-slate-400 mt-0.5">Há»— trá»£ JPG, PNG, WEBP (Trang sÃ¡ch, menu, biá»ƒn hiá»‡u...)</p>
+            </div>
+
+            <div class="flex items-center justify-center gap-3">
+              <button
+                onclick="App.useSampleImageForDict()"
+                class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-700 dark:text-slate-200 text-xs font-bold transition flex items-center gap-1.5"
+              >
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-500"></i> DÃ¹ng áº£nh máº«u trang sÃ¡ch HSK
+              </button>
+            </div>
+
+            <div id="dictScanResultArea" class="hidden space-y-3"></div>
+          </div>
+        </div>
+      `);
+      this.refreshIcons();
+
+      const dropzone = document.getElementById("dictScanDropzone");
+      const fileInput = document.getElementById("dictCameraFileInput");
+      if (dropzone && fileInput) {
+        dropzone.addEventListener("click", () => fileInput.click());
+        fileInput.addEventListener("change", (e) => {
+          const file = e.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => this.processDictImage(event.target.result);
+            reader.readAsDataURL(file);
+          }
+        });
+      }
+    },
+
+    useSampleImageForDict() {
+      // Create a clean demo canvas image with standard HSK textbook characters
+      const canvas = document.createElement("canvas");
+      canvas.width = 600;
+      canvas.height = 360;
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "#fffdfa";
+      ctx.fillRect(0, 0, 600, 360);
+      ctx.fillStyle = "#1e293b";
+      ctx.font = "bold 28px 'Noto Serif SC', serif";
+      ctx.fillText("HSK æ±‰è¯­æ°´å¹³è€ƒè¯•", 160, 60);
+      ctx.font = "24px 'Noto Sans SC', sans-serif";
+      ctx.fillText("1. åšæŒ (jiÄnchÃ­) - KiÃªn trÃ¬", 80, 130);
+      ctx.fillText("2. é¡¶æ’ž (dÇngzhuÃ ng) - CÃ£i láº¡i", 80, 180);
+      ctx.fillText("3. å•†ä¸š (shÄngyÃ¨) - ThÆ°Æ¡ng máº¡i", 80, 230);
+      ctx.fillText("4. åˆä½œ (hÃ©zuÃ²) - Há»£p tÃ¡c", 80, 280);
+      const dataUrl = canvas.toDataURL("image/png");
+      this.processDictImage(dataUrl);
+    },
+
+    async processDictImage(dataUrl) {
+      const area = document.getElementById("dictScanResultArea");
+      if (!area) return;
+      area.classList.remove("hidden");
+      area.innerHTML = `
+        <div class="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 flex items-center justify-center gap-2 text-xs font-bold text-amber-700 dark:text-amber-400">
+          <i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i>
+          <span>Gemini Vision Ä‘ang quÃ©t nháº­n diá»‡n chá»¯ HÃ¡n trong áº£nh...</span>
         </div>
       `;
       this.refreshIcons();
 
       try {
-        const aiResult = await window.GeminiService.lookupWordAI(query);
-        resultContainer.innerHTML = this.renderDetailedWordCard(aiResult, "Phân tích bởi Gemini 2.5 Flash AI", true);
-        this.refreshIcons();
-      } catch (err) {
-        resultContainer.innerHTML = `
-          <div class="bg-red-50 dark:bg-red-950/40 p-6 rounded-3xl border border-red-200 dark:border-red-900/60 text-center max-w-lg mx-auto space-y-3">
-            <i data-lucide="alert-circle" class="w-10 h-10 text-red-500 mx-auto"></i>
-            <h4 class="font-bold text-red-700 dark:text-red-400 text-sm">Chưa thể hoàn tất phân tích bằng AI</h4>
-            <p class="text-xs text-red-600/80 leading-relaxed">${err.message}</p>
-            <div class="pt-2">
-              <a href="#settings" class="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold inline-flex items-center gap-1.5 shadow-md transition">
-                <i data-lucide="key" class="w-4 h-4"></i> Cấu hình Gemini API Key
-              </a>
+        const words = await window.GeminiService.scanTextbookImage(dataUrl);
+        area.innerHTML = `
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-slate-700 dark:text-slate-300 block">Chá»¯ HÃ¡n Ä‘Æ°á»£c AI trÃ­ch xuáº¥t:</span>
+            <div class="flex flex-wrap gap-2">
+              ${words.map((w) => `
+                <button
+                  onclick="App.closeModal(); App.handleDictSearch('${w.hanzi}')"
+                  class="px-3.5 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white font-hanzi font-bold text-sm shadow-sm transition flex items-center gap-1.5"
+                >
+                  <span>${w.hanzi}</span>
+                  <span class="text-[10px] text-red-200">(${w.pinyin})</span>
+                </button>
+              `).join("")}
             </div>
+            <p class="text-[11px] text-slate-400 italic">Báº¥m vÃ o báº¥t ká»³ tá»« nÃ o Ä‘á»ƒ má»Ÿ tra cá»©u tá»©c thÃ¬.</p>
           </div>
         `;
         this.refreshIcons();
+      } catch (err) {
+        area.innerHTML = `
+          <div class="p-4 rounded-2xl bg-red-50 text-red-600 text-xs">
+            Lá»—i nháº­n diá»‡n: ${err.message}. HÃ£y nháº­p tá»« báº±ng bÃ n phÃ­m.
+          </div>
+        `;
       }
     },
 
-    renderDetailedWordCard(word, sourceTag = "Dữ liệu chuẩn", isAi = false) {
-      const collocationsHtml = (word.collocations || [])
-        .map((c) => `<span class="px-2.5 py-1 rounded-xl bg-slate-100 dark:bg-slate-700 text-xs text-slate-700 dark:text-slate-300 font-hanzi font-medium border border-slate-200/50 dark:border-slate-600/50">${c}</span>`)
-        .join("");
+    /* Quick Action 2: Voice Recognition Microphone */
+    startDictVoiceSearch() {
+      const btn = document.getElementById("dictVoiceBtn");
+      if (!window.AudioService) return;
 
-      const synonymsHtml = (word.synonyms || [])
-        .map((s) => `<span class="px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 text-xs font-medium">${s}</span>`)
-        .join("");
+      if (btn) {
+        btn.classList.add("ring-4", "ring-red-500", "bg-red-600");
+      }
+      this.showToast(
+        this.dictSearchDirection === "vi"
+          ? "Äang láº¯ng nghe... HÃ£y nÃ³i tiáº¿ng Viá»‡t (vÃ­ dá»¥: há»c táº­p, báº¡n bÃ¨, thÃ nh cÃ´ng)"
+          : "æ­£åœ¨è†å¬... è¯·è¯´æ™®é€šè¯ (ä¾‹å¦‚: å­¦ä¹ , æœ‹å‹, æˆåŠŸ)",
+        "info"
+      );
 
-      const antonymsHtml = (word.antonyms || [])
-        .map((a) => `<span class="px-2.5 py-1 rounded-lg bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 text-xs font-medium">${a}</span>`)
-        .join("");
+      const recognition = AudioService.initRecognition({
+        onStart: () => {},
+        onResult: (text) => {
+          if (btn) btn.classList.remove("ring-4", "ring-red-500", "bg-red-600");
+          const input = document.getElementById("dictSearchInput");
+          if (input) input.value = text;
+          this.showToast(`ÄÃ£ nháº­n diá»‡n: "${text}"`, "success");
+          this.handleDictSearch(text);
+        },
+        onError: (err) => {
+          if (btn) btn.classList.remove("ring-4", "ring-red-500", "bg-red-600");
+          this.showToast(`ChÆ°a nháº­n diá»‡n Ä‘Æ°á»£c giá»ng nÃ³i: ${err}`, "warning");
+        },
+        onEnd: () => {
+          if (btn) btn.classList.remove("ring-4", "ring-red-500", "bg-red-600");
+        }
+      });
 
-      // Extract unique Chinese characters for HanziWriter
-      const hanziChars = Array.from(word.hanzi || "").filter((c) => /[\u4e00-\u9fa5]/.test(c));
-      const writerConfigs = hanziChars.map((char) => ({
-        char,
-        containerId: "hw_" + Math.random().toString(36).substring(2, 9)
-      }));
+      if (recognition) {
+        recognition.lang = this.dictSearchDirection === "vi" ? "vi-VN" : "zh-CN";
+        try {
+          recognition.start();
+        } catch (e) {
+          console.warn("Recognition already started", e);
+        }
+      }
+    },
 
-      // Schedule HanziWriter creation after DOM injection
-      setTimeout(() => {
-        writerConfigs.forEach((cfg) => {
-          this.createHanziWriter(cfg.containerId, cfg.char);
-        });
-        this.refreshIcons();
-      }, 100);
-
-      const hasTraditional = word.traditional && word.traditional !== word.hanzi;
-
-      return `
-        <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 p-6 md:p-8 shadow-lg space-y-6">
-          <!-- Card Top Bar -->
-          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-700 pb-4">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="text-xs font-extrabold px-3 py-1 rounded-full ${isAi ? 'bg-gradient-to-r from-red-600 to-amber-600 text-white shadow-sm' : 'bg-red-100 dark:bg-red-950 text-red-600 dark:text-red-300'}">
-                ${word.hsk ? (typeof word.hsk === 'number' ? `HSK ${word.hsk}` : word.hsk) : "HSK"}
-              </span>
-              ${word.wordType ? `<span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">${word.wordType}</span>` : ""}
-              <span class="text-xs text-slate-400 font-medium flex items-center gap-1">
-                <i data-lucide="${isAi ? 'sparkles' : 'database'}" class="w-3.5 h-3.5 ${isAi ? 'text-amber-500' : 'text-slate-400'}"></i>
-                ${sourceTag}
-              </span>
-            </div>
+    /* Quick Action 3: Handwriting Canvas Modal */
+    openDictHandwritingModal() {
+      this.openModal(`
+        <div class="p-6 md:p-8 space-y-4 max-w-md mx-auto">
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
             <div class="flex items-center gap-2">
-              <button onclick="AudioService.speak('${word.hanzi}')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-red-50 hover:text-red-600 dark:hover:bg-slate-600 transition" title="Nghe phát âm từ">
-                <i data-lucide="volume-2" class="w-5 h-5"></i>
+              <i data-lucide="pen-tool" class="w-5 h-5 text-red-600"></i>
+              <h3 class="font-extrabold text-base text-slate-900 dark:text-white">Báº£ng Váº½ Tay Chá»¯ HÃ¡n</h3>
+            </div>
+            <button onclick="App.closeModal()" class="p-2 rounded-xl text-slate-400 hover:text-slate-600">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <div class="flex flex-col items-center space-y-3">
+            <!-- Canvas with Tianzige Grid -->
+            <div class="relative w-[280px] h-[280px] tianzige-box rounded-2xl border-2 border-red-300 dark:border-red-900 shadow-inner bg-white dark:bg-slate-900 overflow-hidden">
+              <canvas id="handwritingCanvas" width="280" height="280" class="touch-none cursor-crosshair"></canvas>
+            </div>
+
+            <!-- Controls -->
+            <div class="flex items-center gap-2 w-full">
+              <button
+                id="hwClearBtn"
+                class="flex-1 py-2 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-700 dark:text-slate-300 text-xs font-bold transition flex items-center justify-center gap-1.5"
+              >
+                <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> XÃ³a nÃ©t
               </button>
-              <button onclick="App.addCurrentToFlashcard('${word.hanzi}', '${word.pinyin}', '${word.meaning}', '${word.example?.zh || ""}', '${word.example?.vi || ""}')" class="px-3.5 py-2 rounded-xl bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400 hover:bg-red-100 font-bold text-xs flex items-center gap-1.5 transition">
-                <i data-lucide="plus-circle" class="w-4 h-4"></i> Thêm vào Flashcard
+              <button
+                id="hwRecognizeBtn"
+                class="flex-1 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow-md transition flex items-center justify-center gap-1.5"
+              >
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Nháº­n diá»‡n báº±ng AI
               </button>
             </div>
-          </div>
 
-          <!-- Main Info: Big Hanzi + Linguistic breakdown -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-            <!-- Big Hanzi in Tianzige with Ruby Pinyin -->
-            <div class="flex flex-col items-center justify-center p-6 rounded-2xl tianzige-box border border-red-200 dark:border-red-900/50 shadow-inner bg-red-50/20 dark:bg-red-950/10">
-              <span class="font-hanzi font-bold text-5xl md:text-6xl text-slate-900 dark:text-white leading-none text-center">
-                ${word.hanzi}
-              </span>
-              <span class="mt-3 text-base md:text-lg font-bold text-red-600 dark:text-red-400 font-mono tracking-wide text-center">
-                ${word.pinyin}
-              </span>
-              ${hasTraditional ? `
-                <span class="mt-1 text-xs text-slate-400 font-medium font-hanzi">
-                  Phồn thể: <strong class="text-slate-600 dark:text-slate-300">${word.traditional}</strong>
-                </span>
-              ` : ""}
-            </div>
-
-            <!-- Meanings, Radical, Strokes -->
-            <div class="md:col-span-2 space-y-4">
-              <div>
-                <span class="text-xs uppercase font-bold text-slate-400">Định nghĩa tiếng Việt</span>
-                <h3 class="text-xl font-bold text-slate-800 dark:text-white mt-0.5 leading-snug">
-                  ${word.meaning}
-                </h3>
+            <!-- Quick Candidate Hanzi -->
+            <div class="w-full space-y-1 pt-1">
+              <span class="text-[11px] text-slate-400 font-semibold block">Gá»£i Ã½ chá»¯ phá»• biáº¿n:</span>
+              <div class="flex flex-wrap gap-1.5">
+                ${["å¥½", "å­¦", "çˆ±", "ä½ ", "æˆ‘", "ä½œ", "é¡¶", "æ’ž", "å›½", "å®¶", "äºº", "å¤©"]
+                  .map(
+                    (c) => `
+                  <button
+                    onclick="App.closeModal(); App.handleDictSearch('${c}')"
+                    class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-red-50 hover:text-red-600 text-slate-700 dark:text-slate-200 font-hanzi font-bold text-sm transition"
+                  >
+                    ${c}
+                  </button>
+                `
+                  )
+                  .join("")}
               </div>
-
-              <!-- Detailed Meanings list if available -->
-              ${word.detailedMeanings && word.detailedMeanings.length > 0 ? `
-                <div class="space-y-1.5 p-3 rounded-xl bg-slate-50 dark:bg-slate-750/70 border border-slate-100 dark:border-slate-700/60 text-xs">
-                  <span class="font-bold text-slate-700 dark:text-slate-300 block">Các tầng nghĩa chi tiết:</span>
-                  <ul class="list-disc list-inside space-y-1 text-slate-600 dark:text-slate-400">
-                    ${word.detailedMeanings.map((m) => `<li>${m}</li>`).join("")}
-                  </ul>
-                </div>
-              ` : ""}
-
-              <div class="grid grid-cols-2 gap-3 text-xs">
-                <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-750/50 border border-slate-100 dark:border-slate-700">
-                  <span class="text-slate-400 block mb-0.5">Bộ thủ (Radical):</span>
-                  <span class="font-bold text-slate-700 dark:text-slate-200">${word.radical || "Đang cập nhật"}</span>
-                </div>
-                <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-750/50 border border-slate-100 dark:border-slate-700">
-                  <span class="text-slate-400 block mb-0.5">Số nét vẽ (Strokes):</span>
-                  <span class="font-bold text-slate-700 dark:text-slate-200">${word.strokes || 8} nét</span>
-                </div>
-              </div>
-
-              <!-- Synonyms & Antonyms -->
-              ${(synonymsHtml || antonymsHtml) ? `
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                  ${synonymsHtml ? `
-                    <div class="space-y-1">
-                      <span class="text-[11px] font-bold text-emerald-600 dark:text-emerald-400">Từ đồng nghĩa (近义词):</span>
-                      <div class="flex flex-wrap gap-1.5">${synonymsHtml}</div>
-                    </div>
-                  ` : ""}
-                  ${antonymsHtml ? `
-                    <div class="space-y-1">
-                      <span class="text-[11px] font-bold text-rose-600 dark:text-rose-400">Từ trái nghĩa (反义词):</span>
-                      <div class="flex flex-wrap gap-1.5">${antonymsHtml}</div>
-                    </div>
-                  ` : ""}
-                </div>
-              ` : ""}
-
-              <!-- Collocations -->
-              ${word.collocations && word.collocations.length > 0 ? `
-                <div>
-                  <span class="text-xs uppercase font-bold text-slate-400 block mb-2">Từ ghép thường gặp (Collocations):</span>
-                  <div class="flex flex-wrap gap-2">
-                    ${collocationsHtml}
-                  </div>
-                </div>
-              ` : ""}
             </div>
           </div>
-
-          <!-- Mnemonic breakdown box from AI -->
-          ${word.mnemonics ? `
-            <div class="p-4 rounded-2xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 text-xs space-y-1">
-              <span class="font-bold text-amber-900 dark:text-amber-300 flex items-center gap-1.5">
-                <i data-lucide="lightbulb" class="w-4 h-4 text-amber-500"></i> Mẹo chiết tự & Ghi nhớ chữ Hán thông minh:
-              </span>
-              <p class="text-slate-700 dark:text-slate-300 leading-relaxed italic">
-                ${word.mnemonics}
-              </p>
-            </div>
-          ` : ""}
-
-          <!-- Stroke Order & Practice Section (Hanzi Writer) -->
-          <div class="pt-5 border-t border-slate-100 dark:border-slate-700 space-y-4">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="text-xs uppercase font-bold text-red-600 dark:text-red-400 flex items-center gap-1.5">
-                <i data-lucide="edit-3" class="w-4 h-4"></i> Cách Viết Từng Nét Chữ Hán (Bút Thuận)
-              </span>
-              <span class="text-[11px] text-slate-400 font-medium">
-                ${word.strokeOrderRules || "Quy tắc: Ngang trước sổ sau, trên trước dưới sau, phẩy trước mác sau"}
-              </span>
-            </div>
-
-            <!-- Grid of Interactive Hanzi Writer Characters -->
-            <div class="flex flex-wrap items-center justify-center gap-6 p-6 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700">
-              ${writerConfigs
-                .map(
-                  (cfg) => `
-                <div class="flex flex-col items-center space-y-3 bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
-                  <!-- Tianzige Canvas Box -->
-                  <div id="${cfg.containerId}" class="w-[130px] h-[130px] tianzige-box rounded-xl border-2 border-red-200 dark:border-red-900/50 shadow-inner flex items-center justify-center">
-                    <span class="font-hanzi text-5xl font-bold text-slate-300">${cfg.char}</span>
-                  </div>
-
-                  <span class="font-hanzi font-bold text-lg text-slate-800 dark:text-white">${cfg.char}</span>
-
-                  <div class="flex items-center gap-1.5">
-                    <button
-                      onclick="App.animateHanzi('${cfg.containerId}')"
-                      class="px-2.5 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white font-bold text-xs flex items-center gap-1 shadow-sm transition"
-                      title="Xem thứ tự vẽ nét"
-                    >
-                      <i data-lucide="play" class="w-3.5 h-3.5 fill-white"></i>
-                      <span>Vẽ nét</span>
-                    </button>
-                    <button
-                      onclick="App.quizHanzi('${cfg.containerId}', '${cfg.char}')"
-                      class="px-2.5 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs flex items-center gap-1 shadow-sm transition"
-                      title="Thử thách tự vẽ chữ theo nét"
-                    >
-                      <i data-lucide="edit-2" class="w-3.5 h-3.5"></i>
-                      <span>Tập viết</span>
-                    </button>
-                    <button
-                      onclick="App.resetHanzi('${cfg.containerId}')"
-                      class="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-600 dark:text-slate-300 transition"
-                      title="Đặt lại nét"
-                    >
-                      <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
-                    </button>
-                  </div>
-                </div>
-              `
-                )
-                .join("")}
-            </div>
-          </div>
-
-          <!-- Example sentences section -->
-          ${word.example ? `
-            <div class="pt-5 border-t border-slate-100 dark:border-slate-700 space-y-3">
-              <div class="flex items-center justify-between">
-                <span class="text-xs uppercase font-bold text-slate-400">Ví dụ ngữ cảnh giao tiếp thực tế</span>
-                <button onclick="AudioService.speak('${word.example.zh}')" class="text-xs font-semibold text-red-600 dark:text-red-400 hover:underline flex items-center gap-1">
-                  <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Nghe câu ví dụ 1
-                </button>
-              </div>
-              <div class="p-4 rounded-2xl bg-amber-50/60 dark:bg-amber-950/20 border border-amber-100 dark:border-amber-900/40">
-                <div class="font-hanzi font-bold text-base text-slate-900 dark:text-slate-100 mb-1">
-                  ${word.example.zh}
-                </div>
-                <div class="text-xs text-amber-700 dark:text-amber-400 font-mono mb-1">
-                  ${word.example.pinyin}
-                </div>
-                <div class="text-xs text-slate-600 dark:text-slate-400 italic">
-                  ${word.example.vi}
-                </div>
-              </div>
-
-              <!-- Additional Examples if present -->
-              ${word.additionalExamples && word.additionalExamples.length > 0 ? word.additionalExamples.map((ex, idx) => `
-                <div class="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200/80 dark:border-slate-700/80 text-xs">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="font-bold text-slate-700 dark:text-slate-300">Ví dụ mở rộng ${idx + 2}:</span>
-                    <button onclick="AudioService.speak('${ex.zh}')" class="text-red-600 dark:text-red-400 hover:underline flex items-center gap-1 font-semibold text-[11px]">
-                      <i data-lucide="volume-2" class="w-3 h-3"></i> Nghe
-                    </button>
-                  </div>
-                  <div class="font-hanzi font-semibold text-slate-900 dark:text-white mb-0.5 text-sm">${ex.zh}</div>
-                  <div class="text-amber-600 dark:text-amber-400 font-mono text-[11px] mb-0.5">${ex.pinyin || ""}</div>
-                  <div class="text-slate-500 dark:text-slate-400 text-[11px]">${ex.vi}</div>
-                </div>
-              `).join("") : ""}
-            </div>
-          ` : ""}
         </div>
-      `;
+      `);
+      this.refreshIcons();
+
+      // Bind Canvas Drawing Logic
+      const canvas = document.getElementById("handwritingCanvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      let isDrawing = false;
+      let strokes = [];
+
+      ctx.lineWidth = 6;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      ctx.strokeStyle = "#1e293b";
+
+      function getPos(e) {
+        const rect = canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return {
+          x: clientX - rect.left,
+          y: clientY - rect.top
+        };
+      }
+
+      function startDraw(e) {
+        e.preventDefault();
+        isDrawing = true;
+        const pos = getPos(e);
+        ctx.beginPath();
+        ctx.moveTo(pos.x, pos.y);
+      }
+
+      function draw(e) {
+        if (!isDrawing) return;
+        e.preventDefault();
+        const pos = getPos(e);
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+      }
+
+      function stopDraw() {
+        if (isDrawing) {
+          isDrawing = false;
+          strokes.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+        }
+      }
+
+      canvas.addEventListener("mousedown", startDraw);
+      canvas.addEventListener("mousemove", draw);
+      canvas.addEventListener("mouseup", stopDraw);
+      canvas.addEventListener("touchstart", startDraw);
+      canvas.addEventListener("touchmove", draw);
+      canvas.addEventListener("touchend", stopDraw);
+
+      document.getElementById("hwClearBtn")?.addEventListener("click", () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        strokes = [];
+      });
+
+      document.getElementById("hwRecognizeBtn")?.addEventListener("click", async () => {
+        const dataUrl = canvas.toDataURL("image/png");
+        this.closeModal();
+        // Fallback or send to AI
+        await this.executeAiDictLookup("Chá»¯ HÃ¡n vá»«a váº½ tay");
+      });
+    },
+
+    /* Quick Action 4: Radicals 214 Bá»™ Thá»§ Modal */
+    openDictRadicalModal() {
+      const radicalsByStrokes = [
+        { strokes: "1 NÃ©t", items: ["ä¸€ (Nháº¥t)", "ä¸¨ (Cá»•n)", "ä¸¶ (Äiá»ƒm)", "ä¸¿ (Phiá»‡t)", "ä¹™ (áº¤t)", "äº… (Quyáº¿t)"] },
+        { strokes: "2 NÃ©t", items: ["äº» (NhÃ¢n Ä‘á»©ng)", "å†« (BÄƒng)", "åˆ‚ (Äao)", "åŠ› (Lá»±c)", "å (Tháº­p)", "åœ (Bá»‘c)", "åŽ‚ (HÃ¡n)", "åˆ (Há»±u)", "å£ (Kháº©u)", "å›— (Vi)"] },
+        { strokes: "3 NÃ©t", items: ["æ°µ (Thá»§y)", "å¿„ (TÃ¢m Ä‘á»©ng)", "æ‰Œ (Thá»§)", "è‰¹ (Tháº£o)", "è¾¶ (XÆ°á»›c)", "å®€ (MiÃªn)", "å¥³ (Ná»¯)", "å­ (Tá»­)", "å·¾ (CÃ¢n)", "å±± (SÆ¡n)", "çŠ­ (Khuyá»ƒn)"] },
+        { strokes: "4 NÃ©t", items: ["æœ¨ (Má»™c)", "æ¬  (Khiáº¿m)", "æ­¢ (Chá»‰)", "ç« (Há»a)", "çˆª (Tráº£o)", "çˆ¶ (Phá»¥)", "ç‰› (NgÆ°u)", "çŽ‹ (VÆ°Æ¡ng)", "æ—¥ (Nháº­t)", "æœˆ (Nguyá»‡t)", "å¿ƒ (TÃ¢m)"] },
+        { strokes: "5 NÃ©t+", items: ["ç›® (Má»¥c)", "çŸ³ (Tháº¡ch)", "ç¤º (Thá»‹)", "ç¦¾ (HÃ²a)", "ç«¹ (TrÃºc)", "ç±³ (Má»…)", "ç³¸ (Má»‹ch)", "è‚‰ (Nhá»¥c)", "èˆŸ (Chu)", "è¨€ (NgÃ´n)", "è´ (Bá»‘i)", "è½¦ (Xa)", "èµ° (Táº©u)", "è¶³ (TÃºc)", "èº« (ThÃ¢n)", "é—¨ (MÃ´n)", "é›¨ (VÅ©)", "é£Ÿ (Thá»±c)", "é¸Ÿ (Äiá»ƒu)"] }
+      ];
+
+      this.openModal(`
+        <div class="p-6 md:p-8 space-y-5 max-w-2xl mx-auto">
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
+            <div class="flex items-center gap-2.5">
+              <div class="w-10 h-10 rounded-2xl bg-teal-100 dark:bg-teal-950 text-teal-600 flex items-center justify-center font-bold">
+                <i data-lucide="puzzle" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="font-extrabold text-base text-slate-900 dark:text-white">Báº£ng Tra Cá»©u 214 Bá»™ Thá»§ Kinh Äiá»ƒn</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Báº¥m vÃ o báº¥t ká»³ bá»™ thá»§ nÃ o Ä‘á»ƒ lá»c cÃ¡c tá»« vá»±ng tÆ°Æ¡ng á»©ng.</p>
+              </div>
+            </div>
+            <button onclick="App.closeModal()" class="p-2 rounded-xl text-slate-400 hover:text-slate-600">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <div class="space-y-4 max-h-[60vh] overflow-y-auto pr-1">
+            ${radicalsByStrokes
+              .map(
+                (group) => `
+              <div class="space-y-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">
+                  ${group.strokes}:
+                </span>
+                <div class="flex flex-wrap gap-2">
+                  ${group.items
+                    .map((item) => {
+                      const char = item.split(" ")[0];
+                      return `
+                      <button
+                        onclick="App.closeModal(); App.handleDictSearch('${char}')"
+                        class="px-3 py-1.5 rounded-xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 hover:border-teal-500 hover:bg-teal-50 dark:hover:bg-teal-950/40 text-slate-800 dark:text-slate-200 text-xs font-bold transition flex items-center gap-1 shadow-sm"
+                      >
+                        <span class="font-hanzi text-base text-teal-600 dark:text-teal-400">${char}</span>
+                        <span class="text-[11px] text-slate-500">${item.split(" ")[1] || ""}</span>
+                      </button>
+                    `;
+                    })
+                    .join("")}
+                </div>
+              </div>
+            `
+              )
+              .join("")}
+          </div>
+        </div>
+      `);
+      this.refreshIcons();
     },
 
     createHanziWriter(containerId, char) {
@@ -1265,7 +2007,7 @@ document.addEventListener("DOMContentLoaded", () => {
           showOutline: true,
           strokeAnimationSpeed: 1.2,
           delayBetweenStrokes: 140,
-          strokeColor: isDark ? "#f87171" : "#dc2626", // Red
+          strokeColor: isDark ? "#f87171" : "#dc2626",
           outlineColor: isDark ? "#475569" : "#cbd5e1",
           drawingColor: "#2563eb",
           highlightColor: "#eab308"
@@ -1286,10 +2028,10 @@ document.addEventListener("DOMContentLoaded", () => {
     quizHanzi(containerId, char) {
       const writer = this.writers[containerId];
       if (writer) {
-        this.showToast(`Bắt đầu tập viết chữ "${char}": Hãy dùng chuột hoặc ngón tay vẽ theo từng nét trong ô nhé!`, "info");
+        this.showToast(`Báº¯t Ä‘áº§u táº­p viáº¿t chá»¯ "${char}": HÃ£y dÃ¹ng chuá»™t hoáº·c ngÃ³n tay váº½ theo tá»«ng nÃ©t trong Ã´ nhÃ©!`, "info");
         writer.quiz({
           onComplete: () => {
-            this.showToast(`Xuất sắc! Bạn đã viết đúng toàn bộ nét của chữ "${char}"!`, "success");
+            this.showToast(`Xuáº¥t sáº¯c! Báº¡n Ä‘Ã£ viáº¿t Ä‘Ãºng toÃ n bá»™ nÃ©t cá»§a chá»¯ "${char}"!`, "success");
           }
         });
       }
@@ -1308,13 +2050,13 @@ document.addEventListener("DOMContentLoaded", () => {
         hanzi,
         pinyin,
         meaning,
-        example: exampleZh || `用${hanzi}造一个句子。`,
-        exampleVi: exampleVi || `Đặt câu với từ ${hanzi}.`,
+        example: exampleZh || `ç”¨${hanzi}é€ ä¸€ä¸ªå¥å­ã€‚`,
+        exampleVi: exampleVi || `Äáº·t cÃ¢u vá»›i tá»« ${hanzi}.`,
         status: "learning"
       });
       window.StorageService.incrementStat("wordsLearnedToday", 1);
       this.updateHeaderProgress();
-      this.showToast(`Đã thêm "${hanzi}" vào bộ Flashcard thành công!`, "success");
+      this.showToast(`ÄÃ£ thÃªm "${hanzi}" vÃ o bá»™ Flashcard thÃ nh cÃ´ng!`, "success");
     },
 
     /* =====================================================================
