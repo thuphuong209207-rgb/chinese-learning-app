@@ -1,10 +1,19 @@
 // Gemini AI Integration Service
-// Uses gemini-2.5-flash REST endpoint
+// Uses gemini-3.8-flash REST endpoint with automatic smart fallback
 
 const GeminiService = {
+  lastUsedModel: "gemini-3.8-flash",
+
   getApiKey() {
     const settings = window.StorageService ? window.StorageService.getSettings() : {};
     return settings.apiKey ? settings.apiKey.trim() : "";
+  },
+
+  getModel() {
+    const settings = window.StorageService ? window.StorageService.getSettings() : {};
+    let m = settings.model || "gemini-3.8-flash";
+    if (m === "gemini-2.5-flash") m = "gemini-3.8-flash";
+    return m;
   },
 
   async callGemini(promptText, systemInstruction = "") {
@@ -17,46 +26,82 @@ const GeminiService = {
       throw new Error("Chưa nhập Gemini API Key. Vui lòng vào mục 'Cài đặt' để nhập API Key để kích hoạt tính năng AI thực tế!");
     }
 
-    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+    const preferredModel = this.getModel();
+    // Candidate models in priority order
+    const candidateModels = [
+      preferredModel,
+      "gemini-3.8-flash",
+      "gemini-2.0-flash",
+      "gemini-1.5-flash"
+    ].filter((m, idx, arr) => m && arr.indexOf(m) === idx);
 
-    const bodyPayload = {
-      contents: [
-        {
-          parts: parts
+    let lastError = null;
+
+    for (const model of candidateModels) {
+      try {
+        const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+
+        const bodyPayload = {
+          contents: [
+            {
+              parts: parts
+            }
+          ],
+          generationConfig: {
+            temperature: 0.3,
+            topK: 40,
+            topP: 0.95
+          }
+        };
+
+        if (systemInstruction) {
+          bodyPayload.systemInstruction = {
+            parts: [{ text: systemInstruction }]
+          };
         }
-      ],
-      generationConfig: {
-        temperature: 0.3,
-        topK: 40,
-        topP: 0.95
+
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(bodyPayload)
+        });
+
+        if (!response.ok) {
+          const errData = await response.json().catch(() => ({}));
+          const errMsg = errData.error?.message || `Lỗi API HTTP: ${response.status} ${response.statusText}`;
+
+          // If this specific model is deprecated / unavailable, try fallback candidate
+          if (response.status === 404 || errMsg.includes("no longer available") || errMsg.includes("not found")) {
+            console.warn(`Model ${model} không khả dụng, đang chuyển sang model dự phòng...`, errMsg);
+            lastError = new Error(errMsg);
+            continue;
+          }
+          throw new Error(errMsg);
+        }
+
+        const data = await response.json();
+        const candidate = data.candidates?.[0];
+        if (!candidate || !candidate.content?.parts?.[0]?.text) {
+          throw new Error("Không nhận được phản hồi hợp lệ từ Gemini API.");
+        }
+
+        this.lastUsedModel = model;
+        // If preferred model was deprecated, update settings with the working model
+        if (model !== preferredModel && window.StorageService) {
+          window.StorageService.saveSettings({ model });
+        }
+
+        return candidate.content.parts[0].text;
+      } catch (err) {
+        lastError = err;
+        // If it's invalid API key or permission denied, fail fast
+        if (err.message.includes("API key not valid") || err.message.includes("PERMISSION_DENIED") || err.message.includes("Chưa nhập")) {
+          throw err;
+        }
       }
-    };
-
-    if (systemInstruction) {
-      bodyPayload.systemInstruction = {
-        parts: [{ text: systemInstruction }]
-      };
     }
 
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(bodyPayload)
-    });
-
-    if (!response.ok) {
-      const errData = await response.json().catch(() => ({}));
-      const message = errData.error?.message || `Lỗi API HTTP: ${response.status} ${response.statusText}`;
-      throw new Error(message);
-    }
-
-    const data = await response.json();
-    const candidate = data.candidates?.[0];
-    if (!candidate || !candidate.content?.parts?.[0]?.text) {
-      throw new Error("Không nhận được phản hồi hợp lệ từ Gemini API.");
-    }
-
-    return candidate.content.parts[0].text;
+    throw lastError || new Error("Không thể kết nối đến các model Gemini khả dụng.");
   },
 
   // Helper to extract JSON from markdown formatted AI response (```json ... ```)
