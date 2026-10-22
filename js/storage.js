@@ -360,9 +360,60 @@ const StorageService = {
   getAiLookupHistory() {
     try {
       const raw = localStorage.getItem(STORAGE_KEYS.AI_LOOKUP_CACHE);
-      return raw ? JSON.parse(raw) : [];
+      if (raw) return JSON.parse(raw);
+      // Default sample recent searches matching user interface screenshot
+      const defaultHistory = [
+        {
+          hanzi: "yixm",
+          pinyin: "yīxiàng",
+          meaning: "Ý hướng, mục đích, định hướng",
+          query: "yixm",
+          hsk: 3,
+          radical: "心 (Tâm)",
+          strokes: 15,
+          savedAt: Date.now() - 3600000
+        },
+        {
+          hanzi: "作",
+          pinyin: "zuò",
+          meaning: "Làm, tác phẩm, sáng tác, hoạt động",
+          query: "作",
+          hsk: 2,
+          radical: "亻 (Nhân đứng)",
+          strokes: 7,
+          savedAt: Date.now() - 7200000
+        },
+        {
+          hanzi: "顶撞",
+          pinyin: "dǐngzhuàng",
+          meaning: "Cãi lại, đối đầu, va chạm, xúc phạm",
+          query: "顶撞",
+          hsk: 5,
+          radical: "页 (Hiệt)",
+          strokes: 23,
+          savedAt: Date.now() - 10800000
+        }
+      ];
+      localStorage.setItem(STORAGE_KEYS.AI_LOOKUP_CACHE, JSON.stringify(defaultHistory));
+      return defaultHistory;
     } catch (e) {
       return [];
+    }
+  },
+
+  deleteAiLookupItem(identifier) {
+    if (!identifier) return;
+    try {
+      let history = this.getAiLookupHistory();
+      const idStr = String(identifier).toLowerCase();
+      history = history.filter((item) => {
+        const itemHanzi = (item.hanzi || "").toLowerCase();
+        const itemQuery = (item.query || "").toLowerCase();
+        return itemHanzi !== idStr && itemQuery !== idStr;
+      });
+      localStorage.setItem(STORAGE_KEYS.AI_LOOKUP_CACHE, JSON.stringify(history));
+    } catch (e) {
+      console.warn("Could not delete AI lookup item", e);
     }
   },
 
