@@ -222,31 +222,38 @@ Cấu trúc JSON mong muốn:
   },
 
   // 4. Chengyu & Proverb Generator
-  async generateChengyuAI(theme = "bất kỳ") {
+  async generateChengyuAI(theme = "bất kỳ", category = "chengyu") {
     const apiKey = this.getApiKey();
     if (!apiKey) {
-      throw new Error("Vui lòng nhập Gemini API Key để tạo thành ngữ mới cùng điển tích!");
+      throw new Error("Vui lòng nhập Gemini API Key để tạo thành ngữ / tục ngữ mới cùng điển tích!");
     }
 
+    const typeDesc = category === "proverb" 
+      ? "một câu CA DAO hoặc TỤC NGỮ NHÂN SINH (Suyu / Yanyu 俗语・谚语)" 
+      : "một câu THÀNH NGỮ ĐIỂN TÍCH 4 CHỮ (Chengyu 成语)";
+
     const systemInstruction = `Bạn là một nhà nghiên cứu văn hóa văn học cổ điển Trung Hoa. Trả về DUY NHẤT JSON.`;
-    const prompt = `Hãy giới thiệu một câu thành ngữ (Chengyu) hoặc tục ngữ Trung Hoa nổi tiếng và giàu ý nghĩa về chủ đề: "${theme}".
+    const prompt = `Hãy giới thiệu ${typeDesc} của Trung Hoa thật chuẩn mực, nổi tiếng và sâu sắc về chủ đề: "${theme}".
 Định dạng JSON chuẩn:
 {
-  "hanzi": "4 chữ Hán thành ngữ (hoặc câu tục ngữ)",
-  "pinyin": "Pinyin đầy đủ có dấu thanh",
+  "category": "${category}",
+  "hanzi": "${category === "proverb" ? "Câu ca dao / tục ngữ chữ Hán" : "Chính xác 4 chữ Hán thành ngữ"}",
+  "pinyin": "Pinyin đầy đủ có dấu thanh điệu",
   "literal": "Dịch nghĩa đen từng chữ",
-  "figurative": "Nghĩa bóng, bài học triết lý sâu xa",
-  "story": "Kể lại câu chuyện / điển tích lịch sử hoặc ngụ ngôn xuất xứ (khoảng 3-4 câu tiếng Việt hấp dẫn)",
+  "figurative": "Nghĩa bóng, bài học triết lý nhân sinh sâu xa",
+  "story": "Kể lại nguồn gốc xuất xứ, câu chuyện / điển tích lịch sử hoặc bối cảnh ngụ ngôn (khoảng 3-4 câu tiếng Việt cuốn hút)",
   "example": {
-    "zh": "Câu ví dụ áp dụng trong giao tiếp hiện đại",
+    "zh": "Câu ví dụ áp dụng trong ngữ cảnh giao tiếp thực tế",
     "pinyin": "Pinyin câu ví dụ",
     "vi": "Dịch tiếng Việt câu ví dụ"
   },
-  "tags": ["Chủ đề 1", "Chủ đề 2"]
+  "tags": ["Chủ đề 1", "Chủ đề 2", "${category === "proverb" ? "Tục ngữ" : "Thành ngữ"}"]
 }`;
 
     const raw = await this.callGemini(prompt, systemInstruction);
-    return this.cleanJson(raw);
+    const parsed = this.cleanJson(raw);
+    parsed.category = parsed.category || category;
+    return parsed;
   },
 
   // 5. Flashcard Auto Fill
