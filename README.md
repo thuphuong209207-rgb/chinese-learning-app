@@ -64,15 +64,24 @@
   - Mọi từ người dùng trả lời sai hoặc để hết giờ sẽ tự động bị đẩy vào **"Danh sách từ chưa thuộc (Cần ôn gấp)"**.
   - Người học phải tham gia bài kiểm tra phạt và trả lời đúng **3 lần liên tiếp** thì từ đó mới được giải phóng khỏi danh sách phạt.
 
-### 6. Flashcard 3D Cá Nhân Hóa (3D Flip & AI Auto-fill)
-- Giao diện thẻ lật 3D không gian 3 chiều mượt mà:
-  - Mặt trước: Chữ Hán to rõ, cấp độ HSK, nút nghe phát âm.
-  - Mặt sau: Pinyin, Nghĩa tiếng Việt, Câu ví dụ và dịch nghĩa.
-- Đánh giá Spaced Repetition sau mỗi lần lật:
+### 6. Xưởng Tự Tạo Flashcard Cá Nhân Hóa (Custom Flashcard Studio & 3D Decks)
+- **Tự tạo bộ thẻ riêng biệt (Custom Decks):**
+  - Người dùng có thể tạo các bộ thẻ tùy chỉnh (vd: *Từ vựng HSK của tôi*, *Giao tiếp nhà hàng*, *Du lịch Bắc Kinh*...).
+  - Quản lý, lọc và luyện tập theo từng bộ thẻ riêng hoặc tất cả.
+- **Xưởng tạo thẻ thông minh (Flashcard Creator Studio):**
+  - Nhập Chữ Hán -> Bấm nút **"Điền Bằng Gemini AI"** để tự động hoàn thiện Pinyin chuẩn thanh điệu, Cấp độ HSK, Nghĩa tiếng Việt, Câu ví dụ thực tế và **Mẹo chiết tự ghi nhớ chữ**.
+  - Tích hợp nút phát âm nghe thử từ vựng và câu ví dụ ngay trong lúc tạo.
+- **Giao diện thẻ lật 3D không gian 3 chiều mượt mà:**
+  - Mặt trước: Chữ Hán to rõ, cấp độ HSK, tên bộ thẻ, nút nghe phát âm.
+  - Mặt sau: Pinyin, Nghĩa tiếng Việt, Câu ví dụ, Mẹo chiết tự nhớ chữ.
+- **Đánh giá Spaced Repetition sau mỗi lần lật:**
   - 🔴 **Quên (Học lại ngay):** Tự động đẩy từ này vào Hộp Phạt để rèn luyện 3 lần đúng liên tiếp.
   - 🟡 **Nhớ mang máng**
   - 🟢 **Đã thuộc làu làu**
-- Nút **"+ Tạo thẻ mới"**: Có tính năng **"Điền bằng AI"**, người dùng chỉ cần nhập chữ Hán, Gemini AI sẽ tự động điền Pinyin, Nghĩa và câu ví dụ hoàn chỉnh.
+- **Quản lý thư viện thẻ (CRUD & Backup):**
+  - Tìm kiếm thẻ theo Hán tự, Pinyin hoặc nghĩa.
+  - Chỉnh sửa (Edit) trực tiếp từng trường dữ liệu hoặc Xóa thẻ.
+  - **Xuất dữ liệu (Export JSON)** và **Nhập dữ liệu (Import JSON)** giúp sao lưu và chia sẻ bộ thẻ dễ dàng.
 
 ### 7. Lịch Trình & Hệ Thống Nhắc Nhở Học Tập
 - Thiết lập mục tiêu hàng ngày: Số từ vựng cần học (VD: 10 từ/ngày), Số thành ngữ cần học (VD: 2 câu/ngày).
