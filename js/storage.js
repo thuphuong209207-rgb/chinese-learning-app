@@ -7,10 +7,25 @@ const STORAGE_KEYS = {
   PENALTY: "ch_app_penalty_list",
   FLASHCARDS: "ch_app_flashcards",
   GOALS: "ch_app_goals",
-  DECKS: "ch_app_decks"
+  DECKS: "ch_app_decks",
+  USER_LEVEL: "ch_app_user_level"
 };
 
 const StorageService = {
+  // User Selected Level
+  getUserLevel() {
+    return localStorage.getItem(STORAGE_KEYS.USER_LEVEL) || "HSK 1";
+  },
+
+  saveUserLevel(level) {
+    localStorage.setItem(STORAGE_KEYS.USER_LEVEL, level);
+    return level;
+  },
+
+  isLevelChosen() {
+    return localStorage.getItem(STORAGE_KEYS.USER_LEVEL) !== null;
+  },
+
   // Settings
   getSettings() {
     const raw = localStorage.getItem(STORAGE_KEYS.SETTINGS);
