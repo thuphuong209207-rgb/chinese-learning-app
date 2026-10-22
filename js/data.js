@@ -2,1338 +2,4627 @@
 // HSK 1 - 6 Vocabulary Bank, Chengyu & Proverbs, Exam Questions, Speaking Scenarios
 
 window.APP_DATA = {
-  // 1. Comprehensive Vocabulary Bank (Covering HSK 1 - 6 and Hanyu Jiaocheng)
+  // 1. Comprehensive Vocabulary Bank (Covering HSK 1 - 6 and Tieng Trung Thuong Mai)
   vocabList: [
-    // ==================== HSK 1 (Sơ cấp 1) ====================
-    {
-      id: "v1_01",
-      hanzi: "你好",
-      pinyin: "nǐ hǎo",
-      meaning: "Xin chào (lời chào phổ biến)",
-      hsk: 1,
-      radical: "亻 (Nhân đứng) & 女 (Nữ)",
-      strokes: 7,
-      strokeOrderRules: "Nét phẩy và sổ đứng trước, bao ngoài trước trong sau",
-      collocations: ["你好吗 (Bạn khỏe không)", "你们好 (Chào các bạn)"],
-      example: {
-        zh: "你好，很高兴认识你！",
-        pinyin: "Nǐ hǎo, hěn gāoxìng rènshí nǐ!",
-        vi: "Xin chào, rất vui được làm quen với bạn!"
-      }
-    },
-    {
-      id: "v1_02",
-      hanzi: "学习",
-      pinyin: "xué xí",
-      meaning: "Học tập, học hỏi",
-      hsk: 1,
-      radical: "子 (Tử) & 习 (Tập)",
-      strokes: 8,
-      strokeOrderRules: "Chấm trước phẩy sau, trên trước dưới sau",
-      collocations: ["学习汉语 (Học tiếng Trung)", "努力学习 (Chăm chỉ học)"],
-      example: {
-        zh: "我每天都在努力学习汉语。",
-        pinyin: "Wǒ měitiān dōu zài nǔlì xuéxí hànyǔ.",
-        vi: "Mỗi ngày tôi đều nỗ lực học tiếng Hán."
-      }
-    },
-    {
-      id: "v1_03",
-      hanzi: "喜欢",
-      pinyin: "xǐ huan",
-      meaning: "Thích, yêu thích",
-      hsk: 1,
-      radical: "口 (Khẩu) & 欠 (Khiếm)",
-      strokes: 12,
-      strokeOrderRules: "Trên trước dưới sau, trái trước phải sau",
-      collocations: ["喜欢喝茶 (Thích uống trà)", "很喜欢 (Rất thích)"],
-      example: {
-        zh: "你喜欢喝中国茶吗？",
-        pinyin: "Nǐ xǐhuan hē zhōngguó chá ma?",
-        vi: "Bạn có thích uống trà Trung Quốc không?"
-      }
-    },
-    {
-      id: "v1_04",
-      hanzi: "谢谢",
-      pinyin: "xiè xie",
-      meaning: "Cảm ơn",
-      hsk: 1,
-      radical: "讠 (Ngôn) & 身 (Thân)",
-      strokes: 12,
-      strokeOrderRules: "Trái trước phải sau: Bộ ngôn viết trước",
-      collocations: ["不客气 (Không có chi)", "多谢 (Đa tạ)"],
-      example: {
-        zh: "谢谢老师的耐心帮助。",
-        pinyin: "Xièxie lǎoshī de nàixīn bāngzhù.",
-        vi: "Cảm ơn sự giúp đỡ kiên nhẫn của thầy cô."
-      }
-    },
-    {
-      id: "v1_05",
-      hanzi: "看书",
-      pinyin: "kàn shū",
-      meaning: "Đọc sách, xem sách",
-      hsk: 1,
-      radical: "目 (Mục) & ⺕ (Kế)",
-      strokes: 9,
-      strokeOrderRules: "Phẩy trước ngang sau, trên che dưới",
-      collocations: ["看书学习 (Đọc sách học tập)", "爱看书 (Thích đọc sách)"],
-      example: {
-        zh: "我周末经常在图书馆看书。",
-        pinyin: "Wǒ zhōumò jīngcháng zài túshūguǎn kàn shū.",
-        vi: "Cuối tuần tôi thường đọc sách ở thư viện."
-      }
-    },
-    {
-      id: "v1_06",
-      hanzi: "喝茶",
-      pinyin: "hē chá",
-      meaning: "Uống trà",
-      hsk: 1,
-      radical: "口 (Khẩu) & 艹 (Thảo)",
-      strokes: 12,
-      strokeOrderRules: "Bộ Khẩu bên trái trước, bộ Thảo trên đầu trước",
-      collocations: ["喝绿茶 (Uống trà xanh)", "喝热茶 (Uống trà nóng)"],
-      example: {
-        zh: "请坐，我们一边喝茶一边聊。",
-        pinyin: "Qǐng zuò, wǒmen yìbiān hē chá yìbiān liáo.",
-        vi: "Mời ngồi, chúng ta vừa uống trà vừa trò chuyện."
-      }
-    },
-    {
-      id: "v1_07",
-      hanzi: "家",
-      pinyin: "jiā",
-      meaning: "Nhà, gia đình",
-      hsk: 1,
-      radical: "宀 (Miên - Mái nhà)",
-      strokes: 10,
-      strokeOrderRules: "Mái nhà (bộ Miên) trên cùng viết trước",
-      collocations: ["回家 (Về nhà)", "大家 (Mọi người)", "家里人 (Người trong nhà)"],
-      example: {
-        zh: "我的家在北京，欢迎来做客。",
-        pinyin: "Wǒ de jiā zài běijīng, huānyíng lái zuòkè.",
-        vi: "Nhà tôi ở Bắc Kinh, hoan nghênh đến chơi."
-      }
-    },
-    {
-      id: "v1_08",
-      hanzi: "谢谢",
-      pinyin: "xiè xie",
-      meaning: "Cảm ơn, tạ ơn",
-      hsk: 1,
-      radical: "讠 (Ngôn) & 身 (Thân)",
-      strokes: 12,
-      strokeOrderRules: "Bộ Ngôn bên trái viết trước, chữ Thân ở giữa, chữ Thốn bên phải",
-      collocations: ["非常感谢 (Vô cùng cảm ơn)", "不用谢 (Không cần cảm ơn/Đừng khách sáo)"],
-      example: {
-        zh: "太谢谢你了，帮了我这么大一个忙！",
-        pinyin: "Tài xièxie nǐ le, bāng le wǒ zhème dà yí gè máng!",
-        vi: "Cảm ơn bạn nhiều lắm, đã giúp tôi một việc lớn như vậy!"
-      }
-    },
-    {
-      id: "v1_09",
-      hanzi: "再见",
-      pinyin: "zài jiàn",
-      meaning: "Tạm biệt, hẹn gặp lại",
-      hsk: 1,
-      radical: "冂 (Quynh) & 见 (Kiến)",
-      strokes: 6,
-      strokeOrderRules: "Ngang trên cùng viết trước, bao ngoài trước trong sau",
-      collocations: ["明天见 (Ngày mai gặp lại)", "再见朋友 (Tạm biệt bạn bè)"],
-      example: {
-        zh: "时间不早了，我们明天学校再见吧！",
-        pinyin: "Shíjiān bù zǎo le, wǒmen míngtiān xuéxiào zàijiàn ba!",
-        vi: "Thời gian không còn sớm nữa, ngày mai hẹn gặp lại ở trường nhé!"
-      }
-    },
-    {
-      id: "v1_10",
-      hanzi: "苹果",
-      pinyin: "píng guǒ",
-      meaning: "Quả táo",
-      hsk: 1,
-      radical: "艹 (Thảo) & 木 (Mộc)",
-      strokes: 8,
-      strokeOrderRules: "Bộ Thảo đầu viết trước, phần chữ dưới viết sau",
-      collocations: ["吃苹果 (Ăn táo)", "红苹果 (Táo đỏ)"],
-      example: {
-        zh: "每天吃一个红苹果对身体非常有益。",
-        pinyin: "Měitiān chī yí gè hóng píngguǒ duì shēntǐ fēicháng yǒuyì.",
-        vi: "Mỗi ngày ăn một quả táo đỏ rất có lợi cho sức khỏe."
-      }
-    },
-    {
-      id: "v1_11",
-      hanzi: "医生",
-      pinyin: "yī shēng",
-      meaning: "Bác sĩ, thầy thuốc",
-      hsk: 1,
-      radical: "匚 (Phương) & 生 (Sinh)",
-      strokes: 7,
-      strokeOrderRules: "Nét ngang trên trước, phần bên trong, nét gập đáy sau cùng",
-      collocations: ["看医生 (Đi khám bác sĩ)", "当医生 (Làm bác sĩ)"],
-      example: {
-        zh: "我身体有些不舒服，想去医院看医生。",
-        pinyin: "Wǒ shēntǐ yǒuxiē bù shūfu, xiǎng qù yīyuàn kàn yīshēng.",
-        vi: "Trong người tôi hơi khó chịu, muốn đến bệnh viện khám bác sĩ."
-      }
-    },
-    {
-      id: "v1_12",
-      hanzi: "朋友",
-      pinyin: "péng you",
-      meaning: "Bạn bè, bằng hữu",
-      hsk: 1,
-      radical: "月 (Nguyệt) & 又 (Hựu)",
-      strokes: 8,
-      strokeOrderRules: "Trái trước phải sau: Bộ Nguyệt trái trước, bộ Nguyệt phải sau",
-      collocations: ["好朋友 (Bạn thân)", "老朋友 (Bạn cũ)"],
-      example: {
-        zh: "我们在北京结识了很多热情的中国朋友。",
-        pinyin: "Wǒmen zài běijīng jiéshí le hěn duō rèqíng de zhōngguó péngyou.",
-        vi: "Chúng tôi đã quen biết rất nhiều người bạn Trung Quốc nhiệt tình tại Bắc Kinh."
-      }
-    },
-
-    // ==================== HSK 2 (Sơ cấp 2) ====================
-    {
-      id: "v2_01",
-      hanzi: "旅游",
-      pinyin: "lǚ yóu",
-      meaning: "Du lịch, đi tham quan",
-      hsk: 2,
-      radical: "方 (Phương) & 氵 (Thủy)",
-      strokes: 10,
-      strokeOrderRules: "Bộ Phương viết trước, bộ Thủy bên trái viết trước",
-      collocations: ["去旅游 (Đi du lịch)", "旅游景点 (Điểm du lịch)"],
-      example: {
-        zh: "我和家人打算去北京旅游。",
-        pinyin: "Wǒ hé jiārén dǎsuàn qù běijīng lǚyóu.",
-        vi: "Tôi cùng gia đình dự định đi Bắc Kinh du lịch."
-      }
-    },
-    {
-      id: "v2_02",
-      hanzi: "准备",
-      pinyin: "zhǔn bèi",
-      meaning: "Chuẩn bị, dự định",
-      hsk: 2,
-      radical: "冫 (Băng) & 夂 (Tuy)",
-      strokes: 10,
-      strokeOrderRules: "Trái trước phải sau: Bộ băng viết trước",
-      collocations: ["准备考试 (Chuẩn bị thi)", "准备好 (Chuẩn bị xong)"],
-      example: {
-        zh: "你准备好明天的汉语考试了吗？",
-        pinyin: "Nǐ zhǔnbèi hǎo míngtiān de hànyǔ kǎoshì le ma?",
-        vi: "Bạn đã chuẩn bị xong cho bài thi tiếng Hán ngày mai chưa?"
-      }
-    },
-    {
-      id: "v2_03",
-      hanzi: "跑步",
-      pinyin: "pǎo bù",
-      meaning: "Chạy bộ",
-      hsk: 2,
-      radical: "足 (Túc) & 止 (Chỉ)",
-      strokes: 12,
-      strokeOrderRules: "Bộ Túc bên trái chỉ đôi chân viết trước",
-      collocations: ["晨跑 (Chạy bộ buổi sáng)", "每天跑步 (Chạy bộ mỗi ngày)"],
-      example: {
-        zh: "他每天早晨六点去公园跑步。",
-        pinyin: "Tā měitiān zǎochén liù diǎn qù gōngyuán pǎobù.",
-        vi: "Anh ấy mỗi sáng 6 giờ đều đến công viên chạy bộ."
-      }
-    },
-    {
-      id: "v2_04",
-      hanzi: "运动",
-      pinyin: "yùn dòng",
-      meaning: "Vận động, thể thao",
-      hsk: 2,
-      radical: "辶 (Xước) & 力 (Lực)",
-      strokes: 7,
-      strokeOrderRules: "Viết phần thân chữ bên trong trước, bộ Xước bao ngoài sau",
-      collocations: ["参加运动 (Tham gia thể thao)", "体育运动 (Môn thể thao)"],
-      example: {
-        zh: "经常运动有利于身体健康。",
-        pinyin: "Jīngcháng yùndòng yǒulì yú shēntǐ jiànkāng.",
-        vi: "Thường xuyên vận động rất có lợi cho sức khỏe."
-      }
-    },
-    {
-      id: "v2_05",
-      hanzi: "帮助",
-      pinyin: "bāng zhù",
-      meaning: "Giúp đỡ, tương trợ",
-      hsk: 2,
-      radical: "巾 (Cân) & 力 (Lực)",
-      strokes: 9,
-      strokeOrderRules: "Trên trước dưới sau, trái trước phải sau",
-      collocations: ["互相帮助 (Tương trợ lẫn nhau)", "热情帮助 (Nhiệt tình giúp)"],
-      example: {
-        zh: "在学习中，同学们应该互相帮助。",
-        pinyin: "Zài xuéxí zhōng, tóngxuémen yīnggāi hùxiāng bāngzhù.",
-        vi: "Trong học tập, các bạn học nên giúp đỡ lẫn nhau."
-      }
-    },
-    {
-      id: "v2_06",
-      hanzi: "已经",
-      pinyin: "yǐ jīng",
-      meaning: "Đã, rồi (biểu thị hoàn thành)",
-      hsk: 2,
-      radical: "巳 (Tị) & 纟 (Mịch)",
-      strokes: 3,
-      strokeOrderRules: "Nét gập ngang sổ hất trước, nét phẩy sau",
-      collocations: ["已经好了 (Đã xong rồi)", "已经到了 (Đã đến nơi)"],
-      example: {
-        zh: "我已经完成了今天的汉语学习任务。",
-        pinyin: "Wǒ yǐjīng wánchéng le jīntiān de hànyǔ xuéxí rènwù.",
-        vi: "Tôi đã hoàn thành xong nhiệm vụ học tiếng Hán của ngày hôm nay."
-      }
-    },
-    {
-      id: "v2_07",
-      hanzi: "便宜",
-      pinyin: "pián yi",
-      meaning: "Rẻ, giá cả hợp lý",
-      hsk: 2,
-      radical: "亻 (Nhân đứng) & 宀 (Miên)",
-      strokes: 9,
-      strokeOrderRules: "Bộ Nhân đứng bên trái viết trước",
-      collocations: ["太便宜了 (Rẻ quá)", "便宜一点 (Rẻ hơn một chút)"],
-      example: {
-        zh: "这件衣服不仅质量好，而且价格很便宜。",
-        pinyin: "Zhè jiàn yīfu bùjǐn zhìliàng hǎo, érqiě jiàgé hěn piányi.",
-        vi: "Bộ quần áo này không chỉ chất lượng tốt mà giá cả lại rất rẻ."
-      }
-    },
-    {
-      id: "v2_08",
-      hanzi: "晴天",
-      pinyin: "qíng tiān",
-      meaning: "Trời nắng, trời quang đãng",
-      hsk: 2,
-      radical: "日 (Nhật) & 大 (Đại)",
-      strokes: 12,
-      strokeOrderRules: "Bộ Nhật (mặt trời) bên trái viết trước",
-      collocations: ["明天是晴天 (Ngày mai trời nắng)", "晴朗的天气 (Thời tiết nắng ráo)"],
-      example: {
-        zh: "今天是个大晴天，我们一起去公园散步吧。",
-        pinyin: "Jīntiān shì gè dà qíngtiān, wǒmen yìqǐ qù gōngyuán sànbù ba.",
-        vi: "Hôm nay là một ngày nắng đẹp trời, chúng ta cùng nhau đi công viên dạo bộ nhé."
-      }
-    },
-    {
-      id: "v2_09",
-      hanzi: "唱歌",
-      pinyin: "chàng gē",
-      meaning: "Ca hát, hát",
-      hsk: 2,
-      radical: "口 (Khẩu) & 欠 (Khiếm)",
-      strokes: 11,
-      strokeOrderRules: "Bộ Khẩu (miệng) bên trái chữ Xướng viết trước",
-      collocations: ["喜欢唱歌 (Thích hát)", "唱中文歌 (Hát bài hát tiếng Trung)"],
-      example: {
-        zh: "她不仅普通话说得好，中文歌也唱得非常动听。",
-        pinyin: "Tā bùjǐn pǔtōnghuà shuō de hǎo, zhōngwén gē yě chàng de fēicháng dòngtīng.",
-        vi: "Cô ấy không chỉ nói tiếng phổ thông giỏi mà hát nhạc Trung cũng rất hay."
-      }
-    },
-    {
-      id: "v2_10",
-      hanzi: "穿衣服",
-      pinyin: "chuān yī fu",
-      meaning: "Mặc quần áo",
-      hsk: 2,
-      radical: "穴 (Huyệt) & 衣 (Y)",
-      strokes: 9,
-      strokeOrderRules: "Bộ Huyệt trên đầu viết trước",
-      collocations: ["穿新衣服 (Mặc đồ mới)", "快穿衣服 (Mau mặc áo quần vào)"],
-      example: {
-        zh: "外边天气转凉了，出门记得多穿衣服。",
-        pinyin: "Wàibiān tiānqì zhuǎn liáng le, chūmén jìde duō chuān yīfu.",
-        vi: "Thời tiết ngoài trời trở lạnh rồi, ra ngoài nhớ mặc thêm nhiều áo ấm nhé."
-      }
-    },
-
-    // ==================== HSK 3 (Trung cấp sơ) ====================
-    {
-      id: "v3_01",
-      hanzi: "解决",
-      pinyin: "jiě jué",
-      meaning: "Giải quyết, dàn xếp",
-      hsk: 3,
-      radical: "角 (Giác) & 冫 (Băng)",
-      strokes: 13,
-      strokeOrderRules: "Trái trước phải sau: Bộ Giác bên trái viết trước",
-      collocations: ["解决问题 (Giải quyết vấn đề)", "圆满解决 (Giải quyết ổn thỏa)"],
-      example: {
-        zh: "我们必须尽快找到解决这个问题的办法。",
-        pinyin: "Wǒmen bìxū jǐnkuài zhǎodào jiějué zhège wèntí de bànfǎ.",
-        vi: "Chúng ta phải nhanh chóng tìm ra cách giải quyết vấn đề này."
-      }
-    },
-    {
-      id: "v3_02",
-      hanzi: "环境",
-      pinyin: "huán jìng",
-      meaning: "Môi trường, hoàn cảnh",
-      hsk: 3,
-      radical: "王 (Vương/Ngọc) & 土 (Thổ)",
-      strokes: 8,
-      strokeOrderRules: "Bộ Ngọc bên trái, bộ Thổ bên trái chữ Cảnh",
-      collocations: ["保护环境 (Bảo vệ môi trường)", "工作环境 (Môi trường làm việc)"],
-      example: {
-        zh: "为了下一代，我们应该保护自然环境。",
-        pinyin: "Wèile xià yī dài, wǒmen yīnggāi bǎohù zìrán huánjìng.",
-        vi: "Vì thế hệ tương lai, chúng ta nên bảo vệ môi trường tự nhiên."
-      }
-    },
-    {
-      id: "v3_03",
-      hanzi: "机会",
-      pinyin: "jī huì",
-      meaning: "Cơ hội, dịp may",
-      hsk: 3,
-      radical: "木 (Mộc) & 人 (Nhân)",
-      strokes: 4,
-      strokeOrderRules: "Bộ Mộc viết trước: Ngang, sổ, phẩy, chấm",
-      collocations: ["抓住机会 (Nắm bắt cơ hội)", "难得的机会 (Cơ hội hiếm có)"],
-      example: {
-        zh: "这是一个很难得的工作机会，你一定要把握住。",
-        pinyin: "Zhè shì yí gè hěn nándé de gōngzuò jīhuì, nǐ yídìng yào bǎwò zhù.",
-        vi: "Đây là một cơ hội việc làm rất hiếm có, bạn nhất định phải nắm bắt lấy."
-      }
-    },
-    {
-      id: "v3_04",
-      hanzi: "习惯",
-      pinyin: "xí guàn",
-      meaning: "Thói quen, tập quán, quen với",
-      hsk: 3,
-      radical: "习 (Tập) & 忄 (Tâm đứng)",
-      strokes: 11,
-      strokeOrderRules: "Bộ Tâm đứng bên trái chữ Quán viết trước",
-      collocations: ["养成习惯 (Nuôi dưỡng thói quen)", "生活习惯 (Thói quen sinh hoạt)"],
-      example: {
-        zh: "早睡早起是一个非常好的生活习惯。",
-        pinyin: "Zǎoshuì zǎoqǐ shì yí gè fēicháng hǎo de shēnghuó xíguàn.",
-        vi: "Ngủ sớm dậy sớm là một thói quen sinh hoạt rất tốt."
-      }
-    },
-    {
-      id: "v3_05",
-      hanzi: "提高",
-      pinyin: "tí gāo",
-      meaning: "Nâng cao, cải thiện",
-      hsk: 3,
-      radical: "扌 (Thủ) & 高 (Cao)",
-      strokes: 12,
-      strokeOrderRules: "Bộ Thủ (tay) viết trước: Ngang, móc đứng, hất",
-      collocations: ["提高水平 (Nâng cao trình độ)", "提高效率 (Tăng hiệu suất)"],
-      example: {
-        zh: "多看中文电影可以有效提高听力水平。",
-        pinyin: "Duō kàn zhōngwén diànyǐng kěyǐ yǒuxiào tígāo tīnglì shuǐpíng.",
-        vi: "Xem nhiều phim tiếng Trung có thể nâng cao trình độ nghe hiệu quả."
-      }
-    },
-    {
-      id: "v3_06",
-      hanzi: "热情",
-      pinyin: "rè qíng",
-      meaning: "Nhiệt tình, niềm nở, hiếu khách",
-      hsk: 3,
-      radical: "灬 (Hỏa) & 忄 (Tâm đứng)",
-      strokes: 10,
-      strokeOrderRules: "Bốn chấm hỏa ở đáy chữ Nhiệt viết sau cùng",
-      collocations: ["热情待客 (Niềm nở đón khách)", "非常热情 (Rất nhiệt tình)"],
-      example: {
-        zh: "中国人非常热情好客，给我们留下了深刻印象。",
-        pinyin: "Zhōngguó rén fēicháng rèqíng hàokè, gěi wǒmen liú xià le shēnkè yìnxiàng.",
-        vi: "Người Trung Quốc rất nhiệt tình và hiếu khách, để lại ấn tượng sâu sắc cho chúng tôi."
-      }
-    },
-    {
-      id: "v3_07",
-      hanzi: "经理",
-      pinyin: "jīng lǐ",
-      meaning: "Giám đốc, người quản lý",
-      hsk: 3,
-      radical: "纟 (Mịch) & 王 (Vương)",
-      strokes: 8,
-      strokeOrderRules: "Bộ Mịch bên trái chữ Kinh viết trước",
-      collocations: ["部门经理 (Giám đốc bộ phận)", "总公司经理 (Tổng giám đốc công ty)"],
-      example: {
-        zh: "张经理正在会议室和外宾洽谈业务。",
-        pinyin: "Zhāng jīnglǐ zhèngzài huìyìshì hé wàibīn qiàtán yèwù.",
-        vi: "Giám đốc Trương đang ở trong phòng họp thảo luận công việc với khách nước ngoài."
-      }
-    },
-    {
-      id: "v3_08",
-      hanzi: "愿意",
-      pinyin: "yuàn yì",
-      meaning: "Bằng lòng, sẵn lòng, nguyện ý",
-      hsk: 3,
-      radical: "心 (Tâm) & 音 (Âm)",
-      strokes: 14,
-      strokeOrderRules: "Bộ Tâm ở đáy chữ Nguyện viết sau",
-      collocations: ["非常愿意 (Rất sẵn lòng)", "愿意帮忙 (Sẵn lòng giúp đỡ)"],
-      example: {
-        zh: "如果需要，我很愿意为你提供力所能及的帮助。",
-        pinyin: "Rúguǒ xūyào, wǒ hěn yuànyì wèi nǐ tígōng lìsuǒnéngjí de bāngzhù.",
-        vi: "Nếu cần thiết, tôi rất sẵn lòng cung cấp sự giúp đỡ trong khả năng của mình."
-      }
-    },
-    {
-      id: "v3_09",
-      hanzi: "简单",
-      pinyin: "jiǎn dān",
-      meaning: "Đơn giản, dễ hiểu",
-      hsk: 3,
-      radical: "竹 (Trúc) & 十 (Thập)",
-      strokes: 11,
-      strokeOrderRules: "Bộ Trúc trên đầu viết trước",
-      collocations: ["简单明了 (Đơn giản rõ ràng)", "生活简单 (Cuộc sống giản dị)"],
-      example: {
-        zh: "这个问题其实很简单，只要用心就能想明白。",
-        pinyin: "Zhège wèntí qíshí hěn jiǎndān, zhǐyào yòngxīn jiù néng xiǎng míngbai.",
-        vi: "Vấn đề này thực ra rất đơn giản, chỉ cần để tâm là có thể hiểu ra."
-      }
-    },
-    {
-      id: "v3_10",
-      hanzi: "聪明",
-      pinyin: "cōng ming",
-      meaning: "Thông minh, lanh lợi",
-      hsk: 3,
-      radical: "耳 (Nhĩ) & 日 (Nhật)",
-      strokes: 14,
-      strokeOrderRules: "Bộ Nhĩ (tai) bên trái viết trước",
-      collocations: ["聪明伶俐 (Thông minh lanh lợi)", "聪明能干 (Thông minh tháo vát)"],
-      example: {
-        zh: "这个小女孩非常聪明，学什么都特别快。",
-        pinyin: "Zhège xiǎo nǚhái fēicháng cōngming, xué shénme dōu tèbié kuài.",
-        vi: "Cô bé này rất thông minh, học cái gì cũng đều đặc biệt nhanh."
-      }
-    },
-
-    // ==================== HSK 4 (Trung cấp) ====================
-    {
-      id: "v4_01",
-      hanzi: "坚持",
-      pinyin: "jiān chí",
-      meaning: "Kiên trì, giữ vững",
-      hsk: 4,
-      radical: "土 (Thổ) & 扌 (Thủ)",
-      strokes: 9,
-      strokeOrderRules: "Ngang trước sổ sau, bộ Thổ viết trước",
-      collocations: ["坚持到底 (Kiên trì đến cùng)", "坚持不懈 (Kiên trì không nản)"],
-      example: {
-        zh: "只要坚持努力，你就一定会取得成功。",
-        pinyin: "Zhǐyào jiānchí nǔlì, nǐ jiù yídìng huì qǔdé chénggōng.",
-        vi: "Chỉ cần kiên trì nỗ lực, bạn nhất định sẽ đạt được thành công."
-      }
-    },
-    {
-      id: "v4_02",
-      hanzi: "积累",
-      pinyin: "jī lěi",
-      meaning: "Tích lũy, dồn lại",
-      hsk: 4,
-      radical: "禾 (Hòa) & 糸 (Mịch)",
-      strokes: 16,
-      strokeOrderRules: "Bộ Hòa bên trái chữ Tích viết trước",
-      collocations: ["积累经验 (Tích lũy kinh nghiệm)", "积累知识 (Tích lũy kiến thức)"],
-      example: {
-        zh: "在工作中，我们要不断积累宝贵的实践经验。",
-        pinyin: "Zài gōngzuò zhōng, wǒmen yào búduàn jīlěi bǎoguì de shíjiàn jīngyàn.",
-        vi: "Trong công việc, chúng ta cần không ngừng tích lũy kinh nghiệm thực tiễn quý báu."
-      }
-    },
-    {
-      id: "v4_03",
-      hanzi: "交流",
-      pinyin: "jiāo liú",
-      meaning: "Giao lưu, trao đổi",
-      hsk: 4,
-      radical: "亠 (Đầu) & 氵 (Thủy)",
-      strokes: 6,
-      strokeOrderRules: "Bộ Đầu viết trước: Chấm, ngang dài, phẩy, mác",
-      collocations: ["文化交流 (Giao lưu văn hóa)", "相互交流 (Trao đổi lẫn nhau)"],
-      example: {
-        zh: "多和中国朋友交流能快速提高口语水平。",
-        pinyin: "Duō hé zhōngguó péngyou jiāoliú néng kuàisù tígāo kǒuyǔ shuǐpíng.",
-        vi: "Giao lưu nhiều với bạn bè Trung Quốc có thể nâng cao trình độ khẩu ngữ nhanh chóng."
-      }
-    },
-    {
-      id: "v4_04",
-      hanzi: "负责",
-      pinyin: "fù zé",
-      meaning: "Chịu trách nhiệm, phụ trách",
-      hsk: 4,
-      radical: "亻 (Nhân đứng) & 贝 (Bối)",
-      strokes: 9,
-      strokeOrderRules: "Bộ Nhân đứng bên trái viết trước",
-      collocations: ["认真负责 (Nghiêm túc trách nhiệm)", "对工作负责 (Chịu trách nhiệm với công việc)"],
-      example: {
-        zh: "他对工作认真负责，赢得了大家的好评。",
-        pinyin: "Tā duì gōngzuò rènzhēn fùzé, yíngdé le dàjiā de hǎopíng.",
-        vi: "Anh ấy làm việc nghiêm túc và có trách nhiệm, nhận được đánh giá cao từ mọi người."
-      }
-    },
-    {
-      id: "v4_05",
-      hanzi: "流利",
-      pinyin: "liú lì",
-      meaning: "Lưu loát, trôi chảy",
-      hsk: 4,
-      radical: "氵 (Thủy) & 刂 (Đao đứng)",
-      strokes: 10,
-      strokeOrderRules: "Ba chấm thủy bên trái viết trước",
-      collocations: ["口语流利 (Khẩu ngữ trôi chảy)", "表达流利 (Diễn đạt lưu loát)"],
-      example: {
-        zh: "经过长期的刻苦练习，他能说一口流利的普通话。",
-        pinyin: "Jīngguò chángqī de kèkǔ liànxí, tā néng shuō yì kǒu liúlì de pǔtōnghuà.",
-        vi: "Trải qua thời gian dài khổ luyện, anh ấy đã nói được tiếng phổ thông lưu loát."
-      }
-    },
-    {
-      id: "v4_06",
-      hanzi: "无论",
-      pinyin: "wú lùn",
-      meaning: "Bất luận, dù cho, cho dù",
-      hsk: 4,
-      radical: "一 (Nhất) & 讠 (Ngôn)",
-      strokes: 4,
-      strokeOrderRules: "Ngang trên cùng viết trước",
-      collocations: ["无论如何 (Bất luận thế nào/Bằng mọi giá)", "无论多难 (Cho dù khó khăn đến đâu)"],
-      example: {
-        zh: "无论遇到多么大的困难，我们都决不能轻言放弃。",
-        pinyin: "Wúlùn yù dào duōme dà de kùnnán, wǒmen dōu jué bù néng qīng yán fàngqì.",
-        vi: "Bất luận gặp phải khó khăn lớn đến đâu, chúng ta cũng quyết không được dễ dàng từ bỏ."
-      }
-    },
-    {
-      id: "v4_07",
-      hanzi: "关键",
-      pinyin: "guān jiàn",
-      meaning: "Then chốt, mấu chốt, điểm cốt lõi",
-      hsk: 4,
-      radical: "门 (Môn) & 钅 (Kim)",
-      strokes: 6,
-      strokeOrderRules: "Bộ Môn viết ngoài trước trong sau",
-      collocations: ["关键时刻 (Giờ phút then chốt)", "起关键作用 (Đóng vai trò mấu chốt)"],
-      example: {
-        zh: "学好语言的关键在于日常坚持不懈地多听多说。",
-        pinyin: "Xué hǎo yǔyán de guānjiàn zàiyú rìcháng jiānchíbúxiè de duō tīng duō shuō.",
-        vi: "Mấu chốt để học giỏi một ngôn ngữ nằm ở việc kiên trì nghe nhiều nói nhiều mỗi ngày."
-      }
-    },
-    {
-      id: "v4_08",
-      hanzi: "压力",
-      pinyin: "yā lì",
-      meaning: "Áp lực, sự căng thẳng",
-      hsk: 4,
-      radical: "厂 (Hán) & 力 (Lực)",
-      strokes: 6,
-      strokeOrderRules: "Ngang trên cùng của chữ Áp trước, phẩy sau",
-      collocations: ["缓解压力 (Giải tỏa áp lực)", "工作压力 (Áp lực công việc)"],
-      example: {
-        zh: "适度的压力可以成为推动我们不断前进的动力。",
-        pinyin: "Shìdù de yālì kěyǐ chéngwéi tuīdòng wǒmen búduàn qiánjìn de dònglì.",
-        vi: "Áp lực vừa phải có thể trở thành động lực thúc đẩy chúng ta không ngừng tiến về phía trước."
-      }
-    },
-    {
-      id: "v4_09",
-      hanzi: "成功",
-      pinyin: "chéng gōng",
-      meaning: "Thành công, thắng lợi",
-      hsk: 4,
-      radical: "戈 (Qua) & 力 (Lực)",
-      strokes: 6,
-      strokeOrderRules: "Phẩy trước, ngang gập móc, nét móc dài qua sau cùng",
-      collocations: ["取得成功 (Đạt được thành công)", "祝你成功 (Chúc bạn thành công)"],
-      example: {
-        zh: "每一个成功的背后，都凝聚着无数默默付出的汗水。",
-        pinyin: "Měi yí gè chénggōng de bèihòu, dōu níngjù zhe wúshù mòmò fùchū de hànshuǐ.",
-        vi: "Đằng sau mỗi thành công đều kết tinh từ vô số mồ hôi thầm lặng cống hiến."
-      }
-    },
-    {
-      id: "v4_10",
-      hanzi: "态度",
-      pinyin: "tài du",
-      meaning: "Thái độ, cách nhìn nhận",
-      hsk: 4,
-      radical: "心 (Tâm) & 广 (Quảng)",
-      strokes: 8,
-      strokeOrderRules: "Bộ Tâm ở đáy chữ Thái viết sau cùng",
-      collocations: ["工作态度 (Thái độ làm việc)", "积极的态度 (Thái độ tích cực)"],
-      example: {
-        zh: "积极乐观的生活态度能帮助我们战胜一切困难。",
-        pinyin: "Jījí lèguān de shēnghuó tàidù néng bāngzhù wǒmen zhànshèng yíqiè kùnnán.",
-        vi: "Thái độ sống tích cực lạc quan có thể giúp chúng ta chiến thắng mọi gian khó."
-      }
-    },
-
-    // ==================== HSK 5 (Cao cấp) ====================
-    {
-      id: "v5_01",
-      hanzi: "掌握",
-      pinyin: "zhǎng wò",
-      meaning: "Nắm vững, làm chủ",
-      hsk: 5,
-      radical: "扌 (Thủ) & 扌 (Thủ)",
-      strokes: 11,
-      strokeOrderRules: "Bộ Thủ (tay) viết trước cả hai chữ",
-      collocations: ["掌握知识 (Nắm vững kiến thức)", "掌握主动权 (Nắm quyền chủ động)"],
-      example: {
-        zh: "熟练掌握一门外语需要付出长期的时间与精力。",
-        pinyin: "Shúliàn zhǎngwò yī mén wàiyǔ xūyào fùchū chángqī de shíjiān yǔ jīnglì.",
-        vi: "Nắm vững thành thạo một ngoại ngữ đòi hỏi phải bỏ ra nhiều thời gian và công sức."
-      }
-    },
-    {
-      id: "v5_02",
-      hanzi: "挑战",
-      pinyin: "tiǎo zhàn",
-      meaning: "Thử thách, thách thức",
-      hsk: 5,
-      radical: "扌 (Thủ) & 戈 (Qua)",
-      strokes: 9,
-      strokeOrderRules: "Trái trước phải sau, phẩy trước mác sau",
-      collocations: ["迎接挑战 (Đón nhận thử thách)", "充满挑战 (Tràn đầy thách thức)"],
-      example: {
-        zh: "面对新环境的挑战，我们要保持乐观的心态。",
-        pinyin: "Miànduì xīn huánjìng de tiǎozhàn, wǒmen yào bǎochí lèguān de xīntài.",
-        vi: "Đối mặt với thử thách của môi trường mới, chúng ta cần duy trì tâm thế lạc quan."
-      }
-    },
-    {
-      id: "v5_03",
-      hanzi: "逻辑",
-      pinyin: "luó ji",
-      meaning: "Logic, tính mạch lạc",
-      hsk: 5,
-      radical: "纟 (Mịch) & 禾 (Hòa)",
-      strokes: 11,
-      strokeOrderRules: "Bộ Mịch bên trái viết trước",
-      collocations: ["逻辑思维 (Tư duy logic)", "符合逻辑 (Phù hợp logic)"],
-      example: {
-        zh: "这篇文章论点鲜明，逻辑十分严谨。",
-        pinyin: "Zhè piān wénzhāng lùndiǎn xiānmíng, luójí shífēn yánjǐn.",
-        vi: "Bài viết này luận điểm rõ ràng, tư duy logic rất chặt chẽ."
-      }
-    },
-    {
-      id: "v5_04",
-      hanzi: "深刻",
-      pinyin: "shēn kè",
-      meaning: "Sâu sắc, sâu đậm",
-      hsk: 5,
-      radical: "氵 (Thủy) & 刂 (Đao đứng)",
-      strokes: 11,
-      strokeOrderRules: "Bộ Thủy bên trái viết trước, bộ Đao đứng bên phải viết sau",
-      collocations: ["印象深刻 (Ấn tượng sâu sắc)", "深刻的教训 (Bài học sâu sắc)"],
-      example: {
-        zh: "这次旅行给我留下了极其深刻美好的印象。",
-        pinyin: "Zhè cì lǚxíng gěi wǒ liú xià le jíqí shēnkè měihǎo de yìnxiàng.",
-        vi: "Chuyến đi lần này để lại cho tôi ấn tượng vô cùng sâu sắc và tốt đẹp."
-      }
-    },
-    {
-      id: "v5_05",
-      hanzi: "独特",
-      pinyin: "dú tè",
-      meaning: "Độc đáo, đặc sắc riêng biệt",
-      hsk: 5,
-      radical: "犭 (Khuyển) & 牛 (Ngưu)",
-      strokes: 9,
-      strokeOrderRules: "Bộ Khuyển bên trái viết trước",
-      collocations: ["独特的风格 (Phong cách độc đáo)", "独特见解 (Quan điểm độc đáo)"],
-      example: {
-        zh: "这位画家的作品展现出独特的艺术魅力。",
-        pinyin: "Zhè wèi huàjiā de zuòpǐn zhǎnxiàn chū dútè de yìshù mèilì.",
-        vi: "Tác phẩm của họa sĩ này thể hiện sức hút nghệ thuật độc đáo."
-      }
-    },
-    {
-      id: "v5_06",
-      hanzi: "甚至",
-      pinyin: "shèn zhì",
-      meaning: "Thậm chí, ngay cả",
-      hsk: 5,
-      radical: "甘 (Cam) & 至 (Chí)",
-      strokes: 9,
-      strokeOrderRules: "Bộ Cam bên trái viết trước",
-      collocations: ["甚至连...也 (Thậm chí ngay cả... cũng)", "不仅如此甚至 (Không những vậy thậm chí)"],
-      example: {
-        zh: "他不仅熟悉中国文化，甚至能背诵很多经典古诗。",
-        pinyin: "Tā bùjǐn shúxī zhōngguó wénhuà, shènzhì néng bèisòng hěn duō jīngdiǎn gǔshī.",
-        vi: "Anh ấy không chỉ am hiểu văn hóa Trung Hoa, thậm chí còn có thể ngâm thuộc lòng nhiều bài thơ cổ kinh điển."
-      }
-    },
-    {
-      id: "v5_07",
-      hanzi: "挑战",
-      pinyin: "tiǎo zhàn",
-      meaning: "Thách thức, thử thách",
-      hsk: 5,
-      radical: "扌 (Thủ) & 戈 (Qua)",
-      strokes: 9,
-      strokeOrderRules: "Bộ Thủ (tay) bên trái chữ Khiêu viết trước",
-      collocations: ["迎接挑战 (Đón nhận thử thách)", "充满挑战 (Tràn đầy thách thức)"],
-      example: {
-        zh: "面对未知的困难，我们要敢于迎接各种崭新的挑战。",
-        pinyin: "Miànduì wèizhī de kùnnán, wǒmen yào gǎnyú yíngjiē gè zhǒng zhǎnxīn de tiǎozhàn.",
-        vi: "Đối mặt với những gian khó phía trước, chúng ta phải dám đón nhận muôn vàn thử thách mới mẻ."
-      }
-    },
-    {
-      id: "v5_08",
-      hanzi: "珍惜",
-      pinyin: "zhēn xī",
-      meaning: "Trân trọng, quý trọng, giữ gìn",
-      hsk: 5,
-      radical: "王 (Ngọc) & 忄 (Tâm đứng)",
-      strokes: 10,
-      strokeOrderRules: "Bộ Ngọc bên trái chữ Trân viết trước",
-      collocations: ["珍惜时间 (Trân quý thời gian)", "珍惜友谊 (Trân trọng tình bạn)"],
-      example: {
-        zh: "青春一去不复返，我们应当加倍珍惜宝贵的光阴。",
-        pinyin: "Qīngchūn yí qù bú fù fǎn, wǒmen yīngdāng jiābèi zhēnxī bǎoguì de guāngyīn.",
-        vi: "Thanh xuân một đi không trở lại, chúng ta phải trân trọng gấp bội từng tấc thời gian quý giá."
-      }
-    },
-    {
-      id: "v5_09",
-      hanzi: "启发",
-      pinyin: "qǐ fā",
-      meaning: "Gợi mở, truyền cảm hứng, gợi ý",
-      hsk: 5,
-      radical: "户 (Hộ) & 癶 (Bát)",
-      strokes: 7,
-      strokeOrderRules: "Bộ Hộ bên ngoài chữ Khải viết trước",
-      collocations: ["深受启发 (Nhận được sự gợi mở sâu sắc)", "得到启发 (Được truyền cảm hứng)"],
-      example: {
-        zh: "导师的一番深刻话语给了我们极大的智慧启发。",
-        pinyin: "Dǎoshī de yì fān shēnkè huàyǔ gěi le wǒmen jí dà de zhìhuì qǐfā.",
-        vi: "Lời chia sẻ sâu sắc của người thầy đã đem lại cho chúng tôi nguồn cảm hứng trí tuệ to lớn."
-      }
-    },
-    {
-      id: "v5_10",
-      hanzi: "把握",
-      pinyin: "bǎ wò",
-      meaning: "Nắm bắt (cơ hội), nắm chắc",
-      hsk: 5,
-      radical: "扌 (Thủ) & 扌 (Thủ)",
-      strokes: 7,
-      strokeOrderRules: "Bộ Thủ bên trái chữ Bả viết trước",
-      collocations: ["把握机遇 (Nắm bắt thời cơ)", "很有把握 (Rất nắm chắc)"],
-      example: {
-        zh: "时代在飞速发展，只有敏锐把握机遇的人才能脱颖而出。",
-        pinyin: "Shídài zài fēisù fāzhǎn, zhǐyǒu mǐnruì bǎwò jīyù de rén cáinéng tuōyǐng-érchū.",
-        vi: "Thời đại đang phát triển thần tốc, chỉ người nhạy bén nắm bắt cơ hội mới có thể bứt phá vươn lên."
-      }
-    },
-
-    // ==================== HSK 6 (Thành thạo) ====================
-    {
-      id: "v6_01",
-      hanzi: "潜移默化",
-      pinyin: "qián yí mò huà",
-      meaning: "Thấm dần, ngấm dần từng chút một (ảnh hưởng ngấm ngầm)",
-      hsk: 6,
-      radical: "氵 (Thủy) & 匕 (Chủy)",
-      strokes: 15,
-      strokeOrderRules: "Trái trước phải sau, trên trước dưới sau",
-      collocations: ["潜移默化的影响 (Tác động ngấm ngầm)", "受到熏陶 (Được hun đúc)"],
-      example: {
-        zh: "家庭文化氛围对孩子的性格起着潜移默化的塑造作用。",
-        pinyin: "Jiātíng wénhuà fēnwéi duì háizi de xìnggé qǐ zhe qiányí-mòhuà de sùzào zuòyòng.",
-        vi: "Bầu không khí văn hóa gia đình có tác dụng thẩm thấu âm thầm định hình tính cách đứa trẻ."
-      }
-    },
-    {
-      id: "v6_02",
-      hanzi: "渊博",
-      pinyin: "yuān bó",
-      meaning: "Uyên bác, sâu rộng (học vấn)",
-      hsk: 6,
-      radical: "氵 (Thủy) & 十 (Thập)",
-      strokes: 11,
-      strokeOrderRules: "Bộ Thủy bên trái viết trước",
-      collocations: ["学识渊博 (Học thức uyên bác)", "见闻渊博 (Hiểu biết sâu rộng)"],
-      example: {
-        zh: "李教授学识渊博，深受全体师生的爱戴与钦佩。",
-        pinyin: "Lǐ jiàoshòu xuéshì yuānbó, shēn shòu quántǐ shīshēng de àidài yǔ qīnpèi.",
-        vi: "Giáo sư Lý học thức uyên bác, nhận được sự kính trọng và ngưỡng mộ sâu sắc từ toàn thể giảng viên sinh viên."
-      }
-    },
-    {
-      id: "v6_03",
-      hanzi: "精益求精",
-      pinyin: "jīng yì qiú jīng",
-      meaning: "Đã tinh xảo lại muốn tinh xảo hơn, luôn cầu tiến hoàn hảo",
-      hsk: 6,
-      radical: "米 (Mễ) & 皿 (Mãnh)",
-      strokes: 14,
-      strokeOrderRules: "Bộ Mễ bên trái chữ Tinh viết trước",
-      collocations: ["精益求精的精神 (Tinh thần không ngừng hoàn thiện)", "追求卓越 (Theo đuổi sự xuất sắc)"],
-      example: {
-        zh: "大国工匠在工艺上始终坚持精益求精的态度。",
-        pinyin: "Dàguó gōngjiàng zài gōngyì shàng shǐzhōng jiānchí jīngyì-qiújīng de tàidù.",
-        vi: "Những nghệ nhân bậc thầy luôn giữ vững thái độ tinh hoa cầu tinh túy trong từng đường nét thủ công."
-      }
-    },
-    {
-      id: "v6_04",
-      hanzi: "络绎不绝",
-      pinyin: "luò yì bù jué",
-      meaning: "Nườm nượp không ngớt, liên miên liên tục",
-      hsk: 6,
-      radical: "纟 (Mịch) & 纟 (Mịch)",
-      strokes: 9,
-      strokeOrderRules: "Bộ Mịch bên trái viết trước cả hai chữ Lạc và Dịch",
-      collocations: ["游人络绎不绝 (Du khách nườm nượp)", "车马络绎不绝 (Xe cộ dập dìu)"],
-      example: {
-        zh: "节假日的故宫博物院前，中外游客络绎不绝。",
-        pinyin: "Jiéjiàrì de gùgōng bówùyuàn qián, zhōngwài yóukè luòyì-bùjué.",
-        vi: "Trước Bảo tàng Cố Cung vào ngày lễ tết, du khách trong và ngoài nước nườm nượp không ngớt."
-      }
-    },
-    {
-      id: "v6_05",
-      hanzi: "脍炙人口",
-      pinyin: "kuài zhì rén kǒu",
-      meaning: "Nức tiếng muôn nơi, miệng truyền miệng tấm tắc ngợi khen",
-      hsk: 6,
-      radical: "月 (Nguyệt / Nhục) & 口 (Khẩu)",
-      strokes: 10,
-      strokeOrderRules: "Bộ Nguyệt bên trái chữ Khoái viết trước",
-      collocations: ["脍炙人口的名篇 (Tác phẩm nức tiếng)", "广泛流传 (Lưu truyền rộng rãi)"],
-      example: {
-        zh: "李白的这首古诗千百年来一直是脍炙人口的名篇佳作。",
-        pinyin: "Lǐ bái de zhè shǒu gǔshī qiān bǎi nián lái yìzhí shì kuàizhì-rénkǒu de míngpiān jiāzuò.",
-        vi: "Bài thơ cổ này của Lý Bạch suốt hàng nghìn năm qua luôn là áng thơ nức tiếng được người đời tấm tắc ngâm vịnh."
-      }
-    },
-    {
-      id: "v6_06",
-      hanzi: "审时度势",
-      pinyin: "shěn shí duó shì",
-      meaning: "Xem xét thời thế, liệu bề ứng biến, suy xét tình thế",
-      hsk: 6,
-      radical: "宀 (Miên) & 日 (Nhật)",
-      strokes: 9,
-      strokeOrderRules: "Bộ Miên trên cùng viết trước",
-      collocations: ["善于审时度势 (Khéo nhìn nhận thời thế)", "科学决策 (Ra quyết định khoa học)"],
-      example: {
-        zh: "优秀的战略决策者总能审时度势，抓住瞬息万变的市场先机。",
-        pinyin: "Yōuxiù de zhànlüè juécèzhě zǒng néng shěnshí-duóshì, zhuāzhù shùnxī-wànbiàn de shìchǎng xiānjī.",
-        vi: "Nhà hoạch định chiến lược xuất sắc luôn biết nhìn nhận thời thế để nắm bắt thời cơ thị trường biến ảo khôn lường."
-      }
-    },
-    {
-      id: "v6_07",
-      hanzi: "侃侃而谈",
-      pinyin: "kǎn kǎn ér tán",
-      meaning: "Nói năng lưu loát, tự tin đĩnh đạc, hùng hồn",
-      hsk: 6,
-      radical: "亻 (Nhân đứng) & 讠 (Ngôn)",
-      strokes: 8,
-      strokeOrderRules: "Bộ Nhân đứng bên trái chữ Khản viết trước",
-      collocations: ["在台上侃侃而谈 (Tự tin thuyết trình trên bục)", "谈吐自如 (Nói năng thoải mái)"],
-      example: {
-        zh: "他在国际高峰论坛上侃侃而谈，赢得了各国代表的热烈掌声。",
-        pinyin: "Tā zài guójì gāofēng lùntán shàng kǎnkǎn-értán, yíngdé le gè guó dàibiǎo de rèliè zhǎngshēng.",
-        vi: "Anh ấy đĩnh đạc thuyết trình tại diễn đàn thượng đỉnh quốc tế, nhận được tràng pháo tay nhiệt liệt từ đại biểu các nước."
-      }
-    },
-    {
-      id: "v6_08",
-      hanzi: "根深蒂固",
-      pinyin: "gēn shēn dì gù",
-      meaning: "Ăn sâu bén rễ, thâm căn cố đế, khó bề lay chuyển",
-      hsk: 6,
-      radical: "木 (Mộc) & 氵 (Thủy)",
-      strokes: 10,
-      strokeOrderRules: "Bộ Mộc bên trái chữ Căn viết trước",
-      collocations: ["根深蒂固的观念 (Quan niệm thâm căn cố đế)", "传统习俗 (Phong tục truyền thống)"],
-      example: {
-        zh: "有些陈旧落后的观念虽然根深蒂固，但终将被时代淘汰。",
-        pinyin: "Yǒuxiē chénjiù luòhòu de guānniàn suīrán gēnshēn-dìgù, dàn zhōng jiāng bèi shídài táotài.",
-        vi: "Một số quan niệm lạc hậu tuy đã ăn sâu bén rễ, nhưng cuối cùng cũng sẽ bị thời đại đào thải."
-      }
-    },
-    {
-      id: "v6_09",
-      hanzi: "循序渐进",
-      pinyin: "xún xù jiàn jìn",
-      meaning: "Từng bước một tiến lên, theo trình tự mà tiến bước",
-      hsk: 6,
-      radical: "彳 (Xích) & 广 (Quảng)",
-      strokes: 12,
-      strokeOrderRules: "Bộ Xích (bước chân trái) viết trước",
-      collocations: ["循序渐进地学习 (Học tập theo từng bước)", "科学规划 (Quy hoạch khoa học)"],
-      example: {
-        zh: "学习外语切忌急于求成，必须遵循循序渐进的客观规律。",
-        pinyin: "Xuéxí wàiyǔ qièjì jíyúqiúchéng, bìxū zūnxún xúnxù-jiànjìn de kèguān guīlǜ.",
-        vi: "Học ngoại ngữ tối kỵ nóng vội đốt cháy giai đoạn, phải tuân thủ quy luật khách quan tiến bước tuần tự."
-      }
-    },
-    {
-      id: "v6_10",
-      hanzi: "见多识广",
-      pinyin: "jiàn duō shí guǎng",
-      meaning: "Thấy nhiều biết rộng, từng trải lịch thiệp, kiến thức uyên thâm",
-      hsk: 6,
-      radical: "见 (Kiến) & 讠 (Ngôn)",
-      strokes: 4,
-      strokeOrderRules: "Chữ Kiến viết trước: Sổ dọc, ngang gập, phẩy, móc đứng cong",
-      collocations: ["阅历丰富 (Vốn sống phong phú)", "见多识广的长者 (Bậc trưởng bối thấy nhiều biết rộng)"],
-      example: {
-        zh: "他游历过世界上几十个国家，是个见多识广、谈吐幽默的学者。",
-        pinyin: "Tā yóulì guò shìjiè shàng jǐ shí gè guójiā, shì gè jiànduō-shíguǎng, tántù yōumò de xuézhě.",
-        vi: "Ông ấy đã du hành qua hàng chục quốc gia trên thế giới, là một học giả thấy nhiều biết rộng và trò chuyện rất hóm hỉnh."
-      }
-    },
-
-    // ==================== TIẾNG TRUNG THƯƠNG MẠI (商务汉语 - Business Chinese) ====================
-    {
-      id: "vb_01",
-      hanzi: "合同",
-      pinyin: "hé tong",
-      meaning: "Hợp đồng thương mại, khế ước giao thương",
-      hsk: "Thương Mại",
-      category: "business",
-      deck: "business",
-      radical: "人 (Nhân) & 口 (Khẩu)",
-      strokes: 6,
-      strokeOrderRules: "Phẩy trước mác sau, ngang viết tiếp theo, bộ Khẩu đáy viết sau cùng",
-      collocations: ["签订合同 (Ký kết hợp đồng)", "履行合同 (Thực hiện hợp đồng)", "起草合同 (Soạn thảo hợp đồng)"],
-      example: {
-        zh: "双方代表在人民大会堂正式签署了战略合作商业合同。",
-        pinyin: "Shuāngfāng dàibiǎo zài rénmín dàhuìtáng zhèngshì qiānshǔ le zhànlüè hézuò shāngyè hétong.",
-        vi: "Đại diện hai bên đã chính thức ký kết hợp đồng thương mại hợp tác chiến lược tại Đại lễ đường Nhân dân."
-      }
-    },
-    {
-      id: "vb_02",
-      hanzi: "谈判",
-      pinyin: "tán pàn",
-      meaning: "Đàm phán, thương thuyết, thương thảo kinh doanh",
-      hsk: "Thương Mại",
-      category: "business",
-      deck: "business",
-      radical: "讠 (Ngôn) & 刂 (Đao đứng)",
-      strokes: 11,
-      strokeOrderRules: "Bộ Ngôn bên trái chữ Đàm viết trước",
-      collocations: ["商业谈判 (Đàm phán kinh doanh)", "价格谈判 (Thương lượng giá cả)", "陷入僵局 (Rơi vào bế tắc)"],
-      example: {
-        zh: "经过三轮艰苦谈判，双方最终在核心价格条款上达成共识。",
-        pinyin: "Jīngguò sān lún jiānkǔ tánpàn, shuāngfāng zuìzhōng zài héxīn jiàgé tiáokuǎn shàng dáchéng gòngshí.",
-        vi: "Trải qua 3 vòng đàm phán cam go, hai bên cuối cùng đã đạt được đồng thuận về các điều khoản giá cả cốt lõi."
-      }
-    },
-    {
-      id: "vb_03",
-      hanzi: "报价",
-      pinyin: "bào jià",
-      meaning: "Báo giá, bảng báo giá chào hàng (Quotation)",
-      hsk: "Thương Mại",
-      category: "business",
-      deck: "business",
-      radical: "扌 (Thủ) & 亻 (Nhân đứng)",
-      strokes: 7,
-      strokeOrderRules: "Bộ Thủ (tay) bên trái chữ Báo viết trước",
-      collocations: ["正式报价 (Báo giá chính thức)", "接受报价 (Chấp nhận báo giá)", "最终报价 (Báo giá cuối cùng)"],
-      example: {
-        zh: "请贵公司在下周五之前向我们发送该批设备的详细书面报价。",
-        pinyin: "Qǐng guì gōngsī zài xià zhōuwǔ zhīqián xiàng wǒmen fāsòng gāi pī shèbèi de xiángxì shūmiàn bàojià.",
-        vi: "Xin quý công ty gửi cho chúng tôi bảng báo giá chi tiết bằng văn bản của lô thiết bị này trước thứ Sáu tuần sau."
-      }
-    },
-    {
-      id: "vb_04",
-      hanzi: "发票",
-      pinyin: "fā piào",
-      meaning: "Hóa đơn tài chính, hóa đơn đỏ VAT (Invoice)",
-      hsk: "Thương Mại",
-      category: "business",
-      deck: "business",
-      radical: "癶 (Bát) & 示 (Thị)",
-      strokes: 5,
-      strokeOrderRules: "Phẩy trước, ngang phẩy gập, mác dài",
-      collocations: ["开具增值税发票 (Xuất hóa đơn VAT)", "发票抬头 (Tên đơn vị trên hóa đơn)"],
-      example: {
-        zh: "收到款项确认无误后，财务部会立即为您开具正规增值税专用发票。",
-        pinyin: "Shōudào kuǎnxiàng quèrèn wúwù hòu, cáiwùbù huì lìjí wèi nǐ kāijù zhèngguī zēngzhíshuì zhuānyòng fāpiào.",
-        vi: "Sau khi xác nhận nhận tiền chính xác, phòng tài vụ sẽ lập tức xuất hóa đơn đỏ VAT chuyên dụng cho quý khách."
-      }
-    },
-    {
-      id: "vb_05",
-      hanzi: "汇率",
-      pinyin: "huì lǜ",
-      meaning: "Tỷ giá hối đoái tiền tệ (Exchange Rate)",
-      hsk: "Thương Mại",
-      category: "business",
-      deck: "business",
-      radical: "氵 (Thủy) & 玄 (Huyền)",
-      strokes: 13,
-      strokeOrderRules: "Ba chấm thủy bên trái viết trước",
-      collocations: ["汇率波动 (Biến động tỷ giá)", "人民币对美元汇率 (Tỷ giá RMB/USD)", "外汇风险 (Rủi ro ngoại hối)"],
-      example: {
-        zh: "近期国际外汇汇率波动剧烈，对外贸出口企业带来了汇兑损益挑战。",
-        pinyin: "Jìnqī guójì wàihuì huìlǜ bōdòng jùliè, duì wàimào chūkǒu qǐyè dài lái le huìduì sǔnyì tiǎozhàn.",
-        vi: "Gần đây tỷ giá ngoại hối quốc tế biến động dữ dội, đem lại thách thức lỗ lãi tỷ giá cho các doanh nghiệp xuất khẩu ngoại thương."
-      }
-    },
-    {
-      id: "vb_06",
-      hanzi: "违约金",
-      pinyin: "wéi yuē jīn",
-      meaning: "Tiền phạt vi phạm hợp đồng (Liquidated Damages / Penalty)",
-      hsk: "Thương Mại",
-      category: "business",
-      deck: "business",
-      radical: "辶 (Xước) & 纟 (Mịch)",
-      strokes: 7,
-      strokeOrderRules: "Viết thân chữ Vi bên trong trước, bộ Xước bao ngoài sau",
-      collocations: ["支付违约金 (Chi trả tiền phạt vi phạm)", "合同违约责任 (Trách nhiệm vi phạm hợp đồng)"],
-      example: {
-        zh: "如任何一方未能按时交货，需按合同约定支付货款总额百分之五的违约金。",
-        pinyin: "Rú rènhé yì fāng wèinéng ànshí jiāohuò, xū àn hétong yuēdìng zhīfù huòkuǎn zǒng'é bǎifēnzhīwǔ de wéiyuējīn.",
-        vi: "Nếu bất kỳ bên nào không giao hàng đúng hạn, cần chi trả khoản tiền phạt vi phạm hợp đồng bằng 5% tổng giá trị lô hàng."
-      }
-    },
-    {
-      id: "vb_07",
-      hanzi: "信用证",
-      pinyin: "xìn yòng zhèng",
-      meaning: "Thư tín dụng thanh toán quốc tế (Letter of Credit - L/C)",
-      hsk: "Thương Mại",
-      category: "business",
-      deck: "business",
-      radical: "亻 (Nhân) & 讠 (Ngôn)",
-      strokes: 9,
-      strokeOrderRules: "Bộ Nhân đứng bên trái chữ Tín viết trước",
-      collocations: ["不可撤销信用证 (L/C không thể hủy ngang)", "开立信用证 (Mở thư tín dụng L/C)"],
-      example: {
-        zh: "我们要求买方在装运前一个月通过指定国际银行开立不可撤销即期信用证。",
-        pinyin: "Wǒmen yāoqiú mǎifāng zài zhuāngyùn qián yí gè yuè tōngguò zhǐdìng guójì yínháng kāilì bùkěchèxiāo jíqī xìnyòngzhèng.",
-        vi: "Chúng tôi yêu cầu bên mua mở thư tín dụng trả ngay không thể hủy ngang qua ngân hàng quốc tế chỉ định 1 tháng trước khi bốc hàng."
-      }
-    },
-    {
-      id: "vb_08",
-      hanzi: "定金",
-      pinyin: "dìng jīn",
-      meaning: "Tiền đặt cọc, tiền trả trước (Deposit)",
-      hsk: "Thương Mại",
-      category: "business",
-      deck: "business",
-      radical: "宀 (Miên) & 金 (Kim)",
-      strokes: 8,
-      strokeOrderRules: "Bộ Miên trên đỉnh chữ Định viết trước",
-      collocations: ["交付定金 (Giao tiền cọc)", "没收定金 (Tịch thu tiền cọc)", "定金收据 (Biên nhận tiền cọc)"],
-      example: {
-        zh: "买方需在签署订货协议后三个工作日内电汇百分之三十作为生产定金。",
-        pinyin: "Mǎifāng xū zài qiānshǔ dìnghuò xiéyì hòu sān gè gōngzuòrì nèi diànhuì bǎifēnzhīsānshí zuòwéi shēngchǎn dìngjīn.",
-        vi: "Bên mua cần chuyển khoản 30% làm tiền cọc sản xuất trong vòng 3 ngày làm việc sau khi ký thỏa thuận đặt hàng."
-      }
-    },
-    {
-      id: "vb_09",
-      hanzi: "索赔",
-      pinyin: "suǒ péi",
-      meaning: "Khiếu nại bồi thường, đòi bồi thường bảo hiểm (Claim for Damages)",
-      hsk: "Thương Mại",
-      category: "business",
-      deck: "business",
-      radical: "十 (Thập) & 贝 (Bối)",
-      strokes: 10,
-      strokeOrderRules: "Bộ Thập trên đỉnh chữ Tác viết trước",
-      collocations: ["提出索赔 (Đưa ra yêu cầu bồi thường)", "索赔期限 (Thời hạn khiếu nại bồi thường)"],
-      example: {
-        zh: "经第三方公证检验货物存在严重破损，我方正式向保险公司提出索赔。",
-        pinyin: "Jīng dì-sān fāng gōngzhèng jiǎnyàn huòwù cúnzài yánzhòng pòsǔn, wǒfāng zhèngshì xiàng bǎoxiǎn gōngsī tíchū suǒpéi.",
-        vi: "Qua giám định của bên thứ 3 xác nhận hàng hóa hư hỏng nghiêm trọng, bên tôi chính thức yêu cầu công ty bảo hiểm bồi thường."
-      }
-    },
-    {
-      id: "vb_10",
-      hanzi: "利润",
-      pinyin: "lì rùn",
-      meaning: "Lợi nhuận ròng, tiền lãi doanh nghiệp (Profit)",
-      hsk: "Thương Mại",
-      category: "business",
-      deck: "business",
-      radical: "禾 (Hòa) & 氵 (Thủy)",
-      strokes: 7,
-      strokeOrderRules: "Bộ Hòa bên trái chữ Lợi viết trước",
-      collocations: ["净利润 (Lợi nhuận ròng)", "利润率 (Tỷ suất lợi nhuận)", "实现利润 (Đạt mức lợi nhuận)"],
-      example: {
-        zh: "得益于成本优化和技术创新，本季度公司净利润实现了百分之二十五的强劲增长。",
-        pinyin: "Déyì yú chéngběn yōuhuà hé jìshù chuàngxīn, běn jìdù gōngsī jìnglìrùn shíxiàn le bǎifēnzhī'èrshíwǔ de qiángjìng zēngzhǎng.",
-        vi: "Nhờ tối ưu chi phí và đổi mới công nghệ, lợi nhuận ròng của công ty quý này đã tăng trưởng mạnh mẽ 25%."
-      }
-    },
-    {
-      id: "vb_11",
-      hanzi: "关税",
-      pinyin: "guān shuì",
-      meaning: "Thuế hải quan, thuế quan xuất nhập khẩu (Tariff / Customs Duty)",
-      hsk: "Thương Mại",
-      category: "business",
-      deck: "business",
-      radical: "门 (Môn) & 禾 (Hòa)",
-      strokes: 6,
-      strokeOrderRules: "Chấm trước phẩy sau, bộ Môn bao quanh",
-      collocations: ["海关关税 (Thuế quan hải quan)", "关税优惠 (Ưu đãi thuế quan)", "零关税 (Thuế quan 0%)"],
-      example: {
-        zh: "根据自贸协定规定，自明年起两国进出口大部分机械设备将享受零关税待遇。",
-        pinyin: "Gēnjù zìmào xiédìng guīdìng, zì míngnián qǐ liǎng guó jìn-chūkǒu dà bùfen jīxiè shèbèi jiāng xiǎngshòu líng guānshuì dàiyù.",
-        vi: "Theo hiệp định thương mại tự do, từ năm tới phần lớn thiết bị máy móc xuất nhập khẩu giữa hai nước sẽ được hưởng thuế quan 0%."
-      }
-    },
-    {
-      id: "vb_12",
-      hanzi: "供应链",
-      pinyin: "gōng yìng liàn",
-      meaning: "Chuỗi cung ứng hàng hóa sản xuất (Supply Chain)",
-      hsk: "Thương Mại",
-      category: "business",
-      deck: "business",
-      radical: "亻 (Nhân) & 钅 (Kim)",
-      strokes: 8,
-      strokeOrderRules: "Bộ Nhân đứng bên trái chữ Cung viết trước",
-      collocations: ["供应链管理 (Quản trị chuỗi cung ứng SCM)", "全球供应链 (Chuỗi cung ứng toàn cầu)"],
-      example: {
-        zh: "构建韧性强大且高效透明的供应链体系是制造业保持长期竞争力的基石。",
-        pinyin: "Gòujiàn rènxìng qiángdà qiě gāoxiào tòumíng de gōngyìngliàn tǐxì shì zhìzàoyè bǎochí chángqī jìngzhēnglì de jīshí.",
-        vi: "Xây dựng hệ thống chuỗi cung ứng bền bỉ dẻo dai và minh bạch hiệu quả là nền tảng để ngành chế tạo duy trì sức cạnh tranh dài lâu."
-      }
-    },
-    {
-      id: "vb_13",
-      hanzi: "签署",
-      pinyin: "qiān shǔ",
-      meaning: "Ký kết văn kiện, đặt bút ký hợp đồng (Sign / Execute Contract)",
-      hsk: "Thương Mại",
-      category: "business",
-      deck: "business",
-      radical: "竹 (Trúc) & 罒 (Võng)",
-      strokes: 13,
-      strokeOrderRules: "Bộ Trúc trên đầu chữ Thiêm viết trước",
-      collocations: ["签署协议 (Ký kết thỏa thuận)", "正式签署 (Chính thức ký kết)"],
-      example: {
-        zh: "两国商务部长在隆重的仪式上共同签署了双边投资保护备忘录。",
-        pinyin: "Liǎng guó shāngwù bùzhǎng zài lóngzhòng de yíshì shàng gòngtóng qiānshǔ le shuāngbiān tóuzī bǎohù bèiwànglù.",
-        vi: "Bộ trưởng thương mại hai nước đã cùng nhau ký kết biên bản ghi nhớ bảo hộ đầu tư song phương trong buổi lễ long trọng."
-      }
-    },
-    {
-      id: "vb_14",
-      hanzi: "市场份额",
-      pinyin: "shì chǎng fèn 'é",
-      meaning: "Thị phần, tỷ lệ chiếm lĩnh thị trường (Market Share)",
-      hsk: "Thương Mại",
-      category: "business",
-      deck: "business",
-      radical: "巾 (Cân) & 土 (Thổ)",
-      strokes: 5,
-      strokeOrderRules: "Bộ Cân bên dưới chữ Thị viết sau",
-      collocations: ["扩大市场份额 (Mở rộng thị phần)", "市场占有率 (Tỷ lệ chiếm lĩnh thị trường)"],
-      example: {
-        zh: "凭借卓越的性价比与完善的售后服务，我们品牌在东南亚的市场份额稳步上升。",
-        pinyin: "Píngjiè zhuóyuè de xìngjiàbǐ yǔ wánshàn de shòuhòu fúwù, wǒmen pǐnpái zài dōngnányà de shìchǎng fèn'é wěnbù shàngshēng.",
-        vi: "Nhờ tỷ lệ hiệu năng trên giá thành vượt trội và hậu mãi hoàn thiện, thị phần của thương hiệu chúng tôi tại Đông Nam Á liên tục thăng tiến vững chắc."
-      }
-    },
-    {
-      id: "vb_15",
-      hanzi: "投资回报率",
-      pinyin: "tóu zī huí bào lǜ",
-      meaning: "Tỷ suất hoàn vốn đầu tư (ROI - Return on Investment)",
-      hsk: "Thương Mại",
-      category: "business",
-      deck: "business",
-      radical: "扌 (Thủ) & 贝 (Bối)",
-      strokes: 7,
-      strokeOrderRules: "Bộ Thủ bên trái chữ Đầu viết trước",
-      collocations: ["高投资回报率 (Tỷ suất ROI cao)", "评估投资风险 (Đánh giá rủi ro đầu tư)"],
-      example: {
-        zh: "财务分析师测算，该新建智能仓储物流项目的预期投资回报率高达百分之十八。",
-        pinyin: "Cáiwù fēnxīshī cèsuàn, gāi xīnjiàn zhìnéng cāngchǔ wùliú xiàngmù de yùqī tóuzī huíbàolǜ gāodá bǎifēnzhīshíbā.",
-        vi: "Chuyên viên phân tích tài chính tính toán rằng tỷ suất ROI kỳ vọng của dự án kho bãi thông minh xây mới này đạt tới 18%."
-      }
-    },
-    {
-      id: "vb_16",
-      hanzi: "质量保证",
-      pinyin: "zhì liàng bǎo zhèng",
-      meaning: "Đảm bảo chất lượng sản phẩm (Quality Assurance - QA)",
-      hsk: "Thương Mại",
-      category: "business",
-      deck: "business",
-      radical: "贝 (Bối) & 里 (Lý)",
-      strokes: 6,
-      strokeOrderRules: "Bộ Bối bên trái chữ Chất viết trước",
-      collocations: ["质量保证期 (Thời hạn bảo hành chất lượng)", "ISO认证 (Chứng nhận ISO)"],
-      example: {
-        zh: "我们所有出口产品出厂前均通过严格检验，提供长达两年的全方位质量保证。",
-        pinyin: "Wǒmen suǒyǒu chūkǒu chǎnpǐn chūchǎng qián jūn tōngguò yángé jiǎnyàn, tígōng chángdá liǎng nián de quánfāngwèi zhìliàng bǎozhèng.",
-        vi: "Tất cả sản phẩm xuất khẩu của chúng tôi trước khi xuất xưởng đều qua kiểm nghiệm nghiêm ngặt và được bảo hành chất lượng toàn diện 2 năm."
-      }
-    },
-    {
-      id: "vb_17",
-      hanzi: "进出口",
-      pinyin: "jìn chū kǒu",
-      meaning: "Xuất nhập khẩu, mậu dịch đối ngoại (Import & Export)",
-      hsk: "Thương Mại",
-      category: "business",
-      deck: "business",
-      radical: "辶 (Xước) & 凵 (Khảm)",
-      strokes: 7,
-      strokeOrderRules: "Chữ Tỉnh viết trước, bộ Xước bao ngoài chữ Tiến sau cùng",
-      collocations: ["进出口总额 (Tổng kim ngạch xuất nhập khẩu)", "外贸进出口公司 (Công ty XNK ngoại thương)"],
-      example: {
-        zh: "中越双边进出口贸易额今年再创历史新高，经贸合作前景十分广阔。",
-        pinyin: "Zhōng Yuè shuāngbiān jìn-chūkǒu màoyì'é jǐnnián zài chuàng lìshǐ xīngāo, jīngmào hézuò qiánjǐng shífēn guǎngkuò.",
-        vi: "Kim ngạch thương mại xuất nhập khẩu song phương Trung - Việt năm nay tiếp tục lập đỉnh lịch sử mới, triển vọng hợp tác kinh tế mậu dịch vô cùng rộng mở."
-      }
-    },
-    {
-      id: "vb_18",
-      hanzi: "客户维护",
-      pinyin: "kè hù wéi hù",
-      meaning: "Chăm sóc và duy trì quan hệ khách hàng (Client Relationship Management)",
-      hsk: "Thương Mại",
-      category: "business",
-      deck: "business",
-      radical: "宀 (Miên) & 纟 (Mịch)",
-      strokes: 9,
-      strokeOrderRules: "Bộ Miên trên đầu chữ Khách viết trước",
-      collocations: ["大客户维护 (Chăm sóc khách hàng VIP)", "定期回访 (Định kỳ thăm hỏi khách hàng)"],
-      example: {
-        zh: "做好老客户维护与及时售后响应，能够显著降低企业的获客成本并建立良好口碑。",
-        pinyin: "Zuò hǎo lǎo kèhù wéihù yǔ jíshí shòuhòu xiǎngyìng, nénggòu xiǎozhù jiàngdī qǐyè de huòkè chéngběn bìng jiànlì liánghǎo kǒubēi.",
-        vi: "Làm tốt công tác chăm sóc duy trì khách hàng cũ và phản hồi hậu mãi kịp thời có thể giảm thiểu chi phí tìm kiếm khách hàng mới và xây dựng uy tín truyền miệng tuyệt vời."
-      }
+    {
+        "id":  "v1_001",
+        "hanzi":  "爱",
+        "pinyin":  "ài",
+        "meaning":  "Yêu, thích, thương",
+        "hsk":  1,
+        "radical":  "爫 (Trảo)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "我很爱我的妈妈。",
+                        "pinyin":  "Wǒ hěn ài wǒ de māmā.",
+                        "vi":  "Tôi rất yêu mẹ của tôi."
+                    }
+    },
+    {
+        "id":  "v1_002",
+        "hanzi":  "八",
+        "pinyin":  "bā",
+        "meaning":  "Số 8",
+        "hsk":  1,
+        "radical":  "八 (Bát)",
+        "strokes":  2,
+        "example":  {
+                        "zh":  "他有八个苹果。",
+                        "pinyin":  "Tā yǒu bā gè píngguǒ.",
+                        "vi":  "Anh ấy có 8 quả táo."
+                    }
+    },
+    {
+        "id":  "v1_003",
+        "hanzi":  "爸爸",
+        "pinyin":  "bàba",
+        "meaning":  "Bố, cha",
+        "hsk":  1,
+        "radical":  "父 (Phụ)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "我爸爸是一名医生。",
+                        "pinyin":  "Wǒ bàba shì yì míng yīshēng.",
+                        "vi":  "Bố tôi là một bác sĩ."
+                    }
+    },
+    {
+        "id":  "v1_004",
+        "hanzi":  "杯子",
+        "pinyin":  "bēizi",
+        "meaning":  "Cái cốc, cái chén, ly",
+        "hsk":  1,
+        "radical":  "木 (Mộc)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "杯子里有茶。",
+                        "pinyin":  "Bēizi lǐ yǒu chá.",
+                        "vi":  "Trong cốc có trà."
+                    }
+    },
+    {
+        "id":  "v1_005",
+        "hanzi":  "北京",
+        "pinyin":  "běijīng",
+        "meaning":  "Bắc Kinh (thủ đô TQ)",
+        "hsk":  1,
+        "radical":  "亠 (Đầu)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "我想去北京旅游。",
+                        "pinyin":  "Wǒ xiǎng qù Běijīng lǚyóu.",
+                        "vi":  "Tôi muốn đi Bắc Kinh du lịch."
+                    }
+    },
+    {
+        "id":  "v1_006",
+        "hanzi":  "本",
+        "pinyin":  "běn",
+        "meaning":  "Cuốn, quyển (lượng từ)",
+        "hsk":  1,
+        "radical":  "木 (Mộc)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "桌子上有一本书。",
+                        "pinyin":  "Zhuōzi shàng yǒu yì běn shū.",
+                        "vi":  "Trên bàn có một cuốn sách."
+                    }
+    },
+    {
+        "id":  "v1_007",
+        "hanzi":  "不客气",
+        "pinyin":  "bú kèqì",
+        "meaning":  "Không có chi, đừng khách sáo",
+        "hsk":  1,
+        "radical":  "宀 (Miên)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "不用谢，不客气！",
+                        "pinyin":  "Bú yòng xiè, bú kèqì!",
+                        "vi":  "Không có gì, đừng khách sáo!"
+                    }
+    },
+    {
+        "id":  "v1_008",
+        "hanzi":  "不",
+        "pinyin":  "bù",
+        "meaning":  "Không, chẳng (phó từ phủ định)",
+        "hsk":  1,
+        "radical":  "一 (Nhất)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "我不是中国人。",
+                        "pinyin":  "Wǒ bú shì zhōngguó rén.",
+                        "vi":  "Tôi không phải người Trung Quốc."
+                    }
+    },
+    {
+        "id":  "v1_009",
+        "hanzi":  "菜",
+        "pinyin":  "cài",
+        "meaning":  "Món ăn, rau củ",
+        "hsk":  1,
+        "radical":  "艹 (Thảo)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "这个中国菜很好吃。",
+                        "pinyin":  "Zhè gè zhōngguó cài hěn hǎochī.",
+                        "vi":  "Món ăn Trung Quốc này rất ngon."
+                    }
+    },
+    {
+        "id":  "v1_010",
+        "hanzi":  "茶",
+        "pinyin":  "chá",
+        "meaning":  "Trà, chè",
+        "hsk":  1,
+        "radical":  "艹 (Thảo)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "请喝一杯热茶。",
+                        "pinyin":  "Qǐng hē yì bēi rè chá.",
+                        "vi":  "Xin mời uống một tách trà nóng."
+                    }
+    },
+    {
+        "id":  "v1_011",
+        "hanzi":  "吃",
+        "pinyin":  "chī",
+        "meaning":  "Ăn",
+        "hsk":  1,
+        "radical":  "口 (Khẩu)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "你喜欢吃水果吗？",
+                        "pinyin":  "Nǐ xǐhuan chī shuǐguǒ ma?",
+                        "vi":  "Bạn thích ăn trái cây không?"
+                    }
+    },
+    {
+        "id":  "v1_012",
+        "hanzi":  "出租车",
+        "pinyin":  "chūzūchē",
+        "meaning":  "Xe taxi",
+        "hsk":  1,
+        "radical":  "车 (Xa)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "我们坐出租车去学校。",
+                        "pinyin":  "Wǒmen zuò chūzūchē qù xuéxiào.",
+                        "vi":  "Chúng tôi đi taxi đến trường."
+                    }
+    },
+    {
+        "id":  "v1_013",
+        "hanzi":  "打电话",
+        "pinyin":  "dǎ diànhuà",
+        "meaning":  "Gọi điện thoại",
+        "hsk":  1,
+        "radical":  "扌 (Thủ)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "他在给朋友打电话。",
+                        "pinyin":  "Tā zài gěi péngyou dǎ diànhuà.",
+                        "vi":  "Anh ấy đang gọi điện thoại cho bạn."
+                    }
+    },
+    {
+        "id":  "v1_014",
+        "hanzi":  "大",
+        "pinyin":  "dà",
+        "meaning":  "To, lớn",
+        "hsk":  1,
+        "radical":  "大 (Đại)",
+        "strokes":  3,
+        "example":  {
+                        "zh":  "这个苹果很大。",
+                        "pinyin":  "Zhè gè píngguǒ hěn dà.",
+                        "vi":  "Quả táo này rất to."
+                    }
+    },
+    {
+        "id":  "v1_015",
+        "hanzi":  "的",
+        "pinyin":  "de",
+        "meaning":  "Của (trợ từ kết cấu)",
+        "hsk":  1,
+        "radical":  "白 (Bạch)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "这是我的汉语书。",
+                        "pinyin":  "Zhè shì wǒ de hànyǔ shū.",
+                        "vi":  "Đây là sách tiếng Trung của tôi."
+                    }
+    },
+    {
+        "id":  "v1_016",
+        "hanzi":  "点",
+        "pinyin":  "diǎn",
+        "meaning":  "Giờ (thời gian), chút ít",
+        "hsk":  1,
+        "radical":  "灬 (Hỏa)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "现在是下午三点。",
+                        "pinyin":  "Xiànzài shì xiàwǔ sān diǎn.",
+                        "vi":  "Bây giờ là 3 giờ chiều."
+                    }
+    },
+    {
+        "id":  "v1_017",
+        "hanzi":  "电脑",
+        "pinyin":  "diànnǎo",
+        "meaning":  "Máy vi tính",
+        "hsk":  1,
+        "radical":  "月 (Nguyệt)",
+        "strokes":  13,
+        "example":  {
+                        "zh":  "我在电脑上学习中文。",
+                        "pinyin":  "Wǒ zài diànnǎo shàng xuéxí zhōngwén.",
+                        "vi":  "Tôi học tiếng Trung trên máy tính."
+                    }
+    },
+    {
+        "id":  "v1_018",
+        "hanzi":  "电视",
+        "pinyin":  "diànshì",
+        "meaning":  "Ti vi, truyền hình",
+        "hsk":  1,
+        "radical":  "见 (Kiến)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "妈妈在看电视。",
+                        "pinyin":  "Māmā zài kàn diànshì.",
+                        "vi":  "Mẹ đang xem tivi."
+                    }
+    },
+    {
+        "id":  "v1_019",
+        "hanzi":  "电影",
+        "pinyin":  "diànyǐng",
+        "meaning":  "Phim điện ảnh, chiếu bóng",
+        "hsk":  1,
+        "radical":  "彡 (Sam)",
+        "strokes":  15,
+        "example":  {
+                        "zh":  "晚上我们去看电影吧。",
+                        "pinyin":  "Wǎnshang wǒmen qù kàn diànyǐng ba.",
+                        "vi":  "Tối nay chúng mình đi xem phim nhé."
+                    }
+    },
+    {
+        "id":  "v1_020",
+        "hanzi":  "东西",
+        "pinyin":  "dōngxi",
+        "meaning":  "Đồ vật, đồ đạc",
+        "hsk":  1,
+        "radical":  "木 (Mộc)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "你在商店买什么东西？",
+                        "pinyin":  "Nǐ zài shāngdiàn mǎi shénme dōngxi?",
+                        "vi":  "Bạn mua đồ gì ở cửa hàng thế?"
+                    }
+    },
+    {
+        "id":  "v1_021",
+        "hanzi":  "都",
+        "pinyin":  "dōu",
+        "meaning":  "Đều, tất cả",
+        "hsk":  1,
+        "radical":  "阝 (Ấp)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "我们都是学生。",
+                        "pinyin":  "Wǒmen dōu shì xuésheng.",
+                        "vi":  "Chúng tôi đều là học sinh."
+                    }
+    },
+    {
+        "id":  "v1_022",
+        "hanzi":  "读",
+        "pinyin":  "dú",
+        "meaning":  "Đọc",
+        "hsk":  1,
+        "radical":  "讠 (Ngôn)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "请大声读这个生词。",
+                        "pinyin":  "Qǐng dà shēng dú zhè gè shēngcí.",
+                        "vi":  "Xin hãy đọc to từ mới này."
+                    }
+    },
+    {
+        "id":  "v1_023",
+        "hanzi":  "对不起",
+        "pinyin":  "duìbuqǐ",
+        "meaning":  "Xin lỗi",
+        "hsk":  1,
+        "radical":  "寸 (Thốn)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "对不起，我迟到了。",
+                        "pinyin":  "Duìbuqǐ, wǒ chídào le.",
+                        "vi":  "Xin lỗi, tôi đến muộn rồi."
+                    }
+    },
+    {
+        "id":  "v1_024",
+        "hanzi":  "多",
+        "pinyin":  "duō",
+        "meaning":  "Nhiều",
+        "hsk":  1,
+        "radical":  "夕 (Tịch)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "这里有很多书。",
+                        "pinyin":  "Zhèlǐ yǒu hěn duō shū.",
+                        "vi":  "Ở đây có rất nhiều sách."
+                    }
+    },
+    {
+        "id":  "v1_025",
+        "hanzi":  "多少",
+        "pinyin":  "duōshao",
+        "meaning":  "Bao nhiêu",
+        "hsk":  1,
+        "radical":  "小 (Tiểu)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "这个杯子多少钱？",
+                        "pinyin":  "Zhè gè bēizi duōshao qián?",
+                        "vi":  "Cái cốc này bao nhiêu tiền?"
+                    }
+    },
+    {
+        "id":  "v1_026",
+        "hanzi":  "儿子",
+        "pinyin":  "érzi",
+        "meaning":  "Con trai",
+        "hsk":  1,
+        "radical":  "儿 (Nhi)",
+        "strokes":  2,
+        "example":  {
+                        "zh":  "他的儿子五岁了。",
+                        "pinyin":  "Tā de érzi wǔ suì le.",
+                        "vi":  "Con trai của anh ấy 5 tuổi rồi."
+                    }
+    },
+    {
+        "id":  "v1_027",
+        "hanzi":  "二",
+        "pinyin":  "èr",
+        "meaning":  "Số 2",
+        "hsk":  1,
+        "radical":  "二 (Nhị)",
+        "strokes":  2,
+        "example":  {
+                        "zh":  "现在是两点二十分。",
+                        "pinyin":  "Xiànzài shì liǎng diǎn èrshí fēn.",
+                        "vi":  "Bây giờ là 2 giờ 20 phút."
+                    }
+    },
+    {
+        "id":  "v1_028",
+        "hanzi":  "饭馆",
+        "pinyin":  "fànguǎn",
+        "meaning":  "Nhà hàng, quán ăn",
+        "hsk":  1,
+        "radical":  "饣 (Thực)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "中午我们在饭馆吃饭。",
+                        "pinyin":  "Zhōngwǔ wǒmen zài fànguǎn chīfàn.",
+                        "vi":  "Buổi trưa chúng tôi ăn cơm ở quán ăn."
+                    }
+    },
+    {
+        "id":  "v1_029",
+        "hanzi":  "飞机",
+        "pinyin":  "fēijī",
+        "meaning":  "Máy bay",
+        "hsk":  1,
+        "radical":  "飞 (Phi)",
+        "strokes":  3,
+        "example":  {
+                        "zh":  "我坐飞机去北京。",
+                        "pinyin":  "Wǒ zuò fēijī qù Běijīng.",
+                        "vi":  "Tôi đi máy bay đến Bắc Kinh."
+                    }
+    },
+    {
+        "id":  "v1_030",
+        "hanzi":  "分钟",
+        "pinyin":  "fēnzhōng",
+        "meaning":  "Phút (đơn vị đo thời gian)",
+        "hsk":  1,
+        "radical":  "八 (Bát)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "请等我五分钟。",
+                        "pinyin":  "Qǐng děng wǒ wǔ fēnzhōng.",
+                        "vi":  "Xin đợi tôi 5 phút."
+                    }
+    },
+    {
+        "id":  "v1_031",
+        "hanzi":  "高兴",
+        "pinyin":  "gāoxìng",
+        "meaning":  "Vui mừng, hạnh phúc",
+        "hsk":  1,
+        "radical":  "高 (Cao)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "今天我很高兴。",
+                        "pinyin":  "Jīntiān wǒ hěn gāoxìng.",
+                        "vi":  "Hôm nay tôi rất vui."
+                    }
+    },
+    {
+        "id":  "v1_032",
+        "hanzi":  "个",
+        "pinyin":  "gè",
+        "meaning":  "Cái, quả, con (lượng từ phổ biến)",
+        "hsk":  1,
+        "radical":  "人 (Nhân)",
+        "strokes":  3,
+        "example":  {
+                        "zh":  "我买了一个西瓜。",
+                        "pinyin":  "Wǒ mǎi le yí gè xīguā.",
+                        "vi":  "Tôi mua một quả dưa hấu."
+                    }
+    },
+    {
+        "id":  "v1_033",
+        "hanzi":  "工作",
+        "pinyin":  "gōngzuò",
+        "meaning":  "Công việc, làm việc",
+        "hsk":  1,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "爸爸在医院工作。",
+                        "pinyin":  "Bàba zài yīyuàn gōngzuò.",
+                        "vi":  "Bố tôi làm việc ở bệnh viện."
+                    }
+    },
+    {
+        "id":  "v1_034",
+        "hanzi":  "汉语",
+        "pinyin":  "hànyǔ",
+        "meaning":  "Tiếng Hán, tiếng Trung",
+        "hsk":  1,
+        "radical":  "氵 (Thủy)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "汉语很有趣也很实用。",
+                        "pinyin":  "Hànyǔ hěn yǒuqù yě hěn shíyòng.",
+                        "vi":  "Tiếng Trung rất thú vị và cũng rất thực tế."
+                    }
+    },
+    {
+        "id":  "v1_035",
+        "hanzi":  "好",
+        "pinyin":  "hǎo",
+        "meaning":  "Tốt, đẹp, khỏe, ngon",
+        "hsk":  1,
+        "radical":  "女 (Nữ)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "李老师是一个好老师。",
+                        "pinyin":  "Lǐ lǎoshī shì yí gè hǎo lǎoshī.",
+                        "vi":  "Thầy Lý là một người thầy giáo tốt."
+                    }
+    },
+    {
+        "id":  "v1_036",
+        "hanzi":  "号",
+        "pinyin":  "hào",
+        "meaning":  "Số, ngày (trong tháng)",
+        "hsk":  1,
+        "radical":  "口 (Khẩu)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "今天是十月二十二号。",
+                        "pinyin":  "Jīntiān shì shí yuè èrshí\u0027èr hào.",
+                        "vi":  "Hôm nay là ngày 22 tháng 10."
+                    }
+    },
+    {
+        "id":  "v1_037",
+        "hanzi":  "喝",
+        "pinyin":  "hē",
+        "meaning":  "Uống",
+        "hsk":  1,
+        "radical":  "口 (Khẩu)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "你想喝水还是喝茶？",
+                        "pinyin":  "Nǐ xiǎng hē shuǐ háishì hē chá?",
+                        "vi":  "Bạn muốn uống nước hay uống trà?"
+                    }
+    },
+    {
+        "id":  "v1_038",
+        "hanzi":  "和",
+        "pinyin":  "hé",
+        "meaning":  "Và, cùng với",
+        "hsk":  1,
+        "radical":  "口 (Khẩu)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "我和他是好朋友。",
+                        "pinyin":  "Wǒ hé tā shì hǎo péngyou.",
+                        "vi":  "Tôi và anh ấy là bạn tốt."
+                    }
+    },
+    {
+        "id":  "v1_039",
+        "hanzi":  "很",
+        "pinyin":  "hěn",
+        "meaning":  "Rất",
+        "hsk":  1,
+        "radical":  "彳 (Xích)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "今天天气很好。",
+                        "pinyin":  "Jīntiān tiānqì hěn hǎo.",
+                        "vi":  "Hôm nay thời tiết rất đẹp."
+                    }
+    },
+    {
+        "id":  "v1_040",
+        "hanzi":  "后面",
+        "pinyin":  "hòumiàn",
+        "meaning":  "Phía sau, đằng sau",
+        "hsk":  1,
+        "radical":  "面 (Diện)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "学校后面有一个公园。",
+                        "pinyin":  "Xuéxiào hòumiàn yǒu yí gè gōngyuán.",
+                        "vi":  "Phía sau trường học có một công viên."
+                    }
+    },
+    {
+        "id":  "v1_041",
+        "hanzi":  "回",
+        "pinyin":  "huí",
+        "meaning":  "Về, quay lại",
+        "hsk":  1,
+        "radical":  "口 (Khẩu)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "下午五点我回家。",
+                        "pinyin":  "Xiàwǔ wǔ diǎn wǒ huí jiā.",
+                        "vi":  "5 giờ chiều tôi về nhà."
+                    }
+    },
+    {
+        "id":  "v1_042",
+        "hanzi":  "会",
+        "pinyin":  "huì",
+        "meaning":  "Biết (qua học tập), sẽ",
+        "hsk":  1,
+        "radical":  "人 (Nhân)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "你会说汉语吗？",
+                        "pinyin":  "Nǐ huì shuō hànyǔ ma?",
+                        "vi":  "Bạn biết nói tiếng Trung không?"
+                    }
+    },
+    {
+        "id":  "v1_043",
+        "hanzi":  "几",
+        "pinyin":  "jǐ",
+        "meaning":  "Mấy (hỏi số lượng dưới 10)",
+        "hsk":  1,
+        "radical":  "几 (Kỷ)",
+        "strokes":  2,
+        "example":  {
+                        "zh":  "你有几个苹果？",
+                        "pinyin":  "Nǐ yǒu jǐ gè píngguǒ?",
+                        "vi":  "Bạn có mấy quả táo?"
+                    }
+    },
+    {
+        "id":  "v1_044",
+        "hanzi":  "家",
+        "pinyin":  "jiā",
+        "meaning":  "Nhà, gia đình",
+        "hsk":  1,
+        "radical":  "宀 (Miên)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "我家有四口人。",
+                        "pinyin":  "Wǒ jiā yǒu sì kǒu rén.",
+                        "vi":  "Nhà tôi có 4 người."
+                    }
+    },
+    {
+        "id":  "v1_045",
+        "hanzi":  "叫",
+        "pinyin":  "jiào",
+        "meaning":  "Tên là, gọi",
+        "hsk":  1,
+        "radical":  "口 (Khẩu)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "我叫大卫，你叫什么？",
+                        "pinyin":  "Wǒ jiào Dàwèi, nǐ jiào shénme?",
+                        "vi":  "Tôi tên là David, bạn tên là gì?"
+                    }
+    },
+    {
+        "id":  "v1_046",
+        "hanzi":  "今天",
+        "pinyin":  "jīntiān",
+        "meaning":  "Hôm nay",
+        "hsk":  1,
+        "radical":  "人 (Nhân)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "今天星期三。",
+                        "pinyin":  "Jīntiān xīngqīsān.",
+                        "vi":  "Hôm nay là thứ tư."
+                    }
+    },
+    {
+        "id":  "v1_047",
+        "hanzi":  "九",
+        "pinyin":  "jiǔ",
+        "meaning":  "Số 9",
+        "hsk":  1,
+        "radical":  "乙 (Ất)",
+        "strokes":  2,
+        "example":  {
+                        "zh":  "现在是九点整。",
+                        "pinyin":  "Xiànzài shì jiǔ diǎn zhěng.",
+                        "vi":  "Bây giờ là đúng 9 giờ."
+                    }
+    },
+    {
+        "id":  "v1_048",
+        "hanzi":  "开",
+        "pinyin":  "kāi",
+        "meaning":  "Mở, lái (xe), khởi động",
+        "hsk":  1,
+        "radical":  "廾 (Củng)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "他会开车去上班。",
+                        "pinyin":  "Tā huì kāichē qù shàngbān.",
+                        "vi":  "Anh ấy biết lái xe đi làm."
+                    }
+    },
+    {
+        "id":  "v1_049",
+        "hanzi":  "看",
+        "pinyin":  "kàn",
+        "meaning":  "Nhìn, xem, đọc sách",
+        "hsk":  1,
+        "radical":  "目 (Mục)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "我喜欢在图书馆看书。",
+                        "pinyin":  "Wǒ xǐhuan zài túshūguǎn kàn shū.",
+                        "vi":  "Tôi thích đọc sách ở thư viện."
+                    }
+    },
+    {
+        "id":  "v1_050",
+        "hanzi":  "看见",
+        "pinyin":  "kànjiàn",
+        "meaning":  "Nhìn thấy, trông thấy",
+        "hsk":  1,
+        "radical":  "见 (Kiến)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "你看见我的书了吗？",
+                        "pinyin":  "Nǐ kànjiàn wǒ de shū le ma?",
+                        "vi":  "Bạn nhìn thấy cuốn sách của tôi không?"
+                    }
+    },
+    {
+        "id":  "v1_051",
+        "hanzi":  "块",
+        "pinyin":  "kuài",
+        "meaning":  "Đồng (tiền), miếng, tảng",
+        "hsk":  1,
+        "radical":  "土 (Thổ)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "这件衣服五十块钱。",
+                        "pinyin":  "Zhè jiàn yīfu wǔshí kuài qián.",
+                        "vi":  "Bộ quần áo này 50 tệ."
+                    }
+    },
+    {
+        "id":  "v1_052",
+        "hanzi":  "来",
+        "pinyin":  "lái",
+        "meaning":  "Đến, lại đây",
+        "hsk":  1,
+        "radical":  "木 (Mộc)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "欢迎你来我家玩。",
+                        "pinyin":  "Huānyíng nǐ lái wǒ jiā wán.",
+                        "vi":  "Hoan nghênh bạn đến nhà tôi chơi."
+                    }
+    },
+    {
+        "id":  "v1_053",
+        "hanzi":  "老师",
+        "pinyin":  "lǎoshī",
+        "meaning":  "Thầy giáo, cô giáo",
+        "hsk":  1,
+        "radical":  "老 (Lão)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "王老师教我们汉语。",
+                        "pinyin":  "Wáng lǎoshī jiāo wǒmen hànyǔ.",
+                        "vi":  "Thầy Vương dạy chúng tôi tiếng Trung."
+                    }
+    },
+    {
+        "id":  "v1_054",
+        "hanzi":  "了",
+        "pinyin":  "le",
+        "meaning":  "Rồi (trợ từ ngữ khí)",
+        "hsk":  1,
+        "radical":  "乙 (Ất)",
+        "strokes":  2,
+        "example":  {
+                        "zh":  "下雨了，快进屋吧。",
+                        "pinyin":  "Xiàyǔ le, kuài jìn wū ba.",
+                        "vi":  "Mưa rồi, mau vào nhà đi."
+                    }
+    },
+    {
+        "id":  "v1_055",
+        "hanzi":  "冷",
+        "pinyin":  "lěng",
+        "meaning":  "Lạnh",
+        "hsk":  1,
+        "radical":  "冫 (Băng)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "今天外面很冷，多穿衣服。",
+                        "pinyin":  "Jīntiān wàimiàn hěn lěng, duō chuān yīfu.",
+                        "vi":  "Hôm nay bên ngoài rất lạnh, mặc nhiều áo vào nhé."
+                    }
+    },
+    {
+        "id":  "v1_056",
+        "hanzi":  "里",
+        "pinyin":  "lǐ",
+        "meaning":  "Trong, bên trong",
+        "hsk":  1,
+        "radical":  "里 (Lý)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "书包里有一本词典。",
+                        "pinyin":  "Shūbāo lǐ yǒu yì běn cídiǎn.",
+                        "vi":  "Trong cặp sách có một cuốn từ điển."
+                    }
+    },
+    {
+        "id":  "v1_057",
+        "hanzi":  "六",
+        "pinyin":  "liù",
+        "meaning":  "Số 6",
+        "hsk":  1,
+        "radical":  "八 (Bát)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "一个星期有六天工作吗？",
+                        "pinyin":  "Yí gè xīngqī yǒu liù tiān gōngzuò ma?",
+                        "vi":  "Một tuần làm việc 6 ngày à?"
+                    }
+    },
+    {
+        "id":  "v1_058",
+        "hanzi":  "妈妈",
+        "pinyin":  "māmā",
+        "meaning":  "Mẹ",
+        "hsk":  1,
+        "radical":  "女 (Nữ)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "妈妈做的菜真好吃。",
+                        "pinyin":  "Māmā zuò de cài zhēn hǎochī.",
+                        "vi":  "Cơm mẹ nấu ngon thật đấy."
+                    }
+    },
+    {
+        "id":  "v1_059",
+        "hanzi":  "吗",
+        "pinyin":  "ma",
+        "meaning":  "Không, chăng (trợ từ nghi vấn)",
+        "hsk":  1,
+        "radical":  "口 (Khẩu)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "你是留学生吗？",
+                        "pinyin":  "Nǐ shì liúxuéshēng ma?",
+                        "vi":  "Bạn là du học sinh phải không?"
+                    }
+    },
+    {
+        "id":  "v1_060",
+        "hanzi":  "买",
+        "pinyin":  "mǎi",
+        "meaning":  "Mua",
+        "hsk":  1,
+        "radical":  "乙 (Ất)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "我想买两斤苹果。",
+                        "pinyin":  "Wǒ xiǎng mǎi liǎng jīn píngguǒ.",
+                        "vi":  "Tôi muốn mua hai cân táo."
+                    }
+    },
+    {
+        "id":  "v1_061",
+        "hanzi":  "猫",
+        "pinyin":  "māo",
+        "meaning":  "Con mèo",
+        "hsk":  1,
+        "radical":  "犭 (Khuyển)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "那只小猫非常可爱。",
+                        "pinyin":  "Nà zhī xiǎo māo fēicháng kě\u0027ài.",
+                        "vi":  "Con mèo con kia vô cùng dễ thương."
+                    }
+    },
+    {
+        "id":  "v1_062",
+        "hanzi":  "没关系",
+        "pinyin":  "méi guānxi",
+        "meaning":  "Không sao, không hề gì",
+        "hsk":  1,
+        "radical":  "门 (Môn)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "没关系，下次注意就好。",
+                        "pinyin":  "Méi guānxi, xià cì zhùyì jiù hǎo.",
+                        "vi":  "Không sao đâu, lần sau chú ý là được."
+                    }
+    },
+    {
+        "id":  "v1_063",
+        "hanzi":  "没有",
+        "pinyin":  "méiyǒu",
+        "meaning":  "Không có, chưa",
+        "hsk":  1,
+        "radical":  "氵 (Thủy)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "我今天没有课。",
+                        "pinyin":  "Wǒ jīntiān méiyǒu kè.",
+                        "vi":  "Hôm nay tôi không có tiết học."
+                    }
+    },
+    {
+        "id":  "v1_064",
+        "hanzi":  "米饭",
+        "pinyin":  "mǐfàn",
+        "meaning":  "Cơm trắng",
+        "hsk":  1,
+        "radical":  "米 (Mễ)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "服务员，请来一碗米饭。",
+                        "pinyin":  "Fúwùyuán, qǐng lái yì wǎn mǐfàn.",
+                        "vi":  "Phục vụ ơi, cho một bát cơm trắng."
+                    }
+    },
+    {
+        "id":  "v1_065",
+        "hanzi":  "明天",
+        "pinyin":  "míngtiān",
+        "meaning":  "Ngày mai",
+        "hsk":  1,
+        "radical":  "日 (Nhật)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "明天见！",
+                        "pinyin":  "Míngtiān jiàn!",
+                        "vi":  "Ngày mai gặp lại nhé!"
+                    }
+    },
+    {
+        "id":  "v1_066",
+        "hanzi":  "名字",
+        "pinyin":  "míngzi",
+        "meaning":  "Tên gọi",
+        "hsk":  1,
+        "radical":  "夕 (Tịch)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "你的中文名字真好听。",
+                        "pinyin":  "Nǐ de zhōngwén míngzi zhēn hǎotīng.",
+                        "vi":  "Tên tiếng Trung của bạn hay thật đấy."
+                    }
+    },
+    {
+        "id":  "v1_067",
+        "hanzi":  "哪",
+        "pinyin":  "nǎ",
+        "meaning":  "Nào, đâu",
+        "hsk":  1,
+        "radical":  "口 (Khẩu)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "你是哪国人？",
+                        "pinyin":  "Nǐ shì nǎ guó rén?",
+                        "vi":  "Bạn là người nước nào?"
+                    }
+    },
+    {
+        "id":  "v1_068",
+        "hanzi":  "那",
+        "pinyin":  "nà",
+        "meaning":  "Kia, đó",
+        "hsk":  1,
+        "radical":  "阝 (Ấp)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "那是我们的学校。",
+                        "pinyin":  "Nà shì wǒmen de xuéxiào.",
+                        "vi":  "Đó là trường học của chúng tôi."
+                    }
+    },
+    {
+        "id":  "v1_069",
+        "hanzi":  "呢",
+        "pinyin":  "ne",
+        "meaning":  "Thì sao, nhỉ (trợ từ nghi vấn)",
+        "hsk":  1,
+        "radical":  "口 (Khẩu)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "我是越南人，你呢？",
+                        "pinyin":  "Wǒ shì yuènán rén, nǐ ne?",
+                        "vi":  "Tôi là người Việt Nam, còn bạn thì sao?"
+                    }
+    },
+    {
+        "id":  "v1_070",
+        "hanzi":  "能",
+        "pinyin":  "néng",
+        "meaning":  "Có thể, có khả năng",
+        "hsk":  1,
+        "radical":  "月 (Nguyệt)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "我能坐在这里吗？",
+                        "pinyin":  "Wǒ néng zuò zài zhèlǐ ma?",
+                        "vi":  "Tôi có thể ngồi ở đây không?"
+                    }
+    },
+    {
+        "id":  "v1_071",
+        "hanzi":  "你",
+        "pinyin":  "nǐ",
+        "meaning":  "Bạn, anh, chị (ngôi thứ hai)",
+        "hsk":  1,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "认识你很高兴！",
+                        "pinyin":  "Rènshí nǐ hěn gāoxìng!",
+                        "vi":  "Rất vui được quen biết bạn!"
+                    }
+    },
+    {
+        "id":  "v1_072",
+        "hanzi":  "年",
+        "pinyin":  "nián",
+        "meaning":  "Năm",
+        "hsk":  1,
+        "radical":  "干 (Can)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "我在中国学习了一年。",
+                        "pinyin":  "Wǒ zài zhōngguó xuéxí le yì nián.",
+                        "vi":  "Tôi đã học tập ở Trung Quốc một năm."
+                    }
+    },
+    {
+        "id":  "v1_073",
+        "hanzi":  "女儿",
+        "pinyin":  "nǚ\u0027ér",
+        "meaning":  "Con gái",
+        "hsk":  1,
+        "radical":  "女 (Nữ)",
+        "strokes":  3,
+        "example":  {
+                        "zh":  "她有两个可爱的女儿。",
+                        "pinyin":  "Tā yǒu liǎng gè kě\u0027ài de nǚ\u0027ér.",
+                        "vi":  "Cô ấy có hai cô con gái đáng yêu."
+                    }
+    },
+    {
+        "id":  "v1_074",
+        "hanzi":  "朋友",
+        "pinyin":  "péngyou",
+        "meaning":  "Bạn bè",
+        "hsk":  1,
+        "radical":  "月 (Nguyệt)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "我们是一辈子的好朋友。",
+                        "pinyin":  "Wǒmen shì yíbèizi de hǎo péngyou.",
+                        "vi":  "Chúng tôi là bạn tốt của nhau cả đời."
+                    }
+    },
+    {
+        "id":  "v1_075",
+        "hanzi":  "漂亮",
+        "pinyin":  "piàoliang",
+        "meaning":  "Xinh đẹp, đẹp đẽ",
+        "hsk":  1,
+        "radical":  "氵 (Thủy)",
+        "strokes":  14,
+        "example":  {
+                        "zh":  "这朵花开得很漂亮。",
+                        "pinyin":  "Zhè duǒ huā kāi de hěn piàoliang.",
+                        "vi":  "Bông hoa này nở rất đẹp."
+                    }
+    },
+    {
+        "id":  "v1_076",
+        "hanzi":  "苹果",
+        "pinyin":  "píngguǒ",
+        "meaning":  "Quả táo tây",
+        "hsk":  1,
+        "radical":  "艹 (Thảo)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "红苹果很甜很好吃。",
+                        "pinyin":  "Hóng píngguǒ hěn tián hěn hǎochī.",
+                        "vi":  "Táo đỏ rất ngọt và rất ngon."
+                    }
+    },
+    {
+        "id":  "v1_077",
+        "hanzi":  "七",
+        "pinyin":  "qī",
+        "meaning":  "Số 7",
+        "hsk":  1,
+        "radical":  "一 (Nhất)",
+        "strokes":  2,
+        "example":  {
+                        "zh":  "一星期有七天。",
+                        "pinyin":  "Yì xīngqī yǒu qī tiān.",
+                        "vi":  "Một tuần có 7 ngày."
+                    }
+    },
+    {
+        "id":  "v1_078",
+        "hanzi":  "钱",
+        "pinyin":  "qián",
+        "meaning":  "Tiền bạc",
+        "hsk":  1,
+        "radical":  "钅 (Kim)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "你有零钱吗？",
+                        "pinyin":  "Nǐ yǒu língqián ma?",
+                        "vi":  "Bạn có tiền lẻ không?"
+                    }
+    },
+    {
+        "id":  "v1_079",
+        "hanzi":  "前面",
+        "pinyin":  "qiánmiàn",
+        "meaning":  "Phía trước, đằng trước",
+        "hsk":  1,
+        "radical":  "刀 (Đao)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "前面有一家中国银行。",
+                        "pinyin":  "Qiánmiàn yǒu yì jiā zhōngguó yínháng.",
+                        "vi":  "Phía trước có một Ngân hàng Trung Quốc."
+                    }
+    },
+    {
+        "id":  "v1_080",
+        "hanzi":  "请",
+        "pinyin":  "qǐng",
+        "meaning":  "Mời, xin vui lòng",
+        "hsk":  1,
+        "radical":  "讠 (Ngôn)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "请进，请坐，请喝茶！",
+                        "pinyin":  "Qǐng jìn, qǐng zuò, qǐng hē chá!",
+                        "vi":  "Mời vào, mời ngồi, mời uống trà!"
+                    }
+    },
+    {
+        "id":  "v1_081",
+        "hanzi":  "去",
+        "pinyin":  "qù",
+        "meaning":  "Đi",
+        "hsk":  1,
+        "radical":  "厶 (Khứ)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "我想去超市买点东西。",
+                        "pinyin":  "Wǒ xiǎng qù chāoshì mǎi diǎn dōngxi.",
+                        "vi":  "Tôi muốn đi siêu thị mua ít đồ."
+                    }
+    },
+    {
+        "id":  "v1_082",
+        "hanzi":  "热",
+        "pinyin":  "rè",
+        "meaning":  "Nóng",
+        "hsk":  1,
+        "radical":  "灬 (Hỏa)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "夏天的天气非常热。",
+                        "pinyin":  "Xiàtiān de tiānqì fēicháng rè.",
+                        "vi":  "Thời tiết mùa hè vô cùng nóng."
+                    }
+    },
+    {
+        "id":  "v1_083",
+        "hanzi":  "人",
+        "pinyin":  "rén",
+        "meaning":  "Người",
+        "hsk":  1,
+        "radical":  "人 (Nhân)",
+        "strokes":  2,
+        "example":  {
+                        "zh":  "大街上有很多人。",
+                        "pinyin":  "Dàjiē shàng yǒu hěn duō rén.",
+                        "vi":  "Trên phố có rất nhiều người."
+                    }
+    },
+    {
+        "id":  "v1_084",
+        "hanzi":  "认识",
+        "pinyin":  "rènshi",
+        "meaning":  "Nhận biết, quen biết",
+        "hsk":  1,
+        "radical":  "讠 (Ngôn)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "很高兴认识你！",
+                        "pinyin":  "Hěn gāoxìng rènshi nǐ!",
+                        "vi":  "Rất vui được làm quen với bạn!"
+                    }
+    },
+    {
+        "id":  "v1_085",
+        "hanzi":  "三",
+        "pinyin":  "sān",
+        "meaning":  "Số 3",
+        "hsk":  1,
+        "radical":  "一 (Nhất)",
+        "strokes":  3,
+        "example":  {
+                        "zh":  "我有三个中国朋友。",
+                        "pinyin":  "Wǒ yǒu sān gè zhōngguó péngyou.",
+                        "vi":  "Tôi có ba người bạn Trung Quốc."
+                    }
+    },
+    {
+        "id":  "v1_086",
+        "hanzi":  "商店",
+        "pinyin":  "shāngdiàn",
+        "meaning":  "Cửa hàng, tiệm",
+        "hsk":  1,
+        "radical":  "广 (Quảng)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "商店里有很多漂亮的衣服。",
+                        "pinyin":  "Shāngdiàn lǐ yǒu hěn duō piàoliang de yīfu.",
+                        "vi":  "Trong cửa hàng có rất nhiều quần áo đẹp."
+                    }
+    },
+    {
+        "id":  "v1_087",
+        "hanzi":  "上",
+        "pinyin":  "shàng",
+        "meaning":  "Trên, lên, đi (làm/học)",
+        "hsk":  1,
+        "radical":  "一 (Nhất)",
+        "strokes":  3,
+        "example":  {
+                        "zh":  "桌子上放着很多书。",
+                        "pinyin":  "Zhuōzi shàng fàngzhe hěn duō shū.",
+                        "vi":  "Trên bàn để rất nhiều sách."
+                    }
+    },
+    {
+        "id":  "v1_088",
+        "hanzi":  "上午",
+        "pinyin":  "shàngwǔ",
+        "meaning":  "Buổi sáng",
+        "hsk":  1,
+        "radical":  "十 (Thập)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "上午我们有三节汉语课。",
+                        "pinyin":  "Shàngwǔ wǒmen yǒu sān jié hànyǔ kè.",
+                        "vi":  "Buổi sáng chúng tôi có ba tiết tiếng Trung."
+                    }
+    },
+    {
+        "id":  "v1_089",
+        "hanzi":  "少",
+        "pinyin":  "shǎo",
+        "meaning":  "Ít",
+        "hsk":  1,
+        "radical":  "小 (Tiểu)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "今天来上课的人很少。",
+                        "pinyin":  "Jīntiān lái shàngkè de rén hěn shǎo.",
+                        "vi":  "Hôm nay người đến lớp học rất ít."
+                    }
+    },
+    {
+        "id":  "v1_090",
+        "hanzi":  "谁",
+        "pinyin":  "shéi",
+        "meaning":  "Ai",
+        "hsk":  1,
+        "radical":  "讠 (Ngôn)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "他是谁？是你的老师吗？",
+                        "pinyin":  "Tā shì shéi? Shì nǐ de lǎoshī ma?",
+                        "vi":  "Anh ấy là ai? Là thầy giáo của bạn à?"
+                    }
+    },
+    {
+        "id":  "v1_091",
+        "hanzi":  "什么",
+        "pinyin":  "shénme",
+        "meaning":  "Cái gì",
+        "hsk":  1,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "你想吃什么中国菜？",
+                        "pinyin":  "Nǐ xiǎng chī shénme zhōngguó cài?",
+                        "vi":  "Bạn muốn ăn món Trung Quốc nào?"
+                    }
+    },
+    {
+        "id":  "v1_092",
+        "hanzi":  "十",
+        "pinyin":  "shí",
+        "meaning":  "Số 10",
+        "hsk":  1,
+        "radical":  "十 (Thập)",
+        "strokes":  2,
+        "example":  {
+                        "zh":  "今天我们学习第十课。",
+                        "pinyin":  "Jīntiān wǒmen xuéxí dì shí kè.",
+                        "vi":  "Hôm nay chúng ta học bài thứ mười."
+                    }
+    },
+    {
+        "id":  "v1_093",
+        "hanzi":  "时候",
+        "pinyin":  "shíhou",
+        "meaning":  "Thời gian, lúc, khi",
+        "hsk":  1,
+        "radical":  "日 (Nhật)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "你什么时候回国？",
+                        "pinyin":  "Nǐ shénme shíhou huí guó?",
+                        "vi":  "Khi nào bạn về nước?"
+                    }
+    },
+    {
+        "id":  "v1_094",
+        "hanzi":  "是",
+        "pinyin":  "shì",
+        "meaning":  "Là, phải, đúng",
+        "hsk":  1,
+        "radical":  "日 (Nhật)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "我是河内大学的学生。",
+                        "pinyin":  "Wǒ shì Hénèi dàxué de xuésheng.",
+                        "vi":  "Tôi là sinh viên trường Đại học Hà Nội."
+                    }
+    },
+    {
+        "id":  "v1_095",
+        "hanzi":  "书",
+        "pinyin":  "shū",
+        "meaning":  "Sách vở",
+        "hsk":  1,
+        "radical":  "乙 (Ất)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "这本书很有意思。",
+                        "pinyin":  "Zhè běn shū hěn yǒu yìsi.",
+                        "vi":  "Cuốn sách này rất thú vị."
+                    }
+    },
+    {
+        "id":  "v1_096",
+        "hanzi":  "水",
+        "pinyin":  "shuǐ",
+        "meaning":  "Nước uống",
+        "hsk":  1,
+        "radical":  "水 (Thủy)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "多喝水对身体好。",
+                        "pinyin":  "Duō hē shuǐ duì shēntǐ hǎo.",
+                        "vi":  "Uống nhiều nước tốt cho sức khỏe."
+                    }
+    },
+    {
+        "id":  "v1_097",
+        "hanzi":  "水果",
+        "pinyin":  "shuǐguǒ",
+        "meaning":  "Hoa quả, trái cây",
+        "hsk":  1,
+        "radical":  "木 (Mộc)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "多吃水果能够补充维生素。",
+                        "pinyin":  "Duō chī shuǐguǒ nénggòu bǔchōng wéishēngsù.",
+                        "vi":  "Ăn nhiều hoa quả có thể bổ sung vitamin."
+                    }
+    },
+    {
+        "id":  "v1_098",
+        "hanzi":  "睡觉",
+        "pinyin":  "shuìjiào",
+        "meaning":  "Đi ngủ",
+        "hsk":  1,
+        "radical":  "目 (Mục)",
+        "strokes":  13,
+        "example":  {
+                        "zh":  "太晚了，早点睡觉吧。",
+                        "pinyin":  "Tài wǎn le, zǎo diǎn shuìjiào ba.",
+                        "vi":  "Muộn quá rồi, đi ngủ sớm đi nhé."
+                    }
+    },
+    {
+        "id":  "v1_099",
+        "hanzi":  "说话",
+        "pinyin":  "shuōhuà",
+        "meaning":  "Nói chuyện",
+        "hsk":  1,
+        "radical":  "讠 (Ngôn)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "请安静，老师在说话。",
+                        "pinyin":  "Qǐng ānjìng, lǎoshī zài shuōhuà.",
+                        "vi":  "Xin hãy yên lặng, cô giáo đang nói chuyện."
+                    }
+    },
+    {
+        "id":  "v1_100",
+        "hanzi":  "四",
+        "pinyin":  "sì",
+        "meaning":  "Số 4",
+        "hsk":  1,
+        "radical":  "囗 (Vi)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "一年有四个季节。",
+                        "pinyin":  "Yì nián yǒu sì gè jìjié.",
+                        "vi":  "Một năm có 4 mùa."
+                    }
+    },
+    {
+        "id":  "v1_101",
+        "hanzi":  "岁",
+        "pinyin":  "suì",
+        "meaning":  "Tuổi",
+        "hsk":  1,
+        "radical":  "山 (Sơn)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "今年我二十岁了。",
+                        "pinyin":  "Jīnnián wǒ èrshí suì le.",
+                        "vi":  "Năm nay tôi 20 tuổi rồi."
+                    }
+    },
+    {
+        "id":  "v1_102",
+        "hanzi":  "他",
+        "pinyin":  "tā",
+        "meaning":  "Anh ấy, ông ấy (ngôi thứ ba nam)",
+        "hsk":  1,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "他是我的汉语老师。",
+                        "pinyin":  "Tā shì wǒ de hànyǔ lǎoshī.",
+                        "vi":  "Thầy ấy là giáo viên tiếng Trung của tôi."
+                    }
+    },
+    {
+        "id":  "v1_103",
+        "hanzi":  "她",
+        "pinyin":  "tā",
+        "meaning":  "Cô ấy, chị ấy (ngôi thứ ba nữ)",
+        "hsk":  1,
+        "radical":  "女 (Nữ)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "她唱歌唱得非常好听。",
+                        "pinyin":  "Tā chànggē chàng de fēicháng hǎotīng.",
+                        "vi":  "Cô ấy hát rất là hay."
+                    }
+    },
+    {
+        "id":  "v1_104",
+        "hanzi":  "太",
+        "pinyin":  "tài",
+        "meaning":  "Quá, lắm",
+        "hsk":  1,
+        "radical":  "大 (Đại)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "太好了！明天放假！",
+                        "pinyin":  "Tài hǎo le! Míngtiān fàngjià!",
+                        "vi":  "Tuyệt quá! Ngày mai được nghỉ!"
+                    }
+    },
+    {
+        "id":  "v1_105",
+        "hanzi":  "天气",
+        "pinyin":  "tiānqì",
+        "meaning":  "Thời tiết",
+        "hsk":  1,
+        "radical":  "气 (Khí)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "今天天气晴朗，适合出去玩。",
+                        "pinyin":  "Jīntiān tiānqì qínglǎng, shìhé chūqù wán.",
+                        "vi":  "Hôm nay trời nắng đẹp, rất hợp ra ngoài chơi."
+                    }
+    },
+    {
+        "id":  "v1_106",
+        "hanzi":  "听",
+        "pinyin":  "tīng",
+        "meaning":  "Nghe",
+        "hsk":  1,
+        "radical":  "口 (Khẩu)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "你在听什么音乐？",
+                        "pinyin":  "Nǐ zài tīng shénme yīnyuè?",
+                        "vi":  "Bạn đang nghe bản nhạc gì thế?"
+                    }
+    },
+    {
+        "id":  "v1_107",
+        "hanzi":  "同学",
+        "pinyin":  "tóngxué",
+        "meaning":  "Bạn học, bạn cùng lớp",
+        "hsk":  1,
+        "radical":  "口 (Khẩu)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "我们都是同班同学。",
+                        "pinyin":  "Wǒmen dōu shì tóngbān tóngxué.",
+                        "vi":  "Chúng tôi đều là bạn cùng lớp."
+                    }
+    },
+    {
+        "id":  "v1_108",
+        "hanzi":  "喂",
+        "pinyin":  "wèi",
+        "meaning":  "A lô (chào khi nghe máy)",
+        "hsk":  1,
+        "radical":  "口 (Khẩu)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "喂，请问王经理在吗？",
+                        "pinyin":  "Wèi, qǐngwèn Wáng jīnglǐ zài ma?",
+                        "vi":  "A lô, xin hỏi giám đốc Vương có ở đó không?"
+                    }
+    },
+    {
+        "id":  "v1_109",
+        "hanzi":  "我",
+        "pinyin":  "wǒ",
+        "meaning":  "Tôi, tao, tớ (ngôi thứ nhất)",
+        "hsk":  1,
+        "radical":  "戈 (Qua)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "我来自越南。",
+                        "pinyin":  "Wǒ láizì Yuènán.",
+                        "vi":  "Tôi đến từ Việt Nam."
+                    }
+    },
+    {
+        "id":  "v1_110",
+        "hanzi":  "我们",
+        "pinyin":  "wǒmen",
+        "meaning":  "Chúng tôi, chúng ta",
+        "hsk":  1,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "我们一起努力学中文吧！",
+                        "pinyin":  "Wǒmen yìqǐ nǔlì xué zhōngwén ba!",
+                        "vi":  "Chúng ta cùng nhau nỗ lực học tiếng Trung nhé!"
+                    }
+    },
+    {
+        "id":  "v1_111",
+        "hanzi":  "五",
+        "pinyin":  "wǔ",
+        "meaning":  "Số 5",
+        "hsk":  1,
+        "radical":  "二 (Nhị)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "我家有五口人。",
+                        "pinyin":  "Wǒ jiā yǒu wǔ kǒu rén.",
+                        "vi":  "Gia đình tôi có năm người."
+                    }
+    },
+    {
+        "id":  "v1_112",
+        "hanzi":  "喜欢",
+        "pinyin":  "xǐhuan",
+        "meaning":  "Thích, yêu thích",
+        "hsk":  1,
+        "radical":  "口 (Khẩu)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "我喜欢听中国流行歌曲。",
+                        "pinyin":  "Wǒ xǐhuan tīng zhōngguó liúxíng gēqǔ.",
+                        "vi":  "Tôi thích nghe các bài hát thịnh hành Trung Quốc."
+                    }
+    },
+    {
+        "id":  "v1_113",
+        "hanzi":  "下",
+        "pinyin":  "xià",
+        "meaning":  "Dưới, xuống, sau (tháng sau/tuần sau)",
+        "hsk":  1,
+        "radical":  "一 (Nhất)",
+        "strokes":  3,
+        "example":  {
+                        "zh":  "我们下周三考试。",
+                        "pinyin":  "Wǒmen xià zhōusān kǎoshì.",
+                        "vi":  "Thứ tư tuần sau chúng tôi thi."
+                    }
+    },
+    {
+        "id":  "v1_114",
+        "hanzi":  "下午",
+        "pinyin":  "xiàwǔ",
+        "meaning":  "Buổi chiều",
+        "hsk":  1,
+        "radical":  "十 (Thập)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "今天下午我有空。",
+                        "pinyin":  "Jīntiān xiàwǔ wǒ yǒukòng.",
+                        "vi":  "Chiều nay tôi có thời gian rảnh."
+                    }
+    },
+    {
+        "id":  "v1_115",
+        "hanzi":  "下雨",
+        "pinyin":  "xiàyǔ",
+        "meaning":  "Trời đổ mưa",
+        "hsk":  1,
+        "radical":  "雨 (Vũ)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "外面下雨了，带把雨伞吧。",
+                        "pinyin":  "Wàimiàn xiàyǔ le, dài bǎ yǔsǎn ba.",
+                        "vi":  "Bên ngoài mưa rồi, mang theo chiếc ô nhé."
+                    }
+    },
+    {
+        "id":  "v1_116",
+        "hanzi":  "先生",
+        "pinyin":  "xiānsheng",
+        "meaning":  "Ông, ngài, chồng",
+        "hsk":  1,
+        "radical":  "生 (Sinh)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "请问张先生在办公室吗？",
+                        "pinyin":  "Qǐngwèn Zhāng xiānsheng zài bàngōngshì ma?",
+                        "vi":  "Xin hỏi ông Trương có ở văn phòng không?"
+                    }
+    },
+    {
+        "id":  "v1_117",
+        "hanzi":  "现在",
+        "pinyin":  "xiànzài",
+        "meaning":  "Bây giờ, hiện tại",
+        "hsk":  1,
+        "radical":  "王 (Ngọc)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "现在几点了？",
+                        "pinyin":  "Xiànzài jǐ diǎn le?",
+                        "vi":  "Bây giờ là mấy giờ rồi?"
+                    }
+    },
+    {
+        "id":  "v1_118",
+        "hanzi":  "想",
+        "pinyin":  "xiǎng",
+        "meaning":  "Muốn, nhớ, suy nghĩ",
+        "hsk":  1,
+        "radical":  "心 (Tâm)",
+        "strokes":  13,
+        "example":  {
+                        "zh":  "我很想念远方的家人。",
+                        "pinyin":  "Wǒ hěn xiǎngniàn yuǎnfāng de jiārén.",
+                        "vi":  "Tôi rất nhớ gia đình ở phương xa."
+                    }
+    },
+    {
+        "id":  "v1_119",
+        "hanzi":  "小",
+        "pinyin":  "xiǎo",
+        "meaning":  "Nhỏ, bé",
+        "hsk":  1,
+        "radical":  "小 (Tiểu)",
+        "strokes":  3,
+        "example":  {
+                        "zh":  "这件衣服有点儿小。",
+                        "pinyin":  "Zhè jiàn yīfu yǒudiǎnr xiǎo.",
+                        "vi":  "Chiếc áo này hơi bé một chút."
+                    }
+    },
+    {
+        "id":  "v1_120",
+        "hanzi":  "小姐",
+        "pinyin":  "xiǎojiě",
+        "meaning":  "Cô, tiểu thư",
+        "hsk":  1,
+        "radical":  "女 (Nữ)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "服务员小姐，请问洗手间在哪？",
+                        "pinyin":  "Fúwùyuán xiǎojiě, qǐngwèn xǐshǒujiān zài nǎ?",
+                        "vi":  "Chị phục vụ ơi, xin hỏi nhà vệ sinh ở đâu ạ?"
+                    }
+    },
+    {
+        "id":  "v1_121",
+        "hanzi":  "些",
+        "pinyin":  "xiē",
+        "meaning":  "Một vài, một ít",
+        "hsk":  1,
+        "radical":  "二 (Nhị)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "这些苹果很新鲜。",
+                        "pinyin":  "Zhèxiē píngguǒ hěn xīnxiān.",
+                        "vi":  "Những quả táo này rất tươi ngon."
+                    }
+    },
+    {
+        "id":  "v1_122",
+        "hanzi":  "写",
+        "pinyin":  "xiě",
+        "meaning":  "Viết chữ",
+        "hsk":  1,
+        "radical":  "冖 (Mịch)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "请在白板上写下你的名字。",
+                        "pinyin":  "Qǐng zài báibǎn shàng xiě xià nǐ de míngzi.",
+                        "vi":  "Xin hãy viết tên bạn lên bảng trắng."
+                    }
+    },
+    {
+        "id":  "v1_123",
+        "hanzi":  "谢谢",
+        "pinyin":  "xièxie",
+        "meaning":  "Cảm ơn",
+        "hsk":  1,
+        "radical":  "讠 (Ngôn)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "非常感谢你的热情帮助！",
+                        "pinyin":  "Fēicháng gǎnxiè nǐ de rèqíng bāngzhù!",
+                        "vi":  "Vô cùng cảm ơn sự giúp đỡ nhiệt tình của bạn!"
+                    }
+    },
+    {
+        "id":  "v1_124",
+        "hanzi":  "星期",
+        "pinyin":  "xīngqī",
+        "meaning":  "Tuần lễ, thứ trong tuần",
+        "hsk":  1,
+        "radical":  "日 (Nhật)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "一个星期有七天。",
+                        "pinyin":  "Yí gè xīngqī yǒu qī tiān.",
+                        "vi":  "Một tuần lễ có bảy ngày."
+                    }
+    },
+    {
+        "id":  "v1_125",
+        "hanzi":  "学生",
+        "pinyin":  "xuésheng",
+        "meaning":  "Học sinh, sinh viên",
+        "hsk":  1,
+        "radical":  "子 (Tử)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "我们学校有五千名学生。",
+                        "pinyin":  "Wǒmen xuéxiào yǒu wǔqiān míng xuésheng.",
+                        "vi":  "Trường chúng tôi có 5.000 học sinh."
+                    }
+    },
+    {
+        "id":  "v1_126",
+        "hanzi":  "学习",
+        "pinyin":  "xuéxí",
+        "meaning":  "Học tập, nghiên cứu",
+        "hsk":  1,
+        "radical":  "子 (Tử)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "好好学习，天天向上。",
+                        "pinyin":  "Hǎohǎo xuéxí, tiāntiān xiàngshàng.",
+                        "vi":  "Học tập chăm chỉ, mỗi ngày đều tiến bộ."
+                    }
+    },
+    {
+        "id":  "v1_127",
+        "hanzi":  "学校",
+        "pinyin":  "xuéxiào",
+        "meaning":  "Trường học",
+        "hsk":  1,
+        "radical":  "木 (Mộc)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "我们学校的环境非常优美。",
+                        "pinyin":  "Wǒmen xuéxiào de huánjìng fēicháng yōuměi.",
+                        "vi":  "Khuôn viên trường học của chúng tôi rất đẹp."
+                    }
+    },
+    {
+        "id":  "v1_128",
+        "hanzi":  "一",
+        "pinyin":  "yī",
+        "meaning":  "Số 1",
+        "hsk":  1,
+        "radical":  "一 (Nhất)",
+        "strokes":  1,
+        "example":  {
+                        "zh":  "一心一意做好一件事。",
+                        "pinyin":  "Yì xīn yí yì zuò hǎo yí jiàn shì.",
+                        "vi":  "Một lòng một dạ làm tốt một việc."
+                    }
+    },
+    {
+        "id":  "v1_129",
+        "hanzi":  "一点儿",
+        "pinyin":  "yìdiǎnr",
+        "meaning":  "Một chút, một ít",
+        "hsk":  1,
+        "radical":  "灬 (Hỏa)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "我会说一点儿汉语。",
+                        "pinyin":  "Wǒ huì shuō yìdiǎnr hànyǔ.",
+                        "vi":  "Tôi biết nói một chút tiếng Trung."
+                    }
+    },
+    {
+        "id":  "v1_130",
+        "hanzi":  "衣服",
+        "pinyin":  "yīfu",
+        "meaning":  "Quần áo, y phục",
+        "hsk":  1,
+        "radical":  "衣 (Y)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "妈妈给我买了一件新衣服。",
+                        "pinyin":  "Māmā gěi wǒ mǎi le yí jiàn xīn yīfu.",
+                        "vi":  "Mẹ mua cho tôi một bộ quần áo mới."
+                    }
+    },
+    {
+        "id":  "v1_131",
+        "hanzi":  "医生",
+        "pinyin":  "yīshēng",
+        "meaning":  "Bác sĩ, thầy thuốc",
+        "hsk":  1,
+        "radical":  "匚 (Phương)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "生病了要及时看医生。",
+                        "pinyin":  "Shēngbìng le yào jíshí kàn yīshēng.",
+                        "vi":  "Bị ốm rồi thì phải kịp thời đi khám bác sĩ."
+                    }
+    },
+    {
+        "id":  "v1_132",
+        "hanzi":  "医院",
+        "pinyin":  "yīyuàn",
+        "meaning":  "Bệnh viện",
+        "hsk":  1,
+        "radical":  "阝 (Phụ)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "我家附近有一家大医院。",
+                        "pinyin":  "Wǒ jiā fùjìn yǒu yì jiā dà yīyuàn.",
+                        "vi":  "Gần nhà tôi có một bệnh viện lớn."
+                    }
+    },
+    {
+        "id":  "v1_133",
+        "hanzi":  "椅子",
+        "pinyin":  "yǐzi",
+        "meaning":  "Cái ghế",
+        "hsk":  1,
+        "radical":  "木 (Mộc)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "请坐在椅子上休息一下。",
+                        "pinyin":  "Qǐng zuò zài yǐzi shàng xiūxi yíxià.",
+                        "vi":  "Xin mời ngồi nghỉ một lát trên ghế."
+                    }
+    },
+    {
+        "id":  "v1_134",
+        "hanzi":  "月",
+        "pinyin":  "yuè",
+        "meaning":  "Tháng, mặt trăng",
+        "hsk":  1,
+        "radical":  "月 (Nguyệt)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "九月是一年里最美的季节。",
+                        "pinyin":  "Jiǔ yuè shì yì nián lǐ zuì měi de jìjié.",
+                        "vi":  "Tháng chín là mùa đẹp nhất trong năm."
+                    }
+    },
+    {
+        "id":  "v1_135",
+        "hanzi":  "再见",
+        "pinyin":  "zàijiàn",
+        "meaning":  "Tạm biệt, hẹn gặp lại",
+        "hsk":  1,
+        "radical":  "见 (Kiến)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "老师再见，明天见！",
+                        "pinyin":  "Lǎoshī zàijiàn, míngtiān jiàn!",
+                        "vi":  "Tạm biệt thầy, ngày mai gặp lại ạ!"
+                    }
+    },
+    {
+        "id":  "v1_136",
+        "hanzi":  "在",
+        "pinyin":  "zài",
+        "meaning":  "Ở, đang (làm gì)",
+        "hsk":  1,
+        "radical":  "土 (Thổ)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "他在房间里看书。",
+                        "pinyin":  "Tā zài fángjiān lǐ kàn shū.",
+                        "vi":  "Anh ấy đang đọc sách trong phòng."
+                    }
+    },
+    {
+        "id":  "v1_137",
+        "hanzi":  "怎么",
+        "pinyin":  "zěnme",
+        "meaning":  "Thế nào, làm sao",
+        "hsk":  1,
+        "radical":  "心 (Tâm)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "这个汉字怎么读？",
+                        "pinyin":  "Zhè gè hànzì zěnme dú?",
+                        "vi":  "Chữ Hán này đọc như thế nào?"
+                    }
+    },
+    {
+        "id":  "v1_138",
+        "hanzi":  "怎么样",
+        "pinyin":  "zěnmeyàng",
+        "meaning":  "Như thế nào, ra sao",
+        "hsk":  1,
+        "radical":  "木 (Mộc)",
+        "strokes":  13,
+        "example":  {
+                        "zh":  "今天这部电影怎么样？",
+                        "pinyin":  "Jīntiān zhè bù diànyǐng zěnmeyàng?",
+                        "vi":  "Bộ phim hôm nay xem như thế nào?"
+                    }
+    },
+    {
+        "id":  "v1_139",
+        "hanzi":  "这",
+        "pinyin":  "zhè",
+        "meaning":  "Đây, này",
+        "hsk":  1,
+        "radical":  "辶 (Sước)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "这是我的新手机。",
+                        "pinyin":  "Zhè shì wǒ de xīn shǒujī.",
+                        "vi":  "Đây là chiếc điện thoại mới của tôi."
+                    }
+    },
+    {
+        "id":  "v1_140",
+        "hanzi":  "中国",
+        "pinyin":  "zhōngguó",
+        "meaning":  "Trung Quốc",
+        "hsk":  1,
+        "radical":  "囗 (Vi)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "中国有悠久的历史文化。",
+                        "pinyin":  "Zhōngguó yǒu yōujiǔ de lìshǐ wénhuà.",
+                        "vi":  "Trung Quốc có lịch sử văn hóa lâu đời."
+                    }
+    },
+    {
+        "id":  "v1_141",
+        "hanzi":  "中午",
+        "pinyin":  "zhōngwǔ",
+        "meaning":  "Buổi trưa",
+        "hsk":  1,
+        "radical":  "十 (Thập)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "中午我们一起吃火锅吧。",
+                        "pinyin":  "Zhōngwǔ wǒmen yìqǐ chī huǒguō ba.",
+                        "vi":  "Buổi trưa chúng mình cùng ăn lẩu nhé."
+                    }
+    },
+    {
+        "id":  "v1_142",
+        "hanzi":  "住",
+        "pinyin":  "zhù",
+        "meaning":  "Ở, cư ngụ",
+        "hsk":  1,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "你住在哪个城市？",
+                        "pinyin":  "Nǐ zhù zài nǎ gè chéngshì?",
+                        "vi":  "Bạn sống ở thành phố nào?"
+                    }
+    },
+    {
+        "id":  "v1_143",
+        "hanzi":  "桌子",
+        "pinyin":  "zhuōzi",
+        "meaning":  "Cái bàn",
+        "hsk":  1,
+        "radical":  "木 (Mộc)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "桌子上有一台笔记本电脑。",
+                        "pinyin":  "Zhuōzi shàng yǒu yì tái bǐjìběn diànnǎo.",
+                        "vi":  "Trên bàn có một chiếc máy tính xách tay."
+                    }
+    },
+    {
+        "id":  "v1_144",
+        "hanzi":  "字",
+        "pinyin":  "zì",
+        "meaning":  "Chữ, tự",
+        "hsk":  1,
+        "radical":  "宀 (Miên)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "你写的汉字很工整。",
+                        "pinyin":  "Nǐ xiě de hànzì hěn gōngzhěng.",
+                        "vi":  "Chữ Hán bạn viết rất nắn nót."
+                    }
+    },
+    {
+        "id":  "v1_145",
+        "hanzi":  "昨天",
+        "pinyin":  "zuótiān",
+        "meaning":  "Hôm qua",
+        "hsk":  1,
+        "radical":  "日 (Nhật)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "昨天晚上我去参加生日会了。",
+                        "pinyin":  "Zuótiān wǎnshang wǒ qù cānjiā shēngrì huì le.",
+                        "vi":  "Tối hôm qua tôi đi dự tiệc sinh nhật."
+                    }
+    },
+    {
+        "id":  "v1_146",
+        "hanzi":  "坐",
+        "pinyin":  "zuò",
+        "meaning":  "Ngồi, đi (tàu/xe)",
+        "hsk":  1,
+        "radical":  "土 (Thổ)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "请坐，别客气！",
+                        "pinyin":  "Qǐng zuò, bié kèqì!",
+                        "vi":  "Mời ngồi, đừng khách sáo!"
+                    }
+    },
+    {
+        "id":  "v1_147",
+        "hanzi":  "做",
+        "pinyin":  "zuò",
+        "meaning":  "Làm, chế tạo",
+        "hsk":  1,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "你在做什么好吃的？",
+                        "pinyin":  "Nǐ zài zuò shénme hǎochī de?",
+                        "vi":  "Bạn đang làm món gì ngon thế?"
+                    }
+    },
+    {
+        "id":  "v1_148",
+        "hanzi":  "狗",
+        "pinyin":  "gǒu",
+        "meaning":  "Con chó",
+        "hsk":  1,
+        "radical":  "犭 (Khuyển)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "这只小狗非常温顺听话。",
+                        "pinyin":  "Zhè zhī xiǎo gǒu fēicháng wēnshùn tīnghuà.",
+                        "vi":  "Chú chó con này rất ngoan ngoãn biết nghe lời."
+                    }
+    },
+    {
+        "id":  "v1_149",
+        "hanzi":  "谁的",
+        "pinyin":  "shéi de",
+        "meaning":  "Của ai",
+        "hsk":  1,
+        "radical":  "讠 (Ngôn)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "这本红色的词典是谁的？",
+                        "pinyin":  "Zhè běn hóngsè de cídiǎn shì shéi de?",
+                        "vi":  "Cuốn từ điển màu đỏ này là của ai?"
+                    }
+    },
+    {
+        "id":  "v1_150",
+        "hanzi":  "茶馆",
+        "pinyin":  "cháguǎn",
+        "meaning":  "Quán trà",
+        "hsk":  1,
+        "radical":  "艹 (Thảo)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "周末老人们喜欢去茶馆聊天。",
+                        "pinyin":  "Zhōumò lǎorénmen xǐhuan qù cháguǎn liáotiān.",
+                        "vi":  "Cuối tuần người già thích ra quán trà trò chuyện."
+                    }
+    },
+    {
+        "id":  "v2_001",
+        "hanzi":  "旅游",
+        "pinyin":  "lǚyóu",
+        "meaning":  "Du lịch, đi tham quan",
+        "hsk":  2,
+        "radical":  "方 (Phương)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "假期我们打算去云南旅游。",
+                        "pinyin":  "Jiàqī wǒmen dǎsuàn qù Yúnnán lǚyóu.",
+                        "vi":  "Kỳ nghỉ chúng tôi dự định đi du lịch Vân Nam."
+                    }
+    },
+    {
+        "id":  "v2_002",
+        "hanzi":  "准备",
+        "pinyin":  "zhǔnbèi",
+        "meaning":  "Chuẩn bị",
+        "hsk":  2,
+        "radical":  "冫 (Băng)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "你准备好明天的考试了吗？",
+                        "pinyin":  "Nǐ zhǔnbèi hǎo míngtiān de kǎoshì le ma?",
+                        "vi":  "Bạn đã chuẩn bị tốt cho kỳ thi ngày mai chưa?"
+                    }
+    },
+    {
+        "id":  "v2_003",
+        "hanzi":  "跑步",
+        "pinyin":  "pǎobù",
+        "meaning":  "Chạy bộ rèn luyện sức khỏe",
+        "hsk":  2,
+        "radical":  "足 (Túc)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "每天早晨我都在公园跑步。",
+                        "pinyin":  "Měitiān zǎochén wǒ dōu zài gōngyuán pǎobù.",
+                        "vi":  "Mỗi sáng tôi đều chạy bộ trong công viên."
+                    }
+    },
+    {
+        "id":  "v2_004",
+        "hanzi":  "运动",
+        "pinyin":  "yùndòng",
+        "meaning":  "Thể thao, vận động",
+        "hsk":  2,
+        "radical":  "辶 (Sước)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "经常做运动对身体很有好处。",
+                        "pinyin":  "Jīngcháng zuò yùndòng duì shēntǐ hěn yǒu hǎochu.",
+                        "vi":  "Thường xuyên vận động thể thao rất có lợi cho sức khỏe."
+                    }
+    },
+    {
+        "id":  "v2_005",
+        "hanzi":  "身体",
+        "pinyin":  "shēntǐ",
+        "meaning":  "Cơ thể, thân thể, sức khỏe",
+        "hsk":  2,
+        "radical":  "身 (Thân)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "祝您身体健康，万事如意！",
+                        "pinyin":  "Zhù nín shēntǐ jiànkāng, wànshì rúyì!",
+                        "vi":  "Chúc ngài dồi dào sức khỏe, vạn sự như ý!"
+                    }
+    },
+    {
+        "id":  "v2_006",
+        "hanzi":  "便宜",
+        "pinyin":  "piányi",
+        "meaning":  "Rẻ, giá cả phải chăng",
+        "hsk":  2,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "这里的衣服质量好而且很便宜。",
+                        "pinyin":  "Zhèlǐ de yīfu zhìliàng hǎo érqiě hěn piányi.",
+                        "vi":  "Quần áo ở đây chất lượng tốt mà lại rất rẻ."
+                    }
+    },
+    {
+        "id":  "v2_007",
+        "hanzi":  "旁边",
+        "pinyin":  "pángbiān",
+        "meaning":  "Bên cạnh, kế bên",
+        "hsk":  2,
+        "radical":  "方 (Phương)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "我家旁边有一家大超市。",
+                        "pinyin":  "Wǒ jiā pángbiān yǒu yì jiā dà chāoshì.",
+                        "vi":  "Bên cạnh nhà tôi có một siêu thị lớn."
+                    }
+    },
+    {
+        "id":  "v2_008",
+        "hanzi":  "考试",
+        "pinyin":  "kǎoshì",
+        "meaning":  "Kiểm tra, thi cử",
+        "hsk":  2,
+        "radical":  "耂 (Lão)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "期末考试成绩终于出来了。",
+                        "pinyin":  "Qīmò kǎoshì chéngjì zhōngyú chūlái le.",
+                        "vi":  "Điểm thi học kỳ cuối cùng cũng có rồi."
+                    }
+    },
+    {
+        "id":  "v2_009",
+        "hanzi":  "帮助",
+        "pinyin":  "bāngzhù",
+        "meaning":  "Giúp đỡ, viện trợ",
+        "hsk":  2,
+        "radical":  "巾 (Cân)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "谢谢你在困难时对我的帮助。",
+                        "pinyin":  "Xièxie nǐ zài kùnnan shí duì wǒ de bāngzhù.",
+                        "vi":  "Cảm ơn sự giúp đỡ của bạn dành cho tôi lúc khó khăn."
+                    }
+    },
+    {
+        "id":  "v2_010",
+        "hanzi":  "穿",
+        "pinyin":  "chuān",
+        "meaning":  "Mặc (quần áo), đi (giày dép)",
+        "hsk":  2,
+        "radical":  "穴 (Huyệt)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "外面风大，多穿一件外套吧。",
+                        "pinyin":  "Wàimiàn fēng dà, duō chuān yí jiàn wàitào ba.",
+                        "vi":  "Bên ngoài gió to, mặc thêm một chiếc áo khoác nhé."
+                    }
+    },
+    {
+        "id":  "v2_011",
+        "hanzi":  "懂",
+        "pinyin":  "dǒng",
+        "meaning":  "Hiểu, thông suốt",
+        "hsk":  2,
+        "radical":  "忄 (Tâm đứng)",
+        "strokes":  15,
+        "example":  {
+                        "zh":  "老师讲的话你听懂了吗？",
+                        "pinyin":  "Lǎoshī jiǎng de huà nǐ tīngdǒng le ma?",
+                        "vi":  "Lời thầy giáo giảng bạn đã nghe hiểu chưa?"
+                    }
+    },
+    {
+        "id":  "v2_012",
+        "hanzi":  "贵",
+        "pinyin":  "guì",
+        "meaning":  "Đắt đỏ, quý giá",
+        "hsk":  2,
+        "radical":  "贝 (Bối)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "这条裙子太贵了，能不能便宜点？",
+                        "pinyin":  "Zhè tiáo qúnzi tài guì le, néng bu néng piányi diǎn?",
+                        "vi":  "Chiếc váy này đắt quá, có thể giảm giá chút không?"
+                    }
+    },
+    {
+        "id":  "v2_013",
+        "hanzi":  "给",
+        "pinyin":  "gěi",
+        "meaning":  "Cho, tặng, đưa cho",
+        "hsk":  2,
+        "radical":  "纟 (Mịch)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "爸爸给我买了一本新词典。",
+                        "pinyin":  "Bàba gěi wǒ mǎi le yì běn xīn cídiǎn.",
+                        "vi":  "Bố mua cho tôi một cuốn từ điển mới."
+                    }
+    },
+    {
+        "id":  "v2_014",
+        "hanzi":  "介绍",
+        "pinyin":  "jièshào",
+        "meaning":  "Giới thiệu",
+        "hsk":  2,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "请允许我向大家自我介绍一下。",
+                        "pinyin":  "Qǐng yǔnxǔ wǒ xiàng dàjiā zìwǒ jièshào yíxià.",
+                        "vi":  "Cho phép tôi tự giới thiệu bản thân với mọi người."
+                    }
+    },
+    {
+        "id":  "v2_015",
+        "hanzi":  "进",
+        "pinyin":  "jìn",
+        "meaning":  "Vào, tiến vào",
+        "hsk":  2,
+        "radical":  "辶 (Sước)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "请进，快请屋里坐！",
+                        "pinyin":  "Qǐng jìn, kuài qǐng wū lǐ zuò!",
+                        "vi":  "Mời vào, mau vào phòng ngồi nào!"
+                    }
+    },
+    {
+        "id":  "v2_016",
+        "hanzi":  "考",
+        "pinyin":  "kǎo",
+        "meaning":  "Thi, kiểm tra",
+        "hsk":  2,
+        "radical":  "耂 (Lão)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "这次汉语水平考了满分。",
+                        "pinyin":  "Zhè cì hànyǔ shuǐpíng kǎo le mǎnfēn.",
+                        "vi":  "Kỳ thi trình độ tiếng Trung lần này đạt điểm tối đa."
+                    }
+    },
+    {
+        "id":  "v2_017",
+        "hanzi":  "累",
+        "pinyin":  "lèi",
+        "meaning":  "Mệt mỏi",
+        "hsk":  2,
+        "radical":  "糸 (Mịch)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "工作了一整天，我感到很累。",
+                        "pinyin":  "Gōngzuò le yì zhěng tiān, wǒ gǎndào hěn lèi.",
+                        "vi":  "Làm việc cả một ngày dài, tôi thấy rất mệt."
+                    }
+    },
+    {
+        "id":  "v2_018",
+        "hanzi":  "忙",
+        "pinyin":  "máng",
+        "meaning":  "Bận rộn",
+        "hsk":  2,
+        "radical":  "忄 (Tâm đứng)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "最近公司业务很多，他很忙。",
+                        "pinyin":  "Zuìjìn gōngsī yèwù hěn duō, tā hěn máng.",
+                        "vi":  "Dạo này công ty nhiều việc, anh ấy rất bận."
+                    }
+    },
+    {
+        "id":  "v2_019",
+        "hanzi":  "卖",
+        "pinyin":  "mài",
+        "meaning":  "Bán",
+        "hsk":  2,
+        "radical":  "十 (Thập)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "超市里卖各种新鲜水果。",
+                        "pinyin":  "Chāoshì lǐ mài gè zhǒng xīnxiān shuǐguǒ.",
+                        "vi":  "Trong siêu thị có bán đủ loại trái cây tươi."
+                    }
+    },
+    {
+        "id":  "v2_020",
+        "hanzi":  "票",
+        "pinyin":  "piào",
+        "meaning":  "Vé (tàu, xe, xem phim)",
+        "hsk":  2,
+        "radical":  "示 (Thị)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "我已经订好了周末的电影票。",
+                        "pinyin":  "Wǒ yǐjīng dìng hǎo le zhōumò de diànyǐng piào.",
+                        "vi":  "Tôi đã đặt xong vé xem phim cuối tuần rồi."
+                    }
+    },
+    {
+        "id":  "v2_021",
+        "hanzi":  "起床",
+        "pinyin":  "qǐchuáng",
+        "meaning":  "Thức dậy, rời giường",
+        "hsk":  2,
+        "radical":  "走 (Tẩu)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "我每天早上六点按时起床。",
+                        "pinyin":  "Wǒ měitiān zǎoshang liù diǎn ànshí qǐchuáng.",
+                        "vi":  "Mỗi sáng tôi đều thức dậy đúng 6 giờ."
+                    }
+    },
+    {
+        "id":  "v2_022",
+        "hanzi":  "晴",
+        "pinyin":  "qíng",
+        "meaning":  "Trời nắng, quang đãng",
+        "hsk":  2,
+        "radical":  "日 (Nhật)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "今天天气晴朗，微风习习。",
+                        "pinyin":  "Jīntiān tiānqì qínglǎng, wēifēng xíxí.",
+                        "vi":  "Hôm nay trời nắng ráo quang đãng, gió hiu hiu."
+                    }
+    },
+    {
+        "id":  "v2_023",
+        "hanzi":  "去年",
+        "pinyin":  "qùnián",
+        "meaning":  "Năm ngoái",
+        "hsk":  2,
+        "radical":  "厶 (Khứ)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "去年夏天我去了北京。",
+                        "pinyin":  "Qùnián xiàtiān wǒ qù le Běijīng.",
+                        "vi":  "Mùa hè năm ngoái tôi đã đi Bắc Kinh."
+                    }
+    },
+    {
+        "id":  "v2_024",
+        "hanzi":  "日",
+        "pinyin":  "rì",
+        "meaning":  "Ngày, mặt trời",
+        "hsk":  2,
+        "radical":  "日 (Nhật)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "今天是十月二十二日。",
+                        "pinyin":  "Jīntiān shì shí yuè èrshí\u0027èr rì.",
+                        "vi":  "Hôm nay là ngày 22 tháng 10."
+                    }
+    },
+    {
+        "id":  "v2_025",
+        "hanzi":  "生病",
+        "pinyin":  "shēngbìng",
+        "meaning":  "Bị ốm, ngã bệnh",
+        "hsk":  2,
+        "radical":  "疒 (Nạch)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "他生病了，今天在家休息。",
+                        "pinyin":  "Tā shēngbìng le, jīntiān zài jiā xiūxi.",
+                        "vi":  "Anh ấy bị ốm rồi, hôm nay ở nhà nghỉ ngơi."
+                    }
+    },
+    {
+        "id":  "v2_026",
+        "hanzi":  "生日",
+        "pinyin":  "shēngrì",
+        "meaning":  "Sinh nhật",
+        "hsk":  2,
+        "radical":  "生 (Sinh)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "祝你生日快乐，心想事成！",
+                        "pinyin":  "Zhù nǐ shēngrì kuàilè, xīnxiǎngshìchéng!",
+                        "vi":  "Chúc bạn sinh nhật vui vẻ, vạn sự như ý!"
+                    }
+    },
+    {
+        "id":  "v2_027",
+        "hanzi":  "踢足球",
+        "pinyin":  "tī zúqiú",
+        "meaning":  "Đá bóng, đá bóng đá",
+        "hsk":  2,
+        "radical":  "足 (Túc)",
+        "strokes":  15,
+        "example":  {
+                        "zh":  "周末男孩子们喜欢在操场踢足球。",
+                        "pinyin":  "Zhōumò nánháizimen xǐhuan zài cāochǎng tī zúqiú.",
+                        "vi":  "Cuối tuần các bạn nam thích đá bóng ngoài sân."
+                    }
+    },
+    {
+        "id":  "v2_028",
+        "hanzi":  "题",
+        "pinyin":  "tí",
+        "meaning":  "Câu hỏi, đề bài",
+        "hsk":  2,
+        "radical":  "页 (Hiệt)",
+        "strokes":  15,
+        "example":  {
+                        "zh":  "这道数学题稍微有点难。",
+                        "pinyin":  "Zhè dào shùxué tí shāowēi yǒudiǎn nán.",
+                        "vi":  "Câu hỏi toán học này hơi khó một chút."
+                    }
+    },
+    {
+        "id":  "v2_029",
+        "hanzi":  "跳舞",
+        "pinyin":  "tiàowǔ",
+        "meaning":  "Khiêu vũ, nhảy múa",
+        "hsk":  2,
+        "radical":  "足 (Túc)",
+        "strokes":  13,
+        "example":  {
+                        "zh":  "她跳舞跳得优美动人。",
+                        "pinyin":  "Tā tiàowǔ tiào de yōuměi dòngrén.",
+                        "vi":  "Cô ấy khiêu vũ rất uyển chuyển say đắm lòng người."
+                    }
+    },
+    {
+        "id":  "v2_030",
+        "hanzi":  "完",
+        "pinyin":  "wán",
+        "meaning":  "Xong, hoàn thành, hết",
+        "hsk":  2,
+        "radical":  "宀 (Miên)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "今天的家庭作业我都写完了。",
+                        "pinyin":  "Jīntiān de jiātíng zuòyè wǒ dōu xiě wán le.",
+                        "vi":  "Bài tập về nhà hôm nay tôi đều đã làm xong."
+                    }
+    },
+    {
+        "id":  "v2_031",
+        "hanzi":  "玩",
+        "pinyin":  "wán",
+        "meaning":  "Chơi đùa, tiêu khiển",
+        "hsk":  2,
+        "radical":  "王 (Ngọc)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "周末我们常去公园玩耍。",
+                        "pinyin":  "Zhōumò wǒmen cháng qù gōngyuán wánshuǎ.",
+                        "vi":  "Cuối tuần chúng tôi thường ra công viên vui chơi."
+                    }
+    },
+    {
+        "id":  "v2_032",
+        "hanzi":  "为什么",
+        "pinyin":  "wèishénme",
+        "meaning":  "Tại sao, vì sao",
+        "hsk":  2,
+        "radical":  "丶 (Chủ)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "你今天为什么没有来上课？",
+                        "pinyin":  "Nǐ jīntiān wèishénme méiyǒu lái shàngkè?",
+                        "vi":  "Hôm nay tại sao bạn không đến lớp học?"
+                    }
+    },
+    {
+        "id":  "v2_033",
+        "hanzi":  "问",
+        "pinyin":  "wèn",
+        "meaning":  "Hỏi",
+        "hsk":  2,
+        "radical":  "门 (Môn)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "不懂的地方一定要多向老师请教。",
+                        "pinyin":  "Bù dǒng de dìfang yídìng yào duō xiàng lǎoshī qǐngjiào.",
+                        "vi":  "Chỗ nào không hiểu nhất định phải hỏi thầy cô giáo."
+                    }
+    },
+    {
+        "id":  "v2_034",
+        "hanzi":  "问题",
+        "pinyin":  "wèntí",
+        "meaning":  "Vấn đề, câu hỏi",
+        "hsk":  2,
+        "radical":  "门 (Môn)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "这个问题需要大家一起讨论解决。",
+                        "pinyin":  "Zhè gè wèntí xūyào dàjiā yìqǐ tǎolùn jiějué.",
+                        "vi":  "Vấn đề này cần mọi người cùng thảo luận giải quyết."
+                    }
+    },
+    {
+        "id":  "v2_035",
+        "hanzi":  "希望",
+        "pinyin":  "xīwàng",
+        "meaning":  "Hy vọng, mong muốn",
+        "hsk":  2,
+        "radical":  "巾 (Cân)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "我希望未来能成为一名翻译官。",
+                        "pinyin":  "Wǒ xīwàng wèilái néng chéngwéi yì míng fānyìguān.",
+                        "vi":  "Tôi hy vọng tương lai có thể trở thành một phiên dịch viên."
+                    }
+    },
+    {
+        "id":  "v2_036",
+        "hanzi":  "洗",
+        "pinyin":  "xǐ",
+        "meaning":  "Rửa, giặt",
+        "hsk":  2,
+        "radical":  "氵 (Thủy)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "饭前便后都要认真洗手。",
+                        "pinyin":  "Fàn qián biàn hòu dōu yào rènzhēn xǐshǒu.",
+                        "vi":  "Trước khi ăn và sau khi đi vệ sinh đều phải rửa tay."
+                    }
+    },
+    {
+        "id":  "v2_037",
+        "hanzi":  "笑",
+        "pinyin":  "xiào",
+        "meaning":  "Cười",
+        "hsk":  2,
+        "radical":  "⺮ (Trúc)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "她笑起来的样子非常迷人。",
+                        "pinyin":  "Tā xiào qǐlai de yàngzi fēicháng mírén.",
+                        "vi":  "Nụ cười của cô ấy trông vô cùng cuốn hút."
+                    }
+    },
+    {
+        "id":  "v2_038",
+        "hanzi":  "新",
+        "pinyin":  "xīn",
+        "meaning":  "Mới",
+        "hsk":  2,
+        "radical":  "斤 (Cân)",
+        "strokes":  13,
+        "example":  {
+                        "zh":  "新年快乐，万事如意！",
+                        "pinyin":  "Xīnnián kuàilè, wànshì rúyì!",
+                        "vi":  "Chúc mừng năm mới, vạn sự như ý!"
+                    }
+    },
+    {
+        "id":  "v2_039",
+        "hanzi":  "姓",
+        "pinyin":  "xìng",
+        "meaning":  "Họ (trong tên họ)",
+        "hsk":  2,
+        "radical":  "女 (Nữ)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "请问您贵姓？我姓阮。",
+                        "pinyin":  "Qǐngwèn nín guìxìng? Wǒ xìng Ruǎn.",
+                        "vi":  "Xin hỏi quý tính của ngài? Tôi họ Nguyễn."
+                    }
+    },
+    {
+        "id":  "v2_040",
+        "hanzi":  "眼睛",
+        "pinyin":  "yǎnjing",
+        "meaning":  "Mắt, đôi mắt",
+        "hsk":  2,
+        "radical":  "目 (Mục)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "保护眼睛，少长时间看手机。",
+                        "pinyin":  "Bǎohù yǎnjing, shǎo cháng shíjiān kàn shǒujī.",
+                        "vi":  "Bảo vệ đôi mắt, bớt nhìn điện thoại thời gian dài."
+                    }
+    },
+    {
+        "id":  "v2_041",
+        "hanzi":  "羊肉",
+        "pinyin":  "yángròu",
+        "meaning":  "Thịt cừu, thịt dê",
+        "hsk":  2,
+        "radical":  "羊 (Dương)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "冬天下雪时吃羊肉火锅很暖和。",
+                        "pinyin":  "Dōngtiān xiàxuě shí chī yángròu huǒguō hěn nuǎnhuo.",
+                        "vi":  "Mùa đông tuyết rơi ăn lẩu thịt cừu rất ấm áp."
+                    }
+    },
+    {
+        "id":  "v2_042",
+        "hanzi":  "药",
+        "pinyin":  "yào",
+        "meaning":  "Thuốc chữa bệnh",
+        "hsk":  2,
+        "radical":  "艹 (Thảo)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "医生开的药一定要按时服用。",
+                        "pinyin":  "Yīshēng kāi de yào yídìng yào ànshí fúyòng.",
+                        "vi":  "Thuốc bác sĩ kê nhất định phải uống đúng giờ."
+                    }
+    },
+    {
+        "id":  "v2_043",
+        "hanzi":  "要",
+        "pinyin":  "yào",
+        "meaning":  "Muốn, cần, phải",
+        "hsk":  2,
+        "radical":  "覀 (Á)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "我们要努力把中文学得更好。",
+                        "pinyin":  "Wǒmen yào nǔlì bǎ zhōngwén xué de gèng hǎo.",
+                        "vi":  "Chúng ta phải nỗ lực học tiếng Trung tốt hơn nữa."
+                    }
+    },
+    {
+        "id":  "v2_044",
+        "hanzi":  "也",
+        "pinyin":  "yě",
+        "meaning":  "Cũng",
+        "hsk":  2,
+        "radical":  "乙 (Ất)",
+        "strokes":  3,
+        "example":  {
+                        "zh":  "他是大学生，我也是大学生。",
+                        "pinyin":  "Tā shì dàxuésheng, wǒ yě shì dàxuésheng.",
+                        "vi":  "Anh ấy là sinh viên, tôi cũng là sinh viên."
+                    }
+    },
+    {
+        "id":  "v2_045",
+        "hanzi":  "已经",
+        "pinyin":  "yǐjīng",
+        "meaning":  "Đã, rồi",
+        "hsk":  2,
+        "radical":  "己 (Kỷ)",
+        "strokes":  3,
+        "example":  {
+                        "zh":  "我已经在中国生活三年了。",
+                        "pinyin":  "Wǒ yǐjīng zài zhōngguó shēnghuó sān nián le.",
+                        "vi":  "Tôi đã sống ở Trung Quốc được ba năm rồi."
+                    }
+    },
+    {
+        "id":  "v2_046",
+        "hanzi":  "一起",
+        "pinyin":  "yìqǐ",
+        "meaning":  "Cùng nhau",
+        "hsk":  2,
+        "radical":  "走 (Tẩu)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "周末我们一起去图书馆看书吧。",
+                        "pinyin":  "Zhōumò wǒmen yìqǐ qù túshūguǎn kàn shū ba.",
+                        "vi":  "Cuối tuần chúng mình cùng nhau ra thư viện đọc sách nhé."
+                    }
+    },
+    {
+        "id":  "v2_047",
+        "hanzi":  "意思",
+        "pinyin":  "yìsi",
+        "meaning":  "Ý nghĩa, thú vị",
+        "hsk":  2,
+        "radical":  "心 (Tâm)",
+        "strokes":  13,
+        "example":  {
+                        "zh":  "这个生词是什么意思？",
+                        "pinyin":  "Zhè gè shēngcí shì shénme yìsi?",
+                        "vi":  "Từ mới này có ý nghĩa là gì?"
+                    }
+    },
+    {
+        "id":  "v2_048",
+        "hanzi":  "因为",
+        "pinyin":  "yīnwèi",
+        "meaning":  "Bởi vì, do",
+        "hsk":  2,
+        "radical":  "囗 (Vi)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "因为天气不好，所以比赛推迟了。",
+                        "pinyin":  "Yīnwèi tiānqì bù hǎo, suǒyǐ bǐsài tuīchí le.",
+                        "vi":  "Bởi vì thời tiết không tốt nên trận đấu bị hoãn lại."
+                    }
+    },
+    {
+        "id":  "v2_049",
+        "hanzi":  "所以",
+        "pinyin":  "suǒyǐ",
+        "meaning":  "Cho nên, vì thế",
+        "hsk":  2,
+        "radical":  "户 (Hộ)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "因为他很努力，所以成绩很优异。",
+                        "pinyin":  "Yīnwèi tā hěn nǔlì, suǒyǐ chéngjì hěn yōuyì.",
+                        "vi":  "Bởi vì bạn ấy rất chăm chỉ nên thành tích rất xuất sắc."
+                    }
+    },
+    {
+        "id":  "v2_050",
+        "hanzi":  "阴",
+        "pinyin":  "yīn",
+        "meaning":  "Trời âm u, râm mát",
+        "hsk":  2,
+        "radical":  "阝 (Phụ)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "今天多云转阴，天气凉爽。",
+                        "pinyin":  "Jīntiān duōyún zhuǎn yīn, tiānqì liángshuǎng.",
+                        "vi":  "Hôm nay nhiều mây chuyển âm u, thời tiết mát mẻ."
+                    }
+    },
+    {
+        "id":  "v2_051",
+        "hanzi":  "游泳",
+        "pinyin":  "yóuyǒng",
+        "meaning":  "Bơi lội",
+        "hsk":  2,
+        "radical":  "氵 (Thủy)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "夏天去海边游泳非常舒服。",
+                        "pinyin":  "Xiàtiān qù hǎibiān yóuyǒng fēicháng shūfu.",
+                        "vi":  "Mùa hè ra biển bơi lội vô cùng sảng khoái."
+                    }
+    },
+    {
+        "id":  "v2_052",
+        "hanzi":  "右边",
+        "pinyin":  "yòubiān",
+        "meaning":  "Bên phải",
+        "hsk":  2,
+        "radical":  "口 (Khẩu)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "学校大门的右边是图书馆。",
+                        "pinyin":  "Xuéxiào dàmén de yòubiān shì túshūguǎn.",
+                        "vi":  "Bên phải cổng trường là thư viện."
+                    }
+    },
+    {
+        "id":  "v2_053",
+        "hanzi":  "鱼",
+        "pinyin":  "yú",
+        "meaning":  "Con cá",
+        "hsk":  2,
+        "radical":  "鱼 (Ngư)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "多吃鱼肉对身体智力发育好。",
+                        "pinyin":  "Duō chī yúròu duì shēntǐ zhìlì fāyù hǎo.",
+                        "vi":  "Ăn nhiều thịt cá tốt cho sự phát triển thể chất và trí não."
+                    }
+    },
+    {
+        "id":  "v2_054",
+        "hanzi":  "远",
+        "pinyin":  "yuǎn",
+        "meaning":  "Xa, xa xôi",
+        "hsk":  2,
+        "radical":  "辶 (Sước)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "我家离学校不太远，骑车十分钟。",
+                        "pinyin":  "Wǒ jiā lí xuéxiào bú tài yuǎn, qí chē shí fēnzhōng.",
+                        "vi":  "Nhà tôi cách trường không xa lắm, đi xe đạp 10 phút."
+                    }
+    },
+    {
+        "id":  "v2_055",
+        "hanzi":  "运动",
+        "pinyin":  "yùndòng",
+        "meaning":  "Vận động, tập thể dục",
+        "hsk":  2,
+        "radical":  "辶 (Sước)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "坚持每天运动半小时。",
+                        "pinyin":  "Jiānchí měitiān yùndòng bàn xiǎoshí.",
+                        "vi":  "Kiên trì mỗi ngày vận động nửa tiếng."
+                    }
+    },
+    {
+        "id":  "v2_056",
+        "hanzi":  "再",
+        "pinyin":  "zài",
+        "meaning":  "Lại, thêm lần nữa",
+        "hsk":  2,
+        "radical":  "冂 (Quynh)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "请把刚才的话再说一遍好吗？",
+                        "pinyin":  "Qǐng bǎ gāngcái de huà zài shuō yí biàn hǎo ma?",
+                        "vi":  "Xin hãy nói lại câu vừa nãy một lần nữa được không?"
+                    }
+    },
+    {
+        "id":  "v2_057",
+        "hanzi":  "早上",
+        "pinyin":  "zǎoshang",
+        "meaning":  "Buổi sáng sớm",
+        "hsk":  2,
+        "radical":  "日 (Nhật)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "早上空气清新，适合散步。",
+                        "pinyin":  "Zǎoshang kōngqì qīngxīn, shìhé sànbù.",
+                        "vi":  "Buổi sáng không khí trong lành, rất hợp đi dạo."
+                    }
+    },
+    {
+        "id":  "v2_058",
+        "hanzi":  "丈夫",
+        "pinyin":  "zhàngfu",
+        "meaning":  "Người chồng",
+        "hsk":  2,
+        "radical":  "一 (Nhất)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "她的丈夫是一名大学教授。",
+                        "pinyin":  "Tā de zhàngfu shì yì míng dàxué jiàoshòu.",
+                        "vi":  "Chồng của cô ấy là một giáo sư đại học."
+                    }
+    },
+    {
+        "id":  "v2_059",
+        "hanzi":  "找",
+        "pinyin":  "zhǎo",
+        "meaning":  "Tìm kiếm, thối lại tiền",
+        "hsk":  2,
+        "radical":  "扌 (Thủ)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "你在找什么东西？我帮你找吧。",
+                        "pinyin":  "Nǐ zài zhǎo shénme dōngxi? Wǒ bāng nǐ zhǎo ba.",
+                        "vi":  "Bạn đang tìm đồ gì thế? Để tôi tìm giúp bạn nhé."
+                    }
+    },
+    {
+        "id":  "v2_060",
+        "hanzi":  "着",
+        "pinyin":  "zhe",
+        "meaning":  "Đang (trợ từ thái động biểu thị tiếp diễn)",
+        "hsk":  2,
+        "radical":  "目 (Mục)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "门开着，请直接走进来吧。",
+                        "pinyin":  "Mén kāizhe, qǐng zhíjiē zǒu jìnlái ba.",
+                        "vi":  "Cửa đang mở, xin mời trực tiếp bước vào."
+                    }
+    },
+    {
+        "id":  "v2_061",
+        "hanzi":  "真",
+        "pinyin":  "zhēn",
+        "meaning":  "Thật, thật sự",
+        "hsk":  2,
+        "radical":  "目 (Mục)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "今天的天气真好啊！",
+                        "pinyin":  "Jīntiān de tiānqì zhēn hǎo a!",
+                        "vi":  "Thời tiết hôm nay thật là đẹp quá!"
+                    }
+    },
+    {
+        "id":  "v2_062",
+        "hanzi":  "正在",
+        "pinyin":  "zhèngzài",
+        "meaning":  "Đang (hành động đang diễn ra)",
+        "hsk":  2,
+        "radical":  "止 (Chỉ)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "同学们正在教室里认真做练习。",
+                        "pinyin":  "Tóngxuémen zhèngzài jiàoshì lǐ rènzhēn zuò liànxí.",
+                        "vi":  "Các bạn học đang chăm chú làm bài tập trong phòng học."
+                    }
+    },
+    {
+        "id":  "v2_063",
+        "hanzi":  "知道",
+        "pinyin":  "zhīdào",
+        "meaning":  "Biết, hiểu biết",
+        "hsk":  2,
+        "radical":  "矢 (Thỉ)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "你知道去故宫怎么走吗？",
+                        "pinyin":  "Nǐ zhīdào qù Gùgōng zěnme zǒu ma?",
+                        "vi":  "Bạn có biết đi tới Cố Cung thì đi như thế nào không?"
+                    }
+    },
+    {
+        "id":  "v2_064",
+        "hanzi":  "自行车",
+        "pinyin":  "zìxíngchē",
+        "meaning":  "Xe đạp",
+        "hsk":  2,
+        "radical":  "自 (Tự)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "骑自行车既环保又能锻炼身体。",
+                        "pinyin":  "Qí zìxíngchē jì huánbǎo yòu néng duànliàn shēntǐ.",
+                        "vi":  "Đi xe đạp vừa bảo vệ môi trường vừa có thể rèn luyện sức khỏe."
+                    }
+    },
+    {
+        "id":  "v2_065",
+        "hanzi":  "走",
+        "pinyin":  "zǒu",
+        "meaning":  "Đi bộ, rời đi",
+        "hsk":  2,
+        "radical":  "走 (Tẩu)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "饭后走一走，活到九十九。",
+                        "pinyin":  "Fàn hòu zǒu yì zǒu, huó dào jiǔshíjiǔ.",
+                        "vi":  "Sau bữa ăn đi bộ một lát thì sống đến chín mươi chín tuổi."
+                    }
+    },
+    {
+        "id":  "v2_066",
+        "hanzi":  "最",
+        "pinyin":  "zuì",
+        "meaning":  "Nhất (so sánh nhất)",
+        "hsk":  2,
+        "radical":  "曰 (Viết)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "他是我们班里汉语说得最好的学生。",
+                        "pinyin":  "Tā shì wǒmen bān lǐ hànyǔ shuō de zuì hǎo de xuésheng.",
+                        "vi":  "Bạn ấy là học sinh nói tiếng Trung tốt nhất lớp chúng tôi."
+                    }
+    },
+    {
+        "id":  "v2_067",
+        "hanzi":  "左边",
+        "pinyin":  "zuǒbiān",
+        "meaning":  "Bên trái",
+        "hsk":  2,
+        "radical":  "工 (Công)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "红绿灯左边有一家书店。",
+                        "pinyin":  "Hónglǜdēng zuǒbiān yǒu yì jiā shūdiàn.",
+                        "vi":  "Bên trái cột đèn giao thông có một hiệu sách."
+                    }
+    },
+    {
+        "id":  "v2_068",
+        "hanzi":  "百",
+        "pinyin":  "bǎi",
+        "meaning":  "Trăm (số 100)",
+        "hsk":  2,
+        "radical":  "白 (Bạch)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "这本书一共有一百页。",
+                        "pinyin":  "Zhè běn shū yígòng yǒu yì bǎi yè.",
+                        "vi":  "Cuốn sách này tổng cộng có 100 trang."
+                    }
+    },
+    {
+        "id":  "v2_069",
+        "hanzi":  "唱歌",
+        "pinyin":  "chànggē",
+        "meaning":  "Hát ca, ca hát",
+        "hsk":  2,
+        "radical":  "口 (Khẩu)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "她不仅会弹钢琴，还会唱歌。",
+                        "pinyin":  "Tā bùjǐn huì tán gāngqín, hái huì chànggē.",
+                        "vi":  "Cô ấy không những biết chơi đàn piano mà còn biết hát."
+                    }
+    },
+    {
+        "id":  "v2_070",
+        "hanzi":  "错",
+        "pinyin":  "cuò",
+        "meaning":  "Sai, lỗi lầm, không tệ",
+        "hsk":  2,
+        "radical":  "钅 (Kim)",
+        "strokes":  13,
+        "example":  {
+                        "zh":  "这道题你做错了，再算一遍。",
+                        "pinyin":  "Zhè dào tí nǐ zuò cuò le, zài suàn yí biàn.",
+                        "vi":  "Câu này bạn làm sai rồi, tính lại một lần nữa nhé."
+                    }
+    },
+    {
+        "id":  "v3_001",
+        "hanzi":  "必须",
+        "pinyin":  "bìxū",
+        "meaning":  "Phải, nhất định phải",
+        "hsk":  3,
+        "radical":  "心 (Tâm)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "明天早上八点你必须准时到校。",
+                        "pinyin":  "Míngtiān zǎoshang bā diǎn nǐ bìxū zhǔnshí dào xiào.",
+                        "vi":  "8 giờ sáng mai bạn nhất định phải đến trường đúng giờ."
+                    }
+    },
+    {
+        "id":  "v3_002",
+        "hanzi":  "经常",
+        "pinyin":  "jīngcháng",
+        "meaning":  "Thường xuyên, hay",
+        "hsk":  3,
+        "radical":  "巾 (Cân)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "为了健康，他经常去体育馆游泳。",
+                        "pinyin":  "Wèile jiànkāng, tā jīngcháng qù tǐyùguǎn yóuyǒng.",
+                        "vi":  "Vì sức khỏe, anh ấy thường xuyên đến nhà thi đấu bơi lội."
+                    }
+    },
+    {
+        "id":  "v3_003",
+        "hanzi":  "影响",
+        "pinyin":  "yǐngxiǎng",
+        "meaning":  "Ảnh hưởng, tác động",
+        "hsk":  3,
+        "radical":  "彡 (Sam)",
+        "strokes":  15,
+        "example":  {
+                        "zh":  "良好的家庭环境对孩子的成长有深远影响。",
+                        "pinyin":  "Liánghǎo de jiātíng huánjìng duì háizi de chéngzhǎng yǒu shēnyuǎn yǐngxiǎng.",
+                        "vi":  "Môi trường gia đình tốt có ảnh hưởng sâu sắc đến sự trưởng thành của con trẻ."
+                    }
+    },
+    {
+        "id":  "v3_004",
+        "hanzi":  "努力",
+        "pinyin":  "nǔlì",
+        "meaning":  "Nỗ lực, cố gắng chăm chỉ",
+        "hsk":  3,
+        "radical":  "力 (Lực)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "只要坚持努力，你就一定能实现自己的梦想。",
+                        "pinyin":  "Zhǐyào jiānchí nǔlì, nǐ jiù yídìng néng shíxiàn zìjǐ de mèngxiǎng.",
+                        "vi":  "Chỉ cần kiên trì nỗ lực, bạn nhất định sẽ thực hiện được ước mơ của mình."
+                    }
+    },
+    {
+        "id":  "v3_005",
+        "hanzi":  "习惯",
+        "pinyin":  "xíguàn",
+        "meaning":  "Thói quen, quen với",
+        "hsk":  3,
+        "radical":  "羽 (Vũ)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "养成早睡早起的好习惯。",
+                        "pinyin":  "Yǎngchéng zǎoshuì zǎoqǐ de hǎo xíguàn.",
+                        "vi":  "Hình thành thói quen tốt ngủ sớm dậy sớm."
+                    }
+    },
+    {
+        "id":  "v3_006",
+        "hanzi":  "热情",
+        "pinyin":  "rèqíng",
+        "meaning":  "Nhiệt tình, niềm nở",
+        "hsk":  3,
+        "radical":  "忄 (Tâm đứng)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "北京市民热情欢迎来自世界各地的游客。",
+                        "pinyin":  "Běijīng shìmín rèqíng huānyíng láizì shìjiè gèdì de yóukè.",
+                        "vi":  "Người dân Bắc Kinh nhiệt tình chào đón du khách đến từ khắp nơi trên thế giới."
+                    }
+    },
+    {
+        "id":  "v3_007",
+        "hanzi":  "遇到",
+        "pinyin":  "yùdào",
+        "meaning":  "Gặp phải, bắt gặp",
+        "hsk":  3,
+        "radical":  "辶 (Sước)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "在学习汉语的过程中会遇到不少语法难点。",
+                        "pinyin":  "Zài xuéxí hànyǔ de guòchéng zhōng huì yùdào bù shǎo yǔfǎ nándiǎn.",
+                        "vi":  "Trong quá trình học tiếng Trung sẽ gặp không ít điểm khó về ngữ pháp."
+                    }
+    },
+    {
+        "id":  "v3_008",
+        "hanzi":  "解决",
+        "pinyin":  "jiějué",
+        "meaning":  "Giải quyết (vấn đề, khó khăn)",
+        "hsk":  3,
+        "radical":  "角 (Gác)",
+        "strokes":  13,
+        "example":  {
+                        "zh":  "大家齐心协力把这个复杂的难题解决了。",
+                        "pinyin":  "Dàjiā qíxīn xiélì bǎ zhè gè fùzá de nántí jiějué le.",
+                        "vi":  "Mọi người đồng lòng hiệp lực giải quyết xong bài toán phức tạp này rồi."
+                    }
+    },
+    {
+        "id":  "v3_009",
+        "hanzi":  "了解",
+        "pinyin":  "liǎojiě",
+        "meaning":  "Hiểu rõ, tìm hiểu kỹ",
+        "hsk":  3,
+        "radical":  "乙 (Ất)",
+        "strokes":  2,
+        "example":  {
+                        "zh":  "通过这次文化交流，我更加深入地了解了中国。",
+                        "pinyin":  "Tōngguò zhè cì wénhuà jiāoliú, wǒ gèngjiā shēnrù de liǎojiě le Zhōngguó.",
+                        "vi":  "Qua đợt giao lưu văn hóa lần này, tôi đã hiểu rõ sâu sắc hơn về đất nước Trung Quốc."
+                    }
+    },
+    {
+        "id":  "v3_010",
+        "hanzi":  "参加",
+        "pinyin":  "cānjiā",
+        "meaning":  "Tham gia, tham dự",
+        "hsk":  3,
+        "radical":  "厶 (Khứ)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "明天下午全校师生都要参加运动会开幕式。",
+                        "pinyin":  "Míngtiān xiàwǔ quán xiào shīshēng dōu yào cānjiā yùndònghuì kāimùshì.",
+                        "vi":  "Chiều mai toàn thể thầy trò trong trường đều sẽ tham gia lễ khai mạc đại hội thể thao."
+                    }
+    },
+    {
+        "id":  "v3_011",
+        "hanzi":  "满意",
+        "pinyin":  "mǎnyì",
+        "meaning":  "Hài lòng, vừa ý",
+        "hsk":  3,
+        "radical":  "氵 (Thủy)",
+        "strokes":  13,
+        "example":  {
+                        "zh":  "客户对我们团队提供的服务非常满意。",
+                        "pinyin":  "Kèhù duì wǒmen tuánduì tígōng de fúwù fēicháng mǎnyì.",
+                        "vi":  "Khách hàng rất hài lòng với dịch vụ do nhóm chúng tôi cung cấp."
+                    }
+    },
+    {
+        "id":  "v3_012",
+        "hanzi":  "迟到",
+        "pinyin":  "chídào",
+        "meaning":  "Đến muộn, trễ giờ",
+        "hsk":  3,
+        "radical":  "辶 (Sước)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "上课不要迟到，养成守时的良好品质。",
+                        "pinyin":  "Shàngkè bú yào chídào, yǎngchéng shǒushí de liánghǎo pǐnzhì.",
+                        "vi":  "Đi học đừng có đến muộn, hãy rèn luyện đức tính đúng giờ tốt đẹp."
+                    }
+    },
+    {
+        "id":  "v3_013",
+        "hanzi":  "方便",
+        "pinyin":  "fāngbiàn",
+        "meaning":  "Thuận tiện, tiện lợi",
+        "hsk":  3,
+        "radical":  "方 (Phương)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "如今出门用手机移动支付非常方便。",
+                        "pinyin":  "Rújīn chūmén yòng shǒujī yídòng zhīfù fēicháng fāngbiàn.",
+                        "vi":  "Ngày nay ra đường dùng thanh toán di động trên điện thoại vô cùng tiện lợi."
+                    }
+    },
+    {
+        "id":  "v3_014",
+        "hanzi":  "环境",
+        "pinyin":  "huánjìng",
+        "meaning":  "Môi trường (sống, làm việc, thiên nhiên)",
+        "hsk":  3,
+        "radical":  "王 (Ngọc)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "保护生态环境是我们每个人的责任。",
+                        "pinyin":  "Bǎohù shēngtài huánjìng shì wǒmen měi gè rén de zérèn.",
+                        "vi":  "Bảo vệ môi trường sinh thái là trách nhiệm của mỗi người chúng ta."
+                    }
+    },
+    {
+        "id":  "v3_015",
+        "hanzi":  "愿意",
+        "pinyin":  "yuànyì",
+        "meaning":  "Bằng lòng, sẵn lòng, nguyện ý",
+        "hsk":  3,
+        "radical":  "心 (Tâm)",
+        "strokes":  14,
+        "example":  {
+                        "zh":  "我很愿意成为你的汉语语伴。",
+                        "pinyin":  "Wǒ hěn yuànyì chéngwéi nǐ de hànyǔ yǔbàn.",
+                        "vi":  "Tôi rất sẵn lòng trở thành bạn luyện nói tiếng Trung của bạn."
+                    }
+    },
+    {
+        "id":  "v3_016",
+        "hanzi":  "终于",
+        "pinyin":  "zhōngyú",
+        "meaning":  "Cuối cùng, rốt cuộc",
+        "hsk":  3,
+        "radical":  "纟 (Mịch)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "经过两个月的苦战，我们终于攻克了这个难关。",
+                        "pinyin":  "Jīngguò liǎng gè yuè de kǔzhàn, wǒmen zhōngyú gōngkè le zhè gè nánguān.",
+                        "vi":  "Trải qua hai tháng khổ chiến, cuối cùng chúng tôi đã chinh phục được cửa ải khó khăn này."
+                    }
+    },
+    {
+        "id":  "v3_017",
+        "hanzi":  "提高",
+        "pinyin":  "tígāo",
+        "meaning":  "Nâng cao, cải thiện",
+        "hsk":  3,
+        "radical":  "扌 (Thủ)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "每天坚持听中文广播能够显著提高听力水平。",
+                        "pinyin":  "Měitiān jiānchí tīng zhōngwén guǎngbō nénggòu xiǎozhù tígāo tīnglì shuǐpíng.",
+                        "vi":  "Mỗi ngày kiên trì nghe đài tiếng Trung có thể nâng cao rõ rệt trình độ nghe."
+                    }
+    },
+    {
+        "id":  "v3_018",
+        "hanzi":  "简单",
+        "pinyin":  "jiǎndān",
+        "meaning":  "Đơn giản, dễ dàng",
+        "hsk":  3,
+        "radical":  "⺮ (Trúc)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "这个语法规则其实非常简单，容易掌握。",
+                        "pinyin":  "Zhè gè yǔfǎ guīzé qíshí fēicháng jiǎndān, róngyì zhǎngwò.",
+                        "vi":  "Quy tắc ngữ pháp này thực ra rất đơn giản, dễ nắm bắt."
+                    }
+    },
+    {
+        "id":  "v3_019",
+        "hanzi":  "检查",
+        "pinyin":  "jiǎnchá",
+        "meaning":  "Kiểm tra, rà soát",
+        "hsk":  3,
+        "radical":  "木 (Mộc)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "交卷前一定要仔细检查一遍答案。",
+                        "pinyin":  "Jiāojuàn qián yídìng yào zǐxì jiǎnchá yí biàn dá\u0027àn.",
+                        "vi":  "Trước khi nộp bài nhất định phải kiểm tra kỹ lại đáp án một lượt."
+                    }
+    },
+    {
+        "id":  "v3_020",
+        "hanzi":  "决定",
+        "pinyin":  "juédìng",
+        "meaning":  "Quyết định",
+        "hsk":  3,
+        "radical":  "氵 (Thủy)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "他决定毕业后去中国留学攻读硕士。",
+                        "pinyin":  "Tā juédìng bìyè hòu qù Zhōngguó liúxué gōngdú shuòshì.",
+                        "vi":  "Anh ấy quyết định sau khi tốt nghiệp sẽ sang Trung Quốc du học thạc sĩ."
+                    }
+    },
+    {
+        "id":  "v4_001",
+        "hanzi":  "坚持",
+        "pinyin":  "jiānchí",
+        "meaning":  "Kiên trì, bền chí giữ vững",
+        "hsk":  4,
+        "radical":  "土 (Thổ)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "只要坚持到底，胜利就属于有毅力的人。",
+                        "pinyin":  "Zhǐyào jiānchí dàodǐ, shènglì jiù shǔyú yǒu yìlì de rén.",
+                        "vi":  "Chỉ cần kiên trì đến cùng, chiến thắng ắt thuộc về người có nghị lực."
+                    }
+    },
+    {
+        "id":  "v4_002",
+        "hanzi":  "经验",
+        "pinyin":  "jīngyàn",
+        "meaning":  "Kinh nghiệm tích lũy",
+        "hsk":  4,
+        "radical":  "纟 (Mịch)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "他在软件开发领域积累了超过十年的丰富经验。",
+                        "pinyin":  "Tā zài ruǎnjiàn kāifā lǐngyù jīlěi le chāoguò shí nián de fēngfù jīngyàn.",
+                        "vi":  "Anh ấy đã tích lũy hơn mười năm kinh nghiệm phong phú trong lĩnh vực phát triển phần mềm."
+                    }
+    },
+    {
+        "id":  "v4_003",
+        "hanzi":  "过程",
+        "pinyin":  "guòchéng",
+        "meaning":  "Quá trình, tiến trình",
+        "hsk":  4,
+        "radical":  "辶 (Sước)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "享受学习探索的过程比仅仅追求结果更宝贵。",
+                        "pinyin":  "Xiǎngshòu xuéxí tànsuǒ de guòchéng bǐ jǐnjǐn zhuīqiú jiéguǒ gèng bǎoguì.",
+                        "vi":  "Tận hưởng quá trình học tập khám phá quý giá hơn là chỉ mải mê chạy theo kết quả."
+                    }
+    },
+    {
+        "id":  "v4_004",
+        "hanzi":  "责任",
+        "pinyin":  "zérèn",
+        "meaning":  "Trách nhiệm, bổn phận",
+        "hsk":  4,
+        "radical":  "贝 (Bối)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "对工作认真负责是每一个优秀职业人士的素养。",
+                        "pinyin":  "Duì gōngzuò rènzhēn fùzé shì měi yí gè yōuxiù zhíyè rénshì de sùyǎng.",
+                        "vi":  "Nghiêm túc có trách nhiệm với công việc là tố chất của mỗi chuyên gia ưu tú."
+                    }
+    },
+    {
+        "id":  "v4_005",
+        "hanzi":  "态度",
+        "pinyin":  "tàidu",
+        "meaning":  "Thái độ đối xử, cách nhìn nhận",
+        "hsk":  4,
+        "radical":  "心 (Tâm)",
+        "strokes":  14,
+        "example":  {
+                        "zh":  "积极乐观的生活态度能帮助我们战胜一切困难。",
+                        "pinyin":  "Jījí lèguān de shēnghuó tàidu néng bāngzhù wǒmen zhànshèng yíqiè kùnnan.",
+                        "vi":  "Thái độ sống tích cực lạc quan có thể giúp chúng ta chiến thắng mọi gian khó."
+                    }
+    },
+    {
+        "id":  "v4_006",
+        "hanzi":  "关键",
+        "pinyin":  "guānjiàn",
+        "meaning":  "Mấu chốt, điểm then chốt quyết định",
+        "hsk":  4,
+        "radical":  "门 (Môn)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "抓住问题的关键才能从根本上解决矛盾。",
+                        "pinyin":  "Zhuā zhù wèntí de guānjiàn cái néng cóng gēnběn shàng jiějué máodùn.",
+                        "vi":  "Nắm vững điểm then chốt của vấn đề mới có thể giải quyết tận gốc mâu thuẫn."
+                    }
+    },
+    {
+        "id":  "v4_007",
+        "hanzi":  "顺利",
+        "pinyin":  "shùnlì",
+        "meaning":  "Thuận lợi, trôi chảy hanh thông",
+        "hsk":  4,
+        "radical":  "页 (Hiệt)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "祝贺你们团队顺利完成了这个跨国大型项目。",
+                        "pinyin":  "Zhùhè nǐmen tuánduì shùnlì wánchéng le zhè gè kuàguó dàxíng xiàngmù.",
+                        "vi":  "Chúc mừng nhóm của các bạn đã hoàn thành thuận lợi dự án lớn đa quốc gia này."
+                    }
+    },
+    {
+        "id":  "v4_008",
+        "hanzi":  "尽管",
+        "pinyin":  "jǐnguǎn",
+        "meaning":  "Dẫu rằng, cho dù, cứ việc",
+        "hsk":  4,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "尽管路途遥远坎坷，大家依然信心百倍。",
+                        "pinyin":  "Jǐnguǎn lùtú yáoyuǎn kǎnkě, dàjiā yīrán xìnxīn bǎibèi.",
+                        "vi":  "Cho dù chặng đường xa xôi gập ghềnh, mọi người vẫn tràn đầy niềm tin."
+                    }
+    },
+    {
+        "id":  "v4_009",
+        "hanzi":  "无论",
+        "pinyin":  "wúlùn",
+        "meaning":  "Bất luận, dù cho thế nào",
+        "hsk":  4,
+        "radical":  "讠 (Ngôn)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "无论遇到多大风浪，我们都要坚定前行。",
+                        "pinyin":  "Wúlùn yù dào duō dà fēnglàng, wǒmen dōu yào jiāndìng qiánxíng.",
+                        "vi":  "Bất luận gặp phải sóng gió lớn đến đâu, chúng ta đều phải kiên định tiến bước."
+                    }
+    },
+    {
+        "id":  "v4_010",
+        "hanzi":  "安排",
+        "pinyin":  "ānpái",
+        "meaning":  "Sắp xếp, bố trí lịch trình",
+        "hsk":  4,
+        "radical":  "宀 (Miên)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "请合理安排好每日的复习与锻炼时间。",
+                        "pinyin":  "Qǐng hélǐ ānpái hǎo měirì de fùxí yǔ duànliàn shíjiān.",
+                        "vi":  "Xin hãy sắp xếp hợp lý thời gian ôn tập và rèn luyện thể chất mỗi ngày."
+                    }
+    },
+    {
+        "id":  "v4_011",
+        "hanzi":  "讨论",
+        "pinyin":  "tǎolùn",
+        "meaning":  "Thảo luận, bàn bạc",
+        "hsk":  4,
+        "radical":  "讠 (Ngôn)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "会议上大家就新方案进行了热烈的讨论。",
+                        "pinyin":  "Huìyì shàng dàjiā jiù xīn fāng\u0027àn jìnxíng le rèliè de tǎolùn.",
+                        "vi":  "Tại cuộc họp mọi người đã thảo luận sôi nổi về phương án mới."
+                    }
+    },
+    {
+        "id":  "v4_012",
+        "hanzi":  "竞争",
+        "pinyin":  "jìngzhēng",
+        "meaning":  "Cạnh tranh, thi đua",
+        "hsk":  4,
+        "radical":  "立 (Lập)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "现代职场中，终身学习是核心竞争力的保障。",
+                        "pinyin":  "Xiàndài zhíchǎng zhōng, zhōngshēn xuéxí shì héxīn jìngzhēnglì de bǎozhàng.",
+                        "vi":  "Nơi công sở hiện đại, học tập suốt đời là sự bảo đảm cho năng lực cạnh tranh cốt lõi."
+                    }
+    },
+    {
+        "id":  "v4_013",
+        "hanzi":  "丰富",
+        "pinyin":  "fēngfù",
+        "meaning":  "Phong phú, dồi dào",
+        "hsk":  4,
+        "radical":  "豆 (Đậu)",
+        "strokes":  13,
+        "example":  {
+                        "zh":  "中国各地的民俗风情极为丰富多彩。",
+                        "pinyin":  "Zhōngguó gèdì de mínsú fēngqíng jíwéi fēngfù duōcǎi.",
+                        "vi":  "Phong tục tập quán khắp nơi ở Trung Quốc vô cùng phong phú đa dạng."
+                    }
+    },
+    {
+        "id":  "v4_014",
+        "hanzi":  "详细",
+        "pinyin":  "xiángxì",
+        "meaning":  "Chi tiết, tỉ mỉ",
+        "hsk":  4,
+        "radical":  "讠 (Ngôn)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "这份报告详细列出了本季度的各项财务数据。",
+                        "pinyin":  "Zhè fèn bàogào xiángxì liè chū le běn jìdù de gè xiàng cáiwù shùjù.",
+                        "vi":  "Bản báo cáo này đã liệt kê chi tiết các số liệu tài chính của quý này."
+                    }
+    },
+    {
+        "id":  "v4_015",
+        "hanzi":  "积极",
+        "pinyin":  "jījí",
+        "meaning":  "Tích cực, chủ động",
+        "hsk":  4,
+        "radical":  "禾 (Hòa)",
+        "strokes":  16,
+        "example":  {
+                        "zh":  "积极参加课外活动能拓展综合人际能力。",
+                        "pinyin":  "Jījí cānjiā kèwài huódòng néng tuòzhǎn zōnghé rénjì nénglì.",
+                        "vi":  "Tích cực tham gia các hoạt động ngoại khóa có thể mở rộng năng lực giao tiếp toàn diện."
+                    }
+    },
+    {
+        "id":  "v5_001",
+        "hanzi":  "投资",
+        "pinyin":  "tóuzī",
+        "meaning":  "Đầu tư vốn, bỏ vốn sinh lời",
+        "hsk":  5,
+        "radical":  "扌 (Thủ)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "投资于教育和个人技能提升是回报最高的决策。",
+                        "pinyin":  "Tóuzī yú jiàoyù hé gèrén jìnéng tíshēng shì huíbào zuì gāo de juécè.",
+                        "vi":  "Đầu tư vào giáo dục và nâng cao kỹ năng bản thân là quyết định mang lại lợi nhuận cao nhất."
+                    }
+    },
+    {
+        "id":  "v5_002",
+        "hanzi":  "效率",
+        "pinyin":  "xiàolǜ",
+        "meaning":  "Hiệu suất, năng suất làm việc",
+        "hsk":  5,
+        "radical":  "攵 (Phộc)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "引入自动化工具显著提升了流水线的生产效率。",
+                        "pinyin":  "Yǐnrù zìdònghuà gōngjù xiǎozhù tíshēng le liúshuǐxiàn de shēngchǎn xiàolǜ.",
+                        "vi":  "Áp dụng các công cụ tự động hóa đã nâng cao rõ rệt năng suất sản xuất của dây chuyền."
+                    }
+    },
+    {
+        "id":  "v5_003",
+        "hanzi":  "趋势",
+        "pinyin":  "qūshì",
+        "meaning":  "Xu hướng, trào lưu phát triển",
+        "hsk":  5,
+        "radical":  "走 (Tẩu)",
+        "strokes":  14,
+        "example":  {
+                        "zh":  "人工智能与数字经济是未来全球产业升级的大趋势。",
+                        "pinyin":  "Rényàng zhìnéng yǔ shùzì jīngjì shì wèilái quánqiú chǎnyè shēngjí de dà qūshì.",
+                        "vi":  "Trí tuệ nhân tạo và kinh tế số là xu thế lớn nâng cấp ngành nghề toàn cầu trong tương lai."
+                    }
+    },
+    {
+        "id":  "v5_004",
+        "hanzi":  "逻辑",
+        "pinyin":  "luóji",
+        "meaning":  "Logic, tính hợp lý chặt chẽ",
+        "hsk":  5,
+        "radical":  "木 (Mộc)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "这篇学术论文结构严谨，论证逻辑非常清晰。",
+                        "pinyin":  "Zhè piān xuéshù lùnwén jiégòu yánjǐn, lùnzhèng luóji fēicháng qīngxī.",
+                        "vi":  "Bài luận văn học thuật này kết cấu chặt chẽ, logic lập luận vô cùng sáng rõ."
+                    }
+    },
+    {
+        "id":  "v5_005",
+        "hanzi":  "挑战",
+        "pinyin":  "tiǎozhàn",
+        "meaning":  "Thách thức, thử thách cam go",
+        "hsk":  5,
+        "radical":  "扌 (Thủ)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "面对前所未有的市场挑战，团队展现出了极强的凝聚力。",
+                        "pinyin":  "Miànduì qiánsuǒwèiyǒu de shìchǎng tiǎozhàn, tuánduì zhǎnxiàn chū le jí qiáng de níngjùlì.",
+                        "vi":  "Đối mặt với thách thức thị trường chưa từng có, nhóm đã thể hiện tinh thần đoàn kết cực kỳ vững chắc."
+                    }
+    },
+    {
+        "id":  "v5_006",
+        "hanzi":  "核心",
+        "pinyin":  "héxīn",
+        "meaning":  "Hạt nhân, nòng cốt then chốt",
+        "hsk":  5,
+        "radical":  "木 (Mộc)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "掌握自主知识产权是高新技术企业的核心命脉。",
+                        "pinyin":  "Zhǎngwò zìzhǔ zhīshi chǎnquán shì gāoxīn jìshù qǐyè de héxīn mìngmài.",
+                        "vi":  "Nắm giữ quyền sở hữu trí tuệ độc lập là sinh mệnh nòng cốt của doanh nghiệp công nghệ cao."
+                    }
+    },
+    {
+        "id":  "v5_007",
+        "hanzi":  "谈判",
+        "pinyin":  "tánpàn",
+        "meaning":  "Đàm phán thương vụ, thương lượng",
+        "hsk":  5,
+        "radical":  "讠 (Ngôn)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "双方代表经过多轮艰苦谈判，最终达成了双赢的战略协议。",
+                        "pinyin":  "Shuāngfāng dàibiǎo jīngguò duō lún jiānkǔ tánpàn, zuìzhōng dáchéng le shuāngyíng de zhànlüè xiéyì.",
+                        "vi":  "Đại diện hai bên sau nhiều vòng đàm phán gian khổ cuối cùng đã đạt được thỏa thuận chiến lược đôi bên cùng có lợi."
+                    }
+    },
+    {
+        "id":  "v5_008",
+        "hanzi":  "积累",
+        "pinyin":  "jīlěi",
+        "meaning":  "Tích lũy ngày qua ngày",
+        "hsk":  5,
+        "radical":  "禾 (Hòa)",
+        "strokes":  16,
+        "example":  {
+                        "zh":  "学问需要日积月累，不可急于求成。",
+                        "pinyin":  "Xuéwen xūyào rì jī yuè lěi, bù kě jí yú qiú chéng.",
+                        "vi":  "Học vấn cần tích lũy ngày qua tháng lại, không thể nóng vội cầu thành công."
+                    }
+    },
+    {
+        "id":  "v5_009",
+        "hanzi":  "改善",
+        "pinyin":  "gǎishàn",
+        "meaning":  "Cải thiện, làm cho tốt hơn",
+        "hsk":  5,
+        "radical":  "攵 (Phộc)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "政府采取有力措施改善了当地群众的生活水平。",
+                        "pinyin":  "Zhèngfǔ cǎiqǔ yǒulì cuòshī gǎishàn le dāngdì qúnzhòng de shēnghuó shuǐpíng.",
+                        "vi":  "Chính quyền áp dụng các biện pháp đắc lực đã cải thiện mức sống của người dân địa phương."
+                    }
+    },
+    {
+        "id":  "v5_010",
+        "hanzi":  "彻底",
+        "pinyin":  "chèdǐ",
+        "meaning":  "Triệt để, tận gốc, hoàn toàn",
+        "hsk":  5,
+        "radical":  "彳 (Xích)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "我们要彻底清查隐患，杜绝一切安全漏洞。",
+                        "pinyin":  "Wǒmen yào chèdǐ qīngchá yǐnhuàn, dùjué yíqiè ānquán lòudòng.",
+                        "vi":  "Chúng ta phải rà soát triệt để các hiểm họa ngầm, loại bỏ mọi lỗ hổng an toàn."
+                    }
+    },
+    {
+        "id":  "v6_001",
+        "hanzi":  "潜移默化",
+        "pinyin":  "qián yí mò huà",
+        "meaning":  "Mưa dầm thấm lâu, biến đổi âm thầm mà sâu sắc",
+        "hsk":  6,
+        "radical":  "氵 (Thủy)",
+        "strokes":  15,
+        "example":  {
+                        "zh":  "优秀的文化艺术经典对青年的人生观起着潜移默化的熏陶作用。",
+                        "pinyin":  "Yōuxiù de wénhuà yìshù jīngdiǎn duì qīngnián de rénshēngguān qǐzhe qián yí mò huà de xūntáo zuòyòng.",
+                        "vi":  "Các tác phẩm kinh điển văn hóa nghệ thuật ưu tú có tác dụng thẩm thấu âm thầm bồi dưỡng nhân sinh quan của thanh niên."
+                    }
+    },
+    {
+        "id":  "v6_002",
+        "hanzi":  "精益求精",
+        "pinyin":  "jīng yì qiú jīng",
+        "meaning":  "Đã tinh xảo lại muốn tinh xảo hơn, cầu toàn hoàn mỹ",
+        "hsk":  6,
+        "radical":  "米 (Mễ)",
+        "strokes":  14,
+        "example":  {
+                        "zh":  "大国工匠在每一个微小的零件加工中都秉持着精益求精的态度。",
+                        "pinyin":  "Dàguó gōngjiàng zài měi yí gè wēixiǎo de língjiàn jiāgōng zhōng dōu bǐngchízhe jīng yì qiú jīng de tàidu.",
+                        "vi":  "Những người thợ bậc thầy luôn giữ vững thái độ tinh xảo tột cùng trong từng khâu gia công chi tiết nhỏ nhất."
+                    }
+    },
+    {
+        "id":  "v6_003",
+        "hanzi":  "举足轻重",
+        "pinyin":  "jǔ zú qīng zhòng",
+        "meaning":  "Giữ vị trí then chốt, có ảnh hưởng quyết định sống còn",
+        "hsk":  6,
+        "radical":  "臼 (Cữu)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "该科技巨头在国际半导体供应链中占有举足轻重的战略地位。",
+                        "pinyin":  "Gāi kējì jùtóu zài guójì bàndǎotǐ gōngyìngliàn zhōng zhànyǒu jǔ zú qīng zhòng de zhànlüè dìwèi.",
+                        "vi":  "Gã khổng lồ công nghệ này chiếm giữ vị thế chiến lược then chốt sống còn trong chuỗi cung ứng bán dẫn toàn cầu."
+                    }
+    },
+    {
+        "id":  "v6_004",
+        "hanzi":  "统筹兼顾",
+        "pinyin":  "tǒng chóu jiān gù",
+        "meaning":  "Quy hoạch tổng thể, cân nhắc toàn diện các mặt",
+        "hsk":  6,
+        "radical":  "纟 (Mịch)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "制定区域经济发展规划必须统筹兼顾环境保护与产业效益。",
+                        "pinyin":  "Zhìdìng qūyù jīngjì fāzhǎn guīhuà bìxū tǒng chóu jiān gù huánjìng bǎohù yǔ chǎnyè xiàoyì.",
+                        "vi":  "Lập quy hoạch phát triển kinh tế vùng phải cân đối tổng thể giữa bảo vệ môi trường và hiệu quả công nghiệp."
+                    }
+    },
+    {
+        "id":  "v6_005",
+        "hanzi":  "贯彻",
+        "pinyin":  "guànchè",
+        "meaning":  "Quán triệt, thực hiện nghiêm túc từ đầu tới cuối",
+        "hsk":  6,
+        "radical":  "贝 (Bối)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "企业全员要坚决贯彻执行高质量安全生产标准。",
+                        "pinyin":  "Qǐyè quányuán yào jiānjué guànchè zhíxíng gāo zhìliàng ānquán shēngchǎn biāozhǔn.",
+                        "vi":  "Toàn thể nhân viên doanh nghiệp phải kiên quyết quán triệt thi hành tiêu chuẩn an toàn sản xuất chất lượng cao."
+                    }
+    },
+    {
+        "id":  "v6_006",
+        "hanzi":  "阐述",
+        "pinyin":  "chǎnshù",
+        "meaning":  "Trần thuật, giải thích sáng tỏ vấn đề học thuật",
+        "hsk":  6,
+        "radical":  "门 (Môn)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "报告人深刻阐述了新时代创新驱动发展战略的核心内涵。",
+                        "pinyin":  "Bàogàorén shēnkè chǎnshù le xīn shídài chuàngxīn qūdòng fāzhǎn zhànlüè de héxīn nèihán.",
+                        "vi":  "Báo cáo viên đã diễn giải sâu sắc nội hàm cốt lõi của chiến lược phát triển lấy đổi mới sáng tạo làm động lực thời đại mới."
+                    }
+    },
+    {
+        "id":  "v6_007",
+        "hanzi":  "衡量",
+        "pinyin":  "héngliang",
+        "meaning":  "Đo lường, cân nhắc đánh giá",
+        "hsk":  6,
+        "radical":  "木 (Mộc)",
+        "strokes":  15,
+        "example":  {
+                        "zh":  "衡量一个国家的现代化水平不能单纯看GDP数据，还要看民生福祉。",
+                        "pinyin":  "Héngliang yí gè guójiā de xiàndàihuà shuǐpíng bù néng dānchún kàn GDP shùjù, hái yào kàn mínshēng fúzhǐ.",
+                        "vi":  "Đo lường trình độ hiện đại hóa của một quốc gia không thể chỉ nhìn số liệu GDP mà còn phải xem phúc lợi an sinh xã hội."
+                    }
+    },
+    {
+        "id":  "v6_008",
+        "hanzi":  "磋商",
+        "pinyin":  "cuōshāng",
+        "meaning":  "Bàn bạc ngoại giao, thương thảo cấp cao",
+        "hsk":  6,
+        "radical":  "石 (Thạch)",
+        "strokes":  14,
+        "example":  {
+                        "zh":  "两国经贸代表团在日内瓦就多边贸易协议展开了建设性磋商。",
+                        "pinyin":  "Liǎng guó jīngmào dàibiǎotuán zài Rìnèiwǎ jiù duōbiān màoyì xiéyì zhǎnkāi le jiànshèxìng cuōshāng.",
+                        "vi":  "Phái đoàn kinh tế thương mại hai nước đã tiến hành tham vấn xây dựng tại Geneva về hiệp định thương mại đa phương."
+                    }
+    },
+    {
+        "id":  "v_biz_01",
+        "hanzi":  "合同",
+        "pinyin":  "hétong",
+        "meaning":  "Hợp đồng kinh tế, thương mại",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "口 (Khẩu)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "甲乙双方代表在会议大厅正式签署了这份采购大单合同。",
+                        "pinyin":  "Jiǎ yǐ shuāngfāng dàibiǎo zài huìyì dàtīng zhèngshì qiānshǔ le zhè fèn cǎigòu dà dān hétong.",
+                        "vi":  "Đại diện hai bên A và B đã chính thức ký kết hợp đồng mua sắm đơn hàng lớn này tại hội trường."
+                    }
+    },
+    {
+        "id":  "v_biz_02",
+        "hanzi":  "报价",
+        "pinyin":  "bàojià",
+        "meaning":  "Báo giá xuất nhập khẩu, bảng giá chào bán",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "扌 (Thủ)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "请根据国际市场行情于今天下午五点前提供最新的FOB报价单。",
+                        "pinyin":  "Qǐng gēnjù guójì shìchǎng hángqíng yú jīntiān xiàwǔ wǔ diǎn qián tígōng zuìxīn de FOB bàojià dān.",
+                        "vi":  "Xin vui lòng căn cứ theo tình hình thị trường quốc tế gửi bảng báo giá FOB mới nhất trước 5 giờ chiều nay."
+                    }
+    },
+    {
+        "id":  "v_biz_03",
+        "hanzi":  "发票",
+        "pinyin":  "fāpiào",
+        "meaning":  "Hóa đơn giá trị gia tăng, hóa đơn tài chính VAT",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "又 (Hựu)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "财务部门需要增值税专用发票才能办理报销和退税入账手续。",
+                        "pinyin":  "Cáiwù bùmén xūyào zēngzhíshuì zhuānyòng fāpiào cái néng bànlǐ bàoxiāo hé tuìshuì rùzhàng shǒuxù.",
+                        "vi":  "Phòng tài chính cần có hóa đơn VAT chuyên dụng mới có thể làm thủ tục thanh toán hoàn thuế và vào sổ kế toán."
+                    }
+    },
+    {
+        "id":  "v_biz_04",
+        "hanzi":  "汇率",
+        "pinyin":  "huìlǜ",
+        "meaning":  "Tỷ giá hối đoái tiền tệ",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "氵 (Thủy)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "近期人民币兑美元汇率保持在合理均衡水平上的双向波动。",
+                        "pinyin":  "Jìnqī rénmínbì duì měiyuán huìlǜ bǎochí zài hélǐ jūnhéng shuǐpíng shàng de shuāngxiàng bōdòng.",
+                        "vi":  "Gần đây tỷ giá đồng Nhân dân tệ so với Đô la Mỹ duy trì biến động hai chiều ở mức cân bằng hợp lý."
+                    }
+    },
+    {
+        "id":  "v_biz_05",
+        "hanzi":  "信用证",
+        "pinyin":  "xìnyòngzhèng",
+        "meaning":  "Thư tín dụng L/C ngân hàng quốc tế",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "在大额跨境国际贸易结算中，不可撤销信用证能够有效规避违约风险。",
+                        "pinyin":  "Zài dà\u0027é kuàjìng guójì màoyì jiésuàn zhōng, bù kě chèxiāo xìnyòngzhèng nénggòu yǒuxiào guībì wéiyuē fēngxiǎn.",
+                        "vi":  "Trong thanh toán thương mại quốc tế xuyên biên giới giá trị lớn, thư tín dụng L/C không hủy ngang giúp hạn chế rủi ro bội ước."
+                    }
+    },
+    {
+        "id":  "v_biz_06",
+        "hanzi":  "关税",
+        "pinyin":  "guānshuì",
+        "meaning":  "Thuế quan hải quan xuất nhập khẩu",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "门 (Môn)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "两国签署自由贸易协定后，超过90%的商品享受零关税优惠待遇。",
+                        "pinyin":  "Liǎng guó qiānshǔ zìyóu màoyì xiédìng hòu, chāoguò bǎifēnzhī jiǔshí de shāngpǐn xiǎngshòu líng guānshuì yōuhuì dàiyù.",
+                        "vi":  "Sau khi hai nước ký kết hiệp định thương mại tự do, hơn 90% các mặt hàng được hưởng ưu đãi thuế quan 0%."
+                    }
+    },
+    {
+        "id":  "v_biz_07",
+        "hanzi":  "供应链",
+        "pinyin":  "gōngyìngliàn",
+        "meaning":  "Chuỗi cung ứng nguyên vật liệu \u0026 hậu cần",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "构建稳定、韧性且高效的全球供应链是制造业降本增效的关键保障。",
+                        "pinyin":  "Gòujiàn wěndìng, rènxìng qiě gāoxiào de quánqiú gōngyìngliàn shì zhìzàoyè jiàngběn zēngxiào de guānjiàn bǎozhàng.",
+                        "vi":  "Xây dựng chuỗi cung ứng toàn cầu ổn định, dẻo dai và hiệu quả là bảo đảm then chốt để sản xuất giảm chi phí tăng năng suất."
+                    }
+    },
+    {
+        "id":  "v_biz_08",
+        "hanzi":  "预付款",
+        "pinyin":  "yùfùkuǎn",
+        "meaning":  "Tiền đặt cọc, khoản tiền thanh toán trước",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "页 (Hiệt)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "买方在正式投产前必须支付总合同金额30%的预付款。",
+                        "pinyin":  "Mǎifāng zài zhèngshì tóuchǎn qián bìxū zhīfù zǒng hétong jīn\u0027é bǎifēnzhī sānshí de yùfùkuǎn.",
+                        "vi":  "Bên mua trước khi bắt đầu sản xuất phải thanh toán khoản tiền ứng trước bằng 30% tổng giá trị hợp đồng."
+                    }
+    },
+    {
+        "id":  "v2_071",
+        "hanzi":  "到",
+        "pinyin":  "dào",
+        "meaning":  "Đến, tới nơi",
+        "hsk":  2,
+        "radical":  "刂 (Đao)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "火车已经准时到达北京了。",
+                        "pinyin":  "Huǒchē yǐjīng zhǔnshí dàodá Běijīng le.",
+                        "vi":  "Tàu hỏa đã đến Bắc Kinh đúng giờ rồi."
+                    }
+    },
+    {
+        "id":  "v2_072",
+        "hanzi":  "等",
+        "pinyin":  "děng",
+        "meaning":  "Đợi, chờ",
+        "hsk":  2,
+        "radical":  "⺮ (Trúc)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "请稍等片刻，经理马上就来。",
+                        "pinyin":  "Qǐng shāoděng piànkè, jīnglǐ mǎshàng jiù lái.",
+                        "vi":  "Xin vui lòng chờ một lát, giám đốc đến ngay đây."
+                    }
+    },
+    {
+        "id":  "v2_073",
+        "hanzi":  "弟弟",
+        "pinyin":  "dìdi",
+        "meaning":  "Em trai",
+        "hsk":  2,
+        "radical":  "弓 (Cung)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "我弟弟今年考上了重点高中。",
+                        "pinyin":  "Wǒ dìdi jīnnián kǎo shàng le zhòngdiǎn gāozhōng.",
+                        "vi":  "Em trai tôi năm nay đã thi đỗ trường cấp 3 trọng điểm."
+                    }
+    },
+    {
+        "id":  "v2_074",
+        "hanzi":  "第一",
+        "pinyin":  "dì-yī",
+        "meaning":  "Thứ nhất, đứng đầu",
+        "hsk":  2,
+        "radical":  "⺮ (Trúc)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "安全第一，生命至上。",
+                        "pinyin":  "Ānquán dì-yī, shēngmìng zhìshàng.",
+                        "vi":  "An toàn là trên hết, sinh mệnh là quý nhất."
+                    }
+    },
+    {
+        "id":  "v2_075",
+        "hanzi":  "哥哥",
+        "pinyin":  "gēge",
+        "meaning":  "Anh trai",
+        "hsk":  2,
+        "radical":  "口 (Khẩu)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "我哥哥在一家科技公司工作。",
+                        "pinyin":  "Wǒ gēge zài yì jiā kējì gōngsī gōngzuò.",
+                        "vi":  "Anh trai tôi làm việc ở một công ty công nghệ."
+                    }
+    },
+    {
+        "id":  "v2_076",
+        "hanzi":  "公共汽车",
+        "pinyin":  "gōnggòng qìchē",
+        "meaning":  "Xe buýt công cộng",
+        "hsk":  2,
+        "radical":  "八 (Bát)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "乘坐公共汽车低碳又环保。",
+                        "pinyin":  "Chéngzuò gōnggòng qìchē dītàn yòu huánbǎo.",
+                        "vi":  "Đi xe buýt công cộng vừa giảm phát thải vừa bảo vệ môi trường."
+                    }
+    },
+    {
+        "id":  "v2_077",
+        "hanzi":  "公司",
+        "pinyin":  "gōngsī",
+        "meaning":  "Công ty, doanh nghiệp",
+        "hsk":  2,
+        "radical":  "八 (Bát)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "我们公司主要从事跨国进出口贸易。",
+                        "pinyin":  "Wǒmen gōngsī zhǔyào cóngshì kuàguó jìnchūkǒu màoyì.",
+                        "vi":  "Công ty chúng tôi chủ yếu hoạt động trong mảng thương mại xuất nhập khẩu quốc tế."
+                    }
+    },
+    {
+        "id":  "v2_078",
+        "hanzi":  "孩子",
+        "pinyin":  "háizi",
+        "meaning":  "Đứa trẻ, con cái",
+        "hsk":  2,
+        "radical":  "子 (Tử)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "孩子们在草地上快乐地玩耍。",
+                        "pinyin":  "Háizimen zài cǎodì shàng kuàilè de wánshuǎ.",
+                        "vi":  "Lũ trẻ đang vui vẻ nô đùa trên bãi cỏ."
+                    }
+    },
+    {
+        "id":  "v2_079",
+        "hanzi":  "黑",
+        "pinyin":  "hēi",
+        "meaning":  "Màu đen, tối",
+        "hsk":  2,
+        "radical":  "黑 (Hắc)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "天黑了，路上行人慢慢变少。",
+                        "pinyin":  "Tiān hēi le, lùshang xíngrén mànmàn biàn shǎo.",
+                        "vi":  "Trời tối rồi, người đi lại trên đường dần thưa thớt."
+                    }
+    },
+    {
+        "id":  "v2_080",
+        "hanzi":  "红",
+        "pinyin":  "hóng",
+        "meaning":  "Màu đỏ",
+        "hsk":  2,
+        "radical":  "纟 (Mịch)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "中国传统节日里处处挂满红灯笼。",
+                        "pinyin":  "Zhōngguó chuántǒng jiérì lǐ chùchù guà mǎn hóng dēnglong.",
+                        "vi":  "Trong các ngày lễ truyền thống Trung Quốc, khắp nơi đều treo đèn lồng đỏ."
+                    }
+    },
+    {
+        "id":  "v2_081",
+        "hanzi":  "机场",
+        "pinyin":  "jīchǎng",
+        "meaning":  "Sân bay, phi trường",
+        "hsk":  2,
+        "radical":  "木 (Mộc)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "我们提前两小时到达国际机场。",
+                        "pinyin":  "Wǒmen tíqián liǎng xiǎoshí dàodá guójì jīchǎng.",
+                        "vi":  "Chúng tôi đến sân bay quốc tế trước hai tiếng."
+                    }
+    },
+    {
+        "id":  "v2_082",
+        "hanzi":  "鸡蛋",
+        "pinyin":  "jīdàn",
+        "meaning":  "Trứng gà",
+        "hsk":  2,
+        "radical":  "鸟 (Điểu)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "每天早晨吃一个煮鸡蛋能补充蛋白质。",
+                        "pinyin":  "Měitiān zǎochén chī yí gè zhǔ jīdàn néng bǔchōng dànbáizhì.",
+                        "vi":  "Mỗi sáng ăn một quả trứng gà luộc có thể bổ sung protein."
+                    }
+    },
+    {
+        "id":  "v2_083",
+        "hanzi":  "件",
+        "pinyin":  "jiàn",
+        "meaning":  "Chiếc, cái, kiện (lượng từ quần áo, sự việc)",
+        "hsk":  2,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "这件事情必须尽快处理完毕。",
+                        "pinyin":  "Zhè jiàn shìqing bìxū jǐnkuài chǔlǐ wánbì.",
+                        "vi":  "Sự việc này nhất định phải xử lý xong càng sớm càng tốt."
+                    }
+    },
+    {
+        "id":  "v2_084",
+        "hanzi":  "教室",
+        "pinyin":  "jiàoshì",
+        "meaning":  "Phòng học, giảng đường",
+        "hsk":  2,
+        "radical":  "攵 (Phộc)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "宽敞明亮的教室为我们提供了良好的学习环境。",
+                        "pinyin":  "Kuānchǎng míngliàng de jiàoshì wèi wǒmen tígōng le liánghǎo de xuéxí huánjìng.",
+                        "vi":  "Phòng học rộng rãi sáng sủa mang lại cho chúng tôi môi trường học tập tuyệt vời."
+                    }
+    },
+    {
+        "id":  "v2_085",
+        "hanzi":  "姐姐",
+        "pinyin":  "jiějie",
+        "meaning":  "Chị gái",
+        "hsk":  2,
+        "radical":  "女 (Nữ)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "我姐姐是一名优秀的高中教师。",
+                        "pinyin":  "Wǒ jiějie shì yì míng yōuxiù de gāozhōng jiàoshī.",
+                        "vi":  "Chị gái tôi là một giáo viên cấp 3 xuất sắc."
+                    }
+    },
+    {
+        "id":  "v2_086",
+        "hanzi":  "觉得",
+        "pinyin":  "juéde",
+        "meaning":  "Cảm thấy, thấy rằng",
+        "hsk":  2,
+        "radical":  "见 (Kiến)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "我觉得学习外语最重要的是坚持开口练说。",
+                        "pinyin":  "Wǒ juéde xuéxí wàiyǔ zuì zhòngyào de shì jiānchí kāikǒu liàn shuō.",
+                        "vi":  "Tôi cảm thấy học ngoại ngữ điều quan trọng nhất là kiên trì mở miệng luyện nói."
+                    }
+    },
+    {
+        "id":  "v2_087",
+        "hanzi":  "咖啡",
+        "pinyin":  "kāfēi",
+        "meaning":  "Cà phê",
+        "hsk":  2,
+        "radical":  "口 (Khẩu)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "喝一杯热咖啡能让人精力充沛。",
+                        "pinyin":  "Hē yì bēi rè kāfēi néng ràng rén jīnglì chōngpèi.",
+                        "vi":  "Uống một tách cà phê nóng giúp con người ta tràn đầy năng lượng."
+                    }
+    },
+    {
+        "id":  "v2_088",
+        "hanzi":  "开始",
+        "pinyin":  "kāishǐ",
+        "meaning":  "Bắt đầu, khởi đầu",
+        "hsk":  2,
+        "radical":  "廾 (Củng)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "会议将于上午九点正式开始。",
+                        "pinyin":  "Huìyì jiāng yú shàngwǔ jiǔ diǎn zhèngshì kāishǐ.",
+                        "vi":  "Cuộc họp sẽ chính thức bắt đầu vào lúc 9 giờ sáng."
+                    }
+    },
+    {
+        "id":  "v2_089",
+        "hanzi":  "快",
+        "pinyin":  "kuài",
+        "meaning":  "Nhanh, mau, sắp sửa",
+        "hsk":  2,
+        "radical":  "忄 (Tâm đứng)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "时间过得真快，转眼就要考试了。",
+                        "pinyin":  "Shíjiān guò de zhēn kuài, zhuǎnyǎn jiù yào kǎoshì le.",
+                        "vi":  "Thời gian trôi qua thật nhanh, chớp mắt cái là sắp thi rồi."
+                    }
+    },
+    {
+        "id":  "v2_090",
+        "hanzi":  "离",
+        "pinyin":  "lí",
+        "meaning":  "Cách, rời xa",
+        "hsk":  2,
+        "radical":  "亠 (Đầu)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "我家离地铁站步行只要三分钟。",
+                        "pinyin":  "Wǒ jiā lí dìtiězhàn bùxíng zhǐ yào sān fēnzhōng.",
+                        "vi":  "Nhà tôi cách ga tàu điện ngầm đi bộ chỉ mất ba phút."
+                    }
+    },
+    {
+        "id":  "v3_021",
+        "hanzi":  "变化",
+        "pinyin":  "biànhuà",
+        "meaning":  "Thay đổi, biến đổi",
+        "hsk":  3,
+        "radical":  "讠 (Ngôn)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "近十年间这个沿海城市发生了翻天覆地的巨大变化。",
+                        "pinyin":  "Jìn shí nián jiān zhè gè yánhǎi chéngshì fāshēng le fāntiān-fùdì de jùdà biànhuà.",
+                        "vi":  "Trong 10 năm qua thành phố ven biển này đã diễn ra sự thay đổi to lớn long trời lở đất."
+                    }
+    },
+    {
+        "id":  "v3_022",
+        "hanzi":  "突然",
+        "pinyin":  "tūrán",
+        "meaning":  "Đột nhiên, bất thình lình",
+        "hsk":  3,
+        "radical":  "穴 (Huyệt)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "外面突然乌云密布，下起了倾盆大雨。",
+                        "pinyin":  "Wàimiàn tūrán wūyún mìbù, xià qǐ le qīngpén dàyǔ.",
+                        "vi":  "Bên ngoài bỗng nhiên mây đen giăng kín, đổ mưa như trút nước."
+                    }
+    },
+    {
+        "id":  "v3_023",
+        "hanzi":  "清楚",
+        "pinyin":  "qīngchu",
+        "meaning":  "Rõ ràng, rành mạch",
+        "hsk":  3,
+        "radical":  "氵 (Thủy)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "请把会议的时间地点讲得更清楚一些。",
+                        "pinyin":  "Qǐng bǎ huìyì de shíjiān dìdiǎn jiǎng de gèng qīngchu yìxiē.",
+                        "vi":  "Xin hãy nói rõ hơn về thời gian và địa điểm của cuộc họp."
+                    }
+    },
+    {
+        "id":  "v3_024",
+        "hanzi":  "聪明",
+        "pinyin":  "cōngming",
+        "meaning":  "Thông minh, nhanh trí",
+        "hsk":  3,
+        "radical":  "耳 (Nhĩ)",
+        "strokes":  14,
+        "example":  {
+                        "zh":  "他是一个既聪明又勤奋好学的好孩子。",
+                        "pinyin":  "Tā shì yí gè jì cōngming yòu qínfèn hàoxué de hǎo háizi.",
+                        "vi":  "Cậu ấy là một đứa trẻ vừa thông minh vừa siêng năng ham học."
+                    }
+    },
+    {
+        "id":  "v3_025",
+        "hanzi":  "世界",
+        "pinyin":  "shìjiè",
+        "meaning":  "Thế giới, địa cầu",
+        "hsk":  3,
+        "radical":  "一 (Nhất)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "多出去看世界能够极大地开阔人的眼界与心胸。",
+                        "pinyin":  "Duō chūqù kàn shìjiè nénggòu jídà de kāikuò rén de yǎnjiè yǔ xīnxiōng.",
+                        "vi":  "Đi ra ngoài ngắm nhìn thế giới có thể mở rộng tầm mắt và tấm lòng con người."
+                    }
+    },
+    {
+        "id":  "v3_026",
+        "hanzi":  "选择",
+        "pinyin":  "xuǎnzé",
+        "meaning":  "Lựa chọn, tuyển chọn",
+        "hsk":  3,
+        "radical":  "辶 (Sước)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "人生充满各种选择，遵从内心才能走得坚定。",
+                        "pinyin":  "Rénshēng chōngmǎn gè zhǒng xuǎnzé, zūncóng nèixīn cái néng zǒu de jiāndìng.",
+                        "vi":  "Đời người ngập tràn những ngã rẽ lựa chọn, thuận theo nội tâm mới có thể vững bước."
+                    }
+    },
+    {
+        "id":  "v3_027",
+        "hanzi":  "发现",
+        "pinyin":  "fāxiàn",
+        "meaning":  "Phát hiện, nhận ra",
+        "hsk":  3,
+        "radical":  "又 (Hựu)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "科学家在实验中偶然发现了这种新型复合材料。",
+                        "pinyin":  "Kēxuéjiā zài shíyàn zhōng ǒurán fāxiàn le zhè zhǒng xīnxíng fùhé cáiliào.",
+                        "vi":  "Nhà khoa học trong thí nghiệm đã tình cờ phát hiện ra loại vật liệu composite mới này."
+                    }
+    },
+    {
+        "id":  "v3_028",
+        "hanzi":  "相信",
+        "pinyin":  "xiāngxìn",
+        "meaning":  "Tin tưởng, tin cậy",
+        "hsk":  3,
+        "radical":  "目 (Mục)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "相信自己的实力，勇敢迎接未来的每一个挑战！",
+                        "pinyin":  "Xiāngxìn zìjǐ de shílì, yǒnggǎn yíngjiē wèilái de měi yí gè tiǎozhàn!",
+                        "vi":  "Hãy tin tưởng vào thực lực của bản thân, dũng cảm đón nhận mọi thách thức tương lai!"
+                    }
+    },
+    {
+        "id":  "v3_029",
+        "hanzi":  "要求",
+        "pinyin":  "yāoqiú",
+        "meaning":  "Yêu cầu, đòi hỏi",
+        "hsk":  3,
+        "radical":  "覀 (Á)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "老师对我们的日常作业书写规范有着严格的要求。",
+                        "pinyin":  "Lǎoshī duì wǒmen de rìcháng zuòyè shūxiě guīfàn yǒuzhe yángé de yāoqiú.",
+                        "vi":  "Thầy giáo có yêu cầu rất khắt khe đối với quy chuẩn trình bày bài tập hàng ngày của chúng tôi."
+                    }
+    },
+    {
+        "id":  "v3_030",
+        "hanzi":  "成绩",
+        "pinyin":  "chéngjì",
+        "meaning":  "Thành tích, điểm số",
+        "hsk":  3,
+        "radical":  "戈 (Qua)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "付出终有回报，他在期末统考中取得了优异成绩。",
+                        "pinyin":  "Fùchū zhōng yǒu huíbào, tā zài qīmò tǒngkǎo zhōng qǔdé le yōuyì chéngjì.",
+                        "vi":  "Bỏ công ắt gặt quả, bạn ấy đã đạt được thành tích xuất sắc trong kỳ thi cuối kỳ."
+                    }
+    },
+    {
+        "id":  "v4_016",
+        "hanzi":  "招聘",
+        "pinyin":  "zhāopìn",
+        "meaning":  "Tuyển dụng nhân sự",
+        "hsk":  4,
+        "radical":  "扌 (Thủ)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "这家跨国互联网科技企业正在全国范围内招聘软件工程师。",
+                        "pinyin":  "Zhè jiā kuàguó hùliánwǎng kējì qǐyè zhèngzài quánguó fànwéi nèi zhāopìn ruǎnjiàn gōngchéngshī.",
+                        "vi":  "Doanh nghiệp công nghệ internet đa quốc gia này đang tuyển dụng kỹ sư phần mềm trên phạm vi toàn quốc."
+                    }
+    },
+    {
+        "id":  "v4_017",
+        "hanzi":  "简历",
+        "pinyin":  "jiǎnlì",
+        "meaning":  "Bản lý lịch, hồ sơ CV",
+        "hsk":  4,
+        "radical":  "⺮ (Trúc)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "一份排版简洁重点突出的个人简历能大大提高面试通过几率。",
+                        "pinyin":  "Yí fèn páibǎn jiǎnjié zhòngdiǎn tūchū de gèrén jiǎnlì néng dàdà tígāo miànshì tōngguò jīlǜ.",
+                        "vi":  "Một bản CV cá nhân bố cục súc tích nổi bật trọng tâm có thể nâng cao đáng kể tỷ lệ qua phỏng vấn."
+                    }
+    },
+    {
+        "id":  "v4_018",
+        "hanzi":  "面试",
+        "pinyin":  "miànshì",
+        "meaning":  "Phỏng vấn trực tiếp",
+        "hsk":  4,
+        "radical":  "面 (Diện)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "在求职面试时要保持沉着自信，吐字清晰。",
+                        "pinyin":  "Zài qiúzhí miànshì shí yào bǎochí chénzhuó zìxìn, tǔzì qīngxī.",
+                        "vi":  "Khi phỏng vấn xin việc cần giữ vẻ điềm tĩnh tự tin, phát âm rành mạch."
+                    }
+    },
+    {
+        "id":  "v4_019",
+        "hanzi":  "薪水",
+        "pinyin":  "xīnshuǐ",
+        "meaning":  "Tiền lương, thù lao",
+        "hsk":  4,
+        "radical":  "艹 (Thảo)",
+        "strokes":  16,
+        "example":  {
+                        "zh":  "除了丰厚的薪水待遇之外，公司还提供完善的医疗保障福利。",
+                        "pinyin":  "Chúle fēnghòu de xīnshuǐ dàiyù zhīwài, gōngsī hái tígōng wánshàn de yīliáo bǎozhàng fúlì.",
+                        "vi":  "Ngoài mức đãi ngộ lương bổng hậu hĩnh, công ty còn cung cấp chế độ phúc lợi bảo hiểm y tế hoàn chỉnh."
+                    }
+    },
+    {
+        "id":  "v4_020",
+        "hanzi":  "尊重",
+        "pinyin":  "zūnzhòng",
+        "meaning":  "Tôn trọng, kính trọng",
+        "hsk":  4,
+        "radical":  "寸 (Thốn)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "相互尊重与坦诚沟通是建立长久健康人际关系的基石。",
+                        "pinyin":  "Xiānghù zūnzhòng yǔ tǎnchéng gōutōng shì jiànlì chángjiǔ jiànkāng rénjì guānxi de jīshí.",
+                        "vi":  "Tôn trọng lẫn nhau và giao tiếp chân thành là nền tảng để xây dựng mối quan hệ nhân tế lâu bền lành mạnh."
+                    }
+    },
+    {
+        "id":  "v5_011",
+        "hanzi":  "繁荣",
+        "pinyin":  "fánróng",
+        "meaning":  "Phồn vinh, hưng thịnh",
+        "hsk":  5,
+        "radical":  "糸 (Mịch)",
+        "strokes":  17,
+        "example":  {
+                        "zh":  "和平稳定的政治环境是推动社会经济繁荣昌盛的前提。",
+                        "pinyin":  "Hépíng wěndìng de zhèngzhì huánjìng shì tuīdòng shèhuì jīngjì fánróng chāngshèng de qiántí.",
+                        "vi":  "Môi trường chính trị hòa bình ổn định là tiền đề thúc đẩy kinh tế xã hội phồn vinh hưng thịnh."
+                    }
+    },
+    {
+        "id":  "v5_012",
+        "hanzi":  "珍惜",
+        "pinyin":  "zhēnxī",
+        "meaning":  "Trân quý, trân trọng",
+        "hsk":  5,
+        "radical":  "王 (Ngọc)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "青春宝贵易逝，我们要倍加珍惜在校园求知的时光。",
+                        "pinyin":  "Qīngchūn bǎoguì yì shì, wǒmen yào bèijiā zhēnxī zài xiàoyuán qiúzhī de shíguāng.",
+                        "vi":  "Thanh xuân quý báu dễ trôi qua, chúng ta càng phải trân trọng quãng thời gian tầm sư học đạo nơi giảng đường."
+                    }
+    },
+    {
+        "id":  "v5_013",
+        "hanzi":  "克服",
+        "pinyin":  "kèfú",
+        "meaning":  "Khắc phục, vượt qua trở ngại",
+        "hsk":  5,
+        "radical":  "十 (Thập)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "只要全队齐心协力，就没有克服不了的技术难关。",
+                        "pinyin":  "Zhǐyào quán duì qíxīn xiélì, jiù méiyǒu kèfú bù liǎo de jìshù nánguān.",
+                        "vi":  "Chỉ cần toàn đội đồng tâm hiệp lực thì không có cửa ải kỹ thuật nào là không khắc phục được."
+                    }
+    },
+    {
+        "id":  "v5_014",
+        "hanzi":  "灵活",
+        "pinyin":  "línghuó",
+        "meaning":  "Linh hoạt, uyển chuyển",
+        "hsk":  5,
+        "radical":  "火 (Hỏa)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "面对瞬息万变的市场供需，企业必须采取灵活的经营策略。",
+                        "pinyin":  "Miànduì shùnxī-wànbiàn de shìchǎng gōngxū, qǐyè bìxū cǎiqǔ línghuó de jīngyíng cèlüè.",
+                        "vi":  "Đối mặt với cung cầu thị trường biến đổi trong chớp mắt, doanh nghiệp phải áp dụng chiến lược kinh doanh linh hoạt."
+                    }
+    },
+    {
+        "id":  "v5_015",
+        "hanzi":  "利润",
+        "pinyin":  "lìrùn",
+        "meaning":  "Lợi nhuận ròng, tiền lãi",
+        "hsk":  5,
+        "radical":  "禾 (Hòa)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "优化生产流程降低能耗直接拉动了本年度净利润的大幅增长。",
+                        "pinyin":  "Yōuhuà shēngchǎn liúchéng jiàngdī nénghào zhíjiē lādòng le běn niándù jìnglìrùn de dà fú zēngzhǎng.",
+                        "vi":  "Tối ưu hóa quy trình sản xuất giảm tiêu hao năng lượng đã kéo theo mức tăng trưởng mạnh mẽ của lợi nhuận ròng năm nay."
+                    }
+    },
+    {
+        "id":  "v6_009",
+        "hanzi":  "迫不及待",
+        "pinyin":  "pò bù jí dài",
+        "meaning":  "Cấp bách không thể chờ đợi thêm, nôn nóng",
+        "hsk":  6,
+        "radical":  "辶 (Sước)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "游子们迫不及待地踏上了返乡与亲人团聚的列车。",
+                        "pinyin":  "Yóuzǐmen pò bù jí dài de tà shàng le fǎnxiāng yǔ qīnrén tuánjù de lièchē.",
+                        "vi":  "Những người con xa xứ nôn nóng không chờ được nữa bước lên chuyến tàu hồi hương đoàn tụ với người thân."
+                    }
+    },
+    {
+        "id":  "v6_010",
+        "hanzi":  "颠覆",
+        "pinyin":  "diānfù",
+        "meaning":  "Đảo lộn hoàn toàn, lật đổ tư duy cũ",
+        "hsk":  6,
+        "radical":  "页 (Hiệt)",
+        "strokes":  19,
+        "example":  {
+                        "zh":  "生成式AI技术的横空出世对传统内容生产模式产生了颠覆性影响。",
+                        "pinyin":  "Shēngchéngxìng AI jìshù de héngkōng-chūshì duì chuántǒng nèiróng shēngchǎn móshì chǎnshēng le diānfùxìng yǐngxiǎng.",
+                        "vi":  "Sự xuất hiện đột phá của công nghệ AI tạo sinh đã tạo ra ảnh hưởng đảo lộn toàn diện đối với mô hình sản xuất nội dung truyền thống."
+                    }
+    },
+    {
+        "id":  "v6_011",
+        "hanzi":  "驾驭",
+        "pinyin":  "jiàyù",
+        "meaning":  "Làm chủ, điều khiển dẫn dắt",
+        "hsk":  6,
+        "radical":  "马 (Mã)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "成熟的领导者善于在复杂的危机局势中从容驾驭全局。",
+                        "pinyin":  "Chéngshú de lǐngdǎozhě shànyú zài fùzá de wēijī júshì zhōng cóngróng jiàyù quánjú.",
+                        "vi":  "Một nhà lãnh đạo chín chắn biết cách ung dung làm chủ toàn cục giữa tình thế khủng hoảng phức tạp."
+                    }
+    },
+    {
+        "id":  "v6_012",
+        "hanzi":  "凝聚",
+        "pinyin":  "níngjù",
+        "meaning":  "Ngưng tụ, gắn kết quy tụ",
+        "hsk":  6,
+        "radical":  "冫 (Băng)",
+        "strokes":  16,
+        "example":  {
+                        "zh":  "这部宏伟的纪录片凝聚了制作团队长达五年的心血与智慧。",
+                        "pinyin":  "Zhè bù hóngwěi de jìlùpiàn níngjù le zhìzuò tuánduì cháng dá wǔ nián de xīnxuè yǔ zhìhuì.",
+                        "vi":  "Bộ phim tài liệu hùng tráng này đã kết tinh tâm huyết và trí tuệ suốt 5 năm trời của cả ê kíp sản xuất."
+                    }
+    },
+    {
+        "id":  "v_biz_09",
+        "hanzi":  "现金流",
+        "pinyin":  "xiànjīnliú",
+        "meaning":  "Dòng tiền hoạt động kinh doanh (Cash flow)",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "王 (Ngọc)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "健康的现金流周转是确保企业在经济波动期平稳生存发展的生命线。",
+                        "pinyin":  "Jiànkāng de xiànjīnliú zhōuzhuǎn shì quèbǎo qǐyè zài jīngjì bōdòng qī píngwěn shēngcún fāzhǎn de shēngmìngxiàn.",
+                        "vi":  "Vòng quay dòng tiền lành mạnh là huyết mạch bảo đảm doanh nghiệp sinh tồn và phát triển vững vàng qua chu kỳ biến động."
+                    }
+    },
+    {
+        "id":  "v_biz_10",
+        "hanzi":  "清关",
+        "pinyin":  "qīngguān",
+        "meaning":  "Thông quan hải quan hàng hóa quốc tế",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "氵 (Thủy)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "货物已经顺利通过海关检验检疫并完成了全部进口清关手续。",
+                        "pinyin":  "Huòwù yǐjīng shùnlì tōngguò hǎiguān jiǎnyàn-jiǎnyì bìng wánchéng le quánbù jìnkǒu qīngguān shǒuxù.",
+                        "vi":  "Lô hàng đã thuận lợi vượt qua khâu kiểm nghiệm kiểm dịch hải quan và hoàn tất toàn bộ thủ tục thông quan nhập khẩu."
+                    }
+    },
+    {
+        "id":  "v_biz_11",
+        "hanzi":  "市场份额",
+        "pinyin":  "shìchǎng fèn\u0027é",
+        "meaning":  "Thị phần thị trường",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "巾 (Cân)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "通过技术创新和品牌建设，该产品在国内细分市场的份额提升到了35%。",
+                        "pinyin":  "Tōngguò jìshù chuàngxīn hé pǐnpái jiànshè, gāi chǎnpǐn zài guónèi xìfēn shìchǎng de fèn\u0027é tíshēng dào le bǎifēnzhī sānshíwǔ.",
+                        "vi":  "Nhờ đổi mới công nghệ và xây dựng thương hiệu, thị phần của sản phẩm này tại phân khúc nội địa đã tăng lên 35%."
+                    }
+    },
+    {
+        "id":  "v_biz_12",
+        "hanzi":  "违约金",
+        "pinyin":  "wéiyuējīn",
+        "meaning":  "Tiền phạt vi phạm hợp đồng (Penalty fee)",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "辶 (Sước)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "若任何一方单方面逾期终止履行协议，须按合同总额的20%赔付违约金。",
+                        "pinyin":  "Ruò rènhé yì fāng dānfāngmiàn yúqī zhōngzhǐ lǚxíng xiéyì, xū àn hétong zǒng\u0027é de bǎifēnzhī èrshí péifù wéiyuējīn.",
+                        "vi":  "Nếu bất kỳ bên nào đơn phương quá hạn chấm dứt thực hiện thỏa thuận, phải bồi thường 20% tổng giá trị hợp đồng làm tiền phạt vi phạm."
+                    }
     }
-  ],
+],
 
   // 2. Comprehensive Chengyu & Proverbs Bank (With Fables & Explanations)
   chengyuList: [
