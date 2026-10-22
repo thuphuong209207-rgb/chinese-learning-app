@@ -97,6 +97,40 @@
 
 ---
 
+## 🌟 Các Tính Năng Nâng Cấp Nổi Bật Mới Nhất
+
+### 1. Chọn Cấp Độ Học Mục Tiêu Khi Bắt Đầu
+- Khi mở ứng dụng lần đầu, hệ thống hiển thị bảng hướng dẫn cho phép lựa chọn cấp độ phù hợp:
+  - **HSK 1:** Sơ cấp nhập môn (150 từ cơ bản)
+  - **HSK 2:** Sơ cấp nâng cao (300 từ)
+  - **HSK 3:** Trung cấp giao tiếp (600 từ)
+  - **HSK 4:** Trung cấp hoàn thiện (1200 từ)
+  - **HSK 5:** Cao cấp đọc báo và phân tích (2500 từ)
+  - **HSK 6:** Thành thạo ngôn ngữ học thuật (5000 từ)
+  - **Giáo trình Hán Ngữ 1 - 6:** Toàn diện 6 quyển ngữ pháp & khẩu ngữ
+- Người học có thể bấm vào huy hiệu cấp độ trên thanh Header bất cứ lúc nào để đổi mục tiêu; toàn bộ Dashboard, Từ điển và Gợi ý học sẽ tự động thích ứng.
+
+### 2. Từ Điển Tích Hợp Hoạt Ảnh Bút Thuận & Tập Viết Từng Nét Chữ Hán
+- Sử dụng thư viện vector **Hanzi Writer**:
+  - **Xem nét vẽ tự động (Stroke Order Animation):** Minh họa hoạt ảnh thứ tự từng nét viết (ngang trước sổ sau, trên trước dưới sau, phẩy trước mác sau, ngoài trước trong sau...).
+  - **Tập viết tương tác (Interactive Stroke Quiz):** Người học tự cầm chuột hoặc chạm ngón tay trên màn hình điện thoại để tập viết chữ Hán, hệ thống chấm điểm và nhắc nét sai.
+  - Hiển thị đầy đủ **Bộ thủ (Radical)**, **Số nét (Stroke Count)**, **Pinyin chuẩn thanh điệu** và quy tắc bút thuận chi tiết.
+
+### 3. Kho Tàng Ca Dao Tục Ngữ & Điển Tích Nhân Sinh Phong Phú
+- Bộ sưu tập 15+ thành ngữ 4 chữ và ngạn ngữ tục ngữ kinh điển:
+  - *掩耳盗铃 (Bịt tai trộm chuông)*, *塞翁失马 (Tái ông thất mã)*, *画蛇添足 (Vẽ rắn thêm chân)*, *愚公移山 (Ngu Công dời núi)*, *卧薪尝胆 (Nằm gai nếm mật)*, *守株待兔 (Ôm cây đợi thỏ)*, *井底之蛙 (Ếch ngồi đáy giếng)*, *一寸光阴一寸金 (Một tấc thời gian một tấc vàng)*, *熟能生巧 (Trăm hay không bằng tay quen)*, *活到老学到老 (Học đến già)*, *破釜沉舟 (Đập nồi dìm thuyền)*, *望梅止渴 (Trông mơ đỡ khát)*, *失败乃成功之母 (Thất bại là mẹ thành công)*...
+- Bộ lọc danh mục phân tách rõ ràng giữa **Thành ngữ 4 chữ điển tích** và **Ca dao & Tục ngữ nhân sinh**.
+- Ô tìm kiếm nhanh thời gian thực theo Hán tự, Pinyin hoặc ý nghĩa.
+- Tính năng AI sáng tạo thành ngữ & tục ngữ theo bất kỳ chủ đề người dùng nhập vào.
+
+---
+
+## 🌐 Trải Nghiệm Trực Tuyến & GitHub Repository
+- **GitHub Repository:** [https://github.com/thuphuong209207-rgb/chinese-learning-app](https://github.com/thuphuong209207-rgb/chinese-learning-app)
+- **GitHub Pages Trực Tuyến:** [https://thuphuong209207-rgb.github.io/chinese-learning-app/](https://thuphuong209207-rgb.github.io/chinese-learning-app/)
+
+---
+
 ## 📂 Cấu Trúc Thư Mục
 ```
 chinese-learning-app/
