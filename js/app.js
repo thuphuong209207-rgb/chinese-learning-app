@@ -353,6 +353,11 @@ document.addEventListener("DOMContentLoaded", () => {
           this.renderExams(container);
           break;
         case "chengyu":
+          this.chengyuCategoryFilter = "chengyu";
+          this.renderChengyu(container);
+          break;
+        case "proverbs":
+          this.chengyuCategoryFilter = "proverb";
           this.renderChengyu(container);
           break;
         case "games":
@@ -1807,19 +1812,84 @@ document.addEventListener("DOMContentLoaded", () => {
     /* =====================================================================
        MODULE 4: CHENGYU & PROVERBS (WITH FABLES & AI GENERATOR)
        ===================================================================== */
-    chengyuCategoryFilter: "all",
+    chengyuCategoryFilter: "chengyu",
     chengyuSearchQuery: "",
 
     renderChengyu(container) {
-      this.chengyuCategoryFilter = this.chengyuCategoryFilter || "all";
+      this.chengyuCategoryFilter = this.chengyuCategoryFilter || "chengyu";
       this.chengyuSearchQuery = this.chengyuSearchQuery || "";
 
       const allCount = (window.APP_DATA.chengyuList || []).length;
       const cyCount = (window.APP_DATA.chengyuList || []).filter((c) => c.category === "chengyu" || !c.category).length;
       const pvCount = (window.APP_DATA.chengyuList || []).filter((c) => c.category === "proverb").length;
 
+      let bannerHtml = "";
+      if (this.chengyuCategoryFilter === "chengyu") {
+        bannerHtml = `
+          <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-red-900/90 via-amber-900/80 to-slate-900 text-white p-6 md:p-8 shadow-lg border border-red-500/20">
+            <div class="relative z-10 max-w-3xl space-y-2">
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-500/20 border border-red-400/30 text-amber-300 text-xs font-bold tracking-wide">
+                <i data-lucide="scroll" class="w-3.5 h-3.5"></i>
+                KHO TÀNG THÀNH NGỮ ĐIỂN TÍCH (成语)
+              </div>
+              <h3 class="text-2xl md:text-3xl font-extrabold font-hanzi-serif tracking-wide text-white">
+                🐉 Thành Ngữ Điển Tích 4 Chữ Kinh Điển
+              </h3>
+              <p class="text-xs md:text-sm text-slate-200 leading-relaxed">
+                Thành ngữ (成语) là tinh hoa 4 chữ đúc kết từ thi thư, sử ký Xuân Thu - Chiến Quốc, Tam Quốc và các danh tác ngàn năm. Mỗi câu là một điển tích hàm súc, giúp bạn nói và viết tiếng Trung uyên bác, tự nhiên như người bản xứ.
+              </p>
+              <div class="flex flex-wrap gap-3 pt-2 text-xs font-semibold text-amber-200">
+                <span class="flex items-center gap-1 bg-white/10 px-3 py-1 rounded-lg backdrop-blur-sm"><i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i> ${cyCount} câu tinh tuyển</span>
+                <span class="flex items-center gap-1 bg-white/10 px-3 py-1 rounded-lg backdrop-blur-sm"><i data-lucide="book-open" class="w-3.5 h-3.5 text-amber-400"></i> Cốt truyện điển tích chi tiết</span>
+                <span class="flex items-center gap-1 bg-white/10 px-3 py-1 rounded-lg backdrop-blur-sm"><i data-lucide="volume-2" class="w-3.5 h-3.5 text-amber-400"></i> Phát âm chuẩn Web Speech</span>
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (this.chengyuCategoryFilter === "proverb") {
+        bannerHtml = `
+          <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-emerald-950 via-teal-900/90 to-slate-900 text-white p-6 md:p-8 shadow-lg border border-emerald-500/20">
+            <div class="relative z-10 max-w-3xl space-y-2">
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-bold tracking-wide">
+                <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+                KHO TÀNG CA DAO & TỤC NGỮ (俗语・谚语)
+              </div>
+              <h3 class="text-2xl md:text-3xl font-extrabold font-hanzi-serif tracking-wide text-white">
+                🏮 Ca Dao & Tục Ngữ Nhân Sinh Trung Hoa
+              </h3>
+              <p class="text-xs md:text-sm text-slate-200 leading-relaxed">
+                Tục ngữ (谚语) và Quán dụng ngữ (俗语) là kết tinh kinh nghiệm dân gian, bài học đối nhân xử thế, luật nhân quả và triết lý sống bình dị mà thâm sâu ngàn đời. Giúp bạn thấu hiểu nhân tình thế thái và giao tiếp giàu chiều sâu văn hóa.
+              </p>
+              <div class="flex flex-wrap gap-3 pt-2 text-xs font-semibold text-emerald-200">
+                <span class="flex items-center gap-1 bg-white/10 px-3 py-1 rounded-lg backdrop-blur-sm"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i> ${pvCount} câu ngạn ngữ thâm thúy</span>
+                <span class="flex items-center gap-1 bg-white/10 px-3 py-1 rounded-lg backdrop-blur-sm"><i data-lucide="lightbulb" class="w-3.5 h-3.5 text-emerald-400"></i> Nghĩa đen & Nghĩa bóng rõ ràng</span>
+                <span class="flex items-center gap-1 bg-white/10 px-3 py-1 rounded-lg backdrop-blur-sm"><i data-lucide="message-square" class="w-3.5 h-3.5 text-emerald-400"></i> Ứng dụng giao tiếp đời thường</span>
+              </div>
+            </div>
+          </div>
+        `;
+      } else {
+        bannerHtml = `
+          <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-red-900 via-purple-950 to-slate-900 text-white p-6 md:p-8 shadow-lg border border-purple-500/20">
+            <div class="relative z-10 max-w-3xl space-y-2">
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/20 border border-purple-400/30 text-purple-300 text-xs font-bold tracking-wide">
+                <i data-lucide="library" class="w-3.5 h-3.5"></i>
+                ĐẠI KHO TÀNG VĂN HÓA TRUNG HOA TOÀN TẬP
+              </div>
+              <h3 class="text-2xl md:text-3xl font-extrabold font-hanzi-serif tracking-wide text-white">
+                📚 Thành Ngữ & Ca Dao Tục Ngữ Toàn Tập
+              </h3>
+              <p class="text-xs md:text-sm text-slate-200 leading-relaxed">
+                Khám phá trọn vẹn hơn ${allCount} câu thành ngữ 4 chữ và ca dao tục ngữ kinh điển, đầy đủ chữ Hán, Pinyin, phân tích nghĩa đen nghĩa bóng, nguồn gốc điển tích và hội thoại ví dụ thực tế.
+              </p>
+            </div>
+          </div>
+        `;
+      }
+
       container.innerHTML = `
         <div class="space-y-6 max-w-5xl mx-auto">
+          <!-- Top Action Bar -->
           <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-700 pb-4">
             <div>
               <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
@@ -1827,7 +1897,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 Kho Tàng Thành Ngữ & Ca Dao Tục Ngữ
               </h2>
               <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                Hiểu tường tận điển tích lịch sử, nghĩa đen nghĩa bóng, cội nguồn văn hóa và ví dụ giao tiếp chuẩn mực.
+                Phân chia rõ ràng thành 2 phân hệ chuyên sâu: Thành Ngữ Điển Tích 4 chữ & Ca Dao Tục Ngữ Nhân Sinh.
               </p>
             </div>
 
@@ -1837,31 +1907,36 @@ document.addEventListener("DOMContentLoaded", () => {
             </button>
           </div>
 
+          <!-- Dynamic Thematic Banner -->
+          ${bannerHtml}
+
           <!-- Filter & Search Controls -->
           <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-3">
             <div class="flex flex-wrap items-center justify-between gap-3">
-              <!-- Filter Tabs -->
+              <!-- Filter Tabs (Separated Clear Categories) -->
               <div class="flex flex-wrap gap-2 text-xs font-semibold" id="chengyuTabs">
-                <button onclick="App.setChengyuFilter('all')" class="px-3.5 py-1.5 rounded-xl transition ${this.chengyuCategoryFilter === 'all' ? 'bg-red-600 text-white shadow-sm' : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'}">
-                  Tất cả (${allCount})
+                <button onclick="App.setChengyuFilter('chengyu')" class="px-4 py-2 rounded-xl transition flex items-center gap-2 ${this.chengyuCategoryFilter === 'chengyu' ? 'bg-red-600 text-white shadow-md font-bold' : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'}">
+                  <span>🐉 Thành Ngữ 4 Chữ Điển Tích</span>
+                  <span class="px-2 py-0.5 rounded-full text-[10px] ${this.chengyuCategoryFilter === 'chengyu' ? 'bg-white/20 text-white' : 'bg-slate-200 dark:bg-slate-600 text-slate-700 dark:text-slate-300'}">${cyCount}</span>
                 </button>
-                <button onclick="App.setChengyuFilter('chengyu')" class="px-3.5 py-1.5 rounded-xl transition ${this.chengyuCategoryFilter === 'chengyu' ? 'bg-red-600 text-white shadow-sm' : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'}">
-                  🐉 Thành ngữ 4 chữ điển tích (${cyCount})
+                <button onclick="App.setChengyuFilter('proverb')" class="px-4 py-2 rounded-xl transition flex items-center gap-2 ${this.chengyuCategoryFilter === 'proverb' ? 'bg-emerald-600 text-white shadow-md font-bold' : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'}">
+                  <span>🏮 Ca Dao & Tục Ngữ Nhân Sinh</span>
+                  <span class="px-2 py-0.5 rounded-full text-[10px] ${this.chengyuCategoryFilter === 'proverb' ? 'bg-white/20 text-white' : 'bg-slate-200 dark:bg-slate-600 text-slate-700 dark:text-slate-300'}">${pvCount}</span>
                 </button>
-                <button onclick="App.setChengyuFilter('proverb')" class="px-3.5 py-1.5 rounded-xl transition ${this.chengyuCategoryFilter === 'proverb' ? 'bg-red-600 text-white shadow-sm' : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'}">
-                  🏮 Ca dao & Tục ngữ nhân sinh (${pvCount})
+                <button onclick="App.setChengyuFilter('all')" class="px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 ${this.chengyuCategoryFilter === 'all' ? 'bg-slate-800 text-white dark:bg-slate-200 dark:text-slate-900 shadow-sm font-bold' : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'}">
+                  <span>✨ Tất Cả (${allCount})</span>
                 </button>
               </div>
 
               <!-- Search Bar -->
-              <div class="relative w-full sm:w-64">
+              <div class="relative w-full sm:w-72">
                 <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-2.5"></i>
                 <input
                   type="text"
                   id="chengyuSearchInput"
                   value="${this.chengyuSearchQuery || ''}"
-                  placeholder="Tìm Hán tự, Pinyin, nghĩa..."
-                  class="w-full pl-9 pr-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-xs text-slate-800 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-red-500"
+                  placeholder="Tìm chữ Hán, Pinyin, nghĩa..."
+                  class="w-full pl-9 pr-3 py-2 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-xs text-slate-800 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-red-500"
                 />
               </div>
             </div>
@@ -1889,6 +1964,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setChengyuFilter(cat) {
       this.chengyuCategoryFilter = cat;
+      if (cat === "chengyu") {
+        window.location.hash = "#chengyu";
+      } else if (cat === "proverb") {
+        window.location.hash = "#proverbs";
+      }
       const container = document.getElementById("viewContainer");
       if (container) this.renderChengyu(container);
     },
@@ -1923,7 +2003,7 @@ document.addEventListener("DOMContentLoaded", () => {
         grid.innerHTML = `
           <div class="col-span-full text-center py-12 bg-white dark:bg-slate-800 rounded-3xl border border-dashed border-slate-300 dark:border-slate-700">
             <i data-lucide="search-x" class="w-12 h-12 text-slate-400 mx-auto mb-3"></i>
-            <h4 class="text-sm font-bold text-slate-700 dark:text-slate-200">Không tìm thấy thành ngữ / ca dao tục ngữ phù hợp</h4>
+            <h4 class="text-sm font-bold text-slate-700 dark:text-slate-200">Không tìm thấy câu thành ngữ / ca dao tục ngữ phù hợp</h4>
             <p class="text-xs text-slate-500 mt-1">Hãy thử tìm từ khóa khác hoặc bấm "Tạo câu mới bằng Gemini AI" ở trên!</p>
           </div>
         `;
@@ -1935,15 +2015,20 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     renderChengyuCard(item) {
+      const isProverb = item.category === "proverb";
       const tagsHtml = (item.tags || [])
         .map((t) => `<span class="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-700 text-[11px] font-semibold text-slate-600 dark:text-slate-300">${t}</span>`)
         .join("");
+
+      const categoryBadge = isProverb
+        ? `<span class="px-2.5 py-1 rounded-lg text-[10px] font-bold bg-emerald-700/90 text-white backdrop-blur-md shadow flex items-center gap-1"><i data-lucide="book-open" class="w-3 h-3"></i> TỤC NGỮ・CA DAO</span>`
+        : `<span class="px-2.5 py-1 rounded-lg text-[10px] font-bold bg-red-700/90 text-white backdrop-blur-md shadow flex items-center gap-1"><i data-lucide="scroll" class="w-3 h-3"></i> THÀNH NGỮ 4 CHỮ</span>`;
 
       return `
         <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
           <div>
             <!-- Header with illustration -->
-            <div class="relative h-44 bg-slate-100 dark:bg-slate-700 overflow-hidden">
+            <div class="relative h-48 bg-slate-100 dark:bg-slate-700 overflow-hidden">
               <img
                 src="${item.image || "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80"}"
                 alt="${item.hanzi}"
@@ -1951,12 +2036,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 loading="lazy"
                 onerror="this.src='https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80'"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end p-5">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20 flex flex-col justify-between p-4">
+                <div class="flex items-center justify-between">
+                  ${categoryBadge}
+                  <button onclick="AudioService.speak('${item.hanzi}')" class="w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 text-amber-300 flex items-center justify-center backdrop-blur-sm transition shadow hover:scale-110" title="Nghe phát âm chuẩn">
+                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                  </button>
+                </div>
                 <div>
-                  <h3 class="font-hanzi-serif font-black text-3xl text-white tracking-wide">
+                  <h3 class="font-hanzi-serif font-black text-2xl md:text-3xl text-white tracking-wide">
                     ${item.hanzi}
                   </h3>
-                  <p class="text-amber-300 font-mono text-xs font-semibold mt-0.5">
+                  <p class="text-amber-300 font-mono text-xs font-semibold mt-1">
                     ${item.pinyin}
                   </p>
                 </div>
@@ -1964,38 +2055,41 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
 
             <!-- Content Area -->
-            <div class="p-6 space-y-4">
+            <div class="p-5 md:p-6 space-y-4">
               <!-- Meaning -->
-              <div class="space-y-1">
-                <div class="text-xs font-bold text-slate-700 dark:text-slate-200">
-                  <span class="text-red-600 dark:text-red-400">Nghĩa đen:</span> ${item.literal}
+              <div class="space-y-1.5 bg-slate-50 dark:bg-slate-750/70 p-3.5 rounded-2xl border border-slate-100 dark:border-slate-700/80">
+                <div class="text-xs font-bold text-slate-800 dark:text-slate-100">
+                  <span class="${isProverb ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400'} font-extrabold">Nghĩa đen:</span> ${item.literal}
                 </div>
                 <div class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                  <span class="font-bold text-amber-600 dark:text-amber-400">Nghĩa bóng:</span> ${item.figurative}
+                  <span class="font-bold text-amber-600 dark:text-amber-400">Nghĩa bóng & Triết lý:</span> ${item.figurative}
                 </div>
               </div>
 
               <!-- Fable / Story -->
-              <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-100 dark:border-slate-700 text-xs">
-                <span class="font-bold text-slate-800 dark:text-white block mb-1 flex items-center gap-1.5">
-                  <i data-lucide="book" class="w-3.5 h-3.5 text-red-500"></i> Điển tích nguồn gốc:
+              <div class="p-4 rounded-2xl bg-amber-50/40 dark:bg-amber-950/20 border border-amber-200/50 dark:border-amber-900/30 text-xs">
+                <span class="font-bold text-amber-900 dark:text-amber-300 block mb-1 flex items-center gap-1.5">
+                  <i data-lucide="book" class="w-3.5 h-3.5 text-amber-600"></i> ${isProverb ? "Nguồn gốc & Hoàn cảnh ra đời:" : "Cốt truyện & Điển tích lịch sử:"}
                 </span>
-                <p class="text-slate-600 dark:text-slate-300 leading-relaxed italic">
+                <p class="text-slate-700 dark:text-slate-300 leading-relaxed italic">
                   ${item.story}
                 </p>
               </div>
 
               <!-- Communication Example -->
               ${item.example ? `
-                <div class="p-3.5 rounded-2xl bg-amber-50/50 dark:bg-amber-950/20 border border-amber-100 dark:border-amber-900/30 text-xs">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="font-bold text-amber-800 dark:text-amber-400">Ví dụ ứng dụng:</span>
-                    <button onclick="AudioService.speak('${item.example.zh}')" class="text-red-600 dark:text-red-400 hover:underline flex items-center gap-1 font-semibold">
-                      <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Nghe
+                <div class="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 text-xs">
+                  <div class="flex items-center justify-between mb-1.5">
+                    <span class="font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1">
+                      <i data-lucide="message-circle" class="w-3.5 h-3.5 text-indigo-500"></i> Ví dụ giao tiếp:
+                    </span>
+                    <button onclick="AudioService.speak('${item.example.zh}')" class="text-red-600 dark:text-red-400 hover:underline flex items-center gap-1 font-semibold text-[11px]">
+                      <i data-lucide="volume-2" class="w-3 h-3"></i> Nghe câu
                     </button>
                   </div>
-                  <div class="font-hanzi font-semibold text-slate-800 dark:text-white mb-0.5">${item.example.zh}</div>
-                  <div class="text-slate-500 text-[11px]">${item.example.vi}</div>
+                  <div class="font-hanzi font-semibold text-slate-900 dark:text-white mb-0.5 text-sm">${item.example.zh}</div>
+                  <div class="text-amber-600 dark:text-amber-400 font-mono text-[11px] mb-0.5">${item.example.pinyin || ""}</div>
+                  <div class="text-slate-500 dark:text-slate-400 text-[11px]">${item.example.vi}</div>
                 </div>
               ` : ""}
 
@@ -2007,11 +2101,11 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
 
           <!-- Footer Actions -->
-          <div class="px-6 pb-6 pt-2 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between">
+          <div class="px-5 md:px-6 pb-5 pt-3 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between">
             <button onclick="AudioService.speak('${item.hanzi}')" class="text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-red-600 flex items-center gap-1.5">
-              <i data-lucide="volume-2" class="w-4 h-4 text-red-500"></i> Phát âm 4 chữ
+              <i data-lucide="volume-2" class="w-4 h-4 text-red-500"></i> ${isProverb ? "Phát âm câu tục ngữ" : "Phát âm thành ngữ"}
             </button>
-            <button onclick="App.markChengyuLearned('${item.hanzi}')" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-emerald-50 hover:text-emerald-600 dark:hover:bg-emerald-950/50 font-bold text-xs flex items-center gap-1 transition">
+            <button onclick="App.markChengyuLearned('${item.hanzi}')" class="px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-emerald-50 hover:text-emerald-600 dark:hover:bg-emerald-950/50 font-bold text-xs flex items-center gap-1.5 transition">
               <i data-lucide="check" class="w-3.5 h-3.5"></i> Đã thuộc câu này
             </button>
           </div>
@@ -2022,36 +2116,53 @@ document.addEventListener("DOMContentLoaded", () => {
     markChengyuLearned(hanzi) {
       window.StorageService.incrementStat("chengyuLearnedToday", 1);
       this.updateHeaderProgress();
-      this.showToast(`Tuyệt vời! Bạn đã tích lũy thêm thành ngữ "${hanzi}"!`, "success");
+      this.showToast(`Tuyệt vời! Bạn đã tích lũy thêm câu "${hanzi}"!`, "success");
     },
 
     openAiChengyuModal() {
+      const isProverb = this.chengyuCategoryFilter === "proverb";
       const html = `
-        <div class="p-6 space-y-4">
+        <div class="p-6 space-y-4 max-w-lg">
           <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
             <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
               <i data-lucide="sparkles" class="w-5 h-5 text-amber-500"></i>
-              Tạo Thành Ngữ / Tục Ngữ Mới Bằng AI
+              Tạo Thành Ngữ / Ca Dao Tục Ngữ Mới Bằng AI
             </h3>
             <button onclick="App.closeModal()" class="text-slate-400 hover:text-slate-600">
               <i data-lucide="x" class="w-5 h-5"></i>
             </button>
           </div>
 
-          <div class="space-y-3 text-xs">
-            <label class="block font-bold text-slate-700 dark:text-slate-300">Nhập chủ đề bạn quan tâm (Ví dụ: Kiên trì, Lòng hiếu thảo, Trí tuệ, Tình bạn):</label>
-            <input
-              type="text"
-              id="modalChengyuThemeInput"
-              placeholder="VD: Kiên trì vượt khó"
-              class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-white text-xs"
-            />
+          <div class="space-y-4 text-xs">
+            <div>
+              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-2">Chọn thể loại muốn tạo:</label>
+              <div class="grid grid-cols-2 gap-3">
+                <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 dark:border-slate-600 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                  <input type="radio" name="aiChengyuType" value="chengyu" ${!isProverb ? "checked" : ""} class="text-red-600" />
+                  <span class="font-semibold text-slate-800 dark:text-slate-200">🐉 Thành ngữ 4 chữ (成语)</span>
+                </label>
+                <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 dark:border-slate-600 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                  <input type="radio" name="aiChengyuType" value="proverb" ${isProverb ? "checked" : ""} class="text-emerald-600" />
+                  <span class="font-semibold text-slate-800 dark:text-slate-200">🏮 Ca dao & Tục ngữ (俗语)</span>
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Nhập chủ đề bạn quan tâm (Ví dụ: Kiên trì, Lòng hiếu thảo, Tình bạn, Sự nghiệp, Trí tuệ):</label>
+              <input
+                type="text"
+                id="modalChengyuThemeInput"
+                placeholder="VD: Ý chí vượt khó, lòng hiếu thuận..."
+                class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-white text-xs focus:ring-2 focus:ring-red-500 outline-none"
+              />
+            </div>
           </div>
 
           <div class="pt-3 border-t border-slate-100 dark:border-slate-700 flex justify-end gap-2">
             <button onclick="App.closeModal()" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold">Hủy</button>
-            <button id="modalChengyuSubmitBtn" onclick="App.handleGenerateAiChengyu()" class="px-5 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-md flex items-center gap-1.5">
-              <i data-lucide="cpu" class="w-4 h-4"></i> Tạo thành ngữ
+            <button id="modalChengyuSubmitBtn" onclick="App.handleGenerateAiChengyu()" class="px-5 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-md flex items-center gap-1.5 transition">
+              <i data-lucide="cpu" class="w-4 h-4"></i> Bắt đầu tạo bằng AI
             </button>
           </div>
         </div>
@@ -2060,24 +2171,38 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     async handleGenerateAiChengyu() {
-      const theme = document.getElementById("modalChengyuThemeInput").value || "Học tập kiên trì";
+      const theme = document.getElementById("modalChengyuThemeInput").value.trim() || "Kiên trì và nỗ lực";
+      const selectedTypeEl = document.querySelector('input[name="aiChengyuType"]:checked');
+      const category = selectedTypeEl ? selectedTypeEl.value : "chengyu";
       const btn = document.getElementById("modalChengyuSubmitBtn");
 
       if (btn) {
         btn.disabled = true;
-        btn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Đang tra cứu điển tích...`;
+        btn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Đang tra cứu điển tích văn học...`;
         this.refreshIcons();
       }
 
       try {
-        const item = await window.GeminiService.generateChengyuAI(theme);
-        item.id = "cy_ai_" + Date.now();
-        item.image = "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80";
+        const item = await window.GeminiService.generateChengyuAI(theme, category);
+        item.id = (category === "proverb" ? "pv_ai_" : "cy_ai_") + Date.now();
+        item.category = category;
+        item.image = category === "proverb"
+          ? "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=600&q=80"
+          : "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80";
         window.APP_DATA.chengyuList.unshift(item);
 
         this.closeModal();
-        this.showToast(`Đã thêm thành ngữ "${item.hanzi}"!`, "success");
+        this.showToast(`Đã thêm thành công câu "${item.hanzi}"!`, "success");
         this.filterAndRenderChengyu();
+      } catch (err) {
+        this.showToast(`Lỗi tạo bằng AI: ${err.message}`, "error");
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = `<i data-lucide="cpu" class="w-4 h-4"></i> Thử lại`;
+          this.refreshIcons();
+        }
+      }
+    },
       } catch (err) {
         this.showToast(`Lỗi tạo thành ngữ: ${err.message}`, "error");
         if (btn) {
