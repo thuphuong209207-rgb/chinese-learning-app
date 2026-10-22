@@ -4635,6 +4635,3688 @@ window.APP_DATA = {
                         "pinyin":  "Ruò rènhé yì fāng dānfāngmiàn yúqī zhōngzhǐ lǚxíng xiéyì, xū àn hétong zǒng\u0027é de bǎifēnzhī èrshí péifù wéiyuējīn.",
                         "vi":  "Nếu bất kỳ bên nào đơn phương quá hạn chấm dứt thực hiện thỏa thuận, phải bồi thường 20% tổng giá trị hợp đồng làm tiền phạt vi phạm."
                     }
+    },
+    {
+        "id":  "v2_091",
+        "hanzi":  "两",
+        "pinyin":  "liǎng",
+        "meaning":  "Hai, đôi, vài",
+        "hsk":  2,
+        "radical":  "一 (Nhất)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "我买了两本关于中国历史的书。",
+                        "pinyin":  "Wǒ mǎi le liǎng běn guānyú Zhōngguó lìshǐ de shū.",
+                        "vi":  "Tôi đã mua hai quyển sách về lịch sử Trung Quốc."
+                    }
+    },
+    {
+        "id":  "v2_092",
+        "hanzi":  "路",
+        "pinyin":  "lù",
+        "meaning":  "Đường, tuyến đường",
+        "hsk":  2,
+        "radical":  "足 (Túc)",
+        "strokes":  13,
+        "example":  {
+                        "zh":  "这条路可以直接通往市中心。",
+                        "pinyin":  "Zhè tiáo lù kěyǐ zhíjiē tōng wǎng shì zhōngxīn.",
+                        "vi":  "Con đường này có thể đi thẳng tới trung tâm thành phố."
+                    }
+    },
+    {
+        "id":  "v2_093",
+        "hanzi":  "旅游",
+        "pinyin":  "lǚyóu",
+        "meaning":  "Du lịch",
+        "hsk":  2,
+        "radical":  "方 (Phương)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "去年夏天我和家人一起去了北京旅游。",
+                        "pinyin":  "Qùnián xiàtiān wǒ hé jiārén yìqǐ qù le Běijīng lǚyóu.",
+                        "vi":  "Mùa hè năm ngoái tôi cùng gia đình đi du lịch Bắc Kinh."
+                    }
+    },
+    {
+        "id":  "v2_094",
+        "hanzi":  "卖",
+        "pinyin":  "mài",
+        "meaning":  "Bán",
+        "hsk":  2,
+        "radical":  "十 (Thập)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "这个超市不仅卖水果，还卖新鲜蔬菜。",
+                        "pinyin":  "Zhè gè chāoshì bùjǐn mài shuǐguǒ, hái mài xīnxiān shūcài.",
+                        "vi":  "Siêu thị này không chỉ bán hoa quả mà còn bán rau tươi."
+                    }
+    },
+    {
+        "id":  "v2_095",
+        "hanzi":  "慢",
+        "pinyin":  "màn",
+        "meaning":  "Chậm",
+        "hsk":  2,
+        "radical":  "忄 (Tâm đứng)",
+        "strokes":  14,
+        "example":  {
+                        "zh":  "请您说得慢一点儿，我听得不太清楚。",
+                        "pinyin":  "Qǐng nín shuō de màn yìdiǎnr, wǒ tīng de bú tài qīngchu.",
+                        "vi":  "Xin ngài nói chậm lại một chút, tôi nghe chưa rõ lắm."
+                    }
+    },
+    {
+        "id":  "v2_096",
+        "hanzi":  "忙",
+        "pinyin":  "máng",
+        "meaning":  "Bận rộn",
+        "hsk":  2,
+        "radical":  "忄 (Tâm đứng)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "最近工作非常忙，几乎没有时间休息。",
+                        "pinyin":  "Zuìjìn gōngzuò fēicháng máng, jīhū méiyǒu shíjiān xiūxi.",
+                        "vi":  "Dạo này công việc rất bận, hầu như không có thời gian nghỉ."
+                    }
+    },
+    {
+        "id":  "v2_097",
+        "hanzi":  "每",
+        "pinyin":  "měi",
+        "meaning":  "Mỗi, mọi",
+        "hsk":  2,
+        "radical":  "毋 (Vô)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "他每天早晨都坚持去公园跑步半小时。",
+                        "pinyin":  "Wǒ měi tiān zǎochén dōu jiānchí qù gōngyuán pǎobù bàn xiǎoshí.",
+                        "vi":  "Mỗi buổi sáng anh ấy đều kiên trì đi công viên chạy bộ nửa tiếng."
+                    }
+    },
+    {
+        "id":  "v2_098",
+        "hanzi":  "妹妹",
+        "pinyin":  "mèimei",
+        "meaning":  "Em gái",
+        "hsk":  2,
+        "radical":  "女 (Nữ)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "我的妹妹今年八岁，上小学三年级。",
+                        "pinyin":  "Wǒ de mèimei jīnnián bā suì, shàng xiǎoxué sān niánjí.",
+                        "vi":  "Em gái tôi năm nay 8 tuổi, học lớp 3 tiểu học."
+                    }
+    },
+    {
+        "id":  "v2_099",
+        "hanzi":  "门",
+        "pinyin":  "mén",
+        "meaning":  "Cửa, cổng, môn học",
+        "hsk":  2,
+        "radical":  "门 (Môn)",
+        "strokes":  3,
+        "example":  {
+                        "zh":  "出门的时候请记得把门关好。",
+                        "pinyin":  "Chūmén de shíhou qǐng jìde bǎ mén guān hǎo.",
+                        "vi":  "Khi ra ngoài xin nhớ đóng cửa cẩn thận."
+                    }
+    },
+    {
+        "id":  "v2_100",
+        "hanzi":  "面条",
+        "pinyin":  "miàntiáo",
+        "meaning":  "Mì sợi",
+        "hsk":  2,
+        "radical":  "麦 (Mạch)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "中午我们一起去学校食堂吃牛肉面条吧。",
+                        "pinyin":  "Zhōngwǔ wǒmen yìqǐ qù xuéxiào shítáng chī niúròu miàntiáo ba.",
+                        "vi":  "Trưa nay chúng mình cùng đến nhà ăn trường ăn mì bò nhé."
+                    }
+    },
+    {
+        "id":  "v2_101",
+        "hanzi":  "男",
+        "pinyin":  "nán",
+        "meaning":  "Nam, đàn ông, con trai",
+        "hsk":  2,
+        "radical":  "田 (Điền)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "站在门口的那位男士是新来的汉语老师。",
+                        "pinyin":  "Zhàn zài ménkǒu de nà wèi nánshì shì xīn lái de hànyǔ lǎoshī.",
+                        "vi":  "Người đàn ông đứng ở cửa là giáo viên tiếng Trung mới đến."
+                    }
+    },
+    {
+        "id":  "v2_102",
+        "hanzi":  "您",
+        "pinyin":  "nín",
+        "meaning":  "Ngài, ông, bà (kính ngữ)",
+        "hsk":  2,
+        "radical":  "心 (Tâm)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "老师，您辛苦了，请坐下来喝杯热茶。",
+                        "pinyin":  "Lǎoshī, nín xīnkǔ le, qǐng zuò xiàlái hē bēi rè chá.",
+                        "vi":  "Thầy giáo, thầy vất vả rồi, xin mời thầy ngồi uống chén trà nóng."
+                    }
+    },
+    {
+        "id":  "v2_103",
+        "hanzi":  "牛奶",
+        "pinyin":  "niúnǎi",
+        "meaning":  "Sữa bò",
+        "hsk":  2,
+        "radical":  "牛 (Ngưu)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "每天早晨喝一杯热牛奶对身体健康很有好处。",
+                        "pinyin":  "Měi tiān zǎochén hē yì bēi rè niúnǎi duì shēntǐ jiànkāng hěn yǒu hǎochu.",
+                        "vi":  "Mỗi sáng uống một ly sữa bò nóng rất tốt cho sức khỏe."
+                    }
+    },
+    {
+        "id":  "v2_104",
+        "hanzi":  "女",
+        "pinyin":  "nǚ",
+        "meaning":  "Nữ, phụ nữ, con gái",
+        "hsk":  2,
+        "radical":  "女 (Nữ)",
+        "strokes":  3,
+        "example":  {
+                        "zh":  "那个正在认真看书的女孩中文说得非常流利。",
+                        "pinyin":  "Nà gè zhèngzài rènzhēn kànshū de nǚhái zhōngwén shuō de fēicháng liúlì.",
+                        "vi":  "Cô gái đang chăm chú đọc sách kia nói tiếng Trung rất lưu loát."
+                    }
+    },
+    {
+        "id":  "v2_105",
+        "hanzi":  "旁边",
+        "pinyin":  "pángbiān",
+        "meaning":  "Bên cạnh, bên mép",
+        "hsk":  2,
+        "radical":  "方 (Phương)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "银行的旁边有一家很大很大的新华书店。",
+                        "pinyin":  "Yínháng de pángbiān yǒu yì jiā hěn dà hěn dà de xīnhuá shūdiàn.",
+                        "vi":  "Bên cạnh ngân hàng có một hiệu sách Tân Hoa rất lớn."
+                    }
+    },
+    {
+        "id":  "v2_106",
+        "hanzi":  "跑步",
+        "pinyin":  "pǎobù",
+        "meaning":  "Chạy bộ",
+        "hsk":  2,
+        "radical":  "足 (Túc)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "我每天早上都会沿着操场跑步两公里。",
+                        "pinyin":  "Wǒ měi tiān zǎoshang dōu huì yánzhe cāochǎng pǎobù liǎng gōnglǐ.",
+                        "vi":  "Mỗi buổi sáng tôi đều chạy bộ hai cây số men theo sân vận động."
+                    }
+    },
+    {
+        "id":  "v2_107",
+        "hanzi":  "便宜",
+        "pinyin":  "piányi",
+        "meaning":  "Rẻ, giá hời",
+        "hsk":  2,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "这件衣服不仅质量很好，而且价格很便宜。",
+                        "pinyin":  "Zhè jiàn yīfu bùjǐn zhìliàng hěn hǎo, érqiě jiàgé hěn piányi.",
+                        "vi":  "Bộ quần áo này không chỉ chất lượng tốt mà giá còn rất rẻ."
+                    }
+    },
+    {
+        "id":  "v2_108",
+        "hanzi":  "票",
+        "pinyin":  "piào",
+        "meaning":  "Vé, phiếu",
+        "hsk":  2,
+        "radical":  "示 (Thị)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "我们已经买好了明天下午去上海的高铁票。",
+                        "pinyin":  "Wǒmen yǐjīng mǎi hǎo le míngtiān xiàwǔ qù Shànghǎi de gāotiě piào.",
+                        "vi":  "Chúng tôi đã mua sẵn vé tàu cao tốc đi Thượng Hải chiều mai rồi."
+                    }
+    },
+    {
+        "id":  "v2_109",
+        "hanzi":  "妻子",
+        "pinyin":  "qīzi",
+        "meaning":  "Vợ, bà xã",
+        "hsk":  2,
+        "radical":  "女 (Nữ)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "他的妻子是一位非常温柔善良的小学老师。",
+                        "pinyin":  "Tā de qīzi shì yí wèi fēicháng wēnróu shànliáng de xiǎoxué lǎoshī.",
+                        "vi":  "Vợ anh ấy là một cô giáo tiểu học rất đỗi dịu dàng và nhân hậu."
+                    }
+    },
+    {
+        "id":  "v2_110",
+        "hanzi":  "起床",
+        "pinyin":  "qǐchuáng",
+        "meaning":  "Thức dậy, rời giường",
+        "hsk":  2,
+        "radical":  "走 (Tẩu)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "明天早上有听力考试，我们必须六点起床。",
+                        "pinyin":  "Míngtiān zǎoshang yǒu tīnglì kǎoshì, wǒmen bìxū liù diǎn qǐchuáng.",
+                        "vi":  "Sáng mai có bài thi nghe, chúng ta phải thức dậy lúc sáu giờ."
+                    }
+    },
+    {
+        "id":  "v2_111",
+        "hanzi":  "千",
+        "pinyin":  "qiān",
+        "meaning":  "Nghìn, ngàn (1.000)",
+        "hsk":  2,
+        "radical":  "十 (Thập)",
+        "strokes":  3,
+        "example":  {
+                        "zh":  "这台高性能笔记本电脑的价格是三千五百元。",
+                        "pinyin":  "Zhè tái gāoxìngnéng bǐjìběn diànnǎo de jiàgé shì sānqiān wǔbǎi yuán.",
+                        "vi":  "Chiếc máy tính xách tay cấu hình cao này có giá ba nghìn năm trăm tệ."
+                    }
+    },
+    {
+        "id":  "v2_112",
+        "hanzi":  "铅笔",
+        "pinyin":  "qiānbǐ",
+        "meaning":  "Bút chì",
+        "hsk":  2,
+        "radical":  "钅 (Kim)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "请用2B铅笔在答题卡上把正确选项涂满。",
+                        "pinyin":  "Qǐng yòng èr-B qiānbǐ zài dǎtíkǎ shàng bǎ zhèngquè xuǎnxiàng tú mǎn.",
+                        "vi":  "Xin dùng bút chì 2B tô kín đáp án đúng trên phiếu trả lời trắc nghiệm."
+                    }
+    },
+    {
+        "id":  "v2_113",
+        "hanzi":  "晴",
+        "pinyin":  "qíng",
+        "meaning":  "Trời nắng, tạnh ráo",
+        "hsk":  2,
+        "radical":  "日 (Nhật)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "今天天气晴朗，非常适合去户外郊游爬山。",
+                        "pinyin":  "Jīntiān tiānqì qínglǎng, fēicháng shìhé qù hùwài jiāoyóu páshān.",
+                        "vi":  "Hôm nay trời nắng ráo, rất thích hợp đi dã ngoại leo núi ngoài trời."
+                    }
+    },
+    {
+        "id":  "v2_114",
+        "hanzi":  "去年",
+        "pinyin":  "qùnián",
+        "meaning":  "Năm ngoái",
+        "hsk":  2,
+        "radical":  "厶 (Khư)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "我去年刚从北京语言大学汉语言专业毕业。",
+                        "pinyin":  "Wǒ qùnián gāng cóng Běijīng Yǔyán Dàxué hànyǔyán zhuānyè bìyè.",
+                        "vi":  "Năm ngoái tôi vừa tốt nghiệp chuyên ngành Hán ngữ tại Đại học Ngôn ngữ Bắc Kinh."
+                    }
+    },
+    {
+        "id":  "v2_115",
+        "hanzi":  "让",
+        "pinyin":  "ràng",
+        "meaning":  "Cho phép, nhường, bảo",
+        "hsk":  2,
+        "radical":  "讠 (Ngôn)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "医生让我最近多喝温水，按时吃药好好休息。",
+                        "pinyin":  "Yīshēng ràng wǒ zuìjìn duō hē wēnshuǐ, ànshí chī yào hǎohǎo xiūxi.",
+                        "vi":  "Bác sĩ bảo tôi dạo này uống nhiều nước ấm, uống thuốc đúng giờ và nghỉ ngơi tốt."
+                    }
+    },
+    {
+        "id":  "v2_116",
+        "hanzi":  "日",
+        "pinyin":  "rì",
+        "meaning":  "Ngày, mặt trời",
+        "hsk":  2,
+        "radical":  "日 (Nhật)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "十月一日是举国同庆的盛大国庆节日。",
+                        "pinyin":  "Shí yuè yī rì shì jǔguó tóngqìng de shèngdà guóqìng jiérì.",
+                        "vi":  "Ngày mùng một tháng mười là ngày Quốc khánh long trọng trên khắp cả nước."
+                    }
+    },
+    {
+        "id":  "v2_117",
+        "hanzi":  "上班",
+        "pinyin":  "shàngbān",
+        "meaning":  "Đi làm",
+        "hsk":  2,
+        "radical":  "一 (Nhất)",
+        "strokes":  3,
+        "example":  {
+                        "zh":  "爸爸每天早上八点准时出门去公司上班。",
+                        "pinyin":  "Bàba měi tiān zǎoshang bā diǎn zhǔnshí chūmén qù gōngsī shàngbān.",
+                        "vi":  "Bố tôi mỗi sáng đúng tám giờ đều ra khỏi nhà đi làm ở công ty."
+                    }
+    },
+    {
+        "id":  "v2_118",
+        "hanzi":  "身体",
+        "pinyin":  "shēntǐ",
+        "meaning":  "Thân thể, sức khỏe",
+        "hsk":  2,
+        "radical":  "身 (Thân)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "天气变冷了，要多穿厚衣服注意身体健康。",
+                        "pinyin":  "Tiānqì biàn lěng le, yào duō chuān hòu yīfu zhùyì shēntǐ jiànkāng.",
+                        "vi":  "Thời tiết trở lạnh rồi, cần mặc thêm áo ấm và chú ý giữ gìn sức khỏe."
+                    }
+    },
+    {
+        "id":  "v2_119",
+        "hanzi":  "生病",
+        "pinyin":  "shēngbìng",
+        "meaning":  "Bị ốm, bị bệnh",
+        "hsk":  2,
+        "radical":  "生 (Sinh)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "他因为昨晚淋雨生病了，今天没能来学校上课。",
+                        "pinyin":  "Tā yīnwèi zuówǎn línyǔ shēngbìng le, jīntiān méi néng lái xuéxiào shàngkè.",
+                        "vi":  "Anh ấy vì tối qua dầm mưa bị ốm nên hôm nay không thể đến trường học."
+                    }
+    },
+    {
+        "id":  "v2_120",
+        "hanzi":  "生日",
+        "pinyin":  "shēngrì",
+        "meaning":  "Sinh nhật",
+        "hsk":  2,
+        "radical":  "生 (Sinh)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "祝你生日快乐，学业进步，心想事成！",
+                        "pinyin":  "Zhù nǐ shēngrì kuàilè, xuéyè jìnbù, xīnxiǎngshìchéng!",
+                        "vi":  "Chúc bạn sinh nhật vui vẻ, học tập tiến bộ, vạn sự như ý!"
+                    }
+    },
+    {
+        "id":  "v2_121",
+        "hanzi":  "时间",
+        "pinyin":  "shíjiān",
+        "meaning":  "Thời gian",
+        "hsk":  2,
+        "radical":  "日 (Nhật)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "离考试结束还有最后十五分钟的时间。",
+                        "pinyin":  "Lí kǎoshì jiéshù hái yǒu zuìhòu shíwǔ fēnzhōng de shíjiān.",
+                        "vi":  "Cách giờ kết thúc bài thi còn lại mười lăm phút cuối cùng."
+                    }
+    },
+    {
+        "id":  "v2_122",
+        "hanzi":  "事情",
+        "pinyin":  "shìqing",
+        "meaning":  "Sự việc, công việc",
+        "hsk":  2,
+        "radical":  "亅 (Quyết)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "这件事情非常重要，我们需要仔细坐下来讨论。",
+                        "pinyin":  "Zhè jiàn shìqing fēicháng zhòngyào, wǒmen xūyào zǐxì zuò xiàlái tǎolùn.",
+                        "vi":  "Chuyện này rất quan trọng, chúng ta cần ngồi lại bàn bạc kỹ lưỡng."
+                    }
+    },
+    {
+        "id":  "v2_123",
+        "hanzi":  "手表",
+        "pinyin":  "shǒubiǎo",
+        "meaning":  "Đồng hồ đeo tay",
+        "hsk":  2,
+        "radical":  "手 (Thủ)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "这块精美的手表是妈妈送给我的十八岁成人礼物。",
+                        "pinyin":  "Zhè kuài jīngměi de shǒubiǎo shì māmā sòng gěi wǒ de shíbā suì chéngrén lǐwù.",
+                        "vi":  "Chiếc đồng hồ đeo tay tinh xảo này là quà mẹ tặng tôi nhân dịp tròn 18 tuổi."
+                    }
+    },
+    {
+        "id":  "v2_124",
+        "hanzi":  "手机",
+        "pinyin":  "shǒujī",
+        "meaning":  "Điện thoại di động",
+        "hsk":  2,
+        "radical":  "手 (Thủ)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "上课和开会的时候请大家把手机调成静音状态。",
+                        "pinyin":  "Shàngkè hé kāihuì de shíhou qǐng dàjiā bǎ shǒujī tiáo chéng jìngyīn zhuàngtài.",
+                        "vi":  "Khi lên lớp và họp hành xin mọi người chuyển điện thoại sang chế độ im lặng."
+                    }
+    },
+    {
+        "id":  "v2_125",
+        "hanzi":  "说话",
+        "pinyin":  "shuōhuà",
+        "meaning":  "Nói chuyện",
+        "hsk":  2,
+        "radical":  "讠 (Ngôn)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "老师正在前面讲解重点，大家请不要随意说话。",
+                        "pinyin":  "Lǎoshī zhèngzài qiánmiàn jiǎngjiě zhòngdiǎn, dàjiā qǐng bú yào suíyì shuōhuà.",
+                        "vi":  "Thầy giáo đang giảng trọng tâm ở phía trên, mọi người xin đừng nói chuyện tùy tiện."
+                    }
+    },
+    {
+        "id":  "v2_126",
+        "hanzi":  "送",
+        "pinyin":  "sòng",
+        "meaning":  "Tặng, tiễn, đưa",
+        "hsk":  2,
+        "radical":  "辶 (Sước)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "朋友去外地工作，今天下午我去高铁站送他。",
+                        "pinyin":  "Péngyou qù wàidì gōngzuò, jīntiān xiàwǔ wǒ qù gāotiězhàn sòng tā.",
+                        "vi":  "Bạn tôi đi nơi khác làm việc, chiều nay tôi ra ga tàu cao tốc tiễn anh ấy."
+                    }
+    },
+    {
+        "id":  "v2_127",
+        "hanzi":  "虽然",
+        "pinyin":  "suīrán",
+        "meaning":  "Tuy rằng, mặc dù",
+        "hsk":  2,
+        "radical":  "虫 (Trùng)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "虽然学习中文有些挑战，但是我感到充满乐趣。",
+                        "pinyin":  "Suīrán xuéxí zhōngwén yǒuxiē tiǎozhàn, dànshì wǒ gǎndào chōngmǎn lèqù.",
+                        "vi":  "Tuy học tiếng Trung có đôi chút thử thách nhưng tôi cảm thấy ngập tràn niềm vui."
+                    }
+    },
+    {
+        "id":  "v2_128",
+        "hanzi":  "但是",
+        "pinyin":  "dànshì",
+        "meaning":  "Thế nhưng, nhưng",
+        "hsk":  2,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "他今天虽然身体有些疲倦，但是依然坚持上课。",
+                        "pinyin":  "Tā jīntiān suīrán shēntǐ yǒuxiē píjuàn, dànshì yīrán jiānchí shàngkè.",
+                        "vi":  "Anh ấy hôm nay tuy cơ thể có phần mệt mỏi nhưng vẫn kiên trì đi học."
+                    }
+    },
+    {
+        "id":  "v2_129",
+        "hanzi":  "它",
+        "pinyin":  "tā",
+        "meaning":  "Nó (chỉ con vật/đồ vật)",
+        "hsk":  2,
+        "radical":  "宀 (Miên)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "我们家养了一只活泼的小金毛狗，全家都很喜欢它。",
+                        "pinyin":  "Wǒmen jiā yǎng le yì zhī huópo de xiǎo jīnmáo gǒu, quánjiā dōu hěn xǐhuan tā.",
+                        "vi":  "Nhà tôi nuôi một chú cún Golden hoạt bát, cả nhà đều rất yêu quý nó."
+                    }
+    },
+    {
+        "id":  "v2_130",
+        "hanzi":  "踢足球",
+        "pinyin":  "tī zúqiú",
+        "meaning":  "Đá bóng",
+        "hsk":  2,
+        "radical":  "足 (Túc)",
+        "strokes":  15,
+        "example":  {
+                        "zh":  "放学以后，很多男同学都喜欢去绿茵场踢足球。",
+                        "pinyin":  "Fàngxué yǐhòu, hěn duō nán tóngxué dōu xǐhuan qù lǜyīnchǎng tī zúqiú.",
+                        "vi":  "Sau giờ tan học, nhiều bạn nam thích ra sân cỏ đá bóng."
+                    }
+    },
+    {
+        "id":  "v2_131",
+        "hanzi":  "题",
+        "pinyin":  "tí",
+        "meaning":  "Đề bài, câu hỏi bài tập",
+        "hsk":  2,
+        "radical":  "页 (Hiệt)",
+        "strokes":  15,
+        "example":  {
+                        "zh":  "试卷上的这道听力理解题有些深奥，请认真思考。",
+                        "pinyin":  "Shìjuàn shàng de zhè dào tīnglì lǐjiě tí yǒuxiē shēn\u0027ào, qǐng rènzhēn sīkǎo.",
+                        "vi":  "Câu hỏi hiểu nghe này trên đề thi có chút sâu sắc, xin hãy suy nghĩ kỹ."
+                    }
+    },
+    {
+        "id":  "v2_132",
+        "hanzi":  "跳舞",
+        "pinyin":  "tiàowǔ",
+        "meaning":  "Khiêu vũ, nhảy múa",
+        "hsk":  2,
+        "radical":  "足 (Túc)",
+        "strokes":  13,
+        "example":  {
+                        "zh":  "她不仅歌唱得动听，而且民族舞蹈跳得格外优美。",
+                        "pinyin":  "Tā bùjǐn gē chàng de dòngtīng, érqiě mínzú wǔdǎo tiào de géwài yōuměi.",
+                        "vi":  "Cô ấy không chỉ hát hay mà múa dân tộc cũng vô cùng uyển chuyển."
+                    }
+    },
+    {
+        "id":  "v2_133",
+        "hanzi":  "外",
+        "pinyin":  "wài",
+        "meaning":  "Ngoài, bên ngoài",
+        "hsk":  2,
+        "radical":  "夕 (Tịch)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "窗外正在淅淅沥沥地下着春雨，空气格外清新。",
+                        "pinyin":  "Chuāngwài zhèngzài xīxīlìlì de xià zhe chūnyǔ, kōngqì géwài qīngxīn.",
+                        "vi":  "Ngoài cửa sổ mưa xuân đang lất phất rơi, không khí vô cùng trong lành."
+                    }
+    },
+    {
+        "id":  "v2_134",
+        "hanzi":  "完",
+        "pinyin":  "wán",
+        "meaning":  "Xong, hoàn thành",
+        "hsk":  2,
+        "radical":  "宀 (Miên)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "我打算在今天晚上睡觉之前把这套练习题做完。",
+                        "pinyin":  "Wǒ dǎsuàn zài jīntiān wǎnshang shuìjiào zhīqián bǎ zhè tào liànxítí zuò wán.",
+                        "vi":  "Tôi dự định trước khi đi ngủ tối nay sẽ làm xong bộ đề luyện tập này."
+                    }
+    },
+    {
+        "id":  "v2_135",
+        "hanzi":  "玩",
+        "pinyin":  "wán",
+        "meaning":  "Chơi, vui chơi",
+        "hsk":  2,
+        "radical":  "王 (Vương)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "周末天气晴好，我们约好一起去颐和园玩一整天。",
+                        "pinyin":  "Zhōumò tiānqì qínghǎo, wǒmen yuē hǎo yìqǐ qù Yíhéyuán wán yì zhěng tiān.",
+                        "vi":  "Cuối tuần trời đẹp, chúng tôi hẹn cùng nhau đi Di Hòa Viên chơi cả ngày."
+                    }
+    },
+    {
+        "id":  "v2_136",
+        "hanzi":  "晚上",
+        "pinyin":  "wǎnshang",
+        "meaning":  "Buổi tối",
+        "hsk":  2,
+        "radical":  "日 (Nhật)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "每天晚上我都会抽出四十分钟背诵汉字和生词。",
+                        "pinyin":  "Měi tiān wǎnshang wǒ dōu huì chōuchū sìshí fēnzhōng bèisòng hànzì hé shēngcí.",
+                        "vi":  "Mỗi tối tôi đều dành ra bốn mươi phút để học thuộc chữ Hán và từ mới."
+                    }
+    },
+    {
+        "id":  "v2_137",
+        "hanzi":  "往",
+        "pinyin":  "wǎng",
+        "meaning":  "Hướng về, đi về phía",
+        "hsk":  2,
+        "radical":  "彳 (Xích)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "出校门后一直往前走两百米就是公交车站。",
+                        "pinyin":  "Chū xiàomén hòu yìzhí wǎng qián zǒu liǎngbǎi mǐ jiù shì gōngjiāochēzhàn.",
+                        "vi":  "Ra khỏi cổng trường đi thẳng về phía trước hai trăm mét là bến xe buýt."
+                    }
+    },
+    {
+        "id":  "v2_138",
+        "hanzi":  "为什么",
+        "pinyin":  "wèishénme",
+        "meaning":  "Tại sao, vì sao",
+        "hsk":  2,
+        "radical":  "丶 (Chủ)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "你为什么会选择攻读中国语言文学专业呢？",
+                        "pinyin":  "Nǐ wèishénme huì xuǎnzé gōngdú Zhōngguó yǔyán wénxué zhuānyè ne?",
+                        "vi":  "Tại sao bạn lại lựa chọn theo học chuyên ngành Ngôn ngữ và Văn học Trung Quốc?"
+                    }
+    },
+    {
+        "id":  "v2_139",
+        "hanzi":  "问",
+        "pinyin":  "wèn",
+        "meaning":  "Hỏi",
+        "hsk":  2,
+        "radical":  "门 (Môn)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "如果遇到弄不懂的语法难点，可以随时来问我。",
+                        "pinyin":  "Rúguǒ yùdào nòng bù dǒng de yǔfǎ nándiǎn, kěyǐ suíshí lái wèn wǒ.",
+                        "vi":  "Nếu gặp điểm ngữ pháp khó chưa hiểu, bạn có thể hỏi tôi bất cứ lúc nào."
+                    }
+    },
+    {
+        "id":  "v2_140",
+        "hanzi":  "问题",
+        "pinyin":  "wèntí",
+        "meaning":  "Vấn đề, câu hỏi",
+        "hsk":  2,
+        "radical":  "门 (Môn)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "这篇课文后面的几个思考问题设计得很有深度。",
+                        "pinyin":  "Zhè piān kèwén hòumiàn de jǐ gè sīkǎo wèntí shèjì de hěn yǒu shēndù.",
+                        "vi":  "Mấy câu hỏi suy ngẫm sau bài khóa này được thiết kế rất có chiều sâu."
+                    }
+    },
+    {
+        "id":  "v2_141",
+        "hanzi":  "西瓜",
+        "pinyin":  "xīguā",
+        "meaning":  "Dưa hấu",
+        "hsk":  2,
+        "radical":  "覀 (Tây)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "炎炎夏日里，吃一口甘甜多汁的西瓜倍感清爽。",
+                        "pinyin":  "Yányán xiàrì lǐ, chī yì kǒu gāntián duōzhī de xīguā bèi gǎn qīngshuǎng.",
+                        "vi":  "Giữa ngày hè oi ả, cắn một miếng dưa hấu ngọt mọng nước cảm thấy sảng khoái lạ thường."
+                    }
+    },
+    {
+        "id":  "v2_142",
+        "hanzi":  "希望",
+        "pinyin":  "xīwàng",
+        "meaning":  "Hy vọng, mong muốn",
+        "hsk":  2,
+        "radical":  "巾 (Cân)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "我真诚地希望大家都能够顺利通过这次HSK考试。",
+                        "pinyin":  "Wǒ zhēnchéng de xīwàng dàjiā dōu nénggòu shùnlì tōngguò zhè cì HSK kǎoshì.",
+                        "vi":  "Tôi chân thành hy vọng mọi người đều có thể thuận lợi vượt qua kỳ thi HSK lần này."
+                    }
+    },
+    {
+        "id":  "v2_143",
+        "hanzi":  "洗",
+        "pinyin":  "xǐ",
+        "meaning":  "Rửa, giặt",
+        "hsk":  2,
+        "radical":  "氵 (Chấm thủy)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "饭前洗手和勤换洗衣物是保持身体健康的好习惯。",
+                        "pinyin":  "Fàn qián xǐshǒu hé qín huàn xǐ yīwù shì bǎochí shēntǐ jiànkāng de hǎo xíguàn.",
+                        "vi":  "Rửa tay trước bữa ăn và thường xuyên giặt giũ quần áo là thói quen tốt giữ gìn sức khỏe."
+                    }
+    },
+    {
+        "id":  "v2_144",
+        "hanzi":  "小时",
+        "pinyin":  "xiǎoshí",
+        "meaning":  "Tiếng đồng hồ, giờ",
+        "hsk":  2,
+        "radical":  "小 (Tiểu)",
+        "strokes":  3,
+        "example":  {
+                        "zh":  "从北京乘坐复兴号高铁到上海只需要四个多小时。",
+                        "pinyin":  "Cóng Běijīng chéngzuò fùxīnghào gāotiě dào Shànghǎi zhǐ xūyào sì gè duō xiǎoshí.",
+                        "vi":  "Từ Bắc Kinh đi tàu cao tốc Phục Hưng đến Thượng Hải chỉ mất hơn bốn tiếng đồng hồ."
+                    }
+    },
+    {
+        "id":  "v2_145",
+        "hanzi":  "笑",
+        "pinyin":  "xiào",
+        "meaning":  "Cười",
+        "hsk":  2,
+        "radical":  "竹 (Trúc)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "老师和蔼可亲的笑容让刚到异国的新生倍感温暖。",
+                        "pinyin":  "Lǎoshī hé\u0027ǎikěqīn de xiàoróng ràng gāng dào yìguó de xīnshēng bèi gǎn wēnnuǎn.",
+                        "vi":  "Nụ cười hiền hậu dễ mến của thầy giáo khiến tân sinh viên mới đến xứ người cảm thấy ấm lòng."
+                    }
+    },
+    {
+        "id":  "v2_146",
+        "hanzi":  "新",
+        "pinyin":  "xīn",
+        "meaning":  "Mới",
+        "hsk":  2,
+        "radical":  "斤 (Cân)",
+        "strokes":  13,
+        "example":  {
+                        "zh":  "新的一年里，愿我们每个人都有崭新的进步与收获。",
+                        "pinyin":  "Xīn de yì nián lǐ, yuàn wǒmen měi gè rén dōu yǒu zhǎnxīn de jìnbù yǔ shōuhuò.",
+                        "vi":  "Trong năm mới, chúc mỗi người chúng ta đều có những tiến bộ và gặt hái hoàn toàn mới."
+                    }
+    },
+    {
+        "id":  "v2_147",
+        "hanzi":  "姓",
+        "pinyin":  "xìng",
+        "meaning":  "Họ (tên họ), mang họ",
+        "hsk":  2,
+        "radical":  "女 (Nữ)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "请问这位教授贵姓？他姓张，是中国古代文学专家。",
+                        "pinyin":  "Qǐngwèn zhè wèi jiàoshòu guìxìng? Tā xìng Zhāng, shì Zhōngguó gǔdài wénxué zhuānjiā.",
+                        "vi":  "Xin hỏi vị giáo sư này quý danh họ gì? Thầy họ Trương, là chuyên gia văn học cổ đại Trung Quốc."
+                    }
+    },
+    {
+        "id":  "v2_148",
+        "hanzi":  "休息",
+        "pinyin":  "xiūxi",
+        "meaning":  "Nghỉ ngơi",
+        "hsk":  2,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "连续学习两个小时后，应当站起来走动走动休息片刻。",
+                        "pinyin":  "Liánxù xuéxí liǎng gè xiǎoshí hòu, yīngdāng zhàn qǐlái zǒudòng zǒudòng xiūxi piànkè.",
+                        "vi":  "Sau khi học liên tục hai tiếng, nên đứng dậy đi lại nghỉ ngơi chốc lát."
+                    }
+    },
+    {
+        "id":  "v2_149",
+        "hanzi":  "雪",
+        "pinyin":  "xuě",
+        "meaning":  "Tuyết",
+        "hsk":  2,
+        "radical":  "雨 (Vũ)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "冬天故宫红墙映衬下的白雪，景色格外如诗如画。",
+                        "pinyin":  "Dōngtiān Gùgōng hóngqiáng yìngchèn xià de báixuě, jǐngsè géwài rúshīrúhuà.",
+                        "vi":  "Tuyết trắng dưới nền tường đỏ Tử Cấm Thành mùa đông, khung cảnh thơ mộng tựa tranh vẽ."
+                    }
+    },
+    {
+        "id":  "v2_150",
+        "hanzi":  "颜色",
+        "pinyin":  "yánsè",
+        "meaning":  "Màu sắc",
+        "hsk":  2,
+        "radical":  "页 (Hiệt)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "天空中七彩斑斓的彩虹拥有世界上最美丽的颜色。",
+                        "pinyin":  "Tiānkōng zhōng qīcǎi bānlán de cǎihóng yōngyǒu shìjiè shàng zuì měilì de yánsè.",
+                        "vi":  "Cầu vồng bảy sắc lung linh trên bầu trời sở hữu những gam màu đẹp nhất trần gian."
+                    }
+    },
+    {
+        "id":  "v3_031",
+        "hanzi":  "阿姨",
+        "pinyin":  "āyí",
+        "meaning":  "Dì, cô, bác gái",
+        "hsk":  3,
+        "radical":  "女 (Nữ)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "住在我们隔壁的李阿姨待人非常热情周到。",
+                        "pinyin":  "Zhù zài wǒmen gébì de Lǐ āyí dàirén fēicháng rèqíng zhōudào.",
+                        "vi":  "Bác Lý ở ngay cạnh nhà tôi đối xử với mọi người rất niềm nở chu đáo."
+                    }
+    },
+    {
+        "id":  "v3_032",
+        "hanzi":  "矮",
+        "pinyin":  "ǎi",
+        "meaning":  "Thấp, lùn",
+        "hsk":  3,
+        "radical":  "矢 (Thỉ)",
+        "strokes":  13,
+        "example":  {
+                        "zh":  "弟弟虽然年龄小个子稍微有点矮，但奔跑速度极快。",
+                        "pinyin":  "Dìdi suīrán niánlíng xiǎo gèzi shāowēi yǒudiǎn ǎi, dàn bēnpǎo sùdù jí kuài.",
+                        "vi":  "Em trai tuy nhỏ tuổi vóc người hơi thấp một chút, nhưng chạy cực nhanh."
+                    }
+    },
+    {
+        "id":  "v3_033",
+        "hanzi":  "安静",
+        "pinyin":  "ānjìng",
+        "meaning":  "Yên tĩnh, tĩnh lặng",
+        "hsk":  3,
+        "radical":  "宀 (Miên)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "图书馆内请保持安静，不要高声喧哗影响他人。",
+                        "pinyin":  "Túshūguǎn nèi qǐng bǎochí ānjìng, bú yào gāoshēng xuānhuá yǐngxiǎng tārén.",
+                        "vi":  "Trong thư viện xin giữ yên tĩnh, không làm ồn ảnh hưởng tới người khác."
+                    }
+    },
+    {
+        "id":  "v3_034",
+        "hanzi":  "把",
+        "pinyin":  "bǎ",
+        "meaning":  "Cầm, nắm; câu chữ Bả",
+        "hsk":  3,
+        "radical":  "扌 (Thủ)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "离开教室之前请大家把黑板和讲台擦干净。",
+                        "pinyin":  "Líkāi jiàoshì zhīqián qǐng dàjiā bǎ hēibǎn hé jiǎngtái cā gānjìng.",
+                        "vi":  "Trước khi rời phòng học xin mọi người lau sạch bảng và bục giảng."
+                    }
+    },
+    {
+        "id":  "v3_035",
+        "hanzi":  "搬",
+        "pinyin":  "bān",
+        "meaning":  "Dọn, khiêng, chuyển",
+        "hsk":  3,
+        "radical":  "扌 (Thủ)",
+        "strokes":  13,
+        "example":  {
+                        "zh":  "下个月我们全家打算搬迁到离公司更近的新寓所。",
+                        "pinyin":  "Xià gè yuè wǒmen quánjiā dǎsuàn bānqiān dào lí gōngsī gèng jìn de xīn yùsuǒ.",
+                        "vi":  "Tháng sau cả nhà chúng tôi định chuyển đến nơi ở mới gần công ty hơn."
+                    }
+    },
+    {
+        "id":  "v3_036",
+        "hanzi":  "办法",
+        "pinyin":  "bànfǎ",
+        "meaning":  "Biện pháp, cách thức",
+        "hsk":  3,
+        "radical":  "力 (Lực)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "遇到棘手的难题时，冷静思考才能找到解决办法。",
+                        "pinyin":  "Yù dào jíshǒu de nántí shí, lěngjìng sīkǎo cái néng zhǎodào jiějié bànfǎ.",
+                        "vi":  "Khi gặp nan đề hóc búa, suy nghĩ bình tĩnh mới tìm ra cách giải quyết."
+                    }
+    },
+    {
+        "id":  "v3_037",
+        "hanzi":  "办公室",
+        "pinyin":  "bàngōngshì",
+        "meaning":  "Văn phòng, phòng làm việc",
+        "hsk":  3,
+        "radical":  "力 (Lực)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "王经理现在正在三楼的总经办办公室批阅文件。",
+                        "pinyin":  "Wáng jīnglǐ xiànzài zhèngzài sān lóu de zǒngjīngbàn bàngōngshì pīyuè wénjiàn.",
+                        "vi":  "Giám đốc Vương hiện đang phê duyệt tài liệu tại phòng làm việc tầng ba."
+                    }
+    },
+    {
+        "id":  "v3_038",
+        "hanzi":  "半",
+        "pinyin":  "bàn",
+        "meaning":  "Nửa, một nửa, rưỡi",
+        "hsk":  3,
+        "radical":  "十 (Thập)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "现在是上午十点半，距离中欧国际商务研讨会开始还有半小时。",
+                        "pinyin":  "Xiànzài shì shàngwǔ shí diǎn bàn, jùlí Zhōng-Ōu guójì shāngwù yántǎohuì kāishǐ hái yǒu bàn xiǎoshí.",
+                        "vi":  "Bây giờ là 10 rưỡi sáng, cách giờ hội thảo thương mại quốc tế còn nửa tiếng."
+                    }
+    },
+    {
+        "id":  "v3_039",
+        "hanzi":  "帮忙",
+        "pinyin":  "bāngmáng",
+        "meaning":  "Giúp đỡ, đỡ đần",
+        "hsk":  3,
+        "radical":  "巾 (Cân)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "非常感谢你在我异国求学最困难的时候给予的热心帮忙。",
+                        "pinyin":  "Fēicháng gǎnxiè nǐ zài wǒ yìguó qiúxué zuì kùnnan de shíhou jǐyǔ de rèxīn bāngmáng.",
+                        "vi":  "Rất cảm ơn sự giúp đỡ nhiệt tình bạn đã dành cho tôi lúc khó khăn nhất nơi đất khách."
+                    }
+    },
+    {
+        "id":  "v3_040",
+        "hanzi":  "包",
+        "pinyin":  "bāo",
+        "meaning":  "Túi, bao, gói",
+        "hsk":  3,
+        "radical":  "勹 (Bao)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "上高铁的时候请看管好随身携带的双肩背包和行李。",
+                        "pinyin":  "Shàng gāotiě de shíhou qǐng kānguǎn hǎo suíshēn xiédài de shuāngjiān bēibāo hé xíngli.",
+                        "vi":  "Khi lên tàu cao tốc xin hãy trông coi cẩn thận balo đeo vai và hành lý tùy thân."
+                    }
+    },
+    {
+        "id":  "v3_041",
+        "hanzi":  "饱",
+        "pinyin":  "bǎo",
+        "meaning":  "No (ăn no)",
+        "hsk":  3,
+        "radical":  "饣 (Thực)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "今晚的川菜美味可口，大家都吃得非常饱而且格外开心。",
+                        "pinyin":  "Jīnwǎn de chuāncài měiwèi kěkǒu, dàjiā dōu chī de fēicháng bǎo érqiě géwài kāixīn.",
+                        "vi":  "Món ăn Tứ Xuyên tối nay ngon miệng tuyệt vời, mọi người đều ăn rất no và vui vẻ."
+                    }
+    },
+    {
+        "id":  "v3_042",
+        "hanzi":  "北方",
+        "pinyin":  "běifāng",
+        "meaning":  "Miền bắc, phương bắc",
+        "hsk":  3,
+        "radical":  "匕 (Chủy)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "中国北方的冬天白雪皑皑，室内通常都配有暖和的地暖。",
+                        "pinyin":  "Zhōngguó běifāng de dōngtiān báixuě\u0027ái\u0027ái, shìnèi tōngcháng dōu pèi yǒu nuǎnhuo de dǐnuǎn.",
+                        "vi":  "Mùa đông miền bắc Trung Quốc tuyết trắng xóa, trong nhà thường trang bị hệ thống sưởi ấm."
+                    }
+    },
+    {
+        "id":  "v3_043",
+        "hanzi":  "被",
+        "pinyin":  "bèi",
+        "meaning":  "Bị, được; câu chữ Bị",
+        "hsk":  3,
+        "radical":  "衤 (Y)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "放在阳台上的浅色衬衫被突如其来的阵雨淋湿透了。",
+                        "pinyin":  "Fàng zài yángtái shàng de qiǎnsè chènshān bèi tūrúqílái de zhènyǔ línshī tòu le.",
+                        "vi":  "Chiếc áo sơ mi sáng màu phơi trên ban công bị cơn mưa rào bất chợt làm ướt sũng."
+                    }
+    },
+    {
+        "id":  "v3_044",
+        "hanzi":  "鼻子",
+        "pinyin":  "bízi",
+        "meaning":  "Mũi",
+        "hsk":  3,
+        "radical":  "鼻 (Tị)",
+        "strokes":  14,
+        "example":  {
+                        "zh":  "感冒流涕的时候鼻子往往呼吸不通畅，需要多喝热水。",
+                        "pinyin":  "Gǎnmào liútì de shíhou bízi wǎngwǎng hūxī bù tōngchàng, xūyào duō hē rèshuǐ.",
+                        "vi":  "Khi cảm cúm sổ mũi thì mũi thường ngạt thở khó chịu, cần uống nhiều nước nóng."
+                    }
+    },
+    {
+        "id":  "v3_045",
+        "hanzi":  "比较",
+        "pinyin":  "bǐjiào",
+        "meaning":  "Khá là, so sánh",
+        "hsk":  3,
+        "radical":  "比 (Tỷ)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "这篇中文学术论文的论点阐述得比较清晰透彻。",
+                        "pinyin":  "Zhè piān zhōngwén xuéshù lùnwén de lùndiǎn chǎnshù de bǐjiào qīngxī tòuchè.",
+                        "vi":  "Luận điểm của bài luận văn học thuật tiếng Trung này trình bày khá rõ ràng sâu sắc."
+                    }
+    },
+    {
+        "id":  "v3_046",
+        "hanzi":  "比赛",
+        "pinyin":  "bǐsài",
+        "meaning":  "Thi đấu, cuộc thi",
+        "hsk":  3,
+        "radical":  "比 (Tỷ)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "明天的汉语桥演讲比赛，选手们都准备得格外充分。",
+                        "pinyin":  "Míngtiān de Hànyǔ Qiáo yǎnjiǎng bǐsài, xuǎnshǒu men dōu zhǔnbèi de géwài chōngfèn.",
+                        "vi":  "Cuộc thi hùng biện Nhịp cầu Hán ngữ ngày mai, các thí sinh đều chuẩn bị vô cùng chu đáo."
+                    }
+    },
+    {
+        "id":  "v3_047",
+        "hanzi":  "变化",
+        "pinyin":  "biànhuà",
+        "meaning":  "Biến đổi, thay đổi",
+        "hsk":  3,
+        "radical":  "讠 (Ngôn)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "近十年来这座海滨现代化城市发生了翻天覆地的巨大变化。",
+                        "pinyin":  "Jìn shí nián lái zhè zuò hǎibīn xiàndàihuà chéngshì fāshēng le fāntiānfùdì de jùdà biànhuà.",
+                        "vi":  "Mười năm trở lại đây thành phố ven biển hiện đại này đã có sự đổi thay long trời lở đất."
+                    }
+    },
+    {
+        "id":  "v3_048",
+        "hanzi":  "宾馆",
+        "pinyin":  "bīnguǎn",
+        "meaning":  "Khách sạn, nhà khách",
+        "hsk":  3,
+        "radical":  "宀 (Miên)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "我们预订的涉外商务宾馆地理位置优越，交通四通八达。",
+                        "pinyin":  "Wǒmen yùdìng de shèwài shāngwù bīnguǎn dìlǐ wèizhi yōuyuè, jiāotōng sìtōngbādá.",
+                        "vi":  "Khách sạn thương vụ quốc tế chúng tôi đặt có vị trí đắc địa, giao thông kết nối bốn phương."
+                    }
+    },
+    {
+        "id":  "v3_049",
+        "hanzi":  "冰箱",
+        "pinyin":  "bīngxiāng",
+        "meaning":  "Tủ lạnh",
+        "hsk":  3,
+        "radical":  "冫 (Băng)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "夏天喝不完的新鲜果汁记得放进双门冰箱里冷藏保鲜。",
+                        "pinyin":  "Xiàtiān hē bù wán de xīnxiān guǒzhī jìde fàng jìn shuāngmén bīngxiāng lǐ lěngcáng bǎoxiān.",
+                        "vi":  "Nước ép hoa quả tươi mùa hè uống chưa hết nhớ cho vào tủ lạnh hai cánh để bảo quản."
+                    }
+    },
+    {
+        "id":  "v3_050",
+        "hanzi":  "不但",
+        "pinyin":  "búdàn",
+        "meaning":  "Không những, không chỉ",
+        "hsk":  3,
+        "radical":  "一 (Nhất)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "他不但精通汉语和英语，而且对中国古典书法颇有造诣。",
+                        "pinyin":  "Tā búdàn jīngtōng hànyǔ hé yīngyǔ, érqiě duì Zhōngguó gǔdiǎn shūfǎ pō yǒu zàoyì.",
+                        "vi":  "Anh ấy không những tinh thông tiếng Trung và tiếng Anh, mà thư pháp cổ điển cũng rất uyên thâm."
+                    }
+    },
+    {
+        "id":  "v3_051",
+        "hanzi":  "而且",
+        "pinyin":  "érqiě",
+        "meaning":  "Mà còn, hơn nữa",
+        "hsk":  3,
+        "radical":  "一 (Nhất)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "这家餐厅的环境优雅宜人，而且菜肴口味非常纯正。",
+                        "pinyin":  "Zhè jiā cāntīng de huánjìng yōuyǎ yírén, érqiě càiyáo kǒuwèi fēicháng chúnzhèng.",
+                        "vi":  "Không gian nhà hàng này trang nhã dễ chịu, hơn nữa hương vị món ăn lại rất chuẩn mực."
+                    }
+    },
+    {
+        "id":  "v3_052",
+        "hanzi":  "参加",
+        "pinyin":  "cānjiā",
+        "meaning":  "Tham gia, dự",
+        "hsk":  3,
+        "radical":  "厶 (Khư)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "来自世界各国的杰出青年学者踊跃报名参加本次文化研讨会。",
+                        "pinyin":  "Láizì shìjiè gè guó de jiéchū qīngnián xuézhě yǒngyuè bàomíng cānjiā běn cì wénhuà yántǎohuì.",
+                        "vi":  "Học giả trẻ kiệt xuất khắp các nước sôi nổi đăng ký tham dự hội thảo văn hóa lần này."
+                    }
+    },
+    {
+        "id":  "v3_053",
+        "hanzi":  "草",
+        "pinyin":  "cǎo",
+        "meaning":  "Cỏ, thảo mộc",
+        "hsk":  3,
+        "radical":  "艹 (Thảo)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "春回大地，公园里的青草绿意盎然，散发着泥土的清香。",
+                        "pinyin":  "Chūnhuídàdì, gōngyuán lǐ de qīngcǎo lǜyì\u0027àngrán, sànfà zhe nítǔ de qīngxiāng.",
+                        "vi":  "Xuân về trên đất trời, thảm cỏ xanh trong công viên tràn ngập sắc xuân tỏa hương đất thơm mát."
+                    }
+    },
+    {
+        "id":  "v3_054",
+        "hanzi":  "层",
+        "pinyin":  "céng",
+        "meaning":  "Tầng, lớp",
+        "hsk":  3,
+        "radical":  "尸 (Thi)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "这座充满现代科技感的国际金融中心大厦总共有八十八层。",
+                        "pinyin":  "Zhè zuò chōngmǎn xiàndài kējìgǎn de guójì jīnróng zhōngxīn dàshà zǒnggòng yǒu bāshíbā céng.",
+                        "vi":  "Tòa tháp trung tâm tài chính quốc tế đậm chất công nghệ hiện đại này có tổng cộng 88 tầng."
+                    }
+    },
+    {
+        "id":  "v3_055",
+        "hanzi":  "差",
+        "pinyin":  "chà",
+        "meaning":  "Kém, dở, thiếu",
+        "hsk":  3,
+        "radical":  "工 (Công)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "他的身体底子有些薄弱，因此天气骤冷时抵抗力比较差。",
+                        "pinyin":  "Tā de shēntǐ dǐzi yǒuxiē bóruò, yīncǐ tiānqì zhòulěng shí dǐkànglì bǐjiào chà.",
+                        "vi":  "Thể trạng của anh ấy hơi yếu, nên mỗi khi trời trở lạnh sức đề kháng tương đối kém."
+                    }
+    },
+    {
+        "id":  "v3_056",
+        "hanzi":  "超市",
+        "pinyin":  "chāoshì",
+        "meaning":  "Siêu thị",
+        "hsk":  3,
+        "radical":  "走 (Tẩu)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "周末傍晚大型综合连锁超市里总是人流如潮，热闹非凡。",
+                        "pinyin":  "Zhōumò bàngwǎn dàxíng zōnghé liánsuǒ chāoshì lǐ zǒngshì rénliú rúcháo, rènao fēifán.",
+                        "vi":  "Chiều tối cuối tuần trong chuỗi siêu thị tổng hợp cỡ lớn dòng người luôn nườm nượp nhộn nhịp."
+                    }
+    },
+    {
+        "id":  "v3_057",
+        "hanzi":  "衬衫",
+        "pinyin":  "chènshān",
+        "meaning":  "Áo sơ mi",
+        "hsk":  3,
+        "radical":  "衤 (Y)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "在正式的商务宴请和跨国会谈场合，出席人员都会穿着白色衬衫。",
+                        "pinyin":  "Zài zhèngshì de shāngwù yànqǐng hé kuàguó huìtán chǎnghé, chūxí rényuán dōu huì chuānzhe báisè chènshān.",
+                        "vi":  "Tại các tiệc chiêu đãi thương mại trang trọng và hội đàm đa quốc gia, người tham dự đều mặc sơ mi trắng."
+                    }
+    },
+    {
+        "id":  "v3_058",
+        "hanzi":  "成绩",
+        "pinyin":  "chéngjì",
+        "meaning":  "Thành tích, điểm số",
+        "hsk":  3,
+        "radical":  "戈 (Qua)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "凭借一年以来的勤奋笃行，他最终在HSK六级考试中取得了优异成绩。",
+                        "pinyin":  "Píngjiè yì nián yǐlái de qínfèn dǔxíng, tā zuìzhōng zài HSK liù jí kǎoshì zhōng qǔdé le yōuyì chéngjì.",
+                        "vi":  "Nhờ vào sự cần cù chăm chỉ suốt một năm qua, anh ấy rốt cuộc đã đạt thành tích xuất sắc ở kỳ thi HSK 6."
+                    }
+    },
+    {
+        "id":  "v3_059",
+        "hanzi":  "城市",
+        "pinyin":  "chéngshì",
+        "meaning":  "Thành phố, đô thị",
+        "hsk":  3,
+        "radical":  "土 (Thổ)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "上海是一座开放包容、充满无限发展生机与活力的现代化国际大城市。",
+                        "pinyin":  "Shànghǎi shì yí zuò kāifàng bāoróng, chōngmǎn wúxiàn fāzhǎn shēngjī yǔ huólì de xiàndàihuà guójì dà chéngshì.",
+                        "vi":  "Thượng Hải là một đại đô thị quốc tế hiện đại cởi mở, bao dung và ngập tràn sức sống phát triển."
+                    }
+    },
+    {
+        "id":  "v3_060",
+        "hanzi":  "迟到",
+        "pinyin":  "chídào",
+        "meaning":  "Đến muộn, trễ",
+        "hsk":  3,
+        "radical":  "辶 (Sước)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "因为早高峰道路严重拥堵，他今天上午上班不慎迟到了十分钟。",
+                        "pinyin":  "Yīnwèi zǎogāofēng dàolù yánzhòng yōngdǔ, tā jīntiān shàngwǔ shàngbān búshèn chídào le shí fēnzhōng.",
+                        "vi":  "Do tắc đường nghiêm trọng vào giờ cao điểm sáng, sáng nay anh ấy đi làm sơ ý muộn mất 10 phút."
+                    }
+    },
+    {
+        "id":  "v3_061",
+        "hanzi":  "出现",
+        "pinyin":  "chūxiàn",
+        "meaning":  "Xuất hiện, nảy sinh",
+        "hsk":  3,
+        "radical":  "凵 (Khảm)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "软件在最新的测试版本中没有出现任何明显的运行故障和漏洞。",
+                        "pinyin":  "Ruǎnjiàn zài zuìxīn de cèshì bǎnběn zhōng méiyǒu chūxiàn rènhé míngxiǎn de yùnxíng gùzhàng hé lòudòng.",
+                        "vi":  "Phần mềm trong phiên bản kiểm thử mới nhất không xuất hiện sự cố hay lỗ hổng vận hành nào."
+                    }
+    },
+    {
+        "id":  "v3_062",
+        "hanzi":  "除了",
+        "pinyin":  "chúle",
+        "meaning":  "Ngoài ra, trừ bỏ",
+        "hsk":  3,
+        "radical":  "阝 (Phụ)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "除了汉语之外，他还能够十分熟练地运用法语和西班牙语交流。",
+                        "pinyin":  "Chúle hànyǔ zhīwài, tā hái nénggòu shífēn shúliàn de yùnyòng fǎyǔ hé xībānyáyǔ jiāoliú.",
+                        "vi":  "Ngoài tiếng Trung ra, anh ấy còn có thể vận dụng rất thành thạo tiếng Pháp và tiếng Tây Ban Nha."
+                    }
+    },
+    {
+        "id":  "v3_063",
+        "hanzi":  "春",
+        "pinyin":  "chūn",
+        "meaning":  "Mùa xuân",
+        "hsk":  3,
+        "radical":  "日 (Nhật)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "春风拂面，万木吐翠，大自然呈现出一派生机盎然的美丽景象。",
+                        "pinyin":  "Chūnfēng fúmiàn, wànmù tǔcuì, dàzìrán chéngxiàn chū yí pài shēngjī\u0027àngrán de měilì jǐngxiàng.",
+                        "vi":  "Gió xuân mơn man, cây cối đâm chồi, thiên nhiên hiện lên vẻ đẹp căng tràn sức sống rạng rỡ."
+                    }
+    },
+    {
+        "id":  "v3_064",
+        "hanzi":  "词典",
+        "pinyin":  "cídiǎn",
+        "meaning":  "Từ điển",
+        "hsk":  3,
+        "radical":  "讠 (Ngôn)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "在日常深入研读古今汉文典籍时，权威的专业现代汉语词典必不可少。",
+                        "pinyin":  "Zài rìcháng shēnrù yándú gǔjīn hànwén diǎnjí shí, quánwēi de zhuānyè xiàndài hànyǔ cídiǎn bìbùkěshǎo.",
+                        "vi":  "Khi nghiên cứu sâu các tác phẩm Hán văn cổ kim hàng ngày, một cuốn từ điển chuẩn là không thể thiếu."
+                    }
+    },
+    {
+        "id":  "v3_065",
+        "hanzi":  "聪明",
+        "pinyin":  "cōngming",
+        "meaning":  "Thông minh, lanh lợi",
+        "hsk":  3,
+        "radical":  "耳 (Nhĩ)",
+        "strokes":  14,
+        "example":  {
+                        "zh":  "那个思维敏捷的孩子不仅非常聪明，而且学习态度特别虚心踏实。",
+                        "pinyin":  "Nà gè sīwéi mǐnjié de háizi bùjǐn fēicháng cōngming, érqiě xuéxí tàidu tèbié xūxīn tāshi.",
+                        "vi":  "Đứa trẻ tư duy nhạy bén ấy không những rất thông minh mà thái độ học tập còn cực kỳ khiêm tốn vững vàng."
+                    }
+    },
+    {
+        "id":  "v3_066",
+        "hanzi":  "打扫",
+        "pinyin":  "dǎsǎo",
+        "meaning":  "Quét dọn, làm sạch",
+        "hsk":  3,
+        "radical":  "扌 (Thủ)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "每逢新春佳节来临之际，家家户户都会齐心协力把居室打扫得窗明几净。",
+                        "pinyin":  "Měiféng xīnchūn jiājié láilín zhījì, jiājiāhùhù dōu huì qíxīnxiélì bǎ jūshì dǎsǎo de chuāngmíngjǐjìng.",
+                        "vi":  "Mỗi độ tết đến xuân về, mọi nhà đều đồng lòng chung sức quét dọn nhà cửa sạch bong sáng bóng."
+                    }
+    },
+    {
+        "id":  "v3_067",
+        "hanzi":  "打算",
+        "pinyin":  "dǎsuan",
+        "meaning":  "Dự định, tính toán",
+        "hsk":  3,
+        "radical":  "扌 (Thủ)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "他打算在研究生顺利毕业之后申请前往上海的大型高科技跨国企业就职。",
+                        "pinyin":  "Tā dǎsuan zài yánjiūshēng shùnlì bìyè zhīhòu shēnqǐng qiánwǎng Shànghǎi de dàxíng gāokējì kuàguó qǐyè jiùzhí.",
+                        "vi":  "Anh ấy dự định sau khi tốt nghiệp thạc sĩ sẽ nộp đơn vào làm tại tập đoàn công nghệ cao Thượng Hải."
+                    }
+    },
+    {
+        "id":  "v3_068",
+        "hanzi":  "带",
+        "pinyin":  "dài",
+        "meaning":  "Mang theo, dẫn theo",
+        "hsk":  3,
+        "radical":  "巾 (Cân)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "出国留学或者出境商务旅行，必须随身携带好本人的有效护照和签证。",
+                        "pinyin":  "Chūguó liúxué huòzhě chūjìng shāngwù lǚxíng, bìxū suíshēn xiédài hǎo běnrén de yǒuxiào hùzhào hé qiānzhèng.",
+                        "vi":  "Ra nước ngoài du học hoặc công tác xuất ngoại, nhất định phải mang theo hộ chiếu và visa hợp lệ."
+                    }
+    },
+    {
+        "id":  "v3_069",
+        "hanzi":  "担心",
+        "pinyin":  "dānxīn",
+        "meaning":  "Lo lắng, băn khoăn",
+        "hsk":  3,
+        "radical":  "扌 (Thủ)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "请您不必过于担心，经验丰富的医疗专家团队一定会全力以赴救治。",
+                        "pinyin":  "Qǐng nín búbì guòyú dānxīn, jīngyàn fēngfù de yīliáo zhuānjiā tuánduì yídìng huì quánlìyǐfù jiùzhì.",
+                        "vi":  "Xin bác không cần quá lo lắng, đội ngũ chuyên gia y tế giàu kinh nghiệm sẽ dốc sức cứu chữa."
+                    }
+    },
+    {
+        "id":  "v3_070",
+        "hanzi":  "蛋糕",
+        "pinyin":  "dàngāo",
+        "meaning":  "Bánh gato, bánh ngọt",
+        "hsk":  3,
+        "radical":  "虫 (Trùng)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "为了庆祝他的二十岁生日，妈妈亲自在烤箱里烘焙了一款美味的奶油蛋糕。",
+                        "pinyin":  "Wèile qìngzhù tā de èrshí suì shēngrì, māmā qīnzì zài kǎoxiāng lǐ hōngbèi le yì kuǎn měiwèi de nǎiyóu dàngāo.",
+                        "vi":  "Để mừng sinh nhật tuổi 20 của anh ấy, mẹ đã đích thân nướng chiếc bánh kem thơm lừng."
+                    }
+    },
+    {
+        "id":  "v3_071",
+        "hanzi":  "当然",
+        "pinyin":  "dāngrán",
+        "meaning":  "Đương nhiên, tất nhiên",
+        "hsk":  3,
+        "radical":  "⺌ (Tiểu)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "经过长年累月的不懈刻苦拼搏，最终登上领奖台当然是理所应当的。",
+                        "pinyin":  "Jīngguò chángniánlěiyuè de búxiè kèkǔ pīnbó, zuìzhōng dēng shàng lǐngjiǎngtái dāngrán shì lǐsuǒyīngdāng de.",
+                        "vi":  "Trải qua tháng ngày nỗ lực gian khổ không ngừng, cuối cùng bước lên bục vinh quang là điều tất nhiên."
+                    }
+    },
+    {
+        "id":  "v3_072",
+        "hanzi":  "地方",
+        "pinyin":  "dìfang",
+        "meaning":  "Địa phương, nơi chốn",
+        "hsk":  3,
+        "radical":  "土 (Thổ)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "西双版纳是一座充满浓郁热带风情与浓厚民族特色文化的迷人地方。",
+                        "pinyin":  "Xīshuāngbǎnnà shì yí zuò chōngmǎn nóngyù rèdài fēngqíng yǔ nónghòu mínzú tèsè wénhuà de mírén dìfang.",
+                        "vi":  "Tây Song Bản Nạp là một vùng đất quyến rũ ngập tràn phong vị nhiệt đới và văn hóa dân tộc đậm đà."
+                    }
+    },
+    {
+        "id":  "v3_073",
+        "hanzi":  "地铁",
+        "pinyin":  "dìtiě",
+        "meaning":  "Tàu điện ngầm",
+        "hsk":  3,
+        "radical":  "土 (Thổ)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "在特大繁华都市里，四通八达的城市地铁是最为准时高效的出行交通工具。",
+                        "pinyin":  "Zài tèdà fánhuá dūshì lǐ, sìtōngbādá de chéngshì dìtiě shì zuìwéi zhǔnshí gāoxiào de chūxíng jiāotōng gōngjù.",
+                        "vi":  "Tại các đô thị sầm uất, tàu điện ngầm là phương tiện di chuyển đúng giờ và hiệu quả nhất."
+                    }
+    },
+    {
+        "id":  "v3_074",
+        "hanzi":  "地图",
+        "pinyin":  "dìtú",
+        "meaning":  "Bản đồ",
+        "hsk":  3,
+        "radical":  "土 (Thổ)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "在手机导航地图上输入具体目的地，便能轻松获取最便捷的公交换乘路线。",
+                        "pinyin":  "Zài shǒujī dǎoháng dìtú shàng shūrù jùtǐ mùdìdì, biàn néng qīngsōng huòqǔ zuì biànjié de gōngjiāo huànchéng lùxiàn.",
+                        "vi":  "Nhập điểm đến trên bản đồ định vị di động là có thể dễ dàng nhận lộ trình đổi xe buýt thuận tiện nhất."
+                    }
+    },
+    {
+        "id":  "v3_075",
+        "hanzi":  "电梯",
+        "pinyin":  "diàntī",
+        "meaning":  "Thang máy",
+        "hsk":  3,
+        "radical":  "电 (Điện)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "这座超高层商务写字楼配备了多部高速智能变频客运电梯。",
+                        "pinyin":  "Zhè zuò chāogāocéng shāngwù xiězìlóu pèibèi le duō bù gāosù zhìnéng biànpín kèyùn diàntī.",
+                        "vi":  "Tòa nhà văn phòng chọc trời này được trang bị nhiều thang máy chở khách thông minh tốc độ cao."
+                    }
+    },
+    {
+        "id":  "v3_076",
+        "hanzi":  "电子邮件",
+        "pinyin":  "diànzǐ yóujiàn",
+        "meaning":  "Thư điện tử, email",
+        "hsk":  3,
+        "radical":  "电 (Điện)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "请务必在今天下班之前将项目合同草案通过电子邮件发送至外商邮箱。",
+                        "pinyin":  "Qǐng wùbì zài jīntiān xiàbān zhīqián jiāng xiàngmù hétong cǎo\u0027àn tōngguò diànzǐ yóujiàn fāsòng zhì wàishāng yóuxiāng.",
+                        "vi":  "Xin gửi bản thảo hợp đồng dự án qua email tới hòm thư đối tác nước ngoài trước giờ tan sở hôm nay."
+                    }
+    },
+    {
+        "id":  "v3_077",
+        "hanzi":  "动物",
+        "pinyin":  "dòngwù",
+        "meaning":  "Động vật",
+        "hsk":  3,
+        "radical":  "力 (Lực)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "中国四川卧龙自然保护区是大熊猫等许多珍稀国家保护动物的天然乐园。",
+                        "pinyin":  "Zhōngguó Sìchuān Wòlóng zìrán bǎohùqū shì dàxióngmāo děng xǔduō zhēnxī guójiā bǎohù dòngwù de tiānrán lèyuán.",
+                        "vi":  "Khu bảo tồn thiên nhiên Ngọa Long ở Tứ Xuyên là thiên đường của gấu trúc lớn và động vật quý hiếm."
+                    }
+    },
+    {
+        "id":  "v3_078",
+        "hanzi":  "锻炼",
+        "pinyin":  "duànliàn",
+        "meaning":  "Rèn luyện, tập thể dục",
+        "hsk":  3,
+        "radical":  "钅 (Kim)",
+        "strokes":  14,
+        "example":  {
+                        "zh":  "持之以恒地加强体育锻炼，不仅能强健体魄，更能磨砺坚韧坚毅的意志品质。",
+                        "pinyin":  "Chízhīyǐhéng de jiāqiáng tǐyù duànliàn, bùjǐn néng qiángjiàn tǐpò, gèng néng mólì jiānrèn jiānyì de yìzhì pǐnzhì.",
+                        "vi":  "Kiên trì rèn luyện thể dục thể thao không chỉ giúp cơ thể dẻo dai mà còn tôi luyện ý chí kiên cường."
+                    }
+    },
+    {
+        "id":  "v3_079",
+        "hanzi":  "方便",
+        "pinyin":  "fāngbiàn",
+        "meaning":  "Thuận tiện, tiện lợi",
+        "hsk":  3,
+        "radical":  "方 (Phương)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "中国目前无处不在的移动扫码支付给广大人民群众的日常生活带来了极大方便。",
+                        "pinyin":  "Zhōngguó mùqián wúchùbùzài de yídòng sǎomǎ zhīfù gěi guǎngdà rénmín qúnzhòng de rìcháng shēnghuó dài lái le jí dà fāngbiàn.",
+                        "vi":  "Thanh toán quét mã di động khắp Trung Quốc đã đem lại sự tiện lợi to lớn cho đời sống nhân dân."
+                    }
+    },
+    {
+        "id":  "v3_080",
+        "hanzi":  "放心",
+        "pinyin":  "fàngxīn",
+        "meaning":  "Yên tâm, an tâm",
+        "hsk":  3,
+        "radical":  "攵 (Phác)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "请各位家长完全放心，学校在食品安全和住宿管理方面有着极其严格的把关。",
+                        "pinyin":  "Qǐng gèwèi jiāzhǎng wánquán fàngxīn, xuéxiào zài shípǐn ānquán hé zhùsù guǎnlǐ fāngmiàn yǒu zhe jíqí yángé de bǎguān.",
+                        "vi":  "Xin quý phụ huynh hoàn toàn yên tâm, nhà trường kiểm soát cực kỳ nghiêm ngặt về an toàn thực phẩm."
+                    }
+    },
+    {
+        "id":  "v3_081",
+        "hanzi":  "复习",
+        "pinyin":  "fùxí",
+        "meaning":  "Ôn tập",
+        "hsk":  3,
+        "radical":  "夂 (Truy)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "在期末统考即将来临之际，科学合理地复习旧知识能够起到事半功倍的效果。",
+                        "pinyin":  "Zài qīmò tǒngkǎo jíjiāng láilín zhījì, kēxué hélǐ de fùxí jiù zhīshi nénggòu qǐdào shìbàngōngbèi de xiàoguǒ.",
+                        "vi":  "Khi kỳ thi chung cuối kỳ cận kề, ôn tập kiến thức một cách khoa học sẽ mang lại hiệu quả gấp đôi."
+                    }
+    },
+    {
+        "id":  "v3_082",
+        "hanzi":  "干净",
+        "pinyin":  "gānjìng",
+        "meaning":  "Sạch sẽ",
+        "hsk":  3,
+        "radical":  "干 (Can)",
+        "strokes":  3,
+        "example":  {
+                        "zh":  "这间经过精心整理的学生公寓宿舍不仅光线十分充足，而且四处一尘不染非常干净。",
+                        "pinyin":  "Zhè jiān jīngguò jīngxīn zhěnglǐ de xuésheng gōngyù sùshè bùjǐn guāngxiàn shífēn chōngzú, érqiě sìchù yìchénbùrǎn fēicháng gānjìng.",
+                        "vi":  "Căn phòng ký túc xá sinh viên sau khi dọn dẹp không những chan hòa ánh sáng mà còn sạch bong."
+                    }
+    },
+    {
+        "id":  "v3_083",
+        "hanzi":  "感冒",
+        "pinyin":  "gǎnmào",
+        "meaning":  "Cảm cúm, ốm vặt",
+        "hsk":  3,
+        "radical":  "心 (Tâm)",
+        "strokes":  13,
+        "example":  {
+                        "zh":  "初春时节昼夜温差起伏较大，若不及时增添衣物极容易着凉引起流行性感冒。",
+                        "pinyin":  "Chūchūn shíjié zhòuyè wēnchā qǐfú jiàodà, ruò bù jíshí zēngtiān yīwù jí róngyì zháoliáng yǐnqǐ liúxíngxìng gǎnmào.",
+                        "vi":  "Đầu xuân chênh lệch nhiệt độ ngày đêm khá lớn, không mặc thêm áo rất dễ bị nhiễm lạnh cảm cúm."
+                    }
+    },
+    {
+        "id":  "v3_084",
+        "hanzi":  "刚才",
+        "pinyin":  "gāngcái",
+        "meaning":  "Vừa mới, vừa rồi",
+        "hsk":  3,
+        "radical":  "刂 (Đao)",
+        "strokes":  3,
+        "example":  {
+                        "zh":  "教研室主任刚才在微信工作群里通知，原定于下午召开的学术研讨推迟到明天。",
+                        "pinyin":  "Jiàoyánshì zhǔrèn gāngcái zài wēixìn gōngzuò qún lǐ tōngzhī, yuándìng yú xiàwǔ zhàokāi de xuéshù yántǎo tuīchí dào míngtiān.",
+                        "vi":  "Trưởng bộ môn vừa thông báo trên nhóm công việc WeChat rằng hội thảo chiều nay dời sang ngày mai."
+                    }
+    },
+    {
+        "id":  "v3_085",
+        "hanzi":  "根据",
+        "pinyin":  "gēnjù",
+        "meaning":  "Căn cứ vào, dựa theo",
+        "hsk":  3,
+        "radical":  "木 (Mộc)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "评审专家组根据全体参赛选手的现场实际综合表现，公平公正地评选出最终奖项。",
+                        "pinyin":  "Píngshěn zhuānjiāzǔ gēnjù quántǐ cānsài xuǎnshǒu de xiànchǎng shíjì zōnghé biǎoxiàn, gōngpíng gōngzhèng de píngxuǎn chū zuìzhōng jiǎngxiàng.",
+                        "vi":  "Hội đồng chuyên gia ban giám khảo dựa trên biểu hiện thực tế công tâm bình chọn ra giải thưởng chung cuộc."
+                    }
+    },
+    {
+        "id":  "v3_086",
+        "hanzi":  "公园",
+        "pinyin":  "gōngyuán",
+        "meaning":  "Công viên",
+        "hsk":  3,
+        "radical":  "八 (Bát)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "每逢清晨与黄昏，许多当地居民都会聚集在环境清幽的森林公园里打太极拳散步。",
+                        "pinyin":  "Měiféng qīngchén yǔ huánghūn, xǔduō dāngdì jūmín dōu huì jùjí zài huánjìng qīngyōu de sēnlín gōngyuán lǐ dǎ tàijíquán sànbù.",
+                        "vi":  "Cứ mỗi ban mai và hoàng hôn, nhiều cư dân lại quây quần tại công viên rừng thanh tĩnh luyện Thái Cực."
+                    }
+    },
+    {
+        "id":  "v3_087",
+        "hanzi":  "故事",
+        "pinyin":  "gùshi",
+        "meaning":  "Câu chuyện, truyện",
+        "hsk":  3,
+        "radical":  "攵 (Phác)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "老师用生动诙谐的语言为留学生们讲述了一则含义深刻的中国古代成语典故故事。",
+                        "pinyin":  "Lǎoshī yòng shēngdòng huīxié de yǔyán wèi liúxuéshēng men jiǎngshù le yì zé hányì shēnkè de Zhōngguó gǔdài chéngyǔ diǎngù gùshi.",
+                        "vi":  "Thầy giáo dùng lời kể sinh động hóm hỉnh kể cho các du học sinh một câu chuyện điển tích thành ngữ thâm thúy."
+                    }
+    },
+    {
+        "id":  "v3_088",
+        "hanzi":  "刮风",
+        "pinyin":  "guāfēng",
+        "meaning":  "Nổi gió, gió thổi",
+        "hsk":  3,
+        "radical":  "舌 (Thiệt)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "气象台发布强对流天气预警，今天夜间本市沿海各区将会出现明显的降温并刮大风。",
+                        "pinyin":  "Qìxiàngtái fābù qiáng duìliú tiānqì yùjǐng, jīntiān yèjiān běn shì yánhǎi gè qū jiāng huì chūxiàn míngxiǎn de jiàngwēn bìng guā dàfēng.",
+                        "vi":  "Đài khí tượng phát cảnh báo thời tiết đối lưu mạnh, đêm nay vùng ven biển thành phố sẽ hạ nhiệt và gió lớn."
+                    }
+    },
+    {
+        "id":  "v3_089",
+        "hanzi":  "关于",
+        "pinyin":  "guānyú",
+        "meaning":  "Về, liên quan tới",
+        "hsk":  3,
+        "radical":  "门 (Môn)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "关于如何在日常多语种环境下快速提升汉语听说流利度，学者们提出了诸多建议。",
+                        "pinyin":  "Guānyú rúhé zài rìcháng duō yǔzhǒng huánjìng xià kuàisù tíshēng hànyǔ tīngshuō liúlìdù, xuézhě men tíchū le zhūduō jiànyì.",
+                        "vi":  "Về việc làm sao nâng cao độ lưu loát nghe nói tiếng Trung trong môi trường đa ngữ, các học giả nêu nhiều kiến giải."
+                    }
+    },
+    {
+        "id":  "v3_090",
+        "hanzi":  "国家",
+        "pinyin":  "guójiā",
+        "meaning":  "Quốc gia, đất nước",
+        "hsk":  3,
+        "radical":  "囗 (Vi)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "青年一代肩负着推动科学技术创新与促进国家繁荣昌盛的神圣历史使命。",
+                        "pinyin":  "Qīngnián yídài jiānfù zhe tuīdòng kēxué jìshù chuàngxīn yǔ cùjìn guójiā fánróng chāngshèng de shénshèng lìshǐ shǐmìng.",
+                        "vi":  "Thế hệ trẻ gánh trên vai sứ mệnh lịch sử thiêng liêng thúc đẩy đổi mới khoa học kỹ thuật và đất nước phồn vinh."
+                    }
+    },
+    {
+        "id":  "v3_091",
+        "hanzi":  "害怕",
+        "pinyin":  "hàipà",
+        "meaning":  "Sợ hãi, e ngại",
+        "hsk":  3,
+        "radical":  "宀 (Miên)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "在练习外语口语表达的过程中，切莫害怕说错，多开口交流才能不断进步。",
+                        "pinyin":  "Zài liànxí wàiyǔ kǒuyǔ biǎodá de guòchéng zhōng, qiè mò hàipà shuō cuò, duō kāikǒu jiāoliú cái néng búduàn jìnbù.",
+                        "vi":  "Trong quá trình luyện khẩu ngữ ngoại ngữ, chớ e ngại nói sai, năng mở lời giao lưu mới không ngừng tiến bộ."
+                    }
+    },
+    {
+        "id":  "v3_092",
+        "hanzi":  "护照",
+        "pinyin":  "hùzhào",
+        "meaning":  "Hộ chiếu",
+        "hsk":  3,
+        "radical":  "扌 (Thủ)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "在办理出入境边防检查手续时，请提前准备好个人护照与机上填写的申报表。",
+                        "pinyin":  "Zài bànlǐ chūrùjìng biānfáng jiǎnchá shǒuxù shí, qǐng tíqián zhǔnbèi hǎo gèrén hùzhào yǔ jī shàng tiánxiě de shēnbàobiǎo.",
+                        "vi":  "Khi làm thủ tục kiểm tra biên phòng xuất nhập cảnh, vui lòng chuẩn bị sẵn hộ chiếu và tờ khai báo."
+                    }
+    },
+    {
+        "id":  "v3_093",
+        "hanzi":  "环境",
+        "pinyin":  "huánjìng",
+        "meaning":  "Môi trường, hoàn cảnh",
+        "hsk":  3,
+        "radical":  "王 (Vương)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "良好的家庭文化氛围和优秀的校园育人环境对青少年的健康成长至关重要。",
+                        "pinyin":  "Liánghǎo de jiātíng wénhuà fēnwéi hé yōuxiù de xiàoyuán yùrén huánjìng duì qīngshàonián de jiànkāng chéngzhǎng zhìguān zhòngyào.",
+                        "vi":  "Bầu không khí văn hóa gia đình lành mạnh và môi trường sư phạm tốt rất quan trọng cho sự trưởng thành của thanh thiếu niên."
+                    }
+    },
+    {
+        "id":  "v3_094",
+        "hanzi":  "回答",
+        "pinyin":  "huídá",
+        "meaning":  "Trả lời, hồi đáp",
+        "hsk":  3,
+        "radical":  "囗 (Vi)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "面对考官提出的一系列具有思辨性质的专业问题，他回答得有条不紊、逻辑严密。",
+                        "pinyin":  "Miànduì kǎoguān tíchū de yí xìliè jùyǒu sībàn xìngzhì de zhuānyè wèntí, tā huídá de yǒutiáobùwěn, luójí yánmì.",
+                        "vi":  "Đối diện chuỗi câu hỏi chuyên môn mang tính tư biện của giám khảo, anh ấy trả lời mạch lạc logic chặt chẽ."
+                    }
+    },
+    {
+        "id":  "v3_095",
+        "hanzi":  "会议",
+        "pinyin":  "huìyì",
+        "meaning":  "Cuộc họp, hội nghị",
+        "hsk":  3,
+        "radical":  "人 (Nhân)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "经董事会审慎商议决定，第三季度国际战略合作推进会议将于下周四正式召开。",
+                        "pinyin":  "Jīng dǒngshìhuì shěnshèn shāngyì juédìng, dì-sān jìdù guójì zhànlüè hézuò tuījìn huìyì jiāng yú xià zhōusì zhèngshì zhàokāi.",
+                        "vi":  "Qua HĐQT bàn bạc cẩn trọng, hội nghị thúc đẩy hợp tác chiến lược quốc tế quý 3 sẽ họp vào thứ 5 tới."
+                    }
+    },
+    {
+        "id":  "v3_096",
+        "hanzi":  "或者",
+        "pinyin":  "huòzhě",
+        "meaning":  "Hoặc là, hoặc (câu khẳng định)",
+        "hsk":  3,
+        "radical":  "戈 (Qua)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "明天下午你可以选择在多媒体阅览室自主研修，或者跟随导师前往实验室观摩。",
+                        "pinyin":  "Míngtiān xiàwǔ nǐ kěyǐ xuǎnzé zài duōméitǐ yuèlǎnshì zìzhǔ yánxiū, huòzhě gēnsuí dǎoshī qiánwǎng shíyànshì guānmó.",
+                        "vi":  "Chiều mai bạn có thể chọn tự học tại phòng đọc đa phương tiện, hoặc theo giáo sư đến phòng thí nghiệm."
+                    }
+    },
+    {
+        "id":  "v3_097",
+        "hanzi":  "机会",
+        "pinyin":  "jīhuì",
+        "meaning":  "Cơ hội, dịp may",
+        "hsk":  3,
+        "radical":  "木 (Mộc)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "唯有时刻做好全方位的充分准备，当时代的机遇降临时才能牢牢抓住机会。",
+                        "pinyin":  "Wéiyǒu shíkè zuò hǎo quánfāngwèi de chōngfèn zhǔnbèi, dāng shídài de jīyù jiànglín shí cái néng láoláo zhuāzhù jīhuì.",
+                        "vi":  "Chỉ khi luôn sẵn sàng mọi phương diện chu tất, khi vận hội thời đại tới mới có thể nắm chắc cơ hội."
+                    }
+    },
+    {
+        "id":  "v3_098",
+        "hanzi":  "检查",
+        "pinyin":  "jiǎnchá",
+        "meaning":  "Kiểm tra",
+        "hsk":  3,
+        "radical":  "木 (Mộc)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "在试卷提交前务必仔细检查一遍姓名、准考证号以及填涂的答题卡选项。",
+                        "pinyin":  "Zài shìjuàn tíjiāo qián wùbì zǐxì jiǎnchá yí biàn xìngmíng, zhǔnkǎozhèng hào yǐjí tiántú de dǎtíkǎ xuǎnxiàng.",
+                        "vi":  "Trước khi nộp bài thi nhất định phải rà soát kỹ lại họ tên, số báo danh và các đáp án trên phiếu trắc nghiệm."
+                    }
+    },
+    {
+        "id":  "v3_099",
+        "hanzi":  "简单",
+        "pinyin":  "jiǎndān",
+        "meaning":  "Đơn giản, mộc mạc",
+        "hsk":  3,
+        "radical":  "竹 (Trúc)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "这套教学方法浅显易懂，将晦涩难懂的语法规则以极其简单的形式生动呈现。",
+                        "pinyin":  "Zhè tào jiàoxué fāngfǎ qiǎnxiǎnyìdǒng, jiāng huìsènándǒng de yǔfǎ guīzé yǐ jíqí jiǎndān de xíngshì shēngdòng chéngxiàn.",
+                        "vi":  "Phương pháp giảng dạy này rất dễ hiểu, biến quy tắc ngữ pháp phức tạp thành các hình thức cực kỳ đơn giản."
+                    }
+    },
+    {
+        "id":  "v3_100",
+        "hanzi":  "健康",
+        "pinyin":  "jiànkāng",
+        "meaning":  "Khỏe mạnh, sức khỏe",
+        "hsk":  3,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "拥有身心双重健康与开朗豁达的乐观胸怀，是人生一切成就与幸福的坚实基石。",
+                        "pinyin":  "Yōngyǒu shēnxīn shuāngchóng jiànkāng yǔ kāilǎng huòdá de lèguān xiōnghuái, shì rénshēng yíqiè chéngjiù yǔ xìngfú de jiānshí jīshí.",
+                        "vi":  "Sở hữu sức khỏe cả thể chất lẫn tinh thần cùng tâm hồn cởi mở là nền tảng vững chắc của hạnh phúc đời người."
+                    }
+    },
+    {
+        "id":  "v4_021",
+        "hanzi":  "安排",
+        "pinyin":  "ānpái",
+        "meaning":  "Sắp xếp, bố trí",
+        "hsk":  4,
+        "radical":  "宀 (Miên)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "教务处已为全体留学生妥善安排了为期一周的中华传统文化沉浸式研学。",
+                        "pinyin":  "Jiàowùchù yǐ wèi quántǐ liúxuéshēng tuǒshàn ānpái le wéiqī yì zhōu de zhōnghuá chuántǒng wénhuà chénjìnshì yánxué.",
+                        "vi":  "Phòng đào tạo đã sắp xếp chu đáo cho du học sinh chuyến nghiên cứu văn hóa truyền thống kéo dài một tuần."
+                    }
+    },
+    {
+        "id":  "v4_022",
+        "hanzi":  "按时",
+        "pinyin":  "ànshí",
+        "meaning":  "Đúng giờ, đúng hẹn",
+        "hsk":  4,
+        "radical":  "扌 (Thủ)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "请各项目组务必按时向学术委员会递交本阶段的中期科研进展报告。",
+                        "pinyin":  "Qǐng gè xiàngmùzǔ wùbì ànshí xiàng xuéshù wěiyuánhuì dìjiāo běn jiēduàn de zhōngqī kěyán jìnzhǎn bàogào.",
+                        "vi":  "Xin các tổ dự án nộp báo cáo tiến độ nghiên cứu giai đoạn trung kỳ lên hội đồng học thuật đúng hạn."
+                    }
+    },
+    {
+        "id":  "v4_023",
+        "hanzi":  "保证",
+        "pinyin":  "bǎozhèng",
+        "meaning":  "Bảo đảm, cam đoan",
+        "hsk":  4,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "施工企业承诺全面采取科学管理手段，切实保证工程的卓越质量与施工安全。",
+                        "pinyin":  "Shīgōng qǐyè chéngnuò quánmiàn cǎiqǔ kēxué guǎnlǐ shǒuduàn, qièshí bǎozhèng gōngchéng de zhuóyuè zhìliàng yǔ shīgōng ānquán.",
+                        "vi":  "Doanh nghiệp thi công cam kết áp dụng quản lý khoa học, bảo đảm chất lượng và an toàn thi công."
+                    }
+    },
+    {
+        "id":  "v4_024",
+        "hanzi":  "抱歉",
+        "pinyin":  "bàoqiàn",
+        "meaning":  "Có lỗi, xin lỗi, áy náy",
+        "hsk":  4,
+        "radical":  "扌 (Thủ)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "十分抱歉让您在贵宾接待厅久等了，方才因紧急跨国视频连线有所耽搁。",
+                        "pinyin":  "Shífēn bàoqiàn ràng nín zài guìbīn jiēdàitīng jiǔ děng le, fāngcái yīn jǐnjí kuàguó shìpín liánxiàn yǒusuǒ dāngē.",
+                        "vi":  "Rất xin lỗi để quý vị phải chờ lâu ở phòng tiếp đón, vừa rồi do có kết nối video quốc tế khẩn cấp."
+                    }
+    },
+    {
+        "id":  "v4_025",
+        "hanzi":  "报名",
+        "pinyin":  "bàomíng",
+        "meaning":  "Báo danh, đăng ký",
+        "hsk":  4,
+        "radical":  "扌 (Thủ)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "新一年度的汉语水平六级国际考试现已面向全球广大考生开放网络报名通道。",
+                        "pinyin":  "Xīn yì niándù de hànyǔ shuǐpíng liù jí guójì kǎoshì xiàn yǐ miànxiàng quánqiú guǎngdà kǎoshēng kāifàng wǎngluò bàomíng tōngdào.",
+                        "vi":  "Kỳ thi quốc tế HSK 6 năm mới hiện đã mở cổng đăng ký trực tuyến cho thí sinh khắp toàn cầu."
+                    }
+    },
+    {
+        "id":  "v4_026",
+        "hanzi":  "表格",
+        "pinyin":  "biǎogé",
+        "meaning":  "Biểu mẫu, bảng biểu",
+        "hsk":  4,
+        "radical":  "衣 (Y)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "请在随附的签证申请信息确认表格中清晰准确地填写本人的各项基本资历。",
+                        "pinyin":  "Qǐng zài suífù de qiānzhèng shēnqǐng xìnxī quèrèn biǎogé zhōng qīngxī zhǔnquè de tiánxiě běnrén de gè xiàng jīběn zīlì.",
+                        "vi":  "Xin điền rõ ràng chính xác các thông tin lý lịch cơ bản vào bảng xác nhận đơn xin thị thực đính kèm."
+                    }
+    },
+    {
+        "id":  "v4_027",
+        "hanzi":  "标准",
+        "pinyin":  "biāozhǔn",
+        "meaning":  "Tiêu chuẩn, chuẩn mực",
+        "hsk":  4,
+        "radical":  "木 (Mộc)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "这位资深播音主持人的普通话发音极为纯正标准，音色优美动听。",
+                        "pinyin":  "Zhè wèi zīshēn bōyīn zhǔchírén de pǔtōnghuà fāyīn jíwéi chúnzhèng biāozhǔn, yīnsè yōuměi dòngtīng.",
+                        "vi":  "Phát âm tiếng Phổ thông của người dẫn chương trình kỳ cựu này cực kỳ chuẩn mực tròn vành rõ chữ."
+                    }
+    },
+    {
+        "id":  "v4_028",
+        "hanzi":  "表达",
+        "pinyin":  "biǎodá",
+        "meaning":  "Bày tỏ, diễn đạt",
+        "hsk":  4,
+        "radical":  "衣 (Y)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "文学创作者擅长通过精巧细致的语言构思来生动表达人物内心复杂的情感波澜。",
+                        "pinyin":  "Wénxué chuàngzuòzhě shàncháng tōngguò jīngqiǎo xìzhì de yǔyán gòusī lái shēngdòng biǎodá rénwù nèixīn fùzá de qínggǎn bōlán.",
+                        "vi":  "Nhà văn rất giỏi thông qua cấu tứ ngôn từ tinh tế để diễn đạt sinh động những đợt sóng cảm xúc của nhân vật."
+                    }
+    },
+    {
+        "id":  "v4_029",
+        "hanzi":  "博士",
+        "pinyin":  "bóshì",
+        "meaning":  "Tiến sĩ",
+        "hsk":  4,
+        "radical":  "十 (Thập)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "他荣获北京大学汉语言文字学专业博士学位后，毅然投身于对外汉语教学事业。",
+                        "pinyin":  "Tā rónghuò Běijīng Dàxué hànyǔyán wénzìxué zhuānyè bóshì xuéwèi hòu, yìrán tóushēn yú duìwài hànyǔ jiàoxué shìyè.",
+                        "vi":  "Sau khi nhận học vị tiến sĩ tại Đại học Bắc Kinh, anh kiên định dấn thân vào sự nghiệp giảng dạy tiếng Hán."
+                    }
+    },
+    {
+        "id":  "v4_030",
+        "hanzi":  "不管",
+        "pinyin":  "bùguǎn",
+        "meaning":  "Cho dù, bất kể",
+        "hsk":  4,
+        "radical":  "一 (Nhất)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "不管漫长求索道路上面临多少严峻挑战与艰辛，他始终坚定不移恪守初心。",
+                        "pinyin":  "Bùguǎn màncháng qiúsuǒ dàolù shàng miànlín duōshao yánjùn tiǎozhàn yǔ jiānxīn, tā shǐzhōng jiāndìngbùyí kèshǒu chūxīn.",
+                        "vi":  "Cho dù trên nẻo đường tìm tòi dài đằng đẵng gặp bao gian truân thách thức, anh vẫn kiên định với sơ tâm."
+                    }
+    },
+    {
+        "id":  "v4_031",
+        "hanzi":  "材料",
+        "pinyin":  "cáiliào",
+        "meaning":  "Tài liệu, vật liệu",
+        "hsk":  4,
+        "radical":  "木 (Mộc)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "研究人员在浩如烟海的历史档案馆中找到了极其弥足珍贵的第一手文献参考材料。",
+                        "pinyin":  "Yánjiū rényuán zài hàorúyānhǎi de lìshǐ dàng\u0027ànguǎn zhōng zhǎodào le jíqí mǐzúzhēnguì de dì-yī shǒu wénxiàn cānkǎo cáiliào.",
+                        "vi":  "Cán bộ nghiên cứu đã tìm thấy tài liệu tham khảo tư liệu gốc cực kỳ quý báu trong kho lưu trữ lịch sử."
+                    }
+    },
+    {
+        "id":  "v4_032",
+        "hanzi":  "参观",
+        "pinyin":  "cānguān",
+        "meaning":  "Tham quan",
+        "hsk":  4,
+        "radical":  "厶 (Khư)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "中外青年文化交流访问代表团今天上午怀着崇敬之情参观了故宫博物院。",
+                        "pinyin":  "Zhōng-wài qīngnián wénhuà jiāoliú fǎngwèn dàibiǎotuán jīntiān shàngwǔ huáizhe chóngjìng zhī qíng cānguān le Gùgōng Bówùyuàn.",
+                        "vi":  "Đoàn đại biểu thanh niên giao lưu văn hóa Trung - ngoại sáng nay đã tới tham quan Viện Bảo tàng Cố Cung."
+                    }
+    },
+    {
+        "id":  "v4_033",
+        "hanzi":  "差不多",
+        "pinyin":  "chàbuduō",
+        "meaning":  "Xấp xỉ, gần như, tương đương",
+        "hsk":  4,
+        "radical":  "工 (Công)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "经过为期三周的封闭式高强度集训，全班学员的汉语听说能力已差不多达到同等流利水平。",
+                        "pinyin":  "Jīngguò wéiqī sān zhōu de fēngbìshì gāoxiànglì jíxùn, quán bān xuéyuán de hànyǔ tīngshuō nénglì yǐ chàbuduō dádào tóngděng liúlì shuǐpíng.",
+                        "vi":  "Sau ba tuần tập huấn cường độ cao, năng lực nghe nói tiếng Trung của học viên đã xấp xỉ ngang nhau."
+                    }
+    },
+    {
+        "id":  "v4_034",
+        "hanzi":  "超过",
+        "pinyin":  "chāoguò",
+        "meaning":  "Vượt qua, vượt mức",
+        "hsk":  4,
+        "radical":  "走 (Tẩu)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "这家新能源智能汽车制造企业今年的整车出口总额已历史性地超过了一百五十亿元。",
+                        "pinyin":  "Zhè jiā xīn néngyuán zhìnéng qìchē zhìzào qǐyè jīnnián de zhěngchē chūkǒu zǒng\u0027é yǐ lìshǐxìng de chāoguò le yìbǎi wǔshí yì yuán.",
+                        "vi":  "Doanh nghiệp xe thông minh năng lượng mới này đã có kim ngạch xuất khẩu xe vượt mốc 15 tỷ NDT."
+                    }
+    },
+    {
+        "id":  "v4_035",
+        "hanzi":  "诚实",
+        "pinyin":  "chéngshí",
+        "meaning":  "Thành thật, trung thực",
+        "hsk":  4,
+        "radical":  "讠 (Ngôn)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "诚实守信与恪尽职守是立足于任何现代商业职场与人际交往中最宝贵的黄金底线。",
+                        "pinyin":  "Chéngshí shǒuxìn yǔ kèjìnzhíshǒu shì lìzú yú rènhé xiàndài shāngyè zhíchǎng yǔ rénjì jiāowǎng zhōng zuì bǎoguì de huángjīn dǐxiàn.",
+                        "vi":  "Trung thực giữ chữ tín và tận tụy chức trách là ranh giới vàng quý báu nhất trong giao tiếp thương trường."
+                    }
+    },
+    {
+        "id":  "v4_036",
+        "hanzi":  "出差",
+        "pinyin":  "chūchāi",
+        "meaning":  "Đi công tác",
+        "hsk":  4,
+        "radical":  "凵 (Khảm)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "由于华东海外区域市场业务迅速拓展，高级市场总监下周将赴杭州和南京出差。",
+                        "pinyin":  "Yóuyú huádōng hǎiwài qūyù shìchǎng yèwù xùnsù tuòzhǎn, gāojí shìchǎng zǒngjiān xià zhōu jiāng fù Hángzhōu hé Nánjīng chūchāi.",
+                        "vi":  "Do nghiệp vụ thị trường mở rộng nhanh chóng, giám đốc thị trường tuần tới sẽ đi công tác Hàng Châu."
+                    }
+    },
+    {
+        "id":  "v4_037",
+        "hanzi":  "从来",
+        "pinyin":  "cónglái",
+        "meaning":  "Từ trước tới nay",
+        "hsk":  4,
+        "radical":  "人 (Nhân)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "在追求高精尖科技卓越创新的漫长道路上，这支青年科研攻坚团队从来未曾轻言放弃。",
+                        "pinyin":  "Zài zhuīqiú gāojīngjiān kējì zhuóyuè chuàngxīn de màncháng dàolù shàng, zhè zhī qīngnián kěyán gōngjiān tuánduì cónglái wèicéng qīngyán fàngqì.",
+                        "vi":  "Trên con đường đổi mới công nghệ cao, đội ngũ nghiên cứu trẻ này từ trước tới nay chưa từng nản lòng."
+                    }
+    },
+    {
+        "id":  "v4_038",
+        "hanzi":  "答应",
+        "pinyin":  "dāying",
+        "meaning":  "Đồng ý, nhận lời, đáp ứng",
+        "hsk":  4,
+        "radical":  "口 (Khẩu)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "既然在双方商务会谈上当众正式答应了对方提出的合作诉求，就务必言出必行坚守承诺。",
+                        "pinyin":  "Jìrán zài shuāngfāng shāngwù huìtán shàng dāngzhòng zhèngshì dāying le duìfāng tíchū de hézuò sùqiú, jiù wùbì yánchūbìxíng jiānshǒu chéngnuò.",
+                        "vi":  "Một khi đã chính thức nhận lời đối tác tại hội đàm thương mại thì nhất định phải nói đi đôi với làm."
+                    }
+    },
+    {
+        "id":  "v4_039",
+        "hanzi":  "代表",
+        "pinyin":  "dàibiǎo",
+        "meaning":  "Đại diện, tiêu biểu",
+        "hsk":  4,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "来自亚洲各国知名高校的杰出青年学生代表共聚一堂，热烈探讨绿色生态发展议题。",
+                        "pinyin":  "Láizì Yàzhōu gè guó zhīmíng gāoxiào de jiéchū qīngnián xuésheng dàibiǎo gòngjùyìtáng, rèliè tǎolùn lǜsè shēngtài fāzhǎn yìtí.",
+                        "vi":  "Đại diện sinh viên ưu tú các trường đại học hàng đầu châu Á cùng hội tụ sôi nổi bàn về sinh thái xanh."
+                    }
+    },
+    {
+        "id":  "v4_040",
+        "hanzi":  "单独",
+        "pinyin":  "dāndú",
+        "meaning":  "Đơn độc, một mình, riêng rẽ",
+        "hsk":  4,
+        "radical":  "十 (Thập)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "总编辑决定在今天的业务复盘总结会之后，同新加入采编部门的主笔记者单独谈话。",
+                        "pinyin":  "Zǒngbiānjí juédìng zài jīntiān de yèwù fùpán zǒngjiéhuì zhīhòu, tóng xīn jiārù cǎibiān bùmén de zhǔbǐ jìzhě dāndú tánhuà.",
+                        "vi":  "Tổng biên tập quyết định sau cuộc họp nghiệp vụ sẽ nói chuyện riêng với phóng viên chủ bút mới tuyển."
+                    }
+    },
+    {
+        "id":  "v4_041",
+        "hanzi":  "得到",
+        "pinyin":  "dédào",
+        "meaning":  "Đạt được, nhận được",
+        "hsk":  4,
+        "radical":  "彳 (Xích)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "这项关于人工智能自然语言理解的重大科研成果得到了国际同行学术界的极高赞誉。",
+                        "pinyin":  "Zhè xiàng guānyú réngōng zhìnéng zìrán yǔyán lǐjiě de zhòngdà kěyán chéngguǒ dédào le guójì tóngháng xuéshùjiè de jí gāo zànyù.",
+                        "vi":  "Thành tựu nghiên cứu AI xử lý ngôn ngữ tự nhiên này đã nhận được sự tán thưởng rất cao của quốc tế."
+                    }
+    },
+    {
+        "id":  "v4_042",
+        "hanzi":  "等等",
+        "pinyin":  "děngděng",
+        "meaning":  "Vân vân, các loại",
+        "hsk":  4,
+        "radical":  "竹 (Trúc)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "现代多媒体汉语智能教学系统融合了语音评测、笔顺书写仿真、人机对话等等多元前沿功能。",
+                        "pinyin":  "Xiàndài duōméitǐ hànyǔ zhìnéng jiàoxué xìtǒng rónghé le yǔyīn píngcè, bǐshùn shūxiě fǎngzhēn, rénjī duìhuà děngděng duōyuán qiányán gōngnéng.",
+                        "vi":  "Hệ thống dạy tiếng Trung thông minh tích hợp đánh giá phát âm, mô phỏng nét viết, đối thoại AI vân vân."
+                    }
+    },
+    {
+        "id":  "v4_043",
+        "hanzi":  "底下",
+        "pinyin":  "dǐxia",
+        "meaning":  "Dưới đáy, bên dưới",
+        "hsk":  4,
+        "radical":  "广 (Quảng)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "在深邃清澈的蔚蓝海洋底下，隐藏着数以万计绚丽多姿且形态各异的珊瑚礁群落。",
+                        "pinyin":  "Zài shēnsuì qīngchè de wèilán hǎiyáng dǐxia, yǐncáng zhe shù yǐ wàn jì xuànlìduōzī qiě xíngtài gèyì de shānhújiāo qúnluò.",
+                        "vi":  "Dưới đáy đại dương trong xanh sâu thẳm ẩn chứa hàng vạn rạn san hô muôn màu muôn vẻ hình thù kỳ thú."
+                    }
+    },
+    {
+        "id":  "v4_044",
+        "hanzi":  "调查",
+        "pinyin":  "diàochá",
+        "meaning":  "Điều tra, khảo sát",
+        "hsk":  4,
+        "radical":  "讠 (Ngôn)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "市场调研中心通过对五千余名海外汉语爱好者的问卷调查，全面梳理了当代外语学习痛点。",
+                        "pinyin":  "Shìchǎng diàoyán zhōngxīn tōngguò duì wǔqiān yú míng hǎiwài hànyǔ àihàozhě de wènjuàn diàochá, quánmiàn shūlǐ le dāngdài wàiyǔ xuéxí tòngdiǎn.",
+                        "vi":  "Trung tâm khảo sát thị trường qua phiếu khảo sát 5.000 người đã tổng hợp các khó khăn khi học tiếng Trung."
+                    }
+    },
+    {
+        "id":  "v4_045",
+        "hanzi":  "法律",
+        "pinyin":  "fǎlǜ",
+        "meaning":  "Pháp luật",
+        "hsk":  4,
+        "radical":  "氵 (Chấm thủy)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "任何公民与企业在从事商业与社会活动时，都必须严格遵守宪法与各项行业监管法律。",
+                        "pinyin":  "Rènhé gōngmín yǔ qǐyè zài cóngshì shāngyè yǔ shèhuì huódòng shí, dōu bìxū yángé zūnshǒu xiànfǎ yǔ gè xiàng hángyè jiānguǎn fǎlǜ.",
+                        "vi":  "Mọi công dân và doanh nghiệp khi hoạt động thương mại đều phải tuyệt đối tuân thủ pháp luật và hiến pháp."
+                    }
+    },
+    {
+        "id":  "v4_046",
+        "hanzi":  "烦恼",
+        "pinyin":  "fánnǎo",
+        "meaning":  "Phiền não, bực bội, buồn rầu",
+        "hsk":  4,
+        "radical":  "火 (Hỏa)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "学会用积极乐观豁达的心态面对生活中的失意，许多看似复杂的烦恼便会烟消云散。",
+                        "pinyin":  "Xuéhuì yòng jījí lèguān huòdá de xīntài miànduì shēnghuó zhōng de shīyì, xǔduō kànsì fùzá de fánnǎo biàn huì yānxiāoyúnsàn.",
+                        "vi":  "Học cách đối diện trắc trở bằng tâm thế lạc quan cởi mở, muôn vàn phiền não phức tạp sẽ tan thành mây khói."
+                    }
+    },
+    {
+        "id":  "v4_047",
+        "hanzi":  "反映",
+        "pinyin":  "fǎnyìng",
+        "meaning":  "Phản ánh, phản chiếu",
+        "hsk":  4,
+        "radical":  "又 (Hựu)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "这部现实主义题材的优秀戏剧作品深刻反映了当代都市青年在职场与理想之间的奋斗心声。",
+                        "pinyin":  "Zhè bù xiànshízhǔyì tícái de yōuxiù xìjù zuòpǐn shēnkè fǎnyìng le dāngdài dūshì qīngnián zài zhíchǎng yǔ lǐxiǎng zhījiān de fèndòu xīnshēng.",
+                        "vi":  "Vở kịch hiện thực này phản ánh sâu sắc tâm tư phấn đấu của giới trẻ đô thị giữa lý tưởng và sự nghiệp."
+                    }
+    },
+    {
+        "id":  "v4_048",
+        "hanzi":  "丰富",
+        "pinyin":  "fēngfù",
+        "meaning":  "Phong phú, dồi dào",
+        "hsk":  4,
+        "radical":  "豆 (Đậu)",
+        "strokes":  13,
+        "example":  {
+                        "zh":  "五千年源远流长的华夏文明孕育了璀璨夺目、内涵极其丰富厚重的传统文化宝库。",
+                        "pinyin":  "Wǔqiān nián yuányuǎanliúcháng de huáxià wénmíng yùnyù le cuǐcànduómù, nèihán jíqí fēngfù hòuzhòng de chuántǒng wénhuà bǎokù.",
+                        "vi":  "Nền văn minh Hoa Hạ 5.000 năm hun đúc nên kho tàng văn hóa truyền thống rực rỡ và nội hàm cực kỳ phong phú."
+                    }
+    },
+    {
+        "id":  "v4_049",
+        "hanzi":  "符合",
+        "pinyin":  "fúhé",
+        "meaning":  "Phù hợp, chuẩn xác",
+        "hsk":  4,
+        "radical":  "竹 (Trúc)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "经第三方权威检验机构严格检测，这批出口机电产品的技术参数完全符合国际通用行业标准。",
+                        "pinyin":  "Jīng dì-sān fāng quánwēi jiǎnyàn jīgòu yángé jiǎncè, zhè pī chūkǒu jīdiàn chǎnpǐn de jìshù cānshù wánquán fúhé guójì tōngyòng hángyè biāozhǔn.",
+                        "vi":  "Qua kiểm định cơ quan độc lập, thông số kỹ thuật lô hàng cơ điện xuất khẩu này hoàn toàn phù hợp tiêu chuẩn quốc tế."
+                    }
+    },
+    {
+        "id":  "v4_050",
+        "hanzi":  "复杂",
+        "pinyin":  "fùzá",
+        "meaning":  "Phức tạp, rắc rối",
+        "hsk":  4,
+        "radical":  "夂 (Truy)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "面对瞬息万变且极其复杂的国际经贸多边博弈格局，我们需要保持战略定力与睿智清醒。",
+                        "pinyin":  "Miànduì shùnxīwànbiàn qiě jíqí fùzá de guójì jīngmào duōbiān bóyì géjú, wǒmen xūyào bǎochí zhànlüè dìnglì yǔ ruìzhì qīngxǐng.",
+                        "vi":  "Đối diện cục diện đa phương kinh tế quốc tế biến ảo khôn lường và phức tạp, ta cần giữ vững bản lĩnh chiến lược."
+                    }
+    },
+    {
+        "id":  "v4_051",
+        "hanzi":  "负责",
+        "pinyin":  "fùzé",
+        "meaning":  "Phụ trách, chịu trách nhiệm",
+        "hsk":  4,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "项目总工程师对全线施工隧道的结构强度与施工人员现场安全负有至关重要的第一责任。",
+                        "pinyin":  "Xiàngmù zǒnggōngchéngshī duì quánxiàn shīgōng suìdào de jiégòu qiángdù yǔ shīgōng rényuán xiànchǎng ānquán fùyǒu zhìguān zhòngyào de dì-yī zérèn.",
+                        "vi":  "Tổng công trình sư dự án chịu trách nhiệm cao nhất về kết cấu đường hầm và an toàn công nhân hiện trường."
+                    }
+    },
+    {
+        "id":  "v4_052",
+        "hanzi":  "高级",
+        "pinyin":  "gāojí",
+        "meaning":  "Cao cấp, thượng hạng",
+        "hsk":  4,
+        "radical":  "高 (Cao)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "该科研基地成功研制出具备国际顶尖水平的超精密高级五轴联动智能数控加工母机。",
+                        "pinyin":  "Gāi kěyán jīdì chénggōng yánzhì chū jùbèi guójì dǐngjiān shuǐpíng de chāojīngmì gāojí wǔzhóu liándòng zhìnéng shùkòng jiāgōng mǔjī.",
+                        "vi":  "Cơ sở nghiên cứu chế tạo thành công máy gia công CNC 5 trục cao cấp siêu chính xác đẳng cấp quốc tế."
+                    }
+    },
+    {
+        "id":  "v4_053",
+        "hanzi":  "工资",
+        "pinyin":  "gōngzī",
+        "meaning":  "Tiền lương, thù lao",
+        "hsk":  4,
+        "radical":  "工 (Công)",
+        "strokes":  3,
+        "example":  {
+                        "zh":  "公司依据全员年度绩效综合考核评定结果，决定自下季度起为骨干研发团队全面提升工资福利。",
+                        "pinyin":  "Gōngsī yījù quányuán niándù jìxiào zōnghé kǎohé píngdìng jiéguǒ, juédìng zì xià jìdù qǐ wèi gǔgàn yánfā tuánduì quánmiàn tíshēng gōngzī fúlì.",
+                        "vi":  "Dựa trên đánh giá KPI năm, công ty quyết định tăng toàn diện lương thưởng cho đội ngũ R\u0026D từ quý tới."
+                    }
+    },
+    {
+        "id":  "v4_054",
+        "hanzi":  "鼓舞",
+        "pinyin":  "gǔwǔ",
+        "meaning":  "Cổ vũ, khích lệ",
+        "hsk":  4,
+        "radical":  "鼓 (Cổ)",
+        "strokes":  13,
+        "example":  {
+                        "zh":  "老一辈科学家胸怀大局、无私奉献的崇高精神，时刻鼓舞着广大青年学者勇攀科技高峰。",
+                        "pinyin":  "Lǎoyíbèi kēxuéjiā xiōnghuái dàjú, wúsī fèngxiàn de chónggāo jīngshén, shíkè gǔwǔ zhe guǎngdà qīngnián xuézhě yǒng pān kējì gāofēng.",
+                        "vi":  "Tinh thần cống hiến quên mình của các nhà khoa học tiền bối luôn cổ vũ giới học giả trẻ chinh phục đỉnh cao."
+                    }
+    },
+    {
+        "id":  "v4_055",
+        "hanzi":  "故意",
+        "pinyin":  "gùyì",
+        "meaning":  "Cố ý, cố tình",
+        "hsk":  4,
+        "radical":  "攵 (Phác)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "他在法庭陈述中出示了确凿有力的铁证，证明被告人在签署合同时存在故意隐瞒债务的情形。",
+                        "pinyin":  "Tā zài fǎtíng chénshù zhōng chūshì le quèzáo yǒulì de tiězèng, zhèngmíng bèigàorén zài qiānshǔ hétong shí cúnzài gùyì yǐnmán zhàiwù de qíngxíng.",
+                        "vi":  "Trước tòa anh đã đưa ra bằng chứng xác thực chứng minh bị cáo cố tình che giấu nợ khi ký kết hợp đồng."
+                    }
+    },
+    {
+        "id":  "v4_056",
+        "hanzi":  "关键",
+        "pinyin":  "guānjiàn",
+        "meaning":  "Mấu chốt, the chốt",
+        "hsk":  4,
+        "radical":  "门 (Môn)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "在数字化转型升级的攻坚战役中，拥有自主可控的核心关键底层技术是克敌制胜的根本。",
+                        "pinyin":  "Zài shùzìhuà zhuǎnxíng shēngjí de gōngjiān zhànyì zhōng, yōngyǒu zìzhǔ kěkòng de héxīn guānjiàn dǐcéng jìshù shì kèdǐzhìshèng de gēnběn.",
+                        "vi":  "Trong chuyển đổi số, sở hữu công nghệ cốt lõi mấu chốt tự chủ là nền tảng tất thắng."
+                    }
+    },
+    {
+        "id":  "v4_057",
+        "hanzi":  "观众",
+        "pinyin":  "guānzhòng",
+        "meaning":  "Khán giả",
+        "hsk":  4,
+        "radical":  "见 (Kiến)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "当中国传统民乐交响乐团奏响最后一曲凯歌时，全场近三千名观众不约而同起立报以雷鸣般的掌声。",
+                        "pinyin":  "Dāng Zhōngguó chuántǒng mínyuè jiāoxiǎngyuètuán zòuxiǎng zuìhòu yì qǔ kǎigē shí, quánchǎng jìn sānqiān míng guānzhòng bùyuē\u0027értóng qǐlì bào yǐ léimíng bān de zhǎngshēng.",
+                        "vi":  "Khi dàn nhạc giao hưởng dân tộc tấu xong khúc khải hoàn, 3.000 khán giả đồng loạt đứng dậy vỗ tay vang dội."
+                    }
+    },
+    {
+        "id":  "v4_058",
+        "hanzi":  "光荣",
+        "pinyin":  "guāngróng",
+        "meaning":  "Quang vinh, vẻ vang",
+        "hsk":  4,
+        "radical":  "儿 (Nhi)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "作为一名人民教师，用知识启迪学生心智、用爱心浇灌栋梁成长是一项无比崇高而光荣的使命。",
+                        "pinyin":  "Zuòwéi yì míng rénmín jiàoshī, yòng zhīshi qǐdí xuésheng xīnji, yòng àixīn jiāoguàn dòngliáng chéngzhǎng shì yí xiàng wúbǐ chónggāo ér guāngróng de shǐmìng.",
+                        "vi":  "Là người giáo viên nhân dân, dùng tri thức khai sáng tâm trí học trò là một sứ mệnh quang vinh và cao cả."
+                    }
+    },
+    {
+        "id":  "v4_059",
+        "hanzi":  "规定",
+        "pinyin":  "guīdìng",
+        "meaning":  "Quy định",
+        "hsk":  4,
+        "radical":  "见 (Kiến)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "根据出入境检验检疫国家相关法律法规明确规定，严禁非法携带任何未经检疫的动植物入境。",
+                        "pinyin":  "Gēnjù chūrùjìng jiǎnyàn jiǎnyì guójiā xiāngguān fǎlǜ fǎguī míngquè guīdìng, yánjìn fēifǎ xiédài rènhé wèijīng jiǎnyì de dòngzhíwù rùjìng.",
+                        "vi":  "Theo quy định pháp luật kiểm dịch, nghiêm cấm mang các loài động thực vật chưa kiểm dịch nhập cảnh."
+                    }
+    },
+    {
+        "id":  "v4_060",
+        "hanzi":  "国家重点",
+        "pinyin":  "guójiā zhòngdiǎn",
+        "meaning":  "Trọng điểm quốc gia",
+        "hsk":  4,
+        "radical":  "囗 (Vi)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "该芯片研发实验室已被正式纳入国家重点前沿科技实验室建设名录，获战略资金扶持。",
+                        "pinyin":  "Gāi xīnpiàn yánfā shíyànshì yǐ bèi zhèngshì nàrù guójiā zhòngdiǎn qiányán kējì shíyànshì jiànshè mínglù, huò zhànlüè zījīn fúchí.",
+                        "vi":  "Phòng nghiên cứu chip này đã chính thức được đưa vào danh mục phòng thí nghiệm trọng điểm quốc gia."
+                    }
+    },
+    {
+        "id":  "v5_016",
+        "hanzi":  "爱惜",
+        "pinyin":  "àixī",
+        "meaning":  "Yêu quý, quý trọng, giữ gìn",
+        "hsk":  5,
+        "radical":  "爫 (Trảo)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "我们要倍加爱惜国家自然森林资源和宝贵的生态环境。",
+                        "pinyin":  "Wǒmen yào bèijiā àixī guójiā zìrán sēnlín zīyuán hé bǎoguì de shēngtài huánjìng.",
+                        "vi":  "Chúng ta cần gấp bội trân quý giữ gìn tài nguyên rừng tự nhiên và môi trường sinh thái quý báu của quốc gia."
+                    }
+    },
+    {
+        "id":  "v5_017",
+        "hanzi":  "安慰",
+        "pinyin":  "ānwèi",
+        "meaning":  "An ủi, động viên",
+        "hsk":  5,
+        "radical":  "宀 (Miên)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "在朋友遭遇突如其来的挫折打击时，给予真挚的安慰与陪伴胜过千言万语。",
+                        "pinyin":  "Zài péngyou zāoyù tūrúqílái de cuòzhé dǎjī shí, jǐyǔ zhēnzhì de ānwèi yǔ péibàn shèngguò qiānyánwànyǔ.",
+                        "vi":  "Khi bạn bè gặp phải cú sốc trắc trở bất ngờ, sự an ủi và đồng hành chân thành hơn vạn lời nói."
+                    }
+    },
+    {
+        "id":  "v5_018",
+        "hanzi":  "安装",
+        "pinyin":  "ānzhuāng",
+        "meaning":  "Lắp đặt, cài đặt",
+        "hsk":  5,
+        "radical":  "宀 (Miên)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "工程技术人员正在为智慧城市交通中枢安装调试最新的激光雷达监控装置。",
+                        "pinyin":  "Gōngchéng jìshù rényuán zhèngzài wèi zhìhuì chéngshì jiāotōng zhōngshū ānzhuāng tiáoshì zuìxīn de jīguāng léidá jiānkòng zhuāngzhì.",
+                        "vi":  "Kỹ sư công trình đang lắp đặt căn chỉnh thiết bị giám sát radar laser mới nhất cho trung tâm giao thông thông minh."
+                    }
+    },
+    {
+        "id":  "v5_019",
+        "hanzi":  "熬夜",
+        "pinyin":  "áoyè",
+        "meaning":  "Thức khuya, thức trắng đêm",
+        "hsk":  5,
+        "radical":  "灬 (Hỏa)",
+        "strokes":  14,
+        "example":  {
+                        "zh":  "长期高强度熬夜加班不仅严重透支身体健康，还会极大地削弱免疫系统机能。",
+                        "pinyin":  "Chángqī gāoxiànglì áoyè jiābān bùjǐn yánzhòng tòuzhī shēntǐ jiànkāng, hái huì jídà de xuēruò miǎnyì xìtǒng jīnéng.",
+                        "vi":  "Thức khuya làm thêm giờ liên tục kéo dài không chỉ bào mòn sức khỏe mà còn suy giảm hệ miễn dịch."
+                    }
+    },
+    {
+        "id":  "v5_020",
+        "hanzi":  "把握",
+        "pinyin":  "bǎwò",
+        "meaning":  "Nắm bắt, chắc chắn",
+        "hsk":  5,
+        "radical":  "扌 (Thủ)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "深刻洞察全球科技发展潮流趋势，精准把握新一轮产业革命的历史性机遇。",
+                        "pinyin":  "Shēnkè dòngchá quánqiú kējì fāzhǎn cháoliú qūshì, jīngzhǔn bǎwò xīn yì lún chǎnyè gémìng de lìshǐxìng jīyù.",
+                        "vi":  "Sâu sắc nhìn thấu trào lưu khoa học công nghệ toàn cầu, nắm bắt chuẩn xác vận hội lịch sử của cách mạng công nghiệp mới."
+                    }
+    },
+    {
+        "id":  "v5_021",
+        "hanzi":  "摆脱",
+        "pinyin":  "bǎituō",
+        "meaning":  "Thoát khỏi, vứt bỏ",
+        "hsk":  5,
+        "radical":  "扌 (Thủ)",
+        "strokes":  13,
+        "example":  {
+                        "zh":  "发展中国家依靠自主科技创新与制度改革，逐步彻底摆脱了对外部关键技术的长期依赖。",
+                        "pinyin":  "Fāzhǎn zhōng guójiā yīkào zìzhǔ kējì chuàngxīn yǔ zhìdù gǎigé, zhúbù chèdǐ bǎituō le duì wàibù guānjiàn jìshù de chángqī yīlài.",
+                        "vi":  "Các nước đang phát triển dựa vào đổi mới công nghệ và cải cách thể chế đã dần thoát khỏi phụ thuộc vào bên ngoài."
+                    }
+    },
+    {
+        "id":  "v5_022",
+        "hanzi":  "办理",
+        "pinyin":  "bànlǐ",
+        "meaning":  "Xử lý, làm thủ tục",
+        "hsk":  5,
+        "radical":  "力 (Lực)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "政务服务大厅推行一网通办举措，极大压缩了外商投资企业注册的各项审批办理时限。",
+                        "pinyin":  "Zhèngwù fúwù dàtīng tuīxíng yìwǎngtōngbàn jǔcuò, jídà yāsuō le wàishāng tóuzī qǐyè zhùcè de gè xiàng shěnpī bànlǐ shíxiàn.",
+                        "vi":  "Bộ phận một cửa áp dụng liên thông mạng giúp rút ngắn thời gian giải quyết thủ tục đăng ký doanh nghiệp FDI."
+                    }
+    },
+    {
+        "id":  "v5_023",
+        "hanzi":  "包含",
+        "pinyin":  "bāohán",
+        "meaning":  "Bao hàm, chứa đựng",
+        "hsk":  5,
+        "radical":  "勹 (Bao)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "这份内容翔实的战略框架协议不仅包含技术转让条款，还涉及双方长期人才培养计划。",
+                        "pinyin":  "Zhè fèn nèiróng xiángshí de zhànlüè kuàngjià xiéyì bùjǐn bāohán jìshù zhuǎnràng tiáokuǎn, hái shèjí shuāngfāng chángqī réncái péiyǎng jìhuà.",
+                        "vi":  "Hiệp định khung chiến lược chi tiết này không chỉ bao hàm điều khoản chuyển giao công nghệ mà cả đào tạo nhân tài."
+                    }
+    },
+    {
+        "id":  "v5_024",
+        "hanzi":  "宝贵",
+        "pinyin":  "bǎoguì",
+        "meaning":  "Quý báu, vô giá",
+        "hsk":  5,
+        "radical":  "宀 (Miên)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "先辈们历经千难万险积累下的卓越探索经验，是留给后人无比宝贵的精神与学术财富。",
+                        "pinyin":  "Xiānbèi men lìjīng qiānnánwànxiǎn jīlěi xià de zhuóyuè tànsuǒ jīngyàn, shì liú gěi hòurén wúbǐ bǎoguì de jīngshén yǔ xuéshù cáifù.",
+                        "vi":  "Kinh nghiệm khám phá vĩ đại tiền nhân tích lũy qua ngàn trùng gian lao là tài sản tinh thần quý báu vô giá cho hậu thế."
+                    }
+    },
+    {
+        "id":  "v5_025",
+        "hanzi":  "保留",
+        "pinyin":  "bǎoliú",
+        "meaning":  "Bảo lưu, giữ lại",
+        "hsk":  5,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "在旧城区改造更新的过程中，应当最大程度保留具有深厚历史记忆的历史古迹建筑。",
+                        "pinyin":  "Zài jiù chéngqū gǎizào gēngxīn de guòchéng zhōng, yīngdāng zuì dà chéngdù bǎoliú jùyǒu shēnhòu lìshǐ jìyì de lìshǐ gǔjì jiànzhù.",
+                        "vi":  "Trong quy hoạch chỉnh trang đô thị cũ, cần bảo lưu tối đa các công trình cổ mang đậm ký ức lịch sử."
+                    }
+    },
+    {
+        "id":  "v5_026",
+        "hanzi":  "本质",
+        "pinyin":  "běnzhì",
+        "meaning":  "Bản chất, cốt lõi",
+        "hsk":  5,
+        "radical":  "木 (Mộc)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "只有透过错综复杂的表象抓住客观事物的内在本质，才能做出经得起考验的科学研判。",
+                        "pinyin":  "Zhǐyǒu tòuguò cuòzōngfùzá de biǎoxiàng zhuāzhù kèguān shìwù de nèizài běnzhì, cái néng zuò chū jīngdeqǐ kǎoyàn de kēxué yánpàn.",
+                        "vi":  "Chỉ khi nhìn xuyên qua hiện tượng phức tạp nắm lấy bản chất cốt lõi của sự vật mới đưa ra được phán đoán khoa học."
+                    }
+    },
+    {
+        "id":  "v5_027",
+        "hanzi":  "比例",
+        "pinyin":  "bǐlì",
+        "meaning":  "Tỷ lệ",
+        "hsk":  5,
+        "radical":  "比 (Tỷ)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "该科技龙头企业每年将营业总收入的百分之二十作为专项研发投入，研发投入比例领跑全球。",
+                        "pinyin":  "Gāi kējì lóngtóu qǐyè měi nián jiāng yíngyè zǒng shōurù de bǎifēnzhī èrshí zuòwéi zhuānxiàng yánfā tóurù, yánfā tóurù bǐlì lǐngpǎo quánqiú.",
+                        "vi":  "Tập đoàn công nghệ đầu ngành này dành tới 20% doanh thu hàng năm cho R\u0026D, tỷ lệ đầu tư dẫn đầu toàn cầu."
+                    }
+    },
+    {
+        "id":  "v5_028",
+        "hanzi":  "彼此",
+        "pinyin":  "bǐcǐ",
+        "meaning":  "Lẫn nhau, đôi bên",
+        "hsk":  5,
+        "radical":  "比 (Tỷ)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "不同文明之间应当摒弃偏见与隔阂，在平等对话、互学互鉴中增进彼此的理解与信任。",
+                        "pinyin":  "Bùtóng wénmíng zhījiān yīngdāng bìngqì piānjiàn yǔ géhé, zài píngděng duìhuà, hùxuéhùjiàn zhōng zēngjìn bǐcǐ de lǐjiě yǔ xìnrèn.",
+                        "vi":  "Giữa các nền văn minh khác nhau cần gạt bỏ định kiến ngăn cách, bình đẳng đối thoại tăng cường hiểu biết lẫn nhau."
+                    }
+    },
+    {
+        "id":  "v5_029",
+        "hanzi":  "毕竟",
+        "pinyin":  "bìjìng",
+        "meaning":  "Dẫu sao thì, rốt cuộc",
+        "hsk":  5,
+        "radical":  "一 (Nhất)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "初次尝试难免会有疏漏与不足，他毕竟才刚踏入软件架构设计领域，需要更多的包容。",
+                        "pinyin":  "Chūcì chángshì nánmiǎn huì yǒu shūlòu yǔ bùzú, tā bìjìng cái gāng tà rù ruǎnjiàn jiàgòu shèjì lǐngyù, xūyào gèng duō de bāoróng.",
+                        "vi":  "Thử sức lần đầu khó tránh sơ sót, dẫu sao anh ấy cũng mới bước vào lĩnh vực thiết kế kiến trúc phần mềm."
+                    }
+    },
+    {
+        "id":  "v5_030",
+        "hanzi":  "避免",
+        "pinyin":  "bìmiǎn",
+        "meaning":  "Tránh khỏi, né tránh",
+        "hsk":  5,
+        "radical":  "辶 (Sước)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "在起草具有跨国法律效力的合同时，必须严谨推敲措辞以避免产生歧义与潜在纠纷。",
+                        "pinyin":  "Zài qǐcǎo jùyǒu kuàguó fǎlǜ xiàolì de hétong shí, bìxū yánjǐn tuīqiāo cuòcí yǐ bìmiǎn chǎnshēng qíyì yǔ qiánzài jiūfēn.",
+                        "vi":  "Khi soạn thảo hợp đồng pháp lý quốc tế, cần gọt giũa từ ngữ chặt chẽ để tránh mập mờ và tranh chấp."
+                    }
+    },
+    {
+        "id":  "v5_031",
+        "hanzi":  "便",
+        "pinyin":  "biàn",
+        "meaning":  "Liền, bèn, thuận tiện",
+        "hsk":  5,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "只要双方秉持真诚合作的意愿，许多看似不可逾越的分歧便能迎刃而解。",
+                        "pinyin":  "Zhǐyào shuāngfāng bǐngchí zhēnchéng hézuò de yìyuàn, xǔduō kànsì bùkě yúyuè de fēnqí biàn néng yíngrèn\u0027érjiě.",
+                        "vi":  "Chỉ cần đôi bên giữ vững ý nguyện hợp tác chân thành, nhiều bất đồng tưởng như nan giải liền được tháo gỡ."
+                    }
+    },
+    {
+        "id":  "v5_032",
+        "hanzi":  "辩论",
+        "pinyin":  "biànlùn",
+        "meaning":  "Tranh luận, biện luận",
+        "hsk":  5,
+        "radical":  "辛 (Tân)",
+        "strokes":  21,
+        "example":  {
+                        "zh":  "辩论双方在总决赛赛场上引经据典、唇枪舌剑，展现了极高的思辨能力与语言造诣。",
+                        "pinyin":  "Biànlùn shuāngfāng zài zǒngjuésài sàichǎng shàng yǐnjīngjùdiǎn, chúnqiāngshéjiàn, zhǎnxiàn le jí gāo de sībàn nénglì yǔ yǔyán zàoyì.",
+                        "vi":  "Hai bên tranh luận trong trận chung kết dẫn chứng phong phú, khẩu chiến kịch liệt phô diễn tư duy nhạy bén."
+                    }
+    },
+    {
+        "id":  "v5_033",
+        "hanzi":  "标志",
+        "pinyin":  "biāozhì",
+        "meaning":  "Ký hiệu, dấu mốc, đánh dấu",
+        "hsk":  5,
+        "radical":  "木 (Mộc)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "空间站核心舱在轨组装圆满成功，标志着我国载人航天工程迈入了崭新的历史阶段。",
+                        "pinyin":  "Kōngjiānzhàn héxīncāng zàiguǐ zǔzhuāng yuánmǎn chénggōng, biāozhì zhe wǒ guó zàirén hángtiān gōngchéng màirù le zhǎnxīn de lìshǐ jiēduàn.",
+                        "vi":  "Lắp ráp module lõi trạm vũ trụ thành công đánh dấu ngành du hành vũ trụ có người lái bước vào kỷ nguyên mới."
+                    }
+    },
+    {
+        "id":  "v5_034",
+        "hanzi":  "表情",
+        "pinyin":  "biǎoqíng",
+        "meaning":  "Biểu cảm, nét mặt",
+        "hsk":  5,
+        "radical":  "衣 (Y)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "面对突发特大喜讯，他脸上露出了难以掩饰的惊喜表情，激动得热泪盈眶。",
+                        "pinyin":  "Miànduì tūfā tèdà xǐxùn, tā liǎn shàng lùchū le nányǐ yǎnshì de jīngxǐ biǎoqíng, jīdòng de rèlèiyíngkuàng.",
+                        "vi":  "Trước tin mừng lớn bất ngờ, khuôn mặt anh lộ rõ vẻ mừng rỡ khó giấu, xúc động rưng rưng nước mắt."
+                    }
+    },
+    {
+        "id":  "v5_035",
+        "hanzi":  "表面",
+        "pinyin":  "biǎomiàn",
+        "meaning":  "Bề mặt, bên ngoài",
+        "hsk":  5,
+        "radical":  "衣 (Y)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "评判一项复杂事物的真实价值绝不能仅看其浮华的光鲜表面，而应探寻其内在底蕴。",
+                        "pinyin":  "Píngpàn yí xiàng fùzá shìwù de zhēnshí jiàzhí jué bùnéng jǐn kàn qí fúhuá de guāngxiān biǎomiàn, ér yīng tànxún qí nèizài dǐyùn.",
+                        "vi":  "Đánh giá giá trị thực của một sự vật phức tạp tuyệt đối không thể chỉ nhìn bề ngoài hào nhoáng mà phải xét chiều sâu nội tại."
+                    }
+    },
+    {
+        "id":  "v5_036",
+        "hanzi":  "采取",
+        "pinyin":  "cǎiqǔ",
+        "meaning":  "Áp dụng, thi hành (biện pháp)",
+        "hsk":  5,
+        "radical":  "爫 (Trảo)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "针对城市内涝隐患，市政管理部门决定采取修建大型地下蓄水调峰廊道等综合治理手段。",
+                        "pinyin":  "Zhēnduì chéngshì nèilào yǐnhuàn, shìzhèng guǎnlǐ bùmén juédìng cǎiqǔ xiūjiàn dàxíng dìxià xùshuǐ tiáofēng lángdào děng zōnghé zhìlǐ shǒuduàn.",
+                        "vi":  "Trước nguy cơ ngập úng đô thị, chính quyền thành phố quyết định áp dụng xây dựng hành lang trữ nước ngầm."
+                    }
+    },
+    {
+        "id":  "v5_037",
+        "hanzi":  "惭愧",
+        "pinyin":  "cánkuì",
+        "meaning":  "Xấu hổ, hổ thẹn",
+        "hsk":  5,
+        "radical":  "忄 (Tâm đứng)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "因一时粗心大意导致团队前期努力付之东流，他内心深感惭愧并主动承担全部连带责任。",
+                        "pinyin":  "Yīn yìshí cūxīn dàyì dǎozhì tuánduì qiánqī nǔlì fùzhīdōngliú, tā nèixīn shēn gǎn cánkuì bìng zhǔdòng chéngdān quánbù liándài zérèn.",
+                        "vi":  "Vì phút bất cẩn khiến nỗ lực của tập thể đổ sông đổ bể, anh vô cùng hổ thẹn và chủ động gánh vác trách nhiệm."
+                    }
+    },
+    {
+        "id":  "v5_038",
+        "hanzi":  "操场",
+        "pinyin":  "cāochǎng",
+        "meaning":  "Sân tập, sân vận động bãi tập",
+        "hsk":  5,
+        "radical":  "扌 (Thủ)",
+        "strokes":  16,
+        "example":  {
+                        "zh":  "夕阳西下，金色的余晖洒在宽阔现代化的大学操场上，呈现出无限蓬勃生机。",
+                        "pinyin":  "Xīyáng xīxià, jīnsè de yúhuī sǎ zài kuānkuò xiàndàihuà de dàxué cāochǎng shàng, chéngxiàn chū wúxiàn péngbó shēngjī.",
+                        "vi":  "Hoàng hôn buông xuống, ánh tà dương dát vàng trên sân vận động đại học hiện đại rộng thênh thang đầy sức sống."
+                    }
+    },
+    {
+        "id":  "v5_039",
+        "hanzi":  "产生",
+        "pinyin":  "chǎnshēng",
+        "meaning":  "Nảy sinh, sinh ra, tạo thành",
+        "hsk":  5,
+        "radical":  "生 (Sinh)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "跨文化深度交融与思想剧烈碰撞，往往能够促使科研团队产生独具创见的重大新突破。",
+                        "pinyin":  "Kuàwénhuà shēndù jiāoróng yǔ sīxiǎng jùliè pèngzhuàng, wǎngwǎng nénggòu cùshǐ kěyán tuánduì chǎnshēng dújùchuàngjiàn de zhòngdà xīn tūpò.",
+                        "vi":  "Giao thoa văn hóa sâu rộng và va chạm tư tưởng quyết liệt thường giúp đội ngũ nghiên cứu nảy sinh đột phá sáng tạo."
+                    }
+    },
+    {
+        "id":  "v5_040",
+        "hanzi":  "常识",
+        "pinyin":  "chángshí",
+        "meaning":  "Thường thức, kiến thức thông thường",
+        "hsk":  5,
+        "radical":  "巾 (Cân)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "掌握火灾地震等突发灾难下的紧急自救互救医学常识，在危急关头能有效挽救宝贵生命。",
+                        "pinyin":  "Zhǎngwò huǒzāi dìzhèn děng tūfā zāinàn xià de jǐnjí zìjiù hùjiù yīxué chángshí, zài wēijí guāntóu néng yǒuxiào wǎnjiù bǎoguì shēngmìng.",
+                        "vi":  "Nắm vững thường thức y học sơ cứu thoát hiểm trong hỏa hoạn động đất có thể cứu mạng sống lúc nguy nan."
+                    }
+    },
+    {
+        "id":  "v5_041",
+        "hanzi":  "朝代",
+        "pinyin":  "cháodài",
+        "meaning":  "Triều đại",
+        "hsk":  5,
+        "radical":  "月 (Nguyệt)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "唐朝是中国古典诗歌发展的鼎盛朝代，李白、杜甫等旷世诗仙诗圣在此期间诞生。",
+                        "pinyin":  "Tángcháo shì Zhōngguó gǔdiǎn shīgē fāzhǎn de dǐngshèng cháodài, Lǐ Bái, Dù Fǔ děng kuàngshì shīxiān shīshèng zài cǐ qījiān dànshēng.",
+                        "vi":  "Nhà Đường là triều đại hưng thịnh tột bậc của thi ca cổ điển Trung Quốc với sự xuất hiện của Lý Bạch, Đỗ Phủ."
+                    }
+    },
+    {
+        "id":  "v5_042",
+        "hanzi":  "吵架",
+        "pinyin":  "chǎojià",
+        "meaning":  "Cãi cọ, cãi nhau",
+        "hsk":  5,
+        "radical":  "口 (Khẩu)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "人与人交往难免会有分歧与摩擦，学会换位思考理性沟通，远比情绪失控地激烈吵架更管用。",
+                        "pinyin":  "Rén yǔ rén jiāowǎng nánmiǎn huì yǒu fēnqí yǔ mócā, xuéhuì huànwèi sīkǎo lǐxìng gōutōng, yuǎn bǐ qíngxù shīkòng de jīliè chǎojià gèng guǎnyòng.",
+                        "vi":  "Giao tiếp khó tránh bất đồng, học cách đặt mình vào vị trí người khác tốt hơn nhiều so với việc mất kiểm soát cãi cọ."
+                    }
+    },
+    {
+        "id":  "v5_043",
+        "hanzi":  "迟早",
+        "pinyin":  "chízǎo",
+        "meaning":  "Sớm muộn (cũng)",
+        "hsk":  5,
+        "radical":  "辶 (Sước)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "只要胸怀坚韧不拔的求索意志并日复一日坚持深耕，汗水与心血迟早会铸就辉煌的胜利成果。",
+                        "pinyin":  "Zhǐyào xiōnghuái jiānrènbùbá de qiúsuǒ yìzhì bìng rìfùyírì jiānchí shēngēng, hànshuǐ yǔ xīnxuè chízǎo huì zhùjiù huīhuáng de shènglì chéngguǒ.",
+                        "vi":  "Chỉ cần mang ý chí kiên định và miệt mài gieo mầm mỗi ngày, mồ hôi và tâm huyết sớm muộn sẽ đúc nên trái ngọt."
+                    }
+    },
+    {
+        "id":  "v5_044",
+        "hanzi":  "抽象",
+        "pinyin":  "chōuxiàng",
+        "meaning":  "Trừu tượng",
+        "hsk":  5,
+        "radical":  "扌 (Thủ)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "高等纯数学理论研究通常涉及高度抽象的逻辑公理体系与多维空间几何变换模型。",
+                        "pinyin":  "Gāoděng chún shùxué lǐlùn yánjiū tōngcháng shèjí gāodù chōuxiàng de luójí gōnglǐ tǐxì yǔ duōwéi kōngjiān jǐhé biànhuàn móxíng.",
+                        "vi":  "Nghiên cứu lý thuyết toán học cao cấp thường liên quan đến hệ công lý logic cực kỳ trừu tượng và mô hình không gian đa chiều."
+                    }
+    },
+    {
+        "id":  "v5_045",
+        "hanzi":  "传统",
+        "pinyin":  "chuántǒng",
+        "meaning":  "Truyền thống",
+        "hsk":  5,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "京剧艺术融合了唱念做打等深邃程式，是中华民族传统戏剧艺术中最具代表性的瑰宝。",
+                        "pinyin":  "Jīngjù yìshù rónghé le chàng-niàn-zuò-dǎ děng shēnsuì chéngshì, shì zhōnghuá mínzú chuántǒng xìjù yìshù zhōng zuì jù dàibiǎoxìng de guībǎo.",
+                        "vi":  "Nghệ thuật Kinh kịch dung hợp xướng niệm tác đả, là viên ngọc quý tiêu biểu nhất của kịch nghệ truyền thống Trung Hoa."
+                    }
+    },
+    {
+        "id":  "v5_046",
+        "hanzi":  "窗帘",
+        "pinyin":  "chuānglián",
+        "meaning":  "Rèm cửa sổ",
+        "hsk":  5,
+        "radical":  "穴 (Huyệt)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "清晨拉开厚重遮光的丝绒窗帘，温暖明亮的朝阳如碎金般洒满了整个雅致书房。",
+                        "pinyin":  "Qīngchén lākāi hòuzhòng zhēguāng de sīróng chuānglián, nuǎnhuo míngliàng de zhāoyáng rú suìjīn bān sǎ mǎn le zhěng gè yǎzhì shūfáng.",
+                        "vi":  "Sáng sớm kéo rèm nhung chắn sáng, ánh bình minh ấm áp như dát vàng rọi khắp căn phòng đọc sách trang nhã."
+                    }
+    },
+    {
+        "id":  "v5_047",
+        "hanzi":  "粗心",
+        "pinyin":  "cūxīn",
+        "meaning":  "Cẩu thả, bất cẩn",
+        "hsk":  5,
+        "radical":  "米 (Mễ)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "在极其精密的航天器软硬件开发中，哪怕一丝微小的粗心遗漏都可能造成不可逆的重大灾难。",
+                        "pinyin":  "Zài jíqí jīngmì de hángtiānqì ruǎnyìnjiàn kāifā zhōng, nǎpà yì sī wéixiǎo de cūxīn yílòu dōu kěnéng zàochéng bùkěnì de zhòngdà zāinàn.",
+                        "vi":  "Trong phát triển tàu vũ trụ siêu tinh vi, một sơ suất cẩu thả dù nhỏ nhất cũng có thể gây thảm họa khôn lường."
+                    }
+    },
+    {
+        "id":  "v5_048",
+        "hanzi":  "促进",
+        "pinyin":  "cùjìn",
+        "meaning":  "Xúc tiến, thúc đẩy",
+        "hsk":  5,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "多边自由贸易协定的深入落实将全方位促进跨国要素流动与全球产业链供应链的高效协同。",
+                        "pinyin":  "Duōbiān zìyóu màoyì xiéyì de shēnrù luòshí jiāng quánfāngwèi cùjìn kuàguó yàosù liúdòng yǔ quánqiú chǎnyèliàn gōngyìngliàn de gāoxiào xiétóng.",
+                        "vi":  "Việc thực thi hiệp định thương mại tự do đa phương sẽ thúc đẩy lưu chuyển chuỗi cung ứng toàn cầu hiệu quả."
+                    }
+    },
+    {
+        "id":  "v5_049",
+        "hanzi":  "措施",
+        "pinyin":  "cuòshī",
+        "meaning":  "Biện pháp, giải pháp hành động",
+        "hsk":  5,
+        "radical":  "扌 (Thủ)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "各级生态环境执法部门重拳出击，采取雷霆措施严厉打击各类偷排偷放工业废水的违法行为。",
+                        "pinyin":  "Gè jí shēngtài huánjìng zhífǎ bùmén zhòngquán chūjī, cǎiqǔ léitíng cuòshī yánlì dǎjī gè lèi tōupái tōufàng gōngyè fèishuǐ de wéifǎ xíngwéi.",
+                        "vi":  "Cơ quan bảo vệ môi trường đã triển khai các biện pháp quyết liệt trấn áp hành vi xả trộm nước thải công nghiệp."
+                    }
+    },
+    {
+        "id":  "v5_050",
+        "hanzi":  "达到",
+        "pinyin":  "dádào",
+        "meaning":  "Đạt tới, đạt được (mức độ/mục tiêu)",
+        "hsk":  5,
+        "radical":  "辶 (Sước)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "经过为期五年的艰苦产业攻坚，我国高端光伏发电设备的国际市场占有率已达到历史峰值。",
+                        "pinyin":  "Jīngguò wéiqī wǔ nián de jiānkǔ chǎnyè gōngjiān, wǒ guó gāoduān guāngfú fādiàn shèbèi de guójì shìchǎng zhànyǒulǜ yǐ dádào lìshǐ fēngzhí.",
+                        "vi":  "Sau 5 năm nỗ lực, thị phần quốc tế thiết bị điện quang điện cao cấp nước ta đã đạt mức đỉnh lịch sử."
+                    }
+    },
+    {
+        "id":  "v6_013",
+        "hanzi":  "爱不释手",
+        "pinyin":  "ài bù shì shǒu",
+        "meaning":  "Yêu thích không nỡ rời tay, mê mẩn",
+        "hsk":  6,
+        "radical":  "爫 (Trảo)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "他捧着那本典雅精装的古籍善本珍品，反复摩挲，简直爱不释手。",
+                        "pinyin":  "Tā pěng zhe nà běn diǎnyǎ jīngzhuāng de gǔjí shànběn zhēnpǐn, fǎnfù mósā, jiǎnzhí ài bù shì shǒu.",
+                        "vi":  "Anh ấy nâng niu cuốn sách cổ quý báu bìa cứng trang nhã trên tay, ngắm nghía mãi không nỡ rời."
+                    }
+    },
+    {
+        "id":  "v6_014",
+        "hanzi":  "爱戴",
+        "pinyin":  "àidài",
+        "meaning":  "Kính yêu, tôn kính và yêu mến",
+        "hsk":  6,
+        "radical":  "爫 (Trảo)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "那位毕生扎根偏远山区教书育人的楷模老教师，赢得了全社会各界发自肺腑的衷心爱戴。",
+                        "pinyin":  "Nà wèi bìshēng zhāgēn piānyuǎn shānqū jiāoshūyùrén de kǎimó lǎo jiàoshī, yíngdé le quán shèhuì gèjiè fāzìfèifǔ de zhōngxīn àidài.",
+                        "vi":  "Người thầy giáo gương mẫu trọn đời gắn bó miền núi hẻo lánh dạy học đã giành được sự kính yêu chân thành của toàn xã hội."
+                    }
+    },
+    {
+        "id":  "v6_015",
+        "hanzi":  "安详",
+        "pinyin":  "ānxiáng",
+        "meaning":  "Điềm tĩnh, ung dung, an lành",
+        "hsk":  6,
+        "radical":  "宀 (Miên)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "历经近一个世纪人生风雨洗礼的百岁学者神态依然安详豁达，目光清澈如初。",
+                        "pinyin":  "Lìjīng jìn yí gè shìjì rénshēng fēngyǔ xǐlǐ de bǎisuì xuézhě shéntài yīrán ānxiáng huòdá, mùguāng qīngchè rúchū.",
+                        "vi":  "Trải qua gần một thế kỷ giông bão cuộc đời, vị học giả trăm tuổi thần thái vẫn ung dung, ánh mắt trong trẻo."
+                    }
+    },
+    {
+        "id":  "v6_016",
+        "hanzi":  "安置",
+        "pinyin":  "ānzhì",
+        "meaning":  "An trí, bố trí sắp xếp nơi ở việc làm",
+        "hsk":  6,
+        "radical":  "宀 (Miên)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "当地政府在特大洪涝灾害发生后，在短短二十四小时之内将万余名受灾群众妥善安置在安全营地。",
+                        "pinyin":  "Dāngdì zhèngfǔ zài tèdà hónglào zāihài fāshēng hòu, zài duǎnduǎn èrshísì xiǎoshí zhīnèi jiāng wànyú míng shòuzāi qúnzhòng tuǒshàn ānzhì zài ānquán yíngdì.",
+                        "vi":  "Sau lũ lụt lớn, chính quyền trong vòng 24 giờ đã bố trí nơi ăn chốn ở an toàn cho hơn một vạn người dân."
+                    }
+    },
+    {
+        "id":  "v6_017",
+        "hanzi":  "暗示",
+        "pinyin":  "ànshì",
+        "meaning":  "Ám thị, gợi ý ngầm, ngụ ý",
+        "hsk":  6,
+        "radical":  "日 (Nhật)",
+        "strokes":  13,
+        "example":  {
+                        "zh":  "中央银行行长在国际金融论坛演讲中的微妙言辞，被资深经济学家解读为下季度货币政策转向的重要暗示。",
+                        "pinyin":  "Zhōngyāng yínháng hángzhǎng zài guójì jīnróng lùntán yǎnjiǎng zhōng de wēimiào yáncí, bèi zīshēn jīngjìxuéjiā jiědú wèi xià jìdù huòbì zhèngcè zhuǎnhuàng de zhòngyào ànshì.",
+                        "vi":  "Phát biểu tế nhị của thống đốc ngân hàng trung ương được giới kinh tế học nhận định là ngụ ý xoay trục chính sách tiền tệ."
+                    }
+    },
+    {
+        "id":  "v6_018",
+        "hanzi":  "昂贵",
+        "pinyin":  "ángguì",
+        "meaning":  "Đắt đỏ, đắt giá",
+        "hsk":  6,
+        "radical":  "日 (Nhật)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "在芯片超精密制造的关键节点上，一台极紫外光刻机设备的价格高昂得令人惊叹。",
+                        "pinyin":  "Zài xīnpiàn chāojīngmì zhìzào de guānjiàn jiédiǎn shàng, yì tái jí zǐwài guāngkèjī shèbèi de jiàgé gāo\u0027áng de lìngrén jīngtàn.",
+                        "vi":  "Trong chế tạo chip siêu vi, cỗ máy quang khắc EUV có giá thành đắt đỏ đến mức kinh ngạc."
+                    }
+    },
+    {
+        "id":  "v6_019",
+        "hanzi":  "拔苗助长",
+        "pinyin":  "bá miáo zhù zhǎng",
+        "meaning":  "Đốt cháy giai đoạn, nôn nóng dục tốc bất đạt",
+        "hsk":  6,
+        "radical":  "扌 (Thủ)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "在基础教育人才培养过程中切莫拔苗助长，过度灌输往往会严重扼杀孩子的探索好奇心。",
+                        "pinyin":  "Zài jīchǔ jiàoyù réncái péiyǎng guòchéng zhōng qiè mò bá miáo zhù zhǎng, guòdù guànshū wǎngwǎng huì yánzhòng èshā háizi de tànsuǒ hàoqíxīn.",
+                        "vi":  "Trong giáo dục mầm non chớ có đốt cháy giai đoạn, nhồi nhét quá mức sẽ bóp chết lòng hiếu kỳ khám phá của trẻ."
+                    }
+    },
+    {
+        "id":  "v6_020",
+        "hanzi":  "把关",
+        "pinyin":  "bǎguān",
+        "meaning":  "Gác ải, kiểm soát chặt chẽ",
+        "hsk":  6,
+        "radical":  "扌 (Thủ)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "质量监督总局选派资深质量专家进驻整车总装车间，在每一道核心装配工序上严格把关。",
+                        "pinyin":  "Zhìliàng jiāndū zǒngjú xuǎnpài zīshēn zhìliàng zhuānjiā jìnzhù zhěngchē zǒngzhuāng chējiān, zài měi yí dào héxīn zhuāngpèi gōngxù shàng yángé bǎguān.",
+                        "vi":  "Tổng cục giám sát chất lượng cử chuyên gia túc trực tại xưởng lắp ráp kiểm soát chặt từng khâu then chốt."
+                    }
+    },
+    {
+        "id":  "v6_021",
+        "hanzi":  "罢工",
+        "pinyin":  "bàgōng",
+        "meaning":  "Bãi công, đình công",
+        "hsk":  6,
+        "radical":  "罒 (Võng)",
+        "strokes":  14,
+        "example":  {
+                        "zh":  "欧洲多个交通运输核心行业的行业工会宣布将举行跨国多工种联合大罢工。",
+                        "pinyin":  "Ōuzhōu duō gè jiāotōng yùnshū héxīn hángyè de hángyè gōnghuì xuānbù jiāng jǔxíng kuàguó duō gōngzhǒng liánhé dà bàgōng.",
+                        "vi":  "Công đoàn các ngành vận tải châu Âu tuyên bố sẽ tổ chức cuộc đại bãi công liên ngành quy mô xuyên quốc gia."
+                    }
+    },
+    {
+        "id":  "v6_022",
+        "hanzi":  "白白",
+        "pinyin":  "báibái",
+        "meaning":  "Uổng công, uổng phí vô ích",
+        "hsk":  6,
+        "radical":  "白 (Bạch)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "由于缺乏前瞻科学规划与周密论证，巨额投资最终打了水漂白白浪费。",
+                        "pinyin":  "Yóuyú quēfá qiánzhān kēxué guīhuà yǔ zhōumì lùnzhèng, jù\u0027é tóuzī zuìzhōng dǎ le shuǐpiāo báibái làngfèi.",
+                        "vi":  "Do thiếu quy hoạch khoa học và thẩm định chu đáo, khoản đầu tư khổng lồ rốt cuộc đổ sông đổ biển uổng phí."
+                    }
+    },
+    {
+        "id":  "v6_023",
+        "hanzi":  "拜访",
+        "pinyin":  "bàifǎng",
+        "meaning":  "Bái phỏng, thăm hỏi kính trọng",
+        "hsk":  6,
+        "radical":  "手 (Thủ)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "海外汉学青年访问学者专程前往北京大学未名湖畔拜访了德高望重的语言学泰斗。",
+                        "pinyin":  "Hǎiwài hànxué qīngnián fǎngwèn xuézhě zhuānchéng qiánwǎng Běijīng Dàxué Wèimíng Húpàn bàifǎng le dégāowàngzhòng de yǔyánxué tàidǒu.",
+                        "vi":  "Học giả Hán học trẻ quốc tế đã lặn lội tới hồ Vị Danh trường ĐH Bắc Kinh bái phỏng bậc cây cao bóng cả ngôn ngữ học."
+                    }
+    },
+    {
+        "id":  "v6_024",
+        "hanzi":  "颁布",
+        "pinyin":  "bānbù",
+        "meaning":  "Ban bố, ban hành",
+        "hsk":  6,
+        "radical":  "页 (Hiệt)",
+        "strokes":  13,
+        "example":  {
+                        "zh":  "全国人民代表大会常务委员会审议通过并正式颁布实施新修订的《外商投资促进法》。",
+                        "pinyin":  "Quánguó Rénmín Dàibiǎo Dàhuì Chángwù Wěiyuánhuì shěnyì tōngguò bìng zhèngshì bānbù shíshī xīn xiūdìng de Wàishāng Tóuzī Cùjìn Fǎ.",
+                        "vi":  "Ủy ban Thường vụ Quốc hội đã biểu quyết thông qua và chính thức ban bố Luật Xúc tiến Đầu tư Nước ngoài sửa đổi."
+                    }
+    },
+    {
+        "id":  "v6_025",
+        "hanzi":  "半途而废",
+        "pinyin":  "bàn tú ér fèi",
+        "meaning":  "Bỏ dở nửa chừng, đứt gánh giữa đường",
+        "hsk":  6,
+        "radical":  "十 (Thập)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "科学探秘之路充满荆棘与迷雾，唯有持之以恒勇往直前，绝不可心生懈怠半途而废。",
+                        "pinyin":  "Kēxué tànmì zhī lù chōngmǎn jīngjí yǔ míwù, wéiyǒu chízhīyǐhéng yǒngwǎngzhíqián, jué bùkě xīn shēng xièdài bàntú\u0027érfèi.",
+                        "vi":  "Đường khám phá khoa học đầy chông gai sương mù, chỉ có kiên trì dấn bước, tuyệt đối không được nản lòng bỏ dở nửa chừng."
+                    }
+    },
+    {
+        "id":  "v6_026",
+        "hanzi":  "伴随",
+        "pinyin":  "bànsuí",
+        "meaning":  "Kèm theo, đi cùng, đồng hành",
+        "hsk":  6,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "全球新一轮科技革命和产业变革伴随着大模型与生成式AI的狂飙突进呼啸而至。",
+                        "pinyin":  "Quánqiú xīn yì lún kējì gémìng hé chǎnyè biàngé bànsuí zhe dàmóxíng yǔ shēngchéngshì AI de kuāngbiāotūjìn hūxiào ér zhì.",
+                        "vi":  "Cuộc cách mạng khoa học công nghệ toàn cầu mới ùa tới cùng sự tiến vũ bão của các mô hình AI tạo sinh."
+                    }
+    },
+    {
+        "id":  "v6_027",
+        "hanzi":  "饱经沧桑",
+        "pinyin":  "bǎo jīng cāngsāng",
+        "meaning":  "Dạn dày sương gió, trải bao thăng trầm bể dâu",
+        "hsk":  6,
+        "radical":  "饣 (Thực)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "那位饱经沧桑的百岁抗战老兵站在雄伟的长城脚下，眼中闪烁着对和平的炽热向往。",
+                        "pinyin":  "Nà wèi bǎojīngcāngsāng de bǎisuì kàngzhàn lǎobīng zhàn zài xióngwěi de chángchéng jiǎoxià, yǎn zhōng shǎnshuò zhe duì hépíng de chìrè xiàngwǎng.",
+                        "vi":  "Người cựu binh trăm tuổi dạn dày sương gió đứng dưới chân Vạn Lý Trường Thành, mắt lấp lánh khát vọng hòa bình cháy bỏng."
+                    }
+    },
+    {
+        "id":  "v6_028",
+        "hanzi":  "保守",
+        "pinyin":  "bǎoshǒu",
+        "meaning":  "Bảo thủ, dè dặt, giữ gìn",
+        "hsk":  6,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "在当今飞速迭代的移动互联网时代，抱残守缺固步自封的保守策略注定会被市场淘汰。",
+                        "pinyin":  "Zài dāngjīn fēisù diédài de yídòng hùliánwǎng shídài, bàocánshǒuqū gùbùzìfēng de bǎoshǒu cèlüè zhùdìng huì bèi shìchǎng táotài.",
+                        "vi":  "Trong kỷ nguyên Internet di động biến đổi chóng mặt, chiến lược bảo thủ rập khuôn ắt sẽ bị đào thải."
+                    }
+    },
+    {
+        "id":  "v6_029",
+        "hanzi":  "保障",
+        "pinyin":  "bǎozhàng",
+        "meaning":  "Bảo đảm, bảo chứng",
+        "hsk":  6,
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "健全覆盖全民的多层次社会保障安全网络体系，是社会繁荣和谐长治久安的压舱石。",
+                        "pinyin":  "Jiànquán fùgài quánmín de duōcéngcì shèhuì bǎozhàng ānquán wǎngluò tǐxì, shì shèhuì fánróng héxié chángzhìjiǔ\u0027ān de yāchāngshí.",
+                        "vi":  "Xây dựng hoàn thiện hệ thống an sinh xã hội toàn dân nhiều tầng nấc là hòn đá tảng giữ vững ổn định và phồn vinh."
+                    }
+    },
+    {
+        "id":  "v6_030",
+        "hanzi":  "抱负",
+        "pinyin":  "bàofù",
+        "meaning":  "Hoài bão, chí hướng",
+        "hsk":  6,
+        "radical":  "扌 (Thủ)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "当代青年生逢盛世，当立鸿鹄之志，将个人的远大抱负融入国家民族伟大复兴的崇高事业之中。",
+                        "pinyin":  "Dāngdài qīngnián shēng féng shèngshì, dāng lì hónghú zhī zhì, jiāng gèrén de yuǎndà bàofù róngrù guójiā mínzú wěidà fùxīng de chónggāo shìyè zhīzhōng.",
+                        "vi":  "Thanh niên thời nay cần nuôi chí lớn, hòa hoài bão cá nhân vào sự nghiệp phục hưng vĩ đại của non sông."
+                    }
+    },
+    {
+        "id":  "v6_031",
+        "hanzi":  "本钱",
+        "pinyin":  "běnqián",
+        "meaning":  "Vốn liếng, vốn liếng cơ bản",
+        "hsk":  6,
+        "radical":  "木 (Mộc)",
+        "strokes":  5,
+        "example":  {
+                        "zh":  "常言道：身体是革命的本钱；没有健康强壮的体魄，再宏伟的宏图伟业也将成为无源之水。",
+                        "pinyin":  "Cháng yándào: shēntǐ shì gémìng de běnqián; méiyǒu jiànkāng qiángzhuàng de tǐpò, zài hóngwěi de hóngtú wěiyè jiě jiāng chéngwéi wúyuánzhīshuǐ.",
+                        "vi":  "Tục ngữ có câu: Sức khỏe là vốn liếng cách mạng; không có thể chất tráng kiện thì sự nghiệp lớn cũng như nước không nguồn."
+                    }
+    },
+    {
+        "id":  "v6_032",
+        "hanzi":  "笨拙",
+        "pinyin":  "bènzhuō",
+        "meaning":  "Vụng về, chậm chạp, hậu đậu",
+        "hsk":  6,
+        "radical":  "竹 (Trúc)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "刚开始学习中国传统工笔花鸟重彩画时，运笔虽然稍显笨拙生疏，但练习多了自能得心应手。",
+                        "pinyin":  "Gāng kāishǐ xuéxí Zhōngguó chuántǒng gōngbǐ huāniǎo zhòngcǎi huà shí, yùnbǐ suīrán shāoxiǎn bènzhuō shēngshū, dàn liànxí duō le zì néng déxīnyìngshǒu.",
+                        "vi":  "Mới đầu học tranh hoa điểu công bút Trung Quốc, đưa cọ tuy vụng về nhưng luyện nhiều ắt thuần thục."
+                    }
+    },
+    {
+        "id":  "v6_033",
+        "hanzi":  "逼真",
+        "pinyin":  "bīzhēn",
+        "meaning":  "Sống động như thật, giống như đúc",
+        "hsk":  6,
+        "radical":  "辶 (Sước)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "高清晰度裸眼3D全息沉浸式显示技术呈现出的山川飞瀑场景极其逼真，宛如身临其境。",
+                        "pinyin":  "Gāoqīngxīdù luǒyǎn 3D quánxī chénjìnshì xiǎnshì jìshù chéngxiàn chū de shānchuān fēipù chǎngjǐng jíqí bīzhēn, wǎnrú shēnlínqíjìng.",
+                        "vi":  "Công nghệ hiển thị 3D mắt trần hologram tái hiện phong cảnh thác nước chân thực như đặt chân tới tận nơi."
+                    }
+    },
+    {
+        "id":  "v6_034",
+        "hanzi":  "闭塞",
+        "pinyin":  "bìsè",
+        "meaning":  "Bế tắc, hẻo lánh cách trở",
+        "hsk":  6,
+        "radical":  "门 (Môn)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "纵横交错的高铁网络与高速公路彻底打破了曾经崇山峻岭阻隔导致的地理与信息闭塞。",
+                        "pinyin":  "Zònghéngjiāocuò de gāotiě wǎngluò yǔ gāosù gōnglù chèdǐ dǎpò le céngjīng chóngshānjùnlǐng zǔgé dǎozhì de dìlǐ yǔ xìnxī bìsè.",
+                        "vi":  "Mạng lưới đường sắt cao tốc dọc ngang đan xen đã phá vỡ thế địa lý bế tắc cách trở nơi non ngàn hiểm trở."
+                    }
+    },
+    {
+        "id":  "v6_035",
+        "hanzi":  "鞭策",
+        "pinyin":  "biāncè",
+        "meaning":  "Roi vọt, thúc đẩy, răn dạy nhắc nhở",
+        "hsk":  6,
+        "radical":  "革 (Cách)",
+        "strokes":  18,
+        "example":  {
+                        "zh":  "导师在学业上的殷切期望与严谨治学风范，时刻如无声的春雨般鞭策激励着我砥砺奋进。",
+                        "pinyin":  "Dǎoshī zài xuéyè shàng de yīnqiè qīwàng yǔ yánjǐn zhìxué fēngfàn, shíkè rú wúshēng de chūnyǔ bān biāncè jīlì zhe wǒ dǐlì fènjìn.",
+                        "vi":  "Kỳ vọng tha thiết và tác phong nghiêm cẩn của người thầy luôn như mưa xuân thầm lặng thôi thúc tôi không ngừng vươn lên."
+                    }
+    },
+    {
+        "id":  "v6_036",
+        "hanzi":  "贬低",
+        "pinyin":  "biǎndī",
+        "meaning":  "Hạ thấp, bôi nhọ, gièm pha",
+        "hsk":  6,
+        "radical":  "贝 (Bối)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "在学术评议与同行争鸣中，应当摆事实讲道理，切忌出于狭隘偏见恶意贬低他人的创新成果。",
+                        "pinyin":  "Zài xuéshù píngyì yǔ tóngháng zhēngmíng zhōng, yīngdāng bǎi shìshí jiǎng dàolǐ, qièjì chūyú xiá\u0027ài piānjiàn èyì biǎndī tārén de chuàngxīn chéngguǒ.",
+                        "vi":  "Trong bình duyệt học thuật cần đưa chứng cứ lý lẽ, chớ vì định kiến hẹp hòi mà hạ thấp thành quả sáng tạo của người khác."
+                    }
+    },
+    {
+        "id":  "v6_037",
+        "hanzi":  "辩证",
+        "pinyin":  "biànzhèng",
+        "meaning":  "Biện chứng",
+        "hsk":  6,
+        "radical":  "辛 (Tân)",
+        "strokes":  21,
+        "example":  {
+                        "zh":  "唯物辩证法要求我们必须用联系、发展、全面的普遍规律观点去审视不断演化的客观现实世界。",
+                        "pinyin":  "Wéiwù biànzhèngfǎ yāoqiú wǒmen bìxū yòng liánxì, fāzhǎn, quánmiàn de pǔbiàn guīlǜ guāndiǎn qù shěnshì búduàn yǎnhuà de kèguān xiànshí shìjiè.",
+                        "vi":  "Phép biện chứng duy vật đòi hỏi ta phải xem xét hiện thực khách quan bằng quan điểm vận động phát triển toàn diện."
+                    }
+    },
+    {
+        "id":  "v6_038",
+        "hanzi":  "别扭",
+        "pinyin":  "bièniu",
+        "meaning":  "Khó chịu, gượng gạo, chướng mắt",
+        "hsk":  6,
+        "radical":  "刂 (Đao)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "这篇中文译文存在大量生硬套用外语语法语序的病句，母语读者读起来倍感生硬别扭。",
+                        "pinyin":  "Zhè piān zhōngwén yìwén cúnzài dàliàng shēngyìng tàoyòng wàiyǔ yǔfǎ yǔxù de bìngjù, mǔyǔ dúzhě dú qǐlái bèi gǎn shēngyìng bièniu.",
+                        "vi":  "Bản dịch tiếng Trung này lạm dụng cấu trúc ngoại ngữ cứng nhắc, độc giả bản ngữ đọc lên cảm thấy rất ngượng ngập."
+                    }
+    },
+    {
+        "id":  "v6_039",
+        "hanzi":  "波涛澎湃",
+        "pinyin":  "bōtāo péngpài",
+        "meaning":  "Sóng to gió lớn, sóng cuộn trào dâng",
+        "hsk":  6,
+        "radical":  "氵 (Chấm thủy)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "伫立在东海海滨巍峨的悬崖峭壁之上，放眼眺望波涛澎湃的海天壮阔气象，胸襟豁然开朗。",
+                        "pinyin":  "Zhùlì zài dōnghǎi hǎibīn wēi\u0027é de xuányá qiàobì zhīshàng, fàngyǎn tiàowàng bōtāo péngpài de hǎitiān zhuàngkuò qìxiàng, xiōngjīn huòrán kāilǎng.",
+                        "vi":  "Đứng trên vách đá cao ngất bờ biển Đông Hải phóng tầm mắt ngắm sóng trào cuồn cuộn, lòng bỗng khoáng đạt khôn cùng."
+                    }
+    },
+    {
+        "id":  "v6_040",
+        "hanzi":  "博大精深",
+        "pinyin":  "bó dà jīng shēn",
+        "meaning":  "Uyên bác thâm thúy, sâu rộng bao la",
+        "hsk":  6,
+        "radical":  "十 (Thập)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "中华优秀传统文化积淀了数千年东方哲理智慧，源远流长、博大精深。",
+                        "pinyin":  "Zhōnghuá yōuxiù chuántǒng wénhuà jīdiàn le shù qiān nián dōngfāng zhélǐ zhìhuì, yuányuǎnliúcháng, bódàjīngshēn.",
+                        "vi":  "Văn hóa truyền thống ưu tú Trung Hoa kết tinh mấy ngàn năm trí tuệ triết học phương Đông, uyên bác thâm sâu."
+                    }
+    },
+    {
+        "id":  "v_biz_13",
+        "hanzi":  "报价单",
+        "pinyin":  "bàojiàdān",
+        "meaning":  "Bảng báo giá",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "扌 (Thủ)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "外贸部已根据最新出厂成本及国际海运费率，重新核算并发送了FOB青岛港最新报价单。",
+                        "pinyin":  "Wàimàobù yǐ gēnjù zuìxīn chūchǎng chéngběn jí guójì hǎiyùn fèilǜ, chóngxīn hésuàn bìng fāsòng le FOB Qīngdǎo Gǎng zuìxīn bàojiàdān.",
+                        "vi":  "Phòng ngoại thương đã căn cứ giá xuất xưởng và cước biển mới nhất gửi lại bảng báo giá FOB Thanh Đảo."
+                    }
+    },
+    {
+        "id":  "v_biz_14",
+        "hanzi":  "汇率",
+        "pinyin":  "huìlǜ",
+        "meaning":  "Tỷ giá hối đoái",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "氵 (Chấm thủy)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "为规避跨国结算中的外汇汇率大幅波动风险，财务总监建议通过远期外汇合约锁定交割成本。",
+                        "pinyin":  "Wèi guībì kuàguó jiésuàn zhōng de wàihuì huìlǜ dàfú bōdòng fēngxiǎn, cáiwù zǒngjiān jiànyì tōngguò yuǎnqī wàihuì hétong suǒdìng jiāogē chéngběn.",
+                        "vi":  "Để phòng tránh rủi ro biến động tỷ giá ngoại hối, giám đốc tài chính kiến nghị chốt chi phí qua hợp đồng kỳ hạn."
+                    }
+    },
+    {
+        "id":  "v_biz_15",
+        "hanzi":  "清关",
+        "pinyin":  "qīngguān",
+        "meaning":  "Thông quan, làm thủ tục hải quan",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "氵 (Chấm thủy)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "该批高精密实验仪器设备已顺利办结口岸海关查验手续，今日即可放行清关提货。",
+                        "pinyin":  "Gāi pī gāojīngmì shíyàn yíqì shèbèi yǐ shùnlì bànjié kǒu\u0027àn hǎiguān cháyàn shǒuxù, jīnrì jíkě fàngxíng qīngguān tíhuò.",
+                        "vi":  "Lô thiết bị thí nghiệm độ chính xác cao đã hoàn tất kiểm hóa hải quan cửa khẩu và được thông quan lấy hàng hôm nay."
+                    }
+    },
+    {
+        "id":  "v_biz_16",
+        "hanzi":  "提单",
+        "pinyin":  "tídān",
+        "meaning":  "Vận đơn đường biển (B/L)",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "扌 (Thủ)",
+        "strokes":  12,
+        "example":  {
+                        "zh":  "承运船公司已正式签发正本清洁海运提单，请买方凭提单背书前往港口集装箱码头提货。",
+                        "pinyin":  "Chéngyùn chuángōngsī yǐ zhèngshì qiānfā zhèngběn qīngjié hǎiyùn tídān, qǐng mǎifāng píng tídān bèishū qiánwǎng gǎngkǒu jízhuāngxiāng mǎtóu tíhuò.",
+                        "vi":  "Hãng tàu đã phát hành vận đơn gốc sạch, xin bên mua mang vận đơn ký hậu ra cảng container nhận hàng."
+                    }
+    },
+    {
+        "id":  "v_biz_17",
+        "hanzi":  "索赔",
+        "pinyin":  "suǒpéi",
+        "meaning":  "Đòi bồi thường, khiếu nại bồi thường",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "十 (Thập)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "由于承运方在装卸集装箱过程中操作不当造成货物严重破损，进口商依法启动保险索赔程序。",
+                        "pinyin":  "Yóuyú chéngyùnfāng zài zhuāngxiè jízhuāngxiāng guòchéng zhōng cāozuò bùdàng zàochéng huòwù yánzhòng pòsǔn, jìnkǒushāng yīfǎ qǐdòng bǎoxiǎn suǒpéi chéngxù.",
+                        "vi":  "Do bên vận tải bốc dỡ sai quy cách làm hỏng hàng, nhà nhập khẩu đã tiến hành thủ tục khiếu nại bảo hiểm."
+                    }
+    },
+    {
+        "id":  "v_biz_18",
+        "hanzi":  "仲裁",
+        "pinyin":  "zhòngcái",
+        "meaning":  "Trọng tài thương mại",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "根据合同争议解决条款，由履约产生的任何商务纠纷应提交中国国际经济贸易仲裁委员会裁决。",
+                        "pinyin":  "Gēnjù hétong zhēngyì jiějié tiáokuǎn, yóu lǚyuē chǎnshēng de rènhé shāngwù jiūfēn yīng tíjiāo Zhōngguó Guójì Jīngjì Màoyì Zhòngcái Wěiyuánhuì cáijué.",
+                        "vi":  "Theo điều khoản giải quyết tranh chấp, mọi bất đồng sẽ được đệ trình lên Trọng tài Kinh tế Thương mại Quốc tế phân xử."
+                    }
+    },
+    {
+        "id":  "v_biz_19",
+        "hanzi":  "独家代理",
+        "pinyin":  "dújiā dàilǐ",
+        "meaning":  "Đại lý độc quyền",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "犭 (Khuyển)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "经过为期半年的艰难磋商，两家跨国企业正式签署了覆盖东南亚区域全境的独家代理协议。",
+                        "pinyin":  "Jīngguò wéiqī bàn nián de jiānnán cuōshāng, liǎng jiā kuàguó qǐyè zhèngshì qiānshǔ le fùgài dōngnányà qūyù quánjìng de dújiā dàilǐ xiéyì.",
+                        "vi":  "Sau nửa năm đàm phán, hai tập đoàn đa quốc gia đã ký kết thỏa thuận đại lý độc quyền toàn Đông Nam Á."
+                    }
+    },
+    {
+        "id":  "v_biz_20",
+        "hanzi":  "佣金",
+        "pinyin":  "yòngjīn",
+        "meaning":  "Hoa hồng, tiền hoa hồng môi giới",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "该笔大型海外工程设备成套采购订单交割结清后，中间商务代理人将获得百分之三的佣金提成。",
+                        "pinyin":  "Gāi bǐ dàxíng hǎiwài gōngchéng shèbèi chéngtào cǎigòu dìngdān jiāogē jiéqīng hòu, zhōngjiān shāngwù dàilǐrén jiāng huòdé bǎifēnzhī sān de yòngjīn tíchéng.",
+                        "vi":  "Sau khi đơn hàng thiết bị công trình lớn quyết toán, đại lý môi giới sẽ nhận 3% hoa hồng trích thưởng."
+                    }
+    },
+    {
+        "id":  "v_biz_21",
+        "hanzi":  "利润率",
+        "pinyin":  "lìrùnlǜ",
+        "meaning":  "Tỷ suất lợi nhuận",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "禾 (Hòa)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "通过推行精益化供应链改造与全流程数字化赋能，企业今年整体综合经营利润率提升了四个百分点。",
+                        "pinyin":  "Tōngguò tuīxíng jīngyìhuà gōngyìngliàn gǎizào yǔ quán liúchéng shùzìhuà fùnéng, qǐyè jīnnián zhěngtǐ zōnghé jīngyíng lìrùnlǜ tíshēng le sì gè bǎifēndiǎn.",
+                        "vi":  "Nhờ cải tổ chuỗi cung ứng tinh gọn và chuyển đổi số, tỷ suất lợi nhuận kinh doanh đã tăng 4 điểm phần trăm."
+                    }
+    },
+    {
+        "id":  "v_biz_22",
+        "hanzi":  "现金流",
+        "pinyin":  "xiànjīnliú",
+        "meaning":  "Dòng tiền, lưu chuyển tiền tệ",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "王 (Vương)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "充沛充裕的健康经营性现金流是初创高科技企业平稳穿越资本市场周期波动的生命线。",
+                        "pinyin":  "Chōngpèi chōngyù de jiànkāng jīngyíngxìng xiànjīnliú shì chūchuàng gāokējì qǐyè píngwěn chuānyuè zīběn shìchǎng zhōuqī bōdòng de shēngmìngxiàn.",
+                        "vi":  "Dòng tiền kinh doanh dồi dào là huyết mạch giúp startup công nghệ vững vàng vượt qua sóng gió thị trường vốn."
+                    }
+    },
+    {
+        "id":  "v_biz_23",
+        "hanzi":  "投资回报率",
+        "pinyin":  "tóuzī huíbàolǜ",
+        "meaning":  "Tỷ suất hoàn vốn đầu tư (ROI)",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "扌 (Thủ)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "投融资风控委员会经过审慎测算，认为该新能源储能项目的全周期投资回报率十分可观。",
+                        "pinyin":  "Tóuróngzī fēngkòng wěiyuánhuì jīngguò shěnshèn cèsuàn, rènwéi gāi xīn néngyuán chǔnéng xiàngmù de quán zhōuqī tóuzī huíbàolǜ shífēn kěguān.",
+                        "vi":  "Hội đồng quản trị rủi ro thẩm định dự án lưu trữ năng lượng mới này có tỷ suất hoàn vốn ROI rất khả quan."
+                    }
+    },
+    {
+        "id":  "v_biz_24",
+        "hanzi":  "股东大会",
+        "pinyin":  "gǔdōng dàhuì",
+        "meaning":  "Đại hội đồng cổ đông",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "月 (Nguyệt)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "上市公司年度股东大会以超过百分之九十五的极高赞成票通过了本年度利润分配与配股预案。",
+                        "pinyin":  "Shàngshì gōngsī niándù gǔdōng dàhuì yǐ chāoguò bǎifēnzhī jiǔshíwǔ de jí gāo zànchéng piào tōngguò le běn niándù lìrùn fēnpèi yǔ pèigǔ yù\u0027àn.",
+                        "vi":  "Đại hội cổ đông thường niên công ty niêm yết với 95% phiếu thuận đã thông qua phương án phân phối lợi nhuận."
+                    }
+    },
+    {
+        "id":  "v_biz_25",
+        "hanzi":  "知识产权",
+        "pinyin":  "zhīshi chǎnquán",
+        "meaning":  "Quyền sở hữu trí tuệ",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "矢 (Thỉ)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "加强前沿核心技术专利与原创软件著作权等知识产权保护，是激发全社会创新活力的重要保障。",
+                        "pinyin":  "Jiāqiáng qiányán héxīn jìshù zhuānlì yǔ yuánchuàng ruǎnjiàn zhùzuòquán děng zhīshi chǎnquán bǎohù, shì jīfā quán shèhuì chuàngxīn huólì de zhòngyào bǎozhàng.",
+                        "vi":  "Bảo vệ quyền sở hữu trí tuệ sáng chế công nghệ lõi và bản quyền phần mềm là bảo chứng khơi nguồn đổi mới."
+                    }
+    },
+    {
+        "id":  "v_biz_26",
+        "hanzi":  "中标",
+        "pinyin":  "zhòngbiāo",
+        "meaning":  "Trúng thầu",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "丨 (Cổn)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "凭借先进的技术方案与极具竞争力的商务报价，该企业联合体成功中标跨海大桥特大工程项目。",
+                        "pinyin":  "Píngjiè xiānjìn de jìshù fāng\u0027àn yǔ jí jù jìngzhēnglì de shāngwù bàojià, gāi qǐyè liánhétǐ chénggōng zhòngbiāo kuàhǎi dàqiáo tèdà gōngchéng xiàngmù.",
+                        "vi":  "Nhờ phương án kỹ thuật tiên tiến và giá cạnh tranh, liên danh doanh nghiệp đã trúng thầu dự án cầu vượt biển."
+                    }
+    },
+    {
+        "id":  "v_biz_27",
+        "hanzi":  "违约责任",
+        "pinyin":  "wéiyuē zérèn",
+        "meaning":  "Trách nhiệm vi phạm hợp đồng",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "辶 (Sước)",
+        "strokes":  7,
+        "example":  {
+                        "zh":  "商务合同第十五条详尽界定了若任何一方无故拖延交付产品所应承担的严苛违约责任与赔偿条款。",
+                        "pinyin":  "Shāngwù hétong dì-shíwǔ tiáo xiángjìn jièdìng le ruò rènhé yì fāng wúgù tuōyán jiāofù chǎnpǐn suǒ yīng chéngdān de yánkē wéiyuē zérèn yǔ péicháng tiáokuǎn.",
+                        "vi":  "Điều 15 hợp đồng thương mại quy định chi tiết trách nhiệm vi phạm hợp đồng nếu bên nào chậm trễ giao hàng."
+                    }
+    },
+    {
+        "id":  "v_biz_28",
+        "hanzi":  "不可抗力",
+        "pinyin":  "bùkěkànglì",
+        "meaning":  "Bất khả kháng (Force Majeure)",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "一 (Nhất)",
+        "strokes":  4,
+        "example":  {
+                        "zh":  "因特大台风海啸导致港口全面封闭造成的船期延误，属于国际海商法公认的不可抗力豁免免责范围。",
+                        "pinyin":  "Yīn tèdà táifēng hǎixiào dǎozhì gǎngkǒu quánmiàn fēngbì zàochéng de chuánqī yánwù, shǔyú guójì hǎishāngfǎ gōngrèn de bùkěkànglì huòmiǎn miǎnzé fànwéi.",
+                        "vi":  "Chậm lịch tàu do bão lớn sóng thần phong tỏa cảng thuộc phạm vi miễn trách bất khả kháng của luật hàng hải."
+                    }
+    },
+    {
+        "id":  "v_biz_29",
+        "hanzi":  "备忘录",
+        "pinyin":  "bèiwànglù",
+        "meaning":  "Biên bản ghi nhớ (MOU)",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "两国经贸部长在双边首脑会晤期间共同签署了关于推进绿色能源与数字贸易合作的谅解备忘录。",
+                        "pinyin":  "Liǎng guó jīngmào bùzhǎng zài shuāngbiān shǒunǎo huìwù qījiān gòngtóng qiānshǔ le guānyú tuījìn lǜsè néngyuán yǔ shùzì màoyì hézuò de liàngjiě bèiwànglù.",
+                        "vi":  "Bộ trưởng thương mại hai nước trong hội đàm đã ký kết biên bản ghi nhớ hợp tác năng lượng xanh và thương mại số."
+                    }
+    },
+    {
+        "id":  "v_biz_30",
+        "hanzi":  "尽职调查",
+        "pinyin":  "jìnzhí diàochá",
+        "meaning":  "Thẩm định chuyên sâu (Due Diligence)",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "尸 (Thi)",
+        "strokes":  6,
+        "example":  {
+                        "zh":  "投资银行跨国团队在开展跨国企业战略并购前，对目标公司的财务资产与合规法务进行了全方位尽职调查。",
+                        "pinyin":  "Tóuzī yínháng kuàguó tuánduì zài kāizhǎn kuàguó qǐyè zhànlüè bìnggòu qián, duì mùbiāo gōngsī de cáiwù zīchǎn yǔ hégī fǎwù jìnxíng le quánfāngwèi jìnzhí diàochá.",
+                        "vi":  "Đội ngũ ngân hàng đầu tư trước khi tiến hành mua bán sáp nhập đã thẩm định toàn diện tài chính và pháp lý công ty mục tiêu."
+                    }
+    },
+    {
+        "id":  "v_biz_31",
+        "hanzi":  "商业秘密",
+        "pinyin":  "shāngyè mìmì",
+        "meaning":  "Bí mật thương mại",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "口 (Khẩu)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "全体中高级研发与管理人员在入职首日均必须签署具有长期严格法律追责效力的商业秘密保密协议。",
+                        "pinyin":  "Quántǐ zhōnggāojí yánfā yǔ guǎnlǐ rényuán zài rùzhí shǒurì jūn bìxū qiānshǔ jùyǒu chángqī yángé fǎlǜ zhuīzé xiàolì de shāngyè mìmì bǎomì xiéyì.",
+                        "vi":  "Mọi cán bộ R\u0026D và quản lý ngày đầu nhận việc đều phải ký cam kết bảo mật bí mật thương mại dài hạn."
+                    }
+    },
+    {
+        "id":  "v_biz_32",
+        "hanzi":  "战略合作",
+        "pinyin":  "zhànlüè hézuò",
+        "meaning":  "Hợp tác chiến lược",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "戈 (Qua)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "双方跨国科技巨头宣布建立全方位深度战略合作伙伴关系，携手打造下一代万物互联工业互联操作系统。",
+                        "pinyin":  "Shuāngfāng kuàguó kējì jùtóu xuānbù jiànlì quánfāngwèi shēndù zhànlüè hézuò huǒbàn guānxì, xiéshǒu dǎzào xiàyídài wànwù hùlián gōngyè hùlián cāozuò xìtǒng.",
+                        "vi":  "Hai tập đoàn công nghệ toàn cầu công bố thiết lập đối tác chiến lược sâu rộng xây dựng hệ điều hành IoT thế hệ mới."
+                    }
+    },
+    {
+        "id":  "v_biz_33",
+        "hanzi":  "兼并重组",
+        "pinyin":  "jiānbìng chóngzǔ",
+        "meaning":  "Sáp nhập và tái cơ cấu (M\u0026A)",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "八 (Bát)",
+        "strokes":  10,
+        "example":  {
+                        "zh":  "通过市场化兼并重组手段优化整合行业过剩产能，有助于培育具备全球综合竞争力的世界级航母企业。",
+                        "pinyin":  "Tōngguò shìchǎnghuà jiānbìng chóngzǔ shǒuduàn yōuhuà zhěnghé hángyè guòshèng chǎnnéng, yǒuzhùyú péiyù jùbèi quánqiú zōnghé jìngzhēnglì de shìjièjí hángmǔ qǐyè.",
+                        "vi":  "Sáp nhập và tái cơ cấu theo cơ chế thị trường giúp tối ưu hóa công suất và xây dựng doanh nghiệp hàng đầu thế giới."
+                    }
+    },
+    {
+        "id":  "v_biz_34",
+        "hanzi":  "供应链管理",
+        "pinyin":  "gōngyìngliàn guǎnlǐ",
+        "meaning":  "Quản lý chuỗi cung ứng (SCM)",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "现代大型跨国制造集团依托工业物联网技术全面推行敏捷弹性供应链管理，实现零库存即时响应。",
+                        "pinyin":  "Xiàndài dàxíng kuàguó zhìzào jítuán yītuō gōngyè wùliánwǎng jìshù quánmiàn tuīxíng mǐnjié tánxìng gōngyìngliàn guǎnlǐ, shíxiàn língkùcún jíshí xiǎngyìng.",
+                        "vi":  "Tập đoàn sản xuất đa quốc gia áp dụng IoT quản lý chuỗi cung ứng linh hoạt đạt chuẩn phản ứng tức thời không lưu kho."
+                    }
+    },
+    {
+        "id":  "v_biz_35",
+        "hanzi":  "资产负债表",
+        "pinyin":  "zīchǎn fùzhàibiǎo",
+        "meaning":  "Bảng cân đối kế toán",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "贝 (Bối)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "审计师在年度审计报告中确认，该集团合并资产负债表结构稳健、流动比率与速动比率均处于优良区间。",
+                        "pinyin":  "Shěnjìshī zài niándù shěnjì bàogào zhōng quèrèn, gāi jítuán hébìng zīchǎn fùzhàibiǎo jiégòu wěnjiàn, liúdòng bǐlǜ yǔ sùdòng bǐlǜ jūn chǔyú yōuliáng qūjiān.",
+                        "vi":  "Kiểm toán viên xác nhận bảng cân đối kế toán hợp nhất của tập đoàn rất lành mạnh, các chỉ số thanh khoản đều đạt loại ưu."
+                    }
+    },
+    {
+        "id":  "v_biz_36",
+        "hanzi":  "离岸价 FOB",
+        "pinyin":  "lí\u0027ànjià FOB",
+        "meaning":  "Giá giao trên tàu (FOB)",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "亠 (Đầu)",
+        "strokes":  11,
+        "example":  {
+                        "zh":  "我们报出的离岸价FOB上海港包含了出口报关费、港口装卸杂费及内陆短途运输物流成本。",
+                        "pinyin":  "Wǒmen bào chū de lí\u0027ànjià FOB Shànghǎi Gǎng bāohán le chūkǒu bàoguān fèi, gǎngkǒu zhuāngxiè záfèi jí nèilù duǎntú yùnshū wùliú chéngběn.",
+                        "vi":  "Giá FOB cảng Thượng Hải chúng tôi báo đã bao gồm phí thông quan xuất khẩu, bốc dỡ tại cảng và vận tải nội địa."
+                    }
+    },
+    {
+        "id":  "v_biz_37",
+        "hanzi":  "到岸价 CIF",
+        "pinyin":  "dào\u0027ànjià CIF",
+        "meaning":  "Giá giao tại cảng dỡ (CIF)",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "刂 (Đao)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "按照到岸价CIF海防港贸易术语成交，卖方须承担货物运抵目的港的全部远洋海运费及基本水渍一切险保费。",
+                        "pinyin":  "Ànzhào dào\u0027ànjià CIF Hǎifáng Gǎng màoyì shùyǔ chéngjiāo, màifāng xū chéngdān huòwù yùndǐ mùdìgǎng de quánbù yuǎnyáng hǎiyùnfèi jí jīběn shuǐzì yíqièxiǎn bǎofèi.",
+                        "vi":  "Theo điều kiện CIF cảng Hải Phòng, bên bán chịu toàn bộ cước biển viễn dương và phí bảo hiểm mọi rủi ro."
+                    }
+    },
+    {
+        "id":  "v_biz_38",
+        "hanzi":  "信用证 L/C",
+        "pinyin":  "xìnyòngzhèng L/C",
+        "meaning":  "Thư tín dụng L/C",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "亻 (Nhân đứng)",
+        "strokes":  9,
+        "example":  {
+                        "zh":  "买方已通过英国汇丰银行总行开立了不可撤销的即期信用证，并电汇通知通知行交割审单。",
+                        "pinyin":  "Mǎifāng yǐ tōngguò Yīngguó Huìfēng Yínháng zǒngháng kāilì le bùkě chèxiāo de jíqī xìnyòngzhèng, bìng diànhuì tōngzhī tōngzhīháng jiāogē shěndān.",
+                        "vi":  "Bên mua đã mở L/C không thể hủy ngang qua HSBC và gửi điện thông báo cho ngân hàng thông báo xuất trình chứng từ."
+                    }
+    },
+    {
+        "id":  "v_biz_39",
+        "hanzi":  "国际贸易术语",
+        "pinyin":  "guójì màoyì shùyǔ",
+        "meaning":  "Điều kiện thương mại quốc tế (Incoterms)",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "囗 (Vi)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "在起草涉外大宗商品买卖合同时，双方一致约定遵循国际商会最新发布的《国际贸易术语解释通则》。",
+                        "pinyin":  "Zài qǐcǎo shèwài dàzōng shāngpǐn mǎimài hétong shí, shuāngfāng yízhì yuēdìng zūnxún Guójì Shānghuì zuìxīn fābù de Guójì Màoyì Shùyǔ Jiěshì Tōngzé.",
+                        "vi":  "Khi soạn thảo hợp đồng hàng rời quốc tế, đôi bên nhất trí tuân thủ Incoterms mới nhất do Phòng Thương mại Quốc tế ICC ban hành."
+                    }
+    },
+    {
+        "id":  "v_biz_40",
+        "hanzi":  "跨境电商",
+        "pinyin":  "kuàjìng diànshāng",
+        "meaning":  "Thương mại điện tử xuyên biên giới (Cross-border E-commerce)",
+        "hsk":  "Thương Mại",
+        "category":  "business",
+        "radical":  "走 (Tẩu)",
+        "strokes":  19,
+        "example":  {
+                        "zh":  "借助跨境电商综合试验区的保税仓前置与阳光清关便利，本土优质国货加速扬帆出海进军全球终端消费市场。",
+                        "pinyin":  "Jièzhù kuàjìng diànshāng zōnghé shìyànqū de bǎoshuìcāng qiánzhì yǔ yángguāng qīngguān biànlì, běntǔ yōuzhì guóhuò jiāsù yángfān chūhǎi jìnjūn quánqiú zhōngduān xiāofèi shìchǎng.",
+                        "vi":  "Nhờ kho ngoại quan và thông quan thuận tiện của sàn TMĐT xuyên biên giới, hàng nội địa chất lượng cao tăng tốc xuất khẩu toàn cầu."
+                    }
     }
 ],
 
