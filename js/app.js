@@ -2381,15 +2381,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
     },
-      } catch (err) {
-        this.showToast(`Lỗi tạo thành ngữ: ${err.message}`, "error");
-        if (btn) {
-          btn.disabled = false;
-          btn.innerHTML = `<i data-lucide="cpu" class="w-4 h-4"></i> Thử lại`;
-          this.refreshIcons();
-        }
-      }
-    },
 
     /* =====================================================================
        MODULE 5: GAMES & SPACED REPETITION PENALTY BOX
