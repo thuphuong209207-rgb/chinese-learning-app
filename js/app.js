@@ -452,7 +452,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   <p class="text-xs text-slate-500 dark:text-slate-400">Hiểu sâu ý nghĩa ngụ ngôn qua câu chuyện lịch sử và ứng dụng giao tiếp.</p>
                 </a>
 
-                <a href="#flashcards" onclick="setTimeout(()=>App.switchFlashcardTab('create'),100)" class="p-5 rounded-2xl bg-gradient-to-br from-red-50 to-amber-50 dark:from-red-950/30 dark:to-amber-950/30 border border-red-200 dark:border-red-900/60 hover:border-red-500 transition shadow-sm group sm:col-span-2">
+                <a href="#flashcards" onclick="setTimeout(()=>App.switchFlashcardTab('create'),100)" class="p-5 rounded-2xl bg-gradient-to-br from-red-50 to-amber-50 dark:from-red-950/30 dark:to-amber-950/30 border border-red-200 dark:border-red-900/60 hover:border-red-500 transition shadow-sm group">
                   <div class="flex items-center justify-between">
                     <div class="flex items-center gap-3">
                       <div class="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center group-hover:scale-105 transition shadow-md shadow-red-500/30">
@@ -460,12 +460,29 @@ document.addEventListener("DOMContentLoaded", () => {
                       </div>
                       <div>
                         <h4 class="font-bold text-sm text-slate-900 dark:text-white mb-0.5 flex items-center gap-2">
-                          Xưởng Tự Tạo Flashcard Cá Nhân <span class="text-[10px] px-2 py-0.5 rounded-full bg-red-100 dark:bg-red-950 text-red-600 dark:text-red-400 font-bold uppercase tracking-wider">Mới</span>
+                          Xưởng Tự Tạo Flashcard
                         </h4>
-                        <p class="text-xs text-slate-500 dark:text-slate-400">Tự tạo bộ từ vựng riêng, phân loại theo bộ thẻ (Decks) và dùng Gemini AI điền pinyin, ví dụ tự động.</p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Tự tạo bộ từ vựng riêng, phân loại bộ thẻ và dùng AI điền tự động.</p>
                       </div>
                     </div>
                     <i data-lucide="arrow-right" class="w-5 h-5 text-red-600 group-hover:translate-x-1 transition"></i>
+                  </div>
+                </a>
+
+                <a href="#flashcards" onclick="setTimeout(()=>App.switchFlashcardTab('scan'),100)" class="p-5 rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 border border-emerald-200 dark:border-emerald-900/60 hover:border-emerald-500 transition shadow-sm group">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center group-hover:scale-105 transition shadow-md shadow-emerald-500/30">
+                        <i data-lucide="scan-line" class="w-5 h-5"></i>
+                      </div>
+                      <div>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white mb-0.5 flex items-center gap-2">
+                          Quét Sách Bằng AI <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 font-bold uppercase tracking-wider">Vision OCR</span>
+                        </h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Chụp ảnh trang sách, AI tự bóc tách toàn bộ từ vựng và thêm vào Flashcard.</p>
+                      </div>
+                    </div>
+                    <i data-lucide="arrow-right" class="w-5 h-5 text-emerald-600 group-hover:translate-x-1 transition"></i>
                   </div>
                 </a>
               </div>
@@ -2230,10 +2247,18 @@ document.addEventListener("DOMContentLoaded", () => {
     /* =====================================================================
        MODULE 6: PERSONALIZED FLASHCARD STUDIO & 3D LEARNER
        ===================================================================== */
-    flashcardTab: "practice", // 'practice', 'create', 'manage'
+    flashcardTab: "practice", // 'practice', 'create', 'scan', 'manage'
     selectedDeck: "all",
     flashcardFilterStatus: "all",
     editingCardId: null,
+    scannerState: {
+      imageBase64: null,
+      mimeType: "image/jpeg",
+      imagePreviewUrl: null,
+      isScanning: false,
+      scannedCards: [],
+      selectedIndexes: new Set()
+    },
 
     renderFlashcards(container) {
       this.flashcards = window.StorageService.getFlashcards();
@@ -2249,7 +2274,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 Flashcard 3D & Xưởng Tạo Thẻ Cá Nhân
               </h2>
               <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                Tự tạo bộ thẻ từ vựng riêng biệt, phân loại danh mục, tự động điền bằng Gemini AI và lật thẻ 3D.
+                Tự tạo bộ thẻ từ vựng riêng biệt, quét từ vựng trong trang sách bằng AI và lật thẻ 3D Spaced Repetition.
               </p>
             </div>
 
@@ -2268,6 +2293,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 class="px-3.5 py-2 rounded-xl transition ${this.flashcardTab === "create" ? "bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"} flex items-center gap-1.5"
               >
                 <i data-lucide="plus-circle" class="w-4 h-4 text-amber-500"></i> Tạo Thẻ Mới (AI)
+              </button>
+              <button
+                id="fcTabScanBtn"
+                onclick="App.switchFlashcardTab('scan')"
+                class="px-3.5 py-2 rounded-xl transition ${this.flashcardTab === "scan" ? "bg-white dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 shadow-sm" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"} flex items-center gap-1.5"
+              >
+                <i data-lucide="scan-line" class="w-4 h-4 text-emerald-500"></i> Quét Trang Sách (AI)
               </button>
               <button
                 id="fcTabManageBtn"
@@ -2291,12 +2323,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     switchFlashcardTab(tab) {
       this.flashcardTab = tab;
-      const tabs = ["practice", "create", "manage"];
+      const tabs = ["practice", "create", "scan", "manage"];
       tabs.forEach((t) => {
         const btn = document.getElementById(`fcTab${t.charAt(0).toUpperCase() + t.slice(1)}Btn`);
         if (btn) {
           if (t === tab) {
-            btn.className = "px-3.5 py-2 rounded-xl transition bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm flex items-center gap-1.5 font-bold";
+            btn.className = `px-3.5 py-2 rounded-xl transition bg-white dark:bg-slate-700 ${t === "scan" ? "text-emerald-600 dark:text-emerald-400" : "text-red-600 dark:text-white"} shadow-sm flex items-center gap-1.5 font-bold`;
           } else {
             btn.className = "px-3.5 py-2 rounded-xl transition text-slate-600 dark:text-slate-400 hover:text-slate-900 flex items-center gap-1.5 font-bold";
           }
@@ -2313,6 +2345,8 @@ document.addEventListener("DOMContentLoaded", () => {
         this.renderFlashcardPracticeView(container);
       } else if (this.flashcardTab === "create") {
         this.renderFlashcardCreateView(container);
+      } else if (this.flashcardTab === "scan") {
+        this.renderFlashcardScanView(container);
       } else if (this.flashcardTab === "manage") {
         this.renderFlashcardManageView(container);
       }
@@ -2750,6 +2784,465 @@ document.addEventListener("DOMContentLoaded", () => {
       this.showToast(`Đã thêm thành công thẻ "${hanzi}" vào "${deck}"!`, "success");
 
       // Switch to practice or library
+      this.switchFlashcardTab("practice");
+    },
+
+    // 2.5 AI Book Page Scanner View
+    renderFlashcardScanView(container) {
+      const decks = window.StorageService.getDecks();
+      const state = this.scannerState;
+
+      container.innerHTML = `
+        <div class="space-y-6">
+          <!-- Banner Intro -->
+          <div class="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 rounded-3xl p-6 md:p-8 text-white shadow-xl relative overflow-hidden">
+            <div class="absolute -right-6 -bottom-8 opacity-10 font-hanzi font-black text-9xl pointer-events-none">
+              书页
+            </div>
+            <div class="relative z-10 max-w-2xl">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-semibold mb-3">
+                <i data-lucide="scan-line" class="w-3.5 h-3.5 text-emerald-200"></i>
+                Gemini 2.5 Flash Vision OCR
+              </span>
+              <h3 class="text-2xl md:text-3xl font-extrabold mb-2">
+                Quét Từ Vựng Trong Trang Sách Bằng AI
+              </h3>
+              <p class="text-white/80 text-xs md:text-sm leading-relaxed mb-4">
+                Chụp hoặc tải lên một trang sách giáo trình tiếng Trung. Trí tuệ nhân tạo sẽ tự động nhận diện mặt chữ, bóc tách các từ vựng cốt lõi, phiên âm Pinyin, nghĩa và câu ví dụ để lưu trực tiếp vào Flashcard của bạn.
+              </p>
+            </div>
+          </div>
+
+          <!-- Upload / Camera Station -->
+          <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 p-6 md:p-8 shadow-sm space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              
+              <!-- Left 1/3: Configuration & Trigger Actions -->
+              <div class="space-y-4">
+                <h4 class="font-bold text-sm text-slate-800 dark:text-white flex items-center gap-2">
+                  <i data-lucide="settings-2" class="w-4 h-4 text-emerald-600"></i> Tùy chọn lưu trữ
+                </h4>
+
+                <div>
+                  <label class="block font-bold text-xs text-slate-700 dark:text-slate-300 mb-1">
+                    Lưu vào Bộ Thẻ (Deck) :
+                  </label>
+                  <div class="flex gap-2">
+                    <select id="scanTargetDeckSelect" class="flex-1 p-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white text-xs font-semibold">
+                      ${decks.map((d) => `<option value="${d}">${d}</option>`).join("")}
+                    </select>
+                    <button type="button" onclick="App.promptCreateNewDeck()" class="px-2.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700 text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-200" title="Tạo bộ thẻ mới">
+                      +
+                    </button>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block font-bold text-xs text-slate-700 dark:text-slate-300 mb-1">
+                    Ghi chú / Yêu cầu thêm (Tùy chọn) :
+                  </label>
+                  <input
+                    type="text"
+                    id="scanCustomPromptInput"
+                    placeholder="VD: Chỉ quét từ HSK 3 trở lên, hoặc từ khó..."
+                    class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white text-xs"
+                  />
+                </div>
+
+                <!-- Input Action Buttons -->
+                <div class="space-y-2 pt-2">
+                  <label class="w-full py-3 px-4 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-650 text-slate-700 dark:text-slate-200 font-bold text-xs flex items-center justify-center gap-2 cursor-pointer transition shadow-sm">
+                    <i data-lucide="image" class="w-4 h-4 text-emerald-600"></i>
+                    <span>Tải Ảnh Từ Máy Tính / Điện Thoại</span>
+                    <input type="file" id="bookScanFileInput" accept="image/*" onchange="App.handleBookScanImageUpload(event)" class="hidden" />
+                  </label>
+
+                  <label class="w-full py-3 px-4 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-650 text-slate-700 dark:text-slate-200 font-bold text-xs flex items-center justify-center gap-2 cursor-pointer transition shadow-sm">
+                    <i data-lucide="camera" class="w-4 h-4 text-cyan-600"></i>
+                    <span>Chụp Ảnh Trực Tiếp Bằng Camera</span>
+                    <input type="file" id="bookScanCameraInput" accept="image/*" capture="environment" onchange="App.handleBookScanImageUpload(event)" class="hidden" />
+                  </label>
+
+                  <button
+                    type="button"
+                    onclick="App.loadSampleBookPageDemo()"
+                    class="w-full py-2.5 px-4 rounded-xl bg-amber-50 dark:bg-amber-950/40 hover:bg-amber-100 text-amber-700 dark:text-amber-400 font-semibold text-xs flex items-center justify-center gap-2 transition border border-amber-200 dark:border-amber-900/40"
+                  >
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                    <span>Dùng Ảnh Mẫu Trang Sách HSK</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Right 2/3: Image Preview Box & Scanner Ray -->
+              <div class="md:col-span-2 flex flex-col justify-between">
+                <div class="relative w-full min-h-[280px] max-h-[380px] rounded-2xl border-2 border-dashed ${state.imagePreviewUrl ? "border-emerald-500 bg-slate-900" : "border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-750"} flex items-center justify-center overflow-hidden">
+                  
+                  ${state.imagePreviewUrl ? `
+                    <img
+                      src="${state.imagePreviewUrl}"
+                      alt="Trang sách đã chọn"
+                      class="w-full h-full object-contain max-h-[380px]"
+                    />
+                    ${state.isScanning ? `
+                      <!-- Laser Scanning Line -->
+                      <div class="laser-scanner-line"></div>
+                      <div class="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-xl bg-slate-900/90 text-white font-bold text-xs flex items-center gap-2 shadow-2xl backdrop-blur-md">
+                        <i data-lucide="loader-2" class="w-4 h-4 animate-spin text-emerald-400"></i>
+                        <span>AI đang đọc quét chữ Hán trong trang sách...</span>
+                      </div>
+                    ` : `
+                      <button
+                        onclick="App.clearBookScanImage()"
+                        class="absolute top-3 right-3 p-2 rounded-xl bg-black/60 text-white hover:bg-black/80 transition"
+                        title="Xóa ảnh chọn lại"
+                      >
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                      </button>
+                    `}
+                  ` : `
+                    <div class="text-center p-6 space-y-2">
+                      <div class="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 flex items-center justify-center mx-auto text-2xl">
+                        <i data-lucide="file-text" class="w-8 h-8"></i>
+                      </div>
+                      <h4 class="font-bold text-sm text-slate-800 dark:text-white">Chưa có ảnh trang sách nào được chọn</h4>
+                      <p class="text-xs text-slate-400 max-w-sm mx-auto">
+                        Hãy tải ảnh lên, chụp từ camera, hoặc bấm nút <strong>"Dùng Ảnh Mẫu Trang Sách HSK"</strong> bên trái để trải nghiệm ngay.
+                      </p>
+                    </div>
+                  `}
+                </div>
+
+                <!-- Primary Trigger Button -->
+                <div class="pt-4 flex items-center justify-end">
+                  <button
+                    id="startScanBtn"
+                    onclick="App.startAiBookScan()"
+                    ${!state.imagePreviewUrl || state.isScanning ? "disabled" : ""}
+                    class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-xs shadow-lg shadow-emerald-600/25 transition flex items-center justify-center gap-2"
+                  >
+                    <i data-lucide="scan" class="w-4 h-4"></i>
+                    <span>Bắt Đầu AI Quét Từ Vựng & Tạo Flashcard</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Scanned Results Review Section -->
+          <div id="scannedResultsSection">
+            ${this.renderScannedResultsHtml()}
+          </div>
+        </div>
+      `;
+    },
+
+    handleBookScanImageUpload(event) {
+      const file = event.target.files?.[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const fullBase64 = e.target.result;
+        // Extract raw base64 data without prefix (data:image/jpeg;base64,...)
+        const commaIndex = fullBase64.indexOf(",");
+        const rawBase64 = commaIndex >= 0 ? fullBase64.substring(commaIndex + 1) : fullBase64;
+
+        this.scannerState.imageBase64 = rawBase64;
+        this.scannerState.mimeType = file.type || "image/jpeg";
+        this.scannerState.imagePreviewUrl = fullBase64;
+        this.scannerState.scannedCards = [];
+        this.scannerState.selectedIndexes = new Set();
+
+        this.renderCurrentFlashcardTab();
+        this.showToast("Đã tải ảnh trang sách thành công! Bấm nút quét để phân tích.", "info");
+      };
+      reader.readAsDataURL(file);
+    },
+
+    clearBookScanImage() {
+      this.scannerState.imageBase64 = null;
+      this.scannerState.imagePreviewUrl = null;
+      this.scannerState.scannedCards = [];
+      this.scannerState.selectedIndexes = new Set();
+      this.renderCurrentFlashcardTab();
+    },
+
+    loadSampleBookPageDemo() {
+      // High resolution Chinese textbook page demo illustration (SVG / Canvas DataURL)
+      const canvas = document.createElement("canvas");
+      canvas.width = 800;
+      canvas.height = 1000;
+      const ctx = canvas.getContext("2d");
+
+      // Draw textbook background
+      ctx.fillStyle = "#faf6ed";
+      ctx.fillRect(0, 0, 800, 1000);
+
+      // Book border & header
+      ctx.fillStyle = "#991b1b";
+      ctx.fillRect(40, 40, 720, 8);
+
+      ctx.fillStyle = "#1e293b";
+      ctx.font = "bold 34px sans-serif";
+      ctx.fillText("第十二课：在图书馆阅读与学习", 50, 100);
+
+      ctx.font = "20px monospace";
+      ctx.fillStyle = "#dc2626";
+      ctx.fillText("Dì shí'èr kè: Zài túshūguǎn yuèdú yǔ xuéxí", 50, 135);
+
+      // Paragraph lines
+      ctx.fillStyle = "#334155";
+      ctx.font = "24px sans-serif";
+      ctx.fillText("每天下午，很多留学生都会来到大学图书馆。", 50, 200);
+      ctx.fillText("坚持阅读中文课文和报刊，不仅能加深对语法", 50, 250);
+      ctx.fillText("结构的理解，还能在潜移默化中积累丰富的词汇。", 50, 300);
+      ctx.fillText("遇到不懂的生词时，要善于掌握部首查字法。", 50, 350);
+      ctx.fillText("只要持之以恒，你一定能说一口流利的汉语。", 50, 400);
+
+      // Vocabulary Box at bottom
+      ctx.strokeStyle = "#cbd5e1";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(50, 470, 700, 470);
+
+      ctx.fillStyle = "#b91c1c";
+      ctx.font = "bold 26px sans-serif";
+      ctx.fillText("【 生词表 / Từ Mới Cần Nhớ 】", 70, 520);
+
+      const words = [
+        "1. 阅读 (yuèdú) : Đọc hiểu, đọc sách",
+        "2. 理解 (lǐjiě) : Lĩnh hội, thấu hiểu",
+        "3. 词汇 (cíhuì) : Từ vựng, vốn từ",
+        "4. 掌握 (zhǎngwò) : Nắm vững, làm chủ",
+        "5. 流利 (liúlì) : Lưu loát, trôi chảy",
+        "6. 积累 (jīlěi) : Tích lũy dồn lại"
+      ];
+
+      ctx.fillStyle = "#1e293b";
+      ctx.font = "22px sans-serif";
+      words.forEach((w, i) => {
+        ctx.fillText(w, 70, 580 + i * 55);
+      });
+
+      const dataUrl = canvas.toDataURL("image/jpeg", 0.9);
+      const rawBase64 = dataUrl.substring(dataUrl.indexOf(",") + 1);
+
+      this.scannerState.imageBase64 = rawBase64;
+      this.scannerState.mimeType = "image/jpeg";
+      this.scannerState.imagePreviewUrl = dataUrl;
+      this.scannerState.scannedCards = [];
+      this.scannerState.selectedIndexes = new Set();
+
+      this.renderCurrentFlashcardTab();
+      this.showToast("Đã nạp trang sách mẫu tiếng Trung! Bấm nút để AI bắt đầu quét.", "success");
+    },
+
+    async startAiBookScan() {
+      if (!this.scannerState.imageBase64) {
+        this.showToast("Vui lòng tải hoặc chụp ảnh trang sách trước!", "warning");
+        return;
+      }
+
+      this.scannerState.isScanning = true;
+      this.renderCurrentFlashcardTab();
+
+      const customPrompt = document.getElementById("scanCustomPromptInput")?.value?.trim() || "";
+
+      try {
+        const results = await window.GeminiService.scanBookPageAI(
+          this.scannerState.imageBase64,
+          this.scannerState.mimeType,
+          customPrompt
+        );
+
+        if (!Array.isArray(results) || results.length === 0) {
+          throw new Error("Không nhận diện được từ vựng tiếng Trung rõ ràng trong trang sách này. Vui lòng thử ảnh rõ nét hơn.");
+        }
+
+        this.scannerState.scannedCards = results;
+        // Select all by default
+        this.scannerState.selectedIndexes = new Set(results.map((_, i) => i));
+        this.showToast(`Quét thành công! Đã phát hiện ${results.length} từ vựng trong trang sách.`, "success");
+      } catch (err) {
+        this.showToast(`Lỗi quét trang sách: ${err.message}`, "error");
+      } finally {
+        this.scannerState.isScanning = false;
+        this.renderCurrentFlashcardTab();
+      }
+    },
+
+    renderScannedResultsHtml() {
+      const { scannedCards, selectedIndexes } = this.scannerState;
+      if (!scannedCards || scannedCards.length === 0) return "";
+
+      const selectedCount = selectedIndexes.size;
+      const targetDeck = document.getElementById("scanTargetDeckSelect")?.value || "Bộ mặc định";
+
+      return `
+        <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 p-6 md:p-8 shadow-sm space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-700 pb-4">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <h4 class="font-extrabold text-base text-slate-800 dark:text-white">
+                  Danh Sách Từ Vựng Quét Được Từ Trang Sách (${scannedCards.length} từ)
+                </h4>
+              </div>
+              <p class="text-xs text-slate-400 mt-0.5">
+                Đánh dấu các từ bạn muốn lưu vào bộ Flashcard <strong>${targetDeck}</strong>.
+              </p>
+            </div>
+
+            <!-- Bulk Select Actions -->
+            <div class="flex items-center gap-2">
+              <button
+                type="button"
+                onclick="App.toggleSelectAllScanCards(true)"
+                class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-xs font-semibold text-slate-700 dark:text-slate-300 transition"
+              >
+                Chọn tất cả
+              </button>
+              <button
+                type="button"
+                onclick="App.toggleSelectAllScanCards(false)"
+                class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-xs font-semibold text-slate-700 dark:text-slate-300 transition"
+              >
+                Bỏ chọn
+              </button>
+            </div>
+          </div>
+
+          <!-- Cards Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            ${scannedCards
+              .map((card, idx) => {
+                const isChecked = selectedIndexes.has(idx);
+                return `
+                <div
+                  onclick="App.toggleScanCardSelection(${idx})"
+                  class="p-4 rounded-2xl border-2 ${isChecked ? "border-emerald-500 bg-emerald-50/20 dark:bg-emerald-950/20" : "border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-750 opacity-60"} cursor-pointer transition flex items-start gap-3 relative select-none"
+                >
+                  <input
+                    type="checkbox"
+                    ${isChecked ? "checked" : ""}
+                    onclick="event.stopPropagation(); App.toggleScanCardSelection(${idx})"
+                    class="mt-1 w-4 h-4 text-emerald-600 rounded accent-emerald-600 cursor-pointer"
+                  />
+                  <div class="flex-1 space-y-1">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-baseline gap-2">
+                        <span class="font-hanzi font-bold text-2xl text-slate-900 dark:text-white">${card.hanzi}</span>
+                        <span class="font-mono text-xs font-bold text-red-600 dark:text-red-400">${card.pinyin}</span>
+                      </div>
+                      <div class="flex items-center gap-1.5">
+                        <span class="px-1.5 py-0.2 rounded font-bold text-[10px] bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300">HSK ${card.hsk || 3}</span>
+                        <button
+                          type="button"
+                          onclick="event.stopPropagation(); AudioService.speak('${card.hanzi}')"
+                          class="p-1.5 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:text-red-600"
+                          title="Nghe phát âm"
+                        >
+                          <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="text-xs font-semibold text-slate-800 dark:text-slate-200">
+                      ${card.meaning}
+                    </div>
+
+                    ${card.exampleZh ? `
+                      <div class="p-2 rounded-xl bg-white/70 dark:bg-slate-800/70 border border-slate-100 dark:border-slate-700 text-[11px] text-slate-600 dark:text-slate-400">
+                        <div class="font-hanzi font-medium text-slate-800 dark:text-slate-200">${card.exampleZh}</div>
+                        <div class="italic text-[10px] text-slate-400">${card.exampleVi || ""}</div>
+                      </div>
+                    ` : ""}
+
+                    ${card.notes ? `
+                      <div class="text-[10px] text-amber-700 dark:text-amber-400 flex items-center gap-1">
+                        <i data-lucide="lightbulb" class="w-3 h-3"></i> ${card.notes}
+                      </div>
+                    ` : ""}
+                  </div>
+                </div>
+              `;
+              })
+              .join("")}
+          </div>
+
+          <!-- Final Save Button -->
+          <div class="pt-4 border-t border-slate-100 dark:border-slate-700 flex flex-wrap items-center justify-between gap-4">
+            <span class="text-xs font-bold text-slate-500">
+              Đã chọn: <span class="text-emerald-600 dark:text-emerald-400 text-sm font-extrabold">${selectedCount}</span> / ${scannedCards.length} từ
+            </span>
+
+            <button
+              type="button"
+              onclick="App.saveBatchScannedFlashcards()"
+              ${selectedCount === 0 ? "disabled" : ""}
+              class="px-8 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 text-white font-bold text-xs shadow-lg shadow-emerald-600/30 transition flex items-center gap-2"
+            >
+              <i data-lucide="bookmark-check" class="w-4 h-4"></i>
+              <span>Thêm ${selectedCount} Từ Này Vào Flashcard Ngay</span>
+            </button>
+          </div>
+        </div>
+      `;
+    },
+
+    toggleScanCardSelection(index) {
+      if (this.scannerState.selectedIndexes.has(index)) {
+        this.scannerState.selectedIndexes.delete(index);
+      } else {
+        this.scannerState.selectedIndexes.add(index);
+      }
+      const section = document.getElementById("scannedResultsSection");
+      if (section) section.innerHTML = this.renderScannedResultsHtml();
+      this.refreshIcons();
+    },
+
+    toggleSelectAllScanCards(selectAll) {
+      if (selectAll) {
+        this.scannerState.selectedIndexes = new Set(this.scannerState.scannedCards.map((_, i) => i));
+      } else {
+        this.scannerState.selectedIndexes.clear();
+      }
+      const section = document.getElementById("scannedResultsSection");
+      if (section) section.innerHTML = this.renderScannedResultsHtml();
+      this.refreshIcons();
+    },
+
+    saveBatchScannedFlashcards() {
+      const { scannedCards, selectedIndexes } = this.scannerState;
+      const targetDeck = document.getElementById("scanTargetDeckSelect")?.value || "Bộ mặc định";
+
+      let addedCount = 0;
+      selectedIndexes.forEach((idx) => {
+        const item = scannedCards[idx];
+        if (item && item.hanzi) {
+          window.StorageService.saveFlashcard({
+            hanzi: item.hanzi,
+            pinyin: item.pinyin || "pīn yīn",
+            meaning: item.meaning || "Từ quét từ sách",
+            deck: targetDeck,
+            hsk: item.hsk || 3,
+            example: item.exampleZh || "",
+            exampleVi: item.exampleVi || "",
+            notes: item.notes || "Trích xuất từ trang sách qua Gemini OCR",
+            status: "learning"
+          });
+          addedCount++;
+        }
+      });
+
+      window.StorageService.incrementStat("wordsLearnedToday", addedCount);
+      this.updateHeaderProgress();
+      this.showToast(`Tuyệt vời! Đã thêm thành công ${addedCount} từ vựng vào bộ "${targetDeck}"!`, "success");
+
+      // Set current deck filter to targetDeck and switch to practice 3D view
+      this.selectedDeck = targetDeck;
+      this.flashcardIndex = 0;
       this.switchFlashcardTab("practice");
     },
 
