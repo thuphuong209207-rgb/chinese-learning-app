@@ -115,49 +115,103 @@ const GeminiService = {
     return JSON.parse(cleaned);
   },
 
-  // 1. Dictionary Smart Lookup Fallback
+  // 1. Dictionary Smart Lookup Fallback & Direct AI Analysis
   async lookupWordAI(query) {
+    const qTrim = (query || "").trim();
+    if (!qTrim) throw new Error("Vui lòng nhập từ hoặc câu cần tra cứu!");
+
+    // Check cached lookup first
+    if (window.StorageService) {
+      const cached = window.StorageService.getAiLookupCache(qTrim);
+      if (cached && cached.source === "gemini_ai") {
+        return cached;
+      }
+    }
+
     const apiKey = this.getApiKey();
     if (!apiKey) {
       // Offline fallback generator for smooth demo
       return {
-        hanzi: query,
+        query: qTrim,
+        hanzi: qTrim,
+        traditional: qTrim,
         pinyin: "pīn yīn",
-        meaning: `Nghĩa tra cứu mẫu cho "${query}" (Hãy cấu hình Gemini API Key để nhận phân tích chi tiết thời gian thực)`,
+        wordType: "Từ vựng / Cụm từ",
+        meaning: `Nghĩa tra cứu mẫu cho "${qTrim}" (Hãy cấu hình Gemini API Key trong Cài đặt để nhận phân tích chi tiết thời gian thực)`,
+        detailedMeanings: [
+          `Nghĩa thông dụng trong giao tiếp hàng ngày`,
+          `Ứng dụng trong văn cảnh thực tế và thương mại`
+        ],
         hsk: 3,
-        radical: "Bộ thủ mẫu",
+        radical: "Đang cập nhật",
         strokes: 8,
-        collocations: [`${query}常用`, `学习${query}`],
+        strokeOrderRules: "Quy tắc: Ngang trước sổ sau, trên trước dưới sau, ngoài trước trong sau",
+        mnemonics: `Mẹo ghi nhớ: Nhớ kỹ cấu trúc âm Pinyin và luyện viết chữ "${qTrim}" nhiều lần để hình thành phản xạ tự nhiên.`,
+        synonyms: [`Tương đồng với ${qTrim}`],
+        antonyms: [`Trái nghĩa với ${qTrim}`],
+        collocations: [`${qTrim}常用`, `学习${qTrim}`, `掌握${qTrim}`],
         example: {
-          zh: `这是一个关于${query}的例句。`,
-          pinyin: `Zhè shì yí gè guānyú ${query} de lìjù.`,
-          vi: `Đây là câu ví dụ minh họa cho từ ${query}.`
+          zh: `这是一个关于${qTrim}的实用例句。`,
+          pinyin: `Zhè shì yí gè guānyú ${qTrim} de shíyòng lìjù.`,
+          vi: `Đây là câu ví dụ ứng dụng thực tế cho từ "${qTrim}".`
         },
+        additionalExamples: [
+          {
+            zh: `在日常汉语交流中，这个词语非常地道常见。`,
+            pinyin: `Zài rìcháng hànyǔ jiāoliú zhōng, zhè gè cíyǔ fēicháng dìdao chángjiàn.`,
+            vi: `Trong giao tiếp tiếng Trung hàng ngày, từ ngữ này rất tự nhiên và thường gặp.`
+          }
+        ],
         source: "offline_mock"
       };
     }
 
-    const systemInstruction = `Bạn là một chuyên gia ngôn ngữ học tiếng Trung và từ điển Hán-Việt. Hãy phân tích từ/cụm từ tiếng Trung được cung cấp và trả về DUY NHẤT một chuỗi JSON chuẩn (không chứa văn bản phụ).`;
-    const prompt = `Phân tích từ/cụm từ: "${query}".
-Trả về cấu trúc JSON đúng chuẩn sau:
+    const systemInstruction = `Bạn là một chuyên gia ngôn ngữ học tiếng Trung, nhà biên soạn đại từ điển Hán-Việt Hiện Đại và giáo viên tiếng Trung cao cấp. 
+Nhiệm vụ của bạn là tra cứu và giải nghĩa chuyên sâu bất kỳ từ, cụm từ, quán dụng ngữ, từ lóng mạng hoặc mẫu câu tiếng Trung nào được cung cấp. Trả về DUY NHẤT định dạng JSON chuẩn.`;
+
+    const prompt = `Hãy tra cứu và phân tích ngôn ngữ học toàn diện cho từ/cụm từ hoặc câu hỏi: "${qTrim}".
+Định dạng JSON chuẩn xác 100%:
 {
-  "hanzi": "Chữ Hán chuẩn",
-  "pinyin": "phiên âm pinyin chuẩn có dấu thanh",
-  "meaning": "nghĩa tiếng Việt súc tích, chính xác",
-  "hsk": 1-6 (số nguyên tương ứng cấp độ HSK),
-  "radical": "Bộ thủ chính và tên tiếng Việt",
-  "strokes": số nét (số nguyên),
-  "collocations": ["từ ghép 1 (nghĩa)", "từ ghép 2 (nghĩa)"],
+  "query": "${qTrim}",
+  "hanzi": "Chữ Hán chuẩn giản thể (hoặc chữ Hán chuẩn tương ứng nếu người dùng nhập bằng Pinyin hoặc nghĩa tiếng Việt)",
+  "traditional": "Chữ Hán phồn thể tương ứng",
+  "pinyin": "Phiên âm pinyin quốc tế chuẩn đầy đủ có dấu thanh",
+  "wordType": "Từ loại (vd: Danh từ / Động từ / Tính từ / Lượng từ / Quán dụng ngữ / Thành ngữ / Từ lóng...)",
+  "meaning": "Nghĩa tiếng Việt chuẩn xác, súc tích và tự nhiên nhất",
+  "detailedMeanings": [
+    "Tầng nghĩa 1: giải thích rõ nghĩa và ngữ cảnh sử dụng",
+    "Tầng nghĩa 2: nghĩa mở rộng hoặc nghĩa bóng (nếu có)"
+  ],
+  "hsk": "Cấp độ HSK tương đương (ví dụ: HSK 1, HSK 2, HSK 3, HSK 4, HSK 5, HSK 6, hoặc HSK 7-9 / Thương Mại)",
+  "radical": "Bộ thủ chính (vd: 氵 Chấm thủy, 亻 Nhân đứng, 木 Mộc, 心 Tâm...)",
+  "strokes": số nét viết của chữ chính (số nguyên),
+  "strokeOrderRules": "Quy tắc bút thuận (vd: Ngang trước sổ sau, trên trước dưới sau...)",
+  "mnemonics": "Mẹo chiết tự chữ Hán hoặc câu chuyện hình tượng ghi nhớ thông minh giúp học viên nhớ lâu",
+  "synonyms": ["Từ đồng nghĩa 1", "Từ đồng nghĩa 2"],
+  "antonyms": ["Từ trái nghĩa 1", "Từ trái nghĩa 2"],
+  "collocations": ["Cụm từ ghép hay gặp 1 (Pinyin - Nghĩa)", "Cụm từ 2", "Cụm từ 3"],
   "example": {
-    "zh": "Câu ví dụ thực tế chữ Hán",
+    "zh": "Câu ví dụ giao tiếp thực tế điển hình",
     "pinyin": "Pinyin câu ví dụ",
-    "vi": "Dịch nghĩa tiếng Việt câu ví dụ"
-  }
+    "vi": "Dịch tiếng Việt tự nhiên câu ví dụ"
+  },
+  "additionalExamples": [
+    {
+      "zh": "Câu ví dụ thực tế thứ hai trong văn cảnh đời sống hoặc thương mại",
+      "pinyin": "Pinyin câu ví dụ 2",
+      "vi": "Dịch tiếng Việt câu ví dụ 2"
+    }
+  ]
 }`;
 
     const raw = await this.callGemini(prompt, systemInstruction);
     const parsed = this.cleanJson(raw);
+    parsed.query = qTrim;
     parsed.source = "gemini_ai";
+
+    if (window.StorageService) {
+      window.StorageService.saveAiLookupItem(parsed);
+    }
     return parsed;
   },
 
