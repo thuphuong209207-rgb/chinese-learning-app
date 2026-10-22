@@ -703,17 +703,17 @@ document.addEventListener("DOMContentLoaded", () => {
           <!-- HSK Level Filter Pills -->
           <div class="flex items-center gap-2 flex-wrap">
             <span class="text-xs font-bold text-slate-400 mr-1 flex items-center gap-1">
-              <i data-lucide="filter" class="w-3.5 h-3.5"></i> Cấp độ HSK:
+              <i data-lucide="filter" class="w-3.5 h-3.5"></i> Lọc danh mục:
             </span>
             <button
               onclick="App.filterDictByHsk('all')"
               class="dict-hsk-pill px-3 py-1.5 rounded-xl text-xs font-bold transition ${this.dictHskFilter === "all" ? "bg-red-600 text-white shadow-sm" : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-red-400"}"
             >
-              Tất cả (${window.APP_DATA.vocabList.length})
+              Tất cả (${(window.APP_DATA.vocabList || []).length})
             </button>
             ${[1, 2, 3, 4, 5, 6]
               .map((lvl) => {
-                const count = window.APP_DATA.vocabList.filter((w) => w.hsk === lvl).length;
+                const count = (window.APP_DATA.vocabList || []).filter((w) => w.hsk === lvl).length;
                 const isSelected = this.dictHskFilter === lvl.toString();
                 return `
                 <button
@@ -725,12 +725,24 @@ document.addEventListener("DOMContentLoaded", () => {
               `;
               })
               .join("")}
+            <button
+              onclick="App.filterDictByHsk('business')"
+              class="dict-hsk-pill px-3 py-1.5 rounded-xl text-xs font-bold transition ${this.dictHskFilter === "business" ? "bg-red-600 text-white shadow-sm" : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-red-400"}"
+            >
+              💼 Thương Mại (${(window.APP_DATA.vocabList || []).filter((w) => w.category === "business" || w.hsk === "Thương Mại").length})
+            </button>
+            <button
+              onclick="App.filterDictByHsk('custom')"
+              class="dict-hsk-pill px-3 py-1.5 rounded-xl text-xs font-bold transition ${this.dictHskFilter === "custom" ? "bg-red-600 text-white shadow-sm" : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-red-400"}"
+            >
+              ⭐ Thẻ tự tạo (${(window.StorageService ? window.StorageService.getFlashcards() : []).length})
+            </button>
           </div>
 
           <!-- Quick Suggestion Tags -->
           <div class="flex items-center gap-2 flex-wrap text-xs">
             <span class="text-slate-400 font-medium">Gợi ý từ hay:</span>
-            ${["学习", "你好", "坚持", "解决", "积累", "潜移默化", "精益求精", "负责", "独特"]
+            ${["合同", "谈判", "报价", "发票", "汇率", "坚持", "学习", "解决", "积累", "潜移默化", "精益求精"]
               .map(
                 (w) => `
               <button onclick="document.getElementById('dictSearchInput').value='${w}'; App.handleDictSearch('${w}');" class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/60 transition font-hanzi">
@@ -765,10 +777,31 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     renderDictWordListHtml() {
-      let words = window.APP_DATA.vocabList;
+      let words = window.APP_DATA.vocabList || [];
+      let label = "toàn bộ HSK 1 - 6 & Chuyên ngành";
+
       if (this.dictHskFilter !== "all") {
-        const lvlNum = parseInt(this.dictHskFilter);
-        words = words.filter((w) => w.hsk === lvlNum);
+        if (this.dictHskFilter === "business") {
+          words = words.filter((w) => w.category === "business" || w.hsk === "Thương Mại" || w.deck === "business");
+          label = "Chuyên ngành Tiếng Trung Thương Mại";
+        } else if (this.dictHskFilter === "custom") {
+          const cards = window.StorageService ? window.StorageService.getFlashcards() : [];
+          words = cards.map((c) => ({
+            id: c.id,
+            hanzi: c.hanzi,
+            pinyin: c.pinyin,
+            meaning: c.meaning,
+            hsk: c.hsk || "Tự tạo",
+            radical: "Thẻ cá nhân",
+            strokes: 8,
+            example: { zh: c.example || c.hanzi, pinyin: "", vi: c.exampleVi || c.meaning }
+          }));
+          label = "Flashcard người dùng tự tạo";
+        } else {
+          const lvlNum = parseInt(this.dictHskFilter);
+          words = words.filter((w) => w.hsk === lvlNum);
+          label = `cấp độ HSK ${this.dictHskFilter}`;
+        }
       }
 
       return `
@@ -776,7 +809,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="flex items-center justify-between mb-4 border-b border-slate-100 dark:border-slate-700 pb-3">
             <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
               <i data-lucide="layers" class="w-4 h-4 text-red-500"></i>
-              Danh sách từ vựng ${this.dictHskFilter === "all" ? "toàn bộ HSK 1 - 6" : `cấp độ HSK ${this.dictHskFilter}`} (${words.length} từ)
+              Danh sách từ vựng ${label} (${words.length} từ)
             </h3>
             <span class="text-xs text-slate-400">Bấm vào từ để xem cách viết nét & chi tiết</span>
           </div>
@@ -2057,59 +2090,270 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =====================================================================
        MODULE 5: GAMES & SPACED REPETITION PENALTY BOX
+       (Categorized Decks: HSK 1 - 6, Business Chinese & Custom Flashcards)
        ===================================================================== */
+    selectedGameDeck: "hsk1",
+    selectedGameMode: "speed",
+
+    getDeckWords(deckKey = this.selectedGameDeck || "hsk1") {
+      const vocab = window.APP_DATA.vocabList || [];
+      switch (deckKey) {
+        case "hsk1":
+          return vocab.filter((w) => w.hsk === 1);
+        case "hsk2":
+          return vocab.filter((w) => w.hsk === 2);
+        case "hsk3":
+          return vocab.filter((w) => w.hsk === 3);
+        case "hsk4":
+          return vocab.filter((w) => w.hsk === 4);
+        case "hsk5":
+          return vocab.filter((w) => w.hsk === 5);
+        case "hsk6":
+          return vocab.filter((w) => w.hsk === 6);
+        case "business":
+          return vocab.filter((w) => w.category === "business" || w.hsk === "Thương Mại" || w.deck === "business");
+        case "custom": {
+          const cards = window.StorageService ? window.StorageService.getFlashcards() : [];
+          return cards.map((c) => ({
+            id: c.id,
+            hanzi: c.hanzi,
+            pinyin: c.pinyin,
+            meaning: c.meaning,
+            example: {
+              zh: c.example || c.hanzi,
+              vi: c.exampleVi || c.meaning
+            },
+            hsk: c.hsk || "Tự tạo",
+            category: "custom"
+          }));
+        }
+        case "penalty":
+          return this.penaltyWords || [];
+        default:
+          return vocab.filter((w) => w.hsk === 1);
+      }
+    },
+
+    getDeckDefinition(deckKey = this.selectedGameDeck || "hsk1") {
+      const defs = {
+        hsk1: { id: "hsk1", label: "HSK 1 (Sơ cấp 1)", shortLabel: "HSK 1", icon: "sparkles", desc: "150 từ vựng nền tảng, chào hỏi và sinh hoạt cơ bản." },
+        hsk2: { id: "hsk2", label: "HSK 2 (Sơ cấp 2)", shortLabel: "HSK 2", icon: "book-open", desc: "300 từ vựng mở rộng, du lịch, mua sắm và thể thao." },
+        hsk3: { id: "hsk3", label: "HSK 3 (Trung cấp sơ)", shortLabel: "HSK 3", icon: "award", desc: "600 từ vựng đàm thoại, môi trường và giải quyết vấn đề." },
+        hsk4: { id: "hsk4", label: "HSK 4 (Trung cấp)", shortLabel: "HSK 4", icon: "flame", desc: "1200 từ vựng thảo luận, kinh nghiệm và thái độ sống." },
+        hsk5: { id: "hsk5", label: "HSK 5 (Cao cấp)", shortLabel: "HSK 5", icon: "trending-up", desc: "2500 từ vựng chuyên sâu, triết lý, đọc báo và phân tích." },
+        hsk6: { id: "hsk6", label: "HSK 6 (Thành thạo)", shortLabel: "HSK 6", icon: "crown", desc: "5000 từ vựng học thuật, thành ngữ cổ và văn phong đĩnh đạc." },
+        business: { id: "business", label: "💼 Tiếng Trung Thương Mại", shortLabel: "💼 Thương Mại", icon: "briefcase", desc: "Từ vựng chuyên ngành: Hợp đồng, đàm phán, thư tín dụng L/C, tỷ giá, xuất nhập khẩu, chuỗi cung ứng." },
+        custom: { id: "custom", label: "⭐ Flashcard Tự Tạo Của Tôi", shortLabel: "⭐ Tự Tạo", icon: "layers", desc: "Toàn bộ thẻ từ vựng do bạn tự thêm hoặc dùng AI quét ảnh trang sách giáo trình." }
+      };
+      return defs[deckKey] || defs.hsk1;
+    },
+
+    selectGameDeck(deckKey) {
+      this.selectedGameDeck = deckKey;
+      const container = document.getElementById("viewContainer");
+      if (container) {
+        this.renderGames(container);
+        this.showToast(`Đã chuyển bộ từ vựng game sang: ${this.getDeckDefinition(deckKey).shortLabel}`, "info");
+      }
+    },
+
+    playGameWithCustomDeck() {
+      this.selectedGameDeck = "custom";
+      this.selectedGameMode = "speed";
+      window.location.hash = "#games";
+    },
+
     renderGames(container) {
+      if (!this.selectedGameDeck) {
+        this.selectedGameDeck = "hsk1";
+      }
+      this.selectedGameMode = this.selectedGameMode || "speed";
+      this.penaltyWords = window.StorageService.getPenaltyWords();
+
+      const activeDeckDef = this.getDeckDefinition(this.selectedGameDeck);
+      const activeWords = this.getDeckWords(this.selectedGameDeck);
+
+      const deckList = [
+        { id: "hsk1", label: "HSK 1", icon: "sparkles", count: this.getDeckWords("hsk1").length },
+        { id: "hsk2", label: "HSK 2", icon: "book-open", count: this.getDeckWords("hsk2").length },
+        { id: "hsk3", label: "HSK 3", icon: "award", count: this.getDeckWords("hsk3").length },
+        { id: "hsk4", label: "HSK 4", icon: "flame", count: this.getDeckWords("hsk4").length },
+        { id: "hsk5", label: "HSK 5", icon: "trending-up", count: this.getDeckWords("hsk5").length },
+        { id: "hsk6", label: "HSK 6", icon: "crown", count: this.getDeckWords("hsk6").length },
+        { id: "business", label: "💼 Tiếng Trung Thương Mại", icon: "briefcase", count: this.getDeckWords("business").length },
+        { id: "custom", label: "⭐ Flashcard Tự Tạo", icon: "layers", count: this.getDeckWords("custom").length }
+      ];
+
       container.innerHTML = `
         <div class="space-y-6 max-w-5xl mx-auto">
-          <!-- Game Tabs -->
+          <!-- Game Header -->
           <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-700 pb-4">
             <div>
               <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
                 <i data-lucide="gamepad-2" class="w-6 h-6 text-red-600"></i>
-                Trò Chơi Phản Xạ Từ Vựng (HSK 1 - 6)
+                Trò Chơi Phản Xạ Theo Từng Bộ Từ Vựng
               </h2>
               <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                3 chế độ chơi phản xạ cực nhanh. Từ sai hoặc hết giờ sẽ rơi vào Hộp Phạt (yêu cầu đúng 3 lần liên tiếp).
+                Rèn phản xạ thần tốc dựa trên tập từ vựng chính xác của mục bạn chọn: HSK 1 - 6, Thương Mại & Flashcard tự tạo.
               </p>
             </div>
 
-            <!-- Mode Selector Buttons -->
-            <div class="flex flex-wrap items-center p-1 bg-slate-100 dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 gap-1 text-xs font-bold">
-              <button id="gameTabSpeed" onclick="App.switchGameTab('speed')" class="px-3.5 py-2 rounded-xl transition bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm flex items-center gap-1">
-                <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-500"></i> Nối từ siêu tốc
-              </button>
-              <button id="gameTabQuiz" onclick="App.switchGameTab('quiz')" class="px-3.5 py-2 rounded-xl transition text-slate-600 dark:text-slate-400 hover:text-slate-900 flex items-center gap-1">
-                <i data-lucide="timer" class="w-3.5 h-3.5 text-red-500"></i> Phản xạ 5s
-              </button>
-              <button id="gameTabAudio" onclick="App.switchGameTab('audio')" class="px-3.5 py-2 rounded-xl transition text-slate-600 dark:text-slate-400 hover:text-slate-900 flex items-center gap-1">
-                <i data-lucide="volume-2" class="w-3.5 h-3.5 text-purple-500"></i> Nghe âm đoán chữ
-              </button>
-              <button id="gameTabPenalty" onclick="App.switchGameTab('penalty')" class="px-3.5 py-2 rounded-xl transition text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 flex items-center gap-1">
-                <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i> Hộp phạt (${this.penaltyWords.length})
+            <div class="flex items-center gap-2">
+              <button onclick="App.switchGameTab('penalty')" class="px-3.5 py-1.5 rounded-xl border border-red-200 dark:border-red-900/60 bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400 font-bold text-xs flex items-center gap-1.5 shadow-sm hover:bg-red-100 transition">
+                <i data-lucide="shield-alert" class="w-4 h-4"></i> Hộp phạt (${this.penaltyWords.length} từ)
               </button>
             </div>
           </div>
 
-          <!-- Dynamic Game Arena -->
+          <!-- 1. DECK CATEGORY SELECTOR (HSK 1-6, Business, Custom) -->
+          <div class="bg-white dark:bg-slate-800 p-4 md:p-5 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="text-xs font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1.5 uppercase tracking-wider">
+                <i data-lucide="layers" class="w-4 h-4 text-red-600"></i> Chọn Bộ Từ Vựng Để Luyện Chơi:
+              </span>
+              <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                Đang chơi: <b class="text-red-600 dark:text-red-400 uppercase">${activeDeckDef.label} (${activeWords.length} từ)</b>
+              </span>
+            </div>
+
+            <div class="flex flex-wrap gap-2 text-xs font-bold" id="deckSelectorContainer">
+              ${deckList
+                .map(
+                  (d) => `
+                <button
+                  onclick="App.selectGameDeck('${d.id}')"
+                  class="px-3.5 py-2 rounded-2xl transition flex items-center gap-1.5 ${
+                    this.selectedGameDeck === d.id
+                      ? "bg-red-600 text-white shadow-md shadow-red-500/20 scale-105"
+                      : "bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600"
+                  }"
+                >
+                  <i data-lucide="${d.icon}" class="w-3.5 h-3.5"></i>
+                  <span>${d.label}</span>
+                  <span class="text-[10px] px-1.5 py-0.2 rounded-full ${
+                    this.selectedGameDeck === d.id ? "bg-white/20 text-white" : "bg-slate-200 dark:bg-slate-600 text-slate-600 dark:text-slate-300"
+                  }">${d.count}</span>
+                </button>
+              `
+                )
+                .join("")}
+            </div>
+
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 italic">
+              📌 ${activeDeckDef.desc}
+            </p>
+          </div>
+
+          <!-- 2. GAME MODE SELECTOR -->
+          <div class="flex flex-wrap items-center justify-between gap-3 bg-slate-100 dark:bg-slate-800 p-1.5 rounded-2xl border border-slate-200 dark:border-slate-700">
+            <div class="flex flex-wrap items-center gap-1 text-xs font-bold">
+              <button id="gameTabSpeed" onclick="App.switchGameTab('speed')" class="px-4 py-2 rounded-xl transition ${this.selectedGameMode === "speed" ? "bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"} flex items-center gap-1.5">
+                <i data-lucide="zap" class="w-4 h-4 text-amber-500"></i> Nối từ siêu tốc
+              </button>
+              <button id="gameTabQuiz" onclick="App.switchGameTab('quiz')" class="px-4 py-2 rounded-xl transition ${this.selectedGameMode === "quiz" ? "bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"} flex items-center gap-1.5">
+                <i data-lucide="timer" class="w-4 h-4 text-red-500"></i> Phản xạ 5s
+              </button>
+              <button id="gameTabAudio" onclick="App.switchGameTab('audio')" class="px-4 py-2 rounded-xl transition ${this.selectedGameMode === "audio" ? "bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"} flex items-center gap-1.5">
+                <i data-lucide="volume-2" class="w-4 h-4 text-purple-500"></i> Nghe âm đoán chữ
+              </button>
+              <button id="gameTabPenalty" onclick="App.switchGameTab('penalty')" class="px-4 py-2 rounded-xl transition ${this.selectedGameMode === "penalty" ? "bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm" : "text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40"} flex items-center gap-1.5">
+                <i data-lucide="shield-alert" class="w-4 h-4"></i> Hộp phạt (${this.penaltyWords.length})
+              </button>
+            </div>
+
+            <div class="text-[11px] font-semibold text-slate-500 dark:text-slate-400 px-3 hidden sm:block">
+              Áp dụng cho: <span class="text-red-600 dark:text-red-400 font-bold">${activeDeckDef.shortLabel}</span>
+            </div>
+          </div>
+
+          <!-- 3. DYNAMIC GAME ARENA -->
           <div id="gameArenaContainer" class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 p-6 md:p-8 shadow-lg min-h-[420px] flex flex-col justify-center">
             <!-- Active Game Mode Renders Here -->
+          </div>
+
+          <!-- 4. ACTIVE DECK VOCABULARY EXPLORER -->
+          <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 dark:border-slate-700 pb-3">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-xl bg-red-100 dark:bg-red-950 text-red-600 flex items-center justify-center font-bold">
+                  <i data-lucide="${activeDeckDef.icon}" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <h3 class="font-extrabold text-sm text-slate-800 dark:text-white">
+                    Kho Từ Vựng Của Mục: ${activeDeckDef.label}
+                  </h3>
+                  <p class="text-[11px] text-slate-500 dark:text-slate-400">
+                    Toàn bộ câu hỏi của các trò chơi ở trên được trích xuất trực tiếp từ danh sách này.
+                  </p>
+                </div>
+              </div>
+              <span class="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">
+                ${activeWords.length} Từ vựng
+              </span>
+            </div>
+
+            ${
+              activeWords.length === 0
+                ? `
+              <div class="text-center py-10 text-slate-400">
+                <i data-lucide="inbox" class="w-10 h-10 mx-auto mb-2 opacity-50"></i>
+                <p class="text-xs font-semibold">Chưa có từ vựng nào trong mục này.</p>
+                ${
+                  this.selectedGameDeck === "custom"
+                    ? `
+                  <a href="#flashcards" class="mt-3 inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-red-600 text-white text-xs font-bold hover:bg-red-700 transition shadow-sm">
+                    <i data-lucide="plus" class="w-3.5 h-3.5"></i> Tạo Flashcard Của Bạn Ngay
+                  </a>
+                `
+                    : ""
+                }
+              </div>
+            `
+                : `
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 max-h-[380px] overflow-y-auto pr-1">
+                ${activeWords
+                  .map(
+                    (w) => `
+                  <div class="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-between hover:border-red-400 transition">
+                    <div class="min-w-0 pr-2">
+                      <div class="font-hanzi font-bold text-xl text-slate-800 dark:text-white leading-tight">
+                        ${w.hanzi}
+                      </div>
+                      <div class="text-xs text-red-600 dark:text-red-400 font-semibold truncate">
+                        ${w.pinyin}
+                      </div>
+                      <div class="text-[11px] text-slate-500 dark:text-slate-400 truncate" title="${w.meaning}">
+                        ${w.meaning}
+                      </div>
+                    </div>
+                    <button onclick="AudioService.speak('${w.hanzi}')" class="p-2 rounded-xl bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400 shadow-sm shrink-0 transition" title="Nghe phát âm">
+                      <i data-lucide="volume-2" class="w-4 h-4"></i>
+                    </button>
+                  </div>
+                `
+                  )
+                  .join("")}
+              </div>
+            `
+            }
           </div>
         </div>
       `;
 
-      // Start default game
-      this.switchGameTab("speed");
+      // Start current game mode
+      this.switchGameTab(this.selectedGameMode);
     },
 
     switchGameTab(mode) {
+      this.selectedGameMode = mode;
       const tabs = ["speed", "quiz", "audio", "penalty"];
       tabs.forEach((t) => {
         const btn = document.getElementById(`gameTab${t.charAt(0).toUpperCase() + t.slice(1)}`);
         if (btn) {
           if (t === mode) {
-            btn.className = "px-3.5 py-2 rounded-xl transition bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm flex items-center gap-1 font-bold";
+            btn.className = "px-4 py-2 rounded-xl transition bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm flex items-center gap-1.5 font-bold";
           } else {
-            btn.className = "px-3.5 py-2 rounded-xl transition text-slate-600 dark:text-slate-400 hover:text-slate-900 flex items-center gap-1 font-bold";
+            btn.className = "px-4 py-2 rounded-xl transition text-slate-600 dark:text-slate-400 hover:text-slate-900 flex items-center gap-1.5 font-bold";
           }
         }
       });
@@ -2138,15 +2382,53 @@ document.addEventListener("DOMContentLoaded", () => {
       this.refreshIcons();
     },
 
-    // 1. Game: Speed Matching (Nối từ)
+    // 1. Game: Speed Matching (Nối từ siêu tốc)
     initSpeedMatchingGame(arena) {
-      // Pick 4 random words
-      const words = [...window.APP_DATA.vocabList].sort(() => 0.5 - Math.random()).slice(0, 4);
+      const deckWords = this.getDeckWords(this.selectedGameDeck);
+      const deckDef = this.getDeckDefinition(this.selectedGameDeck);
+
+      if (deckWords.length < 4) {
+        arena.innerHTML = `
+          <div class="text-center py-10 space-y-4 max-w-md mx-auto">
+            <div class="w-16 h-16 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-600 flex items-center justify-center mx-auto text-2xl shadow-lg">
+              <i data-lucide="alert-triangle" class="w-8 h-8"></i>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-800 dark:text-white">Cần tối thiểu 4 từ vựng để chơi!</h3>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              Trò chơi Nối từ siêu tốc cần ít nhất 4 từ để ghép đôi. Mục <b>${deckDef.label}</b> hiện đang có <b>${deckWords.length}</b> từ.
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+              ${
+                this.selectedGameDeck === "custom"
+                  ? `
+                <a href="#flashcards" class="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5">
+                  <i data-lucide="plus" class="w-4 h-4"></i> Tạo thêm Flashcard ngay
+                </a>
+              `
+                  : `
+                <button onclick="App.selectGameDeck('business')" class="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-md transition">
+                  Chơi với Tiếng Trung Thương Mại
+                </button>
+              `
+              }
+              <button onclick="App.selectGameDeck('hsk1')" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold text-xs">
+                Chuyển sang HSK 1
+              </button>
+            </div>
+          </div>
+        `;
+        this.refreshIcons();
+        return;
+      }
+
+      // Pick 4 random words strictly from this deck
+      const words = [...deckWords].sort(() => 0.5 - Math.random()).slice(0, 4);
       const hanziCards = words.map((w) => ({ id: w.id, text: w.hanzi, type: "hanzi" })).sort(() => 0.5 - Math.random());
       const meaningCards = words.map((w) => ({ id: w.id, text: `${w.pinyin} - ${w.meaning}`, type: "meaning" })).sort(() => 0.5 - Math.random());
 
       this.gameState = {
         mode: "speed",
+        deck: this.selectedGameDeck,
         words,
         selectedHanzi: null,
         selectedMeaning: null,
@@ -2160,7 +2442,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="space-y-6">
           <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
             <span class="text-xs font-bold text-slate-500 uppercase flex items-center gap-1.5">
-              <i data-lucide="zap" class="w-4 h-4 text-amber-500"></i> Nối chữ Hán với Pinyin & Nghĩa tương ứng
+              <i data-lucide="zap" class="w-4 h-4 text-amber-500"></i> Nối chữ Hán với Pinyin & Nghĩa tương ứng [${deckDef.shortLabel}]
             </span>
             <div class="flex items-center gap-4 text-xs font-bold">
               <span class="text-amber-600 flex items-center gap-1 font-mono">
@@ -2295,6 +2577,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const arena = document.getElementById("gameArenaContainer");
       if (!arena) return;
 
+      const deckDef = this.getDeckDefinition(this.selectedGameDeck);
+
       arena.innerHTML = `
         <div class="text-center py-8 space-y-4 max-w-md mx-auto">
           <div class="w-16 h-16 rounded-full ${isWin ? "bg-emerald-100 text-emerald-600" : "bg-red-100 text-red-600"} flex items-center justify-center mx-auto text-2xl shadow-lg">
@@ -2304,11 +2588,11 @@ document.addEventListener("DOMContentLoaded", () => {
             ${isWin ? "Chiến Thắng Xuất Sắc!" : "Hết Giờ Phản Xạ!"}
           </h3>
           <p class="text-xs text-slate-500 dark:text-slate-400">
-            ${isWin ? "Bạn đã hoàn thành nối 4 cặp từ cực nhanh và chuẩn xác." : "Các từ chưa hoàn thành đã được thêm vào danh sách Cần Ôn Gấp."}
+            ${isWin ? `Bạn đã hoàn thành nối 4 cặp từ mục "${deckDef.shortLabel}" cực nhanh và chuẩn xác.` : "Các từ chưa hoàn thành đã được thêm vào danh sách Cần Ôn Gấp."}
           </p>
           <div class="flex items-center justify-center gap-3 pt-3">
             <button onclick="App.initSpeedMatchingGame(document.getElementById('gameArenaContainer'))" class="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5">
-              <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Chơi Lại Màn Mới
+              <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Chơi Lại Màn Mới (${deckDef.shortLabel})
             </button>
             <button onclick="App.switchGameTab('penalty')" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-700 font-bold text-xs text-slate-700 dark:text-slate-200">
               Xem Hộp Phạt
@@ -2321,10 +2605,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 2. Game: Time Attack Quiz (5s per question)
     initTimeAttackQuiz(arena) {
-      const words = [...window.APP_DATA.vocabList].sort(() => 0.5 - Math.random());
+      const deckWords = this.getDeckWords(this.selectedGameDeck);
+      const deckDef = this.getDeckDefinition(this.selectedGameDeck);
+
+      if (deckWords.length === 0) {
+        arena.innerHTML = `
+          <div class="text-center py-10 space-y-4 max-w-md mx-auto">
+            <div class="w-16 h-16 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-600 flex items-center justify-center mx-auto text-2xl shadow-lg">
+              <i data-lucide="inbox" class="w-8 h-8"></i>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-800 dark:text-white">Mục này chưa có từ vựng!</h3>
+            <p class="text-xs text-slate-500">Vui lòng chọn mục khác hoặc tạo thêm Flashcard.</p>
+            <button onclick="App.selectGameDeck('business')" class="px-5 py-2.5 rounded-xl bg-red-600 text-white font-bold text-xs shadow-md">
+              Chơi với Tiếng Trung Thương Mại
+            </button>
+          </div>
+        `;
+        this.refreshIcons();
+        return;
+      }
+
+      const words = [...deckWords].sort(() => 0.5 - Math.random());
       this.gameState = {
         mode: "quiz",
+        deck: this.selectedGameDeck,
         words,
+        deckWords,
         currentIndex: 0,
         score: 0,
         secondsLeft: 5,
@@ -2341,9 +2647,17 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const currentWord = this.gameState.words[this.gameState.currentIndex];
-      // Generate 3 wrong options
-      const otherWords = window.APP_DATA.vocabList.filter((w) => w.id !== currentWord.id);
-      const wrongOptions = otherWords.sort(() => 0.5 - Math.random()).slice(0, 3).map((w) => w.meaning);
+      const deckDef = this.getDeckDefinition(this.selectedGameDeck);
+
+      // Generate 3 wrong options from the same deck (or fallback if deck < 4 words)
+      let otherPool = this.gameState.deckWords.filter((w) => w.id !== currentWord.id);
+      if (otherPool.length < 3) {
+        otherPool = (window.APP_DATA.vocabList || []).filter((w) => w.id !== currentWord.id);
+      }
+      const wrongOptions = otherPool
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 3)
+        .map((w) => w.meaning);
       const allOptions = [currentWord.meaning, ...wrongOptions].sort(() => 0.5 - Math.random());
 
       this.gameState.secondsLeft = 5;
@@ -2351,8 +2665,9 @@ document.addEventListener("DOMContentLoaded", () => {
       arena.innerHTML = `
         <div class="space-y-6 max-w-xl mx-auto w-full">
           <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
-            <span class="text-xs font-bold text-slate-500 uppercase">
-              Câu ${this.gameState.currentIndex + 1} / ${Math.min(10, this.gameState.words.length)}
+            <span class="text-xs font-bold text-slate-500 uppercase flex items-center gap-1.5">
+              <span>${deckDef.shortLabel}:</span>
+              <span>Câu ${this.gameState.currentIndex + 1} / ${Math.min(10, this.gameState.words.length)}</span>
             </span>
             <div class="flex items-center gap-3 text-xs font-bold">
               <span class="text-red-600 flex items-center gap-1 font-mono text-sm">
@@ -2416,7 +2731,8 @@ document.addEventListener("DOMContentLoaded", () => {
         this.gameState.score += 10;
         this.showToast("Chính xác! +10 Điểm", "success");
       } else {
-        const word = window.APP_DATA.vocabList.find((w) => w.id === wordId);
+        const pool = this.gameState.words || window.APP_DATA.vocabList;
+        const word = pool.find((w) => w.id === wordId) || window.APP_DATA.vocabList.find((w) => w.id === wordId);
         if (word) {
           window.StorageService.addPenaltyWord(word);
           this.updateHeaderProgress();
@@ -2433,6 +2749,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const arena = document.getElementById("gameArenaContainer");
       if (!arena) return;
 
+      const deckDef = this.getDeckDefinition(this.selectedGameDeck);
+
       arena.innerHTML = `
         <div class="text-center py-8 space-y-4 max-w-md mx-auto">
           <div class="w-16 h-16 rounded-full bg-red-100 text-red-600 flex items-center justify-center mx-auto text-2xl shadow-lg">
@@ -2441,12 +2759,13 @@ document.addEventListener("DOMContentLoaded", () => {
           <h3 class="text-2xl font-extrabold text-slate-800 dark:text-white">
             Hoàn Thành Chuỗi Phản Xạ 5s!
           </h3>
+          <p class="text-xs text-slate-500">Mục: <b>${deckDef.label}</b></p>
           <p class="text-sm font-bold text-red-600 dark:text-red-400">
             Tổng điểm của bạn: ${this.gameState.score} điểm
           </p>
           <div class="flex items-center justify-center gap-3 pt-3">
             <button onclick="App.initTimeAttackQuiz(document.getElementById('gameArenaContainer'))" class="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5">
-              <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Thử Lại Màn Mới
+              <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Thử Lại Màn Mới (${deckDef.shortLabel})
             </button>
           </div>
         </div>
@@ -2456,10 +2775,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 3. Game: Audio Reflex (Nghe âm đoán chữ)
     initAudioReflexGame(arena) {
-      const words = [...window.APP_DATA.vocabList].sort(() => 0.5 - Math.random());
+      const deckWords = this.getDeckWords(this.selectedGameDeck);
+      const deckDef = this.getDeckDefinition(this.selectedGameDeck);
+
+      if (deckWords.length === 0) {
+        arena.innerHTML = `
+          <div class="text-center py-10 space-y-4 max-w-md mx-auto">
+            <div class="w-16 h-16 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mx-auto text-2xl shadow-lg">
+              <i data-lucide="inbox" class="w-8 h-8"></i>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-800 dark:text-white">Mục này chưa có từ vựng!</h3>
+            <p class="text-xs text-slate-500">Vui lòng chọn mục khác để luyện nghe.</p>
+          </div>
+        `;
+        this.refreshIcons();
+        return;
+      }
+
+      const words = [...deckWords].sort(() => 0.5 - Math.random());
       this.gameState = {
         mode: "audio",
+        deck: this.selectedGameDeck,
         words,
+        deckWords,
         currentIndex: 0,
         score: 0
       };
@@ -2467,16 +2805,20 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     renderNextAudioQuestion(arena) {
-      if (this.gameState.currentIndex >= Math.min(8, this.gameState.words.length)) {
+      const maxQ = Math.min(8, this.gameState.words.length);
+      const deckDef = this.getDeckDefinition(this.selectedGameDeck);
+
+      if (this.gameState.currentIndex >= maxQ) {
         arena.innerHTML = `
           <div class="text-center py-8 space-y-4 max-w-md mx-auto">
             <div class="w-16 h-16 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mx-auto text-2xl shadow-lg">
               <i data-lucide="headphones" class="w-8 h-8"></i>
             </div>
             <h3 class="text-2xl font-extrabold text-slate-800 dark:text-white">Thính Giác Tuyệt Vời!</h3>
+            <p class="text-xs text-slate-500">Mục: <b>${deckDef.label}</b></p>
             <p class="text-sm text-purple-600 font-bold">Điểm số nghe âm: ${this.gameState.score} điểm</p>
             <button onclick="App.initAudioReflexGame(document.getElementById('gameArenaContainer'))" class="px-5 py-2.5 rounded-xl bg-red-600 text-white font-bold text-xs shadow-md">
-              Chơi Lại
+              Chơi Lại (${deckDef.shortLabel})
             </button>
           </div>
         `;
@@ -2485,14 +2827,20 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const targetWord = this.gameState.words[this.gameState.currentIndex];
-      const others = window.APP_DATA.vocabList.filter((w) => w.id !== targetWord.id).sort(() => 0.5 - Math.random()).slice(0, 3);
+      let otherPool = this.gameState.deckWords.filter((w) => w.id !== targetWord.id);
+      if (otherPool.length < 3) {
+        otherPool = (window.APP_DATA.vocabList || []).filter((w) => w.id !== targetWord.id);
+      }
+      const others = [...otherPool].sort(() => 0.5 - Math.random()).slice(0, 3);
       const options = [targetWord, ...others].sort(() => 0.5 - Math.random());
 
       arena.innerHTML = `
         <div class="space-y-6 max-w-lg mx-auto w-full text-center">
-          <span class="text-xs font-bold text-slate-400 uppercase">
-            Nghe âm thanh và chọn Chữ Hán tương ứng
-          </span>
+          <div class="flex items-center justify-between text-xs font-bold text-slate-400 uppercase">
+            <span>${deckDef.shortLabel}</span>
+            <span>Câu ${this.gameState.currentIndex + 1} / ${maxQ}</span>
+            <span class="text-purple-600">Điểm: ${this.gameState.score}</span>
+          </div>
 
           <div class="py-4">
             <button
@@ -2502,7 +2850,7 @@ document.addEventListener("DOMContentLoaded", () => {
             >
               <i data-lucide="volume-2" class="w-10 h-10"></i>
             </button>
-            <p class="text-xs text-slate-500 mt-2">Bấm loa để nghe lại phát âm</p>
+            <p class="text-xs text-slate-500 mt-2">Bấm loa để nghe lại phát âm chữ Hán</p>
           </div>
 
           <div class="grid grid-cols-2 gap-4">
@@ -2532,7 +2880,8 @@ document.addEventListener("DOMContentLoaded", () => {
         this.gameState.score += 15;
         this.showToast("Rất chuẩn xác! +15 Điểm", "success");
       } else {
-        const wrong = window.APP_DATA.vocabList.find((w) => w.id === targetId);
+        const pool = this.gameState.words || window.APP_DATA.vocabList;
+        const wrong = pool.find((w) => w.id === targetId) || window.APP_DATA.vocabList.find((w) => w.id === targetId);
         if (wrong) {
           window.StorageService.addPenaltyWord(wrong);
           this.updateHeaderProgress();
@@ -2724,36 +3073,47 @@ document.addEventListener("DOMContentLoaded", () => {
               </p>
             </div>
 
-            <!-- Sub Tabs -->
-            <div class="flex flex-wrap items-center p-1 bg-slate-100 dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 gap-1 text-xs font-bold">
+            <div class="flex flex-wrap items-center gap-2">
               <button
-                id="fcTabPracticeBtn"
-                onclick="App.switchFlashcardTab('practice')"
-                class="px-3.5 py-2 rounded-xl transition ${this.flashcardTab === "practice" ? "bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"} flex items-center gap-1.5"
+                onclick="App.playGameWithCustomDeck()"
+                class="px-4 py-2 rounded-2xl bg-gradient-to-r from-red-600 to-amber-600 hover:from-red-700 hover:to-amber-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5"
+                title="Chơi các trò chơi phản xạ trực tiếp bằng các thẻ từ vựng tự tạo này"
               >
-                <i data-lucide="play-circle" class="w-4 h-4"></i> Luyện Thẻ 3D
+                <i data-lucide="gamepad-2" class="w-4 h-4"></i>
+                <span>Chơi Game Với Flashcard (${this.flashcards.length})</span>
               </button>
-              <button
-                id="fcTabCreateBtn"
-                onclick="App.switchFlashcardTab('create')"
-                class="px-3.5 py-2 rounded-xl transition ${this.flashcardTab === "create" ? "bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"} flex items-center gap-1.5"
-              >
-                <i data-lucide="plus-circle" class="w-4 h-4 text-amber-500"></i> Tạo Thẻ Mới (AI)
-              </button>
-              <button
-                id="fcTabScanBtn"
-                onclick="App.switchFlashcardTab('scan')"
-                class="px-3.5 py-2 rounded-xl transition ${this.flashcardTab === "scan" ? "bg-white dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 shadow-sm" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"} flex items-center gap-1.5"
-              >
-                <i data-lucide="scan-line" class="w-4 h-4 text-emerald-500"></i> Quét Trang Sách (AI)
-              </button>
-              <button
-                id="fcTabManageBtn"
-                onclick="App.switchFlashcardTab('manage')"
-                class="px-3.5 py-2 rounded-xl transition ${this.flashcardTab === "manage" ? "bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"} flex items-center gap-1.5"
-              >
-                <i data-lucide="folder-cog" class="w-4 h-4"></i> Quản Lý Bộ Thẻ (${this.flashcards.length})
-              </button>
+
+              <!-- Sub Tabs -->
+              <div class="flex flex-wrap items-center p-1 bg-slate-100 dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 gap-1 text-xs font-bold">
+                <button
+                  id="fcTabPracticeBtn"
+                  onclick="App.switchFlashcardTab('practice')"
+                  class="px-3.5 py-2 rounded-xl transition ${this.flashcardTab === "practice" ? "bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"} flex items-center gap-1.5"
+                >
+                  <i data-lucide="play-circle" class="w-4 h-4"></i> Luyện Thẻ 3D
+                </button>
+                <button
+                  id="fcTabCreateBtn"
+                  onclick="App.switchFlashcardTab('create')"
+                  class="px-3.5 py-2 rounded-xl transition ${this.flashcardTab === "create" ? "bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"} flex items-center gap-1.5"
+                >
+                  <i data-lucide="plus-circle" class="w-4 h-4 text-amber-500"></i> Tạo Thẻ Mới (AI)
+                </button>
+                <button
+                  id="fcTabScanBtn"
+                  onclick="App.switchFlashcardTab('scan')"
+                  class="px-3.5 py-2 rounded-xl transition ${this.flashcardTab === "scan" ? "bg-white dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 shadow-sm" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"} flex items-center gap-1.5"
+                >
+                  <i data-lucide="scan-line" class="w-4 h-4 text-emerald-500"></i> Quét Trang Sách (AI)
+                </button>
+                <button
+                  id="fcTabManageBtn"
+                  onclick="App.switchFlashcardTab('manage')"
+                  class="px-3.5 py-2 rounded-xl transition ${this.flashcardTab === "manage" ? "bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"} flex items-center gap-1.5"
+                >
+                  <i data-lucide="folder-cog" class="w-4 h-4"></i> Quản Lý Bộ Thẻ (${this.flashcards.length})
+                </button>
+              </div>
             </div>
           </div>
 
