@@ -6,7 +6,8 @@ const STORAGE_KEYS = {
   STATS: "ch_app_stats",
   PENALTY: "ch_app_penalty_list",
   FLASHCARDS: "ch_app_flashcards",
-  GOALS: "ch_app_goals"
+  GOALS: "ch_app_goals",
+  DECKS: "ch_app_decks"
 };
 
 const StorageService = {
@@ -199,6 +200,32 @@ const StorageService = {
     return { list, cleared };
   },
 
+  // Custom Decks
+  getDecks() {
+    const raw = localStorage.getItem(STORAGE_KEYS.DECKS);
+    const defaults = ["Bộ mặc định", "HSK Từ vựng của tôi", "Giao tiếp hàng ngày", "Từ khó ghi nhớ"];
+    if (!raw) {
+      localStorage.setItem(STORAGE_KEYS.DECKS, JSON.stringify(defaults));
+      return defaults;
+    }
+    try {
+      return JSON.parse(raw);
+    } catch (e) {
+      return defaults;
+    }
+  },
+
+  saveDeck(deckName) {
+    if (!deckName || !deckName.trim()) return this.getDecks();
+    const decks = this.getDecks();
+    const clean = deckName.trim();
+    if (!decks.includes(clean)) {
+      decks.push(clean);
+      localStorage.setItem(STORAGE_KEYS.DECKS, JSON.stringify(decks));
+    }
+    return decks;
+  },
+
   // Custom Flashcards
   getFlashcards() {
     const raw = localStorage.getItem(STORAGE_KEYS.FLASHCARDS);
@@ -212,6 +239,8 @@ const StorageService = {
           example: "只要坚持不懈，就一定能学会中文。",
           exampleVi: "Chỉ cần kiên trì không nản, nhất định sẽ học được tiếng Trung.",
           hsk: 4,
+          deck: "Bộ mặc định",
+          notes: "Gồm chữ 坚持 (kiên trì) và 不懈 (không lơ là)",
           status: "learning", // 'forgot', 'learning', 'mastered'
           lastReview: new Date().toISOString()
         },
@@ -223,7 +252,22 @@ const StorageService = {
           example: "学习要经常温故知新，才能真正掌握。",
           exampleVi: "Học tập cần thường xuyên ôn cố tri tân thì mới thực sự nắm vững.",
           hsk: 5,
+          deck: "Bộ mặc định",
+          notes: "Thành ngữ Khổng Tử trong Luận Ngữ",
           status: "vague",
+          lastReview: new Date().toISOString()
+        },
+        {
+          id: "fc_3",
+          hanzi: "千里之行",
+          pinyin: "qiān lǐ zhī xíng",
+          meaning: "Chuyến đi ngàn dặm (bắt đầu từ bước chân đầu tiên)",
+          example: "千里之行，始于足下。",
+          exampleVi: "Chuyến đi ngàn dặm bắt đầu từ một bước chân.",
+          hsk: 3,
+          deck: "HSK Từ vựng của tôi",
+          notes: "Lão Tử - Đạo Đức Kinh",
+          status: "mastered",
           lastReview: new Date().toISOString()
         }
       ];
@@ -242,13 +286,14 @@ const StorageService = {
     if (card.id) {
       const index = cards.findIndex((c) => c.id === card.id);
       if (index >= 0) {
-        cards[index] = { ...cards[index], ...card };
+        cards[index] = { ...cards[index], ...card, lastReview: new Date().toISOString() };
       } else {
         cards.unshift(card);
       }
     } else {
       card.id = "fc_" + Date.now();
       card.status = card.status || "learning";
+      card.deck = card.deck || "Bộ mặc định";
       card.lastReview = new Date().toISOString();
       cards.unshift(card);
     }
@@ -272,6 +317,19 @@ const StorageService = {
     });
     localStorage.setItem(STORAGE_KEYS.FLASHCARDS, JSON.stringify(cards));
     return cards;
+  },
+
+  importFlashcards(newCards) {
+    if (!Array.isArray(newCards)) return this.getFlashcards();
+    const current = this.getFlashcards();
+    newCards.forEach((c) => {
+      if (c.hanzi && c.meaning) {
+        c.id = "fc_" + Date.now() + "_" + Math.random().toString(36).substring(2, 6);
+        current.unshift(c);
+      }
+    });
+    localStorage.setItem(STORAGE_KEYS.FLASHCARDS, JSON.stringify(current));
+    return current;
   }
 };
 
