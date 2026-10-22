@@ -8,7 +8,8 @@ const STORAGE_KEYS = {
   FLASHCARDS: "ch_app_flashcards",
   GOALS: "ch_app_goals",
   DECKS: "ch_app_decks",
-  USER_LEVEL: "ch_app_user_level"
+  USER_LEVEL: "ch_app_user_level",
+  AI_LOOKUP_CACHE: "ch_app_ai_lookup_cache"
 };
 
 const StorageService = {
@@ -353,6 +354,50 @@ const StorageService = {
     });
     localStorage.setItem(STORAGE_KEYS.FLASHCARDS, JSON.stringify(current));
     return current;
+  },
+
+  // AI Lookup Cache & History
+  getAiLookupHistory() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEYS.AI_LOOKUP_CACHE);
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) {
+      return [];
+    }
+  },
+
+  getAiLookupCache(query) {
+    if (!query) return null;
+    const history = this.getAiLookupHistory();
+    const q = query.trim().toLowerCase();
+    return history.find((item) =>
+      (item.hanzi && item.hanzi.toLowerCase() === q) ||
+      (item.pinyin && item.pinyin.toLowerCase() === q) ||
+      (item.query && item.query.toLowerCase() === q)
+    ) || null;
+  },
+
+  saveAiLookupItem(wordObj) {
+    if (!wordObj || !wordObj.hanzi) return;
+    try {
+      let history = this.getAiLookupHistory();
+      // Remove existing item with same hanzi
+      history = history.filter((item) => item.hanzi !== wordObj.hanzi);
+      // Put at start
+      history.unshift({
+        ...wordObj,
+        savedAt: Date.now()
+      });
+      // Keep up to 60 items
+      if (history.length > 60) history = history.slice(0, 60);
+      localStorage.setItem(STORAGE_KEYS.AI_LOOKUP_CACHE, JSON.stringify(history));
+    } catch (e) {
+      console.warn("Could not save AI lookup cache", e);
+    }
+  },
+
+  clearAiLookupHistory() {
+    localStorage.removeItem(STORAGE_KEYS.AI_LOOKUP_CACHE);
   }
 };
 
