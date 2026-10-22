@@ -207,17 +207,23 @@ Cấu trúc JSON mong muốn:
       return {
         pinyin: "hàn zì",
         meaning: "Nghĩa của từ " + hanzi,
+        hsk: 3,
+        wordType: "Từ vựng",
         exampleZh: `学习${hanzi}很有用。`,
-        exampleVi: `Học từ ${hanzi} rất có ích.`
+        exampleVi: `Học từ ${hanzi} rất có ích.`,
+        notes: `Mẹo ghi nhớ: Luyện viết và đọc phát âm nhiều lần từ ${hanzi}.`
       };
     }
 
-    const prompt = `Từ tiếng Trung: "${hanzi}". Hãy tự động bổ sung thông tin tạo Flashcard. Trả về JSON:
+    const prompt = `Từ/Cụm từ tiếng Trung: "${hanzi}". Hãy phân tích sâu và tự động bổ sung thông tin tạo Flashcard học tập. Trả về DUY NHẤT định dạng JSON chuẩn:
 {
-  "pinyin": "phiên âm pinyin",
-  "meaning": "nghĩa tiếng Việt ngắn gọn",
-  "exampleZh": "câu ví dụ chữ Hán ngắn gọn thực tế",
-  "exampleVi": "dịch nghĩa câu ví dụ sang tiếng Việt"
+  "pinyin": "phiên âm pinyin có dấu thanh điệu chuẩn",
+  "meaning": "nghĩa tiếng Việt ngắn gọn, xúc tích",
+  "hsk": 1-6 (số nguyên cấp độ HSK ước lượng),
+  "wordType": "Danh từ / Động từ / Tính từ / Thành ngữ...",
+  "exampleZh": "câu ví dụ chữ Hán ngắn gọn, thực tế đời sống",
+  "exampleVi": "dịch nghĩa câu ví dụ sang tiếng Việt",
+  "notes": "Mẹo ghi nhớ hoặc chiết tự chữ Hán (giải thích bộ thủ hoặc cách nhớ ngắn gọn)"
 }`;
 
     const raw = await this.callGemini(prompt);
