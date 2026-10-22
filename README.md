@@ -47,13 +47,21 @@
   - Người dùng bấm nút Micro nói tiếng Trung, hệ thống nhận diện giọng nói và hiển thị văn bản thời gian thực.
   - Gemini AI đóng vai giám khảo khẩu ngữ: Chấm điểm thang 10, nhận xét độ lưu loát, sửa lỗi ngữ pháp, gợi ý diễn đạt tự nhiên như người bản xứ và **phát âm câu đối thoại phản hồi lại** để người học tiếp tục tương tác.
 
-### 4. Kho Tàng Thành Ngữ & Ca Dao Tục Ngữ (Chengyu / Điển Tích)
-- Mỗi thành ngữ/tục ngữ bao gồm:
-  1. Chữ Hán + Pinyin + Nghĩa đen & Nghĩa bóng.
-  2. Hình ảnh minh họa trực quan.
-  3. **Câu chuyện/Điển tích lịch sử nguồn gốc** (Ví dụ: 掩耳盗铃 Bịt tai trộm chuông, 塞翁失马 Tái ông thất mã, 画蛇添足 Vẽ rắn thêm chân, 愚公移山 Ngu công dời núi...).
-  4. Câu ví dụ ứng dụng trong giao tiếp hiện đại (kèm nút nghe phát âm).
-- Nút **"Tạo câu mới bằng Gemini AI"**: Người dùng nhập chủ đề (Kiên trì, Học tập, Tình bạn...), AI sẽ tự động sáng tạo thành ngữ cùng điển tích hoàn chỉnh.
+### 4. Kho Tàng Thành Ngữ Điển Tích & Ca Dao Tục Ngữ (Chia 2 Mục Chuyên Biệt)
+Hệ thống phân tách rành mạch thành **2 phân hệ chuyên sâu độc lập** cả trên thanh điều hướng Sidebar (`#chengyu` & `#proverbs`) lẫn giao diện Tabs với Hero Banner phong cách văn hóa riêng:
+- **🐉 Phân hệ 1: Thành Ngữ Điển Tích 4 Chữ (成语 Chengyu - 30 câu chọn lọc):**
+  - Bắt nguồn từ văn học cổ điển Trung Hoa: *Sử Ký Tư Mã Thiên, Chiến Quốc Sách, Tả Truyện, Tam Quốc Diễn Nghĩa, Hoài Nam Tử, Hàn Phi Tử...*
+  - Tiêu biểu: *掩耳盗铃 (Bịt tai trộm chuông), 塞翁失马 (Tái ông thất mã), 画蛇添足 (Vẽ rắn thêm chân), 愚公移山 (Ngu Công dời núi), 卧薪尝胆 (Nếm mật nằm gai), 破釜沉舟 (Đập nồi dìm thuyền), 望梅止渴 (Nhìn mơ đỡ khát), 班门弄斧 (Múa rìu qua mắt thợ), 狐假虎威 (Cáo mượn oai hùm), 拔苗助长 (Kéo mạ giúp lớn), 盲人摸象 (Thầy bói xem voi), 亡羊补牢 (Mất cừu sửa chuồng), 画龙点睛 (Vẽ rồng điểm mắt), 对牛弹琴 (Đàn gảy tai trâu), 自相矛盾 (Tự mâu thuẫn), 杯弓蛇影 (Trông gà hóa cuốc), 滥竽充数 (Trà trộn cho đủ số), 刻舟求剑 (Khắc thuyền tìm kiếm), 叶公好龙 (Diệp Công thích rồng), 胸有成竹 (Trong ngực có sẵn tre), 笨鸟先飞 (Chim vụng bay trước), 爱屋及乌 (Yêu ai yêu cả đường đi), 糖衣炮弹 (Đạn bọc đường), 水滴石穿 (Nước chảy đá mòn), 闻鸡起舞 (Nghe gà gáy múa gươm)...*
+- **🏮 Phân hệ 2: Ca Dao & Tục Ngữ Nhân Sinh (俗语・谚语 Suyu & Yanyu - 21 câu kinh điển):**
+  - Đúc kết từ đạo lý dân gian, luật nhân quả, kinh nghiệm đời sống: *Đạo Đức Kinh, Tăng Quảng Hiền Văn, Khổng Tử Gia Ngữ, Luận Hoành, Hồng Lâu Mộng...*
+  - Tiêu biểu: *千里之行始于足下 (Hành trình ngàn dặm bắt đầu từ một bước chân), 一寸光阴一寸金寸金难买寸光阴 (Tấc bóng tấc vàng), 吃水不忘挖井人 (Uống nước nhớ nguồn), 活到老学到老 (Sống đến già học đến già), 失败乃成功之母 (Thất bại là mẹ thành công), 熟能生巧 (Trăm hay không bằng tay quen), 近朱者赤近墨者黑 (Gần mực thì đen gần đèn thì rạng), 知己知彼百战百胜 (Biết người biết ta trăm trận trăm thắng), 谋事在人成事在天 (Mưu sự tại nhân thành sự tại thiên), 树欲静而风不止 (Cây muốn lặng mà gió chẳng dừng), 万事开头难 (Vạn sự khởi đầu nan), 水至清则无鱼 (Nước trong quá thì không có cá), 良药苦口利于病 (Thuốc đắng dã tật), 千里送鹅毛礼轻情意重 (Ngàn dặm gửi lông ngỗng của tuy mọn nghĩa nặng nghìn cân), 知人知面不知心 (Biết người biết mặt khó biết lòng), 冰冻三尺非一日之寒 (Băng dày ba thước không phải cái lạnh một ngày), 世上无难事只怕有心人 (Không việc gì khó chỉ sợ lòng không bền), 留得青山在不怕没柴烧 (Còn rừng xanh lo gì không có củi), 路遥知马力日久见人心 (Đường dài biết sức ngựa ngày dài tỏ lòng người), 吃得苦中苦方为人上人 (Khổ luyện thành tài)...*
+- **Chi tiết từng thẻ văn hóa:**
+  1. Chữ Hán thư pháp cỡ lớn + Pinyin chuẩn xác có thanh điệu.
+  2. Phân tích cụ thể **Nghĩa đen (Literal)** và **Nghĩa bóng triết lý nhân sinh (Figurative)**.
+  3. **Cốt truyện / Điển tích nguồn gốc** đầy lôi cuốn, giải thích nguyên nhân và xuất xứ ra đời.
+  4. Câu ví dụ ứng dụng trong giao tiếp đời sống hiện đại kèm bản dịch và phát âm chuẩn Web Speech API.
+  5. Hình ảnh minh họa chất lượng cao chuẩn ngữ cảnh.
+- **Tính năng AI Đột phá:** Nút **"Tạo câu mới bằng Gemini AI"** cho phép tùy chọn tạo Thành ngữ 4 chữ hoặc Ca dao tục ngữ theo chủ đề bất kỳ, tích hợp trực tiếp vào danh sách.
 
 ### 5. Game Phản Xạ Từ Vựng & Hộp Phạt Bắt Buộc Ôn Lại (Spaced Repetition)
 - **3 Chế độ game tính điểm & bấm giờ:**
