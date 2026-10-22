@@ -31,14 +31,22 @@ const StorageService = {
     const raw = localStorage.getItem(STORAGE_KEYS.SETTINGS);
     const defaults = {
       apiKey: "",
-      model: "gemini-2.5-flash",
+      model: "gemini-3.8-flash",
       theme: "light",
       speechRate: 0.9,
       speechVoice: ""
     };
     if (!raw) return defaults;
     try {
-      return { ...defaults, ...JSON.parse(raw) };
+      const parsed = { ...defaults, ...JSON.parse(raw) };
+      // Auto-migrate deprecated models to gemini-3.8-flash
+      if (parsed.model === "gemini-2.5-flash" || !parsed.model) {
+        parsed.model = "gemini-3.8-flash";
+        const updated = { ...parsed, model: "gemini-3.8-flash" };
+        localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify(updated));
+        return updated;
+      }
+      return parsed;
     } catch (e) {
       return defaults;
     }
