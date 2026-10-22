@@ -1,6 +1,6 @@
 # 华语星 (ChinesePro AI) - Ứng Dụng Học Tiếng Trung Toàn Diện & Phản Xạ AI
 
-Ứng dụng web Single Page Application (SPA) học tiếng Trung hiện đại, tích hợp Trí tuệ Nhân tạo Google Gemini 2.5 Flash, Web Speech API và phương pháp lặp lại ngắt quãng (Spaced Repetition).
+Ứng dụng web Single Page Application (SPA) học tiếng Trung hiện đại, tích hợp Trí tuệ Nhân tạo Google Gemini 3.8 Flash, Web Speech API và phương pháp lặp lại ngắt quãng (Spaced Repetition).
 
 ---
 
@@ -19,7 +19,7 @@
 - **Âm thanh & Giọng nói (Speech Technologies):**
   - **Text-to-Speech (TTS):** Tích hợp Web Speech API `SpeechSynthesis` phát âm chuẩn giọng phổ thông tiếng Trung (`zh-CN`), cho phép điều chỉnh tốc độ đọc từ 0.6x đến 1.3x.
   - **Speech-to-Text (STT):** Tích hợp Web Speech API `SpeechRecognition` (`zh-CN`) thu âm giọng nói trực tiếp qua Microphone và chuyển thành văn bản chữ Hán thời gian thực.
-- **Tích hợp Gemini AI:** Sử dụng REST endpoint chính thức của model `gemini-2.5-flash` xử lý phân tích ngữ nghĩa, chấm điểm phản xạ khẩu ngữ HSKK, sinh đề thi trắc nghiệm và sáng tác câu chuyện thành ngữ.
+- **Tích hợp Gemini AI:** Sử dụng REST endpoint chính thức của model `gemini-3.8-flash` (hỗ trợ tự động fallback `gemini-2.0-flash`, `gemini-1.5-flash`) xử lý phân tích ngữ nghĩa, chấm điểm phản xạ khẩu ngữ HSKK, sinh đề thi trắc nghiệm và sáng tác câu chuyện thành ngữ.
 
 ---
 
@@ -27,7 +27,7 @@
 
 ### 1. Quản Lý Cài Đặt & Tích Hợp Gemini AI
 - Cho phép người dùng nhập **Gemini API Key** và lưu an toàn vào `localStorage`.
-- Nút **"Kiểm tra kết nối AI"** ping trực tiếp đến model `gemini-2.5-flash`.
+- Nút **"Kiểm tra kết nối AI"** ping trực tiếp đến model `gemini-3.8-flash` với cơ chế tự động chuyển model dự phòng thông minh.
 - Tự động chuyển đổi mượt mà: nếu chưa có API Key, ứng dụng vẫn hoạt động với ngân hàng dữ liệu mẫu (Mock Data phong phú). Khi đã nhập Key, toàn bộ tính năng thông minh của AI sẽ được kích hoạt tức thì.
 
 ### 2. Từ Điển & Tra Cứu Thông Minh
@@ -71,11 +71,11 @@
 - **Xưởng tạo thẻ thông minh (Flashcard Creator Studio):**
   - Nhập Chữ Hán -> Bấm nút **"Điền Bằng Gemini AI"** để tự động hoàn thiện Pinyin chuẩn thanh điệu, Cấp độ HSK, Nghĩa tiếng Việt, Câu ví dụ thực tế và **Mẹo chiết tự ghi nhớ chữ**.
   - Tích hợp nút phát âm nghe thử từ vựng và câu ví dụ ngay trong lúc tạo.
-- **📸 Quét Từ Vựng Trang Sách Bằng AI (Gemini 2.5 Flash Vision OCR):**
+- **📸 Quét Từ Vựng Trang Sách Bằng AI (Gemini Flash Vision OCR):**
   - Chụp ảnh trực tiếp từ Camera điện thoại / máy tính hoặc tải ảnh trang sách giáo trình tiếng Trung.
   - Hỗ trợ nút **"Dùng ảnh mẫu trang sách HSK"** để trải nghiệm tính năng tức thì không cần chuẩn bị ảnh.
   - Hiệu ứng quét tia Laser Scanner trực quan trên hình ảnh trang sách.
-  - Gemini 2.5 Flash tự động nhận diện chữ Hán, bóc tách danh sách các từ vựng cốt lõi, cung cấp Pinyin, nghĩa tiếng Việt, cấp độ HSK, câu ví dụ và mẹo nhớ chiết tự.
+  - Gemini Flash tự động nhận diện chữ Hán, bóc tách danh sách các từ vựng cốt lõi, cung cấp Pinyin, nghĩa tiếng Việt, cấp độ HSK, câu ví dụ và mẹo nhớ chiết tự.
   - Cho phép người dùng duyệt danh sách, chọn lọc từ vựng và bấm **"Thêm Hàng Loạt Vào Bộ Flashcard"** chỉ trong vài giây.
 - **Giao diện thẻ lật 3D không gian 3 chiều mượt mà:**
   - Mặt trước: Chữ Hán to rõ, cấp độ HSK, tên bộ thẻ, nút nghe phát âm.
