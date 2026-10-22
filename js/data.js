@@ -1,4 +1,4 @@
-// Comprehensive Data Repository for Chinese EdTech Application
+﻿// Comprehensive Data Repository for Chinese EdTech Application
 // HSK 1 - 6 Vocabulary Bank, Chengyu & Proverbs, Exam Questions, Speaking Scenarios
 
 window.APP_DATA = {
@@ -1375,209 +1375,786 @@ window.APP_DATA = {
       hanzi: "画蛇添足",
       pinyin: "huà shé tiān zú",
       literal: "Vẽ rắn thêm chân",
-      figurative: "Làm những việc thừa thãi không cần thiết, tự rước lấy thất bại hoặc làm hỏng việc vốn đã tốt đẹp.",
-      story: "Nước Sở có người ban bình rượu quý cho những người giữ đền. Bình rượu quá ít, không đủ chia đều, họ giao hẹn: 'Ai vẽ xong con rắn trên mặt đất trước thì được uống'. Một người vẽ xong sớm nhất, tay trái cầm bình rượu định uống, nhưng thấy người khác chưa xong bèn kiêu ngạo bảo: 'Ta còn thừa sức vẽ thêm chân cho nó!'. Đang lúc vẽ chân, một người khác vẽ xong rắn liền giật lấy bình rượu nói: 'Rắn vốn không có chân, cớ sao phải vẽ thêm?'.",
+      figurative: "Làm những điều thừa thãi không cần thiết, chẳng những không mang lại lợi ích mà còn làm hỏng việc đã hoàn thành.",
+      story: "Thời Chiến Quốc tại nước Sở, có mấy người cùng thi vẽ rắn trên mặt đất, ai vẽ xong trước sẽ được bình rượu ngon. Một người vẽ xong nhanh nhất, thấy mọi người vẫn cặm cụi, bèn đắc chí cầm bút vẽ thêm 4 cái chân cho con rắn. Người thứ hai vẽ xong liền giật lấy bình rượu nói: 'Rắn làm gì có chân mà ngươi vẽ?'. Người vẽ chân rắn đành ngậm ngùi chịu thua.",
       example: {
-        zh: "这篇文章本来已经写得很完整了，你又加了这段结尾，简直是画蛇添足。",
-        pinyin: "Zhè piān wénzhāng běnlái yǐjīng xiě de hěn wánzhěng le, nǐ yòu jiā le zhè duàn jiéwěi, jiǎnzhí shì huà shé tiān zú.",
-        vi: "Bài viết này vốn đã rất hoàn chỉnh rồi, bạn lại thêm đoạn kết này vào, đúng là vẽ rắn thêm chân."
+        zh: "这篇文章本已非常精练，你再加这两段反而是画蛇添足了。",
+        pinyin: "Zhè piān wénzhāng běn yǐ fēicháng jīngliàn, nǐ zài jiā zhè liǎng duàn fǎn'ér shì huà shé tiān zú le.",
+        vi: "Bài viết này vốn đã rất súc tích cô đọng, bạn thêm hai đoạn này vào ngược lại chỉ là vẽ rắn thêm chân."
       },
-      image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
-      tags: ["Chiến Quốc Sách", "Thừa thãi", "Cẩn trọng"]
+      image: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=600&q=80",
+      tags: ["Điển tích", "Vừa đủ", "Chiến Quốc Sách"]
     },
     {
       id: "cy_04",
       category: "chengyu",
       hanzi: "愚公移山",
       pinyin: "yú gōng yí shān",
-      literal: "Ông già ngu dời núi (Ngu Công dời núi)",
-      figurative: "Chỉ ý chí sắt đá, quyết tâm bền bỉ kiên trì vượt qua mọi khó khăn gian khổ khổng lồ.",
-      story: "Cụ già Ngu Công tuổi gần 90, trước cửa nhà có hai ngọn núi lớn Thái Hành và Vương Ốc chắn lối đi. Cụ họp gia đình quyết tâm đào núi san bằng đường. Một ông trí thức cười nhạo: 'Ông già yếu sắp chết, làm sao dời nổi núi?'. Ngu Công thong thả đáp: 'Tôi chết thì còn con tôi, con tôi sinh cháu, cháu lại sinh con, đời đời con cháu vô tận, mà núi thì không mọc thêm, lo gì không bằng phẳng?'. Lòng thành cảm động Trời cao, Thượng đế sai hai vị thần xuống cõng núi đi chỗ khác.",
+      literal: "Ông già ngốc dời núi (Ngu Công di sơn)",
+      figurative: "Ý chí kiên định, bền bỉ không ngừng nghỉ vượt qua muôn vàn gian khó; dốc lòng dời non lấp bể sẽ đạt được mục tiêu.",
+      story: "Ông Ngu Công đã 90 tuổi, trước cửa nhà bị hai ngọn núi lớn Thái Hành và Vương Ốc chắn lối. Ông quyết tâm cùng con cháu đục núi chuyển đất ra biển. Một người tên Trí Sưu cười nhạo ông già yếu không biết tự lượng sức. Ngu Công đáp: 'Ta chết thì còn con ta, con ta sinh cháu, cháu lại sinh con, đời đời không dứt, mà núi thì chẳng thể cao thêm, lo gì không bạt bằng?'. Tinh thần đó làm cảm động Ngọc Hoàng, phái thần hạ giới dời hai ngọn núi đi nơi khác.",
       example: {
-        zh: "只要发扬愚公移山的精神，无论多么艰巨的技术难关我们都能攻克。",
-        pinyin: "Zhǐyào fāyáng yú gōng yí shān de jīngshén, wúlùn duōme jiānjù de jìshù nánguān wǒmen dōu néng gōngkè.",
-        vi: "Chỉ cần phát huy tinh thần Ngu Công dời núi, bất kể ải khó công nghệ gian khổ đến đâu chúng ta cũng sẽ chinh phục được."
+        zh: "只要发扬愚公移山的精神，再艰巨的科学难题我们也能攻克。",
+        pinyin: "Zhǐyào fāyáng yú gōng yí shān de jīngshén, zài jiānjù de kēxué nántí wǒmen yě néng gōngkè.",
+        vi: "Chỉ cần phát huy tinh thần Ngu Công dời núi, dù bài toán khoa học có gian khổ đến đâu chúng ta cũng sẽ chinh phục được."
       },
       image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80",
-      tags: ["Liệt Tử", "Kiên trì", "Ý chí phi thường"]
+      tags: ["Kiên trì", "Ý chí", "Liệt Tử"]
     },
     {
       id: "cy_05",
-      category: "proverb",
-      hanzi: "千里之行，始于足下",
-      pinyin: "qiān lǐ zhī xíng, shǐ yú zú xià",
-      literal: "Chuyến đi ngàn dặm bắt đầu từ một bước chân",
-      figurative: "Mọi việc lớn lao vĩ đại trong thiên hạ đều phải khởi đầu từ những hành động nhỏ bé thiết thực mỗi ngày.",
-      story: "Trích từ Đạo Đức Kinh của triết gia Lão Tử: 'Cây lớn ôm một vòng nảy sinh từ một mầm non bé nhỏ; đài cao chín tầng khởi dựng từ một đống đất con; chuyến đi ngàn dặm bắt đầu từ bước chân ngay dưới chân mình'. Khuyên bảo người đời không được nản lòng trước mục tiêu dài hạn, mà hãy bắt tay hành động ngay.",
-      example: {
-        zh: "学好一门外语不是一朝一夕的事，千里之行始于足下，坚持背单词吧！",
-        pinyin: "Xué hǎo yī mén wàiyǔ bú shì yī zhāo yī xī de shì, qiān lǐ zhī xíng shǐ yú zú xià, jiānchí bèi dāncí ba!",
-        vi: "Học giỏi một ngoại ngữ không phải chuyện ngày một ngày hai, ngàn dặm khởi nguồn từ bước chân, hãy kiên trì học từ vựng mỗi ngày!"
-      },
-      image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=600&q=80",
-      tags: ["Tục ngữ", "Lão Tử", "Đạo Đức Kinh", "Học tập"]
-    },
-    {
-      id: "cy_06",
       category: "chengyu",
       hanzi: "卧薪尝胆",
       pinyin: "wò xīn cháng dǎn",
       literal: "Nằm gai nếm mật (Nằm trên củi gai, nếm mật đắng)",
-      figurative: "Chịu đựng gian khổ, nung nấu ý chí tự cường để rửa hận và đạt được thắng lợi vẻ vang.",
-      story: "Thời Xuân Thu, Việt Vương Câu Tiễn bị Ngô Vương Phù Sai đánh bại và bắt làm tù binh nhục nhã. Khi được thả về nước, để nhắc nhở bản thân không bao giờ quên nỗi nhục mất nước, Câu Tiễn đêm đêm nằm ngủ trên đống củi gai góc, trước chỗ ngồi treo một túi mật đắng, mỗi bữa ăn đều nếm vị mật đắng ngắt. Sau mười năm nung nấu lực lượng, Câu Tiễn đã tiêu diệt nước Ngô, xưng bá thiên hạ.",
+      figurative: "Khắc cốt ghi tâm mối thù hoặc mục tiêu lớn, tự rèn luyện gian khổ, kiên nhẫn chịu đựng đợi thời cơ phục hưng vươn lên.",
+      story: "Vua nước Việt là Câu Tiễn bị vua Ngô Phù Sai đánh bại, phải sang nước Ngô làm nô lệ chăn ngựa nhẫn nhục suốt 3 năm. Sau khi được tha về nước, để không quên nỗi nhục bại trận, Câu Tiễn tối nằm ngủ trên đống củi gai sắc nhọn, trước chỗ ngồi treo một bọng mật đắng, mỗi bữa ăn đều nếm thử. Sau 10 năm mài giũa sức mạnh, nước Việt đã đánh bại nước Ngô, lập lại nghiệp lớn.",
       example: {
-        zh: "经过几年的卧薪尝胆，这家初创企业终于在全球市场上站稳了脚跟。",
-        pinyin: "Jīngguò jǐ nián de wò xīn cháng dǎn, zhè jiā chūchuàng qǐyè zhōngyú zài quánqiú shìchǎng shàng zhàn wěn le jiǎogēn.",
-        vi: "Trải qua vài năm nằm gai nếm mật, doanh nghiệp khởi nghiệp này cuối cùng đã đứng vững trên thị trường toàn cầu."
+        zh: "经过十年卧薪尝胆的努力，这家濒临破产的企业终于跃居行业第一。",
+        pinyin: "Jīngguò shí nián wò xīn cháng dǎn de nǔlì, zhè jiā bīnlín pòchǎn de qǐyè zhōngyú yuèjū hángyè dì-yī.",
+        vi: "Trải qua 10 năm nếm mật nằm gai nỗ lực, doanh nghiệp bên bờ vực phá sản này cuối cùng đã vươn lên đứng đầu ngành."
       },
-      image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
-      tags: ["Điển tích", "Ý chí", "Sử ký Tư Mã Thiên"]
+      image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80",
+      tags: ["Ý chí", "Nhẫn nại", "Sử Ký"]
+    },
+    {
+      id: "cy_06",
+      category: "chengyu",
+      hanzi: "守株待兔",
+      pinyin: "shǒu zhū dài tù",
+      literal: "Ôm gốc cây đợi thỏ",
+      figurative: "Trông chờ vào may mắn ngẫu nhiên mà không chịu chủ động nỗ lực; bảo thủ, máy móc trong tư duy.",
+      story: "Thời Chiến Quốc, một người nông dân nước Tống đang cày ruộng thì bỗng thấy một con thỏ chạy thục mạng đâm đầu vào gốc cây chết tươi. Anh ta không tốn chút sức nào mà có được bữa thịt ngon, bèn vứt bỏ cày cuốc, ngày ngày ngồi ôm gốc cây chờ đợi thỏ chạy đến đâm đầu vào tiếp. Kết quả chẳng con thỏ nào đến nữa, còn ruộng đồng thì cỏ dại mọc um tùm, trở thành trò cười cho thiên hạ.",
+      example: {
+        zh: "找工作不能守株待兔，必须积极投递简历和准备面试。",
+        pinyin: "Zhǎo gōngzuò bù néng shǒu zhū dài tù, bìxū jījí tóudì jiǎnlì hé zhǔnbèi miànshì.",
+        vi: "Tìm việc làm không thể ôm cây đợi thỏ, nhất định phải chủ động rải CV và chuẩn bị phỏng vấn."
+      },
+      image: "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?auto=format&fit=crop&w=600&q=80",
+      tags: ["Điển tích", "Cần cù", "Hàn Phi Tử"]
     },
     {
       id: "cy_07",
       category: "chengyu",
-      hanzi: "守株待兔",
-      pinyin: "shǒu zhū dài tù",
-      literal: "Ôm cây đợi thỏ",
-      figurative: "Không chịu chủ động nỗ lực mà cứ ôm tâm lý cầu may, rập khuôn mù quáng trông chờ điều may mắn bất ngờ.",
-      story: "Thời Chiến Quốc, một người nông dân nước Tống đang cày ruộng thì thấy một con thỏ chạy hoảng hốt đâm đầu vào gốc cây to gãy cổ chết. Người đó sung sướng vác thỏ về làm thịt, từ hôm đó vứt bỏ cày cuốc, ngày ngày ngồi bên gốc cây chờ đợi con thỏ khác đâm vào. Ruộng đồng bỏ hoang cỏ mọc um tùm, thỏ thì chẳng thấy đâu, anh ta trở thành trò cười cho cả thiên hạ.",
+      hanzi: "井底之蛙",
+      pinyin: "jǐng dǐ zhī wā",
+      literal: "Ếch ngồi đáy giếng",
+      figurative: "Người có tầm nhìn nông cạn, hiểu biết hạn hẹp nhưng lại tự phụ, không biết trời cao đất rộng bên ngoài.",
+      story: "Một con ếch sống dưới giếng cạn lâu năm, nghĩ rằng cả bầu trời chỉ to bằng miệng giếng và nó là chúa tể nơi đó. Một hôm, một con rùa biển Đông tình cờ ghé qua. Ếch khoe khoang cuộc sống sung sướng dưới đáy giếng và mời rùa nhảy xuống chơi. Rùa biển liền kể cho ếch nghe về sự mênh mông vô tận nghìn dặm của biển Đông. Con ếch nghe xong chết lặng, xấu hổ nhận ra sự nhỏ bé và ngu muội của mình.",
       example: {
-        zh: "要想提高中文水平就得踏踏实实练习，不能守株待兔妄想一夜暴富。",
-        pinyin: "Yào xiǎng tígāo zhōngwén shuǐpíng jiù děi tātā-shíshí liànxí, bù néng shǒu zhū dài tù wàngxiǎng yíyè-bàofù.",
-        vi: "Muốn nâng cao trình độ tiếng Trung thì phải luyện tập vững vàng từng bước, không thể ôm cây đợi thỏ trông chờ phép màu."
+        zh: "我们要多走出去开阔视野，切莫做自以为是的井底之蛙。",
+        pinyin: "Wǒmen yào duō zǒu chūqù kāikuò shìyě, qièmò zuò zì yǐ wéi shì de jǐng dǐ zhī wā.",
+        vi: "Chúng ta phải đi ra ngoài nhiều để mở rộng tầm mắt, chớ làm chú ếch ngồi đáy giếng tự cho mình là đúng."
       },
-      image: "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?auto=format&fit=crop&w=600&q=80",
-      tags: ["Điển tích", "Hàn Phi Tử", "Ảo tưởng", "Nỗ lực"]
+      image: "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=600&q=80",
+      tags: ["Tầm nhìn", "Khiêm tốn", "Trang Tử"]
     },
     {
       id: "cy_08",
       category: "chengyu",
-      hanzi: "井底之蛙",
-      pinyin: "jǐng dǐ zhī wā",
-      literal: "Ếch ngồi đáy giếng",
-      figurative: "Chỉ người có tầm nhìn thiển cận, hiểu biết nông cạn hạn hẹp nhưng lại tự cao tự đại huênh hoang.",
-      story: "Có con ếch sống ở đáy một cái giếng cạn hoang phế, nó tự mãn bảo con rùa biển Đông rằng: 'Ta là chúa tể nơi đây, sung sướng nhất đời!'. Rùa biển mỉm cười kể cho ếch nghe về sự bao la bát ngát của biển cả ngàn dặm không thấy bờ, sâu vạn trượng không đo tới đáy, lũ lụt hạn hán đều không làm suy chuyển biển rộng. Nghe xong, ếch đáy giếng sững sờ, xấu hổ không biết giấu mặt vào đâu.",
+      hanzi: "破釜沉舟",
+      pinyin: "pò fǔ chén zhōu",
+      literal: "Đập vỡ nồi gang, dìm đắm thuyền bè",
+      figurative: "Hạ quyết tâm đến cùng, cắt đứt mọi đường lui để quyết chiến thắng lợi, dũng cảm tiến lên phía trước.",
+      story: "Trong trận Cự Lộc nổi tiếng thời Tần mạt, danh tướng Sở Bá Vương Hạng Vũ dẫn quân qua sông Hoàng Hà. Sau khi qua sông, ông ra lệnh đập vỡ toàn bộ nồi nấu cơm và đục chìm hết thuyền bè, mỗi binh sĩ chỉ mang lương thực đủ dùng trong 3 ngày để tỏ rõ ý chí: Một là đánh thắng kẻ thù, hai là tử trận chứ không có đường sống quay về. Quân sĩ cảm kích liều chết chiến đấu mãnh liệt, một người địch mười người, đại phá quân Tần.",
       example: {
-        zh: "我们必须放眼世界，多学习新科技，绝不能做孤陋寡闻的井底之蛙。",
-        pinyin: "Wǒmen bìxū fàngyǎn shìjiè, duō xuéxí xīn kējì, jué bù néng zuò gūlòu-guǎwén de jǐng dǐ zhī wā.",
-        vi: "Chúng ta phải nhìn rộng ra thế giới, học hỏi công nghệ mới, tuyệt đối không thể làm chú ếch ngồi đáy giếng hẹp hòi."
+        zh: "既然决定创业，就要有破釜沉舟的勇气，全力以赴向前冲。",
+        pinyin: "Jìrán juédìng chuàngyè, jiù yào yǒu pò fǔ chén zhōu de yǒngqì, quánlì yǐ fù xiàng qián chōng.",
+        vi: "Đã quyết định khởi nghiệp thì phải có dũng khí đập nồi dìm thuyền, dốc toàn tâm toàn lực tiến về phía trước."
       },
-      image: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=600&q=80",
-      tags: ["Điển tích", "Trang Tử", "Hiểu biết", "Mở rộng tầm nhìn"]
+      image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
+      tags: ["Dũng khí", "Quyết tâm", "Sử Ký Hạng Vũ Bản Kỷ"]
     },
     {
       id: "cy_09",
-      category: "proverb",
-      hanzi: "一寸光阴一寸金，寸金难买寸光阴",
-      pinyin: "yí cùn guāng yīn yí cùn jīn, cùn jīn nán mǎi cùn guāng yīn",
-      literal: "Một tấc thời gian đáng giá một tấc vàng, nhưng một tấc vàng khó mua được một tấc thời gian",
-      figurative: "Thời gian là thứ tài sản quý giá vô giá nhất của đời người, một khi trôi qua không bao giờ lấy lại được, cần trân quý từng phút từng giây.",
-      story: "Câu ngạn ngữ nổi tiếng xuất hiện trong thi ca cổ Trung Hoa, khuyên răn sĩ tử và thanh niên không được lãng phí thanh xuân vào những chuyện phù phiếm, mà hãy tận dụng thời giờ quý báu để trau dồi học vấn và đức hạnh.",
+      category: "chengyu",
+      hanzi: "望梅止渴",
+      pinyin: "wàng méi zhǐ kě",
+      literal: "Nhìn thấy rừng mơ đỡ khát",
+      figurative: "Dùng ảo tưởng, hy vọng tươi sáng phía trước để tự an ủi, cổ vũ tinh thần vượt qua khó khăn hiện tại.",
+      story: "Thời Tam Quốc, Tào Tháo dẫn đại quân hành quân qua vùng đồi núi khô cằn vào giữa trưa hè oi ả. Binh sĩ cổ họng khô rát, kiệt sức vì thiếu nước không đi nổi. Tào Tháo cưỡi ngựa lên đỉnh đồi cao, rút roi chỉ về phía trước hô to: 'Phía trước có một rừng mơ sai trĩu quả, quả mơ vừa chua vừa ngọt, nước nhiều lắm!'. Quân sĩ nghe thấy chữ 'mơ' lập tức ứa nước miếng trong miệng, tinh thần phấn chấn rảo bước nhanh, cuối cùng tìm thấy nguồn nước thật.",
       example: {
-        zh: "一寸光阴一寸金，趁年轻我们要抓紧时间学好本领。",
-        pinyin: "Yí cùn guāngyīn yí cùn jīn, chèn niánqīng wǒmen yào zhuājǐn shíjiān xué hǎo běnlǐng.",
-        vi: "Một tấc thời gian một tấc vàng, nhân lúc còn trẻ chúng ta phải tranh thủ thời gian học cho giỏi bản lĩnh."
+        zh: "光看网上的美食图片不过是望梅止渴，下班后我们去大吃一顿吧！",
+        pinyin: "Guāng kàn wǎngshàng de měishí túpiàn bùguò shì wàng méi zhǐ kě, xiàbān hòu wǒmen qù dà chī yí dùn ba!",
+        vi: "Chỉ xem ảnh đồ ăn ngon trên mạng chẳng qua là nhìn mơ đỡ khát, tan làm chúng mình đi ăn một bữa thịnh soạn đi!"
       },
-      image: "https://images.unsplash.com/photo-1501139083538-0139583c060f?auto=format&fit=crop&w=600&q=80",
-      tags: ["Tục ngữ", "Thời gian", "Quý trọng thanh xuân"]
+      image: "https://images.unsplash.com/photo-1543362906-acfc16c67564?auto=format&fit=crop&w=600&q=80",
+      tags: ["Điển tích", "Tào Tháo", "Tâm lý học", "Thế Thuyết Tân Ngữ"]
     },
     {
       id: "cy_10",
-      category: "proverb",
-      hanzi: "熟能生巧",
-      pinyin: "shú néng shēng qiǎo",
-      literal: "Làm quen tay thì sinh ra khéo léo (Trăm hay không bằng tay quen)",
-      figurative: "Bất kể công việc hay kỹ năng nào, chỉ cần kiên trì luyện tập thường xuyên nhiều lần thì sẽ đạt đến cảnh giới thuần thục tinh diệu.",
-      story: "Thời Bắc Tống, Trần Nghiêu Tư bắn cung bách phát bách trúng nên vô cùng đắc ý. Một hôm, một ông lão bán dầu đứng xem chỉ gật đầu khẽ. Trần tức giận hỏi: 'Ngươi cũng biết bắn cung à?'. Ông lão thong thả đặt một đồng tiền có lỗ vuông lên miệng bầu rượu, rồi múc gáo dầu rót từ trên cao xuống, dòng dầu chảy qua lỗ đồng xu rơi vào bầu mà không dính một giọt nào vào mép xu. Ông cười bảo: 'Ta chẳng có tài gì lạ, chỉ là tay quen mà thôi!'.",
+      category: "chengyu",
+      hanzi: "班门弄斧",
+      pinyin: "bān mén nòng fǔ",
+      literal: "Múa búa trước cửa Lỗ Ban (Múa rìu qua mắt thợ)",
+      figurative: "Khoe khoang tài nghệ vụng về, sơ sài trước mặt bậc thầy, chuyên gia lão luyện trong nghề.",
+      story: "Lỗ Ban là vị sư tổ của nghề mộc thời cổ đại Trung Hoa, có tài nghệ đục đẽo tinh xảo xuất thần nhập hóa. Nhà thơ thời Đường là Mai Chi Hoán đến viếng mộ Lý Bạch tại Thái Thạch Cơ, thấy trên bia mộ đầy những bài thơ viết bậy dở tệ của người qua đường, liền cảm khái viết câu thơ: 'Thái Thạch giang đầu nhất đôi thổ, Lý Bạch danh cao giang tự lưu. Lai lai vãng vãng nhất giang phu, Lỗ Ban môn tiền lộng đại phủ' (ý chỉ làm thơ trước mộ Lý Bạch giống như múa rìu trước cửa Lỗ Ban).",
       example: {
-        zh: "写汉字一开始觉得很难，但熟能生巧，每天练几遍就会越来越熟练。",
-        pinyin: "Xiě hànzì yì kāishǐ juéde hěn nán, dàn shú néng shēng qiǎo, měitiān liàn jǐ biàn jiù huì yuè lái yuè shúliàn.",
-        vi: "Viết chữ Hán ban đầu thấy rất khó, nhưng trăm hay không bằng tay quen, mỗi ngày luyện vài lần sẽ ngày càng thành thạo."
+        zh: "您是国际汉语教学专家，我在您面前谈语法简直是班门弄斧了。",
+        pinyin: "Nín shì guójì hànyǔ jiàoxué zhuānjiā, wǒ zài nín miànqián tán yǔfǎ jiǎnzhí shì bān mén nòng fǔ le.",
+        vi: "Thầy là chuyên gia giảng dạy Hán ngữ quốc tế, em bàn về ngữ pháp trước mặt thầy quả thật là múa rìu qua mắt thợ."
       },
-      image: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=600&q=80",
-      tags: ["Tục ngữ", "Âu Dương Tu", "Rèn luyện", "Kỹ năng"]
+      image: "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=600&q=80",
+      tags: ["Khiêm tốn", "Chuyên môn", "Văn hóa Trung Hoa"]
     },
     {
       id: "cy_11",
-      category: "proverb",
-      hanzi: "吃水不忘挖井人",
-      pinyin: "chī shuǐ bù wàng wā jǐng rén",
-      literal: "Uống nước không quên người đào giếng (Uống nước nhớ nguồn)",
-      figurative: "Sống trên đời phải có lòng biết ơn, ghi nhớ công lao của những người đi trước đã hy sinh tạo dựng thành quả cho ta hôm nay.",
-      story: "Câu tục ngữ nhắc nhở truyền thống đạo lý nhân nghĩa ngàn đời của văn hóa Á Đông, dạy con người khi hưởng thụ ấm no hạnh phúc thì không được vong ân bội nghĩa, mà phải luôn tri ân tổ tiên, thầy cô và thế hệ đi trước.",
+      category: "chengyu",
+      hanzi: "狐假虎威",
+      pinyin: "hú jiǎ hǔ wēi",
+      literal: "Cáo mượn oai hổ (Cáo mượn oai hùm)",
+      figurative: "Dựa dẫm vào quyền thế, uy danh của người khác để thị uy, hống hách bắt nạt người xung quanh.",
+      story: "Một con hổ đói bắt được một con cáo định ăn thịt. Cáo nhanh trí nói: 'Ngươi không dám ăn thịt ta đâu! Trời phái ta xuống làm thủ lĩnh muôn loài thú, ngươi ăn ta là chống lại mệnh trời. Không tin, hãy đi sau lưng ta xem muôn thú có sợ ta không!'. Hổ đồng ý theo sau. Quả nhiên hươu nai rừng rú thấy hổ theo sau cáo đều hoảng hốt tháo chạy. Hổ tưởng muôn thú sợ cáo thật, đành cúi đầu thả cáo đi.",
       example: {
-        zh: "我们取得今天的成绩离不开老师的悉心培养，吃水不忘挖井人，我们要懂得感恩。",
-        pinyin: "Wǒmen qǔdé jīntiān de chéngjì lì bù kāi lǎoshī de xīxīn péiyǎng, chī shuǐ bù wàng wā jǐng rén, wǒmen yào dǒngdé gǎn'ēn.",
-        vi: "Chúng ta có được thành tích hôm nay không thể tách rời sự dìu dắt của thầy cô, uống nước nhớ nguồn, chúng ta phải biết tri ân."
+        zh: "他仗着叔叔是董事长就在公司里狐假虎威，大家都很反感他。",
+        pinyin: "Tā zhàngzhe shūshu shì dǒngshìzhǎng jiù zài gōngsī lǐ hú jiǎ hǔ wēi, dàjiā dōu hěn fǎngǎn tā.",
+        vi: "Hắn cậy có chú là Chủ tịch HĐQT mà ở công ty cáo mượn oai hùm, ai nấy đều rất phản cảm ghét bỏ."
       },
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
-      tags: ["Tục ngữ", "Lòng biết ơn", "Đạo đức"]
+      image: "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=600&q=80",
+      tags: ["Điển tích", "Cảnh tỉnh", "Chiến Quốc Sách"]
     },
     {
       id: "cy_12",
-      category: "proverb",
-      hanzi: "活到老，学到老",
-      pinyin: "huó dào lǎo, xué dào lǎo",
-      literal: "Sống đến già, học đến già (Học, học nữa, học mãi)",
-      figurative: "Tri thức nhân loại là vô tận, việc học tập rèn luyện bản thân là hành trình suốt đời không bao giờ có điểm dừng.",
-      story: "Khuyên bảo con người giữ vững tinh thần cầu thị khiêm tốn, bất kể tuổi tác bao nhiêu hay địa vị thế nào, vẫn luôn luôn mở lòng học hỏi điều mới mẻ mỗi ngày.",
+      category: "chengyu",
+      hanzi: "拔苗助长",
+      pinyin: "bá miáo zhù zhǎng",
+      literal: "Kéo mạ lên để giúp cây mau lớn",
+      figurative: "Nóng vội cầu thành công mà làm trái quy luật tự nhiên, kết quả chẳng những không đạt được mà còn hủy hoại mọi sự.",
+      story: "Người nước Tống nóng lòng muốn lúa ruộng nhà mình nhanh lớn, ngày nào cũng ra ngắm rồi than thở sao lúa lớn chậm quá. Nghĩ ra một kế, anh ta ra đồng dùng tay kéo từng ngọn lúa nhích lên một đoạn. Trở về nhà kiệt sức nhưng hớn hở khoe: 'Hôm nay ta mệt quá nhưng đã giúp toàn bộ mạ ruộng nhà mình cao thêm một tấc!'. Con trai chạy vội ra xem thì toàn bộ mạ trên đồng đã đứt rễ héo úa chết khô.",
       example: {
-        zh: "爷爷今年七十岁了还在学习使用智能手机和电脑，真是活到老学到老。",
-        pinyin: "Yéye jǐnnián qīshí suì le hái zài xuéxí shǐyòng zhìnéng shǒujī hé diànnǎo, zhēn shì huó dào lǎo xué dào lǎo.",
-        vi: "Ông nội năm nay 70 tuổi rồi mà vẫn học cách sử dụng điện thoại thông minh và máy tính, đúng là sống đến già học đến già."
+        zh: "教育孩子要遵循成长规律，强迫三岁幼儿学微积分无异于拔苗助长。",
+        pinyin: "Jiàoyù háizi yào zūnxún chéngzhǎng guīlǜ, qiǎngpò sān suì yòu'ér xué wēijīfēn wúyì yú bá miáo zhù zhǎng.",
+        vi: "Dạy con cần thuận theo quy luật phát triển, ép đứa trẻ 3 tuổi học giải tích chẳng khác nào kéo mạ giúp lớn hại chết con."
       },
-      image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80",
-      tags: ["Tục ngữ", "Học tập suốt đời", "Khiêm tốn"]
+      image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80",
+      tags: ["Quy luật", "Giáo dục", "Mạnh Tử"]
     },
     {
       id: "cy_13",
       category: "chengyu",
-      hanzi: "破釜沉舟",
-      pinyin: "pò fǔ chén zhōu",
-      literal: "Đập vỡ nồi niêu, dìm chìm thuyền bè",
-      figurative: "Quyết tâm dồn hết sức lực, không để lại đường lui cho mình để chiến đấu giành lấy thắng lợi cuối cùng.",
-      story: "Thời Tần mạt, Hạng Vũ đem quân vượt sông Cự Lộc đánh quân Tần. Sau khi toàn bộ quân lính qua sông, Hạng Vũ ra lệnh dìm chìm tất cả thuyền bè, đập vỡ tất cả nồi niêu nấu ăn, đốt rụi lều trại, chỉ cho mỗi người mang theo ba ngày lương khô. Bằng cách chặn đứt mọi đường lui, quân sĩ đều liều chết xung phong, một người địch mười người, đại phá quân Tần giành chiến thắng chấn động lịch sử.",
+      hanzi: "盲人摸象",
+      pinyin: "máng rén mō xiàng",
+      literal: "Người mù sờ voi (Thầy bói xem voi)",
+      figurative: "Chỉ nhìn nhận sự việc qua một khía cạnh cục bộ, phiến diện mà vội vàng quy chụp thành bản chất toàn thể.",
+      story: "Có 4 người mù cùng sờ một con voi lớn để biết hình dáng voi ra sao. Người sờ vòi voi phán: 'Voi giống như một con rắn lớn'. Người sờ chân voi cãi: 'Không phải, voi rõ ràng là một cây cột đình!'. Người sờ bụng voi quả quyết: 'Voi phẳng lì và to lớn như một bức tường'. Người nắm lấy đuôi voi khẳng định: 'Các ngươi sai hết, voi rõ ràng như cái chổi xể!'. Cả 4 người tranh cãi không dứt vì ai cũng tưởng phần mình sờ là toàn bộ con voi.",
       example: {
-        zh: "面对考研的高压，他拿出了破釜沉舟的勇气，每天苦读十几个小时。",
-        pinyin: "Miànduì kǎoyán de gāoyā, tā ná chū le pò fǔ chén zhōu de yǒngqì, měitiān kǔdú shí jǐ gè xiǎoshí.",
-        vi: "Đối mặt áp lực thi thạc sĩ, anh ấy thể hiện dũng khí đập nồi dìm thuyền, mỗi ngày miệt mài học hơn mười tiếng đồng hồ."
+        zh: "看问题要全面客观，只凭零碎信息就下结论往往是盲人摸象。",
+        pinyin: "Kàn wèntí yào quánmiàn kèguān, zhǐ píng língsuì xìnxī jiù xià jiélùn wǎngwǎng shì máng rén mō xiàng.",
+        vi: "Nhìn nhận vấn đề phải toàn diện khách quan, chỉ dựa vào vài mẩu tin rời rạc mà vội kết luận thì khác gì thầy bói xem voi."
       },
-      image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=600&q=80",
-      tags: ["Điển tích", "Hạng Vũ", "Dũng khí", "Quyết tâm"]
+      image: "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&w=600&q=80",
+      tags: ["Nhận thức", "Toàn diện", "Kinh Phật"]
     },
     {
       id: "cy_14",
       category: "chengyu",
-      hanzi: "望梅止渴",
-      pinyin: "wàng méi zhǐ kě",
-      literal: "Trông thấy quả mơ mà đỡ khát",
-      figurative: "Dùng ảo tưởng hoặc lời động viên tinh thần để an ủi bản thân vượt qua cơn khát khao hay hoàn cảnh gian nan lúc cấp bách.",
-      story: "Thời Tam Quốc, Tào Tháo dẫn đại quân hành quân giữa trưa hè nắng gắt. Binh lính khát khô cổ họng, mệt lả không thể bước tiếp mà xung quanh không có giọt nước nào. Tào Tháo cưỡi ngựa lên cao, chỉ roi về phía trước dõng dạc bảo: 'Phía trước có một rừng mơ bạt ngàn, quả mơ to tròn chua ngọt mọng nước!'. Nghe nhắc đến vị chua quả mơ, binh lính ai nấy đều ứa nước miếng trong miệng, đỡ khát tức thì và hăng hái tiến nhanh tới nguồn nước thật.",
+      hanzi: "亡羊补牢",
+      pinyin: "wáng yáng bǔ láo",
+      literal: "Mất cừu rồi mới sửa chuồng",
+      figurative: "Dù đã chịu tổn thất nhưng nếu biết kịp thời rút kinh nghiệm và áp dụng biện pháp khắc phục thì vẫn chưa quá muộn.",
+      story: "Trang Tân nước Sở khuyên Sở Tương Vương chớ mê đắm hoang lạc kẻo mất nước. Tương Vương không nghe, sau đó quả nhiên bị quân Tần đánh chiếm kinh đô. Tương Vương hối hận cho gọi Trang Tân hỏi kế. Trang Tân nói: 'Thấy thỏ chạy mới quay đầu gọi chó săn thì chưa muộn; cừu mất rồi mới lo sửa chuồng vẫn còn kịp thời'. Tương Vương tỉnh ngộ, chấn hưng binh sĩ, cuối cùng giành lại được đất đai.",
       example: {
-        zh: "光在家里空想未来只是望梅止渴，只有付诸行动才能改变现状。",
-        pinyin: "Guāng zài jiālǐ kōngxiǎng wèilái zhǐ shì wàng méi zhǐ kě, zhǐyǒu fùzhū xíngdòng cáinéng gǎibiàn xiànzhuàng.",
-        vi: "Chỉ ngồi nhà mơ mộng tương lai chỉ là trông mơ đỡ khát, chỉ khi hành động thực tế mới thay đổi được hiện tại."
+        zh: "系统出现安全漏洞后立即修复，亡羊补牢，犹未为晚。",
+        pinyin: "Xìtǒng chūxiàn ānquán lòudòng hòu lìjí xiūfù, wáng yáng bǔ láo, yóu wèi wéi wǎn.",
+        vi: "Hệ thống xuất hiện lỗ hổng bảo mật lập tức vá lại ngay, mất bò làm chuồng, vẫn còn chưa muộn."
       },
-      image: "https://images.unsplash.com/photo-1543362906-acfc16c67564?auto=format&fit=crop&w=600&q=80",
-      tags: ["Điển tích", "Tào Tháo", "Tam Quốc", "Tâm lý học"]
+      image: "https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?auto=format&fit=crop&w=600&q=80",
+      tags: ["Khắc phục", "Kinh nghiệm", "Chiến Quốc Sách"]
     },
     {
       id: "cy_15",
+      category: "chengyu",
+      hanzi: "画龙点睛",
+      pinyin: "huà lóng diǎn jīng",
+      literal: "Vẽ rồng chấm thêm mắt",
+      figurative: "Thêm một chi tiết hoặc một lời đắt giá vào thời điểm quyết định, làm cho tác phẩm hoặc ý kiến trở nên sống động, xuất thần.",
+      story: "Họa sĩ Trương Tăng Do thời Lương vẽ 4 con rồng trên tường chùa An Lạc ở Kim Lăng, nét vẽ sống động nhưng kỳ lạ là không vẽ con ngươi mắt. Mọi người tò mò hỏi lý do, ông đáp: 'Nếu điểm mắt, rồng sẽ bay đi mất'. Mọi người không tin, ép ông vẽ thử. Vừa điểm mắt cho hai con rồng, bỗng sấm chớp đùng đùng, hai con rồng phá tường bay thẳng lên mây, hai con rồng chưa điểm mắt vẫn ở nguyên trên vách.",
+      example: {
+        zh: "他在演讲结尾引用的这句诗，起到了画龙点睛的妙用。",
+        pinyin: "Tā zài yǎnjiǎng jiéwěi yǐnyòng de zhè jù shī, qǐ dào le huà lóng diǎn jīng de miàoyòng.",
+        vi: "Câu thơ anh ấy trích dẫn ở cuối bài phát biểu đã đóng vai trò điểm nhãn vẽ rồng vô cùng kỳ diệu."
+      },
+      image: "https://images.unsplash.com/photo-1569683795645-b62e50fbf103?auto=format&fit=crop&w=600&q=80",
+      tags: ["Nghệ thuật", "Sáng tạo", "Lịch Đại Danh Họa Ký"]
+    },
+    {
+      id: "cy_16",
+      category: "chengyu",
+      hanzi: "对牛弹琴",
+      pinyin: "duì niú tán qín",
+      literal: "Gảy đàn cầm cho trâu nghe (Đàn gảy tai trâu)",
+      figurative: "Nói những điều cao sâu đạo lý với người không có khả năng hiểu; hoặc dùng lời lẽ không phù hợp với đối tượng.",
+      story: "Nhạc sư Công Minh Nghi thời cổ đại gảy đàn Thất huyền cầm rất hay. Một hôm thấy một con trâu đang gặm cỏ bên bãi, ông liền cao hứng đàn khúc nhạc thanh tao cổ điển. Nhưng con trâu vẫn thản nhiên cúi đầu nhai cỏ như không nghe thấy. Ông liền đổi điệu đàn mô phỏng tiếng muỗi vo ve và tiếng bê con gọi mẹ, lập tức con trâu vểnh tai vẫy đuôi lắng nghe. Câu chuyện ngụ ý nói chuyện phải biết tùy người tiếp nhận.",
+      example: {
+        zh: "跟一个蛮不讲理的人讲逻辑，简直就是对牛弹琴。",
+        pinyin: "Gēn yí gè mán bù jiǎnglǐ de rén jiǎng luóji, jiǎnzhí jiùshì duì niú tán qín.",
+        vi: "Nói logic với một kẻ ngang ngược vô lý thì chẳng khác nào đàn gảy tai trâu."
+      },
+      image: "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=600&q=80",
+      tags: ["Giao tiếp", "Điển tích", "Hoằng Minh Tập"]
+    },
+    {
+      id: "cy_17",
+      category: "chengyu",
+      hanzi: "自相矛盾",
+      pinyin: "zì xiāng máo dùn",
+      literal: "Tự lấy mác mình đâm thuẫn mình (Tự mâu thuẫn)",
+      figurative: "Lời nói hoặc hành động trước sau không ăn khớp, tự phủ nhận lẫn nhau, không có cơ sở xác thực.",
+      story: "Có một người nước Sở bán khiên (thuẫn) và giáo (mác). Hắn nâng khiên lên khen: 'Khiên của ta vững chắc nhất trần đời, không mũi giáo nào đâm thủng được!'. Một lát sau hắn lại cầm ngọn giáo lên hét lớn: 'Giáo của ta sắc bén vô song, vật gì cũng đâm thủng được!'. Một người trong đám đông hỏi: 'Vậy nếu lấy mũi giáo của anh đâm vào tấm khiên của anh thì sao?'. Người bán hàng á khẩu không trả lời được.",
+      example: {
+        zh: "他刚才还说没去过现场，现在又描述那里的细节，显然是自相矛盾。",
+        pinyin: "Tā gāngcái hái shuō méi qù guò xiànchǎng, xiànzài yòu miáoshù nàlǐ de xìjié, xiǎnrán shì zì xiāng máo dùn.",
+        vi: "Vừa nãy anh ta còn bảo chưa từng tới hiện trường, giờ lại miêu tả chi tiết ở đó, rõ ràng là tự mâu thuẫn."
+      },
+      image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=600&q=80",
+      tags: ["Logic", "Hàn Phi Tử", "Triết học"]
+    },
+    {
+      id: "cy_18",
+      category: "chengyu",
+      hanzi: "杯弓蛇影",
+      pinyin: "bēi gōng shé yǐng",
+      literal: "Bóng cây cung trong chén rượu hóa thành bóng rắn",
+      figurative: "Thần hồn nát thần tính; tự mình dọa mình vì những nỗi sợ hãi hoang đường vô căn cứ.",
+      story: "Nhạc Quảng mời một người bạn đến nhà uống rượu. Người bạn nhìn thấy trong chén rượu có con rắn nhỏ uốn lượn, trong lòng kinh hãi nhưng vì nể bạn vẫn uống cạn. Về nhà ông ta ngã bệnh nặng. Nhạc Quảng đến thăm hỏi han, rồi về xem lại chỗ ngồi uống rượu, thấy trên tường có treo một cây cung sơn màu, bóng cây cung in vào chén rượu trông hệt con rắn. Nhạc Quảng mời bạn tới chỉ rõ sự thật, người bạn hiểu ra liền khỏi hẳn bệnh.",
+      example: {
+        zh: "事情还没有查清楚，大家千万别杯弓蛇影、互相猜疑。",
+        pinyin: "Shìqíng hái méiyǒu chá qīngchǔ, dàjiā qiānwàn bié bēi gōng shé yǐng, hùxiāng cāiyí.",
+        vi: "Sự việc còn chưa điều tra sáng tỏ, mọi người chớ có thần hồn nát thần tính, nghi ngờ lẫn nhau."
+      },
+      image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80",
+      tags: ["Tâm lý", "Điển tích", "Tấn Thư"]
+    },
+    {
+      id: "cy_19",
+      category: "chengyu",
+      hanzi: "滥竽充数",
+      pinyin: "làn yú chōng shù",
+      literal: "Thổi sênh vu dởm trà trộn vào cho đủ số",
+      figurative: "Người không có năng lực thực sự trà trộn vào tập thể giả vờ có tài; hoặc dùng hàng kém chất lượng bù cho đủ số lượng.",
+      story: "Tề Tuyên Vương rất thích nghe thổi kèn sênh vu, mỗi lần đều cho ban nhạc 300 người thổi đồng thanh. Nam Quách tiên sinh không hề biết thổi sênh vu nhưng cũng xin gia nhập dàn nhạc, giả bộ phùng má lắc lư theo điệu nhạc, nhận bổng lộc hậu hĩnh suốt nhiều năm. Đến khi Tề Mẫn Vương lên ngôi, vua mới lại thích nghe từng người một thổi solo. Nam Quách tiên sinh sợ hãi vội gói ghém đồ đạc bỏ trốn trong đêm.",
+      example: {
+        zh: "我们招聘的是核心技术人才，绝不容许滥竽充数的人混进来。",
+        pinyin: "Wǒmen zhāopìn de shì héxīn jìshù réncái, jué bù róngxǔ làn yú chōng shù de rén hùn jìn lái.",
+        vi: "Chúng ta tuyển dụng nhân tài kỹ thuật nòng cốt, tuyệt đối không cho phép kẻ bất tài trà trộn vào cho đủ số."
+      },
+      image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80",
+      tags: ["Năng lực", "Thực chất", "Hàn Phi Tử"]
+    },
+    {
+      id: "cy_20",
+      category: "chengyu",
+      hanzi: "刻舟求剑",
+      pinyin: "kè zhōu qiú jiàn",
+      literal: "Khắc dấu lên mạn thuyền để tìm kiếm",
+      figurative: "Bảo thủ, cứng nhắc, dùng tư duy cũ kỹ đứng yên để đối phó với thế giới và hoàn cảnh luôn luôn biến đổi.",
+      story: "Một người nước Sở đi thuyền qua sông, sơ ý làm rơi thanh bảo kiếm xuống nước. Hắn không nhảy xuống lặn tìm ngay mà bình tĩnh rút dao khắc một vạch lên mạn thuyền, nói: 'Bảo kiếm của ta rơi từ chỗ này xuống'. Khi thuyền cập bến đỗ bên kia bờ, hắn mới lần theo vạch khắc nhảy xuống mò kiếm. Thuyền đã trôi đi hàng dặm mà kiếm nằm lại giữa dòng sông, làm sao tìm thấy được nữa!",
+      example: {
+        zh: "时代在飞速发展，用几十年前的老经验解决今天的问题是刻舟求剑。",
+        pinyin: "Shídài zài fēisù fāzhǎn, yòng jǐshí nián qián de lǎo jīngyàn jiějué jīntiān de wèntí shì kè zhōu qiú jiàn.",
+        vi: "Thời đại đang phát triển thần tốc, dùng kinh nghiệm cũ từ mấy chục năm trước để giải quyết vấn đề hôm nay là khắc thuyền tìm kiếm."
+      },
+      image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=600&q=80",
+      tags: ["Linh hoạt", "Đổi mới", "Lã Thị Xuân Thu"]
+    },
+    {
+      id: "cy_21",
+      category: "chengyu",
+      hanzi: "叶公好龙",
+      pinyin: "yè gōng hào lóng",
+      literal: "Diệp Công thích rồng",
+      figurative: "Miệng nói yêu thích say đắm một điều gì đó bên ngoài vẻ hào nhoáng, nhưng khi đối diện với thực chất thì lại hoảng sợ lẩn tránh.",
+      story: "Diệp Công thời xưa nổi tiếng thích rồng, trên cột nhà, xà ngang, chén đĩa, quần áo đều chạm khắc và thêu hình rồng. Thần rồng trên trời nghe tiếng cảm động, bay xuống hạ giới ghé thăm. Khi rồng thật thò đầu vào cửa sổ, vắt đuôi vào đại sảnh, Diệp Công nhìn thấy kinh hồn bạt vía, mặt cắt không còn giọt máu, la hét bỏ chạy tán loạn. Hóa ra ông ta chỉ thích những thứ hình rồng giả tạo chứ không hề yêu rồng thật.",
+      example: {
+        zh: "他嘴上总说热爱冒险，真要去野外露营又百般推脱，真是叶公好龙。",
+        pinyin: "Tā zuǐshàng zǒng shuō rè'ài màoxiǎn, zhēn yào qù yěwài lùyíng yòu bǎibān tuītuō, zhēn shì yè gōng hào lóng.",
+        vi: "Cậu ta mở miệng ra là bảo thích phiêu lưu mạo hiểm, đến khi rủ đi cắm trại dã ngoại thật thì lại đủ cớ từ chối, đúng là Diệp Công thích rồng."
+      },
+      image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80",
+      tags: ["Chân thực", "Điển tích", "Tân Tự"]
+    },
+    {
+      id: "cy_22",
+      category: "chengyu",
+      hanzi: "胸有成竹",
+      pinyin: "xiōng yǒu chéng zhú",
+      literal: "Trong lồng ngực đã có sẵn cây tre hoàn chỉnh",
+      figurative: "Đã có kế hoạch tính toán chu toàn và nắm chắc phần thắng trong tay trước khi bắt tay vào hành động.",
+      story: "Họa sĩ Văn Đồng thời Bắc Tống nổi tiếng với tài vẽ trúc. Để vẽ tre thật sống động, ông trồng tre quanh nhà, bất kể nắng mưa gió tuyết đều quan sát từng cành tre, lá tre thay đổi. Nhờ vậy trước khi cầm cọ vẽ, hình dáng hoàn chỉnh của cây tre đã hiện rõ mồn một trong tâm trí ông, hạ bút là thành kiệt tác. Nhà thơ Tô Đông Pha khen ngợi: 'Họa trúc tất tiên đắc thành trúc ư hung trung' (Vẽ tre ắt phải có tre thành hình trong ngực trước).",
+      example: {
+        zh: "走进考场前他早已胸有成竹，所以答卷时显得从容不迫。",
+        pinyin: "Zǒujìn kǎochǎng qián tā zǎoyǐ xiōng yǒu chéng zhú, suǒyǐ dájuàn shí xiǎnde cóngróng bù pò.",
+        vi: "Trước khi bước vào phòng thi bạn ấy đã nắm chắc mọi kiến thức trong tay, cho nên lúc làm bài vô cùng điềm tĩnh ung dung."
+      },
+      image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80",
+      tags: ["Tự tin", "Chuẩn bị", "Tô Thức"]
+    },
+    {
+      id: "cy_23",
+      category: "chengyu",
+      hanzi: "笨鸟先飞",
+      pinyin: "bèn niǎo xiān fēi",
+      literal: "Chim vụng cất cánh bay trước",
+      figurative: "Người biết mình năng khiếu có hạn hoặc xuất phát điểm thấp thì cần chăm chỉ, khởi hành sớm hơn người khác để bù đắp.",
+      story: "Thành ngữ xuất phát từ quan sát dân gian: Những chú chim chậm chạp vụng về thường phải vỗ cánh bay sớm hơn đàn chim nhanh nhẹn thì mới mong kịp đến nơi kiếm mồi. Trong học tập và sự nghiệp, câu nói tượng trưng cho đức tính khiêm tốn, lấy sự cần cù bù thông minh (cần năng bổ chuyết), không quản gian nan dậy sớm rèn luyện mỗi ngày.",
+      example: {
+        zh: "我底子薄，只能笨鸟先飞，每天比别人多学习两个小时。",
+        pinyin: "Wǒ dǐzi báo, zhǐ néng bèn niǎo xiān fēi, měitiān bǐ biérén duō xuéxí liǎng gè xiǎoshí.",
+        vi: "Nền tảng của em còn yếu, chỉ có thể làm chú chim vụng bay trước, mỗi ngày chăm chỉ học nhiều hơn người khác hai tiếng."
+      },
+      image: "https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=600&q=80",
+      tags: ["Cần cù", "Khiêm nhường", "Nghị lực"]
+    },
+    {
+      id: "cy_24",
+      category: "chengyu",
+      hanzi: "爱屋及乌",
+      pinyin: "ài wū jí wū",
+      literal: "Yêu ngôi nhà yêu cả con quạ đậu trên nóc nhà",
+      figurative: "Yêu ai yêu cả đường đi lối về; vì yêu quý một người mà có thiện cảm với tất cả những gì gắn liền với người đó.",
+      story: "Sau khi Chu Vũ Vương diệt nhà Thương, bàn cách xử lý tàn dư quân thần nước Thương. Khương Thái Công nói: 'Thần nghe rằng yêu người thì yêu luôn cả con quạ đậu trên nóc nhà người đó; ghét người thì ghét luôn cả hàng rào góc tường nhà người đó'. Ý chỉ tình cảm của con người thường có xu hướng lan tỏa bao trùm đến mọi thứ xung quanh đối tượng mà mình thương mến.",
+      example: {
+        zh: "她非常崇拜那位歌手，爱屋及乌，连那位歌手推荐的书也全部买来阅读。",
+        pinyin: "Tā fēicháng chóngbài nà wèi gēshǒu, ài wū jí wū, lián nà wèi gēshǒu tuījiàn de shū yě quánbù mǎi lái yuèdú.",
+        vi: "Cô ấy vô cùng thần tượng ca sĩ đó, yêu nhau yêu cả đường đi, đến cả những cuốn sách ca sĩ ấy giới thiệu cô cũng mua bằng hết về đọc."
+      },
+      image: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=600&q=80",
+      tags: ["Tình cảm", "Tâm lý", "Thượng Thư Đại Truyện"]
+    },
+    {
+      id: "cy_25",
+      category: "chengyu",
+      hanzi: "糖衣炮弹",
+      pinyin: "táng yī pào dàn",
+      literal: "Viên đạn bọc đường",
+      figurative: "Những lời tán tụng, quà cáp nịnh bợ ngọt ngào quyến rũ bên ngoài nhưng bên trong chứa đựng cạm bẫy hãm hại, làm lung lay ý chí.",
+      story: "Hình tượng viên đạn được bao phủ bởi lớp đường ngọt ngào lừa người nếm thử. Khi lớp đường tan ra thì thuốc độc và hỏa lực bên trong mới bộc phát phá hủy mục tiêu. Thường dùng để cảnh tỉnh cán bộ, người lãnh đạo trước những cám dỗ vật chất, hối lộ tinh vi và lời ngon tiếng ngọt nơi công sở và thương trường.",
+      example: {
+        zh: "在职场交往中要保持清醒头脑，警惕糖衣炮弹的诱惑。",
+        pinyin: "Zài zhíchǎng jiāowǎng zhōng yào bǎochí qīngxǐng tóunǎo, jǐngtì táng yī pào dàn de yòuhuò.",
+        vi: "Trong giao tế chốn công sở cần giữ cái đầu tỉnh táo, cảnh giác trước sự cám dỗ của những viên đạn bọc đường."
+      },
+      image: "https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?auto=format&fit=crop&w=600&q=80",
+      tags: ["Cảnh giác", "Bản lĩnh", "Ứng xử"]
+    },
+    {
+      id: "cy_26",
+      category: "chengyu",
+      hanzi: "水滴石穿",
+      pinyin: "shuǐ dī shí chuān",
+      literal: "Nước chảy nhỏ giọt mãi đá cũng phải mòn",
+      figurative: "Sức mạnh phi thường của sự kiên trì; việc dù nhỏ bé nhưng tích lũy bền bỉ ngày qua ngày sẽ tạo nên kỳ tích vĩ đại.",
+      story: "Thời Bắc Tống, quan huyện Trương Quai Nhai phát hiện một viên lại ty lén giấu một đồng tiền kho mang về nhà. Quan ra lệnh trừng phạt đánh trượng. Viên lại ty ấm ức cãi: 'Tôi chỉ lấy có một đồng tiền cỏn con, sao ngài lại đánh tôi nặng thế?'. Trương Quai Nhai nghiêm nghị viết phán quyết: 'Một ngày một đồng, ngàn ngày ngàn đồng; dây cưa gỗ đứt, nước giọt đá mòn'. Câu nói khẳng định sự tích tụ vi mô lâu ngày có thể thay đổi cục diện vĩ mô.",
+      example: {
+        zh: "学外语没有捷径，靠的是每天水滴石穿的积累。",
+        pinyin: "Xué wàiyǔ méiyǒu jiéjìng, kào de shì měitiān shuǐ dī shí chuān de jīlěi.",
+        vi: "Học ngoại ngữ không có đường tắt, mà phải dựa vào sự tích lũy bền bỉ nước chảy đá mòn mỗi ngày."
+      },
+      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80",
+      tags: ["Kiên trì", "Tích lũy", "Hán Thư"]
+    },
+    {
+      id: "cy_27",
+      category: "chengyu",
+      hanzi: "虎头蛇尾",
+      pinyin: "hǔ tóu shé wěi",
+      literal: "Đầu hổ đuôi rắn (Đầu voi đuôi chuột)",
+      figurative: "Lúc khởi đầu thì rầm rộ phô trương nhưng về sau lại uể oải, cẩu thả rồi bỏ dở giữa chừng không đến nơi đến chốn.",
+      story: "Hình tượng một con quái vật có cái đầu hổ to lớn oai phong lẫm liệt khiến ai nhìn cũng sợ, nhưng cái thân và đuôi lại nhỏ xíu yếu ớt như đuôi rắn. Trong văn hóa Trung Hoa, câu này thường dùng để phê phán thói làm việc chỉ hăng hái phong trào lúc đầu nhưng thiếu sức bền và tính kỷ luật để theo đuổi tới đích cuối cùng.",
+      example: {
+        zh: "做事最忌讳虎头蛇尾，既然立下了目标就要善始善终。",
+        pinyin: "Zuòshì zuì jìhuì hǔ tóu shé wěi, jìrán lì xià le mùbiāo jiù yào shàn shǐ shàn zhōng.",
+        vi: "Làm việc kiêng kỵ nhất là thói đầu voi đuôi chuột, một khi đã lập mục tiêu thì phải làm cho trọn vẹn từ đầu đến cuối."
+      },
+      image: "https://images.unsplash.com/photo-1549480017-d76466a4b7e8?auto=format&fit=crop&w=600&q=80",
+      tags: ["Kỷ luật", "Bền bỉ", "Cảnh tỉnh"]
+    },
+    {
+      id: "cy_28",
+      category: "chengyu",
+      hanzi: "同甘共苦",
+      pinyin: "tóng gān gòng kǔ",
+      literal: "Cùng chia ngọt sẻ bùi cay đắng",
+      figurative: "Cùng nhau chung vai sát cánh qua mọi gian nan hoạn nạn cũng như hưởng vinh hoa phú quý; tình cảm son sắt thủy chung.",
+      story: "Thời Chiến Quốc, vua nước Yên là Yên Chiêu Vương sau khi nước bị giặc tàn phá, đã hạ mình đối đãi với hiền tài, mặc áo vải thô, ăn cơm thanh đạm, tự mình thăm hỏi gia quyến binh lính nghèo khổ. Bất kể gian truân hay sung túc, ông đều cùng nhân dân chia ngọt sẻ bùi. Nhờ vậy tướng sĩ hết lòng phò tá, chiêu mộ được danh tướng Nhạc Nghị chấn hưng nước Yên hùng mạnh.",
+      example: {
+        zh: "真正的好朋友不是酒肉之交，而是能与你同甘共苦的人。",
+        pinyin: "Zhēnzhèng de hǎo péngyǒu bú shì jiǔ ròu zhī jiāo, ér shì néng yǔ nǐ tóng gān gòng kǔ de rén.",
+        vi: "Bạn tốt thực sự không phải bạn rượu thịt xả giao, mà là người có thể đồng cam cộng khổ cùng bạn qua mọi thăng trầm."
+      },
+      image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80",
+      tags: ["Tình bạn", "Nghĩa tình", "Chiến Quốc Sách"]
+    },
+    {
+      id: "cy_29",
+      category: "chengyu",
+      hanzi: "坐井观天",
+      pinyin: "zuò jǐng guān tiān",
+      literal: "Ngồi dưới đáy giếng ngắm nhìn bầu trời",
+      figurative: "Tầm nhìn hạn hẹp, kiến thức nông cạn nhưng lại tự mãn và ngộ nhận rằng thế giới chỉ có bấy nhiêu.",
+      story: "Trích từ bài ngụ ngôn kinh điển của nhà tư tưởng Hàn Dũ thời Đường: 'Tọa giếng nhi quan thiên, viết thiên tiểu giả, phi thiên tiểu dã' (Ngồi dưới giếng mà ngắm trời rồi bảo trời nhỏ, không phải vì trời nhỏ mà là vì bản thân đứng ở vị trí quá hẹp hòi). Lời nhắc nhở phải không ngừng học hỏi và bước ra biển lớn để nâng cao nhận thức.",
+      example: {
+        zh: "不了解国际市场就盲目自嗨，完全是坐井观天。",
+        pinyin: "Bù liǎojiě guójì shìchǎng jiù mángmù zì hāi, wánquán shì zuò jǐng guān tiān.",
+        vi: "Không tìm hiểu thị trường quốc tế mà đã vội tự mãn, hoàn toàn là ngồi đáy giếng nhìn trời."
+      },
+      image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=600&q=80",
+      tags: ["Khiêm tốn", "Hàn Dũ", "Nhận thức"]
+    },
+    {
+      id: "cy_30",
+      category: "chengyu",
+      hanzi: "闻鸡起舞",
+      pinyin: "wén jī qǐ wǔ",
+      literal: "Nghe tiếng gà gáy thức dậy múa kiếm",
+      figurative: "Người có chí lớn, tự giác kỷ luật thức khuya dậy sớm rèn luyện học tập để đền nợ nước, lập nên sự nghiệp huy hoàng.",
+      story: "Thời Đông Tấn, hai người bạn thân Tổ Địch và Lưu Côn có chí hướng phục hưng giang sơn bị ngoại tộc xâm lấn. Nửa đêm nằm ngủ nghe thấy tiếng gà rừng gáy canh tư, Tổ Địch liền đạp thức Lưu Côn dậy nói: 'Tiếng gà gáy không phải điềm xấu, đây là tiếng chuông thúc giục chúng ta rèn luyện!'. Hai người lập tức cầm gươm ra sân múa kiếm luyện võ dưới ánh trăng. Về sau cả hai đều trở thành danh tướng văn võ song toàn phụng sự đất nước.",
+      example: {
+        zh: "青年人要有闻鸡起舞的奋斗志向，珍惜青春时光苦练本领。",
+        pinyin: "Qīngnián rén yào yǒu wén jī qǐ wǔ de fèndòu zhìxiàng, zhēnxī qīngchūn shíguāng kǔ liàn běnlǐng.",
+        vi: "Thế hệ trẻ phải nuôi chí lớn nghe gà gáy múa gươm rèn tài, trân trọng thanh xuân để khổ luyện bản lĩnh."
+      },
+      image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80",
+      tags: ["Chí khí", "Khổ luyện", "Tấn Thư"]
+    },
+    {
+      id: "pv_01",
+      category: "proverb",
+      hanzi: "千里之行，始于足下",
+      pinyin: "qiān lǐ zhī xíng, shǐ yú zú xià",
+      literal: "Hành trình ngàn dặm bắt đầu từ một bước chân",
+      figurative: "Mọi thành công vĩ đại hay kế hoạch to lớn đều phải bắt đầu từ những việc nhỏ bé, cụ thể và thực tế trước mắt.",
+      story: "Trích từ chương 64 của tác phẩm kinh điển 'Đạo Đức Kinh' của Lão Tử: 'Cây to ngút trời ôm không xuể mọc lên từ mầm nhỏ li ti; đài cao chín tầng xây đắp từ từng sọt đất vụn; đường đi ngàn dặm bắt đầu từ bước chân đầu tiên'. Lão Tử dạy rằng chớ coi thường việc nhỏ mà không chịu hành động ngay từ hôm nay.",
+      example: {
+        zh: "想掌握一门外语就要每天背诵词汇，千里之行始于足下。",
+        pinyin: "Xiǎng zhǎngwò yì mén wàiyǔ jiù yào měitiān bèisòng cíhuì, qiān lǐ zhī xíng shǐ yú zú xià.",
+        vi: "Muốn thành thạo một ngoại ngữ thì phải tích lũy từ vựng mỗi ngày, hành trình ngàn dặm bắt đầu từ một bước chân."
+      },
+      image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=600&q=80",
+      tags: ["Triết lý", "Bắt đầu", "Lão Tử Đạo Đức Kinh"]
+    },
+    {
+      id: "pv_02",
+      category: "proverb",
+      hanzi: "一寸光阴一寸金，寸金难买寸光阴",
+      pinyin: "yí cùn guāng yīn yí cùn jīn, cùn jīn nán mǎi cùn guāng yīn",
+      literal: "Một tấc thời gian quý như một tấc vàng, một tấc vàng khó mua được một tấc thời gian",
+      figurative: "Thời gian là thứ tài sản quý báu và vô giá nhất của đời người, một khi đã trôi qua thì dẫu có núi vàng biển bạc cũng không thể nào mua lại được.",
+      story: "Xuất hiện trong cuốn 'Bạch Mã Đạo Nhân Thi' thời Đường và được phổ biến sâu rộng qua tác phẩm 'Tăng Quảng Hiền Văn'. Thời xưa dùng đồng hồ hoa mai bóng nắng (nhật khuê) để đo thời gian, bóng nắng dịch chuyển một tấc tượng trưng cho một khắc trôi qua, nhắc nhở con người phải quý từng phút từng giây.",
+      example: {
+        zh: "年轻时要抓紧时间求知，一寸光阴一寸金，寸金难买寸光阴啊。",
+        pinyin: "Niánqīng shí yào zhuājǐn shíjiān qiúzhī, yí cùn guāngyīn yí cùn jīn, cùn jīn nán mǎi cùn guāngyīn a.",
+        vi: "Tuổi trẻ phải biết tranh thủ thời gian học hỏi, tấc bóng tấc vàng, một tấc vàng khó mua được một tấc thời gian."
+      },
+      image: "https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?auto=format&fit=crop&w=600&q=80",
+      tags: ["Thời gian", "Quý trọng", "Tăng Quảng Hiền Văn"]
+    },
+    {
+      id: "pv_03",
+      category: "proverb",
+      hanzi: "吃水不忘挖井人",
+      pinyin: "chī shuǐ bù wàng wā jǐng rén",
+      literal: "Uống nước không quên người đã đào giếng",
+      figurative: "Ăn quả nhớ kẻ trồng cây, uống nước nhớ nguồn; phải luôn ghi nhớ và biết ơn công lao những người đi trước đã hy sinh tạo dựng thành quả cho ta hôm nay.",
+      story: "Năm 1933 tại làng Sa Châu Bá (Thụy Kim, Giang Tây), nhân dân trong làng bị thiếu nước ngọt trầm trọng phải uống nước ao tù đục ngầu bẩn thỉu. Cán bộ đã trực tiếp dẫn đầu đội công tác cùng bà con đào một giếng nước sâu sạch trong vắt. Sau này dân làng dựng bên giếng một bia đá khắc dòng chữ: 'Uống nước không quên người đào giếng' để đời đời ghi ơn người khai sinh dòng nước mát.",
+      example: {
+        zh: "我们能有今天幸福平安的生活，要懂得吃水不忘挖井人，感激前辈的付出。",
+        pinyin: "Wǒmen néng yǒu jīntiān xìngfú píng'ān de shēnghuó, yào dǒngdé chī shuǐ bù wàng wā jǐng rén, gǎnjī qiánbèi de fùchū.",
+        vi: "Chúng ta có được cuộc sống hạnh phúc bình yên hôm nay phải biết uống nước nhớ nguồn, biết ơn sự hy sinh cống hiến của thế hệ đi trước."
+      },
+      image: "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?auto=format&fit=crop&w=600&q=80",
+      tags: ["Tri ân", "Biết ơn", "Đạo đức"]
+    },
+    {
+      id: "pv_04",
+      category: "proverb",
+      hanzi: "活到老，学到老",
+      pinyin: "huó dào lǎo, xué dào lǎo",
+      literal: "Sống đến già thì phải học đến già",
+      figurative: "Học tập là việc cả đời không có điểm dừng; tri thức nhân loại là vô tận, tuổi tác càng cao càng phải không ngừng trau dồi hiểu biết và tư duy.",
+      story: "Câu danh ngôn nổi tiếng của Trang Tử: 'Đời ta có hạn mà tri thức thì vô cùng tận'. Nhà triết học Tuân Tử cũng khẳng định: 'Học bất khả dĩ dĩ' (Việc học tập không thể dừng lại). Đây là phương châm giáo dục cốt lõi của nền văn minh Nho gia suốt mấy ngàn năm lịch sử, thôi thúc con người giữ tâm thế học trò dù ở bất kỳ lứa tuổi nào.",
+      example: {
+        zh: "七十岁的李爷爷学会了使用智能手机在网上看书，真是活到老学到老。",
+        pinyin: "Qīshí suì de Lǐ yéye xuéhuì le shǐyòng zhìnéng shǒujī zài wǎngshàng kànshū, zhēn shì huó dào lǎo xué dào lǎo.",
+        vi: "Cụ Lý 70 tuổi đã học được cách dùng điện thoại thông minh để đọc sách mạng, đúng là sống đến già học đến già."
+      },
+      image: "https://images.unsplash.com/photo-1532012164546-f432f2e3777a?auto=format&fit=crop&w=600&q=80",
+      tags: ["Học tập", "Cả đời", "Tư duy"]
+    },
+    {
+      id: "pv_05",
       category: "proverb",
       hanzi: "失败乃成功之母",
       pinyin: "shī bài nǎi chéng gōng zhī mǔ",
-      literal: "Thất bại là mẹ của thành công",
-      figurative: "Thất bại không phải là dấu chấm hết mà là cơ hội quý giá để rút ra bài học kinh nghiệm, làm tiền đề dẫn tới thắng lợi sau này.",
-      story: "Câu tục ngữ cổ vũ tinh thần kiên cường bất khuất trước nghịch cảnh, nhắc nhở chúng ta đừng bao giờ sụp đổ trước những vấp ngã ban đầu.",
+      literal: "Thất bại chính là mẹ của thành công",
+      figurative: "Thất bại không phải là dấu chấm hết mà là người thầy vĩ đại; mỗi lần vấp ngã là một bài học đắt giá mở lối dẫn tới thành quả rực rỡ sau này.",
+      story: "Câu nói đúc kết từ triết lý biến chứng mâu thuẫn của cổ nhân: Họa và phúc nương tựa nhau. Mọi phát minh khoa học từ bóng đèn của Edison cho đến các chiến lược gia vĩ đại đều trải qua hàng trăm lần thử nghiệm thất bại mới đúc rút ra công thức đúng đắn cuối cùng.",
       example: {
-        zh: "这次比赛虽然没拿到名次，但失败乃成功之母，总结经验下次再来！",
-        pinyin: "Zhè cì bǐsài suīrán méi ná dào míngcì, dàn shībài nǎi chénggōng zhī mǔ, zǒngjié jīngyàn xià cì zài lái!",
-        vi: "Lần thi này tuy chưa đạt giải, nhưng thất bại là mẹ thành công, đúc kết kinh nghiệm lần sau lại thi tiếp!"
+        zh: "这次实验虽然没有得到预期结果，但失败乃成功之母，大家不要灰心。",
+        pinyin: "Zhè cì shíyàn suīrán méiyǒu dédào yùqī jiéguǒ, dàn shībài nǎi chénggōng zhī mǔ, dàjiā bú yào huīxīn.",
+        vi: "Lần thử nghiệm này tuy chưa đạt kết quả dự kiến, nhưng thất bại là mẹ thành công, mọi người chớ nản lòng."
       },
       image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80",
-      tags: ["Tục ngữ", "Ý chí", "Lạc quan"]
+      tags: ["Lạc quan", "Nghị lực", "Khởi nghiệp"]
+    },
+    {
+      id: "pv_06",
+      category: "proverb",
+      hanzi: "熟能生巧",
+      pinyin: "shú néng shēng qiǎo",
+      literal: "Rèn luyện thuần thục thì sẽ sinh ra sự tinh xảo, khéo léo (Trăm hay không bằng tay quen)",
+      figurative: "Bất kỳ kỹ năng nào chỉ cần được lặp đi lặp lại nhiều lần với sự tập trung cao độ sẽ biến thành phản xạ thuần thục điêu luyện tuyệt đỉnh.",
+      story: "Thời Bắc Tống, quan đại phu Trần Nghiêu Tư có tài bắn cung bách phát bách trúng, tự đắc cho rằng mình vô địch. Một ông lão bán dầu đứng xem chỉ gật đầu nhẹ. Trần Nghiêu Tư giận hỏi: 'Ngươi cũng biết bắn cung à? Sao dám coi thường tài ta?'. Ông lão thản nhiên đáp: 'Không có gì lạ, chẳng qua là tay quen mà thôi'. Nói rồi ông đặt một đồng xu có lỗ vuông lên miệng hồ lô, múc gáo dầu đổ từ trên cao xuống, dòng dầu rót thẳng qua lỗ đồng xu vào bình mà không hề dính một giọt nào vào mép đồng tiền.",
+      example: {
+        zh: "打字一开始很慢，但只要每天练习，熟能生巧，很快就能盲打。",
+        pinyin: "Dǎzì yì kāishǐ hěn màn, dàn zhǐyào měitiān liànxí, shú néng shēng qiǎo, hěn kuài jiù néng mángdǎ.",
+        vi: "Lúc đầu gõ phím còn chậm, nhưng chỉ cần tập luyện mỗi ngày, trăm hay không bằng tay quen, chẳng mấy chốc sẽ gõ phím 10 ngón thành thạo."
+      },
+      image: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=600&q=80",
+      tags: ["Kỹ năng", "Luyện tập", "Âu Dương Tu"]
+    },
+    {
+      id: "pv_07",
+      category: "proverb",
+      hanzi: "近朱者赤，近墨者黑",
+      pinyin: "jìn zhū zhě chì, jìn mò zhě hēi",
+      literal: "Gần chu sa thì đỏ, gần mực tàu thì đen (Gần mực thì đen, gần đèn thì rạng)",
+      figurative: "Môi trường sống, bạn bè và những người xung quanh có sức ảnh hưởng cực kỳ sâu sắc và trực tiếp đến nhân cách, tính cách của một người.",
+      story: "Phó Huyền thời Tây Tấn trong bài 'Thái Tử Thiếu Phó Châm' đã viết: 'Cố cận chu giả xích, cận mặc giả hắc; thanh thính giả thông, thông tư giả duệ'. Điển tích nổi tiếng nhất minh chứng cho triết lý này là mẹ của Mạnh Tử 3 lần dọn nhà (Mạnh mẫu tam thiên) để tìm cho con môi trường học tập mẫu mực nhất.",
+      example: {
+        zh: "交朋友必须谨慎，近朱者赤近墨者黑，好伙伴能激励你向上。",
+        pinyin: "Jiāo péngyǒu bìxū jǐnshèn, jìn zhū zhě chì jìn mò zhě hēi, hǎo huǒbàn néng jīlì nǐ xiàngshàng.",
+        vi: "Kết bạn nhất định phải thận trọng, gần mực thì đen gần đèn thì rạng, bạn bè tốt sẽ thôi thúc bạn tiến bộ vươn lên."
+      },
+      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80",
+      tags: ["Môi trường", "Bạn bè", "Mạnh Mẫu"]
+    },
+    {
+      id: "pv_08",
+      category: "proverb",
+      hanzi: "知己知彼，百战百胜",
+      pinyin: "zhī jǐ zhī bǐ, bǎi zhàn bǎi shèng",
+      literal: "Biết rõ bản thân, hiểu rõ đối phương thì trăm trận trăm thắng",
+      figurative: "Trong mọi cuộc đàm phán, thi đấu hay kinh doanh, nếu nắm vững cả điểm mạnh yếu của mình lẫn đối thủ thì chắc chắn sẽ nắm chắc phần thắng.",
+      story: "Xuất phát từ thiên 'Mưu Công' trong tác phẩm kinh điển 'Tôn Tử Binh Pháp' của Tôn Vũ: 'Tri bỉ tri kỷ giả, bách chiến bất đãi; bất tri bỉ nhi tri kỷ, nhất thắng nhất phụ; bất tri bỉ bất tri kỷ, mỗi chiến tất đãi' (Biết người biết ta trăm trận không nguy; không biết người mà chỉ biết mình thì một thắng một thua; không biết cả người lẫn mình thì trận nào cũng bại vong).",
+      example: {
+        zh: "进入新市场前要做透竞品分析，做到知己知彼，百战百胜。",
+        pinyin: "Jìnrù xīn shìchǎng qián yào zuò tòu jìngpǐn fēnxī, zuò dào zhī jǐ zhī bǐ, bǎi zhàn bǎi shèng.",
+        vi: "Trước khi bước vào thị trường mới cần phân tích thấu đáo đối thủ cạnh tranh, đạt đến mức biết người biết ta, trăm trận trăm thắng."
+      },
+      image: "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&w=600&q=80",
+      tags: ["Chiến lược", "Binh pháp", "Tôn Tử"]
+    },
+    {
+      id: "pv_09",
+      category: "proverb",
+      hanzi: "谋事在人，成事在天",
+      pinyin: "móu shì zài rén, chéng shì zài tiān",
+      literal: "Mưu tính việc do ở con người, thành bại nên việc do ở trời đất",
+      figurative: "Bản thân phải dốc toàn tâm toàn lực để chuẩn bị và nỗ lực hết mình, còn kết quả cuối cùng phải thuận theo thời vận, không nên quá cưỡng cầu.",
+      story: "Trong tác phẩm Tam Quốc Diễn Nghĩa, Gia Cát Lượng lập kế dụ cha con Tư Mã Ý vào hẻm Thượng Phương Cốc rồi phóng hỏa thiêu đốt. Khi lửa bốc cháy dữ dội ngút trời, tưởng chừng quân Ngụy sắp bị tiêu diệt sạch thì bất ngờ một cơn mưa rào đổ ập xuống dập tắt ngọn lửa cứu thoát Tư Mã Ý. Gia Cát Lượng nhìn trời thở dài cảm thán: 'Mưu sự tại nhân, thành sự tại thiên, không thể cưỡng cầu được vậy!'.",
+      example: {
+        zh: "我们已经做了最充分的准备，谋事在人成事在天，放平心态去迎接结果吧。",
+        pinyin: "Wǒmen yǐjīng zuò le zuì chōngfèn de zhǔnbèi, móu shì zài rén chéng shì zài tiān, fàng píng xīntài qù yíngjiē jiéguǒ ba.",
+        vi: "Chúng ta đã chuẩn bị chu đáo nhất có thể, mưu sự tại nhân thành sự tại thiên, hãy giữ tâm thế bình thản đón nhận kết quả."
+      },
+      image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
+      tags: ["Tâm thế", "Gia Cát Lượng", "Tam Quốc Diễn Nghĩa"]
+    },
+    {
+      id: "pv_10",
+      category: "proverb",
+      hanzi: "树欲静而风不止",
+      pinyin: "shù yù jìng ér fēng bù zhǐ",
+      literal: "Cây muốn đứng yên lặng mà gió chẳng chịu ngừng thổi",
+      figurative: "Con cái khi muốn phụng dưỡng báo hiếu thì cha mẹ đã qua đời; hoàn cảnh khách quan bên ngoài luôn thay đổi không theo ý muốn chủ quan của con người.",
+      story: "Khổng Tử đi du ngoạn nghe thấy tiếng khóc thảm thiết của Khâu Ngô Tử. Hỏi duyên cớ, Khâu Ngô Tử khóc đáp rằng thời trẻ mải mê ngao du học đạo mưu cầu công danh, đến khi công thành danh toại trở về quê hương thì cha mẹ già đều đã mất cả, không còn cơ hội báo đáp. Ông thốt lên câu ca xót xa: 'Thụ dục tĩnh nhi phong bất chỉ, tử dục dưỡng nhi thân bất đãi' (Cây muốn lặng mà gió chẳng đừng, con muốn nuôi mà cha mẹ chẳng còn).",
+      example: {
+        zh: "树欲静而风不止，子欲养而亲不待。趁父母健在，常回家看看他们。",
+        pinyin: "Shù yù jìng ér fēng bù zhǐ, zǐ yù yǎng ér qīn bù dài. Chèn fùmǔ jiànzài, cháng huí jiā kànkan tāmen.",
+        vi: "Cây muốn lặng mà gió chẳng dừng, con muốn phụng dưỡng mà cha mẹ chẳng còn đợi. Hãy tranh thủ lúc cha mẹ còn mạnh khỏe, thường xuyên về thăm họ."
+      },
+      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80",
+      tags: ["Hiếu đạo", "Gia đình", "Khổng Tử Gia Ngữ"]
+    },
+    {
+      id: "pv_11",
+      category: "proverb",
+      hanzi: "万事开头难",
+      pinyin: "wàn shì kāi tóu nán",
+      literal: "Muôn vạn sự việc lúc bắt đầu đều luôn khó khăn nhất (Vạn sự khởi đầu nan)",
+      figurative: "Bất kỳ dự án mới, kỹ năng mới hay hành trình nào, giai đoạn chập chững bước đầu bao giờ cũng vất vả chông gai nhất; vượt qua được bước đầu này thì mọi sự sẽ hanh thông.",
+      story: "Câu tục ngữ dân gian truyền khẩu ngàn đời của Trung Quốc, động viên con người khi gặp bỡ ngỡ trở ngại trong những ngày đầu bắt tay vào việc mới. Cũng như gieo hạt xuống đất cằn, lúc phá vỏ đâm chồi cần nội lực mạnh mẽ nhất, một khi mầm cây đã bén rễ thì sẽ vươn lên xanh tốt mỗi ngày.",
+      example: {
+        zh: "学编程第一周总是容易让人困惑，万事开头难，坚持下去就会柳暗花明。",
+        pinyin: "Xué biānchéng dì-yī zhōu zǒng shì róngyì ràng rén kùnhuò, wàn shì kāi tóu nán, jiānchí xiàqù jiù huì liǔ àn huā míng.",
+        vi: "Tuần đầu học lập trình bao giờ cũng dễ làm người ta hoang mang, vạn sự khởi đầu nan, kiên trì theo đuổi ắt sẽ thấy ánh sáng rực rỡ."
+      },
+      image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80",
+      tags: ["Khởi đầu", "Động lực", "Kiên nhẫn"]
+    },
+    {
+      id: "pv_12",
+      category: "proverb",
+      hanzi: "水至清则无鱼，人至察则无徒",
+      pinyin: "shuǐ zhì qīng zé wú yú, rén zhì chá zé wú tú",
+      literal: "Nước trong quá thì không có cá, người xét nét quá thì không có bạn bè đồ đệ",
+      figurative: "Đối nhân xử thế cần có lòng bao dung, độ lượng; quá khắt khe, cầu toàn và soi mói lỗi lầm nhỏ nhặt của người khác sẽ khiến mình cô độc không ai dám gần gũi.",
+      story: "Đông Phương Sóc thời Tây Hán trong bài 'Đáp Khách Nan' đã mượn lời này để giảng giải về thuật đối nhân xử thế và trị quốc: Nước trong vắt nhìn thấy tận đáy thì cá không có nơi ẩn nấp sinh sôi; người làm việc mà quá khắt khe chấp nhặt từng li từng tí thì sẽ khiến người khác xa lánh, không chiêu mộ được bằng hữu và hiền tài.",
+      example: {
+        zh: "作为团队管理者要懂得容人之短，水至清则无鱼，苛责反而让大家不敢创新。",
+        pinyin: "Zuòwéi tuánduì guǎnlǐzhě yào dǒngdé róng rén zhī duǎn, shuǐ zhì qīng zé wú yú, kēzé fǎn'ér ràng dàjiā bù gǎn chuàngxīn.",
+        vi: "Là người quản lý nhóm phải biết bao dung khiếm khuyết của người khác, nước trong quá không có cá, quá khắt khe ngược lại chỉ khiến cấp dưới không dám sáng tạo."
+      },
+      image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80",
+      tags: ["Bao dung", "Quản trị", "Đại Đới Lễ Ký"]
+    },
+    {
+      id: "pv_13",
+      category: "proverb",
+      hanzi: "良药苦口利于病，忠言逆耳利于行",
+      pinyin: "liáng yào kǔ kǒu lì yú bìng, zhōng yán nì ěr lì yú xíng",
+      literal: "Thuốc tốt đắng miệng nhưng lợi cho chữa bệnh, lời nói ngay thật chói tai nhưng lợi cho hành động tu thân (Thuốc đắng dã tật, lời thật mất lòng)",
+      figurative: "Những lời phê bình đóng góp chân thành dù nghe khó chịu xót tai nhưng chính là phương thuốc quý giúp ta sửa sai và tiến bộ.",
+      story: "Sau khi Lưu Bang đánh chiếm kinh đô Hàm Dương nhà Tần, thấy cung điện xa hoa mỹ nữ đầy rẫy liền muốn ở lại hưởng lạc. Dũng tướng Phàn Khoái và mưu thần Trương Lương kịch liệt can ngăn, nhắc Lưu Bang bài học của Tần vương. Trương Lương nói: 'Thuốc tốt đắng miệng lợi cho bệnh, lời ngay trái tai lợi cho việc làm, mong Bái Công nghe theo lời Phàn Khoái'. Lưu Bang bèn đóng dấu kho tàng rút quân ra cắm trại bên ngoài, nhờ đó thu phục được trọn vẹn lòng dân Tam Tần.",
+      example: {
+        zh: "导师对你的论文批注意见虽然严厉，但良药苦口利于病，照着改水平定会大增。",
+        pinyin: "Dǎoshī duì nǐ de lùnwén pīzhù yìjiàn suīrán yánlì, dàn liáng yào kǔ kǒu lì yú bìng, zhàozhe gǎi shuǐpíng dìng huì dà zēng.",
+        vi: "Ý kiến nhận xét của thầy hướng dẫn về luận văn của bạn tuy nghiêm khắc, nhưng thuốc đắng dã tật, sửa theo đó trình độ chắc chắn sẽ tăng vượt bậc."
+      },
+      image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80",
+      tags: ["Lắng nghe", "Sửa mình", "Sử Ký Lưu Hầu Thế Gia"]
+    },
+    {
+      id: "pv_14",
+      category: "proverb",
+      hanzi: "千里送鹅毛，礼轻情意重",
+      pinyin: "qiān lǐ sòng é máo, lǐ qīng qíng yì zhòng",
+      literal: "Ngàn dặm xa xôi gửi một chiếc lông ngỗng, lễ vật tuy nhẹ nhưng tấm lòng nặng tựa thái sơn",
+      figurative: "Giá trị của quà tặng không nằm ở giá tiền vật chất đắt đỏ, mà nằm ở tình cảm chân thành sâu nặng và sự quan tâm của người trao gửi.",
+      story: "Thời Đường, thứ sử Miện Châu phái một sứ giả tên Miễn Bá Cao mang một con thiên nga trắng quý hiếm đi cống nạp cho Đường Thái Tông. Khi qua hồ Miện Trì, sứ giả mở lồng tắm rửa cho thiên nga, không may thiên nga tung cánh bay vút lên trời mất hút, chỉ rụng lại một chiếc lông vũ trên mặt nước. Sứ giả đành nhặt chiếc lông ngỗng bọc trong gấm quý mang đến kinh đô dâng vua kèm bài thơ trần tình chân thành. Vua Đường cảm động trước lòng trung thực không dối lừa, ban thưởng hậu hĩnh cho ông.",
+      example: {
+        zh: "这份亲手编织的围巾千里送鹅毛礼轻情意重，是我收到最温暖的礼物。",
+        pinyin: "Zhè fèn qīnshǒu biānzhī de wéijīn qiān lǐ sòng é máo lǐ qīng qíngyì zhòng, shì wǒ shōudào zuì wēnnuǎn de lǐwù.",
+        vi: "Chiếc khăn len tự tay bạn đan này ngàn dặm gửi lông ngỗng của tuy mọn nghĩa nặng nghìn cân, là món quà ấm áp nhất mình từng nhận được."
+      },
+      image: "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?auto=format&fit=crop&w=600&q=80",
+      tags: ["Tình cảm", "Chân thành", "Điển tích"]
+    },
+    {
+      id: "pv_15",
+      category: "proverb",
+      hanzi: "知人知面不知心",
+      pinyin: "zhī rén zhī miàn bù zhī xīn",
+      literal: "Biết người biết vẻ mặt nhưng khó biết được bụng dạ lòng người",
+      figurative: "Lòng người sâu hiểm khó dò; không thể chỉ nhìn vẻ bề ngoài tươi cười thân thiện hay tướng mạo lịch thiệp mà vội tin tưởng hoàn toàn.",
+      story: "Trích từ danh tác 'Tây Du Ký' của Ngô Thừa Ân và truyện cổ tích dân gian: Bọn yêu quái thường biến hóa thành những cô gái trẻ đẹp, cụ già hiền lành để đánh lừa lòng trắc ẩn của con người. Tôn Ngộ Không có hỏa nhãn kim tinh nhìn thấu bản chất thật, trong khi người đời thường dễ bị che mắt bởi lớp vỏ bọc bề ngoài giả nhân giả nghĩa.",
+      example: {
+        zh: "害人之心不可有，防人之心不可无，毕竟知人知面不知心。",
+        pinyin: "Hài rén zhī xīn bù kě yǒu, fáng rén zhī xīn bù kě wú, bìjìng zhī rén zhī miàn bù zhī xīn.",
+        vi: "Tâm hại người không được có, nhưng tâm phòng người không thể thiếu, bởi lẽ biết người biết mặt khó biết lòng."
+      },
+      image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=600&q=80",
+      tags: ["Cảnh giác", "Đối nhân", "Tây Du Ký"]
+    },
+    {
+      id: "pv_16",
+      category: "proverb",
+      hanzi: "冰冻三尺，非一日之寒",
+      pinyin: "bīng dòng sān chǐ, fēi yí rì zhī hán",
+      literal: "Băng đóng dày ba thước không phải do cái lạnh của một ngày đơn lẻ tạo thành",
+      figurative: "Bất kỳ mâu thuẫn sâu sắc, thói hư tật xấu hay thành tựu phi thường nào cũng là kết quả tích tụ lâu ngày; giải quyết việc cần kiên nhẫn lần gỡ từ gốc rễ.",
+      story: "Vương Sung thời Đông Hán trong luận thư 'Luận Hoành': 'Băng đống tam xích, phi nhất nhật chi hàn; tích thổ thành sơn, phi tư tu chi ích'. Khẳng định quy luật chuyển hóa từ lượng thành chất trong triết học phương Đông: Mọi sự vật trên đời từ tình cảm rạn nứt đến thể lực cường tráng đều là hệ quả của chuỗi ngày dài hun đúc.",
+      example: {
+        zh: "他们夫妻间的矛盾是多年积累造成的，冰冻三尺非一日之寒啊。",
+        pinyin: "Tāmen fūqī jiān de máodùn shì duō nián jīlěi zàochéng de, bīng dòng sān chǐ fēi yí rì zhī hán a.",
+        vi: "Mâu thuẫn giữa hai vợ chồng họ là do nhiều năm dồn nén tích tụ tạo thành, băng dày ba thước không phải bởi cái lạnh một ngày."
+      },
+      image: "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?auto=format&fit=crop&w=600&q=80",
+      tags: ["Quy luật", "Tích tụ", "Luận Hoành"]
+    },
+    {
+      id: "pv_17",
+      category: "proverb",
+      hanzi: "世上无难事，只怕有心人",
+      pinyin: "shì shàng wú nán shì, zhǐ pà yǒu xīn rén",
+      literal: "Trên đời không có việc gì khó, chỉ sợ người có tâm quyết chí",
+      figurative: "Chẳng có trở ngại hay khó khăn nào không thể vượt qua, miễn là con người có ý chí sắt đá, lòng quyết tâm và sự kiên trì bền bỉ đến cùng.",
+      story: "Xuất hiện trong tác phẩm kinh điển 'Hồng Lâu Mộng' (Hồi thứ 48), khi Hương Lăng muốn học làm thơ, Đại Ngọc khích lệ nàng: 'Thế thượng vô nan sự, chỉ phạ hữu tâm nhân'. Nhờ khổ công đọc thuộc 300 bài thơ Đường, Hương Lăng đã sáng tác được những vần thơ thanh nhã tuyệt trần làm kinh ngạc chốn Đại Quan Viên.",
+      example: {
+        zh: "哪怕零基础学汉语也不用怕，世上无难事只怕有心人！",
+        pinyin: "Nǎpà líng jīchǔ xué hànyǔ yě bú yòng pà, shì shàng wú nán shì zhǐ pà yǒu xīn rén!",
+        vi: "Dù cho học tiếng Trung từ con số 0 cũng đừng sợ, trên đời không có việc gì khó, chỉ sợ lòng không bền!"
+      },
+      image: "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?auto=format&fit=crop&w=600&q=80",
+      tags: ["Quyết tâm", "Khích lệ", "Hồng Lâu Mộng"]
+    },
+    {
+      id: "pv_18",
+      category: "proverb",
+      hanzi: "留得青山在，不怕没柴烧",
+      pinyin: "liú dé qīng shān zài, bù pà méi chái shāo",
+      literal: "Giữ được ngọn núi xanh thì lo gì không có củi để đốt",
+      figurative: "Chỉ cần bảo toàn được sinh mệnh, sức khỏe và ý chí cốt lõi thì dù trước mắt có thất bại trắng tay cũng vẫn còn cơ hội gầy dựng lại từ đầu.",
+      story: "Truyền thuyết dân gian về một người thợ tiều phu đốn củi: Người thợ dại dột chặt sạch cả cây non lẫn rễ khiến núi biến thành đồi trọc, sang năm sau không còn một mẩu củi để đun. Người thợ thông minh chỉ tỉa cành khô, chăm sóc cho núi rừng luôn xanh tốt, nhờ vậy suốt đời không bao giờ thiếu củi đốt. Về sau câu nói trở thành triết lý bảo toàn sinh lực quý giá nhất của con người.",
+      example: {
+        zh: "工作再忙也要按时吃饭休息，留得青山在不怕没柴烧，身体才是第一位的。",
+        pinyin: "Gōngzuò zài máng yě yào ànshí chīfàn xiūxi, liú dé qīng shān zài bù pà méi chái shāo, shēntǐ cái shì dì-yī wèi de.",
+        vi: "Công việc bận rộn đến đâu cũng phải ăn ngủ đúng giờ, còn rừng xanh lo gì không có củi đốt, sức khỏe mới là số một."
+      },
+      image: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80",
+      tags: ["Sức khỏe", "Bảo toàn", "Triết lý sống"]
+    },
+    {
+      id: "pv_19",
+      category: "proverb",
+      hanzi: "路遥知马力，日久见人心",
+      pinyin: "lù yáo zhī mǎ lì, rì jiǔ jiàn rén xīn",
+      literal: "Đường đi xa ngàn dặm mới biết sức ngựa dẻo dai, ngày tháng dài lâu mới thấu tỏ lòng dạ con người",
+      figurative: "Bản chất thật sự, sự thủy chung và lòng chân thành của một con người cần phải qua thời gian dài thử thách trong thực tế mới bộc lộ sáng tỏ.",
+      story: "Xuất hiện trong tác phẩm 'Tranh Báo Ân' thời Nguyên và 'Phong Thần Diễn Nghĩa'. Muốn biết một con chiến mã có phải tuấn mã hảo hạng hay không thì phải cưỡi qua vạn dặm đường trường; kết bạn muốn biết có phải tri kỷ trung thành hay không phải đợi qua lúc hoạn nạn thử thách thời gian.",
+      example: {
+        zh: "合作初期不用急着下定论，路遥知马力日久见人心，时间会证明诚信。",
+        pinyin: "Hézuò chūqī bú yòng jízhe xià dìnglùn, lù yáo zhī mǎ lì rì jiǔ jiàn rén xīn, shíjiān huì zhèngmíng chéngxìn.",
+        vi: "Giai đoạn đầu hợp tác không cần vội kết luận, đường dài mới biết ngựa hay ở lâu mới hay lòng người, thời gian sẽ chứng minh sự uy tín chân thành."
+      },
+      image: "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=600&q=80",
+      tags: ["Chân thành", "Thời gian", "Thử thách"]
+    },
+    {
+      id: "pv_20",
+      category: "proverb",
+      hanzi: "吃得苦中苦，方为人上人",
+      pinyin: "chī dé kǔ zhōng kǔ, fāng wéi rén shàng rén",
+      literal: "Ăn được nỗi khổ cực cay đắng nhất trong muôn vàn cái khổ, mới có thể trở thành người đứng đầu thiên hạ",
+      figurative: "Muốn đạt được đỉnh cao thành tựu và sự kính trọng vượt bậc của xã hội thì phải sẵn sàng chịu đựng những gian truân, thử thách mà người bình thường không kham nổi.",
+      story: "Câu châm ngôn nổi tiếng trong bộ sách luân lý cổ 'Cảnh Thế Hiền Văn' của Trung Hoa, thường dùng làm câu đối treo trong các thư phòng để nhắc nhở học trò văn nhân mài đắp chí khí khoa cử, dù đèn sách lạnh lẽo mười năm vẫn không được sờn lòng nản chí.",
+      example: {
+        zh: "运动员为了站上奥运领奖台每天挥汗如雨，正是吃得苦中苦方为人上人。",
+        pinyin: "Yùndòngyuán wèile zhàn shàng àoyùn lǐngjiǎngtái měitiān huīhàn rúyǔ, zhèng shì chī dé kǔ zhōng kǔ fāng wéi rén shàng rén.",
+        vi: "Vận động viên để bước lên bục vinh quang Olympic mỗi ngày đều đổ mồ hôi sôi nước mắt, đúng là chịu được nỗi khổ cùng cực mới đứng trên đỉnh cao."
+      },
+      image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80",
+      tags: ["Khổ luyện", "Vươn lên", "Cảnh Thế Hiền Văn"]
+    },
+    {
+      id: "pv_21",
+      category: "proverb",
+      hanzi: "种瓜得瓜，种豆得豆",
+      pinyin: "zhòng guā dé guā, zhòng dòu dé dòu",
+      literal: "Trồng dưa thì được quả dưa, trồng đậu thì được hạt đậu (Gieo nhân nào gặt quả nấy)",
+      figurative: "Luật nhân quả phổ quát; gieo hạt giống thiện lương nỗ lực sẽ gặt hái quả ngọt hạnh phúc, làm điều sai trái lười biếng ắt phải nhận hậu quả cay đắng.",
+      story: "Xuất phát từ kinh điển nhà Phật và được ghi nhận trong 'Niết Bàn Kinh': 'Chủng qua đắc qua, chủng đậu đắc đậu; quả tùy nhân chuyển, như ảnh tùy hình'. Đạo lý giản dị từ đồng ruộng của người nông dân nhắc nhở con người luôn phải ý thức từng hành vi và lời nói hàng ngày của mình.",
+      example: {
+        zh: "你在学习上付出的每一分汗水都会化作优异成绩，种瓜得瓜种豆得豆。",
+        pinyin: "Nǐ zài xuéxí shàng fùchū de měi yì fēn hànshuǐ dōu huì huà zuò yōuyì chéngjì, zhòng guā dé guā zhòng dòu dé dòu.",
+        vi: "Mỗi giọt mồ hôi bạn bỏ ra cho việc học tập đều sẽ hóa thành điểm số xuất sắc, gieo nhân nào gặt quả nấy."
+      },
+      image: "https://images.unsplash.com/photo-1592417817098-8f3d69109853?auto=format&fit=crop&w=600&q=80",
+      tags: ["Nhân quả", "Quy luật", "Nỗ lực"]
     }
   ],
+
 
   // 3. Mock Exams categorized by Curriculum
   examBank: {
