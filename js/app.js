@@ -20,12 +20,22 @@ document.addEventListener("DOMContentLoaded", () => {
     speakingState: null,
     flashcardIndex: 0,
     isCardFlipped: false,
+    userLevel: window.StorageService.getUserLevel(),
+    dictHskFilter: "all",
+    chengyuCategoryFilter: "all",
+    writers: {},
 
     init() {
       this.applyTheme(this.settings.theme);
       this.bindNavigation();
       this.updateHeaderProgress();
+      this.updateLevelDisplay();
       this.setupGlobalEvents();
+
+      // Check if user has chosen their starting level, if not prompt onboarding modal!
+      if (!window.StorageService.isLevelChosen()) {
+        setTimeout(() => this.openLevelSelectorModal(true), 350);
+      }
 
       // Listen to hash change
       window.addEventListener("hashchange", () => {
@@ -39,6 +49,142 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Refresh icons
       this.refreshIcons();
+    },
+
+    updateLevelDisplay() {
+      const topText = document.getElementById("topBarLevelText");
+      const mobileText = document.getElementById("mobileBarLevelText");
+      const level = this.userLevel || "HSK 1";
+
+      const labels = {
+        "HSK 1": "HSK 1 (Sơ cấp)",
+        "HSK 2": "HSK 2 (Sơ cấp 2)",
+        "HSK 3": "HSK 3 (Trung cấp)",
+        "HSK 4": "HSK 4 (Trung cấp 2)",
+        "HSK 5": "HSK 5 (Cao cấp)",
+        "HSK 6": "HSK 6 (Thành thạo)",
+        "Hán Ngữ 1-6": "Giáo trình Hán Ngữ"
+      };
+
+      const displayText = labels[level] || level;
+      if (topText) topText.textContent = displayText;
+      if (mobileText) mobileText.textContent = level;
+    },
+
+    openLevelSelectorModal(isInitial = false) {
+      const levels = [
+        {
+          id: "HSK 1",
+          name: "HSK 1 (Sơ cấp 1)",
+          tag: "Người Mới Bắt Đầu",
+          desc: "150 từ vựng cơ bản, phát âm Pinyin chuẩn, các câu chào hỏi và giao tiếp đời sống đơn giản nhất.",
+          color: "border-emerald-500 bg-emerald-50/30 text-emerald-700"
+        },
+        {
+          id: "HSK 2",
+          name: "HSK 2 (Sơ cấp 2)",
+          tag: "Giao Tiếp Hàng Ngày",
+          desc: "300 từ vựng, diễn đạt sở thích, mua sắm, gọi món, thời tiết và cuộc sống thường nhật.",
+          color: "border-teal-500 bg-teal-50/30 text-teal-700"
+        },
+        {
+          id: "HSK 3",
+          name: "HSK 3 (Trung cấp sơ)",
+          tag: "Tự Tin Du Lịch",
+          desc: "600 từ vựng, giao tiếp tự tin khi đi du lịch, công tác, diễn đạt quan điểm cá nhân.",
+          color: "border-blue-500 bg-blue-50/30 text-blue-700"
+        },
+        {
+          id: "HSK 4",
+          name: "HSK 4 (Trung cấp vững)",
+          tag: "Làm Việc & Du Học",
+          desc: "1200 từ vựng, thảo luận sâu về công việc, đọc báo chí và xem phim tiếng Trung cơ bản.",
+          color: "border-amber-500 bg-amber-50/30 text-amber-700"
+        },
+        {
+          id: "HSK 5",
+          name: "HSK 5 (Cao cấp)",
+          tag: "Học Thuật & Chuyên Nghiệp",
+          desc: "2500 từ vựng, đọc hiểu văn bản phức tạp, thuyết trình và làm việc chuyên nghiệp chuẩn bản xứ.",
+          color: "border-purple-500 bg-purple-50/30 text-purple-700"
+        },
+        {
+          id: "HSK 6",
+          name: "HSK 6 (Thành thạo)",
+          tag: "Bậc Thầy Tiếng Hán",
+          desc: "5000+ từ vựng, thành ngữ điển tích cổ điển, biên phiên dịch và nắm bắt mọi sắc thái ngôn ngữ.",
+          color: "border-rose-500 bg-rose-50/30 text-rose-700"
+        },
+        {
+          id: "Hán Ngữ 1-6",
+          name: "Giáo Trình Hán Ngữ (6 Quyển)",
+          tag: "Giáo Trình Đại Học",
+          desc: "Học chuẩn bài bản theo bộ 6 quyển xanh lá kinh điển của Đại học Ngôn ngữ Bắc Kinh.",
+          color: "border-red-500 bg-red-50/30 text-red-700"
+        }
+      ];
+
+      const html = `
+        <div class="p-6 md:p-8 space-y-5">
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-4">
+            <div>
+              <span class="text-xs font-bold text-red-600 uppercase tracking-wider">Lộ trình học tập cá nhân</span>
+              <h3 class="text-xl font-extrabold text-slate-900 dark:text-white mt-0.5">
+                ${isInitial ? "Chào mừng bạn! Hãy chọn cấp độ bắt đầu của bạn" : "Đổi Cấp Độ Học Tập"}
+              </h3>
+            </div>
+            ${!isInitial ? `
+              <button onclick="App.closeModal()" class="text-slate-400 hover:text-slate-600">
+                <i data-lucide="x" class="w-5 h-5"></i>
+              </button>
+            ` : ""}
+          </div>
+
+          <p class="text-xs text-slate-500 dark:text-slate-400">
+            Hệ thống sẽ cá nhân hóa Từ điển, Flashcard, Đề thi và Từ vựng hôm nay phù hợp nhất với cấp độ bạn chọn. Bạn có thể đổi lại bất cứ lúc nào!
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[60vh] overflow-y-auto pr-1">
+            ${levels
+              .map(
+                (lvl) => `
+              <div
+                onclick="App.selectUserLevel('${lvl.id}')"
+                class="p-4 rounded-2xl border-2 ${this.userLevel === lvl.id ? "border-red-600 bg-red-50/40 dark:bg-red-950/40 shadow-md ring-2 ring-red-500/30" : "border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-750 hover:border-red-400"} cursor-pointer transition flex flex-col justify-between group"
+              >
+                <div>
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="font-extrabold text-sm text-slate-900 dark:text-white group-hover:text-red-600 transition">${lvl.name}</span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${lvl.color}">${lvl.tag}</span>
+                  </div>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">${lvl.desc}</p>
+                </div>
+
+                <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-xs font-bold ${this.userLevel === lvl.id ? "text-red-600" : "text-slate-400 group-hover:text-red-600"}">
+                  <span>${this.userLevel === lvl.id ? "✓ Đang học cấp độ này" : "Chọn cấp độ này"}</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </div>
+              </div>
+            `
+              )
+              .join("")}
+          </div>
+        </div>
+      `;
+
+      this.openModal(html);
+      this.refreshIcons();
+    },
+
+    selectUserLevel(level) {
+      window.StorageService.saveUserLevel(level);
+      this.userLevel = level;
+      this.updateLevelDisplay();
+      this.closeModal();
+      this.showToast(`Tuyệt vời! Đã thiết lập cấp độ mục tiêu: ${level}`, "success");
+      
+      // Refresh current active view to adapt to the new level
+      this.navigate(this.currentRoute);
     },
 
     refreshIcons() {
@@ -263,13 +409,40 @@ document.addEventListener("DOMContentLoaded", () => {
        MODULE 1: DASHBOARD
        ===================================================================== */
     renderDashboard(container) {
-      const todayWord = window.APP_DATA.vocabList[1]; // '学习'
+      let targetHsk = 1;
+      if (this.userLevel && this.userLevel.startsWith("HSK")) {
+        const num = parseInt(this.userLevel.replace("HSK", "").trim());
+        if (!isNaN(num)) targetHsk = num;
+      }
+      const matchWords = (window.APP_DATA.vocabList || []).filter((w) => w.hsk === targetHsk);
+      const todayWord = matchWords.length > 0 ? matchWords[0] : (window.APP_DATA.vocabList[1] || window.APP_DATA.vocabList[0]);
+
       const penaltyCount = this.penaltyWords.length;
       const wordsPercent = Math.min(100, Math.round(((this.stats.wordsLearnedToday || 0) / (this.goals.dailyWordsTarget || 10)) * 100));
       const chengyuPercent = Math.min(100, Math.round(((this.stats.chengyuLearnedToday || 0) / (this.goals.dailyChengyuTarget || 2)) * 100));
 
       container.innerHTML = `
         <div class="space-y-6">
+          <!-- Active Target Level Bar -->
+          <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-red-100 dark:bg-red-950/60 text-red-600 dark:text-red-400 flex items-center justify-center font-bold text-lg">
+                <i data-lucide="award" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div class="text-xs text-slate-400 font-semibold">Cấp độ học tập đang chọn</div>
+                <div class="text-base font-extrabold text-slate-800 dark:text-white flex items-center gap-2">
+                  <span>${this.userLevel || "HSK 1"}</span>
+                  <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">Đang hoạt động</span>
+                </div>
+              </div>
+            </div>
+            <button onclick="App.openLevelSelectorModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-white text-xs font-bold flex items-center gap-2 transition">
+              <i data-lucide="sliders-horizontal" class="w-4 h-4 text-red-600"></i>
+              Đổi cấp độ mục tiêu
+            </button>
+          </div>
+
           <!-- Hero Banner with Streak & Greetings -->
           <div class="rounded-3xl bg-gradient-to-r from-red-600 via-rose-600 to-amber-600 text-white p-6 md:p-8 shadow-xl relative overflow-hidden">
             <div class="absolute -right-8 -bottom-10 opacity-10 font-hanzi font-black text-9xl pointer-events-none">
@@ -281,10 +454,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 Học Tiếng Trung Tương Tác Cùng Trí Tuệ Nhân Tạo
               </span>
               <h2 class="text-2xl md:text-4xl font-extrabold tracking-tight mb-2">
-                你好！Hôm nay bạn đã sẵn sàng bứt phá HSK chưa?
+                你好！Hôm nay bạn đã sẵn sàng bứt phá ${this.userLevel || "HSK 1"} chưa?
               </h2>
               <p class="text-white/80 text-sm md:text-base leading-relaxed mb-6">
-                Chinh phục Giáo trình Hán Ngữ, chuẩn hóa phát âm HSKK cùng Gemini AI và rèn luyện phản xạ ngôn ngữ siêu tốc.
+                Chinh phục Giáo trình Hán Ngữ & HSK chuẩn Hanban, chuẩn hóa phát âm HSKK cùng Gemini AI và rèn luyện phản xạ ngôn ngữ siêu tốc.
               </p>
               <div class="flex flex-wrap items-center gap-3">
                 <a href="#games" class="px-5 py-2.5 rounded-xl bg-white text-red-700 font-bold text-sm shadow-md hover:bg-slate-100 transition flex items-center gap-2">
@@ -493,18 +666,18 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     /* =====================================================================
-       MODULE 2: DICTIONARY & SMART LOOKUP (WITH GEMINI AI FALLBACK)
+       MODULE 2: DICTIONARY & SMART LOOKUP (WITH HANZI STROKE WRITER & AI)
        ===================================================================== */
     renderDictionary(container) {
       container.innerHTML = `
-        <div class="space-y-6 max-w-4xl mx-auto">
+        <div class="space-y-6 max-w-5xl mx-auto">
           <div class="text-center max-w-xl mx-auto">
             <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white flex items-center justify-center gap-2">
               <i data-lucide="book-open" class="w-7 h-7 text-red-600"></i>
               Từ Điển & Tra Cứu Thông Minh
             </h2>
             <p class="text-xs md:text-sm text-slate-500 dark:text-slate-400 mt-1">
-              Tra cứu theo chữ Hán, Pinyin hoặc nghĩa tiếng Việt. Tự động gọi Gemini AI phân tích sâu khi từ chưa có sẵn.
+              Tra cứu chữ Hán, Pinyin, nghĩa tiếng Việt, xem <strong>thứ tự từng nét viết (Bút thuận)</strong> và tương tác tập viết trực tiếp.
             </p>
           </div>
 
@@ -514,7 +687,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <input
                 type="text"
                 id="dictSearchInput"
-                placeholder="Nhập chữ Hán (vd: 坚持), Pinyin (jiān chí) hoặc nghĩa tiếng Việt..."
+                placeholder="Nhập chữ Hán (vd: 学习, 坚持), Pinyin (xué xí) hoặc nghĩa tiếng Việt..."
                 class="w-full px-5 py-4 pl-12 pr-32 rounded-2xl bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white placeholder-slate-400 focus:outline-none focus:border-red-500 shadow-md text-base"
               />
               <i data-lucide="search" class="w-5 h-5 text-slate-400 absolute left-4"></i>
@@ -527,10 +700,37 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </div>
 
+          <!-- HSK Level Filter Pills -->
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="text-xs font-bold text-slate-400 mr-1 flex items-center gap-1">
+              <i data-lucide="filter" class="w-3.5 h-3.5"></i> Cấp độ HSK:
+            </span>
+            <button
+              onclick="App.filterDictByHsk('all')"
+              class="dict-hsk-pill px-3 py-1.5 rounded-xl text-xs font-bold transition ${this.dictHskFilter === "all" ? "bg-red-600 text-white shadow-sm" : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-red-400"}"
+            >
+              Tất cả (${window.APP_DATA.vocabList.length})
+            </button>
+            ${[1, 2, 3, 4, 5, 6]
+              .map((lvl) => {
+                const count = window.APP_DATA.vocabList.filter((w) => w.hsk === lvl).length;
+                const isSelected = this.dictHskFilter === lvl.toString();
+                return `
+                <button
+                  onclick="App.filterDictByHsk('${lvl}')"
+                  class="dict-hsk-pill px-3 py-1.5 rounded-xl text-xs font-bold transition ${isSelected ? "bg-red-600 text-white shadow-sm" : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-red-400"}"
+                >
+                  HSK ${lvl} (${count})
+                </button>
+              `;
+              })
+              .join("")}
+          </div>
+
           <!-- Quick Suggestion Tags -->
           <div class="flex items-center gap-2 flex-wrap text-xs">
             <span class="text-slate-400 font-medium">Gợi ý từ hay:</span>
-            ${["你好", "坚持", "解决", "积累", "潜移默化", "精益求精"]
+            ${["学习", "你好", "坚持", "解决", "积累", "潜移默化", "精益求精", "负责", "独特"]
               .map(
                 (w) => `
               <button onclick="document.getElementById('dictSearchInput').value='${w}'; App.handleDictSearch('${w}');" class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/60 transition font-hanzi">
@@ -543,15 +743,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           <!-- Search Results Container -->
           <div id="dictResultContainer" class="space-y-4">
-            <!-- Default initial view: List of featured HSK words -->
-            <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm">
-              <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-2">
-                <i data-lucide="layers" class="w-4 h-4 text-red-500"></i> Từ vựng tiêu biểu trong ngân hàng HSK
-              </h3>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                ${window.APP_DATA.vocabList.slice(0, 6).map((item) => this.renderSmallWordCard(item)).join("")}
-              </div>
-            </div>
+            ${this.renderDictWordListHtml()}
           </div>
         </div>
       `;
@@ -566,22 +758,59 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     },
 
+    filterDictByHsk(lvl) {
+      this.dictHskFilter = lvl;
+      const container = document.getElementById("viewContainer");
+      if (container) this.renderDictionary(container);
+    },
+
+    renderDictWordListHtml() {
+      let words = window.APP_DATA.vocabList;
+      if (this.dictHskFilter !== "all") {
+        const lvlNum = parseInt(this.dictHskFilter);
+        words = words.filter((w) => w.hsk === lvlNum);
+      }
+
+      return `
+        <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm">
+          <div class="flex items-center justify-between mb-4 border-b border-slate-100 dark:border-slate-700 pb-3">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
+              <i data-lucide="layers" class="w-4 h-4 text-red-500"></i>
+              Danh sách từ vựng ${this.dictHskFilter === "all" ? "toàn bộ HSK 1 - 6" : `cấp độ HSK ${this.dictHskFilter}`} (${words.length} từ)
+            </h3>
+            <span class="text-xs text-slate-400">Bấm vào từ để xem cách viết nét & chi tiết</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            ${words.map((item) => this.renderSmallWordCard(item)).join("")}
+          </div>
+        </div>
+      `;
+    },
+
     renderSmallWordCard(word) {
       return `
-        <div onclick="App.handleDictSearch('${word.hanzi}')" class="p-4 rounded-xl border border-slate-100 dark:border-slate-700 hover:border-red-400 dark:hover:border-red-500 bg-slate-50/50 dark:bg-slate-750 cursor-pointer transition flex items-center justify-between group">
-          <div class="flex items-center space-x-3">
-            <div class="w-12 h-12 rounded-xl tianzige-box flex items-center justify-center font-hanzi font-bold text-2xl text-slate-800 dark:text-white shadow-inner">
+        <div onclick="App.handleDictSearch('${word.hanzi}')" class="p-4 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-red-400 dark:hover:border-red-500 bg-slate-50/50 dark:bg-slate-750 cursor-pointer transition flex items-center justify-between group shadow-sm">
+          <div class="flex items-center space-x-3.5">
+            <div class="w-13 h-13 p-2 rounded-xl tianzige-box flex items-center justify-center font-hanzi font-bold text-2xl text-slate-900 dark:text-white shadow-inner">
               ${word.hanzi}
             </div>
             <div>
               <div class="flex items-center gap-2">
-                <span class="font-semibold text-red-600 dark:text-red-400 text-sm">${word.pinyin}</span>
-                <span class="text-[10px] px-1.5 py-0.2 rounded font-bold bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">HSK ${word.hsk}</span>
+                <span class="font-bold text-red-600 dark:text-red-400 text-sm font-mono">${word.pinyin}</span>
+                <span class="text-[10px] px-1.5 py-0.2 rounded font-bold bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300">HSK ${word.hsk}</span>
               </div>
-              <p class="text-xs text-slate-600 dark:text-slate-300 line-clamp-1">${word.meaning}</p>
+              <p class="text-xs font-medium text-slate-700 dark:text-slate-200 line-clamp-1 mt-0.5">${word.meaning}</p>
+              <span class="text-[10px] text-slate-400 flex items-center gap-1 mt-0.5">
+                <i data-lucide="edit-3" class="w-3 h-3 text-emerald-500"></i> Có hoạt ảnh vẽ nét (${word.strokes || 8} nét)
+              </span>
             </div>
           </div>
-          <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400 group-hover:text-red-600 group-hover:translate-x-1 transition"></i>
+          <div class="flex items-center gap-2">
+            <button onclick="event.stopPropagation(); AudioService.speak('${word.hanzi}')" class="p-2 rounded-xl bg-white dark:bg-slate-700 text-slate-500 hover:text-red-600 transition shadow-sm" title="Nghe phát âm">
+              <i data-lucide="volume-2" class="w-4 h-4"></i>
+            </button>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:text-red-600 group-hover:translate-x-1 transition"></i>
+          </div>
         </div>
       `;
     },
@@ -649,9 +878,24 @@ document.addEventListener("DOMContentLoaded", () => {
         .map((c) => `<span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 text-xs text-slate-700 dark:text-slate-300 font-hanzi">${c}</span>`)
         .join("");
 
+      // Extract unique characters for Hanzi stroke writer
+      const hanziChars = Array.from(word.hanzi).filter((c) => /[\u4e00-\u9fa5]/.test(c));
+      const writerConfigs = hanziChars.map((char) => ({
+        char,
+        containerId: "hw_" + Math.random().toString(36).substring(2, 9)
+      }));
+
+      // Schedule HanziWriter creation after DOM injection
+      setTimeout(() => {
+        writerConfigs.forEach((cfg) => {
+          this.createHanziWriter(cfg.containerId, cfg.char);
+        });
+        this.refreshIcons();
+      }, 100);
+
       return `
-        <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 p-6 md:p-8 shadow-lg">
-          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-700 pb-4 mb-6">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 p-6 md:p-8 shadow-lg space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-700 pb-4">
             <div class="flex items-center gap-2">
               <span class="text-xs font-bold px-3 py-1 rounded-full bg-red-100 dark:bg-red-950 text-red-600 dark:text-red-300">
                 HSK ${word.hsk || 1}
@@ -669,12 +913,12 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-            <!-- Big Hanzi in Tianzige -->
+            <!-- Big Hanzi in Tianzige with Ruby Pinyin -->
             <div class="flex flex-col items-center justify-center p-6 rounded-2xl tianzige-box border border-red-200 dark:border-red-900/50 shadow-inner">
-              <span class="font-hanzi font-bold text-7xl md:text-8xl text-slate-900 dark:text-white leading-none">
+              <span class="font-hanzi font-bold text-6xl md:text-7xl text-slate-900 dark:text-white leading-none">
                 ${word.hanzi}
               </span>
-              <span class="mt-3 text-xl font-bold text-red-600 dark:text-red-400 font-mono tracking-wide">
+              <span class="mt-3 text-lg md:text-xl font-bold text-red-600 dark:text-red-400 font-mono tracking-wide">
                 ${word.pinyin}
               </span>
             </div>
@@ -710,9 +954,65 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </div>
 
+          <!-- Stroke Order & Practice Section (Hanzi Writer) -->
+          <div class="pt-5 border-t border-slate-100 dark:border-slate-700 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="text-xs uppercase font-bold text-red-600 dark:text-red-400 flex items-center gap-1.5">
+                <i data-lucide="edit-3" class="w-4 h-4"></i> Cách Viết Từng Nét Chữ Hán (Bút Thuận)
+              </span>
+              <span class="text-[11px] text-slate-400 font-medium">
+                ${word.strokeOrderRules || "Quy tắc: Ngang trước sổ sau, trên trước dưới sau, phẩy trước mác sau"}
+              </span>
+            </div>
+
+            <!-- Grid of Interactive Hanzi Writer Characters -->
+            <div class="flex flex-wrap items-center justify-center gap-6 p-6 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700">
+              ${writerConfigs
+                .map(
+                  (cfg) => `
+                <div class="flex flex-col items-center space-y-3 bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                  <!-- Tianzige Canvas Box -->
+                  <div id="${cfg.containerId}" class="w-[130px] h-[130px] tianzige-box rounded-xl border-2 border-red-200 dark:border-red-900/50 shadow-inner flex items-center justify-center">
+                    <span class="font-hanzi text-5xl font-bold text-slate-300">${cfg.char}</span>
+                  </div>
+
+                  <span class="font-hanzi font-bold text-lg text-slate-800 dark:text-white">${cfg.char}</span>
+
+                  <div class="flex items-center gap-1.5">
+                    <button
+                      onclick="App.animateHanzi('${cfg.containerId}')"
+                      class="px-2.5 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white font-bold text-xs flex items-center gap-1 shadow-sm transition"
+                      title="Xem thứ tự vẽ nét"
+                    >
+                      <i data-lucide="play" class="w-3.5 h-3.5 fill-white"></i>
+                      <span>Vẽ nét</span>
+                    </button>
+                    <button
+                      onclick="App.quizHanzi('${cfg.containerId}', '${cfg.char}')"
+                      class="px-2.5 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs flex items-center gap-1 shadow-sm transition"
+                      title="Thử thách tự vẽ chữ theo nét"
+                    >
+                      <i data-lucide="edit-2" class="w-3.5 h-3.5"></i>
+                      <span>Tập viết</span>
+                    </button>
+                    <button
+                      onclick="App.resetHanzi('${cfg.containerId}')"
+                      class="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-600 dark:text-slate-300 transition"
+                      title="Đặt lại nét"
+                    >
+                      <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                    </button>
+                  </div>
+                </div>
+              `
+                )
+                .join("")}
+            </div>
+          </div>
+
           <!-- Example sentence -->
           ${word.example ? `
-            <div class="mt-6 pt-5 border-t border-slate-100 dark:border-slate-700">
+            <div class="pt-5 border-t border-slate-100 dark:border-slate-700">
               <div class="flex items-center justify-between mb-2">
                 <span class="text-xs uppercase font-bold text-slate-400">Ví dụ ngữ cảnh thực tế</span>
                 <button onclick="AudioService.speak('${word.example.zh}')" class="text-xs font-semibold text-red-600 dark:text-red-400 hover:underline flex items-center gap-1">
@@ -734,6 +1034,57 @@ document.addEventListener("DOMContentLoaded", () => {
           ` : ""}
         </div>
       `;
+    },
+
+    createHanziWriter(containerId, char) {
+      const el = document.getElementById(containerId);
+      if (!el || !window.HanziWriter) return;
+      el.innerHTML = "";
+      try {
+        const isDark = document.documentElement.classList.contains("dark");
+        const writer = HanziWriter.create(containerId, char, {
+          width: 125,
+          height: 125,
+          padding: 8,
+          showOutline: true,
+          strokeAnimationSpeed: 1.2,
+          delayBetweenStrokes: 140,
+          strokeColor: isDark ? "#f87171" : "#dc2626", // Red
+          outlineColor: isDark ? "#475569" : "#cbd5e1",
+          drawingColor: "#2563eb",
+          highlightColor: "#eab308"
+        });
+        this.writers[containerId] = writer;
+      } catch (e) {
+        console.warn("HanziWriter init error for " + char, e);
+      }
+    },
+
+    animateHanzi(containerId) {
+      const writer = this.writers[containerId];
+      if (writer) {
+        writer.animateCharacter();
+      }
+    },
+
+    quizHanzi(containerId, char) {
+      const writer = this.writers[containerId];
+      if (writer) {
+        this.showToast(`Bắt đầu tập viết chữ "${char}": Hãy dùng chuột hoặc ngón tay vẽ theo từng nét trong ô nhé!`, "info");
+        writer.quiz({
+          onComplete: () => {
+            this.showToast(`Xuất sắc! Bạn đã viết đúng toàn bộ nét của chữ "${char}"!`, "success");
+          }
+        });
+      }
+    },
+
+    resetHanzi(containerId) {
+      const writer = this.writers[containerId];
+      if (writer) {
+        writer.showOutline();
+        writer.showCharacter();
+      }
     },
 
     addCurrentToFlashcard(hanzi, pinyin, meaning, exampleZh = "", exampleVi = "") {
@@ -1423,7 +1774,17 @@ document.addEventListener("DOMContentLoaded", () => {
     /* =====================================================================
        MODULE 4: CHENGYU & PROVERBS (WITH FABLES & AI GENERATOR)
        ===================================================================== */
+    chengyuCategoryFilter: "all",
+    chengyuSearchQuery: "",
+
     renderChengyu(container) {
+      this.chengyuCategoryFilter = this.chengyuCategoryFilter || "all";
+      this.chengyuSearchQuery = this.chengyuSearchQuery || "";
+
+      const allCount = (window.APP_DATA.chengyuList || []).length;
+      const cyCount = (window.APP_DATA.chengyuList || []).filter((c) => c.category === "chengyu" || !c.category).length;
+      const pvCount = (window.APP_DATA.chengyuList || []).filter((c) => c.category === "proverb").length;
+
       container.innerHTML = `
         <div class="space-y-6 max-w-5xl mx-auto">
           <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-700 pb-4">
@@ -1433,7 +1794,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 Kho Tàng Thành Ngữ & Ca Dao Tục Ngữ
               </h2>
               <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                Hiểu tường tận điển tích lịch sử, nghĩa đen nghĩa bóng và ứng dụng giao tiếp văn minh.
+                Hiểu tường tận điển tích lịch sử, nghĩa đen nghĩa bóng, cội nguồn văn hóa và ví dụ giao tiếp chuẩn mực.
               </p>
             </div>
 
@@ -1443,14 +1804,101 @@ document.addEventListener("DOMContentLoaded", () => {
             </button>
           </div>
 
+          <!-- Filter & Search Controls -->
+          <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <!-- Filter Tabs -->
+              <div class="flex flex-wrap gap-2 text-xs font-semibold" id="chengyuTabs">
+                <button onclick="App.setChengyuFilter('all')" class="px-3.5 py-1.5 rounded-xl transition ${this.chengyuCategoryFilter === 'all' ? 'bg-red-600 text-white shadow-sm' : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'}">
+                  Tất cả (${allCount})
+                </button>
+                <button onclick="App.setChengyuFilter('chengyu')" class="px-3.5 py-1.5 rounded-xl transition ${this.chengyuCategoryFilter === 'chengyu' ? 'bg-red-600 text-white shadow-sm' : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'}">
+                  🐉 Thành ngữ 4 chữ điển tích (${cyCount})
+                </button>
+                <button onclick="App.setChengyuFilter('proverb')" class="px-3.5 py-1.5 rounded-xl transition ${this.chengyuCategoryFilter === 'proverb' ? 'bg-red-600 text-white shadow-sm' : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'}">
+                  🏮 Ca dao & Tục ngữ nhân sinh (${pvCount})
+                </button>
+              </div>
+
+              <!-- Search Bar -->
+              <div class="relative w-full sm:w-64">
+                <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-2.5"></i>
+                <input
+                  type="text"
+                  id="chengyuSearchInput"
+                  value="${this.chengyuSearchQuery || ''}"
+                  placeholder="Tìm Hán tự, Pinyin, nghĩa..."
+                  class="w-full pl-9 pr-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-xs text-slate-800 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-red-500"
+                />
+              </div>
+            </div>
+          </div>
+
           <!-- Chengyu Cards Grid -->
           <div id="chengyuGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            ${window.APP_DATA.chengyuList.map((item) => this.renderChengyuCard(item)).join("")}
+            <!-- Dynamic Content -->
           </div>
         </div>
       `;
 
       document.getElementById("chengyuAiGenBtn").addEventListener("click", () => this.openAiChengyuModal());
+
+      const searchInput = document.getElementById("chengyuSearchInput");
+      if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+          this.chengyuSearchQuery = e.target.value.trim().toLowerCase();
+          this.filterAndRenderChengyu();
+        });
+      }
+
+      this.filterAndRenderChengyu();
+    },
+
+    setChengyuFilter(cat) {
+      this.chengyuCategoryFilter = cat;
+      const container = document.getElementById("viewContainer");
+      if (container) this.renderChengyu(container);
+    },
+
+    filterAndRenderChengyu() {
+      const grid = document.getElementById("chengyuGrid");
+      if (!grid) return;
+
+      const list = window.APP_DATA.chengyuList || [];
+      const query = (this.chengyuSearchQuery || "").toLowerCase();
+      const cat = this.chengyuCategoryFilter || "all";
+
+      const filtered = list.filter((item) => {
+        // category match
+        if (cat === "chengyu" && item.category === "proverb") return false;
+        if (cat === "proverb" && item.category !== "proverb") return false;
+
+        // search query match
+        if (query) {
+          const matchHanzi = (item.hanzi || "").toLowerCase().includes(query);
+          const matchPinyin = (item.pinyin || "").toLowerCase().includes(query);
+          const matchLiteral = (item.literal || "").toLowerCase().includes(query);
+          const matchFigurative = (item.figurative || "").toLowerCase().includes(query);
+          const matchStory = (item.story || "").toLowerCase().includes(query);
+          const matchTags = (item.tags || []).some((t) => t.toLowerCase().includes(query));
+          return matchHanzi || matchPinyin || matchLiteral || matchFigurative || matchStory || matchTags;
+        }
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full text-center py-12 bg-white dark:bg-slate-800 rounded-3xl border border-dashed border-slate-300 dark:border-slate-700">
+            <i data-lucide="search-x" class="w-12 h-12 text-slate-400 mx-auto mb-3"></i>
+            <h4 class="text-sm font-bold text-slate-700 dark:text-slate-200">Không tìm thấy thành ngữ / ca dao tục ngữ phù hợp</h4>
+            <p class="text-xs text-slate-500 mt-1">Hãy thử tìm từ khóa khác hoặc bấm "Tạo câu mới bằng Gemini AI" ở trên!</p>
+          </div>
+        `;
+      } else {
+        grid.innerHTML = filtered.map((item) => this.renderChengyuCard(item)).join("");
+      }
+
+      this.refreshIcons();
     },
 
     renderChengyuCard(item) {
@@ -1596,9 +2044,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         this.closeModal();
         this.showToast(`Đã thêm thành ngữ "${item.hanzi}"!`, "success");
-        const grid = document.getElementById("chengyuGrid");
-        if (grid) grid.innerHTML = window.APP_DATA.chengyuList.map((i) => this.renderChengyuCard(i)).join("");
-        this.refreshIcons();
+        this.filterAndRenderChengyu();
       } catch (err) {
         this.showToast(`Lỗi tạo thành ngữ: ${err.message}`, "error");
         if (btn) {
