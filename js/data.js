@@ -1,4 +1,4 @@
-﻿// Comprehensive Data Repository for Chinese EdTech Application
+// Comprehensive Data Repository for Chinese EdTech Application
 // HSK 1 - 6 Vocabulary Bank, Chengyu & Proverbs, Exam Questions, Speaking Scenarios
 
 window.APP_DATA = {
@@ -3362,6 +3362,20 @@ window.APP_DATA = {
                         "zh":  "他决定毕业后去中国留学攻读硕士。",
                         "pinyin":  "Tā juédìng bìyè hòu qù Zhōngguó liúxué gōngdú shuòshì.",
                         "vi":  "Anh ấy quyết định sau khi tốt nghiệp sẽ sang Trung Quốc du học thạc sĩ."
+                    }
+    },
+    {
+        "id":  "v4_000",
+        "hanzi":  "固定",
+        "pinyin":  "gùdìng",
+        "meaning":  "Cố định, giữ nguyên, ổn định",
+        "hsk":  4,
+        "radical":  "囗 (Vi / Khẩu)",
+        "strokes":  8,
+        "example":  {
+                        "zh":  "我们的工作时间是固定的。",
+                        "pinyin":  "Wǒmen de gōngzuò shíjiān shì gùdìng de.",
+                        "vi":  "Thời gian làm việc của chúng tôi là cố định."
                     }
     },
     {
