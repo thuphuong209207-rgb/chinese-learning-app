@@ -1,10 +1,10 @@
-// Mock Data Repository for Chinese EdTech Application
-// HSK 1 - 6 Vocabulary, Chengyu, Exam Questions, Speaking Scenarios
+// Comprehensive Data Repository for Chinese EdTech Application
+// HSK 1 - 6 Vocabulary Bank, Chengyu & Proverbs, Exam Questions, Speaking Scenarios
 
 window.APP_DATA = {
-  // 1. Comprehensive Vocabulary Bank (HSK 1 - 6)
+  // 1. Comprehensive Vocabulary Bank (Covering HSK 1 - 6 and Hanyu Jiaocheng)
   vocabList: [
-    // HSK 1
+    // ==================== HSK 1 (Sơ cấp 1) ====================
     {
       id: "v1_01",
       hanzi: "你好",
@@ -13,6 +13,7 @@ window.APP_DATA = {
       hsk: 1,
       radical: "亻 (Nhân đứng) & 女 (Nữ)",
       strokes: 7,
+      strokeOrderRules: "Nét phẩy và sổ đứng trước, bao ngoài trước trong sau",
       collocations: ["你好吗 (Bạn khỏe không)", "你们好 (Chào các bạn)"],
       example: {
         zh: "你好，很高兴认识你！",
@@ -28,6 +29,7 @@ window.APP_DATA = {
       hsk: 1,
       radical: "子 (Tử) & 习 (Tập)",
       strokes: 8,
+      strokeOrderRules: "Chấm trước phẩy sau, trên trước dưới sau",
       collocations: ["学习汉语 (Học tiếng Trung)", "努力学习 (Chăm chỉ học)"],
       example: {
         zh: "我每天都在努力学习汉语。",
@@ -43,6 +45,7 @@ window.APP_DATA = {
       hsk: 1,
       radical: "口 (Khẩu) & 欠 (Khiếm)",
       strokes: 12,
+      strokeOrderRules: "Trên trước dưới sau, trái trước phải sau",
       collocations: ["喜欢喝茶 (Thích uống trà)", "很喜欢 (Rất thích)"],
       example: {
         zh: "你喜欢喝中国茶吗？",
@@ -56,8 +59,9 @@ window.APP_DATA = {
       pinyin: "xiè xie",
       meaning: "Cảm ơn",
       hsk: 1,
-      radical: "讠 (Ngôn)",
+      radical: "讠 (Ngôn) & 身 (Thân)",
       strokes: 12,
+      strokeOrderRules: "Trái trước phải sau: Bộ ngôn viết trước",
       collocations: ["不客气 (Không có chi)", "多谢 (Đa tạ)"],
       example: {
         zh: "谢谢老师的耐心帮助。",
@@ -65,8 +69,56 @@ window.APP_DATA = {
         vi: "Cảm ơn sự giúp đỡ kiên nhẫn của thầy cô."
       }
     },
+    {
+      id: "v1_05",
+      hanzi: "看书",
+      pinyin: "kàn shū",
+      meaning: "Đọc sách, xem sách",
+      hsk: 1,
+      radical: "目 (Mục) & ⺕ (Kế)",
+      strokes: 9,
+      strokeOrderRules: "Phẩy trước ngang sau, trên che dưới",
+      collocations: ["看书学习 (Đọc sách học tập)", "爱看书 (Thích đọc sách)"],
+      example: {
+        zh: "我周末经常在图书馆看书。",
+        pinyin: "Wǒ zhōumò jīngcháng zài túshūguǎn kàn shū.",
+        vi: "Cuối tuần tôi thường đọc sách ở thư viện."
+      }
+    },
+    {
+      id: "v1_06",
+      hanzi: "喝茶",
+      pinyin: "hē chá",
+      meaning: "Uống trà",
+      hsk: 1,
+      radical: "口 (Khẩu) & 艹 (Thảo)",
+      strokes: 12,
+      strokeOrderRules: "Bộ Khẩu bên trái trước, bộ Thảo trên đầu trước",
+      collocations: ["喝绿茶 (Uống trà xanh)", "喝热茶 (Uống trà nóng)"],
+      example: {
+        zh: "请坐，我们一边喝茶一边聊。",
+        pinyin: "Qǐng zuò, wǒmen yìbiān hē chá yìbiān liáo.",
+        vi: "Mời ngồi, chúng ta vừa uống trà vừa trò chuyện."
+      }
+    },
+    {
+      id: "v1_07",
+      hanzi: "家",
+      pinyin: "jiā",
+      meaning: "Nhà, gia đình",
+      hsk: 1,
+      radical: "宀 (Miên - Mái nhà)",
+      strokes: 10,
+      strokeOrderRules: "Mái nhà (bộ Miên) trên cùng viết trước",
+      collocations: ["回家 (Về nhà)", "大家 (Mọi người)", "家里人 (Người trong nhà)"],
+      example: {
+        zh: "我的家在北京，欢迎来做客。",
+        pinyin: "Wǒ de jiā zài běijīng, huānyíng lái zuòkè.",
+        vi: "Nhà tôi ở Bắc Kinh, hoan nghênh đến chơi."
+      }
+    },
 
-    // HSK 2
+    // ==================== HSK 2 (Sơ cấp 2) ====================
     {
       id: "v2_01",
       hanzi: "旅游",
@@ -75,6 +127,7 @@ window.APP_DATA = {
       hsk: 2,
       radical: "方 (Phương) & 氵 (Thủy)",
       strokes: 10,
+      strokeOrderRules: "Bộ Phương viết trước, bộ Thủy bên trái viết trước",
       collocations: ["去旅游 (Đi du lịch)", "旅游景点 (Điểm du lịch)"],
       example: {
         zh: "我和家人打算去北京旅游。",
@@ -90,6 +143,7 @@ window.APP_DATA = {
       hsk: 2,
       radical: "冫 (Băng) & 夂 (Tuy)",
       strokes: 10,
+      strokeOrderRules: "Trái trước phải sau: Bộ băng viết trước",
       collocations: ["准备考试 (Chuẩn bị thi)", "准备好 (Chuẩn bị xong)"],
       example: {
         zh: "你准备好明天的汉语考试了吗？",
@@ -105,6 +159,7 @@ window.APP_DATA = {
       hsk: 2,
       radical: "足 (Túc) & 止 (Chỉ)",
       strokes: 12,
+      strokeOrderRules: "Bộ Túc bên trái chỉ đôi chân viết trước",
       collocations: ["晨跑 (Chạy bộ buổi sáng)", "每天跑步 (Chạy bộ mỗi ngày)"],
       example: {
         zh: "他每天早晨六点去公园跑步。",
@@ -112,8 +167,40 @@ window.APP_DATA = {
         vi: "Anh ấy mỗi sáng 6 giờ đều đến công viên chạy bộ."
       }
     },
+    {
+      id: "v2_04",
+      hanzi: "运动",
+      pinyin: "yùn dòng",
+      meaning: "Vận động, thể thao",
+      hsk: 2,
+      radical: "辶 (Xước) & 力 (Lực)",
+      strokes: 7,
+      strokeOrderRules: "Viết phần thân chữ bên trong trước, bộ Xước bao ngoài sau",
+      collocations: ["参加运动 (Tham gia thể thao)", "体育运动 (Môn thể thao)"],
+      example: {
+        zh: "经常运动有利于身体健康。",
+        pinyin: "Jīngcháng yùndòng yǒulì yú shēntǐ jiànkāng.",
+        vi: "Thường xuyên vận động rất có lợi cho sức khỏe."
+      }
+    },
+    {
+      id: "v2_05",
+      hanzi: "帮助",
+      pinyin: "bāng zhù",
+      meaning: "Giúp đỡ, tương trợ",
+      hsk: 2,
+      radical: "巾 (Cân) & 力 (Lực)",
+      strokes: 9,
+      strokeOrderRules: "Trên trước dưới sau, trái trước phải sau",
+      collocations: ["互相帮助 (Tương trợ lẫn nhau)", "热情帮助 (Nhiệt tình giúp)"],
+      example: {
+        zh: "在学习中，同学们应该互相帮助。",
+        pinyin: "Zài xuéxí zhōng, tóngxuémen yīnggāi hùxiāng bāngzhù.",
+        vi: "Trong học tập, các bạn học nên giúp đỡ lẫn nhau."
+      }
+    },
 
-    // HSK 3
+    // ==================== HSK 3 (Trung cấp sơ) ====================
     {
       id: "v3_01",
       hanzi: "解决",
@@ -122,6 +209,7 @@ window.APP_DATA = {
       hsk: 3,
       radical: "角 (Giác) & 冫 (Băng)",
       strokes: 13,
+      strokeOrderRules: "Trái trước phải sau: Bộ Giác bên trái viết trước",
       collocations: ["解决问题 (Giải quyết vấn đề)", "圆满解决 (Giải quyết ổn thỏa)"],
       example: {
         zh: "我们必须尽快找到解决这个问题的办法。",
@@ -137,6 +225,7 @@ window.APP_DATA = {
       hsk: 3,
       radical: "王 (Vương/Ngọc) & 土 (Thổ)",
       strokes: 8,
+      strokeOrderRules: "Bộ Ngọc bên trái, bộ Thổ bên trái chữ Cảnh",
       collocations: ["保护环境 (Bảo vệ môi trường)", "工作环境 (Môi trường làm việc)"],
       example: {
         zh: "为了下一代，我们应该保护自然环境。",
@@ -152,6 +241,7 @@ window.APP_DATA = {
       hsk: 3,
       radical: "木 (Mộc) & 人 (Nhân)",
       strokes: 4,
+      strokeOrderRules: "Bộ Mộc viết trước: Ngang, sổ, phẩy, chấm",
       collocations: ["抓住机会 (Nắm bắt cơ hội)", "难得的机会 (Cơ hội hiếm có)"],
       example: {
         zh: "这是一个很难得的工作机会，你一定要把握住。",
@@ -159,8 +249,40 @@ window.APP_DATA = {
         vi: "Đây là một cơ hội việc làm rất hiếm có, bạn nhất định phải nắm bắt lấy."
       }
     },
+    {
+      id: "v3_04",
+      hanzi: "习惯",
+      pinyin: "xí guàn",
+      meaning: "Thói quen, tập quán, quen với",
+      hsk: 3,
+      radical: "习 (Tập) & 忄 (Tâm đứng)",
+      strokes: 11,
+      strokeOrderRules: "Bộ Tâm đứng bên trái chữ Quán viết trước",
+      collocations: ["养成习惯 (Nuôi dưỡng thói quen)", "生活习惯 (Thói quen sinh hoạt)"],
+      example: {
+        zh: "早睡早起是一个非常好的生活习惯。",
+        pinyin: "Zǎoshuì zǎoqǐ shì yí gè fēicháng hǎo de shēnghuó xíguàn.",
+        vi: "Ngủ sớm dậy sớm là một thói quen sinh hoạt rất tốt."
+      }
+    },
+    {
+      id: "v3_05",
+      hanzi: "提高",
+      pinyin: "tí gāo",
+      meaning: "Nâng cao, cải thiện",
+      hsk: 3,
+      radical: "扌 (Thủ) & 高 (Cao)",
+      strokes: 12,
+      strokeOrderRules: "Bộ Thủ (tay) viết trước: Ngang, móc đứng, hất",
+      collocations: ["提高水平 (Nâng cao trình độ)", "提高效率 (Tăng hiệu suất)"],
+      example: {
+        zh: "多看中文电影可以有效提高听力水平。",
+        pinyin: "Duō kàn zhōngwén diànyǐng kěyǐ yǒuxiào tígāo tīnglì shuǐpíng.",
+        vi: "Xem nhiều phim tiếng Trung có thể nâng cao trình độ nghe hiệu quả."
+      }
+    },
 
-    // HSK 4
+    // ==================== HSK 4 (Trung cấp) ====================
     {
       id: "v4_01",
       hanzi: "坚持",
@@ -169,6 +291,7 @@ window.APP_DATA = {
       hsk: 4,
       radical: "土 (Thổ) & 扌 (Thủ)",
       strokes: 9,
+      strokeOrderRules: "Ngang trước sổ sau, bộ Thổ viết trước",
       collocations: ["坚持到底 (Kiên trì đến cùng)", "坚持不懈 (Kiên trì không nản)"],
       example: {
         zh: "只要坚持努力，你就一定会取得成功。",
@@ -184,11 +307,12 @@ window.APP_DATA = {
       hsk: 4,
       radical: "禾 (Hòa) & 糸 (Mịch)",
       strokes: 16,
+      strokeOrderRules: "Bộ Hòa bên trái chữ Tích viết trước",
       collocations: ["积累经验 (Tích lũy kinh nghiệm)", "积累知识 (Tích lũy kiến thức)"],
       example: {
-        zh: "在工作中，我们要不断积累经验。",
-        pinyin: "Zài gōngzuò zhōng, wǒmen yào bùduàn jīlěi jīngyàn.",
-        vi: "Trong công việc, chúng ta cần không ngừng tích lũy kinh nghiệm."
+        zh: "在工作中，我们要不断积累宝贵的实践经验。",
+        pinyin: "Zài gōngzuò zhōng, wǒmen yào búduàn jīlěi bǎoguì de shíjiàn jīngyàn.",
+        vi: "Trong công việc, chúng ta cần không ngừng tích lũy kinh nghiệm thực tiễn quý báu."
       }
     },
     {
@@ -199,6 +323,7 @@ window.APP_DATA = {
       hsk: 4,
       radical: "亠 (Đầu) & 氵 (Thủy)",
       strokes: 6,
+      strokeOrderRules: "Bộ Đầu viết trước: Chấm, ngang dài, phẩy, mác",
       collocations: ["文化交流 (Giao lưu văn hóa)", "相互交流 (Trao đổi lẫn nhau)"],
       example: {
         zh: "多和中国朋友交流能快速提高口语水平。",
@@ -206,8 +331,40 @@ window.APP_DATA = {
         vi: "Giao lưu nhiều với bạn bè Trung Quốc có thể nâng cao trình độ khẩu ngữ nhanh chóng."
       }
     },
+    {
+      id: "v4_04",
+      hanzi: "负责",
+      pinyin: "fù zé",
+      meaning: "Chịu trách nhiệm, phụ trách",
+      hsk: 4,
+      radical: "亻 (Nhân đứng) & 贝 (Bối)",
+      strokes: 9,
+      strokeOrderRules: "Bộ Nhân đứng bên trái viết trước",
+      collocations: ["认真负责 (Nghiêm túc trách nhiệm)", "对工作负责 (Chịu trách nhiệm với công việc)"],
+      example: {
+        zh: "他对工作认真负责，赢得了大家的好评。",
+        pinyin: "Tā duì gōngzuò rènzhēn fùzé, yíngdé le dàjiā de hǎopíng.",
+        vi: "Anh ấy làm việc nghiêm túc và có trách nhiệm, nhận được đánh giá cao từ mọi người."
+      }
+    },
+    {
+      id: "v4_05",
+      hanzi: "流利",
+      pinyin: "liú lì",
+      meaning: "Lưu loát, trôi chảy",
+      hsk: 4,
+      radical: "氵 (Thủy) & 刂 (Đao đứng)",
+      strokes: 10,
+      strokeOrderRules: "Ba chấm thủy bên trái viết trước",
+      collocations: ["口语流利 (Khẩu ngữ trôi chảy)", "表达流利 (Diễn đạt lưu loát)"],
+      example: {
+        zh: "经过长期的刻苦练习，他能说一口流利的普通话。",
+        pinyin: "Jīngguò chángqī de kèkǔ liànxí, tā néng shuō yì kǒu liúlì de pǔtōnghuà.",
+        vi: "Trải qua thời gian dài khổ luyện, anh ấy đã nói được tiếng phổ thông lưu loát."
+      }
+    },
 
-    // HSK 5
+    // ==================== HSK 5 (Cao cấp) ====================
     {
       id: "v5_01",
       hanzi: "掌握",
@@ -216,6 +373,7 @@ window.APP_DATA = {
       hsk: 5,
       radical: "扌 (Thủ) & 扌 (Thủ)",
       strokes: 11,
+      strokeOrderRules: "Bộ Thủ (tay) viết trước cả hai chữ",
       collocations: ["掌握知识 (Nắm vững kiến thức)", "掌握主动权 (Nắm quyền chủ động)"],
       example: {
         zh: "熟练掌握一门外语需要付出长期的时间与精力。",
@@ -231,6 +389,7 @@ window.APP_DATA = {
       hsk: 5,
       radical: "扌 (Thủ) & 戈 (Qua)",
       strokes: 9,
+      strokeOrderRules: "Trái trước phải sau, phẩy trước mác sau",
       collocations: ["迎接挑战 (Đón nhận thử thách)", "充满挑战 (Tràn đầy thách thức)"],
       example: {
         zh: "面对新环境的挑战，我们要保持乐观的心态。",
@@ -246,6 +405,7 @@ window.APP_DATA = {
       hsk: 5,
       radical: "纟 (Mịch) & 禾 (Hòa)",
       strokes: 11,
+      strokeOrderRules: "Bộ Mịch bên trái viết trước",
       collocations: ["逻辑思维 (Tư duy logic)", "符合逻辑 (Phù hợp logic)"],
       example: {
         zh: "这篇文章论点鲜明，逻辑十分严谨。",
@@ -253,8 +413,40 @@ window.APP_DATA = {
         vi: "Bài viết này luận điểm rõ ràng, tư duy logic rất chặt chẽ."
       }
     },
+    {
+      id: "v5_04",
+      hanzi: "深刻",
+      pinyin: "shēn kè",
+      meaning: "Sâu sắc, sâu đậm",
+      hsk: 5,
+      radical: "氵 (Thủy) & 刂 (Đao đứng)",
+      strokes: 11,
+      strokeOrderRules: "Bộ Thủy bên trái viết trước, bộ Đao đứng bên phải viết sau",
+      collocations: ["印象深刻 (Ấn tượng sâu sắc)", "深刻的教训 (Bài học sâu sắc)"],
+      example: {
+        zh: "这次旅行给我留下了极其深刻美好的印象。",
+        pinyin: "Zhè cì lǚxíng gěi wǒ liú xià le jíqí shēnkè měihǎo de yìnxiàng.",
+        vi: "Chuyến đi lần này để lại cho tôi ấn tượng vô cùng sâu sắc và tốt đẹp."
+      }
+    },
+    {
+      id: "v5_05",
+      hanzi: "独特",
+      pinyin: "dú tè",
+      meaning: "Độc đáo, đặc sắc riêng biệt",
+      hsk: 5,
+      radical: "犭 (Khuyển) & 牛 (Ngưu)",
+      strokes: 9,
+      strokeOrderRules: "Bộ Khuyển bên trái viết trước",
+      collocations: ["独特的风格 (Phong cách độc đáo)", "独特见解 (Quan điểm độc đáo)"],
+      example: {
+        zh: "这位画家的作品展现出独特的艺术魅力。",
+        pinyin: "Zhè wèi huàjiā de zuòpǐn zhǎnxiàn chū dútè de yìshù mèilì.",
+        vi: "Tác phẩm của họa sĩ này thể hiện sức hút nghệ thuật độc đáo."
+      }
+    },
 
-    // HSK 6
+    // ==================== HSK 6 (Thành thạo) ====================
     {
       id: "v6_01",
       hanzi: "潜移默化",
@@ -263,6 +455,7 @@ window.APP_DATA = {
       hsk: 6,
       radical: "氵 (Thủy) & 匕 (Chủy)",
       strokes: 15,
+      strokeOrderRules: "Trái trước phải sau, trên trước dưới sau",
       collocations: ["潜移默化的影响 (Tác động ngấm ngầm)", "受到熏陶 (Được hun đúc)"],
       example: {
         zh: "家庭文化氛围对孩子的性格起着潜移默化的塑造作用。",
@@ -278,6 +471,7 @@ window.APP_DATA = {
       hsk: 6,
       radical: "氵 (Thủy) & 十 (Thập)",
       strokes: 11,
+      strokeOrderRules: "Bộ Thủy bên trái viết trước",
       collocations: ["学识渊博 (Học thức uyên bác)", "见闻渊博 (Hiểu biết sâu rộng)"],
       example: {
         zh: "李教授学识渊博，深受全体师生的爱戴与钦佩。",
@@ -293,39 +487,74 @@ window.APP_DATA = {
       hsk: 6,
       radical: "米 (Mễ) & 皿 (Mãnh)",
       strokes: 14,
+      strokeOrderRules: "Bộ Mễ bên trái chữ Tinh viết trước",
       collocations: ["精益求精的精神 (Tinh thần không ngừng hoàn thiện)", "追求卓越 (Theo đuổi sự xuất sắc)"],
       example: {
         zh: "大国工匠在工艺上始终坚持精益求精的态度。",
         pinyin: "Dàguó gōngjiàng zài gōngyì shàng shǐzhōng jiānchí jīngyì-qiújīng de tàidù.",
         vi: "Những nghệ nhân bậc thầy luôn giữ vững thái độ tinh hoa cầu tinh túy trong từng đường nét thủ công."
       }
+    },
+    {
+      id: "v6_04",
+      hanzi: "络绎不绝",
+      pinyin: "luò yì bù jué",
+      meaning: "Nườm nượp không ngớt, liên miên liên tục",
+      hsk: 6,
+      radical: "纟 (Mịch) & 纟 (Mịch)",
+      strokes: 9,
+      strokeOrderRules: "Bộ Mịch bên trái viết trước cả hai chữ Lạc và Dịch",
+      collocations: ["游人络绎不绝 (Du khách nườm nượp)", "车马络绎不绝 (Xe cộ dập dìu)"],
+      example: {
+        zh: "节假日的故宫博物院前，中外游客络绎不绝。",
+        pinyin: "Jiéjiàrì de gùgōng bówùyuàn qián, zhōngwài yóukè luòyì-bùjué.",
+        vi: "Trước Bảo tàng Cố Cung vào ngày lễ tết, du khách trong và ngoài nước nườm nượp không ngớt."
+      }
+    },
+    {
+      id: "v6_05",
+      hanzi: "脍炙人口",
+      pinyin: "kuài zhì rén kǒu",
+      meaning: "Nức tiếng muôn nơi, miệng truyền miệng tấm tắc ngợi khen",
+      hsk: 6,
+      radical: "月 (Nguyệt / Nhục) & 口 (Khẩu)",
+      strokes: 10,
+      strokeOrderRules: "Bộ Nguyệt bên trái chữ Khoái viết trước",
+      collocations: ["脍炙人口的名篇 (Tác phẩm nức tiếng)", "广泛流传 (Lưu truyền rộng rãi)"],
+      example: {
+        zh: "李白的这首古诗千百年来一直是脍炙人口的名篇佳作。",
+        pinyin: "Lǐ bái de zhè shǒu gǔshī qiān bǎi nián lái yìzhí shì kuàizhì-rénkǒu de míngpiān jiāzuò.",
+        vi: "Bài thơ cổ này của Lý Bạch suốt hàng nghìn năm qua luôn là áng thơ nức tiếng được người đời tấm tắc ngâm vịnh."
+      }
     }
   ],
 
-  // 2. Chengyu & Proverbs Bank (With Fables & Explanations)
+  // 2. Comprehensive Chengyu & Proverbs Bank (With Fables & Explanations)
   chengyuList: [
     {
       id: "cy_01",
+      category: "chengyu",
       hanzi: "掩耳盗铃",
       pinyin: "yǎn ěr dào líng",
       literal: "Bịt tai trộm chuông",
       figurative: "Tự dối lòng mình; hành động lừa mình dối người, tưởng mình giấu được nhưng ai cũng biết.",
-      story: "Thời Xuân Thu, một kẻ trộm muốn lấy trộm chiếc chuông đồng lớn của nhà họ Phạm. Vì chuông quá nặng không vác nổi, hắn định dùng búa đập vỡ để vác từng mảnh. Khi gõ, chuông phát ra tiếng 'keng' lớn vang khắp làng. Sợ người khác nghe thấy đến bắt, hắn liền nghĩ ra kế lấy bông nhét chặt hai tai mình lại, tự nhủ: 'Mình không nghe thấy thì người khác cũng sẽ không nghe thấy!'.",
+      story: "Thời Xuân Thu, một kẻ trộm muốn lấy chiếc chuông đồng lớn của nhà họ Phạm. Vì chuông quá nặng không vác nổi, hắn định dùng búa đập vỡ để vác từng mảnh. Khi gõ, chuông phát ra tiếng 'keng' lớn vang khắp làng. Sợ người khác nghe thấy đến bắt, hắn liền nghĩ ra kế lấy bông nhét chặt hai tai mình lại, tự nhủ: 'Mình không nghe thấy thì người khác cũng sẽ không nghe thấy!'.",
       example: {
         zh: "在考试前不复习而抱侥幸心理，完全是掩耳盗铃的做法。",
         pinyin: "Zài kǎoshì qián bù fùxí ér bào jiǎoxìng xīnlǐ, wánquán shì yǎn ěr dào líng de zuòfǎ.",
         vi: "Trước kì thi không chịu ôn tập mà cứ ôm tâm lý cầu may, hoàn toàn là hành vi bịt tai trộm chuông tự lừa dối mình."
       },
       image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80",
-      tags: ["Tự lừa dối", "Xuân Thu", "Bài học sâu sắc"]
+      tags: ["Điển tích", "Tự lừa dối", "Xuân Thu"]
     },
     {
       id: "cy_02",
+      category: "chengyu",
       hanzi: "塞翁失马",
       pinyin: "sài wēng shī mǎ",
       literal: "Ông lão ở biên ải mất ngựa (Tái ông thất mã)",
       figurative: "Họa là chỗ dựa của phúc, phúc là mầm mống của họa. Chuyện đời được mất khó lường, nên giữ tâm thế bình thản.",
-      story: "Một ông lão ở biên ải bỗng bị mất con ngựa tốt, hàng xóm đến chia buồn, ông bình thản nói: 'Biết đâu lại là điều may?'. Mấy tháng sau, ngựa cũ trở về dắt theo đàn tuấn mã. Hàng xóm chúc mừng, ông lại nói: 'Biết đâu là điềm họa?'. Con trai ông vì thích cưỡi ngựa mới mà ngã gãy chân. Hàng xóm lại tiếc thương, ông đáp: 'Chưa biết chừng là phúc!'. Năm sau giặc xâm lược, mọi thanh niên đều tòng quân tử trận, riêng con trai ông vì tàn tật nên được sống sót.",
+      story: "Một ông lão ở biên ải bị mất ngựa quý, hàng xóm đến chia buồn, ông bình thản: 'Biết đâu lại là điều may?'. Mấy tháng sau, ngựa cũ trở về dắt theo đàn tuấn mã. Hàng xóm chúc mừng, ông lại nói: 'Biết đâu là điềm họa?'. Con trai ông vì thích cưỡi ngựa mới mà ngã gãy chân. Hàng xóm lại tiếc thương, ông đáp: 'Chưa biết chừng là phúc!'. Năm sau giặc xâm lược, mọi thanh niên đều tòng quân tử trận, riêng con trai ông vì tàn tật nên được sống sót bình yên.",
       example: {
         zh: "塞翁失马，焉知非福。这次丢了工作，说不定能让你找到更合适的发展机会。",
         pinyin: "Sài wēng shī mǎ, yān zhī fēi fú. Zhè cì diū le gōngzuò, shuōbudìng néng ràng nǐ zhǎodào gèng héshì de fāzhǎn jīhuì.",
@@ -336,11 +565,12 @@ window.APP_DATA = {
     },
     {
       id: "cy_03",
+      category: "chengyu",
       hanzi: "画蛇添足",
       pinyin: "huà shé tiān zú",
       literal: "Vẽ rắn thêm chân",
       figurative: "Làm những việc thừa thãi không cần thiết, tự rước lấy thất bại hoặc làm hỏng việc vốn đã tốt đẹp.",
-      story: "Nước Sở có người cúng tế ban một bình rượu cho những người giữ đền. Bình rượu quá ít, không đủ chia cho mọi người, nên họ giao hẹn: 'Ai vẽ xong con rắn trên mặt đất trước thì người đó được uống rượu'. Một người vẽ xong nhanh nhất, tay trái cầm bình rượu định uống, nhưng thấy người khác chưa xong bèn kiêu ngạo bảo: 'Ta còn thừa sức vẽ thêm chân cho nó!'. Đang lúc vẽ chân, một người khác vẽ xong rắn liền giật lấy bình rượu nói: 'Rắn vốn làm gì có chân, cớ sao phải vẽ thêm?'.",
+      story: "Nước Sở có người ban bình rượu quý cho những người giữ đền. Bình rượu quá ít, không đủ chia đều, họ giao hẹn: 'Ai vẽ xong con rắn trên mặt đất trước thì được uống'. Một người vẽ xong sớm nhất, tay trái cầm bình rượu định uống, nhưng thấy người khác chưa xong bèn kiêu ngạo bảo: 'Ta còn thừa sức vẽ thêm chân cho nó!'. Đang lúc vẽ chân, một người khác vẽ xong rắn liền giật lấy bình rượu nói: 'Rắn vốn không có chân, cớ sao phải vẽ thêm?'.",
       example: {
         zh: "这篇文章本来已经写得很完整了，你又加了这段结尾，简直是画蛇添足。",
         pinyin: "Zhè piān wénzhāng běnlái yǐjīng xiě de hěn wánzhěng le, nǐ yòu jiā le zhè duàn jiéwěi, jiǎnzhí shì huà shé tiān zú.",
@@ -351,11 +581,12 @@ window.APP_DATA = {
     },
     {
       id: "cy_04",
+      category: "chengyu",
       hanzi: "愚公移山",
       pinyin: "yú gōng yí shān",
       literal: "Ông già ngu dời núi (Ngu Công dời núi)",
       figurative: "Chỉ ý chí sắt đá, quyết tâm bền bỉ kiên trì vượt qua mọi khó khăn gian khổ khổng lồ.",
-      story: "Cụ già Ngu Công tuổi gần 90, trước cửa nhà có hai ngọn núi lớn Thái Hành và Vương Ốc chắn lối đi. Cụ họp gia đình quyết tâm đào núi san bằng đường. Một ông trí thức tên Trí Ngõa cười nhạo: 'Ông già yếu sắp chết, làm sao dời nổi núi?'. Ngu Công thong thả đáp: 'Tôi chết thì còn con tôi, con tôi sinh cháu, cháu lại sinh con, đời đời con cháu vô tận, mà núi thì không mọc thêm, lo gì không bằng phẳng?'. Lòng thành cảm động Trời cao, Thượng đế sai hai vị thần xuống cõng núi đi chỗ khác.",
+      story: "Cụ già Ngu Công tuổi gần 90, trước cửa nhà có hai ngọn núi lớn Thái Hành và Vương Ốc chắn lối đi. Cụ họp gia đình quyết tâm đào núi san bằng đường. Một ông trí thức cười nhạo: 'Ông già yếu sắp chết, làm sao dời nổi núi?'. Ngu Công thong thả đáp: 'Tôi chết thì còn con tôi, con tôi sinh cháu, cháu lại sinh con, đời đời con cháu vô tận, mà núi thì không mọc thêm, lo gì không bằng phẳng?'. Lòng thành cảm động Trời cao, Thượng đế sai hai vị thần xuống cõng núi đi chỗ khác.",
       example: {
         zh: "只要发扬愚公移山的精神，无论多么艰巨的技术难关我们都能攻克。",
         pinyin: "Zhǐyào fāyáng yú gōng yí shān de jīngshén, wúlùn duōme jiānjù de jìshù nánguān wǒmen dōu néng gōngkè.",
@@ -366,6 +597,7 @@ window.APP_DATA = {
     },
     {
       id: "cy_05",
+      category: "proverb",
       hanzi: "千里之行，始于足下",
       pinyin: "qiān lǐ zhī xíng, shǐ yú zú xià",
       literal: "Chuyến đi ngàn dặm bắt đầu từ một bước chân",
@@ -377,7 +609,167 @@ window.APP_DATA = {
         vi: "Học giỏi một ngoại ngữ không phải chuyện ngày một ngày hai, ngàn dặm khởi nguồn từ bước chân, hãy kiên trì học từ vựng mỗi ngày!"
       },
       image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=600&q=80",
-      tags: ["Lão Tử", "Đạo Đức Kinh", "Học tập"]
+      tags: ["Tục ngữ", "Lão Tử", "Đạo Đức Kinh", "Học tập"]
+    },
+    {
+      id: "cy_06",
+      category: "chengyu",
+      hanzi: "卧薪尝胆",
+      pinyin: "wò xīn cháng dǎn",
+      literal: "Nằm gai nếm mật (Nằm trên củi gai, nếm mật đắng)",
+      figurative: "Chịu đựng gian khổ, nung nấu ý chí tự cường để rửa hận và đạt được thắng lợi vẻ vang.",
+      story: "Thời Xuân Thu, Việt Vương Câu Tiễn bị Ngô Vương Phù Sai đánh bại và bắt làm tù binh nhục nhã. Khi được thả về nước, để nhắc nhở bản thân không bao giờ quên nỗi nhục mất nước, Câu Tiễn đêm đêm nằm ngủ trên đống củi gai góc, trước chỗ ngồi treo một túi mật đắng, mỗi bữa ăn đều nếm vị mật đắng ngắt. Sau mười năm nung nấu lực lượng, Câu Tiễn đã tiêu diệt nước Ngô, xưng bá thiên hạ.",
+      example: {
+        zh: "经过几年的卧薪尝胆，这家初创企业终于在全球市场上站稳了脚跟。",
+        pinyin: "Jīngguò jǐ nián de wò xīn cháng dǎn, zhè jiā chūchuàng qǐyè zhōngyú zài quánqiú shìchǎng shàng zhàn wěn le jiǎogēn.",
+        vi: "Trải qua vài năm nằm gai nếm mật, doanh nghiệp khởi nghiệp này cuối cùng đã đứng vững trên thị trường toàn cầu."
+      },
+      image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
+      tags: ["Điển tích", "Ý chí", "Sử ký Tư Mã Thiên"]
+    },
+    {
+      id: "cy_07",
+      category: "chengyu",
+      hanzi: "守株待兔",
+      pinyin: "shǒu zhū dài tù",
+      literal: "Ôm cây đợi thỏ",
+      figurative: "Không chịu chủ động nỗ lực mà cứ ôm tâm lý cầu may, rập khuôn mù quáng trông chờ điều may mắn bất ngờ.",
+      story: "Thời Chiến Quốc, một người nông dân nước Tống đang cày ruộng thì thấy một con thỏ chạy hoảng hốt đâm đầu vào gốc cây to gãy cổ chết. Người đó sung sướng vác thỏ về làm thịt, từ hôm đó vứt bỏ cày cuốc, ngày ngày ngồi bên gốc cây chờ đợi con thỏ khác đâm vào. Ruộng đồng bỏ hoang cỏ mọc um tùm, thỏ thì chẳng thấy đâu, anh ta trở thành trò cười cho cả thiên hạ.",
+      example: {
+        zh: "要想提高中文水平就得踏踏实实练习，不能守株待兔妄想一夜暴富。",
+        pinyin: "Yào xiǎng tígāo zhōngwén shuǐpíng jiù děi tātā-shíshí liànxí, bù néng shǒu zhū dài tù wàngxiǎng yíyè-bàofù.",
+        vi: "Muốn nâng cao trình độ tiếng Trung thì phải luyện tập vững vàng từng bước, không thể ôm cây đợi thỏ trông chờ phép màu."
+      },
+      image: "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?auto=format&fit=crop&w=600&q=80",
+      tags: ["Điển tích", "Hàn Phi Tử", "Ảo tưởng", "Nỗ lực"]
+    },
+    {
+      id: "cy_08",
+      category: "chengyu",
+      hanzi: "井底之蛙",
+      pinyin: "jǐng dǐ zhī wā",
+      literal: "Ếch ngồi đáy giếng",
+      figurative: "Chỉ người có tầm nhìn thiển cận, hiểu biết nông cạn hạn hẹp nhưng lại tự cao tự đại huênh hoang.",
+      story: "Có con ếch sống ở đáy một cái giếng cạn hoang phế, nó tự mãn bảo con rùa biển Đông rằng: 'Ta là chúa tể nơi đây, sung sướng nhất đời!'. Rùa biển mỉm cười kể cho ếch nghe về sự bao la bát ngát của biển cả ngàn dặm không thấy bờ, sâu vạn trượng không đo tới đáy, lũ lụt hạn hán đều không làm suy chuyển biển rộng. Nghe xong, ếch đáy giếng sững sờ, xấu hổ không biết giấu mặt vào đâu.",
+      example: {
+        zh: "我们必须放眼世界，多学习新科技，绝不能做孤陋寡闻的井底之蛙。",
+        pinyin: "Wǒmen bìxū fàngyǎn shìjiè, duō xuéxí xīn kējì, jué bù néng zuò gūlòu-guǎwén de jǐng dǐ zhī wā.",
+        vi: "Chúng ta phải nhìn rộng ra thế giới, học hỏi công nghệ mới, tuyệt đối không thể làm chú ếch ngồi đáy giếng hẹp hòi."
+      },
+      image: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=600&q=80",
+      tags: ["Điển tích", "Trang Tử", "Hiểu biết", "Mở rộng tầm nhìn"]
+    },
+    {
+      id: "cy_09",
+      category: "proverb",
+      hanzi: "一寸光阴一寸金，寸金难买寸光阴",
+      pinyin: "yí cùn guāng yīn yí cùn jīn, cùn jīn nán mǎi cùn guāng yīn",
+      literal: "Một tấc thời gian đáng giá một tấc vàng, nhưng một tấc vàng khó mua được một tấc thời gian",
+      figurative: "Thời gian là thứ tài sản quý giá vô giá nhất của đời người, một khi trôi qua không bao giờ lấy lại được, cần trân quý từng phút từng giây.",
+      story: "Câu ngạn ngữ nổi tiếng xuất hiện trong thi ca cổ Trung Hoa, khuyên răn sĩ tử và thanh niên không được lãng phí thanh xuân vào những chuyện phù phiếm, mà hãy tận dụng thời giờ quý báu để trau dồi học vấn và đức hạnh.",
+      example: {
+        zh: "一寸光阴一寸金，趁年轻我们要抓紧时间学好本领。",
+        pinyin: "Yí cùn guāngyīn yí cùn jīn, chèn niánqīng wǒmen yào zhuājǐn shíjiān xué hǎo běnlǐng.",
+        vi: "Một tấc thời gian một tấc vàng, nhân lúc còn trẻ chúng ta phải tranh thủ thời gian học cho giỏi bản lĩnh."
+      },
+      image: "https://images.unsplash.com/photo-1501139083538-0139583c060f?auto=format&fit=crop&w=600&q=80",
+      tags: ["Tục ngữ", "Thời gian", "Quý trọng thanh xuân"]
+    },
+    {
+      id: "cy_10",
+      category: "proverb",
+      hanzi: "熟能生巧",
+      pinyin: "shú néng shēng qiǎo",
+      literal: "Làm quen tay thì sinh ra khéo léo (Trăm hay không bằng tay quen)",
+      figurative: "Bất kể công việc hay kỹ năng nào, chỉ cần kiên trì luyện tập thường xuyên nhiều lần thì sẽ đạt đến cảnh giới thuần thục tinh diệu.",
+      story: "Thời Bắc Tống, Trần Nghiêu Tư bắn cung bách phát bách trúng nên vô cùng đắc ý. Một hôm, một ông lão bán dầu đứng xem chỉ gật đầu khẽ. Trần tức giận hỏi: 'Ngươi cũng biết bắn cung à?'. Ông lão thong thả đặt một đồng tiền có lỗ vuông lên miệng bầu rượu, rồi múc gáo dầu rót từ trên cao xuống, dòng dầu chảy qua lỗ đồng xu rơi vào bầu mà không dính một giọt nào vào mép xu. Ông cười bảo: 'Ta chẳng có tài gì lạ, chỉ là tay quen mà thôi!'.",
+      example: {
+        zh: "写汉字一开始觉得很难，但熟能生巧，每天练几遍就会越来越熟练。",
+        pinyin: "Xiě hànzì yì kāishǐ juéde hěn nán, dàn shú néng shēng qiǎo, měitiān liàn jǐ biàn jiù huì yuè lái yuè shúliàn.",
+        vi: "Viết chữ Hán ban đầu thấy rất khó, nhưng trăm hay không bằng tay quen, mỗi ngày luyện vài lần sẽ ngày càng thành thạo."
+      },
+      image: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=600&q=80",
+      tags: ["Tục ngữ", "Âu Dương Tu", "Rèn luyện", "Kỹ năng"]
+    },
+    {
+      id: "cy_11",
+      category: "proverb",
+      hanzi: "吃水不忘挖井人",
+      pinyin: "chī shuǐ bù wàng wā jǐng rén",
+      literal: "Uống nước không quên người đào giếng (Uống nước nhớ nguồn)",
+      figurative: "Sống trên đời phải có lòng biết ơn, ghi nhớ công lao của những người đi trước đã hy sinh tạo dựng thành quả cho ta hôm nay.",
+      story: "Câu tục ngữ nhắc nhở truyền thống đạo lý nhân nghĩa ngàn đời của văn hóa Á Đông, dạy con người khi hưởng thụ ấm no hạnh phúc thì không được vong ân bội nghĩa, mà phải luôn tri ân tổ tiên, thầy cô và thế hệ đi trước.",
+      example: {
+        zh: "我们取得今天的成绩离不开老师的悉心培养，吃水不忘挖井人，我们要懂得感恩。",
+        pinyin: "Wǒmen qǔdé jīntiān de chéngjì lì bù kāi lǎoshī de xīxīn péiyǎng, chī shuǐ bù wàng wā jǐng rén, wǒmen yào dǒngdé gǎn'ēn.",
+        vi: "Chúng ta có được thành tích hôm nay không thể tách rời sự dìu dắt của thầy cô, uống nước nhớ nguồn, chúng ta phải biết tri ân."
+      },
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+      tags: ["Tục ngữ", "Lòng biết ơn", "Đạo đức"]
+    },
+    {
+      id: "cy_12",
+      category: "proverb",
+      hanzi: "活到老，学到老",
+      pinyin: "huó dào lǎo, xué dào lǎo",
+      literal: "Sống đến già, học đến già (Học, học nữa, học mãi)",
+      figurative: "Tri thức nhân loại là vô tận, việc học tập rèn luyện bản thân là hành trình suốt đời không bao giờ có điểm dừng.",
+      story: "Khuyên bảo con người giữ vững tinh thần cầu thị khiêm tốn, bất kể tuổi tác bao nhiêu hay địa vị thế nào, vẫn luôn luôn mở lòng học hỏi điều mới mẻ mỗi ngày.",
+      example: {
+        zh: "爷爷今年七十岁了还在学习使用智能手机和电脑，真是活到老学到老。",
+        pinyin: "Yéye jǐnnián qīshí suì le hái zài xuéxí shǐyòng zhìnéng shǒujī hé diànnǎo, zhēn shì huó dào lǎo xué dào lǎo.",
+        vi: "Ông nội năm nay 70 tuổi rồi mà vẫn học cách sử dụng điện thoại thông minh và máy tính, đúng là sống đến già học đến già."
+      },
+      image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80",
+      tags: ["Tục ngữ", "Học tập suốt đời", "Khiêm tốn"]
+    },
+    {
+      id: "cy_13",
+      category: "chengyu",
+      hanzi: "破釜沉舟",
+      pinyin: "pò fǔ chén zhōu",
+      literal: "Đập vỡ nồi niêu, dìm chìm thuyền bè",
+      figurative: "Quyết tâm dồn hết sức lực, không để lại đường lui cho mình để chiến đấu giành lấy thắng lợi cuối cùng.",
+      story: "Thời Tần mạt, Hạng Vũ đem quân vượt sông Cự Lộc đánh quân Tần. Sau khi toàn bộ quân lính qua sông, Hạng Vũ ra lệnh dìm chìm tất cả thuyền bè, đập vỡ tất cả nồi niêu nấu ăn, đốt rụi lều trại, chỉ cho mỗi người mang theo ba ngày lương khô. Bằng cách chặn đứt mọi đường lui, quân sĩ đều liều chết xung phong, một người địch mười người, đại phá quân Tần giành chiến thắng chấn động lịch sử.",
+      example: {
+        zh: "面对考研的高压，他拿出了破釜沉舟的勇气，每天苦读十几个小时。",
+        pinyin: "Miànduì kǎoyán de gāoyā, tā ná chū le pò fǔ chén zhōu de yǒngqì, měitiān kǔdú shí jǐ gè xiǎoshí.",
+        vi: "Đối mặt áp lực thi thạc sĩ, anh ấy thể hiện dũng khí đập nồi dìm thuyền, mỗi ngày miệt mài học hơn mười tiếng đồng hồ."
+      },
+      image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=600&q=80",
+      tags: ["Điển tích", "Hạng Vũ", "Dũng khí", "Quyết tâm"]
+    },
+    {
+      id: "cy_14",
+      category: "chengyu",
+      hanzi: "望梅止渴",
+      pinyin: "wàng méi zhǐ kě",
+      literal: "Trông thấy quả mơ mà đỡ khát",
+      figurative: "Dùng ảo tưởng hoặc lời động viên tinh thần để an ủi bản thân vượt qua cơn khát khao hay hoàn cảnh gian nan lúc cấp bách.",
+      story: "Thời Tam Quốc, Tào Tháo dẫn đại quân hành quân giữa trưa hè nắng gắt. Binh lính khát khô cổ họng, mệt lả không thể bước tiếp mà xung quanh không có giọt nước nào. Tào Tháo cưỡi ngựa lên cao, chỉ roi về phía trước dõng dạc bảo: 'Phía trước có một rừng mơ bạt ngàn, quả mơ to tròn chua ngọt mọng nước!'. Nghe nhắc đến vị chua quả mơ, binh lính ai nấy đều ứa nước miếng trong miệng, đỡ khát tức thì và hăng hái tiến nhanh tới nguồn nước thật.",
+      example: {
+        zh: "光在家里空想未来只是望梅止渴，只有付诸行动才能改变现状。",
+        pinyin: "Guāng zài jiālǐ kōngxiǎng wèilái zhǐ shì wàng méi zhǐ kě, zhǐyǒu fùzhū xíngdòng cáinéng gǎibiàn xiànzhuàng.",
+        vi: "Chỉ ngồi nhà mơ mộng tương lai chỉ là trông mơ đỡ khát, chỉ khi hành động thực tế mới thay đổi được hiện tại."
+      },
+      image: "https://images.unsplash.com/photo-1543362906-acfc16c67564?auto=format&fit=crop&w=600&q=80",
+      tags: ["Điển tích", "Tào Tháo", "Tam Quốc", "Tâm lý học"]
+    },
+    {
+      id: "cy_15",
+      category: "proverb",
+      hanzi: "失败乃成功之母",
+      pinyin: "shī bài nǎi chéng gōng zhī mǔ",
+      literal: "Thất bại là mẹ của thành công",
+      figurative: "Thất bại không phải là dấu chấm hết mà là cơ hội quý giá để rút ra bài học kinh nghiệm, làm tiền đề dẫn tới thắng lợi sau này.",
+      story: "Câu tục ngữ cổ vũ tinh thần kiên cường bất khuất trước nghịch cảnh, nhắc nhở chúng ta đừng bao giờ sụp đổ trước những vấp ngã ban đầu.",
+      example: {
+        zh: "这次比赛虽然没拿到名次，但失败乃成功之母，总结经验下次再来！",
+        pinyin: "Zhè cì bǐsài suīrán méi ná dào míngcì, dàn shībài nǎi chénggōng zhī mǔ, zǒngjié jīngyàn xià cì zài lái!",
+        vi: "Lần thi này tuy chưa đạt giải, nhưng thất bại là mẹ thành công, đúc kết kinh nghiệm lần sau lại thi tiếp!"
+      },
+      image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80",
+      tags: ["Tục ngữ", "Ý chí", "Lạc quan"]
     }
   ],
 
@@ -520,6 +912,28 @@ window.APP_DATA = {
         ]
       },
       {
+        id: "hsk_2",
+        title: "Đề thi Chuẩn HSK 2 - Ngữ âm & Từ vựng hội thoại",
+        level: "HSK 2",
+        durationMinutes: 20,
+        questions: [
+          {
+            id: "hsk2_q1",
+            type: "listening",
+            audioText: "外面下雨了，你出门别忘了带伞。",
+            question: "[Nghe] Câu nói nhắc nhở điều gì khi ra ngoài?",
+            options: [
+              "A. Đừng quên mang ô / dù vì trời mưa",
+              "B. Đừng quên mang áo khoác",
+              "C. Hãy đi tàu điện ngầm",
+              "D. Nhớ khóa cửa cẩn thận"
+            ],
+            answer: 0,
+            explanation: "Từ khóa: '外面下雨' (ngoài trời mưa) và '别忘了带伞' (đừng quên mang ô)."
+          }
+        ]
+      },
+      {
         id: "hsk_3",
         title: "Đề thi Chuẩn HSK 3 - Kỹ năng Đọc & Điền từ",
         level: "HSK 3",
@@ -550,6 +964,27 @@ window.APP_DATA = {
         ]
       },
       {
+        id: "hsk_4",
+        title: "Đề thi Chuẩn HSK 4 - Đọc hiểu & Diễn đạt mạch lạc",
+        level: "HSK 4",
+        durationMinutes: 25,
+        questions: [
+          {
+            id: "hsk4_q1",
+            type: "grammar",
+            question: "Điền liên từ phù hợp: '______遇到多大的困难，我们______不能放弃希望。'",
+            options: [
+              "A. 不管...也...",
+              "B. 只要...就...",
+              "C. 即使...也...",
+              "D. 既然...就..."
+            ],
+            answer: 0,
+            explanation: "'不管...也/都...' biểu thị điều kiện vô điều kiện: Cho dù gặp khó khăn lớn thế nào cũng không được từ bỏ."
+          }
+        ]
+      },
+      {
         id: "hsk_5",
         title: "Đề thi Chuẩn HSK 5 - Phân tích logic & Đọc hiểu nâng cao",
         level: "HSK 5",
@@ -562,6 +997,27 @@ window.APP_DATA = {
             options: ["A. 从而", "B. 进而", "C. 况且", "D. 极其"],
             answer: 3,
             explanation: "'极其' là phó từ chỉ mức độ (cực kỳ), bổ nghĩa trực tiếp cho tính từ/thành ngữ '引人入胜' (cực kỳ lôi cuốn)."
+          }
+        ]
+      },
+      {
+        id: "hsk_6",
+        title: "Đề thi Chuẩn HSK 6 - Văn phong học thuật & Biên dịch cao cấp",
+        level: "HSK 6",
+        durationMinutes: 35,
+        questions: [
+          {
+            id: "hsk6_q1",
+            type: "grammar",
+            question: "Chọn câu KHÔNG có lỗi ngữ pháp (Bệnh cú 病句):",
+            options: [
+              "A. 通过这次深入基层的调研，使大家对乡村振兴有了更清晰的认识。",
+              "B. 面对激烈的行业竞争，我们唯有不断创新，才能立于不败之地。",
+              "C. 他能否顺利通过这次高级考核，关键在于平时是否努力程度。",
+              "D. 随着科技的飞速发展，使得现代人的生活方式发生了巨大改变。"
+            ],
+            answer: 1,
+            explanation: "Câu A và D đều mắc lỗi thiếu chủ ngữ do '通过...' và '随着...' che mất chủ ngữ. Câu C mắc lỗi bất đối xứng 1 bên (能否) với 1 bên. Câu B có cấu trúc '唯有...才...' hoàn toàn chuẩn xác."
           }
         ]
       }
