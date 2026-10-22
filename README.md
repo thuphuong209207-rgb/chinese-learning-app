@@ -123,6 +123,21 @@
 - Ô tìm kiếm nhanh thời gian thực theo Hán tự, Pinyin hoặc ý nghĩa.
 - Tính năng AI sáng tạo thành ngữ & tục ngữ theo bất kỳ chủ đề người dùng nhập vào.
 
+### 4. Trò Chơi Phản Xạ Theo Từng Mục Riêng Biệt (HSK 1 - 6, Thương Mại & Flashcard Tự Tạo)
+- **8 Bộ Từ Vựng Chuyên Biệt Được Phân Tách Rõ Ràng:**
+  - `HSK 1` (12 từ cơ bản nhất)
+  - `HSK 2` (10 từ mở rộng)
+  - `HSK 3` (10 từ đàm thoại)
+  - `HSK 4` (10 từ thảo luận)
+  - `HSK 5` (10 từ phân tích cao cấp)
+  - `HSK 6` (10 từ học thuật & thành ngữ cổ)
+  - `💼 Tiếng Trung Thương Mại (Business Chinese)`: 18 từ vựng chuyên ngành đàm phán hợp đồng, thanh toán tín dụng L/C, hóa đơn VAT, tỷ giá hối đoái, chuỗi cung ứng, thuế quan, tiền cọc, ROI, thị phần...
+  - `⭐ Flashcard Tự Tạo Của Tôi`: Toàn bộ bộ thẻ do người dùng tự tạo hoặc dùng AI quét trang sách, đồng bộ động thời gian thực.
+- **Trò Chơi Dựa Theo Từ Vựng Của Từng Mục:**
+  - Cả 3 chế độ game (*Nối từ siêu tốc 25s*, *Phản xạ trắc nghiệm 5s*, *Nghe âm đoán chữ*) tự động trích xuất câu hỏi và đáp án chính xác từ mục từ vựng được chọn.
+  - Hiển thị danh sách từ vựng chi tiết của mục đang chọn ngay dưới sàn đấu game (kèm nút nghe phát âm và nghĩa).
+  - Tích hợp nút chuyển nhanh **"🎮 Chơi Game Với Bộ Thẻ Này"** trực tiếp từ màn hình Flashcard 3D.
+
 ---
 
 ## 🌐 Trải Nghiệm Trực Tuyến & GitHub Repository
