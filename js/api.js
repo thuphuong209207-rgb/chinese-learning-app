@@ -1,8 +1,8 @@
 // Gemini AI Integration Service
-// Uses gemini-3.8-flash REST endpoint with automatic smart fallback
+// Uses gemini-2.0-flash REST endpoint with automatic smart fallback & ultra-fast response
 
 const GeminiService = {
-  lastUsedModel: "gemini-3.8-flash",
+  lastUsedModel: "gemini-2.0-flash",
 
   getApiKey() {
     const settings = window.StorageService ? window.StorageService.getSettings() : {};
@@ -11,27 +11,32 @@ const GeminiService = {
 
   getModel() {
     const settings = window.StorageService ? window.StorageService.getSettings() : {};
-    let m = settings.model || "gemini-3.8-flash";
-    if (m === "gemini-2.5-flash") m = "gemini-3.8-flash";
+    let m = settings.model;
+    if (!m || m === "gemini-3.8-flash" || m === "gemini-2.5-flash") {
+      m = "gemini-2.0-flash";
+    }
     return m;
   },
 
-  async callGemini(promptText, systemInstruction = "") {
-    return this.callGeminiMultimodal([{ text: promptText }], systemInstruction);
+  async callGemini(promptText, systemInstruction = "", options = {}) {
+    return this.callGeminiMultimodal([{ text: promptText }], systemInstruction, options);
   },
 
-  async callGeminiMultimodal(parts, systemInstruction = "") {
+  async callGeminiMultimodal(parts, systemInstruction = "", options = {}) {
     const apiKey = this.getApiKey();
     if (!apiKey) {
       throw new Error("Chưa nhập Gemini API Key. Vui lòng vào mục 'Cài đặt' để nhập API Key để kích hoạt tính năng AI thực tế!");
     }
 
     const preferredModel = this.getModel();
-    // Candidate models in priority order
+    // Candidate models in low-latency priority order:
+    // 1. gemini-2.0-flash (fastest, state-of-the-art token generation)
+    // 2. gemini-1.5-flash-8b (extremely lightweight & fast)
+    // 3. gemini-1.5-flash (reliable, high quota)
     const candidateModels = [
       preferredModel,
-      "gemini-3.8-flash",
       "gemini-2.0-flash",
+      "gemini-1.5-flash-8b",
       "gemini-1.5-flash"
     ].filter((m, idx, arr) => m && arr.indexOf(m) === idx);
 
@@ -41,17 +46,20 @@ const GeminiService = {
       try {
         const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
 
+        const genConfig = {
+          temperature: typeof options.temperature === "number" ? options.temperature : 0.2,
+          maxOutputTokens: options.maxOutputTokens || 650,
+          topK: 20,
+          topP: 0.9
+        };
+
+        if (options.isJson !== false) {
+          genConfig.responseMimeType = "application/json";
+        }
+
         const bodyPayload = {
-          contents: [
-            {
-              parts: parts
-            }
-          ],
-          generationConfig: {
-            temperature: 0.3,
-            topK: 40,
-            topP: 0.95
-          }
+          contents: [{ parts: parts }],
+          generationConfig: genConfig
         };
 
         if (systemInstruction) {
@@ -60,17 +68,23 @@ const GeminiService = {
           };
         }
 
+        // AbortController timeout to guarantee quick failover if any model hangs
+        const controller = new AbortController();
+        const timeoutMs = options.timeoutMs || 8000;
+        const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+
         const response = await fetch(endpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(bodyPayload)
+          body: JSON.stringify(bodyPayload),
+          signal: controller.signal
         });
+        clearTimeout(timeoutId);
 
         if (!response.ok) {
           const errData = await response.json().catch(() => ({}));
           const errMsg = errData.error?.message || `Lỗi API HTTP: ${response.status} ${response.statusText}`;
 
-          // If this specific model is deprecated / unavailable, try fallback candidate
           if (response.status === 404 || errMsg.includes("no longer available") || errMsg.includes("not found")) {
             console.warn(`Model ${model} không khả dụng, đang chuyển sang model dự phòng...`, errMsg);
             lastError = new Error(errMsg);
@@ -94,7 +108,10 @@ const GeminiService = {
         return candidate.content.parts[0].text;
       } catch (err) {
         lastError = err;
-        // If it's invalid API key or permission denied, fail fast
+        if (err.name === "AbortError") {
+          console.warn(`Model ${model} timeout sau ${options.timeoutMs || 8000}ms, thử model tiếp theo...`);
+          continue;
+        }
         if (err.message.includes("API key not valid") || err.message.includes("PERMISSION_DENIED") || err.message.includes("Chưa nhập")) {
           throw err;
         }
@@ -104,33 +121,253 @@ const GeminiService = {
     throw lastError || new Error("Không thể kết nối đến các model Gemini khả dụng.");
   },
 
-  // Helper to extract JSON from markdown formatted AI response (```json ... ```)
+  // Helper to extract JSON from markdown formatted AI response (```json ... ```) or pure JSON
   cleanJson(text) {
-    let cleaned = text.trim();
+    let cleaned = (text || "").trim();
     if (cleaned.startsWith("```json")) {
       cleaned = cleaned.replace(/^```json/, "").replace(/```$/, "").trim();
     } else if (cleaned.startsWith("```")) {
       cleaned = cleaned.replace(/^```/, "").replace(/```$/, "").trim();
     }
-    return JSON.parse(cleaned);
+    try {
+      return JSON.parse(cleaned);
+    } catch (e) {
+      const match = cleaned.match(/\{[\s\S]*\}|\[[\s\S]*\]/);
+      if (match) return JSON.parse(match[0]);
+      throw e;
+    }
   },
 
-  // 1. Dictionary Smart Lookup Fallback & Direct AI Analysis
+  removeVietnameseTones(str) {
+    if (!str) return "";
+    return str
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/đ/g, "d")
+      .replace(/Đ/g, "D")
+      .toLowerCase();
+  },
+
+  // Instant local dictionary mapping for instantaneous response (< 10ms)
+  findInstantWord(query) {
+    if (!query) return null;
+    const q = query.trim().toLowerCase();
+    const qNoTone = this.removeVietnameseTones(q);
+
+    // Instant Map for high-frequency queries
+    const instantDB = [
+      {
+        keys: ["cố định", "co dinh", "固定", "guding", "gùdìng"],
+        data: {
+          hanzi: "固定",
+          traditional: "固定",
+          pinyin: "gùdìng",
+          wordType: "Tính từ / Động từ",
+          meaning: "Cố định, giữ nguyên, ổn định, bất biến",
+          detailedMeanings: [
+            "1. Làm cho chắc chắn không xê dịch (vd: cố định giá đỡ)",
+            "2. Ổn định, không thay đổi (vd: thời gian cố định, thu nhập cố định)"
+          ],
+          hsk: "HSK 4",
+          radical: "囗 (Vi / Khẩu)",
+          strokes: 8,
+          strokeOrderRules: "Chữ 固: Ngoài trước trong sau, vào trước đóng sau. Chữ 定: Trên trước dưới sau.",
+          mnemonics: "Chữ 固 gồm bộ Vi 囗 bao bọc chữ Cổ 古 (xưa cũ), thể hiện sự vững chắc muôn đời. Chữ 定 dưới mái nhà 宀 lòng an định.",
+          synonyms: ["稳定", "不变", "确立"],
+          antonyms: ["变动", "流动", "活络"],
+          collocations: ["固定资产 (Tài sản cố định)", "固定电话 (Điện thoại cố định)", "固定收入 (Thu nhập cố định)", "固定时间 (Thời gian cố định)"],
+          grammarNotes: "Thường làm định ngữ (固定工作), vị ngữ hoặc kết hợp làm bổ ngữ trong câu.",
+          example: {
+            zh: "我们的工作时间是固定的。",
+            pinyin: "Wǒmen de gōngzuò shíjiān shì gùdìng de.",
+            vi: "Thời gian làm việc của chúng tôi là cố định."
+          },
+          additionalExamples: [
+            {
+              zh: "请把这个架子固定在墙上。",
+              pinyin: "Qǐng bǎ zhè gè jiàzi gùdìng zài qiáng shàng.",
+              vi: "Xin hãy cố định chiếc giá này lên tường."
+            }
+          ]
+        }
+      },
+      {
+        keys: ["bắt đầu", "bat dau", "开始", "kaishi", "kāishǐ"],
+        data: {
+          hanzi: "开始",
+          traditional: "開始",
+          pinyin: "kāishǐ",
+          wordType: "Động từ / Danh từ",
+          meaning: "Bắt đầu, khởi đầu",
+          detailedMeanings: ["1. Mở đầu một hành động hoặc giai đoạn", "2. Thời điểm khởi đầu"],
+          hsk: "HSK 2",
+          radical: "女 (Nữ) / 开 (Khai)",
+          strokes: 9,
+          strokeOrderRules: "Ngang trước sổ sau, phẩy trước mác sau",
+          mnemonics: "Chữ 开 mở cổng hai cánh, chữ 始 người phụ nữ mang thai bắt đầu một sinh mệnh mới.",
+          synonyms: ["起步", "着手"],
+          antonyms: ["结束", "停止", "完成"],
+          collocations: ["开始学习", "重新开始", "比赛开始"],
+          grammarNotes: "Có thể mang động từ khác làm tân ngữ: 开始工作, 开始下雨.",
+          example: {
+            zh: "会议马上就要开始了。",
+            pinyin: "Huìyì mǎshàng jiù yào kāishǐ le.",
+            vi: "Cuộc họp sắp sửa bắt đầu rồi."
+          }
+        }
+      },
+      {
+        keys: ["kết thúc", "ket thuc", "结束", "jieshu", "jiéshù"],
+        data: {
+          hanzi: "结束",
+          traditional: "結束",
+          pinyin: "jiéshù",
+          wordType: "Động từ",
+          meaning: "Kết thúc, hoàn thành, chấm dứt",
+          detailedMeanings: ["1. Dừng lại, kết thúc một công việc hay cuộc họp", "2. Đi đến hồi kết"],
+          hsk: "HSK 3",
+          radical: "纟 (Mịch)",
+          strokes: 11,
+          strokeOrderRules: "Trái trước phải sau, trên trước dưới sau",
+          mnemonics: "Chữ 结 thắt nút sợi tơ, chữ 束 bó chặt gỗ lại thành một mối tròn trĩnh.",
+          synonyms: ["完毕", "停止", "告终"],
+          antonyms: ["开始", "起步", "开展"],
+          collocations: ["结束工作", "顺利结束", "结束语"],
+          grammarNotes: "Thường đứng cuối câu hoặc mang trạng ngữ thời gian.",
+          example: {
+            zh: "考试终于结束了。",
+            pinyin: "Kǎoshì zhōngyú jiéshù le.",
+            vi: "Kỳ thi cuối cùng cũng đã kết thúc rồi."
+          }
+        }
+      },
+      {
+        keys: ["thành công", "thanh cong", "成功", "chenggong", "chénggōng"],
+        data: {
+          hanzi: "成功",
+          traditional: "成功",
+          pinyin: "chénggōng",
+          wordType: "Tính từ / Động từ / Danh từ",
+          meaning: "Thành công, đạt được kết quả mong đợi",
+          detailedMeanings: ["1. Đạt được mục tiêu đã đề ra", "2. Sự thành công viên mãn"],
+          hsk: "HSK 3",
+          radical: "戈 (Qua) / 工 (Công)",
+          strokes: 6,
+          strokeOrderRules: "Trái trước phải sau, ngoài trước trong sau",
+          mnemonics: "Chữ 成 là dùng vũ khí (Qua 戈) lập công, chữ 功 là công sức và sức lực cộng lại.",
+          synonyms: ["胜利", "圆满"],
+          antonyms: ["失败", "挫折"],
+          collocations: ["祝你成功", "获得成功", "取得成功"],
+          grammarNotes: "Có thể làm định ngữ (成功的经验) hoặc vị ngữ (实验成功了).",
+          example: {
+            zh: "只要坚持，你一定会成功的。",
+            pinyin: "Zhǐyào jiānchí, nǐ yídìng huì chénggōng de.",
+            vi: "Chỉ cần kiên trì, bạn nhất định sẽ thành công."
+          }
+        }
+      },
+      {
+        keys: ["hạnh phúc", "hanh phuc", "幸福", "xingfu", "xìngfú"],
+        data: {
+          hanzi: "幸福",
+          traditional: "幸福",
+          pinyin: "xìngfú",
+          wordType: "Tính từ / Danh từ",
+          meaning: "Hạnh phúc, sung sướng",
+          detailedMeanings: ["1. Trạng thái vui vẻ, mãn nguyện trong cuộc sống", "2. Niềm hạnh phúc"],
+          hsk: "HSK 4",
+          radical: "干 (Can) / 礻 (Thị)",
+          strokes: 8,
+          strokeOrderRules: "Trên trước dưới sau, trái trước phải sau",
+          mnemonics: "Chữ 幸 thoát khỏi gông cùm, chữ 福 có áo mặc (礻) có ruộng đất (田) ấm no.",
+          synonyms: ["快乐", "美满", "甜蜜"],
+          antonyms: ["痛苦", "不幸", "悲哀"],
+          collocations: ["生活幸福", "祝你幸福", "感到幸福"],
+          grammarNotes: "Thường kết hợp với các phó từ chỉ mức độ: 很幸福, 非常幸福.",
+          example: {
+            zh: "他们一家人生活得非常幸福。",
+            pinyin: "Tāmen yì jiā rén shēnghuó de fēicháng xìngfú.",
+            vi: "Cả gia đình họ sống rất hạnh phúc."
+          }
+        }
+      }
+    ];
+
+    for (const item of instantDB) {
+      if (item.keys.some((k) => k === q || k === qNoTone)) {
+        return {
+          ...item.data,
+          query: query,
+          source: "instant_dict"
+        };
+      }
+    }
+
+    // Also check APP_DATA.vocabList
+    if (window.APP_DATA && Array.isArray(window.APP_DATA.vocabList)) {
+      const match = window.APP_DATA.vocabList.find((w) => {
+        const h = (w.hanzi || "").toLowerCase();
+        const p = (w.pinyin || "").toLowerCase();
+        const m = (w.meaning || "").toLowerCase();
+        return h === q || p === q || m.includes(q) || (qNoTone && this.removeVietnameseTones(m).includes(qNoTone));
+      });
+      if (match) {
+        return {
+          query: query,
+          hanzi: match.hanzi,
+          traditional: match.traditional || match.hanzi,
+          pinyin: match.pinyin,
+          wordType: match.wordType || "Từ vựng HSK",
+          meaning: match.meaning,
+          detailedMeanings: match.detailedMeanings || [match.meaning],
+          hsk: match.hsk ? (typeof match.hsk === "number" ? `HSK ${match.hsk}` : match.hsk) : "HSK",
+          radical: match.radical || "Đang cập nhật",
+          strokes: match.strokes || 8,
+          strokeOrderRules: match.strokeOrderRules || "Quy tắc: Ngang trước sổ sau, trên trước dưới sau",
+          mnemonics: match.mnemonics || `Ghi nhớ chữ "${match.hanzi}" (${match.pinyin}) có nghĩa là "${match.meaning}".`,
+          synonyms: match.synonyms || [match.hanzi],
+          antonyms: match.antonyms || [],
+          collocations: match.collocations || [`${match.hanzi}常用`, `学习${match.hanzi}`],
+          grammarNotes: match.grammarNotes || `Từ "${match.hanzi}" thường dùng trong giao tiếp và đề thi HSK.`,
+          example: match.example || {
+            zh: `这是一个关于${match.hanzi}的实用例句。`,
+            pinyin: `Zhè shì yí gè guānyú ${match.hanzi} de shíyòng lìjù.`,
+            vi: `Đây là câu ví dụ ứng dụng thực tế cho từ "${match.hanzi}".`
+          },
+          additionalExamples: match.additionalExamples || [],
+          source: "instant_dict"
+        };
+      }
+    }
+
+    return null;
+  },
+
+  // 1. Dictionary Smart Lookup: Ultra-fast AI Analysis (1 - 2 seconds)
   async lookupWordAI(query) {
     const qTrim = (query || "").trim();
     if (!qTrim) throw new Error("Vui lòng nhập từ hoặc câu cần tra cứu!");
 
-    // Check cached lookup first
+    // 1. Check cached lookup first (0ms)
     if (window.StorageService) {
       const cached = window.StorageService.getAiLookupCache(qTrim);
-      if (cached && cached.source === "gemini_ai") {
+      if (cached && (cached.source === "gemini_ai" || cached.source === "instant_dict")) {
         return cached;
       }
     }
 
+    // 2. Check instant dictionary mapping (0ms)
+    const instant = this.findInstantWord(qTrim);
+    if (instant) {
+      if (window.StorageService) {
+        window.StorageService.saveAiLookupItem(instant);
+      }
+      return instant;
+    }
+
+    // 3. Fallback generator if no API key
     const apiKey = this.getApiKey();
     if (!apiKey) {
-      // Offline fallback generator for smooth demo
       return {
         query: qTrim,
         hanzi: qTrim,
@@ -142,7 +379,7 @@ const GeminiService = {
           `Nghĩa thông dụng trong giao tiếp hàng ngày`,
           `Ứng dụng trong văn cảnh thực tế và thương mại`
         ],
-        hsk: 3,
+        hsk: "HSK 3",
         radical: "Đang cập nhật",
         strokes: 8,
         strokeOrderRules: "Quy tắc: Ngang trước sổ sau, trên trước dưới sau, ngoài trước trong sau",
@@ -150,6 +387,7 @@ const GeminiService = {
         synonyms: [`Tương đồng với ${qTrim}`],
         antonyms: [`Trái nghĩa với ${qTrim}`],
         collocations: [`${qTrim}常用`, `学习${qTrim}`, `掌握${qTrim}`],
+        grammarNotes: `Từ "${qTrim}" thường được dùng linh hoạt làm định ngữ hoặc vị ngữ trong câu.`,
         example: {
           zh: `这是一个关于${qTrim}的实用例句。`,
           pinyin: `Zhè shì yí gè guānyú ${qTrim} de shíyòng lìjù.`,
@@ -166,45 +404,48 @@ const GeminiService = {
       };
     }
 
-    const systemInstruction = `Bạn là một chuyên gia ngôn ngữ học tiếng Trung, nhà biên soạn đại từ điển Hán-Việt Hiện Đại và giáo viên tiếng Trung cao cấp. 
-Nhiệm vụ của bạn là tra cứu và giải nghĩa chuyên sâu bất kỳ từ, cụm từ, quán dụng ngữ, từ lóng mạng hoặc mẫu câu tiếng Trung nào được cung cấp. Trả về DUY NHẤT định dạng JSON chuẩn.`;
+    // 4. Ultra-fast AI Prompt (1 - 2s response target)
+    const systemInstruction = `Bạn là đại từ điển Hán-Việt siêu tốc. Phân tích ngôn ngữ học chính xác và trả về DUY NHẤT 1 JSON object cô đọng, không kèm giải thích ngoài JSON.`;
 
-    const prompt = `Hãy tra cứu và phân tích ngôn ngữ học toàn diện cho từ/cụm từ hoặc câu hỏi: "${qTrim}".
-Định dạng JSON chuẩn xác 100%:
+    const prompt = `Phân tích từ/cụm từ: "${qTrim}".
+Trả về JSON chuẩn 100%:
 {
   "query": "${qTrim}",
-  "hanzi": "Chữ Hán chuẩn giản thể (hoặc chữ Hán chuẩn tương ứng nếu người dùng nhập bằng Pinyin hoặc nghĩa tiếng Việt)",
-  "traditional": "Chữ Hán phồn thể tương ứng",
-  "pinyin": "Phiên âm pinyin quốc tế chuẩn đầy đủ có dấu thanh",
-  "wordType": "Từ loại (vd: Danh từ / Động từ / Tính từ / Lượng từ / Quán dụng ngữ / Thành ngữ / Từ lóng...)",
-  "meaning": "Nghĩa tiếng Việt chuẩn xác, súc tích và tự nhiên nhất",
-  "detailedMeanings": [
-    "Tầng nghĩa 1: giải thích rõ nghĩa và ngữ cảnh sử dụng",
-    "Tầng nghĩa 2: nghĩa mở rộng hoặc nghĩa bóng (nếu có)"
-  ],
-  "hsk": "Cấp độ HSK tương đương (ví dụ: HSK 1, HSK 2, HSK 3, HSK 4, HSK 5, HSK 6, hoặc HSK 7-9 / Thương Mại)",
-  "radical": "Bộ thủ chính (vd: 氵 Chấm thủy, 亻 Nhân đứng, 木 Mộc, 心 Tâm...)",
-  "strokes": số nét viết của chữ chính (số nguyên),
-  "strokeOrderRules": "Quy tắc bút thuận (vd: Ngang trước sổ sau, trên trước dưới sau...)",
-  "mnemonics": "Mẹo chiết tự chữ Hán hoặc câu chuyện hình tượng ghi nhớ thông minh giúp học viên nhớ lâu",
+  "hanzi": "Chữ Hán giản thể chuẩn (hoặc chữ Hán chuẩn tương ứng nếu người dùng nhập bằng Pinyin hoặc tiếng Việt)",
+  "traditional": "Chữ Hán phồn thể",
+  "pinyin": "Pinyin chuẩn có dấu thanh",
+  "wordType": "Từ loại (Danh từ/Động từ/Tính từ...)",
+  "meaning": "Nghĩa tiếng Việt chuẩn xác, súc tích",
+  "detailedMeanings": ["Nghĩa thông dụng 1", "Nghĩa mở rộng 2"],
+  "hsk": "HSK 1 - HSK 6",
+  "radical": "Bộ thủ kèm tên Hán Việt",
+  "strokes": 8,
+  "strokeOrderRules": "Quy tắc bút thuận",
+  "mnemonics": "Mẹo chiết tự nhớ chữ ngắn gọn",
   "synonyms": ["Từ đồng nghĩa 1", "Từ đồng nghĩa 2"],
   "antonyms": ["Từ trái nghĩa 1", "Từ trái nghĩa 2"],
-  "collocations": ["Cụm từ ghép hay gặp 1 (Pinyin - Nghĩa)", "Cụm từ 2", "Cụm từ 3"],
+  "collocations": ["Từ ghép hay gặp 1", "Từ ghép 2", "Từ ghép 3"],
+  "grammarNotes": "Vị trí trong câu và cách dùng súc tích",
   "example": {
-    "zh": "Câu ví dụ giao tiếp thực tế điển hình",
+    "zh": "Câu ví dụ giao tiếp thực tế ngắn",
     "pinyin": "Pinyin câu ví dụ",
-    "vi": "Dịch tiếng Việt tự nhiên câu ví dụ"
+    "vi": "Dịch tiếng Việt tự nhiên"
   },
   "additionalExamples": [
     {
-      "zh": "Câu ví dụ thực tế thứ hai trong văn cảnh đời sống hoặc thương mại",
-      "pinyin": "Pinyin câu ví dụ 2",
-      "vi": "Dịch tiếng Việt câu ví dụ 2"
+      "zh": "Câu ví dụ thực tế thứ hai ngắn",
+      "pinyin": "Pinyin ví dụ 2",
+      "vi": "Dịch tiếng Việt ví dụ 2"
     }
   ]
 }`;
 
-    const raw = await this.callGemini(prompt, systemInstruction);
+    const raw = await this.callGemini(prompt, systemInstruction, {
+      temperature: 0.1,
+      maxOutputTokens: 600,
+      isJson: true,
+      timeoutMs: 5000
+    });
     const parsed = this.cleanJson(raw);
     parsed.query = qTrim;
     parsed.source = "gemini_ai";
