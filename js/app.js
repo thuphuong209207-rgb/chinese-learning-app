@@ -4203,7 +4203,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="flex items-center justify-between">
               <h3 class="font-bold text-base text-slate-800 dark:text-white flex items-center gap-2">
                 <i data-lucide="key" class="w-5 h-5 text-amber-500"></i>
-                Gemini API Key (gemini-2.5-flash)
+                Gemini API Key (Hỗ trợ gemini-3.8-flash, gemini-2.0-flash...)
               </h3>
               <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">
                 Lưu an toàn ở LocalStorage
@@ -4214,7 +4214,7 @@ document.addEventListener("DOMContentLoaded", () => {
               Nhập API Key từ Google AI Studio để kích hoạt tính năng phân tích từ vựng thời gian thực, giám khảo chấm điểm khẩu ngữ HSKK và tự động sinh đề thi mới.
             </p>
 
-            <div class="space-y-2">
+            <div class="space-y-3">
               <div class="relative flex items-center">
                 <input
                   type="password"
@@ -4231,6 +4231,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 >
                   Hiện
                 </button>
+              </div>
+
+              <!-- Model Selector -->
+              <div class="space-y-1.5 pt-1">
+                <label class="block font-bold text-slate-700 dark:text-slate-300 text-xs">Model Gemini AI sử dụng:</label>
+                <select
+                  id="settingsModelSelect"
+                  onchange="App.handleModelChange(this.value)"
+                  class="w-full px-3.5 py-2.5 rounded-2xl bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-xs text-slate-800 dark:text-white font-semibold focus:outline-none focus:border-red-500"
+                >
+                  <option value="gemini-3.8-flash" ${(!this.settings.model || this.settings.model === "gemini-3.8-flash" || this.settings.model === "gemini-2.5-flash") ? "selected" : ""}>gemini-3.8-flash (Mới nhất, siêu nhanh - Khuyên dùng)</option>
+                  <option value="gemini-2.0-flash" ${this.settings.model === "gemini-2.0-flash" ? "selected" : ""}>gemini-2.0-flash (Ổn định)</option>
+                  <option value="gemini-1.5-flash" ${this.settings.model === "gemini-1.5-flash" ? "selected" : ""}>gemini-1.5-flash (Tương thích cao)</option>
+                </select>
+                <p class="text-[11px] text-slate-400">Hệ thống trang bị cơ chế tự động chuyển sang model dự phòng (Fallback) nếu model chính quá tải.</p>
               </div>
             </div>
 
@@ -4311,6 +4326,11 @@ document.addEventListener("DOMContentLoaded", () => {
       this.showToast(apiKey ? "Đã lưu Gemini API Key thành công!" : "Đã xóa API Key.", "success");
     },
 
+    handleModelChange(val) {
+      this.settings = window.StorageService.saveSettings({ model: val });
+      this.showToast(`Đã thiết lập model: ${val}`, "info");
+    },
+
     saveSpeechRate(val) {
       const rate = parseFloat(val) || 0.9;
       this.settings = window.StorageService.saveSettings({ speechRate: rate });
@@ -4335,7 +4355,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       try {
         const text = await window.GeminiService.callGemini("Hãy chào ngắn gọn bằng tiếng Trung (dưới 5 từ).");
-        this.showToast(`Kết nối Gemini 2.5 Flash thành công! Phản hồi: "${text.trim()}"`, "success");
+        const activeModel = window.GeminiService.lastUsedModel || this.settings.model || "gemini-3.8-flash";
+        this.showToast(`Kết nối Gemini (${activeModel}) thành công! Phản hồi: "${text.trim()}"`, "success");
         this.updateHeaderProgress();
       } catch (err) {
         this.showToast(`Kiểm tra thất bại: ${err.message}`, "error");
