@@ -680,8 +680,8 @@ document.addEventListener("DOMContentLoaded", () => {
        Integrated with:
        - Language Direction Switch [ cn | vi ]
        - 4 Quick Action Pills: Camera OCR, Voice Mic, Handwriting, 214 Radicals
-       - 5 Underlined Category Tabs: Tá»« vá»±ng, HÃ¡n tá»±, Ngá»¯ phÃ¡p, Máº«u cÃ¢u, Káº¿t há»£p
-       - Sleek Dark "Tra cá»©u gáº§n Ä‘Ã¢y" Recent Search Card with individual delete [x]
+       - 5 Underlined Category Tabs: Từ vựng, Hán tự, Ngữ pháp, Mẫu câu, Kết hợp
+       - Sleek Dark "Tra cứu gần đây" Recent Search Card with individual delete [x]
        - Full HanziWriter Stroke Animation, Quiz & Gemini AI Linguistic Engine
        ===================================================================== */
     toggleDictDirection(dir) {
@@ -689,8 +689,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const input = document.getElementById("dictSearchInput");
       if (input) {
         input.placeholder = dir === "vi"
-          ? "Nháº­p tiáº¿ng Viá»‡t (vd: há»c táº­p, tÃ¬nh yÃªu, lÃ m viá»‡c...)"
-          : "Nháº­p tiáº¿ng Trung hoáº·c Pinyin (vd: å­¦ä¹ , Ã i, zuÃ², dÇngzhuÃ ng...)";
+          ? "Nhập tiếng Việt (vd: học tập, tình yêu, làm việc...)"
+          : "Nhập tiếng Trung hoặc Pinyin (vd: 学习, ài, zuò, dǐngzhuàng...)";
       }
       const container = document.getElementById("viewContainer");
       if (container) this.renderDictionary(container);
@@ -726,7 +726,7 @@ document.addEventListener("DOMContentLoaded", () => {
     clearAiHistory() {
       if (window.StorageService) {
         window.StorageService.clearAiLookupHistory();
-        this.showToast("ÄÃ£ xÃ³a toÃ n bá»™ lá»‹ch sá»­ tra cá»©u gáº§n Ä‘Ã¢y", "info");
+        this.showToast("Đã xóa toàn bộ lịch sử tra cứu gần đây", "info");
         const container = document.getElementById("viewContainer");
         if (container) this.renderDictionary(container);
       }
@@ -738,11 +738,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const displayedHistory = isExpanded ? history : history.slice(0, 3);
 
       const tabs = [
-        { id: "vocab", label: "Tá»« vá»±ng" },
-        { id: "hanzi", label: "HÃ¡n tá»±" },
-        { id: "grammar", label: "Ngá»¯ phÃ¡p" },
-        { id: "sentence", label: "Máº«u cÃ¢u" },
-        { id: "collocation", label: "Káº¿t há»£p" }
+        { id: "vocab", label: "Từ vựng" },
+        { id: "hanzi", label: "Hán tự" },
+        { id: "grammar", label: "Ngữ pháp" },
+        { id: "sentence", label: "Mẫu câu" },
+        { id: "collocation", label: "Kết hợp" }
       ];
 
       container.innerHTML = `
@@ -755,7 +755,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <button
                 onclick="App.handleDictBack()"
                 class="p-2 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition flex items-center justify-center shrink-0"
-                title="Quay láº¡i danh sÃ¡ch / Äáº·t láº¡i"
+                title="Quay lại danh sách / Đặt lại"
               >
                 <i data-lucide="chevron-left" class="w-6 h-6"></i>
               </button>
@@ -766,7 +766,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   type="text"
                   id="dictSearchInput"
                   value="${this.lastDictQuery || ""}"
-                  placeholder="${this.dictSearchDirection === "vi" ? "Nháº­p tiáº¿ng Viá»‡t" : "Nháº­p tiáº¿ng Trung / Pinyin"}"
+                  placeholder="${this.dictSearchDirection === "vi" ? "Nhập tiếng Việt" : "Nhập tiếng Trung / Pinyin"}"
                   class="w-full bg-[#1b2234] text-white placeholder-slate-400 rounded-2xl pl-12 pr-10 py-3 text-sm md:text-base border border-slate-700/80 focus:outline-none focus:ring-2 focus:ring-blue-500 transition font-medium"
                   onkeydown="if(event.key==='Enter') App.handleDictSearch(this.value)"
                 />
@@ -774,7 +774,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   <button
                     onclick="document.getElementById('dictSearchInput').value=''; App.handleDictBack();"
                     class="absolute right-3 p-1 text-slate-400 hover:text-white"
-                    title="XÃ³a ná»™i dung"
+                    title="Xóa nội dung"
                   >
                     <i data-lucide="x" class="w-4 h-4"></i>
                   </button>
@@ -803,7 +803,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <button
                 onclick="App.openDictCameraModal()"
                 class="h-12 sm:h-14 rounded-2xl bg-[#2e3e60] hover:bg-[#3b507d] text-white flex items-center justify-center transition shadow-md active:scale-95 group"
-                title="QuÃ©t áº£nh / Nháº­n diá»‡n chá»¯ qua Camera & SÃ¡ch"
+                title="Quét ảnh / Nhận diện chữ qua Camera & Sách"
               >
                 <i data-lucide="camera" class="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition"></i>
               </button>
@@ -812,7 +812,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 id="dictVoiceBtn"
                 onclick="App.startDictVoiceSearch()"
                 class="h-12 sm:h-14 rounded-2xl bg-[#2e3e60] hover:bg-[#3b507d] text-white flex items-center justify-center transition shadow-md active:scale-95 group relative"
-                title="Tra cá»©u báº±ng giá»ng nÃ³i Microphone"
+                title="Tra cứu bằng giọng nói Microphone"
               >
                 <i data-lucide="mic" class="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition"></i>
               </button>
@@ -820,7 +820,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <button
                 onclick="App.openDictHandwritingModal()"
                 class="h-12 sm:h-14 rounded-2xl bg-[#2e3e60] hover:bg-[#3b507d] text-white flex items-center justify-center transition shadow-md active:scale-95 group"
-                title="Váº½ tay / BÃºt viáº¿t chá»¯ HÃ¡n"
+                title="Vẽ tay / Bút viết chữ Hán"
               >
                 <i data-lucide="pen-tool" class="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition"></i>
               </button>
@@ -828,7 +828,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <button
                 onclick="App.openDictRadicalModal()"
                 class="h-12 sm:h-14 rounded-2xl bg-[#2e3e60] hover:bg-[#3b507d] text-white flex items-center justify-center transition shadow-md active:scale-95 group"
-                title="Chiáº¿t tá»± & Tra theo 214 Bá»™ thá»§"
+                title="Chiết tự & Tra theo 214 Bộ thủ"
               >
                 <i data-lucide="puzzle" class="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition"></i>
               </button>
@@ -864,7 +864,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 : ""
             }
 
-            <!-- Recent Search History Card (Tra cá»©u gáº§n Ä‘Ã¢y) -->
+            <!-- Recent Search History Card (Tra cứu gần đây) -->
             ${this.renderRecentSearchCard(displayedHistory, history.length)}
 
             <!-- Explorer Content (When no word is actively selected or user browses tabs) -->
@@ -887,14 +887,14 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="bg-[#121622] text-white rounded-3xl p-4 md:p-5 shadow-xl border border-slate-800/90 space-y-2.5">
           <div class="flex items-center justify-between px-1">
             <h3 class="text-sm font-bold text-slate-200 flex items-center gap-2">
-              <span>Tra cá»©u gáº§n Ä‘Ã¢y</span>
+              <span>Tra cứu gần đây</span>
             </h3>
             <button
               onclick="App.clearAiHistory()"
               class="text-[11px] text-slate-400 hover:text-rose-400 transition"
-              title="XÃ³a táº¥t cáº£"
+              title="Xóa tất cả"
             >
-              XÃ³a lá»‹ch sá»­
+              Xóa lịch sử
             </button>
           </div>
 
@@ -918,7 +918,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <button
                   onclick="event.stopPropagation(); App.deleteRecentSearchItem('${item.hanzi || item.query}')"
                   class="p-1 rounded-lg text-slate-500 hover:text-rose-400 hover:bg-slate-700/60 transition shrink-0"
-                  title="XÃ³a má»¥c nÃ y"
+                  title="Xóa mục này"
                 >
                   <i data-lucide="x" class="w-4 h-4"></i>
                 </button>
@@ -936,7 +936,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 onclick="App.toggleRecentHistoryExpand()"
                 class="text-xs text-slate-400 hover:text-white inline-flex items-center gap-1.5 font-semibold py-1 px-3 rounded-xl hover:bg-slate-800 transition"
               >
-                <span>${this.dictRecentExpanded ? "Thu gá»n" : "Xem thÃªm"}</span>
+                <span>${this.dictRecentExpanded ? "Thu gọn" : "Xem thêm"}</span>
                 <i data-lucide="${this.dictRecentExpanded ? "chevron-up" : "chevron-down"}" class="w-3.5 h-3.5"></i>
               </button>
             </div>
@@ -978,7 +978,7 @@ document.addEventListener("DOMContentLoaded", () => {
               ${word.wordType ? `<span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">${word.wordType}</span>` : ""}
               <span class="text-xs text-slate-400 font-medium flex items-center gap-1">
                 <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-500"></i>
-                ${word.source === "gemini_ai" ? "Gemini Flash AI PhÃ¢n TÃ­ch" : "Tá»« Ä‘iá»ƒn tiÃªu chuáº©n"}
+                ${word.source === "gemini_ai" ? "Gemini Flash AI Phân Tích" : "Từ điển tiêu chuẩn"}
               </span>
             </div>
 
@@ -986,7 +986,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <button
                 onclick="AudioService.speak('${word.hanzi}')"
                 class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-red-50 hover:text-red-600 transition"
-                title="Nghe phÃ¡t Ã¢m chuáº©n giá»ng phá»• thÃ´ng"
+                title="Nghe phát âm chuẩn giọng phổ thông"
               >
                 <i data-lucide="volume-2" class="w-5 h-5"></i>
               </button>
@@ -994,7 +994,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 onclick="App.addCurrentToFlashcard('${word.hanzi}', '${word.pinyin}', '${word.meaning}', '${word.example?.zh || ""}', '${word.example?.vi || ""}')"
                 class="px-3.5 py-2 rounded-xl bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400 hover:bg-red-100 font-bold text-xs flex items-center gap-1.5 transition"
               >
-                <i data-lucide="plus-circle" class="w-4 h-4"></i> ThÃªm vÃ o Flashcard
+                <i data-lucide="plus-circle" class="w-4 h-4"></i> Thêm vào Flashcard
               </button>
             </div>
           </div>
@@ -1004,20 +1004,20 @@ document.addEventListener("DOMContentLoaded", () => {
             switch (tab) {
               case "hanzi":
                 return `
-                  <!-- TAB 2: HÃN Tá»° & BÃšT THUáº¬N Táº¬P VIáº¾T -->
+                  <!-- TAB 2: HÁN TỰ & BÚT THUẬN TẬP VIẾT -->
                   <div class="space-y-6">
                     <div class="flex flex-wrap items-center justify-between gap-2">
                       <div>
                         <h3 class="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
                           <i data-lucide="edit-3" class="w-5 h-5 text-red-600"></i>
-                          Chi Tiáº¿t HÃ¡n Tá»± & BÃºt Thuáº­n
+                          Chi Tiết Hán Tự & Bút Thuận
                         </h3>
                         <p class="text-xs text-slate-500 dark:text-slate-400">
-                          Xem thá»© tá»± tá»«ng nÃ©t viáº¿t chuáº©n Hanban vÃ  luyá»‡n táº­p viáº¿t trá»±c tiáº¿p báº±ng chuá»™t hoáº·c mÃ n hÃ¬nh cáº£m á»©ng.
+                          Xem thứ tự từng nét viết chuẩn Hanban và luyện tập viết trực tiếp bằng chuột hoặc màn hình cảm ứng.
                         </p>
                       </div>
                       <span class="text-xs font-semibold px-3 py-1 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">
-                        ${word.strokes || 8} NÃ©t bÃºt
+                        ${word.strokes || 8} Nét bút
                       </span>
                     </div>
 
@@ -1035,23 +1035,23 @@ document.addEventListener("DOMContentLoaded", () => {
                             <button
                               onclick="App.animateHanzi('${cfg.containerId}')"
                               class="px-2.5 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white font-bold text-xs flex items-center gap-1 shadow-sm transition"
-                              title="Xem thá»© tá»± váº½ nÃ©t"
+                              title="Xem thứ tự vẽ nét"
                             >
                               <i data-lucide="play" class="w-3.5 h-3.5 fill-white"></i>
-                              <span>Váº½ nÃ©t</span>
+                              <span>Vẽ nét</span>
                             </button>
                             <button
                               onclick="App.quizHanzi('${cfg.containerId}', '${cfg.char}')"
                               class="px-2.5 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs flex items-center gap-1 shadow-sm transition"
-                              title="Táº­p viáº¿t trá»±c tiáº¿p"
+                              title="Tập viết trực tiếp"
                             >
                               <i data-lucide="edit-2" class="w-3.5 h-3.5"></i>
-                              <span>Táº­p viáº¿t</span>
+                              <span>Tập viết</span>
                             </button>
                             <button
                               onclick="App.resetHanzi('${cfg.containerId}')"
                               class="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-600 dark:text-slate-300 transition"
-                              title="Äáº·t láº¡i nÃ©t"
+                              title="Đặt lại nét"
                             >
                               <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
                             </button>
@@ -1065,19 +1065,19 @@ document.addEventListener("DOMContentLoaded", () => {
                     <!-- Linguistic Anatomy: Radical, Rules, Mnemonics -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                       <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 space-y-1.5">
-                        <span class="text-slate-400 font-bold uppercase tracking-wider block">Bá»™ thá»§ (Radical):</span>
-                        <div class="font-bold text-slate-800 dark:text-white text-base">${word.radical || "Äang cáº­p nháº­t"}</div>
+                        <span class="text-slate-400 font-bold uppercase tracking-wider block">Bộ thủ (Radical):</span>
+                        <div class="font-bold text-slate-800 dark:text-white text-base">${word.radical || "Đang cập nhật"}</div>
                         <p class="text-slate-500 dark:text-slate-400 text-[11px]">
-                          ${word.strokeOrderRules || "Quy táº¯c: Ngang trÆ°á»›c sá»• sau, trÃªn trÆ°á»›c dÆ°á»›i sau, ngoÃ i trÆ°á»›c trong sau."}
+                          ${word.strokeOrderRules || "Quy tắc: Ngang trước sổ sau, trên trước dưới sau, ngoài trước trong sau."}
                         </p>
                       </div>
 
                       <div class="p-4 rounded-2xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 space-y-1.5">
                         <span class="text-amber-800 dark:text-amber-300 font-bold uppercase tracking-wider flex items-center gap-1.5">
-                          <i data-lucide="lightbulb" class="w-4 h-4 text-amber-500"></i> Máº¹o Chiáº¿t Tá»± Nhá»› Chá»¯:
+                          <i data-lucide="lightbulb" class="w-4 h-4 text-amber-500"></i> Mẹo Chiết Tự Nhớ Chữ:
                         </span>
                         <p class="text-slate-700 dark:text-slate-300 italic leading-relaxed">
-                          ${word.mnemonics || `Ghi nhá»› chá»¯ "${word.hanzi}" qua cÃ¡c bá»™ pháº­n cáº¥u thÃ nh vÃ  liÃªn há»‡ vá»›i Ã½ nghÄ©a "${word.meaning}".`}
+                          ${word.mnemonics || `Ghi nhớ chữ "${word.hanzi}" qua các bộ phận cấu thành và liên hệ với ý nghĩa "${word.meaning}".`}
                         </p>
                       </div>
                     </div>
@@ -1086,42 +1086,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
               case "grammar":
                 return `
-                  <!-- TAB 3: NGá»® PHÃP & Tá»ª LOáº I -->
+                  <!-- TAB 3: NGỮ PHÁP & TỪ LOẠI -->
                   <div class="space-y-5">
                     <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
                       <div>
                         <h3 class="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
                           <i data-lucide="bookmark" class="w-5 h-5 text-indigo-600"></i>
-                          PhÃ¢n TÃ­ch Ngá»¯ PhÃ¡p & Cáº¥u TrÃºc
+                          Phân Tích Ngữ Pháp & Cấu Trúc
                         </h3>
                         <p class="text-xs text-slate-500 dark:text-slate-400">
-                          Vá»‹ trÃ­ cá»§a tá»« trong cÃ¢u, tá»« loáº¡i vÃ  quy táº¯c ngá»¯ phÃ¡p Ä‘áº·c thÃ¹ trong giao tiáº¿p vÃ  thi cá»­ HSK.
+                          Vị trí của từ trong câu, từ loại và quy tắc ngữ pháp đặc thù trong giao tiếp và thi cử HSK.
                         </p>
                       </div>
                       <span class="text-xs font-bold px-3 py-1 rounded-xl bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400">
-                        ${word.wordType || "Tá»« vá»±ng / Cá»¥m tá»«"}
+                        ${word.wordType || "Từ vựng / Cụm từ"}
                       </span>
                     </div>
 
                     <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 space-y-3">
                       <h4 class="font-bold text-sm text-slate-800 dark:text-white flex items-center gap-2">
                         <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i>
-                        Quy Táº¯c Sá»­ Dá»¥ng & Vá»‹ TrÃ­ Trong CÃ¢u:
+                        Quy Tắc Sử Dụng & Vị Trí Trong Câu:
                       </h4>
                       <p class="text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                        ${word.grammarNotes || `Tá»« "<b>${word.hanzi}</b>" (${word.pinyin}) Ä‘Ã³ng vai trÃ² lÃ  <b>${word.wordType || "tá»« vá»±ng cá»‘t lÃµi"}</b> trong ngá»¯ phÃ¡p tiáº¿ng Trung. ThÆ°á»ng Ä‘á»©ng lÃ m vá»‹ ngá»¯, bá»• ngá»¯ hoáº·c káº¿t há»£p vá»›i cÃ¡c phÃ³ tá»« chá»‰ má»©c Ä‘á»™ (å¾ˆ, éžå¸¸, å¤ª) vÃ  trá»£ tá»« cáº¥u trÃºc (çš„, å¾—, äº†).`}
+                        ${word.grammarNotes || `Từ "<b>${word.hanzi}</b>" (${word.pinyin}) đóng vai trò là <b>${word.wordType || "từ vựng cốt lõi"}</b> trong ngữ pháp tiếng Trung. Thường đứng làm vị ngữ, bổ ngữ hoặc kết hợp với các phó từ chỉ mức độ (很, 非常, 太) và trợ từ cấu trúc (的, 得, 了).`}
                       </p>
                     </div>
 
                     <!-- Common Grammar Structure -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                       <div class="p-4 rounded-2xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900/50">
-                        <span class="font-bold text-blue-800 dark:text-blue-300 block mb-1">Cáº¥u trÃºc kháº³ng Ä‘á»‹nh:</span>
-                        <div class="font-mono text-slate-700 dark:text-slate-300">Chá»§ ngá»¯ + ${word.hanzi} + TÃ¢n ngá»¯ / Bá»• ngá»¯</div>
+                        <span class="font-bold text-blue-800 dark:text-blue-300 block mb-1">Cấu trúc khẳng định:</span>
+                        <div class="font-mono text-slate-700 dark:text-slate-300">Chủ ngữ + ${word.hanzi} + Tân ngữ / Bổ ngữ</div>
                       </div>
                       <div class="p-4 rounded-2xl bg-rose-50/60 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50">
-                        <span class="font-bold text-rose-800 dark:text-rose-300 block mb-1">Cáº¥u trÃºc phá»§ Ä‘á»‹nh:</span>
-                        <div class="font-mono text-slate-700 dark:text-slate-300">Chá»§ ngá»¯ + ä¸ / æ²¡ + ${word.hanzi}</div>
+                        <span class="font-bold text-rose-800 dark:text-rose-300 block mb-1">Cấu trúc phủ định:</span>
+                        <div class="font-mono text-slate-700 dark:text-slate-300">Chủ ngữ + 不 / 没 + ${word.hanzi}</div>
                       </div>
                     </div>
                   </div>
@@ -1129,16 +1129,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
               case "sentence":
                 return `
-                  <!-- TAB 4: MáºªU CÃ‚U & GIAO TIáº¾P THá»°C Táº¾ -->
+                  <!-- TAB 4: MẪU CÂU & GIAO TIẾP THỰC TẾ -->
                   <div class="space-y-4">
                     <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
                       <div>
                         <h3 class="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
                           <i data-lucide="message-square" class="w-5 h-5 text-amber-500"></i>
-                          Máº«u CÃ¢u VÃ­ Dá»¥ á»¨ng Dá»¥ng
+                          Mẫu Câu Ví Dụ Ứng Dụng
                         </h3>
                         <p class="text-xs text-slate-500 dark:text-slate-400">
-                          CÃ¡c cÃ¢u giao tiáº¿p sinh Ä‘á»™ng cÃ³ chá»©a tá»« "${word.hanzi}", kÃ¨m phiÃªn Ã¢m Pinyin vÃ  giá»ng Ä‘á»c báº£n xá»©.
+                          Các câu giao tiếp sinh động có chứa từ "${word.hanzi}", kèm phiên âm Pinyin và giọng đọc bản xứ.
                         </p>
                       </div>
                     </div>
@@ -1146,9 +1146,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     ${word.example ? `
                       <div class="p-4 md:p-5 rounded-2xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 space-y-2">
                         <div class="flex items-center justify-between">
-                          <span class="text-xs font-bold text-amber-800 dark:text-amber-300 uppercase tracking-wider">VÃ­ dá»¥ chuáº©n Hanban:</span>
+                          <span class="text-xs font-bold text-amber-800 dark:text-amber-300 uppercase tracking-wider">Ví dụ chuẩn Hanban:</span>
                           <button onclick="AudioService.speak('${word.example.zh}')" class="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-700 text-red-600 dark:text-red-400 font-bold text-xs flex items-center gap-1.5 shadow-sm hover:bg-red-50 transition">
-                            <i data-lucide="volume-2" class="w-4 h-4"></i> Nghe Ä‘á»c
+                            <i data-lucide="volume-2" class="w-4 h-4"></i> Nghe đọc
                           </button>
                         </div>
                         <div class="font-hanzi font-bold text-lg md:text-xl text-slate-900 dark:text-white">
@@ -1166,7 +1166,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     ${(word.additionalExamples || []).map((ex, idx) => `
                       <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 space-y-1.5">
                         <div class="flex items-center justify-between">
-                          <span class="text-[11px] font-bold text-slate-500 dark:text-slate-400">VÃ­ dá»¥ má»Ÿ rá»™ng ${idx + 2}:</span>
+                          <span class="text-[11px] font-bold text-slate-500 dark:text-slate-400">Ví dụ mở rộng ${idx + 2}:</span>
                           <button onclick="AudioService.speak('${ex.zh}')" class="text-xs text-red-600 dark:text-red-400 hover:underline flex items-center gap-1 font-semibold">
                             <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Nghe
                           </button>
@@ -1181,16 +1181,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
               case "collocation":
                 return `
-                  <!-- TAB 5: Káº¾T Há»¢P Tá»ª, Äá»’NG NGHÄ¨A & TRÃI NGHÄ¨A -->
+                  <!-- TAB 5: KẾT HỢP TỪ, ĐỒNG NGHĨA & TRÁI NGHĨA -->
                   <div class="space-y-5">
                     <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
                       <div>
                         <h3 class="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
                           <i data-lucide="link" class="w-5 h-5 text-teal-600"></i>
-                          Tá»« GhÃ©p Káº¿t Há»£p, Äá»“ng NghÄ©a & TrÃ¡i NghÄ©a
+                          Từ Ghép Kết Hợp, Đồng Nghĩa & Trái Nghĩa
                         </h3>
                         <p class="text-xs text-slate-500 dark:text-slate-400">
-                          Báº¥m vÃ o báº¥t ká»³ tá»« nÃ o Ä‘á»ƒ tra cá»©u ngay Ã½ nghÄ©a vÃ  vÃ­ dá»¥ chi tiáº¿t.
+                          Bấm vào bất kỳ từ nào để tra cứu ngay ý nghĩa và ví dụ chi tiết.
                         </p>
                       </div>
                     </div>
@@ -1198,10 +1198,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     <!-- Collocations -->
                     <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 space-y-3">
                       <span class="text-xs uppercase font-bold text-slate-500 dark:text-slate-400 block">
-                        CÃ¡c Cá»¥m Tá»« GhÃ©p Phá»• Biáº¿n (Collocations):
+                        Các Cụm Từ Ghép Phổ Biến (Collocations):
                       </span>
                       <div class="flex flex-wrap gap-2.5">
-                        ${(word.collocations || ["çˆ±å¥½", "çˆ±æƒ…", "å¯çˆ±", "çˆ±å¿ƒ"])
+                        ${(word.collocations || ["爱好", "爱情", "可爱", "爱心"])
                           .map((c) => `
                             <button
                               onclick="App.handleDictSearch('${c}')"
@@ -1217,10 +1217,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div class="p-4 rounded-2xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50 space-y-2">
                         <span class="text-xs font-bold text-emerald-800 dark:text-emerald-300 flex items-center gap-1.5">
-                          <i data-lucide="plus" class="w-4 h-4"></i> Tá»« Äá»“ng NghÄ©a (è¿‘ä¹‰è¯):
+                          <i data-lucide="plus" class="w-4 h-4"></i> Từ Đồng Nghĩa (近义词):
                         </span>
                         <div class="flex flex-wrap gap-2">
-                          ${(word.synonyms || ["å–œæ¬¢", "ç–¼çˆ±", "çƒ­è¡·"])
+                          ${(word.synonyms || ["喜欢", "疼爱", "热衷"])
                             .map((s) => `
                               <button
                                 onclick="App.handleDictSearch('${s}')"
@@ -1234,10 +1234,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
                       <div class="p-4 rounded-2xl bg-rose-50/70 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 space-y-2">
                         <span class="text-xs font-bold text-rose-800 dark:text-rose-300 flex items-center gap-1.5">
-                          <i data-lucide="minus" class="w-4 h-4"></i> Tá»« TrÃ¡i NghÄ©a (åä¹‰è¯):
+                          <i data-lucide="minus" class="w-4 h-4"></i> Từ Trái Nghĩa (反义词):
                         </span>
                         <div class="flex flex-wrap gap-2">
-                          ${(word.antonyms || ["æ¨", "è®¨åŽŒ", "åæ„Ÿ"])
+                          ${(word.antonyms || ["恨", "讨厌", "反感"])
                             .map((a) => `
                               <button
                                 onclick="App.handleDictSearch('${a}')"
@@ -1255,7 +1255,7 @@ document.addEventListener("DOMContentLoaded", () => {
               case "vocab":
               default:
                 return `
-                  <!-- TAB 1: Tá»”NG QUAN Tá»ª Vá»°NG & NGHÄ¨A TIáº¾NG VIá»†T -->
+                  <!-- TAB 1: TỔNG QUAN TỪ VỰNG & NGHĨA TIẾNG VIỆT -->
                   <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
                     <!-- Big Hanzi in Tianzige with Ruby Pinyin -->
                     <div class="flex flex-col items-center justify-center p-6 rounded-3xl tianzige-box border border-red-200 dark:border-red-900/50 shadow-inner bg-red-50/20 dark:bg-red-950/10">
@@ -1267,7 +1267,7 @@ document.addEventListener("DOMContentLoaded", () => {
                       </span>
                       ${hasTraditional ? `
                         <span class="mt-1 text-xs text-slate-400 font-medium font-hanzi">
-                          Phá»“n thá»ƒ: <strong class="text-slate-600 dark:text-slate-300">${word.traditional}</strong>
+                          Phồn thể: <strong class="text-slate-600 dark:text-slate-300">${word.traditional}</strong>
                         </span>
                       ` : ""}
                     </div>
@@ -1275,7 +1275,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <!-- Meanings, Radical, Strokes -->
                     <div class="md:col-span-2 space-y-4">
                       <div>
-                        <span class="text-xs uppercase font-bold text-slate-400">Äá»‹nh nghÄ©a tiáº¿ng Viá»‡t</span>
+                        <span class="text-xs uppercase font-bold text-slate-400">Định nghĩa tiếng Việt</span>
                         <h3 class="text-xl md:text-2xl font-bold text-slate-800 dark:text-white mt-0.5 leading-snug">
                           ${word.meaning}
                         </h3>
@@ -1283,7 +1283,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                       ${word.detailedMeanings && word.detailedMeanings.length > 0 ? `
                         <div class="space-y-1.5 p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-750/70 border border-slate-100 dark:border-slate-700/60 text-xs">
-                          <span class="font-bold text-slate-700 dark:text-slate-300 block">CÃ¡c táº§ng nghÄ©a chi tiáº¿t:</span>
+                          <span class="font-bold text-slate-700 dark:text-slate-300 block">Các tầng nghĩa chi tiết:</span>
                           <ul class="list-disc list-inside space-y-1 text-slate-600 dark:text-slate-400">
                             ${word.detailedMeanings.map((m) => `<li>${m}</li>`).join("")}
                           </ul>
@@ -1292,24 +1292,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
                       <div class="grid grid-cols-2 gap-3 text-xs">
                         <div class="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-750/50 border border-slate-100 dark:border-slate-700">
-                          <span class="text-slate-400 block mb-0.5 font-medium">Bá»™ thá»§ (Radical):</span>
-                          <span class="font-bold text-slate-800 dark:text-slate-200 text-sm">${word.radical || "Äang cáº­p nháº­t"}</span>
+                          <span class="text-slate-400 block mb-0.5 font-medium">Bộ thủ (Radical):</span>
+                          <span class="font-bold text-slate-800 dark:text-slate-200 text-sm">${word.radical || "Đang cập nhật"}</span>
                         </div>
                         <div class="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-750/50 border border-slate-100 dark:border-slate-700">
-                          <span class="text-slate-400 block mb-0.5 font-medium">Sá»‘ nÃ©t (Strokes):</span>
-                          <span class="font-bold text-slate-800 dark:text-slate-200 text-sm">${word.strokes || 8} nÃ©t</span>
+                          <span class="text-slate-400 block mb-0.5 font-medium">Số nét (Strokes):</span>
+                          <span class="font-bold text-slate-800 dark:text-slate-200 text-sm">${word.strokes || 8} nét</span>
                         </div>
                       </div>
 
                       <div class="flex flex-wrap items-center gap-2 pt-1 text-xs">
                         <button onclick="App.switchDictTab('hanzi')" class="px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold hover:bg-red-50 hover:text-red-600 transition flex items-center gap-1.5">
-                          <i data-lucide="edit-3" class="w-3.5 h-3.5"></i> Táº­p viáº¿t nÃ©t
+                          <i data-lucide="edit-3" class="w-3.5 h-3.5"></i> Tập viết nét
                         </button>
                         <button onclick="App.switchDictTab('sentence')" class="px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold hover:bg-amber-50 hover:text-amber-600 transition flex items-center gap-1.5">
-                          <i data-lucide="message-square" class="w-3.5 h-3.5"></i> Máº«u cÃ¢u vÃ­ dá»¥
+                          <i data-lucide="message-square" class="w-3.5 h-3.5"></i> Mẫu câu ví dụ
                         </button>
                         <button onclick="App.switchDictTab('collocation')" class="px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold hover:bg-teal-50 hover:text-teal-600 transition flex items-center gap-1.5">
-                          <i data-lucide="link" class="w-3.5 h-3.5"></i> Tá»« ghÃ©p liÃªn quan
+                          <i data-lucide="link" class="w-3.5 h-3.5"></i> Từ ghép liên quan
                         </button>
                       </div>
                     </div>
@@ -1330,13 +1330,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div>
                   <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-2">
                     <i data-lucide="edit-3" class="w-4 h-4 text-red-500"></i>
-                    Báº£ng Chá»¯ HÃ¡n Cá»‘t LÃµi (Luyá»‡n Viáº¿t BÃºt Thuáº­n)
+                    Bảng Chữ Hán Cốt Lõi (Luyện Viết Bút Thuận)
                   </h3>
-                  <p class="text-xs text-slate-400 mt-0.5">Báº¥m vÃ o báº¥t ká»³ chá»¯ HÃ¡n nÃ o Ä‘á»ƒ xem hoáº¡t áº£nh nÃ©t váº½ vÃ  táº­p viáº¿t tÆ°Æ¡ng tÃ¡c.</p>
+                  <p class="text-xs text-slate-400 mt-0.5">Bấm vào bất kỳ chữ Hán nào để xem hoạt ảnh nét vẽ và tập viết tương tác.</p>
                 </div>
               </div>
               <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3">
-                ${["çˆ±", "å¥½", "å­¦", "ä¹ ", "ä½œ", "é¡¶", "æ’ž", "äºº", "å¤©", "å¤§", "ä¸­", "å›½"]
+                ${["爱", "好", "学", "习", "作", "顶", "撞", "人", "天", "大", "中", "国"]
                   .map(
                     (char) => `
                   <button
@@ -1344,7 +1344,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 hover:border-red-500 hover:scale-105 transition flex flex-col items-center space-y-1 shadow-sm"
                   >
                     <span class="font-hanzi font-bold text-3xl text-slate-900 dark:text-white">${char}</span>
-                    <span class="text-[10px] text-slate-400 font-semibold">Táº­p viáº¿t nÃ©t</span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Tập viết nét</span>
                   </button>
                 `
                   )
@@ -1359,29 +1359,29 @@ document.addEventListener("DOMContentLoaded", () => {
               <div class="border-b border-slate-100 dark:border-slate-700 pb-3">
                 <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-2">
                   <i data-lucide="bookmark" class="w-4 h-4 text-indigo-500"></i>
-                  6 Cáº¥u TrÃºc Ngá»¯ PhÃ¡p Tiáº¿ng Trung Cá»‘t LÃµi (HSK 1 - 4)
+                  6 Cấu Trúc Ngữ Pháp Tiếng Trung Cốt Lõi (HSK 1 - 4)
                 </h3>
               </div>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                 <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 space-y-1">
-                  <span class="font-bold text-indigo-600 dark:text-indigo-400">1. CÃ¢u chá»¯ æŠŠ (BÇŽ):</span>
-                  <p class="font-mono text-slate-800 dark:text-slate-200">Chá»§ ngá»¯ + æŠŠ + TÃ¢n ngá»¯ + Äá»™ng tá»« + ThÃ nh pháº§n khÃ¡c</p>
-                  <p class="text-slate-500 dark:text-slate-400 italic">VD: æˆ‘æŠŠä½œä¸šåšå®Œäº†ã€‚(TÃ´i Ä‘Ã£ lÃ m xong bÃ i táº­p rá»“i.)</p>
+                  <span class="font-bold text-indigo-600 dark:text-indigo-400">1. Câu chữ 把 (Bǎ):</span>
+                  <p class="font-mono text-slate-800 dark:text-slate-200">Chủ ngữ + 把 + Tân ngữ + Động từ + Thành phần khác</p>
+                  <p class="text-slate-500 dark:text-slate-400 italic">VD: 我把作业做完了。(Tôi đã làm xong bài tập rồi.)</p>
                 </div>
                 <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 space-y-1">
-                  <span class="font-bold text-indigo-600 dark:text-indigo-400">2. CÃ¢u so sÃ¡nh æ¯” (BÇ):</span>
-                  <p class="font-mono text-slate-800 dark:text-slate-200">A + æ¯” + B + TÃ­nh tá»« / PhÃ³ tá»«</p>
-                  <p class="text-slate-500 dark:text-slate-400 italic">VD: ä»Šå¤©æ¯”æ˜¨å¤©å†·ã€‚(HÃ´m nay láº¡nh hÆ¡n hÃ´m qua.)</p>
+                  <span class="font-bold text-indigo-600 dark:text-indigo-400">2. Câu so sánh 比 (Bǐ):</span>
+                  <p class="font-mono text-slate-800 dark:text-slate-200">A + 比 + B + Tính từ / Phó từ</p>
+                  <p class="text-slate-500 dark:text-slate-400 italic">VD: 今天比昨天冷。(Hôm nay lạnh hơn hôm qua.)</p>
                 </div>
                 <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 space-y-1">
-                  <span class="font-bold text-indigo-600 dark:text-indigo-400">3. Ba trá»£ tá»« çš„, å¾—, åœ°:</span>
-                  <p class="font-mono text-slate-800 dark:text-slate-200">Äá»‹nh ngá»¯ + çš„ + N | V + å¾— + Bá»• ngá»¯ | PhÃ³ tá»« + åœ° + V</p>
-                  <p class="text-slate-500 dark:text-slate-400 italic">VD: æ¼‚äº®çš„è¡£æœ / è·‘å¾—å¿« / é«˜å…´åœ°è¯´</p>
+                  <span class="font-bold text-indigo-600 dark:text-indigo-400">3. Ba trợ từ 的, 得, 地:</span>
+                  <p class="font-mono text-slate-800 dark:text-slate-200">Định ngữ + 的 + N | V + 得 + Bổ ngữ | Phó từ + 地 + V</p>
+                  <p class="text-slate-500 dark:text-slate-400 italic">VD: 漂亮的衣服 / 跑得快 / 高兴地说</p>
                 </div>
                 <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 space-y-1">
-                  <span class="font-bold text-indigo-600 dark:text-indigo-400">4. CÃ¢u chá»¯ è¢« (BÃ¨i - Bá»‹ Ä‘á»™ng):</span>
-                  <p class="font-mono text-slate-800 dark:text-slate-200">Chá»§ ngá»¯ (bá»‹ tÃ¡c Ä‘á»™ng) + è¢« + TÃ¢n ngá»¯ + Äá»™ng tá»«</p>
-                  <p class="text-slate-500 dark:text-slate-400 italic">VD: è‹¹æžœè¢«ä»–åƒäº†ã€‚(Quáº£ tÃ¡o Ä‘Ã£ bá»‹ anh áº¥y Äƒn rá»“i.)</p>
+                  <span class="font-bold text-indigo-600 dark:text-indigo-400">4. Câu chữ 被 (Bèi - Bị động):</span>
+                  <p class="font-mono text-slate-800 dark:text-slate-200">Chủ ngữ (bị tác động) + 被 + Tân ngữ + Động từ</p>
+                  <p class="text-slate-500 dark:text-slate-400 italic">VD: 苹果被他吃了。(Quả táo đã bị anh ấy ăn rồi.)</p>
                 </div>
               </div>
             </div>
@@ -1393,15 +1393,15 @@ document.addEventListener("DOMContentLoaded", () => {
               <div class="border-b border-slate-100 dark:border-slate-700 pb-3">
                 <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-2">
                   <i data-lucide="message-square" class="w-4 h-4 text-amber-500"></i>
-                  Máº«u CÃ¢u Giao Tiáº¿p ThÃ´ng Dá»¥ng HÃ ng NgÃ y
+                  Mẫu Câu Giao Tiếp Thông Dụng Hàng Ngày
                 </h3>
               </div>
               <div class="space-y-3">
                 ${[
-                  { zh: "ä½ å¥½ï¼å¾ˆé«˜å…´è®¤è¯†ä½ ã€‚", py: "NÇ hÇŽo! HÄ›n gÄoxÃ¬ng rÃ¨nshÃ­ nÇ.", vi: "Xin chÃ o! Ráº¥t vui Ä‘Æ°á»£c lÃ m quen vá»›i báº¡n." },
-                  { zh: "è¯·é—®ï¼Œè¿™ä¸ªå¤šå°‘é’±ï¼Ÿ", py: "QÇngwÃ¨n, zhÃ¨ge duÅshÇŽo qiÃ¡n?", vi: "Xin há»i, cÃ¡i nÃ y bao nhiÃªu tiá»n?" },
-                  { zh: "ä½ å¯ä»¥å¸®æˆ‘ä¸€ä¸ªå¿™å—ï¼Ÿ", py: "NÇ kÄ›yÇ bÄng wÇ’ yÃ­ ge mÃ¡ng ma?", vi: "Báº¡n cÃ³ thá»ƒ giÃºp tÃ´i má»™t viá»‡c Ä‘Æ°á»£c khÃ´ng?" },
-                  { zh: "ä»Šå¤©å¤©æ°”å¾ˆå¥½ï¼Œæˆ‘ä»¬åŽ»æ—…æ¸¸å§ã€‚", py: "JÄ«ntiÄn tiÄnqÃ¬ hÄ›n hÇŽo, wÇ’men qÃ¹ lÇšyÃ³u ba.", vi: "HÃ´m nay thá»i tiáº¿t ráº¥t Ä‘áº¹p, chÃºng ta Ä‘i du lá»‹ch nhÃ©." }
+                  { zh: "你好！很高兴认识你。", py: "Nǐ hǎo! Hěn gāoxìng rènshí nǐ.", vi: "Xin chào! Rất vui được làm quen với bạn." },
+                  { zh: "请问，这个多少钱？", py: "Qǐngwèn, zhège duōshǎo qián?", vi: "Xin hỏi, cái này bao nhiêu tiền?" },
+                  { zh: "你可以帮我一个忙吗？", py: "Nǐ kěyǐ bāng wǒ yí ge máng ma?", vi: "Bạn có thể giúp tôi một việc được không?" },
+                  { zh: "今天天气很好，我们去旅游吧。", py: "Jīntiān tiānqì hěn hǎo, wǒmen qù lǚyóu ba.", vi: "Hôm nay thời tiết rất đẹp, chúng ta đi du lịch nhé." }
                 ].map((s) => `
                   <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 flex items-center justify-between gap-3">
                     <div>
@@ -1409,7 +1409,7 @@ document.addEventListener("DOMContentLoaded", () => {
                       <div class="text-xs text-amber-600 dark:text-amber-400 font-mono">${s.py}</div>
                       <div class="text-xs text-slate-600 dark:text-slate-300 italic">${s.vi}</div>
                     </div>
-                    <button onclick="AudioService.speak('${s.zh}')" class="p-2.5 rounded-xl bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:text-red-600 shadow-sm transition" title="Nghe cÃ¢u nÃ y">
+                    <button onclick="AudioService.speak('${s.zh}')" class="p-2.5 rounded-xl bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:text-red-600 shadow-sm transition" title="Nghe câu này">
                       <i data-lucide="volume-2" class="w-4 h-4"></i>
                     </button>
                   </div>
@@ -1424,17 +1424,17 @@ document.addEventListener("DOMContentLoaded", () => {
               <div class="border-b border-slate-100 dark:border-slate-700 pb-3">
                 <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-2">
                   <i data-lucide="link" class="w-4 h-4 text-teal-500"></i>
-                  QuÃ¡n Dá»¥ng Ngá»¯ & Cá»¥m Tá»« Cá»‘ Äá»‹nh
+                  Quán Dụng Ngữ & Cụm Từ Cố Định
                 </h3>
               </div>
               <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                 ${[
-                  { zh: "æé«˜æ°´å¹³", py: "tÃ­gÄo shuÇpÃ­ng", vi: "NÃ¢ng cao trÃ¬nh Ä‘á»™" },
-                  { zh: "è§£å†³é—®é¢˜", py: "jiÄ›juÃ© wÃ¨ntÃ­", vi: "Giáº£i quyáº¿t váº¥n Ä‘á»" },
-                  { zh: "äº¤æµç»éªŒ", py: "jiÄoliÃº jÄ«ngyÃ n", vi: "Giao lÆ°u kinh nghiá»‡m" },
-                  { zh: "ç­¾è®¢åˆåŒ", py: "qiÄndÃ¬ng hÃ©tÃ³ng", vi: "KÃ½ káº¿t há»£p Ä‘á»“ng" },
-                  { zh: "ä¿æŠ¤çŽ¯å¢ƒ", py: "bÇŽohÃ¹ huÃ¡njÃ¬ng", vi: "Báº£o vá»‡ mÃ´i trÆ°á»ng" },
-                  { zh: "æ‰“äº¤é“", py: "dÇŽ jiÄodÃ o", vi: "Tiáº¿p xÃºc, giao thiá»‡p" }
+                  { zh: "提高水平", py: "tígāo shuǐpíng", vi: "Nâng cao trình độ" },
+                  { zh: "解决问题", py: "jiějué wèntí", vi: "Giải quyết vấn đề" },
+                  { zh: "交流经验", py: "jiāoliú jīngyàn", vi: "Giao lưu kinh nghiệm" },
+                  { zh: "签订合同", py: "qiāndìng hétóng", vi: "Ký kết hợp đồng" },
+                  { zh: "保护环境", py: "bǎohù huánjìng", vi: "Bảo vệ môi trường" },
+                  { zh: "打交道", py: "dǎ jiāodào", vi: "Tiếp xúc, giao thiệp" }
                 ].map((c) => `
                   <button
                     onclick="App.handleDictSearch('${c.zh}')"
@@ -1458,7 +1458,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 onclick="App.filterDictByHsk('all')"
                 class="dict-hsk-pill px-3.5 py-1.5 rounded-xl text-xs font-bold transition ${this.dictHskFilter === "all" ? "bg-red-600 text-white shadow-sm" : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-red-400"}"
               >
-                Táº¥t cáº£ (${(window.APP_DATA.vocabList || []).length})
+                Tất cả (${(window.APP_DATA.vocabList || []).length})
               </button>
               ${[1, 2, 3, 4, 5, 6].map((l) => `
                 <button
@@ -1472,13 +1472,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 onclick="App.filterDictByHsk('business')"
                 class="dict-hsk-pill px-3 py-1.5 rounded-xl text-xs font-bold transition ${this.dictHskFilter === "business" ? "bg-red-600 text-white shadow-sm" : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-red-400"}"
               >
-                ðŸ’¼ ThÆ°Æ¡ng Máº¡i (${(window.APP_DATA.vocabList || []).filter((w) => w.category === "business" || w.hsk === "ThÆ°Æ¡ng Máº¡i" || w.deck === "business").length})
+                💼 Thương Mại (${(window.APP_DATA.vocabList || []).filter((w) => w.category === "business" || w.hsk === "Thương Mại" || w.deck === "business").length})
               </button>
               <button
                 onclick="App.filterDictByHsk('custom')"
                 class="dict-hsk-pill px-3 py-1.5 rounded-xl text-xs font-bold transition ${this.dictHskFilter === "custom" ? "bg-red-600 text-white shadow-sm" : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-red-400"}"
               >
-                â­ Tháº» tá»± táº¡o (${(window.StorageService ? window.StorageService.getFlashcards() : []).length})
+                ⭐ Thẻ tự tạo (${(window.StorageService ? window.StorageService.getFlashcards() : []).length})
               </button>
             </div>
 
@@ -1496,12 +1496,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     renderDictWordListHtml() {
       let words = window.APP_DATA.vocabList || [];
-      let label = "toÃ n bá»™ HSK 1 - 6 & ChuyÃªn ngÃ nh";
+      let label = "toàn bộ HSK 1 - 6 & Chuyên ngành";
 
       if (this.dictHskFilter !== "all") {
         if (this.dictHskFilter === "business") {
-          words = words.filter((w) => w.category === "business" || w.hsk === "ThÆ°Æ¡ng Máº¡i" || w.deck === "business");
-          label = "ChuyÃªn ngÃ nh Tiáº¿ng Trung ThÆ°Æ¡ng Máº¡i";
+          words = words.filter((w) => w.category === "business" || w.hsk === "Thương Mại" || w.deck === "business");
+          label = "Chuyên ngành Tiếng Trung Thương Mại";
         } else if (this.dictHskFilter === "custom") {
           const cards = window.StorageService ? window.StorageService.getFlashcards() : [];
           words = cards.map((c) => ({
@@ -1509,16 +1509,16 @@ document.addEventListener("DOMContentLoaded", () => {
             hanzi: c.hanzi,
             pinyin: c.pinyin,
             meaning: c.meaning,
-            hsk: c.hsk || "Tá»± táº¡o",
-            radical: "Tháº» cÃ¡ nhÃ¢n",
+            hsk: c.hsk || "Tự tạo",
+            radical: "Thẻ cá nhân",
             strokes: 8,
             example: { zh: c.example || c.hanzi, pinyin: "", vi: c.exampleVi || c.meaning }
           }));
-          label = "Flashcard ngÆ°á»i dÃ¹ng tá»± táº¡o";
+          label = "Flashcard người dùng tự tạo";
         } else {
           const lvlNum = parseInt(this.dictHskFilter);
           words = words.filter((w) => w.hsk === lvlNum);
-          label = `cáº¥p Ä‘á»™ HSK ${this.dictHskFilter}`;
+          label = `cấp độ HSK ${this.dictHskFilter}`;
         }
       }
 
@@ -1527,9 +1527,9 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="flex items-center justify-between mb-4 border-b border-slate-100 dark:border-slate-700 pb-3">
             <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
               <i data-lucide="layers" class="w-4 h-4 text-red-500"></i>
-              Danh sÃ¡ch tá»« vá»±ng ${label} (${words.length} tá»«)
+              Danh sách từ vựng ${label} (${words.length} từ)
             </h3>
-            <span class="text-xs text-slate-400">Báº¥m vÃ o tá»« Ä‘á»ƒ xem cÃ¡ch viáº¿t nÃ©t & chi tiáº¿t</span>
+            <span class="text-xs text-slate-400">Bấm vào từ để xem cách viết nét & chi tiết</span>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             ${words.map((item) => this.renderSmallWordCard(item)).join("")}
@@ -1552,12 +1552,12 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
               <p class="text-xs font-medium text-slate-700 dark:text-slate-200 line-clamp-1 mt-0.5">${word.meaning}</p>
               <span class="text-[10px] text-slate-400 flex items-center gap-1 mt-0.5">
-                <i data-lucide="edit-3" class="w-3 h-3 text-emerald-500"></i> CÃ³ hoáº¡t áº£nh váº½ nÃ©t (${word.strokes || 8} nÃ©t)
+                <i data-lucide="edit-3" class="w-3 h-3 text-emerald-500"></i> Có hoạt ảnh vẽ nét (${word.strokes || 8} nét)
               </span>
             </div>
           </div>
           <div class="flex items-center gap-2">
-            <button onclick="event.stopPropagation(); AudioService.speak('${word.hanzi}')" class="p-2 rounded-xl bg-white dark:bg-slate-700 text-slate-500 hover:text-red-600 transition shadow-sm" title="Nghe phÃ¡t Ã¢m">
+            <button onclick="event.stopPropagation(); AudioService.speak('${word.hanzi}')" class="p-2 rounded-xl bg-white dark:bg-slate-700 text-slate-500 hover:text-red-600 transition shadow-sm" title="Nghe phát âm">
               <i data-lucide="volume-2" class="w-4 h-4"></i>
             </button>
             <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:text-red-600 group-hover:translate-x-1 transition"></i>
@@ -1568,7 +1568,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async handleDictSearch(query, forceAi = false) {
       if (!query || !query.trim()) {
-        this.showToast("Vui lÃ²ng nháº­p tá»« hoáº·c cÃ¢u cáº§n tra cá»©u!", "warning");
+        this.showToast("Vui lòng nhập từ hoặc câu cần tra cứu!", "warning");
         return;
       }
       query = query.trim();
@@ -1616,14 +1616,14 @@ document.addEventListener("DOMContentLoaded", () => {
             <i data-lucide="sparkles" class="w-7 h-7 text-amber-100"></i>
           </div>
           <h4 class="font-extrabold text-base text-slate-900 dark:text-white">
-            Äang kÃ­ch hoáº¡t Gemini AI phÃ¢n tÃ­ch tá»« "${query}"...
+            Đang kích hoạt Gemini AI phân tích từ "${query}"...
           </h4>
           <p class="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto leading-relaxed">
-            Há»‡ thá»‘ng Ä‘ang káº¿t ná»‘i AI Ä‘á»ƒ bÃ³c tÃ¡ch HÃ¡n tá»±, Pinyin chuáº©n thanh Ä‘iá»‡u, bá»™ thá»§, quy táº¯c bÃºt thuáº­n, chiáº¿t tá»±, tá»« loáº¡i, máº«u cÃ¢u vÃ  tá»« ghÃ©p...
+            Hệ thống đang kết nối AI để bóc tách Hán tự, Pinyin chuẩn thanh điệu, bộ thủ, quy tắc bút thuận, chiết tự, từ loại, mẫu câu và từ ghép...
           </p>
           <div class="flex items-center justify-center gap-2 pt-2 text-xs font-semibold text-red-600 dark:text-red-400">
             <i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i>
-            <span>Äang phÃ¢n tÃ­ch ngÃ´n ngá»¯ há»c...</span>
+            <span>Đang phân tích ngôn ngữ học...</span>
           </div>
         </div>
       `);
@@ -1644,7 +1644,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
       } catch (err) {
         this.closeModal();
-        this.showToast(`Lá»—i tra cá»©u AI: ${err.message}`, "error");
+        this.showToast(`Lỗi tra cứu AI: ${err.message}`, "error");
       }
     },
 
@@ -1658,8 +1658,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 <i data-lucide="camera" class="w-5 h-5"></i>
               </div>
               <div>
-                <h3 class="font-extrabold text-base text-slate-900 dark:text-white">Tra Cá»©u Qua Camera & áº¢nh Chá»¥p</h3>
-                <p class="text-xs text-slate-500 dark:text-slate-400">Táº£i áº£nh hoáº·c chá»¥p trang sÃ¡ch tiáº¿ng Trung Ä‘á»ƒ AI quÃ©t chá»¯ HÃ¡n.</p>
+                <h3 class="font-extrabold text-base text-slate-900 dark:text-white">Tra Cứu Qua Camera & Ảnh Chụp</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Tải ảnh hoặc chụp trang sách tiếng Trung để AI quét chữ Hán.</p>
               </div>
             </div>
             <button onclick="App.closeModal()" class="p-2 rounded-xl text-slate-400 hover:text-slate-600">
@@ -1671,8 +1671,8 @@ document.addEventListener("DOMContentLoaded", () => {
             <div id="dictScanDropzone" class="border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-3xl p-6 text-center hover:border-red-500 transition cursor-pointer bg-slate-50 dark:bg-slate-750">
               <input type="file" id="dictCameraFileInput" accept="image/*" class="hidden" />
               <i data-lucide="image-plus" class="w-10 h-10 text-slate-400 mx-auto mb-2"></i>
-              <p class="text-xs font-bold text-slate-700 dark:text-slate-300">Báº¥m Ä‘á»ƒ chá»n áº£nh tá»« mÃ¡y hoáº·c chá»¥p áº£nh</p>
-              <p class="text-[11px] text-slate-400 mt-0.5">Há»— trá»£ JPG, PNG, WEBP (Trang sÃ¡ch, menu, biá»ƒn hiá»‡u...)</p>
+              <p class="text-xs font-bold text-slate-700 dark:text-slate-300">Bấm để chọn ảnh từ máy hoặc chụp ảnh</p>
+              <p class="text-[11px] text-slate-400 mt-0.5">Hỗ trợ JPG, PNG, WEBP (Trang sách, menu, biển hiệu...)</p>
             </div>
 
             <div class="flex items-center justify-center gap-3">
@@ -1680,7 +1680,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 onclick="App.useSampleImageForDict()"
                 class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-700 dark:text-slate-200 text-xs font-bold transition flex items-center gap-1.5"
               >
-                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-500"></i> DÃ¹ng áº£nh máº«u trang sÃ¡ch HSK
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-500"></i> Dùng ảnh mẫu trang sách HSK
               </button>
             </div>
 
@@ -1706,7 +1706,6 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     useSampleImageForDict() {
-      // Create a clean demo canvas image with standard HSK textbook characters
       const canvas = document.createElement("canvas");
       canvas.width = 600;
       canvas.height = 360;
@@ -1715,12 +1714,12 @@ document.addEventListener("DOMContentLoaded", () => {
       ctx.fillRect(0, 0, 600, 360);
       ctx.fillStyle = "#1e293b";
       ctx.font = "bold 28px 'Noto Serif SC', serif";
-      ctx.fillText("HSK æ±‰è¯­æ°´å¹³è€ƒè¯•", 160, 60);
+      ctx.fillText("HSK 汉语水平考试", 160, 60);
       ctx.font = "24px 'Noto Sans SC', sans-serif";
-      ctx.fillText("1. åšæŒ (jiÄnchÃ­) - KiÃªn trÃ¬", 80, 130);
-      ctx.fillText("2. é¡¶æ’ž (dÇngzhuÃ ng) - CÃ£i láº¡i", 80, 180);
-      ctx.fillText("3. å•†ä¸š (shÄngyÃ¨) - ThÆ°Æ¡ng máº¡i", 80, 230);
-      ctx.fillText("4. åˆä½œ (hÃ©zuÃ²) - Há»£p tÃ¡c", 80, 280);
+      ctx.fillText("1. 坚持 (jiānchí) - Kiên trì", 80, 130);
+      ctx.fillText("2. 顶撞 (dǐngzhuàng) - Cãi lại", 80, 180);
+      ctx.fillText("3. 商业 (shāngyè) - Thương mại", 80, 230);
+      ctx.fillText("4. 合作 (hézuò) - Hợp tác", 80, 280);
       const dataUrl = canvas.toDataURL("image/png");
       this.processDictImage(dataUrl);
     },
@@ -1732,7 +1731,7 @@ document.addEventListener("DOMContentLoaded", () => {
       area.innerHTML = `
         <div class="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 flex items-center justify-center gap-2 text-xs font-bold text-amber-700 dark:text-amber-400">
           <i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i>
-          <span>Gemini Vision Ä‘ang quÃ©t nháº­n diá»‡n chá»¯ HÃ¡n trong áº£nh...</span>
+          <span>Gemini Vision đang quét nhận diện chữ Hán trong ảnh...</span>
         </div>
       `;
       this.refreshIcons();
@@ -1741,7 +1740,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const words = await window.GeminiService.scanTextbookImage(dataUrl);
         area.innerHTML = `
           <div class="space-y-2">
-            <span class="text-xs font-bold text-slate-700 dark:text-slate-300 block">Chá»¯ HÃ¡n Ä‘Æ°á»£c AI trÃ­ch xuáº¥t:</span>
+            <span class="text-xs font-bold text-slate-700 dark:text-slate-300 block">Chữ Hán được AI trích xuất:</span>
             <div class="flex flex-wrap gap-2">
               ${words.map((w) => `
                 <button
@@ -1753,14 +1752,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 </button>
               `).join("")}
             </div>
-            <p class="text-[11px] text-slate-400 italic">Báº¥m vÃ o báº¥t ká»³ tá»« nÃ o Ä‘á»ƒ má»Ÿ tra cá»©u tá»©c thÃ¬.</p>
+            <p class="text-[11px] text-slate-400 italic">Bấm vào bất kỳ từ nào để mở tra cứu tức thì.</p>
           </div>
         `;
         this.refreshIcons();
       } catch (err) {
         area.innerHTML = `
           <div class="p-4 rounded-2xl bg-red-50 text-red-600 text-xs">
-            Lá»—i nháº­n diá»‡n: ${err.message}. HÃ£y nháº­p tá»« báº±ng bÃ n phÃ­m.
+            Lỗi nhận diện: ${err.message}. Hãy nhập từ bằng bàn phím.
           </div>
         `;
       }
@@ -1776,8 +1775,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       this.showToast(
         this.dictSearchDirection === "vi"
-          ? "Äang láº¯ng nghe... HÃ£y nÃ³i tiáº¿ng Viá»‡t (vÃ­ dá»¥: há»c táº­p, báº¡n bÃ¨, thÃ nh cÃ´ng)"
-          : "æ­£åœ¨è†å¬... è¯·è¯´æ™®é€šè¯ (ä¾‹å¦‚: å­¦ä¹ , æœ‹å‹, æˆåŠŸ)",
+          ? "Đang lắng nghe... Hãy nói tiếng Việt (ví dụ: học tập, bạn bè, thành công)"
+          : "正在聆听... 请说普通话 (例如: 学习, 朋友, 成功)",
         "info"
       );
 
@@ -1787,12 +1786,12 @@ document.addEventListener("DOMContentLoaded", () => {
           if (btn) btn.classList.remove("ring-4", "ring-red-500", "bg-red-600");
           const input = document.getElementById("dictSearchInput");
           if (input) input.value = text;
-          this.showToast(`ÄÃ£ nháº­n diá»‡n: "${text}"`, "success");
+          this.showToast(`Đã nhận diện: "${text}"`, "success");
           this.handleDictSearch(text);
         },
         onError: (err) => {
           if (btn) btn.classList.remove("ring-4", "ring-red-500", "bg-red-600");
-          this.showToast(`ChÆ°a nháº­n diá»‡n Ä‘Æ°á»£c giá»ng nÃ³i: ${err}`, "warning");
+          this.showToast(`Chưa nhận diện được giọng nói: ${err}`, "warning");
         },
         onEnd: () => {
           if (btn) btn.classList.remove("ring-4", "ring-red-500", "bg-red-600");
@@ -1816,7 +1815,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
             <div class="flex items-center gap-2">
               <i data-lucide="pen-tool" class="w-5 h-5 text-red-600"></i>
-              <h3 class="font-extrabold text-base text-slate-900 dark:text-white">Báº£ng Váº½ Tay Chá»¯ HÃ¡n</h3>
+              <h3 class="font-extrabold text-base text-slate-900 dark:text-white">Bảng Vẽ Tay Chữ Hán</h3>
             </div>
             <button onclick="App.closeModal()" class="p-2 rounded-xl text-slate-400 hover:text-slate-600">
               <i data-lucide="x" class="w-5 h-5"></i>
@@ -1835,21 +1834,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 id="hwClearBtn"
                 class="flex-1 py-2 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-700 dark:text-slate-300 text-xs font-bold transition flex items-center justify-center gap-1.5"
               >
-                <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> XÃ³a nÃ©t
+                <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> Xóa nét
               </button>
               <button
                 id="hwRecognizeBtn"
                 class="flex-1 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow-md transition flex items-center justify-center gap-1.5"
               >
-                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Nháº­n diá»‡n báº±ng AI
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Nhận diện bằng AI
               </button>
             </div>
 
             <!-- Quick Candidate Hanzi -->
             <div class="w-full space-y-1 pt-1">
-              <span class="text-[11px] text-slate-400 font-semibold block">Gá»£i Ã½ chá»¯ phá»• biáº¿n:</span>
+              <span class="text-[11px] text-slate-400 font-semibold block">Gợi ý chữ phổ biến:</span>
               <div class="flex flex-wrap gap-1.5">
-                ${["å¥½", "å­¦", "çˆ±", "ä½ ", "æˆ‘", "ä½œ", "é¡¶", "æ’ž", "å›½", "å®¶", "äºº", "å¤©"]
+                ${["好", "学", "爱", "你", "我", "作", "顶", "撞", "国", "家", "人", "天"]
                   .map(
                     (c) => `
                   <button
@@ -1868,7 +1867,6 @@ document.addEventListener("DOMContentLoaded", () => {
       `);
       this.refreshIcons();
 
-      // Bind Canvas Drawing Logic
       const canvas = document.getElementById("handwritingCanvas");
       if (!canvas) return;
       const ctx = canvas.getContext("2d");
@@ -1926,21 +1924,19 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       document.getElementById("hwRecognizeBtn")?.addEventListener("click", async () => {
-        const dataUrl = canvas.toDataURL("image/png");
         this.closeModal();
-        // Fallback or send to AI
-        await this.executeAiDictLookup("Chá»¯ HÃ¡n vá»«a váº½ tay");
+        await this.executeAiDictLookup("Chữ Hán vừa vẽ tay");
       });
     },
 
-    /* Quick Action 4: Radicals 214 Bá»™ Thá»§ Modal */
+    /* Quick Action 4: Radicals 214 Bộ Thủ Modal */
     openDictRadicalModal() {
       const radicalsByStrokes = [
-        { strokes: "1 NÃ©t", items: ["ä¸€ (Nháº¥t)", "ä¸¨ (Cá»•n)", "ä¸¶ (Äiá»ƒm)", "ä¸¿ (Phiá»‡t)", "ä¹™ (áº¤t)", "äº… (Quyáº¿t)"] },
-        { strokes: "2 NÃ©t", items: ["äº» (NhÃ¢n Ä‘á»©ng)", "å†« (BÄƒng)", "åˆ‚ (Äao)", "åŠ› (Lá»±c)", "å (Tháº­p)", "åœ (Bá»‘c)", "åŽ‚ (HÃ¡n)", "åˆ (Há»±u)", "å£ (Kháº©u)", "å›— (Vi)"] },
-        { strokes: "3 NÃ©t", items: ["æ°µ (Thá»§y)", "å¿„ (TÃ¢m Ä‘á»©ng)", "æ‰Œ (Thá»§)", "è‰¹ (Tháº£o)", "è¾¶ (XÆ°á»›c)", "å®€ (MiÃªn)", "å¥³ (Ná»¯)", "å­ (Tá»­)", "å·¾ (CÃ¢n)", "å±± (SÆ¡n)", "çŠ­ (Khuyá»ƒn)"] },
-        { strokes: "4 NÃ©t", items: ["æœ¨ (Má»™c)", "æ¬  (Khiáº¿m)", "æ­¢ (Chá»‰)", "ç« (Há»a)", "çˆª (Tráº£o)", "çˆ¶ (Phá»¥)", "ç‰› (NgÆ°u)", "çŽ‹ (VÆ°Æ¡ng)", "æ—¥ (Nháº­t)", "æœˆ (Nguyá»‡t)", "å¿ƒ (TÃ¢m)"] },
-        { strokes: "5 NÃ©t+", items: ["ç›® (Má»¥c)", "çŸ³ (Tháº¡ch)", "ç¤º (Thá»‹)", "ç¦¾ (HÃ²a)", "ç«¹ (TrÃºc)", "ç±³ (Má»…)", "ç³¸ (Má»‹ch)", "è‚‰ (Nhá»¥c)", "èˆŸ (Chu)", "è¨€ (NgÃ´n)", "è´ (Bá»‘i)", "è½¦ (Xa)", "èµ° (Táº©u)", "è¶³ (TÃºc)", "èº« (ThÃ¢n)", "é—¨ (MÃ´n)", "é›¨ (VÅ©)", "é£Ÿ (Thá»±c)", "é¸Ÿ (Äiá»ƒu)"] }
+        { strokes: "1 Nét", items: ["一 (Nhất)", "丨 (Cổn)", "丶 (Điểm)", "丿 (Phiệt)", "乙 (Ất)", "亅 (Quyết)"] },
+        { strokes: "2 Nét", items: ["亻 (Nhân đứng)", "冫 (Băng)", "刂 (Đao)", "力 (Lực)", "十 (Thập)", "卜 (Bốc)", "厂 (Hán)", "又 (Hựu)", "口 (Khẩu)", "囗 (Vi)"] },
+        { strokes: "3 Nét", items: ["氵 (Thủy)", "忄 (Tâm đứng)", "扌 (Thủ)", "艹 (Thảo)", "辶 (Xước)", "宀 (Miên)", "女 (Nữ)", "子 (Tử)", "巾 (Cân)", "山 (Sơn)", "犭 (Khuyển)"] },
+        { strokes: "4 Nét", items: ["木 (Mộc)", "欠 (Khiếm)", "止 (Chỉ)", "火 (Hỏa)", "爪 (Trảo)", "父 (Phụ)", "牛 (Ngưu)", "王 (Vương)", "日 (Nhật)", "月 (Nguyệt)", "心 (Tâm)"] },
+        { strokes: "5 Nét+", items: ["目 (Mục)", "石 (Thạch)", "示 (Thị)", "禾 (Hòa)", "竹 (Trúc)", "米 (Mễ)", "糸 (Mịch)", "肉 (Nhục)", "舟 (Chu)", "言 (Ngôn)", "贝 (Bối)", "车 (Xa)", "走 (Tẩu)", "足 (Túc)", "身 (Thân)", "门 (Môn)", "雨 (Vũ)", "食 (Thực)", "鸟 (Điểu)"] }
       ];
 
       this.openModal(`
@@ -1951,8 +1947,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 <i data-lucide="puzzle" class="w-5 h-5"></i>
               </div>
               <div>
-                <h3 class="font-extrabold text-base text-slate-900 dark:text-white">Báº£ng Tra Cá»©u 214 Bá»™ Thá»§ Kinh Äiá»ƒn</h3>
-                <p class="text-xs text-slate-500 dark:text-slate-400">Báº¥m vÃ o báº¥t ká»³ bá»™ thá»§ nÃ o Ä‘á»ƒ lá»c cÃ¡c tá»« vá»±ng tÆ°Æ¡ng á»©ng.</p>
+                <h3 class="font-extrabold text-base text-slate-900 dark:text-white">Bảng Tra Cứu 214 Bộ Thủ Kinh Điển</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Bấm vào bất kỳ bộ thủ nào để lọc các từ vựng tương ứng.</p>
               </div>
             </div>
             <button onclick="App.closeModal()" class="p-2 rounded-xl text-slate-400 hover:text-slate-600">
@@ -2028,10 +2024,10 @@ document.addEventListener("DOMContentLoaded", () => {
     quizHanzi(containerId, char) {
       const writer = this.writers[containerId];
       if (writer) {
-        this.showToast(`Báº¯t Ä‘áº§u táº­p viáº¿t chá»¯ "${char}": HÃ£y dÃ¹ng chuá»™t hoáº·c ngÃ³n tay váº½ theo tá»«ng nÃ©t trong Ã´ nhÃ©!`, "info");
+        this.showToast(`Bắt đầu tập viết chữ "${char}": Hãy dùng chuột hoặc ngón tay vẽ theo từng nét trong ô nhé!`, "info");
         writer.quiz({
           onComplete: () => {
-            this.showToast(`Xuáº¥t sáº¯c! Báº¡n Ä‘Ã£ viáº¿t Ä‘Ãºng toÃ n bá»™ nÃ©t cá»§a chá»¯ "${char}"!`, "success");
+            this.showToast(`Xuất sắc! Bạn đã viết đúng toàn bộ nét của chữ "${char}"!`, "success");
           }
         });
       }
@@ -2050,14 +2046,15 @@ document.addEventListener("DOMContentLoaded", () => {
         hanzi,
         pinyin,
         meaning,
-        example: exampleZh || `ç”¨${hanzi}é€ ä¸€ä¸ªå¥å­ã€‚`,
-        exampleVi: exampleVi || `Äáº·t cÃ¢u vá»›i tá»« ${hanzi}.`,
+        example: exampleZh || `用${hanzi}造一个句子。`,
+        exampleVi: exampleVi || `Đặt câu với từ ${hanzi}.`,
         status: "learning"
       });
       window.StorageService.incrementStat("wordsLearnedToday", 1);
       this.updateHeaderProgress();
-      this.showToast(`ÄÃ£ thÃªm "${hanzi}" vÃ o bá»™ Flashcard thÃ nh cÃ´ng!`, "success");
+      this.showToast(`Đã thêm "${hanzi}" vào bộ Flashcard thành công!`, "success");
     },
+
 
     /* =====================================================================
        MODULE 3: EXAM PRACTICE (HANYU & HSK) + AI SPEAKING REFLEX (HSKK)
