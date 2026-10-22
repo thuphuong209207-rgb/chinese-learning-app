@@ -8,6 +8,10 @@ const GeminiService = {
   },
 
   async callGemini(promptText, systemInstruction = "") {
+    return this.callGeminiMultimodal([{ text: promptText }], systemInstruction);
+  },
+
+  async callGeminiMultimodal(parts, systemInstruction = "") {
     const apiKey = this.getApiKey();
     if (!apiKey) {
       throw new Error("Chưa nhập Gemini API Key. Vui lòng vào mục 'Cài đặt' để nhập API Key để kích hoạt tính năng AI thực tế!");
@@ -18,11 +22,11 @@ const GeminiService = {
     const bodyPayload = {
       contents: [
         {
-          parts: [{ text: promptText }]
+          parts: parts
         }
       ],
       generationConfig: {
-        temperature: 0.7,
+        temperature: 0.3,
         topK: 40,
         topP: 0.95
       }
@@ -227,6 +231,101 @@ Cấu trúc JSON mong muốn:
 }`;
 
     const raw = await this.callGemini(prompt);
+    return this.cleanJson(raw);
+  },
+
+  // 6. Scan Book Page / Image AI to extract Vocabulary
+  async scanBookPageAI(base64Data, mimeType = "image/jpeg", customPrompt = "") {
+    const apiKey = this.getApiKey();
+    if (!apiKey) {
+      // Offline fallback mock data representing words scanned from a Chinese textbook page
+      return [
+        {
+          hanzi: "阅读",
+          pinyin: "yuè dú",
+          meaning: "Đọc sách, đọc hiểu văn bản",
+          hsk: 3,
+          wordType: "Động từ",
+          exampleZh: "每天坚持阅读中文书籍能快速提高语感。",
+          exampleVi: "Mỗi ngày kiên trì đọc sách tiếng Trung giúp nâng cao ngữ cảm nhanh chóng.",
+          notes: "Gồm bộ Ngôn (讠) và Duyệt (阅)"
+        },
+        {
+          hanzi: "理解",
+          pinyin: "lǐ jiě",
+          meaning: "Thấu hiểu, lĩnh hội ý nghĩa",
+          hsk: 3,
+          wordType: "Động từ",
+          exampleZh: "请仔细阅读并理解这篇课文的主要内容。",
+          exampleVi: "Xin hãy đọc kỹ và hiểu nội dung chính của bài khóa này.",
+          notes: "Gồm bộ Ngọc (王/玉) và Giác (角)"
+        },
+        {
+          hanzi: "词汇",
+          pinyin: "cí huì",
+          meaning: "Từ vựng, vốn từ",
+          hsk: 4,
+          wordType: "Danh từ",
+          exampleZh: "积累丰富的词汇量对口语表达至关重要。",
+          exampleVi: "Tích lũy vốn từ vựng phong phú rất quan trọng đối với diễn đạt khẩu ngữ.",
+          notes: "Từ ghép chỉ toàn bộ hệ thống từ ngữ"
+        },
+        {
+          hanzi: "掌握",
+          pinyin: "zhǎng wò",
+          meaning: "Nắm vững, làm chủ kiến thức",
+          hsk: 5,
+          wordType: "Động từ",
+          exampleZh: "通过反复练习，我们可以牢牢掌握这些重点生词。",
+          exampleVi: "Thông qua luyện tập lặp lại, chúng ta có thể nắm vững những từ mới trọng điểm này.",
+          notes: "Đều có bộ Thủ (扌) chỉ hành động cầm nắm điều khiển"
+        },
+        {
+          hanzi: "流利",
+          pinyin: "liú lì",
+          meaning: "Lưu loát, trôi chảy",
+          hsk: 4,
+          wordType: "Tính từ",
+          exampleZh: "经过半年的努力，他能说一口流利的汉语。",
+          exampleVi: "Sau nửa năm nỗ lực, anh ấy có thể nói một thứ tiếng Trung trôi chảy.",
+          notes: "Gồm chữ 流 (lưu chuyển) và 利 (thuận lợi)"
+        }
+      ];
+    }
+
+    const systemInstruction = `Bạn là chuyên gia ngôn ngữ học tiếng Trung và chuyên gia OCR trích xuất tài liệu giáo trình HSK / Hán Ngữ. Nhiệm vụ của bạn là nhận diện chữ Hán trong bức ảnh chụp trang sách, trích xuất danh sách các từ vựng mới, từ vựng cốt lõi hoặc câu quan trọng trong trang sách đó. Trả về DUY NHẤT một mảng JSON chuẩn (không chứa bất kỳ chữ nào ngoài JSON).`;
+
+    const defaultPrompt = `Hãy quét bức ảnh chụp trang sách tiếng Trung này:
+1. Nhận diện các chữ Hán và các từ vựng tiếng Trung xuất hiện trong văn bản.
+2. Trích xuất khoảng 4 đến 10 từ vựng cốt lõi, quan trọng hoặc từ mới xuất hiện trong trang sách để người học tạo Flashcard.
+3. Cung cấp đầy đủ phiên âm Pinyin chuẩn thanh điệu, dịch nghĩa tiếng Việt chính xác, cấp độ HSK (1-6), từ loại, câu ví dụ trích từ sách (hoặc tự tạo ví dụ tự nhiên kèm dịch nghĩa) và mẹo nhớ chiết tự chữ Hán.
+4. Trả về cấu trúc JSON đúng chuẩn sau:
+[
+  {
+    "hanzi": "Từ vựng chữ Hán trích xuất từ trang sách",
+    "pinyin": "phiên âm pinyin chuẩn có dấu thanh",
+    "meaning": "nghĩa tiếng Việt chính xác, súc tích",
+    "hsk": 1-6 (số nguyên),
+    "wordType": "Danh từ / Động từ / Tính từ / Thành ngữ...",
+    "exampleZh": "Câu ví dụ thực tế sử dụng từ này",
+    "exampleVi": "Dịch nghĩa tiếng Việt của câu ví dụ",
+    "notes": "Mẹo nhớ chiết tự hoặc ngữ cảnh xuất hiện trong sách"
+  }
+]`;
+
+    const parts = [
+      {
+        inlineData: {
+          mimeType: mimeType || "image/jpeg",
+          data: base64Data
+        }
+      },
+      {
+        text: customPrompt ? `${defaultPrompt}\n\nYêu cầu bổ sung: ${customPrompt}` : defaultPrompt
+      }
+    ];
+
+    const raw = await this.callGeminiMultimodal(parts, systemInstruction);
     return this.cleanJson(raw);
   }
 };
