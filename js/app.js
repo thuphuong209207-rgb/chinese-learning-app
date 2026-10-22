@@ -3228,12 +3228,12 @@ document.addEventListener("DOMContentLoaded", () => {
     getDeckDefinition(deckKey = this.selectedGameDeck || "hsk1") {
       const defs = {
         hsk1: { id: "hsk1", label: "HSK 1 (Sơ cấp 1)", shortLabel: "HSK 1", icon: "sparkles", desc: "150 từ vựng nền tảng, chào hỏi và sinh hoạt cơ bản." },
-        hsk2: { id: "hsk2", label: "HSK 2 (Sơ cấp 2)", shortLabel: "HSK 2", icon: "book-open", desc: "300 từ vựng mở rộng, du lịch, mua sắm và thể thao." },
-        hsk3: { id: "hsk3", label: "HSK 3 (Trung cấp sơ)", shortLabel: "HSK 3", icon: "award", desc: "600 từ vựng đàm thoại, môi trường và giải quyết vấn đề." },
-        hsk4: { id: "hsk4", label: "HSK 4 (Trung cấp)", shortLabel: "HSK 4", icon: "flame", desc: "1200 từ vựng thảo luận, kinh nghiệm và thái độ sống." },
-        hsk5: { id: "hsk5", label: "HSK 5 (Cao cấp)", shortLabel: "HSK 5", icon: "trending-up", desc: "2500 từ vựng chuyên sâu, triết lý, đọc báo và phân tích." },
-        hsk6: { id: "hsk6", label: "HSK 6 (Thành thạo)", shortLabel: "HSK 6", icon: "crown", desc: "5000 từ vựng học thuật, thành ngữ cổ và văn phong đĩnh đạc." },
-        business: { id: "business", label: "💼 Tiếng Trung Thương Mại", shortLabel: "💼 Thương Mại", icon: "briefcase", desc: "Từ vựng chuyên ngành: Hợp đồng, đàm phán, thư tín dụng L/C, tỷ giá, xuất nhập khẩu, chuỗi cung ứng." },
+        hsk2: { id: "hsk2", label: "HSK 2 (Sơ cấp 2)", shortLabel: "HSK 2", icon: "book-open", desc: "150 từ vựng mở rộng (tích lũy 300 từ chuẩn HSK 2), du lịch, mua sắm và thể thao." },
+        hsk3: { id: "hsk3", label: "HSK 3 (Trung cấp sơ)", shortLabel: "HSK 3", icon: "award", desc: "100 từ vựng cốt lõi đàm thoại, môi trường và giải quyết vấn đề." },
+        hsk4: { id: "hsk4", label: "HSK 4 (Trung cấp)", shortLabel: "HSK 4", icon: "flame", desc: "61 từ vựng thảo luận, kinh nghiệm và thái độ sống." },
+        hsk5: { id: "hsk5", label: "HSK 5 (Cao cấp)", shortLabel: "HSK 5", icon: "trending-up", desc: "50 từ vựng chuyên sâu, triết lý, đọc báo và phân tích." },
+        hsk6: { id: "hsk6", label: "HSK 6 (Thành thạo)", shortLabel: "HSK 6", icon: "crown", desc: "40 từ vựng học thuật, thành ngữ cổ và văn phong đĩnh đạc." },
+        business: { id: "business", label: "💼 Tiếng Trung Thương Mại", shortLabel: "💼 Thương Mại", icon: "briefcase", desc: "40 từ vựng chuyên ngành: Hợp đồng, đàm phán, thư tín dụng L/C, tỷ giá, xuất nhập khẩu, chuỗi cung ứng." },
         custom: { id: "custom", label: "⭐ Flashcard Tự Tạo Của Tôi", shortLabel: "⭐ Tự Tạo", icon: "layers", desc: "Toàn bộ thẻ từ vựng do bạn tự thêm hoặc dùng AI quét ảnh trang sách giáo trình." }
       };
       return defs[deckKey] || defs.hsk1;
