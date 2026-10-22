@@ -674,41 +674,103 @@ document.addEventListener("DOMContentLoaded", () => {
        MODULE 2: DICTIONARY & SMART LOOKUP (WITH HANZI STROKE WRITER & AI)
        ===================================================================== */
     renderDictionary(container) {
+      const aiHistory = window.StorageService ? window.StorageService.getAiLookupHistory() : [];
+      const aiHistoryHtml = aiHistory.length > 0 ? `
+        <div class="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200/80 dark:border-slate-700/80 text-xs space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
+              <i data-lucide="history" class="w-3.5 h-3.5 text-indigo-500"></i> Lịch sử tra cứu AI gần đây:
+            </span>
+            <button onclick="App.clearAiHistory()" class="text-slate-400 hover:text-red-500 text-[11px] transition">
+              Xóa lịch sử
+            </button>
+          </div>
+          <div class="flex items-center gap-2 flex-wrap">
+            ${aiHistory.slice(0, 10).map((item) => `
+              <button onclick="document.getElementById('dictSearchInput').value='${item.hanzi}'; App.handleDictSearch('${item.hanzi}', true);" class="px-2.5 py-1 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-red-400 hover:text-red-600 transition flex items-center gap-1">
+                <span class="font-hanzi font-semibold">${item.hanzi}</span>
+                <span class="text-slate-400 text-[10px]">(${item.pinyin})</span>
+              </button>
+            `).join("")}
+          </div>
+        </div>
+      ` : "";
+
       container.innerHTML = `
         <div class="space-y-6 max-w-5xl mx-auto">
-          <div class="text-center max-w-xl mx-auto">
+          <!-- Header Banner -->
+          <div class="text-center max-w-2xl mx-auto space-y-1.5">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 dark:bg-red-950/60 text-red-600 dark:text-red-400 text-xs font-bold">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+              TÍCH HỢP GEMINI 2.5 FLASH AI TOÀN NĂNG
+            </div>
             <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white flex items-center justify-center gap-2">
               <i data-lucide="book-open" class="w-7 h-7 text-red-600"></i>
               Từ Điển & Tra Cứu Thông Minh
             </h2>
-            <p class="text-xs md:text-sm text-slate-500 dark:text-slate-400 mt-1">
-              Tra cứu chữ Hán, Pinyin, nghĩa tiếng Việt, xem <strong>thứ tự từng nét viết (Bút thuận)</strong> và tương tác tập viết trực tiếp.
+            <p class="text-xs md:text-sm text-slate-500 dark:text-slate-400">
+              Tra cứu bất kỳ chữ Hán, Pinyin, nghĩa tiếng Việt, thành ngữ hoặc từ lóng hiện đại. Hệ thống không bị giới hạn trong kho mẫu mà tự động kết nối Gemini AI để phân tích ngôn ngữ học toàn diện.
             </p>
           </div>
 
-          <!-- Search Bar -->
-          <div class="relative">
-            <div class="relative flex items-center">
-              <input
-                type="text"
-                id="dictSearchInput"
-                placeholder="Nhập chữ Hán (vd: 学习, 坚持), Pinyin (xué xí) hoặc nghĩa tiếng Việt..."
-                class="w-full px-5 py-4 pl-12 pr-32 rounded-2xl bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white placeholder-slate-400 focus:outline-none focus:border-red-500 shadow-md text-base"
-              />
-              <i data-lucide="search" class="w-5 h-5 text-slate-400 absolute left-4"></i>
-              <button
-                id="dictSearchBtn"
-                class="absolute right-2 px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5"
-              >
-                <span>Tra cứu</span>
-              </button>
+          <!-- Smart Search Bar with Dual Action Buttons -->
+          <div class="bg-white dark:bg-slate-800 p-4 md:p-5 rounded-3xl border-2 border-slate-200 dark:border-slate-700 shadow-lg space-y-3">
+            <div class="flex flex-col sm:flex-row items-center gap-2.5">
+              <div class="relative flex-1 w-full flex items-center">
+                <i data-lucide="search" class="w-5 h-5 text-slate-400 absolute left-4"></i>
+                <input
+                  type="text"
+                  id="dictSearchInput"
+                  placeholder="Nhập chữ Hán (内卷, 坚持), Pinyin (xué xí) hoặc nghĩa tiếng Việt (đàm phán, kiên trì)..."
+                  class="w-full px-5 py-3.5 pl-12 pr-4 rounded-2xl bg-slate-50 dark:bg-slate-700/60 border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-red-500 text-sm md:text-base font-medium"
+                />
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="flex items-center gap-2 w-full sm:w-auto">
+                <button
+                  id="dictSearchBtn"
+                  class="flex-1 sm:flex-initial px-4 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-900 dark:bg-slate-700 dark:hover:bg-slate-600 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-1.5 whitespace-nowrap"
+                  title="Tìm trong cơ sở dữ liệu mẫu có sẵn"
+                >
+                  <i data-lucide="database" class="w-4 h-4"></i>
+                  <span>Tra Trong Kho</span>
+                </button>
+                <button
+                  id="dictAiSearchBtn"
+                  class="flex-1 sm:flex-initial px-5 py-3.5 rounded-2xl bg-gradient-to-r from-red-600 via-rose-600 to-amber-600 hover:from-red-700 hover:to-amber-700 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-1.5 whitespace-nowrap"
+                  title="Tra cứu phân tích chuyên sâu bằng Gemini AI đối với bất kỳ từ nào"
+                >
+                  <i data-lucide="sparkles" class="w-4 h-4 text-amber-200"></i>
+                  <span>✨ Tra Bằng AI</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Suggestion Pills -->
+            <div class="flex items-center gap-2 flex-wrap text-xs pt-1 border-t border-slate-100 dark:border-slate-700/60">
+              <span class="text-slate-400 font-semibold flex items-center gap-1">
+                <i data-lucide="trending-up" class="w-3.5 h-3.5 text-red-500"></i> Từ AI thịnh hành:
+              </span>
+              ${["内卷", "躺平", "商业谈判", "潜移默化", "精益求精", "凡尔赛", "白月光", "显眼包", "降本增效"]
+                .map(
+                  (w) => `
+                <button onclick="document.getElementById('dictSearchInput').value='${w}'; App.handleDictSearch('${w}', true);" class="px-2.5 py-1 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/60 transition font-hanzi text-xs font-medium">
+                  ${w}
+                </button>
+              `
+                )
+                .join("")}
             </div>
           </div>
+
+          <!-- Recent AI Lookup History -->
+          ${aiHistoryHtml}
 
           <!-- HSK Level Filter Pills -->
           <div class="flex items-center gap-2 flex-wrap">
             <span class="text-xs font-bold text-slate-400 mr-1 flex items-center gap-1">
-              <i data-lucide="filter" class="w-3.5 h-3.5"></i> Lọc danh mục:
+              <i data-lucide="filter" class="w-3.5 h-3.5"></i> Danh mục kho sẵn:
             </span>
             <button
               onclick="App.filterDictByHsk('all')"
@@ -744,20 +806,6 @@ document.addEventListener("DOMContentLoaded", () => {
             </button>
           </div>
 
-          <!-- Quick Suggestion Tags -->
-          <div class="flex items-center gap-2 flex-wrap text-xs">
-            <span class="text-slate-400 font-medium">Gợi ý từ hay:</span>
-            ${["合同", "谈判", "报价", "发票", "汇率", "坚持", "学习", "解决", "积累", "潜移默化", "精益求精"]
-              .map(
-                (w) => `
-              <button onclick="document.getElementById('dictSearchInput').value='${w}'; App.handleDictSearch('${w}');" class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/60 transition font-hanzi">
-                ${w}
-              </button>
-            `
-              )
-              .join("")}
-          </div>
-
           <!-- Search Results Container -->
           <div id="dictResultContainer" class="space-y-4">
             ${this.renderDictWordListHtml()}
@@ -767,12 +815,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Bind search event
       const input = document.getElementById("dictSearchInput");
-      const btn = document.getElementById("dictSearchBtn");
+      const btnKho = document.getElementById("dictSearchBtn");
+      const btnAi = document.getElementById("dictAiSearchBtn");
 
-      btn.addEventListener("click", () => this.handleDictSearch(input.value));
-      input.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") this.handleDictSearch(input.value);
-      });
+      if (btnKho) btnKho.addEventListener("click", () => this.handleDictSearch(input.value, false));
+      if (btnAi) btnAi.addEventListener("click", () => this.handleDictSearch(input.value, true));
+      if (input) {
+        input.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            // If user held Ctrl/Shift or pressed Enter, default to smart lookup
+            this.handleDictSearch(input.value, false);
+          }
+        });
+      }
+    },
+
+    clearAiHistory() {
+      if (window.StorageService) {
+        window.StorageService.clearAiLookupHistory();
+        const container = document.getElementById("viewContainer");
+        if (container) this.renderDictionary(container);
+        this.showToast("Đã xóa lịch sử tra cứu AI", "info");
+      }
     },
 
     filterDictByHsk(lvl) {
@@ -853,71 +917,116 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
     },
 
-    async handleDictSearch(query) {
+    async handleDictSearch(query, forceAi = false) {
       if (!query || !query.trim()) {
-        this.showToast("Vui lòng nhập từ cần tra cứu!", "warning");
+        this.showToast("Vui lòng nhập từ hoặc câu cần tra cứu!", "warning");
         return;
       }
-      query = query.trim().toLowerCase();
+      query = query.trim();
+      const qLower = query.toLowerCase();
       const resultContainer = document.getElementById("dictResultContainer");
       if (!resultContainer) return;
 
-      // 1. Search in local mock database
-      const found = window.APP_DATA.vocabList.filter(
+      // 1. Direct AI Lookup mode
+      if (forceAi) {
+        return this.executeAiDictLookup(query, resultContainer);
+      }
+
+      // 2. Search in local mock database
+      const found = (window.APP_DATA.vocabList || []).filter(
         (w) =>
-          w.hanzi.includes(query) ||
-          w.pinyin.toLowerCase().includes(query) ||
-          w.meaning.toLowerCase().includes(query)
+          (w.hanzi && w.hanzi.includes(query)) ||
+          (w.pinyin && w.pinyin.toLowerCase().includes(qLower)) ||
+          (w.meaning && w.meaning.toLowerCase().includes(qLower))
       );
 
       if (found.length > 0) {
-        resultContainer.innerHTML = found.map((w) => this.renderDetailedWordCard(w, "Cơ sở dữ liệu HSK")).join("");
+        const aiPromptBanner = `
+          <div class="p-4 rounded-2xl bg-gradient-to-r from-red-500/10 via-amber-500/10 to-transparent border border-red-500/30 flex flex-wrap items-center justify-between gap-3 shadow-sm mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-amber-600 text-white flex items-center justify-center shadow-md">
+                <i data-lucide="sparkles" class="w-5 h-5 text-amber-200"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800 dark:text-white text-xs">
+                  Tìm thấy ${found.length} từ trong kho sẵn. Bạn muốn phân tích sâu hơn bằng AI?
+                </h4>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400">
+                  Gemini 2.5 Flash sẽ mở rộng chiết tự chữ Hán, mẹo nhớ, từ đồng nghĩa/trái nghĩa và ví dụ thương mại thực tế.
+                </p>
+              </div>
+            </div>
+            <button onclick="App.handleDictSearch('${query}', true)" class="px-4 py-2 rounded-xl bg-gradient-to-r from-red-600 to-amber-600 hover:from-red-700 hover:to-amber-700 text-white font-bold text-xs shadow-md flex items-center gap-1.5 transition">
+              <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+              <span>Phân tích chuyên sâu từ "${query}" bằng AI</span>
+            </button>
+          </div>
+        `;
+        resultContainer.innerHTML = aiPromptBanner + found.map((w) => this.renderDetailedWordCard(w, "Kho dữ liệu sẵn có", false)).join("");
         this.refreshIcons();
         return;
       }
 
-      // 2. Fallback to Gemini AI Lookup
+      // 3. Fallback to Gemini AI Lookup if not found in local database
+      return this.executeAiDictLookup(query, resultContainer, true);
+    },
+
+    async executeAiDictLookup(query, resultContainer, isFallback = false) {
       resultContainer.innerHTML = `
-        <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md text-center">
-          <div class="w-12 h-12 rounded-full bg-red-100 dark:bg-red-950 text-red-600 flex items-center justify-center mx-auto mb-3 animate-pulse">
-            <i data-lucide="sparkles" class="w-6 h-6"></i>
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-lg text-center max-w-xl mx-auto space-y-3">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-500 to-amber-500 text-white flex items-center justify-center mx-auto shadow-md animate-pulse">
+            <i data-lucide="sparkles" class="w-7 h-7 text-amber-100"></i>
           </div>
-          <h4 class="font-bold text-base text-slate-800 dark:text-white mb-1">
-            Đang kích hoạt Gemini AI phân tích từ "${query}"...
+          <h4 class="font-extrabold text-base text-slate-900 dark:text-white">
+            ${isFallback ? `Từ "${query}" chưa có trong kho mẫu sẵn.` : `Đang kích hoạt Gemini AI phân tích từ "${query}"...`}
           </h4>
-          <p class="text-xs text-slate-400">
-            Hệ thống đang bóc tách ngữ nghĩa, bộ thủ, phiên âm và ví dụ thực tế.
+          <p class="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto leading-relaxed">
+            Hệ thống đang kết nối AI để bóc tách Hán tự, Pinyin chuẩn, bộ thủ, quy tắc bút thuận, mẹo chiết tự, từ ghép và ví dụ giao tiếp ngữ cảnh...
           </p>
+          <div class="flex items-center justify-center gap-2 pt-2 text-xs font-semibold text-red-600 dark:text-red-400">
+            <i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i>
+            <span>Đang tra cứu từ điển mở rộng...</span>
+          </div>
         </div>
       `;
       this.refreshIcons();
 
       try {
         const aiResult = await window.GeminiService.lookupWordAI(query);
-        resultContainer.innerHTML = this.renderDetailedWordCard(aiResult, "Phân tích bởi Gemini 2.5 Flash");
+        resultContainer.innerHTML = this.renderDetailedWordCard(aiResult, "Phân tích bởi Gemini 2.5 Flash AI", true);
         this.refreshIcons();
       } catch (err) {
         resultContainer.innerHTML = `
-          <div class="bg-red-50 dark:bg-red-950/40 p-6 rounded-2xl border border-red-200 dark:border-red-900/60 text-center">
-            <i data-lucide="alert-circle" class="w-8 h-8 text-red-500 mx-auto mb-2"></i>
-            <h4 class="font-bold text-red-700 dark:text-red-400 text-sm">Không thể hoàn tất tra cứu AI</h4>
-            <p class="text-xs text-red-600/80 mt-1 mb-4">${err.message}</p>
-            <a href="#settings" class="px-4 py-2 bg-red-600 text-white rounded-xl text-xs font-bold inline-flex items-center gap-1.5">
-              <i data-lucide="key" class="w-3.5 h-3.5"></i> Cấu hình Gemini API Key
-            </a>
+          <div class="bg-red-50 dark:bg-red-950/40 p-6 rounded-3xl border border-red-200 dark:border-red-900/60 text-center max-w-lg mx-auto space-y-3">
+            <i data-lucide="alert-circle" class="w-10 h-10 text-red-500 mx-auto"></i>
+            <h4 class="font-bold text-red-700 dark:text-red-400 text-sm">Chưa thể hoàn tất phân tích bằng AI</h4>
+            <p class="text-xs text-red-600/80 leading-relaxed">${err.message}</p>
+            <div class="pt-2">
+              <a href="#settings" class="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold inline-flex items-center gap-1.5 shadow-md transition">
+                <i data-lucide="key" class="w-4 h-4"></i> Cấu hình Gemini API Key
+              </a>
+            </div>
           </div>
         `;
         this.refreshIcons();
       }
     },
 
-    renderDetailedWordCard(word, sourceTag = "Dữ liệu chuẩn") {
+    renderDetailedWordCard(word, sourceTag = "Dữ liệu chuẩn", isAi = false) {
       const collocationsHtml = (word.collocations || [])
-        .map((c) => `<span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 text-xs text-slate-700 dark:text-slate-300 font-hanzi">${c}</span>`)
+        .map((c) => `<span class="px-2.5 py-1 rounded-xl bg-slate-100 dark:bg-slate-700 text-xs text-slate-700 dark:text-slate-300 font-hanzi font-medium border border-slate-200/50 dark:border-slate-600/50">${c}</span>`)
         .join("");
 
-      // Extract unique characters for Hanzi stroke writer
-      const hanziChars = Array.from(word.hanzi).filter((c) => /[\u4e00-\u9fa5]/.test(c));
+      const synonymsHtml = (word.synonyms || [])
+        .map((s) => `<span class="px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 text-xs font-medium">${s}</span>`)
+        .join("");
+
+      const antonymsHtml = (word.antonyms || [])
+        .map((a) => `<span class="px-2.5 py-1 rounded-lg bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 text-xs font-medium">${a}</span>`)
+        .join("");
+
+      // Extract unique Chinese characters for HanziWriter
+      const hanziChars = Array.from(word.hanzi || "").filter((c) => /[\u4e00-\u9fa5]/.test(c));
       const writerConfigs = hanziChars.map((char) => ({
         char,
         containerId: "hw_" + Math.random().toString(36).substring(2, 9)
@@ -931,14 +1040,21 @@ document.addEventListener("DOMContentLoaded", () => {
         this.refreshIcons();
       }, 100);
 
+      const hasTraditional = word.traditional && word.traditional !== word.hanzi;
+
       return `
         <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 p-6 md:p-8 shadow-lg space-y-6">
+          <!-- Card Top Bar -->
           <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-700 pb-4">
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-bold px-3 py-1 rounded-full bg-red-100 dark:bg-red-950 text-red-600 dark:text-red-300">
-                HSK ${word.hsk || 1}
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-xs font-extrabold px-3 py-1 rounded-full ${isAi ? 'bg-gradient-to-r from-red-600 to-amber-600 text-white shadow-sm' : 'bg-red-100 dark:bg-red-950 text-red-600 dark:text-red-300'}">
+                ${word.hsk ? (typeof word.hsk === 'number' ? `HSK ${word.hsk}` : word.hsk) : "HSK"}
               </span>
-              <span class="text-xs text-slate-400 font-medium">Nguồn: ${sourceTag}</span>
+              ${word.wordType ? `<span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">${word.wordType}</span>` : ""}
+              <span class="text-xs text-slate-400 font-medium flex items-center gap-1">
+                <i data-lucide="${isAi ? 'sparkles' : 'database'}" class="w-3.5 h-3.5 ${isAi ? 'text-amber-500' : 'text-slate-400'}"></i>
+                ${sourceTag}
+              </span>
             </div>
             <div class="flex items-center gap-2">
               <button onclick="AudioService.speak('${word.hanzi}')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-red-50 hover:text-red-600 dark:hover:bg-slate-600 transition" title="Nghe phát âm từ">
@@ -950,40 +1066,75 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+          <!-- Main Info: Big Hanzi + Linguistic breakdown -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
             <!-- Big Hanzi in Tianzige with Ruby Pinyin -->
-            <div class="flex flex-col items-center justify-center p-6 rounded-2xl tianzige-box border border-red-200 dark:border-red-900/50 shadow-inner">
-              <span class="font-hanzi font-bold text-6xl md:text-7xl text-slate-900 dark:text-white leading-none">
+            <div class="flex flex-col items-center justify-center p-6 rounded-2xl tianzige-box border border-red-200 dark:border-red-900/50 shadow-inner bg-red-50/20 dark:bg-red-950/10">
+              <span class="font-hanzi font-bold text-5xl md:text-6xl text-slate-900 dark:text-white leading-none text-center">
                 ${word.hanzi}
               </span>
-              <span class="mt-3 text-lg md:text-xl font-bold text-red-600 dark:text-red-400 font-mono tracking-wide">
+              <span class="mt-3 text-base md:text-lg font-bold text-red-600 dark:text-red-400 font-mono tracking-wide text-center">
                 ${word.pinyin}
               </span>
+              ${hasTraditional ? `
+                <span class="mt-1 text-xs text-slate-400 font-medium font-hanzi">
+                  Phồn thể: <strong class="text-slate-600 dark:text-slate-300">${word.traditional}</strong>
+                </span>
+              ` : ""}
             </div>
 
-            <!-- Details: Meaning, Radical, Strokes -->
+            <!-- Meanings, Radical, Strokes -->
             <div class="md:col-span-2 space-y-4">
               <div>
                 <span class="text-xs uppercase font-bold text-slate-400">Định nghĩa tiếng Việt</span>
-                <h3 class="text-xl font-bold text-slate-800 dark:text-white mt-0.5">
+                <h3 class="text-xl font-bold text-slate-800 dark:text-white mt-0.5 leading-snug">
                   ${word.meaning}
                 </h3>
               </div>
 
+              <!-- Detailed Meanings list if available -->
+              ${word.detailedMeanings && word.detailedMeanings.length > 0 ? `
+                <div class="space-y-1.5 p-3 rounded-xl bg-slate-50 dark:bg-slate-750/70 border border-slate-100 dark:border-slate-700/60 text-xs">
+                  <span class="font-bold text-slate-700 dark:text-slate-300 block">Các tầng nghĩa chi tiết:</span>
+                  <ul class="list-disc list-inside space-y-1 text-slate-600 dark:text-slate-400">
+                    ${word.detailedMeanings.map((m) => `<li>${m}</li>`).join("")}
+                  </ul>
+                </div>
+              ` : ""}
+
               <div class="grid grid-cols-2 gap-3 text-xs">
-                <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-700">
+                <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-750/50 border border-slate-100 dark:border-slate-700">
                   <span class="text-slate-400 block mb-0.5">Bộ thủ (Radical):</span>
                   <span class="font-bold text-slate-700 dark:text-slate-200">${word.radical || "Đang cập nhật"}</span>
                 </div>
-                <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-700">
+                <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-750/50 border border-slate-100 dark:border-slate-700">
                   <span class="text-slate-400 block mb-0.5">Số nét vẽ (Strokes):</span>
                   <span class="font-bold text-slate-700 dark:text-slate-200">${word.strokes || 8} nét</span>
                 </div>
               </div>
 
+              <!-- Synonyms & Antonyms -->
+              ${(synonymsHtml || antonymsHtml) ? `
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                  ${synonymsHtml ? `
+                    <div class="space-y-1">
+                      <span class="text-[11px] font-bold text-emerald-600 dark:text-emerald-400">Từ đồng nghĩa (近义词):</span>
+                      <div class="flex flex-wrap gap-1.5">${synonymsHtml}</div>
+                    </div>
+                  ` : ""}
+                  ${antonymsHtml ? `
+                    <div class="space-y-1">
+                      <span class="text-[11px] font-bold text-rose-600 dark:text-rose-400">Từ trái nghĩa (反义词):</span>
+                      <div class="flex flex-wrap gap-1.5">${antonymsHtml}</div>
+                    </div>
+                  ` : ""}
+                </div>
+              ` : ""}
+
+              <!-- Collocations -->
               ${word.collocations && word.collocations.length > 0 ? `
                 <div>
-                  <span class="text-xs uppercase font-bold text-slate-400 block mb-2">Từ ghép thường gặp:</span>
+                  <span class="text-xs uppercase font-bold text-slate-400 block mb-2">Từ ghép thường gặp (Collocations):</span>
                   <div class="flex flex-wrap gap-2">
                     ${collocationsHtml}
                   </div>
@@ -991,6 +1142,18 @@ document.addEventListener("DOMContentLoaded", () => {
               ` : ""}
             </div>
           </div>
+
+          <!-- Mnemonic breakdown box from AI -->
+          ${word.mnemonics ? `
+            <div class="p-4 rounded-2xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 text-xs space-y-1">
+              <span class="font-bold text-amber-900 dark:text-amber-300 flex items-center gap-1.5">
+                <i data-lucide="lightbulb" class="w-4 h-4 text-amber-500"></i> Mẹo chiết tự & Ghi nhớ chữ Hán thông minh:
+              </span>
+              <p class="text-slate-700 dark:text-slate-300 leading-relaxed italic">
+                ${word.mnemonics}
+              </p>
+            </div>
+          ` : ""}
 
           <!-- Stroke Order & Practice Section (Hanzi Writer) -->
           <div class="pt-5 border-t border-slate-100 dark:border-slate-700 space-y-4">
@@ -1048,13 +1211,13 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </div>
 
-          <!-- Example sentence -->
+          <!-- Example sentences section -->
           ${word.example ? `
-            <div class="pt-5 border-t border-slate-100 dark:border-slate-700">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-xs uppercase font-bold text-slate-400">Ví dụ ngữ cảnh thực tế</span>
+            <div class="pt-5 border-t border-slate-100 dark:border-slate-700 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs uppercase font-bold text-slate-400">Ví dụ ngữ cảnh giao tiếp thực tế</span>
                 <button onclick="AudioService.speak('${word.example.zh}')" class="text-xs font-semibold text-red-600 dark:text-red-400 hover:underline flex items-center gap-1">
-                  <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Nghe câu ví dụ
+                  <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Nghe câu ví dụ 1
                 </button>
               </div>
               <div class="p-4 rounded-2xl bg-amber-50/60 dark:bg-amber-950/20 border border-amber-100 dark:border-amber-900/40">
@@ -1068,6 +1231,21 @@ document.addEventListener("DOMContentLoaded", () => {
                   ${word.example.vi}
                 </div>
               </div>
+
+              <!-- Additional Examples if present -->
+              ${word.additionalExamples && word.additionalExamples.length > 0 ? word.additionalExamples.map((ex, idx) => `
+                <div class="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-750 border border-slate-200/80 dark:border-slate-700/80 text-xs">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="font-bold text-slate-700 dark:text-slate-300">Ví dụ mở rộng ${idx + 2}:</span>
+                    <button onclick="AudioService.speak('${ex.zh}')" class="text-red-600 dark:text-red-400 hover:underline flex items-center gap-1 font-semibold text-[11px]">
+                      <i data-lucide="volume-2" class="w-3 h-3"></i> Nghe
+                    </button>
+                  </div>
+                  <div class="font-hanzi font-semibold text-slate-900 dark:text-white mb-0.5 text-sm">${ex.zh}</div>
+                  <div class="text-amber-600 dark:text-amber-400 font-mono text-[11px] mb-0.5">${ex.pinyin || ""}</div>
+                  <div class="text-slate-500 dark:text-slate-400 text-[11px]">${ex.vi}</div>
+                </div>
+              `).join("") : ""}
             </div>
           ` : ""}
         </div>
