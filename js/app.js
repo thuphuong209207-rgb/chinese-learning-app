@@ -705,6 +705,7 @@ document.addEventListener("DOMContentLoaded", () => {
     handleDictBack() {
       this.currentDictWord = null;
       this.lastDictQuery = "";
+      this.dictRelatedMatches = [];
       const container = document.getElementById("viewContainer");
       if (container) this.renderDictionary(container);
     },
@@ -864,6 +865,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 : ""
             }
 
+            ${
+              this.dictRelatedMatches && this.dictRelatedMatches.length > 0
+                ? this.renderRelatedMatchesCard(this.dictRelatedMatches)
+                : ""
+            }
+
             <!-- Recent Search History Card (Tra cứu gần đây) -->
             ${this.renderRecentSearchCard(displayedHistory, history.length)}
 
@@ -878,6 +885,37 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
 
       this.refreshIcons();
+    },
+
+    renderRelatedMatchesCard(words) {
+      if (!words || words.length === 0) return "";
+      return `
+        <div class="bg-[#121622] text-white rounded-3xl p-4 md:p-5 shadow-xl border border-slate-800/90 space-y-3">
+          <div class="flex items-center justify-between px-1">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
+              <i data-lucide="layers" class="w-4 h-4 text-blue-400"></i> Các từ vựng liên quan khác (${words.length})
+            </h4>
+            <span class="text-[11px] text-slate-400">Bấm để xem chi tiết</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">
+            ${words.map(w => `
+              <div
+                onclick="App.handleDictSearch('${w.hanzi}')"
+                class="p-3 rounded-2xl bg-[#1a2234] hover:bg-[#232e46] border border-slate-700/60 hover:border-blue-400 cursor-pointer transition flex items-center justify-between group"
+              >
+                <div class="min-w-0 pr-2">
+                  <div class="font-hanzi font-bold text-lg text-white group-hover:text-blue-400 transition">${w.hanzi}</div>
+                  <div class="text-xs text-red-400 font-semibold truncate">${w.pinyin}</div>
+                  <div class="text-[11px] text-slate-400 truncate" title="${w.meaning}">${w.meaning}</div>
+                </div>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 shrink-0">
+                  ${typeof w.hsk === "number" ? "HSK " + w.hsk : (w.hsk || "HSK")}
+                </span>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      `;
     },
 
     renderRecentSearchCard(displayedList, totalCount) {
@@ -1602,16 +1640,64 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      // 3. Search in local database if not forced AI
+      // 3. Search in local database with intelligent relevance scoring
       let localMatch = null;
+      let relatedMatches = [];
       if (!forceAi) {
-        localMatch = (window.APP_DATA.vocabList || []).find(
-          (w) =>
-            (w.hanzi && w.hanzi.toLowerCase() === qLower) ||
-            (w.pinyin && w.pinyin.toLowerCase() === qLower) ||
-            (w.meaning && w.meaning.toLowerCase().includes(qLower))
-        );
+        const vocab = window.APP_DATA.vocabList || [];
+        const scored = [];
+        const qNoTone = window.GeminiService ? window.GeminiService.removeVietnameseTones(qLower) : qLower;
+
+        for (const w of vocab) {
+          let score = 0;
+          const hz = (w.hanzi || "").toLowerCase();
+          const py = (w.pinyin || "").toLowerCase();
+          const pyNoTone = window.GeminiService ? window.GeminiService.removeVietnameseTones(py) : py;
+          const mn = (w.meaning || "").toLowerCase();
+          const mnNoTone = window.GeminiService ? window.GeminiService.removeVietnameseTones(mn) : mn;
+
+          // 1. Exact Hanzi (1000)
+          if (hz === qLower) {
+            score = 1000;
+          }
+          // 2. Exact Pinyin (800)
+          else if (py === qLower || pyNoTone === qNoTone) {
+            score = 800;
+          }
+          // 3. Exact meaning in separated parts (600)
+          else {
+            const parts = mn.split(/[,;\/()]/).map((s) => s.trim().toLowerCase()).filter(Boolean);
+            const partsNoTone = mnNoTone.split(/[,;\/()]/).map((s) => s.trim().toLowerCase()).filter(Boolean);
+
+            if (parts.includes(qLower) || partsNoTone.includes(qNoTone)) {
+              score = 600;
+            } else if (parts.some((p) => p.startsWith(qLower) || p.startsWith(qNoTone))) {
+              score = 400;
+            } else {
+              const regex = new RegExp(`(^|[\\s,;()/])${qNoTone}([\\s,;()/]|$)`, "i");
+              if (regex.test(mnNoTone)) {
+                score = 300;
+              } else if (hz.includes(qLower)) {
+                score = 200;
+              } else if (mnNoTone.includes(qNoTone)) {
+                score = 60;
+              }
+            }
+          }
+
+          if (score > 0) {
+            score += Math.max(0, 30 - mn.length);
+            scored.push({ word: w, score });
+          }
+        }
+
+        scored.sort((a, b) => b.score - a.score);
+        if (scored.length > 0 && scored[0].score >= 80) {
+          localMatch = scored[0].word;
+          relatedMatches = scored.slice(1, 7).map((s) => s.word);
+        }
       }
+      this.dictRelatedMatches = relatedMatches;
 
       if (localMatch && !forceAi) {
         const enriched = {
@@ -5692,9 +5778,9 @@ document.addEventListener("DOMContentLoaded", () => {
                   onchange="App.handleModelChange(this.value)"
                   class="w-full px-3.5 py-2.5 rounded-2xl bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-xs text-slate-800 dark:text-white font-semibold focus:outline-none focus:border-red-500"
                 >
-                  <option value="gemini-2.0-flash" ${(!this.settings.model || this.settings.model === "gemini-2.0-flash" || this.settings.model === "gemini-3.8-flash" || this.settings.model === "gemini-2.5-flash") ? "selected" : ""}>gemini-2.0-flash (Siêu tốc 1-2s, phản hồi tức thì - Khuyên dùng)</option>
-                  <option value="gemini-1.5-flash-8b" ${this.settings.model === "gemini-1.5-flash-8b" ? "selected" : ""}>gemini-1.5-flash-8b (Bản siêu nhẹ cực nhanh)</option>
+                  <option value="gemini-2.0-flash" ${(!this.settings.model || this.settings.model === "gemini-2.0-flash" || this.settings.model === "gemini-3.8-flash" || this.settings.model === "gemini-2.5-flash" || this.settings.model === "gemini-1.5-flash-8b") ? "selected" : ""}>gemini-2.0-flash (Siêu tốc 1-2s, phản hồi tức thì - Khuyên dùng)</option>
                   <option value="gemini-1.5-flash" ${this.settings.model === "gemini-1.5-flash" ? "selected" : ""}>gemini-1.5-flash (Tốc độ cao, ổn định)</option>
+                  <option value="gemini-1.5-pro" ${this.settings.model === "gemini-1.5-pro" ? "selected" : ""}>gemini-1.5-pro (Suy luận sâu)</option>
                 </select>
                 <p class="text-[11px] text-slate-400">Hệ thống trang bị cơ chế tự động chuyển sang model dự phòng (Fallback) nếu model chính quá tải.</p>
               </div>
@@ -5805,7 +5891,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       try {
-        const text = await window.GeminiService.callGemini("Hãy chào ngắn gọn bằng tiếng Trung (dưới 5 từ).");
+        const text = await window.GeminiService.callGemini("Hãy chào ngắn gọn bằng tiếng Trung (dưới 5 từ).", "", { isJson: false, timeoutMs: 6500 });
         const activeModel = window.GeminiService.lastUsedModel || this.settings.model || "gemini-2.0-flash";
         this.showToast(`Kết nối Gemini (${activeModel}) thành công! Phản hồi: "${text.trim()}"`, "success");
         this.updateHeaderProgress();
