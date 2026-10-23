@@ -3330,8 +3330,32 @@ document.addEventListener("DOMContentLoaded", () => {
       const container = document.getElementById("viewContainer");
       if (container) {
         this.renderGames(container);
-        this.showToast(`Đã chuyển bộ từ vựng game sang: ${this.getDeckDefinition(deckKey).shortLabel}`, "info");
+        this.showToast(`Đã chuyển sang bộ từ vựng: ${this.getDeckDefinition(deckKey).shortLabel}`, "info");
+        setTimeout(() => {
+          document.getElementById("gameModeSelectorBar")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 120);
       }
+    },
+
+    setDeckFilter(category) {
+      this.deckFilterCategory = category;
+      const container = document.getElementById("viewContainer");
+      if (container) {
+        this.renderGames(container);
+      }
+    },
+
+    toggleDeckBookmark(deckId) {
+      this.deckBookmarks = this.deckBookmarks || [];
+      if (this.deckBookmarks.includes(deckId)) {
+        this.deckBookmarks = this.deckBookmarks.filter((id) => id !== deckId);
+        this.showToast(`Đã bỏ lưu ${this.getDeckDefinition(deckId).shortLabel}`, "info");
+      } else {
+        this.deckBookmarks.push(deckId);
+        this.showToast(`Đã lưu ${this.getDeckDefinition(deckId).shortLabel} vào danh sách yêu thích!`, "success");
+      }
+      const container = document.getElementById("viewContainer");
+      if (container) this.renderGames(container);
     },
 
     playGameWithCustomDeck() {
@@ -3346,88 +3370,343 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       this.selectedGameMode = this.selectedGameMode || "speed";
       this.penaltyWords = window.StorageService.getPenaltyWords();
+      this.deckFilterCategory = this.deckFilterCategory || "all";
+      this.deckBookmarks = this.deckBookmarks || [];
 
       const activeDeckDef = this.getDeckDefinition(this.selectedGameDeck);
       const activeWords = this.getDeckWords(this.selectedGameDeck);
 
-      const deckList = [
-        { id: "hsk1", label: "HSK 1", icon: "sparkles", count: this.getDeckWords("hsk1").length },
-        { id: "hsk2", label: "HSK 2", icon: "book-open", count: this.getDeckWords("hsk2").length },
-        { id: "hsk3", label: "HSK 3", icon: "award", count: this.getDeckWords("hsk3").length },
-        { id: "hsk4", label: "HSK 4", icon: "flame", count: this.getDeckWords("hsk4").length },
-        { id: "hsk5", label: "HSK 5", icon: "trending-up", count: this.getDeckWords("hsk5").length },
-        { id: "hsk6", label: "HSK 6", icon: "crown", count: this.getDeckWords("hsk6").length },
-        { id: "business", label: "💼 Tiếng Trung Thương Mại", icon: "briefcase", count: this.getDeckWords("business").length },
-        { id: "custom", label: "⭐ Flashcard Tự Tạo", icon: "layers", count: this.getDeckWords("custom").length }
+      // Full showcase list of decks formatted identically to modern Chinese educational portal
+      const allDecks = [
+        {
+          id: "hsk1",
+          category: "hsk",
+          title: "Trình Độ HSK 1 - Cơ Bản",
+          subtitle: "Tiếng Trung Trình Độ HSK 1",
+          levelTag: "HSK1 - Cơ bản",
+          categoryLabel: "Trình Độ",
+          count: this.getDeckWords("hsk1").length,
+          image: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=700&q=80",
+          desc: "150 từ vựng nền tảng, đại từ xưng hô, chào hỏi và sinh hoạt cơ bản nhất.",
+          sampleChips: ["一", "在", "有", "个", "爱", "好"]
+        },
+        {
+          id: "hsk2",
+          category: "hsk",
+          title: "Trình Độ HSK 2 - Sơ Cấp",
+          subtitle: "Tiếng Trung Trình Độ HSK 2",
+          levelTag: "HSK2 - Sơ cấp",
+          categoryLabel: "Trình Độ",
+          count: this.getDeckWords("hsk2").length,
+          image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=700&q=80",
+          desc: "150 từ vựng mở rộng tích lũy 300 từ chuẩn: Du lịch, mua sắm, thời gian & vận động.",
+          sampleChips: ["为", "以", "时", "要是", "两", "旅游"]
+        },
+        {
+          id: "hsk3",
+          category: "hsk",
+          title: "Trình Độ HSK 3 - Trung Cấp Thấp",
+          subtitle: "Tiếng Trung Trình Độ HSK 3",
+          levelTag: "HSK3 - Trung cấp",
+          categoryLabel: "Trình Độ",
+          count: this.getDeckWords("hsk3").length,
+          image: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=700&q=80",
+          desc: "100 từ vựng cốt lõi: Đàm thoại đời sống, giải quyết tình huống và môi trường.",
+          sampleChips: ["地", "应该", "假", "羊肉", "环境", "决定"]
+        },
+        {
+          id: "hsk4",
+          category: "hsk",
+          title: "Trình Độ HSK 4 - Trung Cấp",
+          subtitle: "Tiếng Trung Trình Độ HSK 4",
+          levelTag: "HSK4 - Trung cấp 2",
+          categoryLabel: "Trình Độ",
+          count: this.getDeckWords("hsk4").length,
+          image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=700&q=80",
+          desc: "61 từ vựng giao tiếp tự tin, thảo luận phong phú, phỏng vấn và công sở.",
+          sampleChips: ["经历", "态度", "坚持", "积累", "成功", "丰富"]
+        },
+        {
+          id: "hsk5",
+          category: "hsk",
+          title: "Trình Độ HSK 5 - Cao Cấp",
+          subtitle: "Tiếng Trung Trình Độ HSK 5",
+          levelTag: "HSK5 - Cao cấp",
+          categoryLabel: "Trình Độ",
+          count: this.getDeckWords("hsk5").length,
+          image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=700&q=80",
+          desc: "50 từ vựng chuyên sâu: Đọc hiểu báo chí, nghị luận xã hội và phân tích văn bản.",
+          sampleChips: ["投资", "效率", "趋势", "逻辑", "哲学", "掌握"]
+        },
+        {
+          id: "hsk6",
+          category: "hsk",
+          title: "Trình Độ HSK 6 - Thành Thạo",
+          subtitle: "Tiếng Trung Trình Độ HSK 6",
+          levelTag: "HSK6 - Tinh hoa",
+          categoryLabel: "Trình Độ",
+          count: this.getDeckWords("hsk6").length,
+          image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=700&q=80",
+          desc: "40 từ vựng đỉnh cao học thuật, thành ngữ cổ và văn phong bác học chuẩn mực.",
+          sampleChips: ["潜移默化", "渊博", "精益求精", "络绎不绝"]
+        },
+        {
+          id: "business",
+          category: "business",
+          title: "Tiếng Trung Thương Mại - Giao Dịch",
+          subtitle: "Hợp Đồng, Thanh Toán L/C, Incoterms",
+          levelTag: "Thương Mại Quốc Tế",
+          categoryLabel: "Chuyên Ngành",
+          count: this.getDeckWords("business").length,
+          image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80",
+          desc: "40 từ vựng đàm phán, thư tín dụng L/C, tỷ giá, xuất nhập khẩu và chuỗi cung ứng.",
+          sampleChips: ["合同", "报价", "汇率", "信用证", "FOB", "供应链"]
+        },
+        {
+          id: "custom",
+          category: "custom",
+          title: "Flashcard Tự Tạo Của Tôi",
+          subtitle: "Bộ Thẻ Cá Nhân & AI Vision OCR",
+          levelTag: "Spaced Repetition",
+          categoryLabel: "Cá Nhân",
+          count: this.getDeckWords("custom").length,
+          image: "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=700&q=80",
+          desc: "Toàn bộ thẻ từ vựng do bạn tự thêm hoặc dùng Gemini AI quét trực tiếp từ trang sách giáo trình.",
+          sampleChips: ["坚持不懈", "温故知新", "千里之行"]
+        }
       ];
 
+      // Filter decks based on active category
+      const filteredDecks = allDecks.filter((d) => {
+        if (!this.deckFilterCategory || this.deckFilterCategory === "all") return true;
+        if (this.deckFilterCategory === "hsk") return d.category === "hsk";
+        if (this.deckFilterCategory === "business") return d.category === "business";
+        if (this.deckFilterCategory === "custom") return d.category === "custom";
+        return true;
+      });
+
       container.innerHTML = `
-        <div class="space-y-6 max-w-5xl mx-auto">
-          <!-- Game Header -->
-          <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-700 pb-4">
-            <div>
-              <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
-                <i data-lucide="gamepad-2" class="w-6 h-6 text-red-600"></i>
-                Trò Chơi Phản Xạ Theo Từng Bộ Từ Vựng
-              </h2>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                Rèn phản xạ thần tốc dựa trên tập từ vựng chính xác của mục bạn chọn: HSK 1 - 6, Thương Mại & Flashcard tự tạo.
-              </p>
+        <div class="space-y-8 max-w-5xl mx-auto">
+          
+          <!-- ========================================== -->
+          <!-- 1. BỘ TỪ VỰNG HỌC TIẾNG TRUNG (CARD GRID) -->
+          <!-- ========================================== -->
+          <div class="space-y-5">
+            <!-- Header Row -->
+            <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-700 pb-4">
+              <div>
+                <h2 class="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2.5">
+                  <span class="w-8 h-8 rounded-xl bg-orange-100 dark:bg-orange-950/60 text-orange-600 flex items-center justify-center font-bold text-base shadow-sm">
+                    <i data-lucide="book-marked" class="w-5 h-5"></i>
+                  </span>
+                  Bộ từ vựng Học Tiếng Trung
+                </h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                  Chọn một bộ đề bên dưới để luyện tập phản xạ thần tốc, nối từ hoặc ôn tập Spaced Repetition.
+                </p>
+              </div>
+
+              <div class="flex items-center gap-2">
+                <button
+                  onclick="App.switchGameTab('penalty')"
+                  class="px-3.5 py-2 rounded-xl border border-red-200 dark:border-red-900/60 bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400 font-bold text-xs flex items-center gap-1.5 shadow-sm hover:bg-red-100 transition"
+                >
+                  <i data-lucide="shield-alert" class="w-4 h-4"></i> Hộp phạt (${this.penaltyWords.length} từ)
+                </button>
+              </div>
             </div>
 
-            <div class="flex items-center gap-2">
-              <button onclick="App.switchGameTab('penalty')" class="px-3.5 py-1.5 rounded-xl border border-red-200 dark:border-red-900/60 bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400 font-bold text-xs flex items-center gap-1.5 shadow-sm hover:bg-red-100 transition">
-                <i data-lucide="shield-alert" class="w-4 h-4"></i> Hộp phạt (${this.penaltyWords.length} từ)
+            <!-- Filter Pills (Exact styling as reference image) -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar text-xs font-bold">
+              <button
+                onclick="App.setDeckFilter('all')"
+                class="px-4 py-2 rounded-xl transition flex items-center gap-1.5 whitespace-nowrap ${
+                  (!this.deckFilterCategory || this.deckFilterCategory === "all")
+                    ? "bg-orange-500 text-white shadow-md shadow-orange-500/25"
+                    : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-orange-400"
+                }"
+              >
+                <span>Bộ câu</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+
+              <button
+                onclick="App.setDeckFilter('hsk')"
+                class="px-4 py-2 rounded-xl transition whitespace-nowrap ${
+                  this.deckFilterCategory === "hsk"
+                    ? "bg-orange-500 text-white shadow-md shadow-orange-500/25"
+                    : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-orange-400"
+                }"
+              >
+                Trình Độ HSK
+              </button>
+
+              <button
+                onclick="App.setDeckFilter('business')"
+                class="px-4 py-2 rounded-xl transition whitespace-nowrap ${
+                  this.deckFilterCategory === "business"
+                    ? "bg-orange-500 text-white shadow-md shadow-orange-500/25"
+                    : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-orange-400"
+                }"
+              >
+                Mục Đích / Thương Mại
+              </button>
+
+              <button
+                onclick="App.setDeckFilter('custom')"
+                class="px-4 py-2 rounded-xl transition whitespace-nowrap ${
+                  this.deckFilterCategory === "custom"
+                    ? "bg-orange-500 text-white shadow-md shadow-orange-500/25"
+                    : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-orange-400"
+                }"
+              >
+                Flashcard Tự Tạo (${this.getDeckWords("custom").length})
               </button>
             </div>
-          </div>
 
-          <!-- 1. DECK CATEGORY SELECTOR (HSK 1-6, Business, Custom) -->
-          <div class="bg-white dark:bg-slate-800 p-4 md:p-5 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-3">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="text-xs font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1.5 uppercase tracking-wider">
-                <i data-lucide="layers" class="w-4 h-4 text-red-600"></i> Chọn Bộ Từ Vựng Để Luyện Chơi:
-              </span>
-              <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">
-                Đang chơi: <b class="text-red-600 dark:text-red-400 uppercase">${activeDeckDef.label} (${activeWords.length} từ)</b>
-              </span>
-            </div>
-
-            <div class="flex flex-wrap gap-2 text-xs font-bold" id="deckSelectorContainer">
-              ${deckList
-                .map(
-                  (d) => `
-                <button
+            <!-- Card Grid: 3 columns on desktop (Exact match to reference image) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              ${filteredDecks
+                .map((d) => {
+                  const isSelected = this.selectedGameDeck === d.id;
+                  const isBookmarked = this.deckBookmarks && this.deckBookmarks.includes(d.id);
+                  return `
+                <div
                   onclick="App.selectGameDeck('${d.id}')"
-                  class="px-3.5 py-2 rounded-2xl transition flex items-center gap-1.5 ${
-                    this.selectedGameDeck === d.id
-                      ? "bg-red-600 text-white shadow-md shadow-red-500/20 scale-105"
-                      : "bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600"
+                  class="bg-white dark:bg-slate-800 rounded-3xl border-2 transition-all duration-300 overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 cursor-pointer flex flex-col justify-between group ${
+                    isSelected
+                      ? "border-orange-500 ring-4 ring-orange-500/20 shadow-orange-500/15"
+                      : "border-slate-200 dark:border-slate-700 hover:border-orange-300"
                   }"
                 >
-                  <i data-lucide="${d.icon}" class="w-3.5 h-3.5"></i>
-                  <span>${d.label}</span>
-                  <span class="text-[10px] px-1.5 py-0.2 rounded-full ${
-                    this.selectedGameDeck === d.id ? "bg-white/20 text-white" : "bg-slate-200 dark:bg-slate-600 text-slate-600 dark:text-slate-300"
-                  }">${d.count}</span>
-                </button>
-              `
-                )
+                  <!-- Cover Image with Overlays -->
+                  <div class="relative h-48 w-full overflow-hidden bg-slate-100 dark:bg-slate-700">
+                    <img
+                      src="${d.image}"
+                      alt="${d.title}"
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                      onerror="this.src='https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=700&q=80'"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-black/35"></div>
+
+                    <!-- Bookmark Icon Button (Top-Left) -->
+                    <button
+                      onclick="event.stopPropagation(); App.toggleDeckBookmark('${d.id}')"
+                      class="absolute top-3 left-3 w-8 h-8 rounded-full bg-black/45 backdrop-blur-md text-white flex items-center justify-center hover:bg-black/70 transition shadow"
+                      title="Lưu vào danh sách yêu thích"
+                    >
+                      <i data-lucide="bookmark" class="w-4 h-4 ${isBookmarked ? "fill-orange-400 text-orange-400" : ""}"></i>
+                    </button>
+
+                    <!-- Language Tag (Top-Right) -->
+                    <span class="absolute top-3 right-3 px-2.5 py-0.5 rounded-md bg-black/45 backdrop-blur-md text-white text-[11px] font-bold tracking-wide">
+                      Tiếng Trung
+                    </span>
+
+                    <!-- Floating Word Count Badge (Bottom-Left) -->
+                    <div class="absolute bottom-3 left-3 flex items-center gap-2">
+                      <span class="px-3.5 py-1 rounded-xl bg-orange-500 text-white font-black text-xs shadow-md tracking-wider">
+                        ${d.count} từ
+                      </span>
+                      ${
+                        isSelected
+                          ? `<span class="px-2.5 py-1 rounded-xl bg-emerald-600 text-white font-bold text-xs shadow-md flex items-center gap-1"><i data-lucide="check" class="w-3.5 h-3.5"></i> Đang chọn</span>`
+                          : ""
+                      }
+                    </div>
+                  </div>
+
+                  <!-- Card Body -->
+                  <div class="p-5 flex-1 flex flex-col justify-between space-y-3.5">
+                    <div class="space-y-1">
+                      <h3 class="font-black text-base md:text-lg text-slate-900 dark:text-white group-hover:text-orange-500 transition line-clamp-1">
+                        ${d.title}
+                      </h3>
+                      <p class="text-xs text-slate-500 dark:text-slate-400 font-medium line-clamp-1">
+                        ${d.subtitle}
+                      </p>
+                    </div>
+
+                    <!-- Sample Hanzi Chips -->
+                    <div class="space-y-1.5">
+                      <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Từ vựng tiêu biểu:</span>
+                      <div class="flex flex-wrap gap-1.5">
+                        ${d.sampleChips
+                          .map(
+                            (c) => `
+                          <span class="px-2.5 py-1 rounded-lg bg-orange-50 dark:bg-orange-950/40 text-orange-600 dark:text-orange-300 border border-orange-200/70 dark:border-orange-900/50 font-hanzi font-bold text-xs">
+                            ${c}
+                          </span>
+                        `
+                          )
+                          .join("")}
+                      </div>
+                    </div>
+
+                    <!-- Description -->
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">
+                      ${d.desc}
+                    </p>
+
+                    <!-- Footer Meta -->
+                    <div class="pt-3 border-t border-slate-100 dark:border-slate-700/80 flex items-center justify-between text-xs text-slate-400">
+                      <div class="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
+                        <i data-lucide="book-open" class="w-3.5 h-3.5 text-orange-500"></i>
+                        <span class="font-semibold">${d.count} từ vựng</span>
+                      </div>
+                      <span class="font-bold text-slate-600 dark:text-slate-300 px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-700 text-[11px]">
+                        ${d.levelTag}
+                      </span>
+                    </div>
+
+                    <!-- Bottom Action Button -->
+                    <div class="pt-2">
+                      <button
+                        onclick="event.stopPropagation(); App.selectGameDeck('${d.id}')"
+                        class="w-full py-2.5 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 shadow-sm ${
+                          isSelected
+                            ? "bg-orange-500 hover:bg-orange-600 text-white shadow-orange-500/25"
+                            : "bg-slate-100 dark:bg-slate-700 hover:bg-orange-50 dark:hover:bg-orange-950/40 text-slate-700 dark:text-slate-200 hover:text-orange-600 dark:hover:text-orange-400 border border-slate-200 dark:border-slate-600"
+                        }"
+                      >
+                        <i data-lucide="${isSelected ? "play-circle" : "mouse-pointer-click"}" class="w-4 h-4"></i>
+                        <span>${isSelected ? "Đang chơi bộ này" : "Chọn bộ từ này"}</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              `;
+                })
                 .join("")}
             </div>
-
-            <p class="text-[11px] text-slate-500 dark:text-slate-400 italic">
-              📌 ${activeDeckDef.desc}
-            </p>
           </div>
 
-          <!-- 2. GAME MODE SELECTOR -->
-          <div class="flex flex-wrap items-center justify-between gap-3 bg-slate-100 dark:bg-slate-800 p-1.5 rounded-2xl border border-slate-200 dark:border-slate-700">
-            <div class="flex flex-wrap items-center gap-1 text-xs font-bold">
-              <button id="gameTabSpeed" onclick="App.switchGameTab('speed')" class="px-4 py-2 rounded-xl transition ${this.selectedGameMode === "speed" ? "bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"} flex items-center gap-1.5">
-                <i data-lucide="zap" class="w-4 h-4 text-amber-500"></i> Nối từ siêu tốc
-              </button>
-              <button id="gameTabQuiz" onclick="App.switchGameTab('quiz')" class="px-4 py-2 rounded-xl transition ${this.selectedGameMode === "quiz" ? "bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"} flex items-center gap-1.5">
+          <!-- ========================================== -->
+          <!-- 2. GAME MODE SELECTOR & ARENA              -->
+          <!-- ========================================== -->
+          <div id="gameModeSelectorBar" class="pt-4 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-3 bg-slate-100 dark:bg-slate-800 p-2 rounded-2xl border border-slate-200 dark:border-slate-700">
+              <div class="flex flex-wrap items-center gap-1 text-xs font-bold">
+                <button id="gameTabSpeed" onclick="App.switchGameTab('speed')" class="px-4 py-2.5 rounded-xl transition ${this.selectedGameMode === "speed" ? "bg-white dark:bg-slate-700 text-orange-600 dark:text-white shadow-sm font-black" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"} flex items-center gap-1.5">
+                  <i data-lucide="zap" class="w-4 h-4 text-amber-500"></i> Nối từ siêu tốc
+                </button>
+                <button id="gameTabQuiz" onclick="App.switchGameTab('quiz')" class="px-4 py-2.5 rounded-xl transition ${this.selectedGameMode === "quiz" ? "bg-white dark:bg-slate-700 text-orange-600 dark:text-white shadow-sm font-black" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"} flex items-center gap-1.5">
+                  <i data-lucide="timer" class="w-4 h-4 text-red-500"></i> Phản xạ 5s
+                </button>
+                <button id="gameTabAudio" onclick="App.switchGameTab('audio')" class="px-4 py-2.5 rounded-xl transition ${this.selectedGameMode === "audio" ? "bg-white dark:bg-slate-700 text-orange-600 dark:text-white shadow-sm font-black" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"} flex items-center gap-1.5">
+                  <i data-lucide="volume-2" class="w-4 h-4 text-purple-500"></i> Nghe âm đoán chữ
+                </button>
+                <button id="gameTabPenalty" onclick="App.switchGameTab('penalty')" class="px-4 py-2.5 rounded-xl transition ${this.selectedGameMode === "penalty" ? "bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm font-black" : "text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40"} flex items-center gap-1.5">
+                  <i data-lucide="shield-alert" class="w-4 h-4"></i> Hộp phạt (${this.penaltyWords.length})
+                </button>
+              </div>
+
+              <div class="text-xs font-semibold text-slate-500 dark:text-slate-400 px-3 hidden sm:block">
+                Đang chơi: <span class="text-orange-600 dark:text-orange-400 font-extrabold">${activeDeckDef.shortLabel}</span>
+              </div>
+            </div>
+          </div>
                 <i data-lucide="timer" class="w-4 h-4 text-red-500"></i> Phản xạ 5s
               </button>
               <button id="gameTabAudio" onclick="App.switchGameTab('audio')" class="px-4 py-2 rounded-xl transition ${this.selectedGameMode === "audio" ? "bg-white dark:bg-slate-700 text-red-600 dark:text-white shadow-sm" : "text-slate-600 dark:text-slate-400 hover:text-slate-900"} flex items-center gap-1.5">
