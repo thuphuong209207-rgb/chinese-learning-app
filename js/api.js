@@ -12,7 +12,7 @@ const GeminiService = {
   getModel() {
     const settings = window.StorageService ? window.StorageService.getSettings() : {};
     let m = settings.model;
-    if (!m || m === "gemini-3.8-flash" || m === "gemini-2.5-flash") {
+    if (!m || m === "gemini-3.8-flash" || m === "gemini-2.5-flash" || m === "gemini-1.5-flash-8b") {
       m = "gemini-2.0-flash";
     }
     return m;
@@ -31,13 +31,13 @@ const GeminiService = {
     const preferredModel = this.getModel();
     // Candidate models in low-latency priority order:
     // 1. gemini-2.0-flash (fastest, state-of-the-art token generation)
-    // 2. gemini-1.5-flash-8b (extremely lightweight & fast)
-    // 3. gemini-1.5-flash (reliable, high quota)
+    // 2. gemini-1.5-flash (reliable, high quota)
+    // 3. gemini-1.5-pro (deep reasoning)
     const candidateModels = [
       preferredModel,
       "gemini-2.0-flash",
-      "gemini-1.5-flash-8b",
-      "gemini-1.5-flash"
+      "gemini-1.5-flash",
+      "gemini-1.5-pro"
     ].filter((m, idx, arr) => m && arr.indexOf(m) === idx);
 
     let lastError = null;
@@ -53,7 +53,7 @@ const GeminiService = {
           topP: 0.9
         };
 
-        if (options.isJson !== false) {
+        if (options.isJson === true) {
           genConfig.responseMimeType = "application/json";
         }
 
@@ -85,8 +85,8 @@ const GeminiService = {
           const errData = await response.json().catch(() => ({}));
           const errMsg = errData.error?.message || `Lỗi API HTTP: ${response.status} ${response.statusText}`;
 
-          if (response.status === 404 || errMsg.includes("no longer available") || errMsg.includes("not found")) {
-            console.warn(`Model ${model} không khả dụng, đang chuyển sang model dự phòng...`, errMsg);
+          if (response.status === 404 || errMsg.includes("not found") || errMsg.includes("not supported") || errMsg.includes("no longer available") || errMsg.includes("Resource has been exhausted") || response.status === 429) {
+            console.warn(`Model ${model} không khả dụng (${errMsg}), đang chuyển sang model dự phòng...`);
             lastError = new Error(errMsg);
             continue;
           }
@@ -108,8 +108,8 @@ const GeminiService = {
         return candidate.content.parts[0].text;
       } catch (err) {
         lastError = err;
-        if (err.name === "AbortError") {
-          console.warn(`Model ${model} timeout sau ${options.timeoutMs || 8000}ms, thử model tiếp theo...`);
+        if (err.name === "AbortError" || err.message.includes("not found") || err.message.includes("not supported")) {
+          console.warn(`Model ${model} thất bại (${err.message}), thử model tiếp theo...`);
           continue;
         }
         if (err.message.includes("API key not valid") || err.message.includes("PERMISSION_DENIED") || err.message.includes("Chưa nhập")) {
