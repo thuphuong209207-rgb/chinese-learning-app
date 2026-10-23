@@ -29,6 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
     lastDictQuery: "",
     chengyuCategoryFilter: "all",
     writers: {},
+    radicalStrokeFilter: "all",
+    radicalCommonOnly: false,
+    radicalSearchQuery: "",
+    radicalViewMode: "grid",
+    radicalFlashcardIndex: 0,
+    radicalCardFlipped: false,
+    radicalQuizState: null,
 
     init() {
       this.applyTheme(this.settings.theme);
@@ -353,6 +360,9 @@ document.addEventListener("DOMContentLoaded", () => {
           break;
         case "dictionary":
           this.renderDictionary(container);
+          break;
+        case "radicals":
+          this.renderRadicals(container);
           break;
         case "exams":
           this.renderExams(container);
@@ -3266,9 +3276,917 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     /* =====================================================================
-       MODULE 5: GAMES & SPACED REPETITION PENALTY BOX
-       (Categorized Decks: HSK 1 - 6, Business Chinese & Custom Flashcards)
+       MODULE 4B: 214 KANGXI RADICALS (214 BỘ THỦ TIẾNG TRUNG CHUẨN KHANG HY)
+       Tra cứu, Flashcard 3D, Tập viết nét HanziWriter & Trắc nghiệm phản xạ
        ===================================================================== */
+    renderRadicals(container) {
+      const radicals = window.RADICALS_DATA || [];
+      const totalCount = radicals.length;
+      const commonCount = radicals.filter((r) => r.isCommon).length;
+
+      const strokeCounts = {};
+      radicals.forEach((r) => {
+        strokeCounts[r.strokes] = (strokeCounts[r.strokes] || 0) + 1;
+      });
+
+      const activeMode = this.radicalViewMode || "grid";
+
+      container.innerHTML = `
+        <div class="space-y-6 max-w-7xl mx-auto pb-16">
+          
+          <!-- Hero Header Banner -->
+          <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-amber-600 via-red-600 to-rose-700 text-white p-6 md:p-8 shadow-xl shadow-red-500/10 border border-amber-400/30">
+            <div class="relative z-10 space-y-3">
+              <div class="flex flex-wrap items-center justify-between gap-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/20 backdrop-blur-md text-amber-100 border border-white/20">
+                  <i data-lucide="component" class="w-3.5 h-3.5 text-amber-300"></i>
+                  Cẩm Nang Bộ Thủ Khang Hy (康熙部首)
+                </span>
+                <span class="text-xs font-medium text-amber-100 flex items-center gap-1">
+                  <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-300"></i>
+                  Chuẩn 214 Bộ Thủ Đầy Đủ 100%
+                </span>
+              </div>
+
+              <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                  <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight flex items-center gap-3">
+                    214 Bộ Thủ Tiếng Trung Toàn Diện
+                  </h2>
+                  <p class="text-xs md:text-sm text-red-100 max-w-2xl mt-1.5 leading-relaxed">
+                    Bộ thủ là chìa khóa vàng cấu thành nên hơn 80.000 chữ Hán. Nắm vững bộ thủ giúp bạn đoán trước nghĩa từ mới, ghi nhớ mặt chữ gấp 3 lần và tra cứu từ điển siêu tốc.
+                  </p>
+                </div>
+
+                <!-- Mode Switcher Tabs -->
+                <div class="inline-flex p-1 rounded-2xl bg-black/25 backdrop-blur-md border border-white/20 text-xs font-bold self-start md:self-auto shrink-0">
+                  <button
+                    onclick="App.switchRadicalViewMode('grid')"
+                    class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl transition ${activeMode === 'grid' ? 'bg-white text-red-600 shadow-md' : 'text-white/80 hover:text-white'}"
+                  >
+                    <i data-lucide="layout-grid" class="w-4 h-4"></i>
+                    <span>Lưới 214 Bộ</span>
+                  </button>
+                  <button
+                    onclick="App.switchRadicalViewMode('flashcard')"
+                    class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl transition ${activeMode === 'flashcard' ? 'bg-white text-red-600 shadow-md' : 'text-white/80 hover:text-white'}"
+                  >
+                    <i data-lucide="layers" class="w-4 h-4"></i>
+                    <span>Flashcard 3D</span>
+                  </button>
+                  <button
+                    onclick="App.switchRadicalViewMode('quiz')"
+                    class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl transition ${activeMode === 'quiz' ? 'bg-white text-red-600 shadow-md' : 'text-white/80 hover:text-white'}"
+                  >
+                    <i data-lucide="help-circle" class="w-4 h-4"></i>
+                    <span>Trắc Nghiệm</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Quick Info Badges -->
+              <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-white/20 text-xs">
+                <span class="bg-black/20 px-3 py-1 rounded-lg backdrop-blur-sm flex items-center gap-1.5 font-semibold">
+                  <i data-lucide="hash" class="w-3.5 h-3.5 text-amber-300"></i> ${totalCount} Bộ Khang Hy
+                </span>
+                <span class="bg-black/20 px-3 py-1 rounded-lg backdrop-blur-sm flex items-center gap-1.5 font-semibold">
+                  <i data-lucide="star" class="w-3.5 h-3.5 text-amber-300"></i> ${commonCount} Bộ Cốt Lõi HSK
+                </span>
+                <span class="bg-black/20 px-3 py-1 rounded-lg backdrop-blur-sm flex items-center gap-1.5 font-semibold">
+                  <i data-lucide="pen-tool" class="w-3.5 h-3.5 text-amber-300"></i> Nét Viết Hoạt Ảnh HanziWriter
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Mode Content Area -->
+          <div id="radicalModeContent">
+            ${activeMode === "grid" ? this.getRadicalGridTemplate() : (activeMode === "flashcard" ? this.getRadicalFlashcardTemplate() : this.getRadicalQuizTemplate())}
+          </div>
+
+        </div>
+      `;
+
+      this.refreshIcons();
+
+      // Post-mount logic for specific modes
+      if (activeMode === "grid") {
+        this.filterAndRenderRadicalGrid();
+      } else if (activeMode === "flashcard") {
+        this.renderRadicalFlashcard();
+      } else if (activeMode === "quiz") {
+        this.initRadicalQuiz();
+      }
+    },
+
+    switchRadicalViewMode(mode) {
+      this.radicalViewMode = mode;
+      const container = document.getElementById("viewContainer");
+      if (container) {
+        this.renderRadicals(container);
+      }
+    },
+
+    /* =====================================================================
+       RADICAL SUB-MODE 1: GRID & SMART FILTER
+       ===================================================================== */
+    getRadicalGridTemplate() {
+      const strokesList = [
+        { label: "Tất cả", val: "all" },
+        { label: "1 nét (6)", val: "1" },
+        { label: "2 nét (29)", val: "2" },
+        { label: "3 nét (31)", val: "3" },
+        { label: "4 nét (34)", val: "4" },
+        { label: "5 nét (23)", val: "5" },
+        { label: "6 nét (29)", val: "6" },
+        { label: "7 nét (20)", val: "7" },
+        { label: "8 nét (9)", val: "8" },
+        { label: "9 nét (11)", val: "9" },
+        { label: "10 nét (8)", val: "10" },
+        { label: "11 nét (6)", val: "11" },
+        { label: "12 nét (4)", val: "12" },
+        { label: "13 nét (4)", val: "13" },
+        { label: "14 nét (2)", val: "14" },
+        { label: "15 nét (1)", val: "15" },
+        { label: "16 nét (2)", val: "16" },
+        { label: "17 nét (1)", val: "17" }
+      ];
+
+      return `
+        <div class="space-y-5">
+          <!-- Control Bar (Search + Quick Filter Pills) -->
+          <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-3.5">
+            <div class="flex flex-col md:flex-row gap-3">
+              <!-- Search Input -->
+              <div class="relative flex-1">
+                <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                <input
+                  type="text"
+                  id="radicalSearchInput"
+                  value="${this.radicalSearchQuery || ""}"
+                  placeholder="Tra theo Hán tự (水), biến thể (氵), Hán Việt (Thủy), Pinyin (shui), ý nghĩa (nước), chữ ghép ví dụ..."
+                  class="w-full pl-10 pr-10 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-750 text-slate-900 dark:text-white text-xs md:text-sm focus:ring-2 focus:ring-red-500 outline-none"
+                  oninput="App.handleRadicalSearch(this.value)"
+                />
+                ${
+                  this.radicalSearchQuery
+                    ? `<button onclick="App.handleRadicalSearch(''); document.getElementById('radicalSearchInput').value='';" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                      </button>`
+                    : ""
+                }
+              </div>
+
+              <!-- 50 Common Radicals Button -->
+              <button
+                onclick="App.toggleRadicalCommonFilter()"
+                class="px-4 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 shrink-0 border ${
+                  this.radicalCommonOnly
+                    ? "bg-amber-500 text-white border-amber-600 shadow-md shadow-amber-500/20"
+                    : "bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-600 hover:bg-slate-200 dark:hover:bg-slate-650"
+                }"
+              >
+                <i data-lucide="star" class="w-4 h-4 ${this.radicalCommonOnly ? 'fill-white' : 'text-amber-500'}"></i>
+                <span>50 Bộ Thủ Cốt Lõi HSK</span>
+              </button>
+            </div>
+
+            <!-- Stroke Pills (Horizontal Scrollable) -->
+            <div class="flex items-center gap-1.5 overflow-x-auto pb-1 pt-1 text-xs no-scrollbar">
+              <span class="text-slate-400 font-semibold text-[11px] shrink-0 mr-1 flex items-center gap-1">
+                <i data-lucide="filter" class="w-3.5 h-3.5"></i> Lọc số nét:
+              </span>
+              ${strokesList
+                .map((s) => {
+                  const isActive = (this.radicalStrokeFilter || "all") === s.val;
+                  return `
+                  <button
+                    onclick="App.setRadicalStrokeFilter('${s.val}')"
+                    class="px-3 py-1.5 rounded-xl font-bold shrink-0 transition ${
+                      isActive
+                        ? "bg-red-600 text-white shadow-sm"
+                        : "bg-slate-100 dark:bg-slate-700/80 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600"
+                    }"
+                  >
+                    ${s.label}
+                  </button>
+                `;
+                })
+                .join("")}
+            </div>
+          </div>
+
+          <!-- Counter Bar -->
+          <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 px-1">
+            <span id="radicalResultCountText">Đang tải danh sách...</span>
+            <span class="text-[11px] text-slate-400">💡 Mẹo: Bấm vào thẻ bộ thủ để xem hoạt ảnh nét viết & từ ghép</span>
+          </div>
+
+          <!-- Cards Grid Container -->
+          <div id="radicalCardsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3.5">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      `;
+    },
+
+    filterRadicalsList() {
+      const list = window.RADICALS_DATA || [];
+      const query = (this.radicalSearchQuery || "").trim().toLowerCase();
+      const strokeFilter = this.radicalStrokeFilter || "all";
+      const commonOnly = !!this.radicalCommonOnly;
+
+      return list.filter((r) => {
+        // Common filter
+        if (commonOnly && !r.isCommon) return false;
+
+        // Stroke filter
+        if (strokeFilter !== "all") {
+          if (strokeFilter === "10+" && r.strokes < 10) return false;
+          if (strokeFilter !== "10+" && String(r.strokes) !== strokeFilter) return false;
+        }
+
+        // Search query
+        if (query) {
+          const matchHanzi = (r.hanzi || "").toLowerCase().includes(query);
+          const matchPinyin = (r.pinyin || "").toLowerCase().includes(query);
+          const matchSino = (r.sinoVietnamese || "").toLowerCase().includes(query);
+          const matchMeaning = (r.meaning || "").toLowerCase().includes(query);
+          const matchMnemonic = (r.mnemonic || "").toLowerCase().includes(query);
+          const matchVariants = (r.variants || []).some((v) => v.toLowerCase().includes(query));
+          const matchExamples = (r.examples || []).some(
+            (e) => (e.zh || "").includes(query) || (e.py || "").toLowerCase().includes(query) || (e.vi || "").toLowerCase().includes(query)
+          );
+          return matchHanzi || matchPinyin || matchSino || matchMeaning || matchMnemonic || matchVariants || matchExamples;
+        }
+
+        return true;
+      });
+    },
+
+    filterAndRenderRadicalGrid() {
+      const grid = document.getElementById("radicalCardsGrid");
+      const countEl = document.getElementById("radicalResultCountText");
+      if (!grid) return;
+
+      const filtered = this.filterRadicalsList();
+
+      if (countEl) {
+        countEl.innerHTML = `Hiển thị <strong class="text-red-600 dark:text-red-400">${filtered.length}</strong> / 214 bộ thủ`;
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-16 text-center space-y-3 bg-white dark:bg-slate-800 rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 p-8">
+            <div class="w-16 h-16 rounded-2xl bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 flex items-center justify-center mx-auto">
+              <i data-lucide="search-x" class="w-8 h-8"></i>
+            </div>
+            <h4 class="font-bold text-slate-800 dark:text-white text-base">Không tìm thấy bộ thủ phù hợp</h4>
+            <p class="text-xs text-slate-500 max-w-sm mx-auto">
+              Thử tìm kiếm với từ khóa khác hoặc tắt các bộ lọc số nét để xem đầy đủ 214 bộ thủ.
+            </p>
+            <button onclick="App.resetRadicalFilters()" class="px-4 py-2 rounded-xl bg-red-600 text-white font-bold text-xs shadow-md">
+              Xóa bộ lọc
+            </button>
+          </div>
+        `;
+        this.refreshIcons();
+        return;
+      }
+
+      grid.innerHTML = filtered
+        .map((r) => {
+          const variantsStr = (r.variants || []).length > 0 ? r.variants.join(", ") : "";
+          const examplesPreview = (r.examples || [])
+            .slice(0, 3)
+            .map((e) => `<span class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-hanzi font-bold text-xs hover:bg-red-100 dark:hover:bg-red-900/40 hover:text-red-600 transition" title="${e.zh} (${e.py}): ${e.vi}">${e.zh}</span>`)
+            .join("");
+
+          return `
+            <div
+              onclick="App.openRadicalModal(${r.id})"
+              class="group relative bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200 dark:border-slate-700 hover:border-red-400 dark:hover:border-red-500 hover:shadow-lg transition-all duration-200 cursor-pointer flex flex-col justify-between"
+            >
+              <!-- Top Card Header: ID & Stroke Badge -->
+              <div class="flex items-center justify-between text-[11px] mb-2">
+                <span class="font-bold text-slate-400 group-hover:text-red-500 transition">
+                  #${r.id}
+                </span>
+                <div class="flex items-center gap-1.5">
+                  ${r.isCommon ? `<span class="w-2 h-2 rounded-full bg-amber-400" title="Bộ thủ cốt lõi HSK"></span>` : ""}
+                  <span class="px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-semibold text-[10px]">
+                    ${r.strokes} nét
+                  </span>
+                </div>
+              </div>
+
+              <!-- Main Hanzi Character -->
+              <div class="text-center my-1.5">
+                <div class="font-hanzi text-4xl md:text-5xl font-bold text-slate-900 dark:text-white group-hover:scale-110 group-hover:text-red-600 dark:group-hover:text-red-400 transition-transform duration-200">
+                  ${r.hanzi}
+                </div>
+                ${
+                  variantsStr
+                    ? `<div class="text-[11px] font-hanzi text-amber-600 dark:text-amber-400 mt-1 font-semibold">
+                        (${variantsStr})
+                      </div>`
+                    : `<div class="text-[11px] text-transparent mt-1 font-semibold select-none">-</div>`
+                }
+              </div>
+
+              <!-- Pinyin & Sino-Vietnamese -->
+              <div class="text-center space-y-0.5 mt-1 border-t border-slate-100 dark:border-slate-700/60 pt-2">
+                <div class="flex items-center justify-center gap-1">
+                  <span class="font-bold text-red-600 dark:text-red-400 text-xs">${r.pinyin}</span>
+                  <button
+                    onclick="event.stopPropagation(); AudioService.speak('${r.hanzi}');"
+                    class="p-1 rounded-full text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-slate-700 transition"
+                    title="Nghe phát âm"
+                  >
+                    <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
+                  </button>
+                </div>
+                <div class="font-bold text-slate-800 dark:text-slate-200 text-xs">
+                  ${r.sinoVietnamese}
+                </div>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-2 leading-tight mt-1" title="${r.meaning}">
+                  ${r.meaning}
+                </p>
+              </div>
+
+              <!-- Bottom Examples Preview -->
+              <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-700/50 flex items-center justify-between text-[11px]">
+                <span class="text-[10px] text-slate-400">Ví dụ:</span>
+                <div class="flex items-center gap-1">
+                  ${examplesPreview}
+                </div>
+              </div>
+            </div>
+          `;
+        })
+        .join("");
+
+      this.refreshIcons();
+    },
+
+    setRadicalStrokeFilter(strokeVal) {
+      this.radicalStrokeFilter = strokeVal;
+      this.filterAndRenderRadicalGrid();
+      // Update UI button active states in pills
+      const container = document.getElementById("radicalModeContent");
+      if (container) {
+        const buttons = container.querySelectorAll("button[onclick^='App.setRadicalStrokeFilter']");
+        buttons.forEach((btn) => {
+          if (btn.getAttribute("onclick").includes(`'${strokeVal}'`)) {
+            btn.className = "px-3 py-1.5 rounded-xl font-bold shrink-0 transition bg-red-600 text-white shadow-sm";
+          } else {
+            btn.className = "px-3 py-1.5 rounded-xl font-bold shrink-0 transition bg-slate-100 dark:bg-slate-700/80 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600";
+          }
+        });
+      }
+    },
+
+    toggleRadicalCommonFilter() {
+      this.radicalCommonOnly = !this.radicalCommonOnly;
+      const container = document.getElementById("viewContainer");
+      if (container) this.renderRadicals(container);
+    },
+
+    handleRadicalSearch(val) {
+      this.radicalSearchQuery = val;
+      this.filterAndRenderRadicalGrid();
+    },
+
+    resetRadicalFilters() {
+      this.radicalSearchQuery = "";
+      this.radicalStrokeFilter = "all";
+      this.radicalCommonOnly = false;
+      const container = document.getElementById("viewContainer");
+      if (container) this.renderRadicals(container);
+    },
+
+    /* =====================================================================
+       RADICAL SUB-MODE 2: INTERACTIVE MODAL & HANZIWRITER
+       ===================================================================== */
+    openRadicalModal(radicalId) {
+      const radicals = window.RADICALS_DATA || [];
+      const item = radicals.find((r) => r.id === radicalId);
+      if (!item) return;
+
+      const writerBoxId = `rw_${Math.random().toString(36).substring(2, 9)}`;
+
+      const variantsHtml = (item.variants || []).length > 0
+        ? `<div class="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/40 text-xs">
+            <span class="font-bold text-amber-800 dark:text-amber-300">Biến thể bộ thủ:</span>
+            <div class="flex items-center gap-2 mt-1">
+              ${item.variants
+                .map(
+                  (v) => `<span class="px-2 py-1 rounded bg-white dark:bg-slate-800 border border-amber-300 dark:border-amber-700 font-hanzi font-bold text-base text-amber-700 dark:text-amber-300">${v}</span>`
+                )
+                .join("")}
+              <span class="text-[11px] text-amber-700 dark:text-amber-400">(thường biến thể khi ghép thành phần bên trái hoặc dưới)</span>
+            </div>
+          </div>`
+        : "";
+
+      const examplesHtml = (item.examples || []).map((ex) => `
+        <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-750 border border-slate-200 dark:border-slate-700 hover:border-red-300 transition">
+          <div class="flex items-center gap-3">
+            <span class="font-hanzi text-2xl font-bold text-slate-900 dark:text-white">${ex.zh}</span>
+            <div>
+              <div class="text-xs font-bold text-red-600 dark:text-red-400">${ex.py}</div>
+              <div class="text-xs text-slate-600 dark:text-slate-300">${ex.vi}</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <button
+              onclick="AudioService.speak('${ex.zh}')"
+              class="p-2 rounded-lg text-slate-400 hover:text-red-600 hover:bg-white dark:hover:bg-slate-700 transition"
+              title="Phát âm chữ ghép"
+            >
+              <i data-lucide="volume-2" class="w-4 h-4"></i>
+            </button>
+            <button
+              onclick="App.closeModal(); window.location.hash='#dictionary'; setTimeout(() => App.handleQuickDictSearch('${ex.zh}'), 200);"
+              class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-red-50 hover:text-red-600 transition"
+              title="Tra cứu chữ này trong từ điển"
+            >
+              Tra từ điển
+            </button>
+          </div>
+        </div>
+      `).join("");
+
+      const html = `
+        <div class="p-6 md:p-8 space-y-6 max-w-2xl max-h-[90vh] overflow-y-auto">
+          
+          <!-- Modal Header -->
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-4">
+            <div class="flex items-center gap-3">
+              <span class="w-9 h-9 rounded-xl bg-red-100 dark:bg-red-950/60 text-red-600 dark:text-red-400 font-bold flex items-center justify-center text-sm">
+                #${item.id}
+              </span>
+              <div>
+                <h3 class="font-bold text-lg text-slate-900 dark:text-white flex items-center gap-2">
+                  Bộ ${item.sinoVietnamese} (${item.hanzi})
+                  ${item.isCommon ? `<span class="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400">Cốt lõi HSK</span>` : ""}
+                </h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">
+                  Số nét: <strong class="text-slate-700 dark:text-slate-300">${item.strokes} nét</strong> • Pinyin: <strong class="text-red-600 dark:text-red-400">${item.pinyin}</strong>
+                </p>
+              </div>
+            </div>
+            <button onclick="App.closeModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1.5 rounded-lg">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <!-- HanziWriter Interactive Box & Basic Info -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center bg-slate-50 dark:bg-slate-750 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
+            <!-- Stroke Order Box -->
+            <div class="flex flex-col items-center space-y-3">
+              <div class="relative bg-white dark:bg-slate-850 p-2 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-inner">
+                <div id="${writerBoxId}" class="w-[140px] h-[140px] flex items-center justify-center"></div>
+              </div>
+              <div class="flex items-center gap-2">
+                <button
+                  id="btn_anim_${writerBoxId}"
+                  class="px-3 py-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm transition"
+                >
+                  <i data-lucide="play" class="w-3.5 h-3.5"></i> Chạy nét
+                </button>
+                <button
+                  id="btn_quiz_${writerBoxId}"
+                  class="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs font-bold flex items-center gap-1.5 transition"
+                >
+                  <i data-lucide="edit-3" class="w-3.5 h-3.5"></i> Tập viết
+                </button>
+              </div>
+            </div>
+
+            <!-- Meaning & Audio -->
+            <div class="space-y-3 text-xs">
+              <div>
+                <span class="font-bold text-slate-400 uppercase text-[10px] tracking-wider block">Ý nghĩa chính:</span>
+                <div class="text-sm font-bold text-slate-900 dark:text-white mt-0.5">${item.meaning}</div>
+              </div>
+
+              <div>
+                <span class="font-bold text-slate-400 uppercase text-[10px] tracking-wider block">Phát âm chuẩn:</span>
+                <div class="flex items-center gap-2 mt-1">
+                  <span class="font-mono font-bold text-red-600 dark:text-red-400 text-base">${item.pinyin}</span>
+                  <button
+                    onclick="AudioService.speak('${item.hanzi}')"
+                    class="px-2.5 py-1 rounded-lg bg-red-100 dark:bg-red-950/60 text-red-700 dark:text-red-300 font-bold flex items-center gap-1 hover:bg-red-200 transition"
+                  >
+                    <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Nghe
+                  </button>
+                </div>
+              </div>
+
+              ${variantsHtml}
+            </div>
+          </div>
+
+          <!-- Mnemonic Memory Story -->
+          <div class="p-4 rounded-2xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/40 text-xs space-y-1">
+            <span class="font-bold text-amber-800 dark:text-amber-300 flex items-center gap-1.5">
+              <i data-lucide="lightbulb" class="w-4 h-4 text-amber-500"></i>
+              Mẹo ghi nhớ tượng hình (Chiết tự):
+            </span>
+            <p class="text-slate-700 dark:text-slate-300 leading-relaxed italic">
+              "${item.mnemonic}"
+            </p>
+          </div>
+
+          <!-- Common Characters Containing Radical -->
+          <div class="space-y-2">
+            <div class="flex items-center justify-between text-xs font-bold text-slate-800 dark:text-slate-200">
+              <span class="flex items-center gap-1.5">
+                <i data-lucide="layers" class="w-4 h-4 text-red-500"></i>
+                Chữ Hán tiêu biểu chứa bộ ${item.sinoVietnamese}:
+              </span>
+              <button
+                onclick="App.closeModal(); window.location.hash='#dictionary'; setTimeout(() => App.handleQuickDictSearch('${item.hanzi}'), 200);"
+                class="text-red-600 dark:text-red-400 hover:underline flex items-center gap-1 text-[11px]"
+              >
+                Tra tất cả từ chứa bộ "${item.hanzi}" <i data-lucide="arrow-right" class="w-3 h-3"></i>
+              </button>
+            </div>
+
+            <div class="space-y-2">
+              ${examplesHtml}
+            </div>
+          </div>
+
+          <!-- Footer Actions -->
+          <div class="pt-4 border-t border-slate-100 dark:border-slate-700 flex justify-between items-center text-xs">
+            <div class="flex items-center gap-2">
+              ${
+                item.id > 1
+                  ? `<button onclick="App.openRadicalModal(${item.id - 1})" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold hover:bg-slate-200 transition flex items-center gap-1">
+                      <i data-lucide="chevron-left" class="w-3.5 h-3.5"></i> Bộ trước
+                    </button>`
+                  : ""
+              }
+              ${
+                item.id < 214
+                  ? `<button onclick="App.openRadicalModal(${item.id + 1})" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold hover:bg-slate-200 transition flex items-center gap-1">
+                      Bộ sau <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                    </button>`
+                  : ""
+              }
+            </div>
+
+            <button onclick="App.closeModal()" class="px-5 py-2 rounded-xl bg-slate-200 dark:bg-slate-700 font-bold text-slate-700 dark:text-slate-300">
+              Đóng
+            </button>
+          </div>
+
+        </div>
+      `;
+
+      this.openModal(html);
+      this.refreshIcons();
+
+      // Mount HanziWriter
+      setTimeout(() => {
+        this.createHanziWriter(writerBoxId, item.hanzi);
+        const animBtn = document.getElementById(`btn_anim_${writerBoxId}`);
+        const quizBtn = document.getElementById(`btn_quiz_${writerBoxId}`);
+
+        if (animBtn) {
+          animBtn.onclick = () => this.animateHanzi(writerBoxId);
+        }
+        if (quizBtn) {
+          quizBtn.onclick = () => {
+            const writer = this.writers[writerBoxId];
+            if (writer) {
+              writer.quiz({
+                onComplete: () => {
+                  this.showToast(`Chúc mừng! Bạn đã viết đúng bộ thủ ${item.hanzi}!`, "success");
+                }
+              });
+            }
+          };
+        }
+      }, 100);
+    },
+
+    /* =====================================================================
+       RADICAL SUB-MODE 3: 3D FLASHCARD DECK
+       ===================================================================== */
+    getRadicalFlashcardTemplate() {
+      return `
+        <div class="max-w-xl mx-auto space-y-6">
+          
+          <!-- Card Stats & Controls -->
+          <div class="flex items-center justify-between text-xs font-semibold px-2">
+            <span class="text-slate-500 dark:text-slate-400">
+              Thẻ: <strong id="radFcProgress" class="text-red-600 dark:text-red-400">1</strong> / 214
+            </span>
+            <div class="flex items-center gap-2">
+              <button
+                onclick="App.shuffleRadicalFlashcards()"
+                class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 font-bold flex items-center gap-1.5 transition"
+              >
+                <i data-lucide="shuffle" class="w-3.5 h-3.5 text-amber-500"></i> Trộn thẻ
+              </button>
+            </div>
+          </div>
+
+          <!-- 3D Flip Card Container -->
+          <div
+            id="radicalCardFlipWrapper"
+            onclick="App.flipRadicalCard()"
+            class="group perspective cursor-pointer min-h-[380px] select-none"
+          >
+            <div id="radicalCardInner" class="relative w-full h-[380px] rounded-3xl transition-transform duration-500 transform-style-3d shadow-xl border border-slate-200 dark:border-slate-700">
+              <!-- Dynamically populated front/back in renderRadicalFlashcard() -->
+            </div>
+          </div>
+
+          <!-- Bottom Action Buttons -->
+          <div class="flex items-center justify-center gap-4">
+            <button
+              onclick="App.prevRadicalFlashcard()"
+              class="p-3.5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 shadow-sm transition"
+              title="Thẻ trước"
+            >
+              <i data-lucide="chevron-left" class="w-5 h-5"></i>
+            </button>
+            
+            <button
+              onclick="App.flipRadicalCard()"
+              class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-red-600 to-amber-600 hover:from-red-700 hover:to-amber-700 text-white font-bold text-xs shadow-lg shadow-red-500/20 flex items-center gap-2 transition"
+            >
+              <i data-lucide="rotate-cw" class="w-4 h-4"></i>
+              <span>Lật Mặt Thẻ (Space)</span>
+            </button>
+
+            <button
+              onclick="App.nextRadicalFlashcard()"
+              class="p-3.5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 shadow-sm transition"
+              title="Thẻ tiếp theo"
+            >
+              <i data-lucide="chevron-right" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <!-- Keyboard Hints -->
+          <p class="text-center text-[11px] text-slate-400">
+            Dùng phím <kbd class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 font-mono text-[10px]">Phím Cách</kbd> để lật thẻ, <kbd class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 font-mono text-[10px]">←</kbd> <kbd class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 font-mono text-[10px]">→</kbd> để chuyển thẻ
+          </p>
+        </div>
+      `;
+    },
+
+    renderRadicalFlashcard() {
+      const cardInner = document.getElementById("radicalCardInner");
+      const progressEl = document.getElementById("radFcProgress");
+      const radicals = window.RADICALS_DATA || [];
+      if (!cardInner || radicals.length === 0) return;
+
+      const idx = this.radicalFlashcardIndex || 0;
+      const cur = radicals[idx % radicals.length];
+
+      if (progressEl) {
+        progressEl.textContent = `${(idx % radicals.length) + 1}`;
+      }
+
+      const isFlipped = !!this.radicalCardFlipped;
+      cardInner.style.transform = isFlipped ? "rotateY(180deg)" : "rotateY(0deg)";
+
+      const variantsStr = (cur.variants || []).length > 0 ? cur.variants.join(", ") : "Không có";
+      const examplesPreview = (cur.examples || [])
+        .map((e) => `<span class="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-750 font-hanzi font-bold text-sm text-slate-800 dark:text-slate-200">${e.zh} <span class="text-xs font-normal text-slate-500">(${e.vi})</span></span>`)
+        .join(" ");
+
+      cardInner.innerHTML = `
+        <!-- FRONT OF CARD -->
+        <div class="absolute inset-0 backface-hidden bg-white dark:bg-slate-800 rounded-3xl p-8 flex flex-col justify-between items-center text-center">
+          <div class="w-full flex items-center justify-between text-xs text-slate-400">
+            <span class="font-bold">#${cur.id} / 214</span>
+            <span class="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 font-semibold text-slate-600 dark:text-slate-300">${cur.strokes} nét</span>
+          </div>
+
+          <div class="space-y-2">
+            <div class="font-hanzi text-7xl md:text-8xl font-black text-slate-900 dark:text-white drop-shadow-sm">
+              ${cur.hanzi}
+            </div>
+            ${
+              (cur.variants || []).length > 0
+                ? `<div class="text-xs font-hanzi text-amber-600 dark:text-amber-400 font-bold">Biến thể: ${cur.variants.join(" , ")}</div>`
+                : ""
+            }
+          </div>
+
+          <div class="space-y-1">
+            <span class="text-xs text-slate-400 flex items-center justify-center gap-1">
+              <i data-lucide="mouse-pointer" class="w-3.5 h-3.5"></i> Bấm để xem phát âm, nghĩa & mẹo nhớ
+            </span>
+          </div>
+        </div>
+
+        <!-- BACK OF CARD -->
+        <div class="absolute inset-0 backface-hidden bg-slate-900 text-white rounded-3xl p-8 flex flex-col justify-between rotate-y-180 text-left border border-amber-500/30">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="font-hanzi text-3xl font-bold text-amber-400">${cur.hanzi}</span>
+              <div>
+                <span class="text-xs uppercase tracking-wider text-slate-400 font-bold">Hán Việt:</span>
+                <span class="text-sm font-extrabold text-white ml-1">${cur.sinoVietnamese}</span>
+              </div>
+            </div>
+            <button
+              onclick="event.stopPropagation(); AudioService.speak('${cur.hanzi}');"
+              class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-amber-300 transition"
+              title="Phát âm"
+            >
+              <i data-lucide="volume-2" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <div class="space-y-3 my-auto">
+            <div>
+              <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Phiên âm Pinyin:</span>
+              <div class="text-lg font-bold text-red-400">${cur.pinyin}</div>
+            </div>
+
+            <div>
+              <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Ý nghĩa:</span>
+              <div class="text-sm font-semibold text-slate-200">${cur.meaning}</div>
+            </div>
+
+            <div class="p-3 rounded-xl bg-white/5 border border-white/10 text-xs">
+              <span class="text-amber-300 font-bold block mb-1">Mẹo nhớ:</span>
+              <p class="text-slate-300 italic leading-relaxed">"${cur.mnemonic}"</p>
+            </div>
+
+            <div>
+              <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider block mb-1.5">Chữ ví dụ:</span>
+              <div class="flex flex-wrap gap-1.5">
+                ${examplesPreview}
+              </div>
+            </div>
+          </div>
+
+          <div class="text-[11px] text-slate-400 text-center border-t border-white/10 pt-2">
+            Bấm để quay lại mặt trước
+          </div>
+        </div>
+      `;
+
+      this.refreshIcons();
+    },
+
+    flipRadicalCard() {
+      this.radicalCardFlipped = !this.radicalCardFlipped;
+      const cardInner = document.getElementById("radicalCardInner");
+      if (cardInner) {
+        cardInner.style.transform = this.radicalCardFlipped ? "rotateY(180deg)" : "rotateY(0deg)";
+      }
+    },
+
+    nextRadicalFlashcard() {
+      const radicals = window.RADICALS_DATA || [];
+      this.radicalCardFlipped = false;
+      this.radicalFlashcardIndex = ((this.radicalFlashcardIndex || 0) + 1) % radicals.length;
+      this.renderRadicalFlashcard();
+    },
+
+    prevRadicalFlashcard() {
+      const radicals = window.RADICALS_DATA || [];
+      this.radicalCardFlipped = false;
+      this.radicalFlashcardIndex = (this.radicalFlashcardIndex || 0) - 1;
+      if (this.radicalFlashcardIndex < 0) this.radicalFlashcardIndex = radicals.length - 1;
+      this.renderRadicalFlashcard();
+    },
+
+    shuffleRadicalFlashcards() {
+      const radicals = window.RADICALS_DATA || [];
+      this.radicalCardFlipped = false;
+      this.radicalFlashcardIndex = Math.floor(Math.random() * radicals.length);
+      this.renderRadicalFlashcard();
+      this.showToast("Đã tráo ngẫu nhiên bộ thủ!", "info");
+    },
+
+    /* =====================================================================
+       RADICAL SUB-MODE 4: QUIZ RECOGNITION MINI-GAME
+       ===================================================================== */
+    getRadicalQuizTemplate() {
+      return `
+        <div id="radicalQuizContainer" class="max-w-xl mx-auto space-y-6">
+          <!-- Dynamically populated in initRadicalQuiz() -->
+        </div>
+      `;
+    },
+
+    initRadicalQuiz() {
+      const container = document.getElementById("radicalQuizContainer");
+      const radicals = window.RADICALS_DATA || [];
+      if (!container || radicals.length === 0) return;
+
+      this.radicalQuizState = this.radicalQuizState || {
+        score: 0,
+        total: 0,
+        streak: 0
+      };
+
+      // Pick a random target radical
+      const target = radicals[Math.floor(Math.random() * radicals.length)];
+
+      // Pick 3 random distractor meanings
+      const distractors = [];
+      while (distractors.length < 3) {
+        const rand = radicals[Math.floor(Math.random() * radicals.length)];
+        if (rand.id !== target.id && !distractors.some((d) => d.meaning === rand.meaning)) {
+          distractors.push(rand);
+        }
+      }
+
+      // Combine and shuffle options
+      const options = [target, ...distractors].sort(() => Math.random() - 0.5);
+
+      container.innerHTML = `
+        <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-700 shadow-xl space-y-6">
+          
+          <!-- Quiz Top Score Bar -->
+          <div class="flex items-center justify-between text-xs font-bold border-b border-slate-100 dark:border-slate-700 pb-3">
+            <span class="flex items-center gap-1.5 text-amber-600 dark:text-amber-400">
+              <i data-lucide="flame" class="w-4 h-4 fill-amber-500 text-amber-500"></i>
+              Chuỗi đúng: ${this.radicalQuizState.streak}
+            </span>
+            <span class="text-slate-500 dark:text-slate-400">
+              Điểm: <strong class="text-red-600 dark:text-red-400">${this.radicalQuizState.score}</strong> / ${this.radicalQuizState.total}
+            </span>
+          </div>
+
+          <!-- Question Content -->
+          <div class="text-center space-y-3 py-2">
+            <span class="text-xs uppercase font-bold text-slate-400 tracking-wider">Bộ thủ này có ý nghĩa gì?</span>
+            <div class="font-hanzi text-7xl font-black text-slate-900 dark:text-white">
+              ${target.hanzi}
+            </div>
+            <div class="flex items-center justify-center gap-2 text-xs font-bold">
+              <span class="text-red-600 dark:text-red-400 font-mono">${target.pinyin}</span>
+              <span class="text-slate-400">•</span>
+              <span class="text-slate-600 dark:text-slate-300">Bộ ${target.sinoVietnamese}</span>
+              <button onclick="AudioService.speak('${target.hanzi}')" class="p-1 rounded-full text-slate-400 hover:text-red-600" title="Nghe phát âm">
+                <i data-lucide="volume-2" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- 4 Options Grid -->
+          <div class="space-y-2.5">
+            ${options
+              .map(
+                (opt, i) => `
+              <button
+                onclick="App.submitRadicalQuizAnswer(${opt.id}, ${target.id})"
+                class="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-750 hover:bg-red-50 hover:border-red-400 dark:hover:bg-slate-700 text-xs md:text-sm font-semibold text-slate-800 dark:text-slate-200 transition flex items-center justify-between group"
+              >
+                <span>${opt.meaning}</span>
+                <span class="w-6 h-6 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 text-slate-400 group-hover:text-red-600 flex items-center justify-center text-xs font-bold font-mono">
+                  ${String.fromCharCode(65 + i)}
+                </span>
+              </button>
+            `
+              )
+              .join("")}
+          </div>
+
+          <!-- Skip button -->
+          <div class="text-center pt-2">
+            <button onclick="App.initRadicalQuiz()" class="text-xs font-semibold text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+              Bỏ qua câu này →
+            </button>
+          </div>
+        </div>
+      `;
+
+      this.refreshIcons();
+    },
+
+    submitRadicalQuizAnswer(selectedId, correctId) {
+      this.radicalQuizState.total++;
+      const isCorrect = selectedId === correctId;
+
+      if (isCorrect) {
+        this.radicalQuizState.score++;
+        this.radicalQuizState.streak++;
+        this.showToast("Chính xác! Bạn ghi nhớ rất tốt!", "success");
+      } else {
+        this.radicalQuizState.streak = 0;
+        const radicals = window.RADICALS_DATA || [];
+        const correctRad = radicals.find((r) => r.id === correctId);
+        this.showToast(`Chưa đúng rồi! Ý nghĩa đúng là: "${correctRad ? correctRad.meaning : ''}"`, "error");
+      }
+
+      setTimeout(() => this.initRadicalQuiz(), 600);
+    },
+
     selectedGameDeck: "hsk1",
     selectedGameMode: "speed",
 
