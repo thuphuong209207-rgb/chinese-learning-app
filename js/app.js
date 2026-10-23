@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
           id: "HSK 1",
           name: "HSK 1 (Sơ cấp 1)",
           tag: "Người Mới Bắt Đầu",
-          desc: "150 từ vựng cơ bản, phát âm Pinyin chuẩn, các câu chào hỏi và giao tiếp đời sống đơn giản nhất.",
+          desc: "500 từ vựng toàn diện (chuẩn HSK 1 mới 3.0), phát âm Pinyin chuẩn, các câu chào hỏi và giao tiếp đời sống.",
           color: "border-emerald-500 bg-emerald-50/30 text-emerald-700"
         },
         {
@@ -4231,7 +4231,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     getDeckDefinition(deckKey = this.selectedGameDeck || "hsk1") {
       const defs = {
-        hsk1: { id: "hsk1", label: "HSK 1 (Sơ cấp 1)", shortLabel: "HSK 1", icon: "sparkles", desc: "150 từ vựng nền tảng, chào hỏi và sinh hoạt cơ bản." },
+        hsk1: { id: "hsk1", label: "HSK 1 (Sơ cấp 1)", shortLabel: "HSK 1", icon: "sparkles", desc: "500 từ vựng toàn diện (chuẩn HSK 1 mới 3.0), chào hỏi và sinh hoạt đời sống." },
         hsk2: { id: "hsk2", label: "HSK 2 (Sơ cấp 2)", shortLabel: "HSK 2", icon: "book-open", desc: "150 từ vựng mở rộng (tích lũy 300 từ chuẩn HSK 2), du lịch, mua sắm và thể thao." },
         hsk3: { id: "hsk3", label: "HSK 3 (Trung cấp sơ)", shortLabel: "HSK 3", icon: "award", desc: "100 từ vựng cốt lõi đàm thoại, môi trường và giải quyết vấn đề." },
         hsk4: { id: "hsk4", label: "HSK 4 (Trung cấp)", shortLabel: "HSK 4", icon: "flame", desc: "61 từ vựng thảo luận, kinh nghiệm và thái độ sống." },
@@ -4305,7 +4305,7 @@ document.addEventListener("DOMContentLoaded", () => {
           categoryLabel: "Trình Độ",
           count: this.getDeckWords("hsk1").length,
           image: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=700&q=80",
-          desc: "150 từ vựng nền tảng, đại từ xưng hô, chào hỏi và sinh hoạt cơ bản nhất.",
+          desc: "500 từ vựng toàn diện (chuẩn HSK 1 mới 3.0), đại từ xưng hô, chào hỏi và sinh hoạt đời sống.",
           sampleChips: ["一", "在", "有", "个", "爱", "好"]
         },
         {
