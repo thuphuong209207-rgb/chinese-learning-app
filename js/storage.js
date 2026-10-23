@@ -41,7 +41,7 @@ const StorageService = {
     try {
       const parsed = { ...defaults, ...JSON.parse(raw) };
       // Auto-migrate invalid/deprecated models to gemini-2.0-flash for ultra-fast 1-2s response
-      if (parsed.model === "gemini-3.8-flash" || parsed.model === "gemini-2.5-flash" || !parsed.model) {
+      if (parsed.model === "gemini-3.8-flash" || parsed.model === "gemini-2.5-flash" || parsed.model === "gemini-1.5-flash-8b" || !parsed.model) {
         parsed.model = "gemini-2.0-flash";
         const updated = { ...parsed, model: "gemini-2.0-flash" };
         localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify(updated));
@@ -364,10 +364,10 @@ const StorageService = {
       // Default sample recent searches matching user interface screenshot
       const defaultHistory = [
         {
-          hanzi: "yixm",
+          hanzi: "意向",
           pinyin: "yīxiàng",
           meaning: "Ý hướng, mục đích, định hướng",
-          query: "yixm",
+          query: "意向",
           hsk: 3,
           radical: "心 (Tâm)",
           strokes: 15,
